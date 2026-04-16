@@ -277,13 +277,25 @@ function renderQuickNav(pageId) {
 function renderHome() {
   return `
     ${renderQuickNav("home")}
-    <section class="section dashboard-section" id="snapshot">
+    <section class="section dashboard-section home-dashboard" id="snapshot">
       <div class="section-heading center">
         <p class="eyebrow">Snapshot</p>
-        <h2>${state.lang === "en" ? "Trip dashboard" : "旅程核心資訊"}</h2>
-        <p>${state.lang === "en" ? "The first screen answers what is confirmed, what is pending, and where to go next." : "先看已確認、待處理與下一步，不用在長筆記裡找重點。"}</p>
+        <h2>${state.lang === "en" ? "Trip command center" : "旅程指揮中心"}</h2>
+        <p>${state.lang === "en" ? "A cleaner first screen for confirmed items, open decisions, budget anchors, and the next travel move." : "用一個高可讀儀表板整理已確認事項、待處理決策、預算錨點與下一段移動。"}</p>
       </div>
-      <div class="summary-grid">
+      <div class="command-board" aria-label="Trip command board">
+        <article class="command-primary">
+          <span class="command-label">${state.lang === "en" ? "Current focus" : "目前重點"}</span>
+          <h3>${state.lang === "en" ? "Manchester conference first, London travel second" : "先完成曼徹斯特研討會，再銜接倫敦旅遊"}</h3>
+          <p>${state.lang === "en" ? "The plan is stable at the flight and Manchester hotel level. The main unresolved decision is whether to keep the 4 July Manchester hotel night while moving to London." : "航班與 Manchester 住宿已穩定；目前最需要處理的是 7/4 前往倫敦時，Manchester 飯店是否保留一晚作為緩衝。"}</p>
+        </article>
+        <div class="command-metrics">
+          <article><span>${state.lang === "en" ? "Known fixed cost" : "已知固定費用"}</span><strong>NT$142,659</strong></article>
+          <article><span>${state.lang === "en" ? "Booked stay" : "已訂住宿"}</span><strong>5 nights</strong></article>
+          <article><span>${state.lang === "en" ? "Open bookings" : "待預訂"}</span><strong>2 items</strong></article>
+        </div>
+      </div>
+      <div class="summary-grid premium-summary">
         ${tripData.summaryCards.map((card) => `
           <article class="summary-card">
             ${statusChip(card.status)}
@@ -303,6 +315,28 @@ function renderHome() {
       <div class="todo-list">
         ${tripData.todos.map((item) => `<article class="todo-item">${statusChip(item.status)}<p>${t(item.text)}</p></article>`).join("")}
       </div>
+    </section>
+    <section class="section compact-section home-strip" aria-label="Trip highlights">
+      <article>
+        <span>01</span>
+        <h3>${state.lang === "en" ? "Arrival" : "抵達"}</h3>
+        <p>6/30 MAN 10:40 · INNSiDE after 15:00</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>${state.lang === "en" ? "Conference" : "會議"}</h3>
+        <p>7/1-7/3 · AIB main conference</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>${state.lang === "en" ? "London" : "倫敦"}</h3>
+        <p>7/4 · Manchester Piccadilly → Euston</p>
+      </article>
+      <article>
+        <span>04</span>
+        <h3>${state.lang === "en" ? "Return" : "回程"}</h3>
+        <p>7/11 MAN → LHR → TPE</p>
+      </article>
     </section>
     <section class="section compact-section" id="handoff">
       <div class="section-heading center">
