@@ -1,17 +1,20 @@
 :root {
-  --slate: #4b4350;
-  --ink: #343039;
-  --royal-blue: #75899f;
-  --royal-red: #a56f76;
-  --gold: #b8aa86;
-  --soft-gold: #e5dcc3;
-  --bone: #ece7df;
-  --paper: #fffdf9;
-  --mist: #f5f3ef;
-  --stone: #cfc8bb;
-  --muted: #777177;
-  --border: rgba(75, 67, 80, 0.13);
-  --shadow: 0 16px 38px rgba(75, 67, 80, 0.09);
+  --slate: #57505b;
+  --ink: #37343a;
+  --royal-blue: #7f9299;
+  --royal-red: #a97c82;
+  --gold: #b8ad92;
+  --soft-gold: #e8dfc8;
+  --bone: #eee9e1;
+  --paper: #fffdf8;
+  --mist: #f6f3ee;
+  --stone: #d2cbc0;
+  --muted: #7b7477;
+  --sage: #9aa89d;
+  --mauve: #9b8e9b;
+  --blush: #d8c4c6;
+  --border: rgba(87, 80, 91, 0.13);
+  --shadow: 0 18px 42px rgba(87, 80, 91, 0.085);
   --radius: 8px;
 }
 
@@ -29,7 +32,9 @@ body {
   overflow-x: hidden;
   color: var(--ink);
   background:
-    linear-gradient(135deg, #fffdf9 0%, #f5f3ef 48%, #ebe6de 100%);
+    radial-gradient(circle at top left, rgba(216, 196, 198, 0.22), transparent 34%),
+    radial-gradient(circle at 82% 12%, rgba(154, 168, 157, 0.16), transparent 28%),
+    linear-gradient(135deg, #fffdf8 0%, #f6f3ee 48%, #ebe6df 100%);
   font-family: "Noto Serif TC", "Noto Sans TC", serif;
   font-size: 16px;
   line-height: 1.85;
@@ -49,8 +54,8 @@ a {
   z-index: 1000;
   width: 0%;
   height: 4px;
-  background: linear-gradient(90deg, #a56f76, #b8aa86, #75899f);
-  box-shadow: 0 0 14px rgba(184, 170, 134, 0.24);
+  background: linear-gradient(90deg, #a97c82, #b8ad92, #7f9299);
+  box-shadow: 0 0 14px rgba(184, 173, 146, 0.22);
 }
 
 .hero {
@@ -62,8 +67,8 @@ a {
   overflow: hidden;
   color: #fffdf9;
   background:
-    linear-gradient(115deg, rgba(48, 43, 55, 0.74) 0%, rgba(73, 65, 79, 0.58) 46%, rgba(165, 111, 118, 0.18) 100%),
-    linear-gradient(180deg, rgba(245, 243, 239, 0.04), rgba(48, 43, 55, 0.24)),
+    linear-gradient(115deg, rgba(58, 53, 63, 0.72) 0%, rgba(87, 80, 91, 0.56) 42%, rgba(169, 124, 130, 0.18) 100%),
+    linear-gradient(180deg, rgba(246, 243, 238, 0.05), rgba(64, 59, 69, 0.22)),
     url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1920px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 42% / cover;
 }
 
@@ -74,7 +79,7 @@ a {
   right: 0;
   bottom: 0;
   height: 150px;
-  background: linear-gradient(180deg, transparent 0%, rgba(245, 243, 239, 0.96) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(246, 243, 238, 0.96) 100%);
   pointer-events: none;
 }
 
@@ -270,8 +275,8 @@ h3 {
   padding: 8px 24px;
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: var(--radius);
-  background: rgba(79, 72, 84, 0.58);
-  box-shadow: 0 24px 60px rgba(20, 16, 24, 0.22);
+  background: rgba(87, 80, 91, 0.54);
+  box-shadow: 0 24px 60px rgba(42, 37, 47, 0.2);
   backdrop-filter: blur(14px);
 }
 
@@ -330,7 +335,7 @@ h3 {
   border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: var(--radius);
   background:
-    radial-gradient(circle at top left, rgba(234, 217, 166, 0.22), transparent 38%),
+    radial-gradient(circle at top left, rgba(232, 223, 200, 0.3), transparent 38%),
     rgba(255, 253, 249, 0.88);
   box-shadow: var(--shadow);
   backdrop-filter: blur(14px);
@@ -383,7 +388,7 @@ h3 {
   border: 1px solid rgba(255, 255, 255, 0.76);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(255, 253, 249, 0.94), rgba(239, 233, 225, 0.9)),
+    linear-gradient(135deg, rgba(255, 253, 248, 0.94), rgba(238, 233, 225, 0.9)),
     rgba(255, 253, 249, 0.92);
   box-shadow: var(--shadow);
   transition: transform 0.2s ease, border-color 0.2s ease;
@@ -391,7 +396,7 @@ h3 {
 
 .page-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(199, 164, 93, 0.62);
+  border-color: rgba(184, 173, 146, 0.66);
 }
 
 .page-card span {
@@ -615,7 +620,7 @@ h3 {
   gap: 16px;
   padding: 18px 22px;
   color: #fffdf9;
-  background: linear-gradient(135deg, #4b4350, #645b68);
+  background: linear-gradient(135deg, #57505b, #706875);
 }
 
 .flight-head span {
@@ -746,7 +751,7 @@ h3 {
 
 .day.active {
   color: #fffdf9;
-  background: linear-gradient(135deg, var(--royal-blue), #2d69a9);
+  background: linear-gradient(135deg, var(--royal-blue), #657c84);
   border-color: transparent;
 }
 
@@ -757,7 +762,7 @@ h3 {
   border-radius: var(--radius);
   padding: 34px;
   background:
-    radial-gradient(circle at top right, rgba(0, 94, 184, 0.08), transparent 36%),
+    radial-gradient(circle at top right, rgba(127, 146, 153, 0.12), transparent 36%),
     rgba(255, 253, 249, 0.92);
   box-shadow: var(--shadow);
 }
@@ -813,7 +818,7 @@ td {
 
 th {
   color: #fffdf9;
-  background: #4b4350;
+  background: #57505b;
   font-size: 14px;
 }
 
@@ -831,7 +836,7 @@ td:first-child {
   padding-inline: max(14px, calc((100vw - 1180px) / 2));
   color: #fffdf9;
   background:
-    linear-gradient(135deg, rgba(75, 67, 80, 0.98), rgba(91, 105, 119, 0.96));
+    linear-gradient(135deg, rgba(87, 80, 91, 0.98), rgba(104, 118, 116, 0.95));
 }
 
 .links-band .section-heading p {
@@ -881,7 +886,7 @@ td:first-child {
   border: 1px solid rgba(75, 67, 80, 0.12);
   border-radius: var(--radius);
   color: #fffdf9;
-  background: linear-gradient(135deg, #5f748c, #4b4350);
+  background: linear-gradient(135deg, #7f9299, #57505b);
   font-weight: 900;
   box-shadow: 0 14px 30px rgba(75, 67, 80, 0.12);
 }
@@ -923,13 +928,13 @@ td:first-child {
 
 .map-location-button:hover {
   transform: translateY(-2px);
-  border-color: rgba(117, 137, 159, 0.42);
+  border-color: rgba(127, 146, 153, 0.42);
 }
 
 .map-location-button.active {
-  border-color: rgba(117, 137, 159, 0.64);
+  border-color: rgba(127, 146, 153, 0.64);
   background:
-    radial-gradient(circle at top left, rgba(229, 220, 195, 0.54), transparent 42%),
+    radial-gradient(circle at top left, rgba(232, 223, 200, 0.56), transparent 42%),
     linear-gradient(135deg, rgba(245, 243, 239, 0.98), rgba(255, 253, 249, 0.94));
   box-shadow: 0 16px 34px rgba(75, 67, 80, 0.1);
 }
@@ -967,7 +972,7 @@ td:first-child {
   border: 1px solid rgba(255, 255, 255, 0.76);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(255, 253, 249, 0.9), rgba(239, 233, 225, 0.78)),
+    linear-gradient(135deg, rgba(255, 253, 248, 0.9), rgba(238, 233, 225, 0.78)),
     var(--bone);
   box-shadow: 0 20px 46px rgba(75, 67, 80, 0.1);
 }
@@ -996,7 +1001,7 @@ td:first-child {
   border-radius: var(--radius);
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(184, 170, 134, 0.2), transparent 40%),
+    radial-gradient(circle at top left, rgba(184, 173, 146, 0.22), transparent 40%),
     rgba(255, 253, 249, 0.88);
   box-shadow: var(--shadow);
   transition: transform 0.2s ease, border-color 0.2s ease;
@@ -1004,7 +1009,7 @@ td:first-child {
 
 .map-day-route-link:hover {
   transform: translateY(-2px);
-  border-color: rgba(117, 137, 159, 0.44);
+  border-color: rgba(127, 146, 153, 0.44);
 }
 
 .map-day-route-head {
@@ -1032,7 +1037,7 @@ footer {
   gap: 16px;
   padding: 28px max(14px, calc((100vw - 1180px) / 2));
   color: #fffdf9;
-  background: #4b4350;
+  background: #57505b;
 }
 
 footer p {
@@ -1125,13 +1130,13 @@ footer a {
 
   .nav-pills a:hover {
     color: #fffdf9;
-    background: #5f748c;
+    background: #72888f;
     transform: none;
   }
 
   .nav-pills a.active {
     color: #fffdf9;
-    background: #5f748c;
+    background: #72888f;
   }
 
   .lang-toggle {
@@ -1514,7 +1519,7 @@ footer a {
   border: 1px solid rgba(255, 255, 255, 0.74);
   border-radius: var(--radius);
   background: rgba(255, 253, 249, 0.88);
-  box-shadow: 0 12px 28px rgba(48, 38, 56, 0.08);
+  box-shadow: 0 12px 28px rgba(87, 80, 91, 0.08);
   backdrop-filter: blur(14px);
 }
 
@@ -1570,7 +1575,7 @@ footer a {
   border-radius: var(--radius);
   background:
     linear-gradient(180deg, rgba(255, 253, 249, 0.94), rgba(255, 253, 249, 0.82));
-  box-shadow: 0 14px 32px rgba(48, 38, 56, 0.08);
+  box-shadow: 0 14px 32px rgba(87, 80, 91, 0.075);
 }
 
 .summary-card {
@@ -1618,44 +1623,44 @@ footer a {
 }
 
 .status-confirmed {
-  color: #103b26;
-  background: #dceee3;
+  color: #31443a;
+  background: #dfe8df;
 }
 
 .status-pending {
-  color: #4b3b13;
-  background: #f4e7bb;
+  color: #51462c;
+  background: #eee5c9;
 }
 
 .status-book,
 .status-alert {
-  color: #6f1022;
-  background: #f2ced6;
+  color: #70484f;
+  background: #ead4d7;
 }
 
 .status-reimburse {
-  color: #0a365e;
-  background: #d8e8f8;
+  color: #394d58;
+  background: #dce8eb;
 }
 
 .status-self {
-  color: #3f3648;
-  background: #ebe5df;
+  color: #47414b;
+  background: #ebe7e2;
 }
 
 .status-optional {
-  color: #51485d;
-  background: #e7e1ec;
+  color: #554d5c;
+  background: #e7e1e8;
 }
 
 .alert-card {
   margin-top: 18px;
   padding: 22px;
-  border: 1px solid rgba(186, 12, 47, 0.24);
+  border: 1px solid rgba(169, 124, 130, 0.28);
   border-left: 6px solid var(--royal-red);
   border-radius: var(--radius);
-  background: #fff6f5;
-  box-shadow: 0 14px 32px rgba(186, 12, 47, 0.08);
+  background: #fbf4f2;
+  box-shadow: 0 14px 32px rgba(169, 124, 130, 0.08);
 }
 
 .alert-card div {
@@ -1672,7 +1677,7 @@ footer a {
 
 .alert-card p {
   margin-top: 10px;
-  color: #5f4044;
+  color: #665154;
 }
 
 .todo-list {
@@ -1959,8 +1964,8 @@ footer a {
   height: 520px;
   border-radius: var(--radius);
   background:
-    linear-gradient(115deg, rgba(117, 137, 159, 0.12), rgba(184, 170, 134, 0.16)),
-    linear-gradient(90deg, rgba(165, 111, 118, 0.08), rgba(236, 231, 223, 0.3));
+    linear-gradient(115deg, rgba(127, 146, 153, 0.14), rgba(184, 173, 146, 0.16)),
+    linear-gradient(90deg, rgba(169, 124, 130, 0.09), rgba(238, 233, 225, 0.34));
   filter: blur(0);
 }
 
@@ -1985,7 +1990,7 @@ footer a {
   padding: 30px;
   color: #fffdf9;
   background:
-    linear-gradient(115deg, rgba(64, 57, 68, 0.88), rgba(92, 83, 94, 0.72)),
+    linear-gradient(115deg, rgba(78, 71, 83, 0.86), rgba(104, 96, 108, 0.7)),
     url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 40% / cover;
 }
 
@@ -1994,7 +1999,7 @@ footer a {
   position: absolute;
   inset: auto 0 0;
   height: 5px;
-  background: linear-gradient(90deg, #75899f, #b8aa86, #a56f76);
+  background: linear-gradient(90deg, #7f9299, #b8ad92, #a97c82);
 }
 
 .command-label {
@@ -2083,19 +2088,19 @@ footer a {
   top: 0;
   width: 100%;
   height: 5px;
-  background: linear-gradient(90deg, #75899f, #b8aa86);
+  background: linear-gradient(90deg, #7f9299, #b8ad92);
 }
 
 .premium-summary .summary-card:nth-child(2)::after {
-  background: linear-gradient(90deg, #a56f76, #c8bda0);
+  background: linear-gradient(90deg, #a97c82, #c8bea5);
 }
 
 .premium-summary .summary-card:nth-child(3)::after {
-  background: linear-gradient(90deg, #c8bda0, #827a86);
+  background: linear-gradient(90deg, #c8bea5, #928896);
 }
 
 .premium-summary .summary-card:nth-child(4)::after {
-  background: linear-gradient(90deg, #a56f76, #75899f);
+  background: linear-gradient(90deg, #a97c82, #7f9299);
 }
 
 .home-strip {
