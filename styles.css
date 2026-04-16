@@ -13,6 +13,10 @@
   --sage: #9aa89d;
   --mauve: #9b8e9b;
   --blush: #d8c4c6;
+  --oxford: #35323b;
+  --library: #746b60;
+  --vellum: #f8f3e9;
+  --champagne: #d7c9a8;
   --border: rgba(87, 80, 91, 0.13);
   --shadow: 0 18px 42px rgba(87, 80, 91, 0.085);
   --radius: 8px;
@@ -67,7 +71,8 @@ a {
   overflow: hidden;
   color: #fffdf9;
   background:
-    linear-gradient(115deg, rgba(58, 53, 63, 0.72) 0%, rgba(87, 80, 91, 0.56) 42%, rgba(169, 124, 130, 0.18) 100%),
+    radial-gradient(circle at 70% 18%, rgba(215, 201, 168, 0.16), transparent 26%),
+    linear-gradient(115deg, rgba(53, 50, 59, 0.78) 0%, rgba(87, 80, 91, 0.58) 42%, rgba(169, 124, 130, 0.2) 100%),
     linear-gradient(180deg, rgba(246, 243, 238, 0.05), rgba(64, 59, 69, 0.22)),
     url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1920px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 42% / cover;
 }
@@ -106,10 +111,23 @@ a {
 }
 
 .brand {
+  display: grid;
+  gap: 0;
   color: var(--soft-gold);
-  font-size: 18px;
+  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+  font-size: 22px;
   font-weight: 900;
   letter-spacing: 0;
+  line-height: 1;
+}
+
+.brand small {
+  color: rgba(255, 253, 248, 0.72);
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 .nav-pills {
@@ -205,7 +223,7 @@ h1,
 h2,
 h3 {
   margin: 0;
-  font-family: "Noto Serif TC", serif;
+  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
   font-weight: 900;
   line-height: 1.25;
   letter-spacing: 0;
@@ -214,13 +232,13 @@ h3 {
 h1 {
   max-width: 760px;
   margin-top: 18px;
-  font-size: 50px;
+  font-size: 58px;
   text-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
 }
 
 h2 {
   margin-top: 10px;
-  font-size: 36px;
+  font-size: 42px;
 }
 
 h3 {
@@ -234,6 +252,17 @@ h3 {
   font-size: 18px;
   line-height: 1.9;
   overflow-wrap: anywhere;
+}
+
+.hero-serif-note {
+  max-width: 620px;
+  margin: 14px 0 0;
+  color: var(--soft-gold);
+  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.25;
 }
 
 .hero-actions {
@@ -275,7 +304,8 @@ h3 {
   padding: 8px 24px;
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: var(--radius);
-  background: rgba(87, 80, 91, 0.54);
+  background:
+    linear-gradient(180deg, rgba(87, 80, 91, 0.56), rgba(53, 50, 59, 0.5));
   box-shadow: 0 24px 60px rgba(42, 37, 47, 0.2);
   backdrop-filter: blur(14px);
 }
@@ -320,6 +350,10 @@ h3 {
   margin: 12px 0 0;
   color: var(--muted);
   font-size: 16px;
+}
+
+.section-heading h2 {
+  color: var(--oxford);
 }
 
 .stats-grid {
@@ -388,7 +422,7 @@ h3 {
   border: 1px solid rgba(255, 255, 255, 0.76);
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(255, 253, 248, 0.94), rgba(238, 233, 225, 0.9)),
+    linear-gradient(135deg, rgba(255, 253, 248, 0.96), rgba(238, 233, 225, 0.9)),
     rgba(255, 253, 249, 0.92);
   box-shadow: var(--shadow);
   transition: transform 0.2s ease, border-color 0.2s ease;
@@ -412,7 +446,7 @@ h3 {
 
 .page-card strong {
   color: var(--slate);
-  font-family: "Noto Serif TC", serif;
+  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
   font-size: 23px;
   line-height: 1.3;
 }
@@ -1583,6 +1617,13 @@ footer a {
   padding: 20px;
 }
 
+.summary-card,
+.itinerary-card,
+.ticket-card,
+.page-card {
+  position: relative;
+}
+
 .summary-card h3,
 .itinerary-card h3,
 .privacy-note h3 {
@@ -1990,7 +2031,7 @@ footer a {
   padding: 30px;
   color: #fffdf9;
   background:
-    linear-gradient(115deg, rgba(78, 71, 83, 0.86), rgba(104, 96, 108, 0.7)),
+    linear-gradient(115deg, rgba(53, 50, 59, 0.88), rgba(94, 87, 99, 0.72)),
     url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 40% / cover;
 }
 
@@ -2019,13 +2060,46 @@ footer a {
 .command-primary h3 {
   max-width: 700px;
   margin-top: 24px;
-  font-size: 32px;
+  font-size: 38px;
+  line-height: 1.16;
 }
 
 .command-primary p {
   max-width: 720px;
   margin: 16px 0 0;
   color: rgba(255, 253, 249, 0.82);
+}
+
+.literary-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin: 16px 0;
+  border: 1px solid rgba(87, 80, 91, 0.12);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(90deg, rgba(255, 253, 248, 0.92), rgba(248, 243, 233, 0.82)),
+    var(--vellum);
+  box-shadow: 0 14px 30px rgba(87, 80, 91, 0.06);
+}
+
+.literary-strip span {
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 14px;
+  border-right: 1px solid rgba(87, 80, 91, 0.1);
+  color: var(--library);
+  font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 700;
+  text-align: center;
+}
+
+.literary-strip span:last-child {
+  border-right: 0;
 }
 
 .command-metrics {
@@ -2066,6 +2140,11 @@ footer a {
   min-height: 244px;
   padding-top: 48px;
   overflow: hidden;
+}
+
+.premium-summary .summary-card h3 {
+  font-size: 23px;
+  line-height: 1.18;
 }
 
 .premium-summary .summary-card::before {
@@ -2223,8 +2302,24 @@ footer a {
   }
 
   .command-metrics,
-  .home-strip {
+  .home-strip,
+  .literary-strip {
     grid-template-columns: 1fr;
+  }
+
+  .literary-strip {
+    margin: 12px 0;
+  }
+
+  .literary-strip span {
+    min-height: 46px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(87, 80, 91, 0.1);
+    font-size: 17px;
+  }
+
+  .literary-strip span:last-child {
+    border-bottom: 0;
   }
 
   .home-strip article,
@@ -2319,6 +2414,29 @@ footer a {
 
 /* Mobile reading polish */
 @media (max-width: 760px) {
+  main,
+  header,
+  .section,
+  .hero-grid,
+  .hero-copy,
+  .command-board,
+  .command-primary,
+  .summary-card,
+  .itinerary-card,
+  .ticket-card {
+    min-width: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  p,
+  strong,
+  .hero-serif-note,
+  .hero-lead {
+    overflow-wrap: anywhere;
+  }
+
   body {
     padding-bottom: calc(84px + env(safe-area-inset-bottom));
   }
@@ -2352,13 +2470,18 @@ footer a {
 
   .hero-grid,
   .page-hero .hero-grid {
+    width: calc(100vw - 48px);
+    max-width: calc(100vw - 48px);
     padding-top: 42px;
   }
 
   .hero-copy {
+    width: 100%;
+    max-width: calc(100vw - 48px);
     padding: 16px 15px;
     background: rgba(54, 49, 59, 0.44);
     box-shadow: 0 18px 42px rgba(36, 31, 40, 0.18);
+    overflow: hidden;
   }
 
   h1 {
@@ -2367,20 +2490,27 @@ footer a {
   }
 
   .hero-lead {
+    max-width: calc(100vw - 82px);
     font-size: 14.5px;
     line-height: 1.72;
+    word-break: break-all;
+    line-break: anywhere;
   }
 
   .hero-actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
+    width: 100%;
   }
 
   .button {
+    width: 100%;
+    min-width: 0;
     min-height: 40px;
     padding: 0 10px;
     font-size: 13px;
+    white-space: nowrap;
   }
 
   .hero-panel {
@@ -2516,16 +2646,31 @@ footer a {
   .command-primary {
     min-height: auto;
     padding: 20px;
+    max-width: calc(100vw - 36px);
   }
 
   .command-primary h3 {
-    font-size: 23px;
+    max-width: calc(100vw - 78px);
+    font-size: 20px;
     line-height: 1.38;
   }
 
+  .hero-serif-note {
+    max-width: calc(100vw - 82px);
+    margin-top: 10px;
+    font-size: 19px;
+    line-height: 1.25;
+    word-break: break-all;
+    line-break: anywhere;
+    white-space: normal;
+  }
+
   .command-primary p {
+    max-width: calc(100vw - 78px);
     font-size: 14px;
     line-height: 1.72;
+    word-break: break-all;
+    line-break: anywhere;
   }
 
   .command-metrics article {

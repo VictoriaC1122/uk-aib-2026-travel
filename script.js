@@ -39,8 +39,8 @@ const tripData = {
       kicker: "Trip Overview",
       title: { zh: "AIB 2026 Manchester\n英國研討會旅遊手冊", en: "AIB 2026 Manchester\nUK Travel Handbook" },
       lead: {
-        zh: "從曼徹斯特的會議日程，到倫敦午後的街景與博物館，把此行的航班、住宿、交通與費用輕輕收在同一本手冊裡。",
-        en: "From conference days in Manchester to museum afternoons in London, this handbook gathers the flights, stays, transport, and costs in one quiet place."
+        zh: "從會議日程到倫敦午後，把航班、住宿、交通與費用收在同一本手冊裡。",
+        en: "Conference days, London afternoons, and the practical details in one quiet handbook."
       }
     },
     conference: {
@@ -274,7 +274,7 @@ function renderChrome() {
 
   document.querySelector("[data-site-header]").innerHTML = `
     <nav class="topbar" aria-label="${state.lang === "en" ? "Primary navigation" : "主要導覽"}">
-      <a href="./index.html" class="brand">AIB 2026</a>
+      <a href="./index.html" class="brand"><span>AIB 2026</span><small>Manchester Notes</small></a>
       <div class="nav-pills">${nav}</div>
       <button class="lang-toggle" id="langToggle" type="button" aria-label="${state.lang === "en" ? "Switch to Chinese" : "Switch to English"}">${state.lang === "en" ? "中文" : "EN"}</button>
     </nav>
@@ -301,6 +301,7 @@ function renderHero(pageId) {
       <section class="hero-copy">
         <p class="eyebrow">${hero.kicker}</p>
         <h1>${t(hero.title).replace("\n", "<br />")}</h1>
+        <p class="hero-serif-note">${state.lang === "en" ? "Ideas in Manchester. Light in London." : "Ideas in Manchester. Light in London."}</p>
         <p class="hero-lead">${t(hero.lead)}</p>
         <div class="hero-actions">
           <a class="button primary" href="./itinerary.html">${state.lang === "en" ? "Open itinerary" : "查看行程"}</a>
@@ -332,15 +333,15 @@ function renderHome() {
     ${renderQuickNav("home")}
     <section class="section dashboard-section home-dashboard" id="snapshot">
       <div class="section-heading center">
-        <p class="eyebrow">${state.lang === "en" ? "At A Glance" : "旅程重點"}</p>
-        <h2>${state.lang === "en" ? "A quiet overview before departure" : "行前的一頁靜好總覽"}</h2>
-        <p>${state.lang === "en" ? "Dates, costs, stays, and the next stretch of the route are gathered with enough space to breathe." : "日期、費用、住宿與下一段路線，在這裡留有剛好的空隙與秩序。"}</p>
+        <p class="eyebrow">${state.lang === "en" ? "Editorial Ledger" : "旅程輯錄"}</p>
+        <h2>${state.lang === "en" ? "A field note for a scholarly summer" : "一冊寫給學術夏日的行旅札記"}</h2>
+        <p>${state.lang === "en" ? "Conference hours, train windows, museum rooms, and small pleasures, gathered with quiet order." : "會議時刻、火車窗景、博物館房間與一點玩樂，都安靜地收在同一頁裡。"}</p>
       </div>
       <div class="command-board" aria-label="${state.lang === "en" ? "Trip highlights" : "旅程重點"}">
         <article class="command-primary">
-          <span class="command-label">${state.lang === "en" ? "This Journey" : "這趟旅程"}</span>
-          <h3>${state.lang === "en" ? "Manchester carries the conference days; London keeps the softer hours." : "曼徹斯特盛放會議日，倫敦留給較柔軟的午後"}</h3>
-          <p>${state.lang === "en" ? "Flights and the Manchester stay have found their shape. The London stay remains a small open window, ready for the right neighborhood." : "航班與 Manchester 住宿已經成形；London 的住宿仍留著一扇小窗，等候最合適的街區與房間。"}</p>
+          <span class="command-label">${state.lang === "en" ? "Field Note 01" : "Field Note 01"}</span>
+          <h3>${state.lang === "en" ? "Ideas in Manchester, light in London." : "思想在曼城，光線在倫敦"}</h3>
+          <p>${state.lang === "en" ? "Flights, conference, and the Manchester stay are set. London keeps the museums, bookish streets, and small pleasures." : "航班、會議與住宿已安放；倫敦留給博物館、書卷氣街區與小小玩樂。"}</p>
         </article>
         <div class="command-metrics">
           <article><span>${state.lang === "en" ? "To claim" : "可報帳小計"}</span><strong>NT$156,039</strong></article>
@@ -348,6 +349,12 @@ function renderHome() {
           <article><span>${state.lang === "en" ? "London nights" : "倫敦夜晚"}</span><strong>${state.lang === "en" ? "open" : "未定"}</strong></article>
         </div>
       </div>
+      <aside class="literary-strip" aria-label="${state.lang === "en" ? "Trip tone" : "旅程語氣"}">
+        <span>Seminar mornings</span>
+        <span>Archive afternoons</span>
+        <span>Museum light</span>
+        <span>Jellycat detours</span>
+      </aside>
       <div class="summary-grid premium-summary">
         ${tripData.summaryCards.map((card) => `
           <article class="summary-card">
@@ -362,8 +369,8 @@ function renderHome() {
     </section>
     <section class="section compact-section" id="todo">
       <div class="section-heading">
-        <p class="eyebrow">${state.lang === "en" ? "Before Departure" : "行前小記"}</p>
-        <h2>${state.lang === "en" ? "Small things to settle" : "尚待安放的小事"}</h2>
+        <p class="eyebrow">${state.lang === "en" ? "Margin Notes" : "Margin Notes"}</p>
+        <h2>${state.lang === "en" ? "Things waiting in the margin" : "寫在頁邊、仍待安放的小事"}</h2>
       </div>
       <div class="todo-list">
         ${tripData.todos.map((item) => `<article class="todo-item">${statusChip(item.status)}<p>${t(item.text)}</p></article>`).join("")}
@@ -393,8 +400,8 @@ function renderHome() {
     </section>
     <section class="section compact-section" id="handoff">
       <div class="section-heading center">
-        <p class="eyebrow">${state.lang === "en" ? "Travel Notes" : "分類索引"}</p>
-        <h2>${state.lang === "en" ? "Turn to the part you need" : "翻到想看的那一頁"}</h2>
+        <p class="eyebrow">${state.lang === "en" ? "Chapters" : "Chapters"}</p>
+        <h2>${state.lang === "en" ? "Choose a chapter, then wander" : "翻開一章，再慢慢走進去"}</h2>
       </div>
       <div class="page-grid handbook-page-grid">
         ${pages.slice(1).map((page, index) => `
