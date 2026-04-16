@@ -131,6 +131,20 @@ a {
   background: var(--soft-gold);
 }
 
+.lang-toggle {
+  width: 54px;
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 18px;
+  color: var(--slate);
+  background: var(--soft-gold);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 16px 36px rgba(20, 16, 24, 0.16);
+}
+
 .hero-grid {
   position: relative;
   z-index: 1;
@@ -485,7 +499,7 @@ h3 {
   margin: 8px 0;
   color: var(--slate);
   font-family: "Noto Serif TC", serif;
-  font-size: 24px;
+  font-size: 21px;
   line-height: 1.2;
 }
 
@@ -737,6 +751,27 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.currency-note {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 16px 18px;
+  border: 1px solid rgba(199, 164, 93, 0.34);
+  border-radius: 20px;
+  color: var(--slate);
+  background: rgba(234, 217, 166, 0.32);
+  box-shadow: 0 14px 30px rgba(48, 38, 56, 0.06);
+}
+
+.currency-note strong {
+  color: var(--royal-red);
+}
+
+.currency-note span {
+  color: var(--muted);
+}
+
 table {
   width: 100%;
   min-width: 760px;
@@ -922,6 +957,16 @@ footer a {
     background: var(--royal-blue);
   }
 
+  .lang-toggle {
+    position: fixed;
+    right: 16px;
+    top: 14px;
+    z-index: 210;
+    width: 52px;
+    min-height: 40px;
+    border-radius: 16px;
+  }
+
   .hero-grid {
     padding-top: 72px;
     gap: 18px;
@@ -1033,6 +1078,16 @@ footer a {
   .fare-grid div {
     min-height: auto;
     padding: 16px;
+  }
+
+  .fare-grid strong {
+    font-size: 19px;
+  }
+
+  .currency-note {
+    grid-template-columns: 1fr;
+    padding: 14px 16px;
+    border-radius: 18px;
   }
 
   .split {
