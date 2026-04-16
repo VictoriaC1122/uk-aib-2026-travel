@@ -56,7 +56,7 @@ const tripData = {
     stay: {
       kicker: "Accommodation",
       title: { zh: "住宿與城市切換", en: "Accommodation & City Split" },
-      lead: { zh: "Manchester 的房間已安放好會議前後的節奏；London 的夜晚仍留著一點空白，等待最合適的街區。", en: "The Manchester stay anchors the conference days; the London nights remain open for the neighborhood that feels just right." }
+      lead: { zh: "Manchester 住宿已訂；London 住宿待確認，會依交通與街區便利性選擇。", en: "Manchester accommodation is booked; London accommodation is still to be confirmed based on access and neighborhood fit." }
     },
     itinerary: {
       kicker: "Itinerary",
@@ -66,12 +66,12 @@ const tripData = {
     map: {
       kicker: "Travel Map",
       title: { zh: "英國旅程地圖", en: "UK Travel Map" },
-      lead: { zh: "Manchester 是會議基地；London 留給博物館與河岸。路線都收在這張可以慢慢打開的地圖裡。", en: "Manchester anchors the conference days; London keeps the museums and riverside walks. The route is gathered into a map you can open as you go." }
+      lead: { zh: "整理 Manchester 與 London 的主要地點、火車動線與每日路線。", en: "Key Manchester and London locations, train movements, and daily routes in one map." }
     },
     budget: {
       kicker: "Reimbursement",
       title: { zh: "費用與報帳整理", en: "Budget & Reimbursement" },
-      lead: { zh: "新台幣、英鎊與美元並列呈現，報帳與自費清楚分開，讓每一筆花費都有安靜的位置。", en: "TWD, GBP, and USD sit side by side, with reimbursable and self-funded costs clearly separated." }
+      lead: { zh: "新台幣、英鎊與美元並列，報帳與自費分開整理。", en: "TWD, GBP, and USD are shown together, with reimbursable and self-funded costs separated." }
     },
     documents: {
       kicker: "Official Links",
@@ -87,8 +87,8 @@ const tripData = {
   ],
   todos: [
     { status: "alert", text: { zh: "7/4 的 Manchester 房晚與 London 行程有一點重疊，適合留作緩衝，也可以再斟酌調整。", en: "The 4 July Manchester night overlaps slightly with the London plan; it can stay as a buffer or be adjusted later." } },
-    { status: "book", text: { zh: "London 住宿還留著空白，等一間交通順、氛圍也對的房間。", en: "London accommodation is still open, waiting for a place with both easy transport and the right mood." } },
-    { status: "book", text: { zh: "Manchester Piccadilly 與 London Euston 之間的火車票，適合在票價漂亮時收下。", en: "Manchester Piccadilly to London Euston train tickets can be booked when the fare feels right." } },
+    { status: "book", text: { zh: "London 住宿尚未預訂，優先考慮交通方便、回車站順路的區域。", en: "London accommodation is not booked yet; prioritize convenient areas with easy rail access." } },
+    { status: "book", text: { zh: "Manchester Piccadilly 與 London Euston 之間的火車票尚未預訂。", en: "Manchester Piccadilly to London Euston train tickets are not booked yet." } },
     { status: "reimburse", text: { zh: "接受函、邀請函、AIB 收據、會員費與機票付款明細，會一起放進報帳資料夾。", en: "Acceptance letters, invitation, AIB receipts, membership, and flight payment details belong together in the reimbursement folder." } },
     { status: "pending", text: { zh: "AIB final program 公布後，再把正式場次時間補進會議頁。", en: "Final session times can be added after AIB publishes the final program." } }
   ],
@@ -127,17 +127,17 @@ const tripData = {
   ],
   stay: [
     { status: "confirmed", title: "INNSiDE Manchester", facts: ["Check-in: 2026/06/30 after 15:00", "Check-out: 2026/07/05 before 12:00", "Twin Bed, 2 guests, 5 nights", "1 First Street, Manchester", "+44 161 200 2500"], note: { zh: "房價總額 GBP 900.90，已含 20% 稅；旅遊稅 GBP 1.20 / 房 / 晚現場付。", en: "Total GBP 900.90 including 20% tax; local visitor charge GBP 1.20 per room per night is paid locally." } },
-    { status: "book", title: "London accommodation", facts: ["From 2026/07/04", "Area ideas: Euston, King's Cross, Bloomsbury, South Kensington, Paddington"], note: { zh: "尚未預訂。Euston、King's Cross、Bloomsbury 與 South Kensington 都能讓日常移動保持輕盈。", en: "Not booked yet. Euston, King's Cross, Bloomsbury, and South Kensington would keep everyday movement light." } },
+    { status: "book", title: "London accommodation", facts: ["From 2026/07/04", "Area ideas: Euston, King's Cross, Bloomsbury, South Kensington, Paddington"], note: { zh: "尚未預訂。Euston、King's Cross、Bloomsbury 與 South Kensington 都是可考慮區域。", en: "Not booked yet. Euston, King's Cross, Bloomsbury, and South Kensington are practical options." } },
     { status: "alert", title: "7/4 overlap decision", facts: ["Manchester booking covers 7/4 night", "London plan starts 7/4"], note: { zh: "這一晚可以留下 Manchester 的緩衝，也可以在 London 住宿落定後再讓日期更俐落。", en: "This night can remain as a Manchester buffer, or be refined once the London stay is set." } }
   ],
   itinerary: [
     { date: "6/29-6/30", title: { zh: "出發與抵達 Manchester", en: "Departure & arrival in Manchester" }, status: "confirmed", must: ["TPE 22:40 → FRA 06:50", "FRA 09:50 → MAN 10:40", "15:00 後入住 INNSiDE Manchester"], optional: ["市中心輕鬆散步", "補水、整理文件、調時差"], tickets: ["景點門票：GBP 0"], notes: ["晚上不要排太滿，保留體力給會議。"] },
     { date: "7/1-7/3", title: { zh: "AIB 主會議", en: "AIB main conference" }, status: "confirmed", must: ["AIB sessions / presentation", "Networking", "每日整理報帳與會議證明"], optional: ["Opening / reception", "近距離晚餐"], tickets: ["景點門票：GBP 0；以會議活動為主"], notes: ["每天早上保留至少 30 分鐘交通緩衝。"] },
-    { date: "7/4", title: { zh: "Manchester → London", en: "Manchester → London" }, status: "book", must: ["Manchester Piccadilly → London Euston", "寄放行李或入住", "Westminster / Big Ben / London Eye 外觀"], optional: ["Regent Street / Oxford Street", "Selfridges Jellycat"], tickets: ["Big Ben / Westminster Bridge 外觀：免費", "London Eye 若搭乘：online from GBP 29 / walk-up GBP 39"], notes: ["Manchester 與 London 的住宿日期在這一天交會，保留一點彈性會更從容。"] },
-    { date: "7/5", title: { zh: "大英博物館與市中心", en: "British Museum & central London" }, status: "pending", must: ["British Museum", "Tottenham Court Road / Holborn", "Chinatown dinner"], optional: ["Covent Garden", "Soho", "Oxford Street"], tickets: ["British Museum 常設展：免費，可預約 free timed ticket", "特展另計，依展覽頁票價為準"], notes: ["市中心的步行距離溫和，適合把購物清單慢慢補齊。"] },
+    { date: "7/4", title: { zh: "Manchester → London", en: "Manchester → London" }, status: "book", must: ["Manchester Piccadilly → London Euston", "寄放行李或入住", "Westminster / Big Ben / London Eye 外觀"], optional: ["Regent Street / Oxford Street", "Selfridges Jellycat"], tickets: ["Big Ben / Westminster Bridge 外觀：免費", "London Eye 若搭乘：online from GBP 29 / walk-up GBP 39"], notes: ["Manchester 與 London 的住宿日期在這一天交會，需保留調整彈性。"] },
+    { date: "7/5", title: { zh: "大英博物館與市中心", en: "British Museum & central London" }, status: "pending", must: ["British Museum", "Tottenham Court Road / Holborn", "Chinatown dinner"], optional: ["Covent Garden", "Soho", "Oxford Street"], tickets: ["British Museum 常設展：免費，可預約 free timed ticket", "特展另計，依展覽頁票價為準"], notes: ["市中心步行距離適中，可安排購物或晚餐。"] },
     { date: "7/6", title: { zh: "格林威治一日", en: "Greenwich day" }, status: "pending", must: ["Royal Observatory", "Prime Meridian", "Cutty Sark", "Greenwich Market"], optional: ["IFS Cloud Cable Car", "Leadenhall Market", "Fortnum & Mason"], tickets: ["Royal Observatory adult GBP 24 / student GBP 18", "Cutty Sark adult GBP 22 / student GBP 16.50", "Observatory + Cutty Sark Day Pass adult GBP 38 / student GBP 28.50", "IFS Cloud Cable Car one-way adult GBP 7；round trip GBP 13.50"], notes: ["可用倫敦 Zone 1-3 日上限估算交通。"] },
     { date: "7/7", title: { zh: "西敏寺、倫敦塔與河岸", en: "Westminster, Tower & riverside" }, status: "pending", must: ["Buckingham Palace", "St James's Park", "Westminster Abbey", "Tower Bridge"], optional: ["St Paul's Cathedral", "Tower of London", "London Eye sunset"], tickets: ["Buckingham Palace 外觀：免費；State Rooms 9 Jul 才開，advance adult GBP 33", "Westminster Abbey adult GBP 31 / student GBP 28", "St Paul's Cathedral adult GBP 27 / student GBP 24", "Tower of London adult GBP 37 / student GBP 29.50", "Tower Bridge adult GBP 18 / student GBP 13.50"], notes: ["依天氣與體力調整 London Eye。Buckingham Palace State Rooms 2026/07/09 才開放，7/7 只能排外觀與 Changing the Guard。"] },
-    { date: "7/8", title: { zh: "South Kensington", en: "South Kensington" }, status: "pending", must: ["Natural History Museum", "Imperial College London", "Harrods"], optional: ["Victoria and Albert Museum", "Hyde Park / Kensington Gardens"], tickets: ["Natural History Museum 一般入場：免費，可預約", "V&A South Kensington 一般入場：免費", "Harrods 入店：免費，購物與餐飲另計"], notes: ["Harrods、Jellycat 與伴手禮可以在這一天慢慢收攏。"] },
+    { date: "7/8", title: { zh: "South Kensington", en: "South Kensington" }, status: "pending", must: ["Natural History Museum", "Imperial College London", "Harrods"], optional: ["Victoria and Albert Museum", "Hyde Park / Kensington Gardens"], tickets: ["Natural History Museum 一般入場：免費，可預約", "V&A South Kensington 一般入場：免費", "Harrods 入店：免費，購物與餐飲另計"], notes: ["可在這一天安排 Harrods、Jellycat 與伴手禮。"] },
     { date: "7/9", title: { zh: "購物、街區與劇院緩衝", en: "Shopping, neighborhoods & theatre buffer" }, status: "optional", must: ["保留彈性"], optional: ["Liberty", "Selfridges", "Notting Hill", "Covent Garden", "West End musical"], tickets: ["街區散步與百貨入店：免費", "West End musical：依劇目與座位浮動，訂票前再查"], notes: ["適合補買 Fortnum & Mason、Harrods 或 Boots。"] },
     { date: "7/10", title: { zh: "倫敦收尾，回 Manchester", en: "Wrap London, return to Manchester" }, status: "book", must: ["整理行李", "London Euston → Manchester Piccadilly"], optional: ["上午補景點或購物"], notes: ["7/10 晚上回 Manchester 住一晚，會讓 7/11 的航班多一層安心。"] },
     { date: "7/11-7/12", title: { zh: "回程返台", en: "Return to Taipei" }, status: "confirmed", must: ["MAN 18:10 → LHR 19:15", "LHR 21:10 → TPE 18:05"], optional: ["白天只排低風險活動"], notes: ["回程不要跳過 MAN-LHR 航段。"] }
@@ -172,7 +172,7 @@ const tripData = {
     { status: "pending", city: "London", title: { zh: "Westminster Abbey", en: "Westminster Abbey" }, query: "Westminster Abbey London", note: { zh: "西敏一帶的付費重點景點。", en: "A paid highlight around Westminster." } },
     { status: "optional", city: "London", title: { zh: "Tower Bridge", en: "Tower Bridge" }, query: "Tower Bridge London", note: { zh: "河岸收束與拍照都很漂亮的一站。", en: "A graceful riverside stop for views and photos." } },
     { status: "confirmed", city: "London", title: { zh: "Natural History Museum", en: "Natural History Museum" }, query: "Natural History Museum London", note: { zh: "7/8 South Kensington 的溫柔下午。", en: "A soft South Kensington afternoon for 8 July." } },
-    { status: "confirmed", city: "London", title: { zh: "Harrods", en: "Harrods" }, query: "Harrods London", note: { zh: "伴手禮、Jellycat 與百貨散步。", en: "Souvenirs, Jellycat, and a classic department-store wander." } }
+    { status: "confirmed", city: "London", title: { zh: "Harrods", en: "Harrods" }, query: "Harrods London", note: { zh: "伴手禮、Jellycat 與百貨。", en: "Souvenirs, Jellycat, and department-store shopping." } }
   ],
   mapRoutes: [
     { status: "confirmed", label: { zh: "6/30 抵達 Manchester", en: "30 Jun Manchester arrival" }, note: { zh: "MAN Airport → INNSiDE Manchester", en: "MAN Airport → INNSiDE Manchester" }, url: "https://www.google.com/maps/dir/Manchester+Airport/INNSiDE+Manchester+1+First+Street+Manchester" },
@@ -301,7 +301,7 @@ function renderHero(pageId) {
       <section class="hero-copy">
         <p class="eyebrow">${hero.kicker}</p>
         <h1>${t(hero.title).replace("\n", "<br />")}</h1>
-        <p class="hero-serif-note">${state.lang === "en" ? "Ideas in Manchester. Light in London." : "Ideas in Manchester. Light in London."}</p>
+        <p class="hero-serif-note">${state.lang === "en" ? "Conference in Manchester. Travel in London." : "Conference in Manchester. Travel in London."}</p>
         <p class="hero-lead">${t(hero.lead)}</p>
         <div class="hero-actions">
           <a class="button primary" href="./itinerary.html">${state.lang === "en" ? "Open itinerary" : "查看行程"}</a>
@@ -333,15 +333,15 @@ function renderHome() {
     ${renderQuickNav("home")}
     <section class="section dashboard-section home-dashboard" id="snapshot">
       <div class="section-heading center">
-        <p class="eyebrow">${state.lang === "en" ? "Editorial Ledger" : "旅程輯錄"}</p>
-        <h2>${state.lang === "en" ? "A field note for a scholarly summer" : "一冊寫給學術夏日的行旅札記"}</h2>
-        <p>${state.lang === "en" ? "Conference hours, train windows, museum rooms, and small pleasures, gathered with quiet order." : "會議時刻、火車窗景、博物館房間與一點玩樂，都安靜地收在同一頁裡。"}</p>
+        <p class="eyebrow">${state.lang === "en" ? "Overview" : "旅程總覽"}</p>
+        <h2>${state.lang === "en" ? "Conference schedule, travel plan, and budget" : "會議、交通、住宿與費用"}</h2>
+        <p>${state.lang === "en" ? "A practical handbook for the Manchester conference and London travel days." : "整理 Manchester 研討會與 London 旅遊段的重點資訊。"}</p>
       </div>
       <div class="command-board" aria-label="${state.lang === "en" ? "Trip highlights" : "旅程重點"}">
         <article class="command-primary">
-          <span class="command-label">${state.lang === "en" ? "Field Note 01" : "Field Note 01"}</span>
-          <h3>${state.lang === "en" ? "Ideas in Manchester, light in London." : "思想在曼城，光線在倫敦"}</h3>
-          <p>${state.lang === "en" ? "Flights, conference, and the Manchester stay are set. London keeps the museums, bookish streets, and small pleasures." : "航班、會議與住宿已安放；倫敦留給博物館、書卷氣街區與小小玩樂。"}</p>
+          <span class="command-label">${state.lang === "en" ? "Current plan" : "目前安排"}</span>
+          <h3>${state.lang === "en" ? "Manchester first, London after the conference." : "前段 Manchester 會議，後段 London 旅遊"}</h3>
+          <p>${state.lang === "en" ? "Flights, conference fees, and the Manchester stay are confirmed. London accommodation and train tickets are still pending." : "航班、會議費與 Manchester 住宿已確認；London 住宿與火車票尚待預訂。"}</p>
         </article>
         <div class="command-metrics">
           <article><span>${state.lang === "en" ? "To claim" : "可報帳小計"}</span><strong>NT$156,039</strong></article>
@@ -350,10 +350,10 @@ function renderHome() {
         </div>
       </div>
       <aside class="literary-strip" aria-label="${state.lang === "en" ? "Trip tone" : "旅程語氣"}">
-        <span>Seminar mornings</span>
-        <span>Archive afternoons</span>
-        <span>Museum light</span>
-        <span>Jellycat detours</span>
+        <span>Conference</span>
+        <span>Research</span>
+        <span>Museums</span>
+        <span>Shopping</span>
       </aside>
       <div class="summary-grid premium-summary">
         ${tripData.summaryCards.map((card) => `
@@ -369,8 +369,8 @@ function renderHome() {
     </section>
     <section class="section compact-section" id="todo">
       <div class="section-heading">
-        <p class="eyebrow">${state.lang === "en" ? "Margin Notes" : "Margin Notes"}</p>
-        <h2>${state.lang === "en" ? "Things waiting in the margin" : "寫在頁邊、仍待安放的小事"}</h2>
+        <p class="eyebrow">${state.lang === "en" ? "To-do" : "待辦事項"}</p>
+        <h2>${state.lang === "en" ? "Items still pending" : "尚未完成的事項"}</h2>
       </div>
       <div class="todo-list">
         ${tripData.todos.map((item) => `<article class="todo-item">${statusChip(item.status)}<p>${t(item.text)}</p></article>`).join("")}
@@ -400,8 +400,8 @@ function renderHome() {
     </section>
     <section class="section compact-section" id="handoff">
       <div class="section-heading center">
-        <p class="eyebrow">${state.lang === "en" ? "Chapters" : "Chapters"}</p>
-        <h2>${state.lang === "en" ? "Choose a chapter, then wander" : "翻開一章，再慢慢走進去"}</h2>
+        <p class="eyebrow">${state.lang === "en" ? "Sections" : "分類"}</p>
+        <h2>${state.lang === "en" ? "Browse by category" : "依類別查看"}</h2>
       </div>
       <div class="page-grid handbook-page-grid">
         ${pages.slice(1).map((page, index) => `
