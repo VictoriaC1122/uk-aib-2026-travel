@@ -1351,6 +1351,10 @@ footer a {
   padding-bottom: 54px;
 }
 
+.sub-heading {
+  margin-top: 42px;
+}
+
 .summary-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1439,6 +1443,11 @@ footer a {
 .status-reimburse {
   color: #0a365e;
   background: #d8e8f8;
+}
+
+.status-self {
+  color: #3f3648;
+  background: #ebe5df;
 }
 
 .status-optional {

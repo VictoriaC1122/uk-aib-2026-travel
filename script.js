@@ -13,6 +13,7 @@ const statusLabels = {
   pending: { zh: "待確認", en: "Pending" },
   book: { zh: "待預訂", en: "To book" },
   reimburse: { zh: "待報帳", en: "To reimburse" },
+  self: { zh: "自費", en: "Self-funded" },
   optional: { zh: "可選", en: "Optional" },
   alert: { zh: "需處理", en: "Action needed" }
 };
@@ -24,6 +25,7 @@ const money = {
   hotel: "NT$38,270 / GBP 900.90 / US$1,194",
   visitorCharge: "約 NT$255 / GBP 6 / US$8",
   manchesterDaily: "NT$10,381 / GBP 244 / US$324 / day",
+  manchesterDaily5: "NT$51,905 / GBP 1,220 / US$1,620",
   londonDaily: "NT$16,340 / GBP 385 / US$510 / day",
   trainAdvance: "每人來回 from NT$2,846 / GBP 67 / US$89",
   railcard: "NT$1,487 / GBP 35 / US$46"
@@ -154,12 +156,14 @@ const tripData = {
     { item: "International flights", amount: money.flight, currency: "TWD / GBP / USD", status: "reimburse", proof: "Flight itinerary + payment screenshot", notes: "TPE-FRA-MAN / MAN-LHR-TPE" },
     { item: "AIB Conference Fee", amount: money.conference, currency: "TWD / GBP / USD", status: "reimburse", proof: "AIB payment receipt", notes: "Conference Fee US$325; donation US$0." },
     { item: "AIB membership fee", amount: money.membership, currency: "TWD / GBP / USD", status: "reimburse", proof: "AIB membership receipt", notes: "AIB 40 美元收據。" },
-    { item: "NSTC daily allowance - Manchester", amount: money.manchesterDaily, currency: "TWD / GBP / USD", status: "pending", proof: "115 年國外日支表", notes: "Manchester 未單列，適用 United Kingdom Other；實際天數依核定。" },
-    { item: "INNSiDE Manchester", amount: money.hotel, currency: "TWD / GBP / USD", status: "reimburse", proof: "Booking confirmation + final invoice", notes: "5 nights, includes 20% tax." },
-    { item: "Manchester visitor charge", amount: money.visitorCharge, currency: "TWD / GBP / USD", status: "reimburse", proof: "Check-out receipt", notes: "GBP 1.20 per room per night, paid locally." },
-    { item: "Manchester ↔ London train", amount: money.trainAdvance, currency: "TWD / GBP / USD", status: "book", proof: "E-ticket / receipt after booking", notes: "7/4 outbound, 7/10 or 7/11 return." },
-    { item: "London attraction tickets", amount: "Depends on selected paid attractions", currency: "TWD / GBP / USD", status: "optional", proof: "Online ticket receipts", notes: "See Itinerary → Attraction fees. Many museums are free; paid items include Royal Observatory, Cutty Sark, Westminster Abbey, Tower sites, London Eye, etc." },
-    { item: "London accommodation", amount: "TBD", currency: "TWD / GBP / USD", status: "book", proof: "Confirmation / invoice after booking", notes: "From 7/4; area not decided." }
+    { item: "NSTC daily allowance - Manchester", amount: money.manchesterDaily5, currency: "TWD / GBP / USD", status: "reimburse", proof: "115 年國外日支表", notes: "NT$10,381 / GBP 244 / US$324 per day × 5 conference days." }
+  ],
+  selfFundedExpenses: [
+    { item: "INNSiDE Manchester", amount: money.hotel, currency: "TWD / GBP / USD", status: "self", proof: "Booking confirmation + final invoice", notes: "5 nights, includes 20% tax." },
+    { item: "Manchester visitor charge", amount: money.visitorCharge, currency: "TWD / GBP / USD", status: "self", proof: "Check-out receipt", notes: "GBP 1.20 per room per night, paid locally." },
+    { item: "Manchester ↔ London train", amount: money.trainAdvance, currency: "TWD / GBP / USD", status: "self", proof: "E-ticket / receipt after booking", notes: "7/4 outbound, 7/10 or 7/11 return." },
+    { item: "London attraction tickets", amount: "Depends on selected paid attractions", currency: "TWD / GBP / USD", status: "self", proof: "Online ticket receipts", notes: "See Itinerary → Attraction fees. Many museums are free; paid items include Royal Observatory, Cutty Sark, Westminster Abbey, Tower sites, London Eye, etc." },
+    { item: "London accommodation", amount: "TBD", currency: "TWD / GBP / USD", status: "self", proof: "Confirmation / invoice after booking", notes: "From 7/4; area not decided." }
   ],
   links: [
     ["AIB 2026 website", "https://www.aib.world/events/2026/"],
@@ -559,22 +563,17 @@ function renderMiniList(title, items) {
 }
 
 function renderBudget() {
-  const knownTwdSubtotal = 92439 + 10413 + 1282 + 38270 + 255;
+  const reimbursableTotals = "NT$156,039 / GBP 3,671 / US$4,870";
+  const selfFundedKnown = "NT$38,525 / GBP 906.90 / US$1,202";
   const heads = state.lang === "en"
     ? ["Item", "Amount", "Currency", "Status", "Receipt / proof", "Notes"]
     : ["項目", "金額", "幣別", "狀態", "收據 / 憑證", "備註"];
-  return `
-    ${renderQuickNav("budget")}
-    <section class="section compact-section" id="expenses">
-      <div class="section-heading">
-        <p class="eyebrow">${state.lang === "en" ? "Costs" : "費用"}</p>
-        <h2>${state.lang === "en" ? "Reimbursement-ready expense list" : "報帳用費用表"}</h2>
-      </div>
-      <div class="mobile-table" role="region" aria-label="Expense table">
+  const renderExpenseTable = (rows, label) => `
+      <div class="mobile-table" role="region" aria-label="${label}">
         <table>
           <thead><tr>${heads.map((head) => `<th>${head}</th>`).join("")}</tr></thead>
           <tbody>
-            ${tripData.expenses.map((row) => `
+            ${rows.map((row) => `
               <tr>
                 <td data-label="${heads[0]}">${row.item}</td>
                 <td data-label="${heads[1]}">${row.amount}</td>
@@ -586,13 +585,28 @@ function renderBudget() {
             `).join("")}
           </tbody>
         </table>
+      </div>`;
+  return `
+    ${renderQuickNav("budget")}
+    <section class="section compact-section" id="expenses">
+      <div class="section-heading">
+        <p class="eyebrow">${state.lang === "en" ? "Reimbursement" : "報帳"}</p>
+        <h2>${state.lang === "en" ? "Items to claim" : "可報帳項目"}</h2>
+        <p>${state.lang === "en" ? "Only these items are listed for reimbursement. Other trip costs are separated below as self-funded." : "目前只有以下項目列入報帳；其他旅遊相關費用另列在自費。"}</p>
       </div>
+      ${renderExpenseTable(tripData.expenses, state.lang === "en" ? "Reimbursable expenses" : "可報帳項目")}
+      <div class="section-heading sub-heading">
+        <p class="eyebrow">${state.lang === "en" ? "Self-funded" : "自費"}</p>
+        <h2>${state.lang === "en" ? "Personal travel costs" : "自費項目"}</h2>
+        <p>${state.lang === "en" ? "Keep receipts for personal records, but do not include these in the reimbursement total." : "以下可保留收據自用，但不列入這次報帳金額。"}</p>
+      </div>
+      ${renderExpenseTable(tripData.selfFundedExpenses, state.lang === "en" ? "Self-funded expenses" : "自費項目")}
     </section>
     <section class="section compact-section" id="totals">
       <div class="summary-grid three">
-        <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "Known fixed subtotal" : "已知固定費用小計"}</h3><strong>NT$${knownTwdSubtotal.toLocaleString("en-US")}</strong><p>${state.lang === "en" ? "Includes flights, AIB fees, Manchester hotel, and visitor charge. Excludes London hotel, trains after booking, and daily allowance days." : "含機票、AIB 費用、Manchester 住宿與旅遊稅；不含倫敦住宿、火車實際票價與日支費核定天數。"}</p></article>
-        <article class="summary-card">${statusChip("pending")}<h3>${state.lang === "en" ? "NSTC daily allowance" : "國科會日支費"}</h3><strong>${money.manchesterDaily}</strong><p>${state.lang === "en" ? "Manchester is treated as United Kingdom Other unless the school/NSTC rules say otherwise." : "Manchester 未單列，暫按 United Kingdom Other；實際依學校與國科會核定。"}</p></article>
-        <article class="summary-card">${statusChip("book")}<h3>${state.lang === "en" ? "Unknowns" : "待補金額"}</h3><strong>London stay / train final fare</strong><p>${state.lang === "en" ? "Add receipts once booked." : "訂好後補上 confirmation、invoice 或 e-ticket。"}</p></article>
+        <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "Reimbursement total" : "可報帳小計"}</h3><strong>${reimbursableTotals}</strong><p>${state.lang === "en" ? "Flights, AIB conference fee, AIB membership fee, and Manchester daily allowance for 5 conference days." : "含機票、AIB 會議費、AIB 會員費，以及 Manchester 研討會 5 天日支費。"}</p></article>
+        <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "NSTC daily allowance" : "國科會日支費"}</h3><strong>${money.manchesterDaily5}</strong><p>${state.lang === "en" ? "Manchester daily rate is NT$10,381 / GBP 244 / US$324 × 5 conference days." : "Manchester 日支費以 NT$10,381 / GBP 244 / US$324 × 研討會 5 天計算。"}</p></article>
+        <article class="summary-card">${statusChip("self")}<h3>${state.lang === "en" ? "Self-funded known subtotal" : "已知自費小計"}</h3><strong>${selfFundedKnown}</strong><p>${state.lang === "en" ? "Known self-funded subtotal currently includes Manchester hotel and visitor charge only; London hotel, trains, and attraction tickets remain variable." : "目前只含 Manchester 住宿與旅遊稅；倫敦住宿、火車與景點門票會依實際預訂變動。"}</p></article>
       </div>
     </section>
     <section class="section compact-section" id="proofs">
@@ -603,8 +617,7 @@ function renderBudget() {
         <li>AIB conference fee receipt</li>
         <li>AIB membership fee receipt</li>
         <li>Flight itinerary and payment details</li>
-        <li>Hotel booking confirmation and final invoice</li>
-        <li>Train e-ticket / receipt after booking</li>
+        <li>115 年國外日支表 / NSTC daily allowance reference</li>
       </ol>
     </section>
   `;
