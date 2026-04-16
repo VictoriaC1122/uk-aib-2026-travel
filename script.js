@@ -33,11 +33,11 @@ const tripData = {
   lastUpdated: "2026-04-17 06:10",
   hero: {
     home: {
-      kicker: "Travel Handbook",
+      kicker: "Trip Overview",
       title: { zh: "AIB 2026 Manchester\n英國研討會旅遊手冊", en: "AIB 2026 Manchester\nUK Travel Handbook" },
       lead: {
-        zh: "把會議、航班、住宿、倫敦行程、交通與報帳資料整理成一份可分享的 travel dashboard。私人憑證不放上網，公開頁面只保留可用於規劃與核對的資訊。",
-        en: "A shareable travel dashboard for the conference, flights, accommodation, London itinerary, transport, and reimbursement notes. Private proofs stay offline; this site keeps planning-ready information."
+        zh: "把會議、航班、住宿、倫敦行程、交通與報帳資料整理在一起。私人憑證不放上網，公開頁面只保留可用於規劃與核對的資訊。",
+        en: "Conference, flights, accommodation, London plans, transport, and reimbursement notes in one place. Private proofs stay offline; this site keeps planning-ready information."
       }
     },
     conference: {
@@ -57,12 +57,12 @@ const tripData = {
     },
     itinerary: {
       kicker: "Itinerary",
-      title: { zh: "每日行程 Dashboard", en: "Daily Itinerary Dashboard" },
-      lead: { zh: "每日拆成 Must-do、Optional、Notes，方便手機上直接照著走，也保留彈性。", en: "Each day is split into Must-do, Optional, and Notes so the plan is executable on mobile while staying flexible." }
+      title: { zh: "每日行程安排", en: "Daily Itinerary" },
+      lead: { zh: "每天分成必去、可選與提醒，方便手機上直接照著走，也保留彈性。", en: "Each day is organized by must-do items, optional ideas, and reminders so it is easy to follow on mobile." }
     },
     budget: {
       kicker: "Reimbursement",
-      title: { zh: "費用與報帳 Dashboard", en: "Budget & Reimbursement Dashboard" },
+      title: { zh: "費用與報帳整理", en: "Budget & Reimbursement" },
       lead: { zh: "所有金額同時列出新台幣、英鎊、美元；狀態與憑證分開標示，方便申請補助與報帳。", en: "Amounts are shown in TWD, GBP, and USD, with status and proof separated for easier reimbursement." }
     },
     documents: {
@@ -158,7 +158,7 @@ const tripData = {
     { item: "INNSiDE Manchester", amount: money.hotel, currency: "TWD / GBP / USD", status: "reimburse", proof: "Booking confirmation + final invoice", notes: "5 nights, includes 20% tax." },
     { item: "Manchester visitor charge", amount: money.visitorCharge, currency: "TWD / GBP / USD", status: "reimburse", proof: "Check-out receipt", notes: "GBP 1.20 per room per night, paid locally." },
     { item: "Manchester ↔ London train", amount: money.trainAdvance, currency: "TWD / GBP / USD", status: "book", proof: "E-ticket / receipt after booking", notes: "7/4 outbound, 7/10 or 7/11 return." },
-    { item: "London attraction tickets", amount: "Depends on selected paid attractions", currency: "TWD / GBP / USD", status: "optional", proof: "Online ticket receipts", notes: "See Itinerary → Tickets. Many museums are free; paid items include Royal Observatory, Cutty Sark, Westminster Abbey, Tower sites, London Eye, etc." },
+    { item: "London attraction tickets", amount: "Depends on selected paid attractions", currency: "TWD / GBP / USD", status: "optional", proof: "Online ticket receipts", notes: "See Itinerary → Attraction fees. Many museums are free; paid items include Royal Observatory, Cutty Sark, Westminster Abbey, Tower sites, London Eye, etc." },
     { item: "London accommodation", amount: "TBD", currency: "TWD / GBP / USD", status: "book", proof: "Confirmation / invoice after booking", notes: "From 7/4; area not decided." }
   ],
   links: [
@@ -181,12 +181,12 @@ const tripData = {
 };
 
 const sectionNav = {
-  home: [["snapshot", "Snapshot"], ["todo", "To-do"], ["handoff", "Pages"]],
+  home: [["snapshot", "旅程重點"], ["todo", "待辦事項"], ["handoff", "分類整理"]],
   conference: [["accepted", "Accepted"], ["papers", "Papers"], ["rhythm", "Schedule"]],
   transport: [["flights", "Flights"], ["train", "Train"], ["local", "Local transit"]],
   stay: [["overview", "Overview"], ["conflict", "Conflict"], ["areas", "London areas"]],
-  itinerary: [["daily", "Daily cards"], ["tickets", "Tickets"], ["return", "Return buffer"]],
-  budget: [["expenses", "Expenses"], ["totals", "Totals"], ["proofs", "Proofs"]],
+  itinerary: [["daily", "每日行程"], ["tickets", "景點費用"], ["return", "回程提醒"]],
+  budget: [["expenses", "費用明細"], ["totals", "金額小計"], ["proofs", "憑證順序"]],
   documents: [["links", "Official links"], ["privacy", "Privacy"]]
 };
 
@@ -296,13 +296,13 @@ function renderHome() {
     ${renderQuickNav("home")}
     <section class="section dashboard-section home-dashboard" id="snapshot">
       <div class="section-heading center">
-        <p class="eyebrow">Snapshot</p>
-        <h2>${state.lang === "en" ? "Trip command center" : "旅程指揮中心"}</h2>
-        <p>${state.lang === "en" ? "A cleaner first screen for confirmed items, open decisions, budget anchors, and the next travel move." : "用一個高可讀儀表板整理已確認事項、待處理決策、預算錨點與下一段移動。"}</p>
+        <p class="eyebrow">${state.lang === "en" ? "At A Glance" : "旅程重點"}</p>
+        <h2>${state.lang === "en" ? "Everything important before departure" : "出發前先看這裡"}</h2>
+        <p>${state.lang === "en" ? "Confirmed details, open decisions, key costs, and the next travel move are gathered here." : "已確認事項、待處理決策、主要費用與下一段移動都整理在這裡。"}</p>
       </div>
-      <div class="command-board" aria-label="Trip command board">
+      <div class="command-board" aria-label="${state.lang === "en" ? "Trip highlights" : "旅程重點"}">
         <article class="command-primary">
-          <span class="command-label">${state.lang === "en" ? "Current focus" : "目前重點"}</span>
+          <span class="command-label">${state.lang === "en" ? "Current priority" : "目前最重要"}</span>
           <h3>${state.lang === "en" ? "Manchester conference first, London travel second" : "先完成曼徹斯特研討會，再銜接倫敦旅遊"}</h3>
           <p>${state.lang === "en" ? "The plan is stable at the flight and Manchester hotel level. The main unresolved decision is whether to keep the 4 July Manchester hotel night while moving to London." : "航班與 Manchester 住宿已穩定；目前最需要處理的是 7/4 前往倫敦時，Manchester 飯店是否保留一晚作為緩衝。"}</p>
         </article>
@@ -326,7 +326,7 @@ function renderHome() {
     </section>
     <section class="section compact-section" id="todo">
       <div class="section-heading">
-        <p class="eyebrow">To-do</p>
+        <p class="eyebrow">${state.lang === "en" ? "Before Departure" : "出發前"}</p>
         <h2>${state.lang === "en" ? "Open decisions" : "目前待辦"}</h2>
       </div>
       <div class="todo-list">
@@ -357,8 +357,8 @@ function renderHome() {
     </section>
     <section class="section compact-section" id="handoff">
       <div class="section-heading center">
-        <p class="eyebrow">Handbook</p>
-        <h2>${state.lang === "en" ? "Open by category" : "依類別進入頁面"}</h2>
+        <p class="eyebrow">${state.lang === "en" ? "Travel Notes" : "分類整理"}</p>
+        <h2>${state.lang === "en" ? "Choose what you need" : "依需要查看內容"}</h2>
       </div>
       <div class="page-grid handbook-page-grid">
         ${pages.slice(1).map((page, index) => `
@@ -377,7 +377,7 @@ const pageDescriptions = {
   conference: { zh: "發表文章、會議日期、接受狀態與 final program 待補提醒。", en: "Accepted work, conference dates, paper summaries, and final program reminders." },
   transport: { zh: "航班、Manchester-London 火車、倫敦與曼徹斯特市內交通。", en: "Flights, Manchester-London trains, and London/Manchester local transit." },
   stay: { zh: "Manchester 飯店已訂資訊、倫敦住宿待辦與日期衝突提醒。", en: "Manchester hotel details, London stay tasks, and date overlap warning." },
-  itinerary: { zh: "每日卡片化行程，分成必做、可選、交通與提醒。", en: "Card-based daily itinerary with must-do, optional, and reminder sections." },
+  itinerary: { zh: "每日行程分成必去、可選、交通與提醒。", en: "Daily plans organized by must-do items, optional ideas, transport, and reminders." },
   budget: { zh: "三幣別費用表、憑證、狀態與報帳包順序。", en: "Three-currency expense table, proof, status, and reimbursement packet order." },
   documents: { zh: "官方連結與文件類型，不公開私人憑證細節。", en: "Official links and document categories without exposing private proof details." }
 };
@@ -438,7 +438,7 @@ function renderTransport() {
   return `
     ${renderQuickNav("transport")}
     <section class="section compact-section" id="flights">
-      <div class="section-heading"><p class="eyebrow">Flights</p><h2>${state.lang === "en" ? "Flight routing" : "航班與轉機"}</h2></div>
+      <div class="section-heading"><p class="eyebrow">${state.lang === "en" ? "Flights" : "航班"}</p><h2>${state.lang === "en" ? "Flight details" : "航班與轉機"}</h2></div>
       <div class="flight-grid">
         ${tripData.flights.map((flight) => `
           <article class="flight-card">
@@ -459,7 +459,7 @@ function renderTransport() {
       </div>
     </section>
     <section class="section compact-section" id="train">
-      <div class="section-heading"><p class="eyebrow">Train Plan</p><h2>Manchester ↔ London</h2></div>
+      <div class="section-heading"><p class="eyebrow">${state.lang === "en" ? "Train" : "火車"}</p><h2>Manchester ↔ London</h2></div>
       <div class="summary-grid">
         <article class="summary-card">${statusChip("book")}<h3>7/4 Manchester → London</h3><p>Manchester Piccadilly → London Euston, ${state.lang === "en" ? "direct Avanti West Coast, about 2h15m. Suggested departure 10:00-12:00." : "Avanti West Coast 直達約 2 小時 15 分，建議 10:00-12:00 出發。"}</p></article>
         <article class="summary-card">${statusChip("book")}<h3>7/10 London → Manchester</h3><p>${state.lang === "en" ? "Return in the evening and stay one night in Manchester for the 11 July flight buffer." : "建議傍晚或晚上回 Manchester 住一晚，替 7/11 航班保留緩衝。"}</p></article>
@@ -469,7 +469,7 @@ function renderTransport() {
       </div>
     </section>
     <section class="section compact-section" id="local">
-      <div class="section-heading"><p class="eyebrow">Local Transit</p><h2>${state.lang === "en" ? "London & Manchester local transport" : "倫敦與曼徹斯特市內交通"}</h2></div>
+      <div class="section-heading"><p class="eyebrow">${state.lang === "en" ? "Getting Around" : "市內交通"}</p><h2>${state.lang === "en" ? "London & Manchester local transport" : "倫敦與曼徹斯特市內交通"}</h2></div>
       <div class="summary-grid two">
         ${tripData.localTransit.map((city) => `
           <article class="summary-card">
@@ -486,7 +486,7 @@ function renderStay() {
   return `
     ${renderQuickNav("stay")}
     <section class="section compact-section" id="overview">
-      <div class="section-heading"><p class="eyebrow">Accommodation</p><h2>${state.lang === "en" ? "Stay status" : "住宿狀態"}</h2></div>
+      <div class="section-heading"><p class="eyebrow">${state.lang === "en" ? "Accommodation" : "住宿"}</p><h2>${state.lang === "en" ? "Where to stay" : "住宿安排"}</h2></div>
       <div class="summary-grid">
         ${tripData.stay.map((item) => `
           <article class="summary-card">
@@ -513,8 +513,8 @@ function renderItinerary() {
     ${renderQuickNav("itinerary")}
     <section class="section compact-section" id="daily">
       <div class="section-heading">
-        <p class="eyebrow">Daily Cards</p>
-        <h2>${state.lang === "en" ? "Executable itinerary" : "每日卡片化行程"}</h2>
+        <p class="eyebrow">${state.lang === "en" ? "Daily Plan" : "每日行程"}</p>
+        <h2>${state.lang === "en" ? "What to do each day" : "每天怎麼安排"}</h2>
       </div>
       <div class="itinerary-grid">
         ${tripData.itinerary.map((day) => `
@@ -523,7 +523,7 @@ function renderItinerary() {
             <h3>${t(day.title)}</h3>
             ${renderMiniList(state.lang === "en" ? "Must-do" : "必做", day.must)}
             ${renderMiniList(state.lang === "en" ? "Optional" : "可選", day.optional)}
-            ${day.tickets ? renderMiniList(state.lang === "en" ? "Tickets / fees" : "門票 / 費用", day.tickets) : ""}
+            ${day.tickets ? renderMiniList(state.lang === "en" ? "Admission / fees" : "門票 / 費用", day.tickets) : ""}
             ${renderMiniList(state.lang === "en" ? "Notes / transit" : "提醒 / 交通", day.notes)}
           </article>
         `).join("")}
@@ -531,7 +531,7 @@ function renderItinerary() {
     </section>
     <section class="section compact-section" id="tickets">
       <div class="section-heading">
-        <p class="eyebrow">Tickets</p>
+        <p class="eyebrow">${state.lang === "en" ? "Admission" : "景點費用"}</p>
         <h2>${state.lang === "en" ? "Attraction fees to check before booking" : "景點門票與預算估算"}</h2>
         <p>${state.lang === "en" ? "Prices are current planning references. Re-check official sites before booking for July 2026." : "以下為目前查到的規劃參考價；2026/7 出發前請再以官方網站確認。"}</p>
       </div>
@@ -567,7 +567,7 @@ function renderBudget() {
     ${renderQuickNav("budget")}
     <section class="section compact-section" id="expenses">
       <div class="section-heading">
-        <p class="eyebrow">Expense Table</p>
+        <p class="eyebrow">${state.lang === "en" ? "Costs" : "費用"}</p>
         <h2>${state.lang === "en" ? "Reimbursement-ready expense list" : "報帳用費用表"}</h2>
       </div>
       <div class="mobile-table" role="region" aria-label="Expense table">
