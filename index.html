@@ -22,15 +22,15 @@
 
     <header class="hero" id="top">
       <nav class="topbar" aria-label="Primary navigation">
-        <a href="#top" class="brand">AIB 2026</a>
+        <a href="#home" class="brand">AIB 2026</a>
         <div class="nav-pills">
-          <a href="#overview">總覽</a>
-          <a href="#conference">會議</a>
-          <a href="#flights">航班</a>
-          <a href="#trains">火車</a>
-          <a href="#hotel">飯店</a>
-          <a href="#budget">報帳</a>
-          <a href="#itinerary">行程</a>
+          <a href="#home" data-route="home">總覽</a>
+          <a href="#conference" data-route="conference">會議</a>
+          <a href="#transport" data-route="transport">交通</a>
+          <a href="#stay" data-route="stay">住宿</a>
+          <a href="#itinerary" data-route="itinerary">行程</a>
+          <a href="#budget" data-route="budget">報帳</a>
+          <a href="#documents" data-route="documents">文件</a>
         </div>
       </nav>
 
@@ -69,7 +69,7 @@
     </header>
 
     <main>
-      <section class="section" id="overview">
+      <section class="section page-section" id="overview" data-page="home">
         <div class="section-heading center">
           <p class="eyebrow">Trip Overview</p>
           <h2>出發前最重要的四件事</h2>
@@ -97,9 +97,41 @@
             <p>Conference Fee US$325，加上 AIB 會員費 US$40。</p>
           </article>
         </div>
+        <div class="page-grid" aria-label="Travel categories">
+          <a class="page-card" href="#conference">
+            <span>01</span>
+            <strong>會議資訊</strong>
+            <p>AIB 發表、會議日期與 Manchester 會議節奏。</p>
+          </a>
+          <a class="page-card" href="#transport">
+            <span>02</span>
+            <strong>航班與火車</strong>
+            <p>台北往返英國航班，以及 Manchester 到 London 來回火車。</p>
+          </a>
+          <a class="page-card" href="#stay">
+            <span>03</span>
+            <strong>住宿安排</strong>
+            <p>INNSiDE Manchester 訂房資訊與倫敦住宿待辦。</p>
+          </a>
+          <a class="page-card" href="#itinerary">
+            <span>04</span>
+            <strong>倫敦行程</strong>
+            <p>7/4 起倫敦旅遊，每天只看當天重點。</p>
+          </a>
+          <a class="page-card" href="#budget">
+            <span>05</span>
+            <strong>報帳整理</strong>
+            <p>AIB 費用、國科會日支費、機票與住宿金額。</p>
+          </a>
+          <a class="page-card" href="#documents">
+            <span>06</span>
+            <strong>文件清單</strong>
+            <p>接受函、邀請函、收據、ETA 與常用連結。</p>
+          </a>
+        </div>
       </section>
 
-      <section class="section split" id="conference">
+      <section class="section split page-section" id="conference-section" data-page="conference" hidden>
         <div class="section-heading sticky-heading">
           <p class="eyebrow">Conference</p>
           <h2>我的發表與會議重點</h2>
@@ -135,7 +167,7 @@
         </div>
       </section>
 
-      <section class="section" id="flights">
+      <section class="section page-section" id="flights" data-page="transport" hidden>
         <div class="section-heading center">
           <p class="eyebrow">Flights</p>
           <h2>航班與轉機</h2>
@@ -188,7 +220,7 @@
         </div>
       </section>
 
-      <section class="section split" id="trains">
+      <section class="section split page-section" id="trains" data-page="transport" hidden>
         <div class="section-heading sticky-heading">
           <p class="eyebrow">Train Plan</p>
           <h2>Manchester ↔ London 火車</h2>
@@ -250,7 +282,7 @@
         </div>
       </section>
 
-      <section class="section split reverse" id="hotel">
+      <section class="section split reverse page-section" id="hotel" data-page="stay" hidden>
         <div class="section-heading sticky-heading">
           <p class="eyebrow">Hotel</p>
           <h2>住宿安排</h2>
@@ -286,7 +318,7 @@
         </div>
       </section>
 
-      <section class="section visual-section" id="itinerary">
+      <section class="section visual-section page-section" id="itinerary-section" data-page="itinerary" hidden>
         <div class="section-heading center">
           <p class="eyebrow">Itinerary</p>
           <h2>7/4 起倫敦旅遊行程</h2>
@@ -355,7 +387,7 @@
         </article>
       </section>
 
-      <section class="section" id="budget">
+      <section class="section page-section" id="budget-section" data-page="budget" hidden>
         <div class="section-heading center">
           <p class="eyebrow">Reimbursement</p>
           <h2>AIB 費用與報帳整理</h2>
@@ -439,7 +471,7 @@
         </div>
       </section>
 
-      <section class="section split" id="documents">
+      <section class="section split page-section" id="documents-section" data-page="documents" hidden>
         <div class="section-heading sticky-heading">
           <p class="eyebrow">Documents</p>
           <h2>出發前文件清單</h2>
@@ -474,7 +506,7 @@
         </div>
       </section>
 
-      <section class="section links-band">
+      <section class="section links-band page-section" data-page="documents" hidden>
         <div class="section-heading center">
           <p class="eyebrow">Useful Links</p>
           <h2>常用連結</h2>
@@ -496,7 +528,7 @@
 
     <footer>
       <p>AIB 2026 Manchester 英國研討會旅遊手冊</p>
-      <a href="#top">回到上方</a>
+      <a href="#home">回到總覽</a>
     </footer>
 
     <script src="./script.js"></script>
