@@ -1,17 +1,17 @@
 :root {
-  --slate: #302638;
-  --ink: #2c2432;
-  --royal-blue: #005eb8;
-  --royal-red: #ba0c2f;
-  --gold: #c7a45d;
-  --soft-gold: #ead9a6;
-  --bone: #efe9e1;
+  --slate: #4b4350;
+  --ink: #343039;
+  --royal-blue: #75899f;
+  --royal-red: #a56f76;
+  --gold: #b8aa86;
+  --soft-gold: #e5dcc3;
+  --bone: #ece7df;
   --paper: #fffdf9;
-  --mist: #f7f5f1;
-  --stone: #d6d2c4;
-  --muted: #716977;
-  --border: rgba(48, 38, 56, 0.13);
-  --shadow: 0 14px 34px rgba(48, 38, 56, 0.1);
+  --mist: #f5f3ef;
+  --stone: #cfc8bb;
+  --muted: #777177;
+  --border: rgba(75, 67, 80, 0.13);
+  --shadow: 0 16px 38px rgba(75, 67, 80, 0.09);
   --radius: 8px;
 }
 
@@ -29,7 +29,7 @@ body {
   overflow-x: hidden;
   color: var(--ink);
   background:
-    linear-gradient(135deg, #fffdf9 0%, var(--mist) 48%, var(--bone) 100%);
+    linear-gradient(135deg, #fffdf9 0%, #f5f3ef 48%, #ebe6de 100%);
   font-family: "Noto Serif TC", "Noto Sans TC", serif;
   font-size: 16px;
   line-height: 1.85;
@@ -49,8 +49,8 @@ a {
   z-index: 1000;
   width: 0%;
   height: 4px;
-  background: linear-gradient(90deg, var(--royal-red), var(--gold), var(--royal-blue));
-  box-shadow: 0 0 14px rgba(199, 164, 93, 0.35);
+  background: linear-gradient(90deg, #a56f76, #b8aa86, #75899f);
+  box-shadow: 0 0 14px rgba(184, 170, 134, 0.24);
 }
 
 .hero {
@@ -62,8 +62,8 @@ a {
   overflow: hidden;
   color: #fffdf9;
   background:
-    linear-gradient(115deg, rgba(20, 16, 24, 0.82) 0%, rgba(48, 38, 56, 0.68) 44%, rgba(186, 12, 47, 0.2) 100%),
-    linear-gradient(180deg, rgba(20, 16, 24, 0.08), rgba(20, 16, 24, 0.28)),
+    linear-gradient(115deg, rgba(48, 43, 55, 0.74) 0%, rgba(73, 65, 79, 0.58) 46%, rgba(165, 111, 118, 0.18) 100%),
+    linear-gradient(180deg, rgba(245, 243, 239, 0.04), rgba(48, 43, 55, 0.24)),
     url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1920px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 42% / cover;
 }
 
@@ -74,7 +74,7 @@ a {
   right: 0;
   bottom: 0;
   height: 150px;
-  background: linear-gradient(180deg, transparent 0%, rgba(247, 245, 241, 0.95) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(245, 243, 239, 0.96) 100%);
   pointer-events: none;
 }
 
@@ -1766,8 +1766,8 @@ footer a {
   height: 520px;
   border-radius: var(--radius);
   background:
-    linear-gradient(115deg, rgba(48, 38, 56, 0.06), rgba(199, 164, 93, 0.12)),
-    linear-gradient(90deg, rgba(0, 94, 184, 0.08), rgba(186, 12, 47, 0.08));
+    linear-gradient(115deg, rgba(117, 137, 159, 0.12), rgba(184, 170, 134, 0.16)),
+    linear-gradient(90deg, rgba(165, 111, 118, 0.08), rgba(236, 231, 223, 0.3));
   filter: blur(0);
 }
 
@@ -1784,7 +1784,7 @@ footer a {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: var(--radius);
-  box-shadow: 0 18px 42px rgba(48, 38, 56, 0.12);
+  box-shadow: 0 18px 42px rgba(75, 67, 80, 0.1);
 }
 
 .command-primary {
@@ -1792,7 +1792,7 @@ footer a {
   padding: 30px;
   color: #fffdf9;
   background:
-    linear-gradient(115deg, rgba(33, 26, 39, 0.93), rgba(48, 38, 56, 0.82)),
+    linear-gradient(115deg, rgba(64, 57, 68, 0.88), rgba(92, 83, 94, 0.72)),
     url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 40% / cover;
 }
 
@@ -1800,8 +1800,8 @@ footer a {
   content: "";
   position: absolute;
   inset: auto 0 0;
-  height: 7px;
-  background: linear-gradient(90deg, var(--royal-blue), var(--gold), var(--royal-red));
+  height: 5px;
+  background: linear-gradient(90deg, #75899f, #b8aa86, #a56f76);
 }
 
 .command-label {
@@ -1838,7 +1838,7 @@ footer a {
 .command-metrics article {
   min-height: 76px;
   padding: 18px 20px;
-  background: rgba(255, 253, 249, 0.88);
+  background: rgba(255, 253, 249, 0.9);
 }
 
 .command-metrics span {
@@ -1876,7 +1876,7 @@ footer a {
   position: absolute;
   top: 18px;
   right: 18px;
-  color: rgba(48, 38, 56, 0.12);
+  color: rgba(75, 67, 80, 0.1);
   font-family: "Noto Sans TC", sans-serif;
   font-size: 44px;
   font-weight: 900;
@@ -1890,19 +1890,19 @@ footer a {
   top: 0;
   width: 100%;
   height: 5px;
-  background: linear-gradient(90deg, var(--royal-blue), var(--gold));
+  background: linear-gradient(90deg, #75899f, #b8aa86);
 }
 
 .premium-summary .summary-card:nth-child(2)::after {
-  background: linear-gradient(90deg, var(--royal-red), var(--gold));
+  background: linear-gradient(90deg, #a56f76, #c8bda0);
 }
 
 .premium-summary .summary-card:nth-child(3)::after {
-  background: linear-gradient(90deg, var(--gold), var(--slate));
+  background: linear-gradient(90deg, #c8bda0, #827a86);
 }
 
 .premium-summary .summary-card:nth-child(4)::after {
-  background: linear-gradient(90deg, var(--royal-red), var(--royal-blue));
+  background: linear-gradient(90deg, #a56f76, #75899f);
 }
 
 .home-strip {
@@ -1914,7 +1914,7 @@ footer a {
   border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: var(--radius);
   background: rgba(255, 253, 249, 0.82);
-  box-shadow: 0 18px 42px rgba(48, 38, 56, 0.09);
+  box-shadow: 0 18px 42px rgba(75, 67, 80, 0.08);
 }
 
 .home-strip article {
