@@ -377,6 +377,64 @@ h3 {
   margin-top: 10px;
 }
 
+.rail-card {
+  border-top: 5px solid var(--royal-blue);
+}
+
+.rail-route {
+  display: grid;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.rail-route div {
+  padding: 16px 0 0;
+  border-top: 1px solid rgba(48, 38, 56, 0.12);
+}
+
+.rail-route strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--royal-blue);
+  font-size: 18px;
+}
+
+.fare-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.fare-grid div {
+  min-height: 154px;
+  padding: 18px;
+  border: 1px solid rgba(48, 38, 56, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 253, 249, 0.82);
+}
+
+.fare-grid span {
+  display: block;
+  color: var(--royal-red);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.fare-grid strong {
+  display: block;
+  margin: 8px 0;
+  color: var(--slate);
+  font-family: "Noto Serif TC", serif;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.fare-grid p {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
 .mini-timeline {
   display: grid;
   gap: 0;
@@ -778,7 +836,7 @@ footer a {
     bottom: calc(10px + env(safe-area-inset-bottom));
     z-index: 200;
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 5px;
     padding: 8px;
     border-radius: 22px;
@@ -879,7 +937,8 @@ footer a {
   }
 
   .stats-grid,
-  .link-grid {
+  .link-grid,
+  .fare-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
@@ -899,6 +958,11 @@ footer a {
   .day-detail {
     padding: 20px 18px;
     border-radius: 20px;
+  }
+
+  .fare-grid div {
+    min-height: auto;
+    padding: 16px;
   }
 
   .split {
