@@ -5,8 +5,10 @@ const pageSections = document.querySelectorAll("[data-page]");
 const routeLinks = document.querySelectorAll("[data-route]");
 const langToggle = document.getElementById("langToggle");
 const routes = new Set(["home", "conference", "transport", "stay", "itinerary", "budget", "documents"]);
+const supportedLangs = new Set(["zh", "en"]);
 const originalText = new WeakMap();
-let currentLang = localStorage.getItem("aib-lang") || "zh";
+let translatableNodes = [];
+let currentLang = getStoredLang();
 
 const translations = {
   "總覽": "Overview",
@@ -194,10 +196,29 @@ const translations = {
 };
 
 function updateProgress() {
+  if (!progress) return;
+
   const scrollTop = window.scrollY;
   const height = document.documentElement.scrollHeight - window.innerHeight;
   const percent = height > 0 ? (scrollTop / height) * 100 : 0;
   progress.style.width = `${percent}%`;
+}
+
+function getStoredLang() {
+  try {
+    const storedLang = localStorage.getItem("aib-lang");
+    return supportedLangs.has(storedLang) ? storedLang : "zh";
+  } catch {
+    return "zh";
+  }
+}
+
+function storeLang(lang) {
+  try {
+    localStorage.setItem("aib-lang", lang);
+  } catch {
+    // Private browsing or strict settings can block localStorage.
+  }
 }
 
 function currentRoute() {
@@ -241,6 +262,28 @@ dayButtons.forEach((button) => {
 window.addEventListener("hashchange", () => renderRoute(true));
 window.addEventListener("scroll", updateProgress, { passive: true });
 
+function collectTranslatableNodes() {
+  if (translatableNodes.length) {
+    return translatableNodes;
+  }
+
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const parent = node.parentElement;
+      if (!parent || parent.closest("#langToggle") || ["SCRIPT", "STYLE"].includes(parent.tagName)) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      return node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+
+  while (walker.nextNode()) {
+    translatableNodes.push(walker.currentNode);
+  }
+
+  return translatableNodes;
+}
+
 function translateTextNode(node) {
   if (!originalText.has(node)) {
     originalText.set(node, node.nodeValue);
@@ -259,31 +302,20 @@ function translateTextNode(node) {
 function applyLanguage() {
   document.documentElement.lang = currentLang === "en" ? "en" : "zh-Hant";
 
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-    acceptNode(node) {
-      const parent = node.parentElement;
-      if (!parent || parent.closest("#langToggle") || ["SCRIPT", "STYLE"].includes(parent.tagName)) {
-        return NodeFilter.FILTER_REJECT;
-      }
-      return NodeFilter.FILTER_ACCEPT;
-    }
-  });
+  collectTranslatableNodes().forEach(translateTextNode);
 
-  const nodes = [];
-  while (walker.nextNode()) {
-    nodes.push(walker.currentNode);
-  }
-  nodes.forEach(translateTextNode);
-
+  if (!langToggle) return;
   langToggle.textContent = currentLang === "en" ? "中文" : "EN";
   langToggle.setAttribute("aria-label", currentLang === "en" ? "切換至中文" : "Switch to English");
 }
 
-langToggle.addEventListener("click", () => {
-  currentLang = currentLang === "en" ? "zh" : "en";
-  localStorage.setItem("aib-lang", currentLang);
-  applyLanguage();
-});
+if (langToggle) {
+  langToggle.addEventListener("click", () => {
+    currentLang = currentLang === "en" ? "zh" : "en";
+    storeLang(currentLang);
+    applyLanguage();
+  });
+}
 
 renderRoute(false);
 applyLanguage();
