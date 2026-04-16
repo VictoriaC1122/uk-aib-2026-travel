@@ -4,8 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transport | AIB 2026 UK Travel Handbook</title>
-    <meta name="description" content="Flights, Manchester-London train plan, and local transit notes for AIB 2026 UK travel." />
+    <meta name="description" content="Flights, Manchester-London train plan, and local transit notes for the AIB 2026 UK trip." />
     <meta name="theme-color" content="#302638" />
+    <meta property="og:title" content="AIB 2026 UK Transport Dashboard" />
+    <meta property="og:description" content="Flights, trains, and local transit information for Manchester and London." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://victoriac1122.github.io/uk-aib-2026-travel/transport.html" />
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
@@ -13,112 +18,13 @@
   </head>
   <body data-page="transport">
     <div class="progress" id="progress"></div>
-    <header class="hero page-hero">
-      <nav class="topbar" aria-label="Primary navigation">
-        <a href="./index.html" class="brand">AIB 2026</a>
-        <div class="nav-pills">
-          <a href="./index.html" data-nav="home">總覽</a>
-          <a href="./conference.html" data-nav="conference">會議</a>
-          <a href="./transport.html" data-nav="transport">交通</a>
-          <a href="./stay.html" data-nav="stay">住宿</a>
-          <a href="./itinerary.html" data-nav="itinerary">行程</a>
-          <a href="./budget.html" data-nav="budget">報帳</a>
-          <a href="./links.html" data-nav="documents">文件</a>
-        </div>
-        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
-      </nav>
-      <div class="hero-grid">
-        <section class="hero-copy">
-          <p class="eyebrow">Transport</p>
-          <h1>航班、火車與市內交通</h1>
-          <p class="hero-lead">去程經法蘭克福抵達曼徹斯特，7/4 從 Manchester 前往 London，最後再回 Manchester 搭機返台。</p>
-        </section>
-      </div>
+    <header class="hero page-hero" id="top">
+      <div data-site-header></div>
+      <div data-page-hero></div>
     </header>
-
-    <main>
-      <section class="section" id="flights">
-        <div class="section-heading center">
-          <p class="eyebrow">Flights</p>
-          <h2>航班與轉機</h2>
-          <p>去程經法蘭克福抵達曼徹斯特，回程從曼徹斯特經倫敦希斯洛返台。</p>
-        </div>
-        <div class="flight-grid">
-          <article class="flight-card">
-            <div class="flight-head"><span>去程</span><strong>2026 / 06 / 29 - 06 / 30</strong></div>
-            <div class="route"><div><b>TPE</b><span>22:40<br />台北桃園 T1</span></div><div class="line">CI 61<br />14h 30m</div><div><b>FRA</b><span>06:50<br />法蘭克福 T3</span></div></div>
-            <div class="route"><div><b>FRA</b><span>09:50<br />法蘭克福 T1</span></div><div class="line">LH 4210<br />1h 50m</div><div><b>MAN</b><span>10:40<br />曼徹斯特 T2</span></div></div>
-          </article>
-          <article class="flight-card">
-            <div class="flight-head"><span>回程</span><strong>2026 / 07 / 11 - 07 / 12</strong></div>
-            <div class="route"><div><b>MAN</b><span>18:10<br />曼徹斯特 T2</span></div><div class="line">BA 1371<br />1h 05m</div><div><b>LHR</b><span>19:15<br />倫敦希斯洛 T5</span></div></div>
-            <div class="route"><div><b>LHR</b><span>21:10<br />倫敦希斯洛 T3</span></div><div class="line">CI 82<br />13h 55m</div><div><b>TPE</b><span>18:05<br />台北桃園 T1</span></div></div>
-          </article>
-        </div>
-        <div class="note-grid">
-          <article><h3>機票報帳</h3><p>總額 NT$92,439 / £2,176 / US$2,885。票面價 NT$76,447 / £1,800 / US$2,386；稅金與航空公司附加費另列在票價明細截圖。</p></article>
-          <article><h3>轉機提醒</h3><p>去程 FRA 轉機 3 小時，回程 LHR 轉機 1 小時 55 分。回程為 MAN 起飛，後續旅遊若去倫敦，仍要留意不要跳過 MAN-LHR 航段。</p></article>
-        </div>
-      </section>
-
-      <section class="section split" id="trains">
-        <div class="section-heading sticky-heading">
-          <p class="eyebrow">Train Plan</p>
-          <h2>Manchester ↔ London 火車</h2>
-          <p>主要路線是 Avanti West Coast 直達車：Manchester Piccadilly ↔ London Euston。</p>
-        </div>
-        <div class="stack">
-          <article class="feature-card rail-card">
-            <span class="card-kicker">Recommended Route</span>
-            <h3>建議搭法</h3>
-            <div class="rail-route">
-              <div><strong>7/4 去程</strong><p>Manchester Piccadilly → London Euston，建議 10:00-12:00 之間出發，約 2 小時 15 分抵達。到倫敦後先寄放行李，再排 Westminster / Big Ben / London Eye。</p></div>
-              <div><strong>7/10 回程</strong><p>London Euston → Manchester Piccadilly，建議傍晚或晚上回 Manchester 住一晚。這樣 7/11 去 Manchester Airport 搭 18:10 航班最安心。</p></div>
-            </div>
-          </article>
-          <article class="feature-card">
-            <span class="card-kicker">Fare Range</span>
-            <h3>票價估算</h3>
-            <div class="fare-grid">
-              <div><span>Advance</span><strong>from NT$1,423 / £33.50 / US$44</strong><p>每人單程，最便宜但綁定指定班次；越早買越划算。</p></div>
-              <div><span>Off-Peak</span><strong>約 NT$3,228-3,398 / £76-£80 / US$101-106</strong><p>每人單程，彈性較高，適合不想被班次綁死。</p></div>
-              <div><span>Anytime</span><strong>約 NT$8,199 / £193 / US$256</strong><p>每人單程，最彈性但價格最高，不建議作為首選。</p></div>
-            </div>
-          </article>
-          <article class="feature-card compact"><h3>訂票提醒</h3><p>Advance ticket 通常 12 週前開賣，單程票、指定班次、不可退票，但可在出發前改票並可能收 NT$425 / £10 / US$13 手續費加價差。建議直接用 Avanti 或 National Rail 查價與購票，避免第三方手續費。</p></article>
-        </div>
-      </section>
-
-      <section class="section split" id="local-transit">
-        <div class="section-heading sticky-heading">
-          <p class="eyebrow">Local Transit</p>
-          <h2>倫敦與曼徹斯特市內交通</h2>
-          <p>以公開票價與官方規則整理，保留行程需要的資訊，不放個人付款、帳號、訂位或憑證細節。</p>
-        </div>
-        <div class="stack">
-          <article class="feature-card rail-card">
-            <span class="card-kicker">London</span>
-            <h3>Tube / Elizabeth line / DLR</h3>
-            <div class="fare-grid">
-              <div><span>Zones 1-2</span><strong>NT$378 / £8.90 / US$12 cap</strong><p>市中心與多數景點一天最高扣到這個金額；單程範例約 NT$153 / £3.60 / US$4.80 peak、NT$132 / £3.10 / US$4.10 off-peak。</p></div>
-              <div><span>Zones 1-3</span><strong>NT$446 / £10.50 / US$14 cap</strong><p>含 Greenwich / Cutty Sark 這類稍外圍行程時，可用這個日上限估算。</p></div>
-              <div><span>Zones 1-6</span><strong>NT$692 / £16.30 / US$22 cap</strong><p>若有 Heathrow 或更外圍移動，用這個上限抓預算；Heathrow Express 不含在 TfL cap 內。</p></div>
-            </div>
-          </article>
-          <article class="feature-card">
-            <span class="card-kicker">Manchester</span>
-            <h3>Metrolink / Bee Network</h3>
-            <div class="fare-grid">
-              <div><span>City centre</span><strong>Zone 1</strong><p>INNSiDE Manchester 周邊以 Deansgate-Castlefield / St Peter's Square 一帶最方便。</p></div>
-              <div><span>Airport to city</span><strong>Zones 1-4</strong><p>Manchester Airport 在 Zone 4，進市區需涵蓋所有經過的 zones。</p></div>
-              <div><span>All zones day</span><strong>NT$302 / £7.10 / US$9.40；NT$208 / £4.90 / US$6.50</strong><p>Metrolink 一日票 all zones：anytime NT$302 / £7.10 / US$9.40；off-peak NT$208 / £4.90 / US$6.50。</p></div>
-            </div>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <footer><p>AIB 2026 Manchester 英國研討會旅遊手冊</p><a href="./index.html">回到總覽</a></footer>
+    <main id="page-content"></main>
+    <div data-site-footer></div>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">Top</button>
     <script src="./script.js"></script>
   </body>
 </html>

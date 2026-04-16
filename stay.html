@@ -4,8 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stay | AIB 2026 UK Travel Handbook</title>
-    <meta name="description" content="Manchester hotel and London accommodation notes for AIB 2026 UK travel." />
+    <meta name="description" content="Manchester hotel status, London accommodation planning, and stay conflict reminders." />
     <meta name="theme-color" content="#302638" />
+    <meta property="og:title" content="AIB 2026 Accommodation Dashboard" />
+    <meta property="og:description" content="Manchester booking details, London stay status, and overlap reminders." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://victoriac1122.github.io/uk-aib-2026-travel/stay.html" />
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
@@ -13,68 +18,13 @@
   </head>
   <body data-page="stay">
     <div class="progress" id="progress"></div>
-    <header class="hero page-hero">
-      <nav class="topbar" aria-label="Primary navigation">
-        <a href="./index.html" class="brand">AIB 2026</a>
-        <div class="nav-pills">
-          <a href="./index.html" data-nav="home">總覽</a>
-          <a href="./conference.html" data-nav="conference">會議</a>
-          <a href="./transport.html" data-nav="transport">交通</a>
-          <a href="./stay.html" data-nav="stay">住宿</a>
-          <a href="./itinerary.html" data-nav="itinerary">行程</a>
-          <a href="./budget.html" data-nav="budget">報帳</a>
-          <a href="./links.html" data-nav="documents">文件</a>
-        </div>
-        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
-      </nav>
-      <div class="hero-grid">
-        <section class="hero-copy">
-          <p class="eyebrow">Hotel</p>
-          <h1>住宿安排</h1>
-          <p class="hero-lead">Manchester 會議住宿已訂；倫敦段 7/4 起尚未定，建議優先找交通方便、可直達 Euston / King's Cross 一帶的住宿。</p>
-        </section>
-      </div>
+    <header class="hero page-hero" id="top">
+      <div data-site-header></div>
+      <div data-page-hero></div>
     </header>
-
-    <main>
-      <section class="section split reverse">
-        <div class="section-heading sticky-heading">
-          <p class="eyebrow">Hotel</p>
-          <h2>住宿安排</h2>
-          <p>Manchester 會議住宿已訂；倫敦段 7/4 起尚未定，建議優先找交通方便、可直達 Euston / King's Cross 一帶的住宿，最後回曼徹斯特搭機會比較穩。</p>
-        </div>
-        <div class="hotel-layout">
-          <article class="feature-card royal-border">
-            <span class="card-kicker">Booking</span>
-            <h3>基本資訊</h3>
-            <dl class="data-list">
-              <div><dt>入住</dt><dd>2026/06/30 15:00 後</dd></div>
-              <div><dt>退房</dt><dd>2026/07/05 12:00 前</dd></div>
-              <div><dt>住宿</dt><dd>5 晚，Twin Bed，2 人</dd></div>
-              <div><dt>地址</dt><dd>1 First Street, Manchester</dd></div>
-              <div><dt>電話</dt><dd>+44 161 200 2500</dd></div>
-            </dl>
-          </article>
-          <article class="feature-card">
-            <span class="card-kicker">Cost</span>
-            <h3>價格與政策</h3>
-            <ul class="clean-list">
-              <li>房價總額：NT$38,270 / GBP 900.90 / US$1,194，已含 20% 稅。</li>
-              <li>平均每晚：約 NT$7,646 / GBP 180 / US$239。</li>
-              <li>當地旅遊稅：NT$51 / GBP 1.20 / US$1.60 每房每晚，5 晚約 NT$255 / GBP 6 / US$8，現場付。</li>
-              <li>6/29 15:00 前取消免費；之後取消或 no-show 可能收 1 晚房費。</li>
-              <li>入住需押金，可刷卡或金融卡。</li>
-            </ul>
-          </article>
-          <article class="feature-card compact">
-            <h3>倫敦住宿尚未定</h3>
-            <p>如果 7/4 就前往倫敦，INNSiDE Manchester 的 7/4 晚可能需要確認是否保留或調整。倫敦住宿建議找 Covent Garden、Bloomsbury、South Kensington、Paddington 或 King's Cross 附近。</p>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <footer><p>AIB 2026 Manchester 英國研討會旅遊手冊</p><a href="./index.html">回到總覽</a></footer>
+    <main id="page-content"></main>
+    <div data-site-footer></div>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">Top</button>
     <script src="./script.js"></script>
   </body>
 </html>

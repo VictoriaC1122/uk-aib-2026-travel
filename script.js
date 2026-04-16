@@ -1,218 +1,202 @@
-const progress = document.getElementById("progress");
-const dayButtons = document.querySelectorAll(".day");
-const dayDetails = document.querySelectorAll(".day-detail");
-const navLinks = document.querySelectorAll("[data-nav]");
-const langToggle = document.getElementById("langToggle");
-const supportedLangs = new Set(["zh", "en"]);
-const originalText = new WeakMap();
-let translatableNodes = [];
-let currentLang = getStoredLang();
+const pages = [
+  { id: "home", label: { zh: "總覽", en: "Overview" }, href: "./index.html" },
+  { id: "conference", label: { zh: "會議", en: "Conference" }, href: "./conference.html" },
+  { id: "transport", label: { zh: "交通", en: "Transport" }, href: "./transport.html" },
+  { id: "stay", label: { zh: "住宿", en: "Stay" }, href: "./stay.html" },
+  { id: "itinerary", label: { zh: "行程", en: "Itinerary" }, href: "./itinerary.html" },
+  { id: "budget", label: { zh: "報帳", en: "Budget" }, href: "./budget.html" },
+  { id: "documents", label: { zh: "連結", en: "Links" }, href: "./links.html" }
+];
 
-const translations = {
-  "總覽": "Overview",
-  "會議": "Conference",
-  "交通": "Transport",
-  "住宿": "Stay",
-  "行程": "Itinerary",
-  "報帳": "Budget",
-  "文件": "Links",
-  "英國研討會旅遊手冊": "UK Conference Travel Handbook",
-  "台北出發，經法蘭克福抵達曼徹斯特。前半段完成 AIB 2026 發表與報帳資料，7/4 起移動到倫敦，把大笨鐘、博物館、格林威治、百貨與經典街區排成一條舒服的旅程。": "Depart from Taipei, transfer in Frankfurt, and arrive in Manchester. The first half is for AIB 2026 presentations and reimbursement documents; from 4 July, move to London for Big Ben, museums, Greenwich, department stores, and classic neighborhoods.",
-  "行程安排": "View Itinerary",
-  "報帳整理": "Budget",
-  "旅程日期": "Travel Dates",
-  "住宿": "Stay",
-  "Manchester 已訂；London 尚未定": "Manchester booked; London pending",
-  "航線": "Route",
-  "出發前最重要的四件事": "Four Essentials Before Departure",
-  "會議、航班、住宿與報帳先整理好，後面的旅行就可以放心享受。": "Keep the conference, flights, stay, and reimbursement details organized first, then enjoy the trip with less friction.",
-  "會議日期": "Conference Dates",
-  "AIB 官方公告地點為 Manchester，主會議集中在 7/1-7/3。": "The official AIB location is Manchester, with the main conference concentrated on 1-3 July.",
-  "待補倫敦": "London pending",
-  "INNSiDE Manchester 已訂；7/4 起倫敦住宿尚未定。": "INNSiDE Manchester is booked; London accommodation from 4 July is still pending.",
-  "機票": "Flights",
-  "台北出發，法蘭克福轉機，回程曼城經希斯洛返台。": "Depart Taipei, transfer in Frankfurt, and return from Manchester via Heathrow.",
-  "會議費": "Conference Fee",
-  "Conference Fee NT$10,413 / £245 / US$325，加上 AIB 會員費 NT$1,282 / £30 / US$40。": "Conference Fee NT$10,413 / £245 / US$325 plus AIB membership NT$1,282 / £30 / US$40.",
-  "會議資訊": "Conference",
-  "AIB 發表、會議日期與 Manchester 會議節奏。": "AIB presentations, conference dates, and Manchester conference rhythm.",
-  "航班與火車": "Flights & Trains",
-  "台北往返英國航班，以及 Manchester 到 London 來回火車。": "Taipei-UK flights and round-trip trains between Manchester and London.",
-  "住宿安排": "Accommodation",
-  "Manchester 會議住宿已訂；倫敦段 7/4 起尚未定，建議優先找交通方便、可直達 Euston / King's Cross 一帶的住宿。": "Manchester conference accommodation is booked; London accommodation from 4 July is still pending. Prioritize places with easy access to Euston / King's Cross.",
-  "INNSiDE Manchester 訂房資訊與倫敦住宿待辦。": "INNSiDE Manchester booking details and London accommodation tasks.",
-  "倫敦行程": "London Itinerary",
-  "7/4 起倫敦旅遊，每天只看當天重點。": "London travel from 4 July, with each day kept focused.",
-  "AIB 費用、國科會日支費、機票與住宿金額。": "AIB fees, NSTC daily allowance, flights, and accommodation amounts.",
-  "文件清單": "Document Links",
-  "接受函、邀請函、收據、ETA 與常用連結。": "Acceptance letters, invitation letter, receipts, ETA, and useful links.",
-  "我的發表與會議重點": "Presentations & Conference Notes",
-  "AIB 2026 會議期間為 2026/06/29-2026/07/03，主辦地在 Manchester。你目前已有 Competitive Presentation 與 Interactive Presentation 的接受通知，邀請函也已下載。": "AIB 2026 runs from 29 June to 3 July 2026 in Manchester. Competitive Presentation and Interactive Presentation acceptances are confirmed, and the invitation letter has been downloaded.",
-  "正式題名、作者與場次時間以 AIB 系統最後公布議程為準。": "Final titles, authors, and session times should follow the final AIB program.",
-  "已接受，可作為會議發表證明。": "Accepted and usable as presentation proof.",
-  "已接受發表": "Accepted Work",
-  "Competitive Presentation：已接受，可作為會議發表證明。": "Competitive Presentation: accepted and usable as presentation proof.",
-  "Interactive Presentation：已接受，可作為會議發表證明。": "Interactive Presentation: accepted and usable as presentation proof.",
-  "正式題名、作者與場次時間：以 AIB 系統最後公布議程為準。": "Final title, authors, and session time should follow the final AIB program.",
-  "這篇研究探討新興科技公司如何在制度模糊、監管分散與大眾信任不足的環境中，先建立合法性，再推動主流採用。文章以 cryptocurrency 與 blockchain ventures 為脈絡，說明企業如何透過 regulatory alignment、institutional bridging 與 ecosystem orchestration，把具爭議的新科技轉化為可被市場與制度接受的發展路徑。": "This paper examines how emerging technology firms build legitimacy before mainstream adoption under institutional ambiguity, fragmented regulation, and public skepticism. Using cryptocurrency and blockchain ventures as the context, it explains how regulatory alignment, institutional bridging, and ecosystem orchestration help transform contested technologies into market- and institutionally accepted pathways.",
-  "這篇研究分析早期科技新創如何透過技術揭露向投資人傳遞能力與可信度。文章使用 Gartner Hype Cycle 加權的技術揭露指標與 Heckman two-stage framework，區分投資人的初始篩選與後續資金配置，說明何時技術敘事能成為有效訊號，而不是市場噪音。": "This paper analyzes how early-stage technology startups use technical disclosure to signal capability and credibility to investors. It develops a Gartner Hype Cycle-weighted disclosure measure and applies a Heckman two-stage framework to distinguish initial investor screening from later capital allocation, clarifying when technology narratives function as meaningful signals rather than market noise.",
-  "會議節奏": "Conference Rhythm",
-  "Research and Policy Dialogue，下午/晚上接 Opening Plenary 與 Reception": "Research and Policy Dialogue, followed by Opening Plenary and Reception",
-  "照片來源": "Photo Source",
-  "航班與轉機": "Flights & Transfers",
-  "航班、火車與市內交通": "Flights, Trains & Local Transit",
-  "去程經法蘭克福抵達曼徹斯特，7/4 從 Manchester 前往 London，最後再回 Manchester 搭機返台。": "Arrive in Manchester via Frankfurt, travel from Manchester to London on 4 July, then return to Manchester for the flight home.",
-  "去程經法蘭克福抵達曼徹斯特，回程從曼徹斯特經倫敦希斯洛返台。": "Outbound flight transfers in Frankfurt to Manchester; return flight departs Manchester via London Heathrow to Taipei.",
-  "去程": "Outbound",
-  "回程": "Return",
-  "台北桃園 T1": "Taipei Taoyuan T1",
-  "法蘭克福 T3": "Frankfurt T3",
-  "法蘭克福 T1": "Frankfurt T1",
-  "曼徹斯特 T2": "Manchester T2",
-  "倫敦希斯洛 T5": "London Heathrow T5",
-  "倫敦希斯洛 T3": "London Heathrow T3",
-  "機票報帳": "Flight Reimbursement",
-  "總額 NT$92,439 / £2,176 / US$2,885。票面價 NT$76,447 / £1,800 / US$2,386；稅金與航空公司附加費另列在票價明細截圖。": "Total NT$92,439 / £2,176 / US$2,885. Base fare NT$76,447 / £1,800 / US$2,386; taxes and carrier-imposed fees are shown separately in the fare screenshot.",
-  "轉機提醒": "Transfer Note",
-  "去程 FRA 轉機 3 小時，回程 LHR 轉機 1 小時 55 分。回程為 MAN 起飛，後續旅遊若去倫敦，仍要留意不要跳過 MAN-LHR 航段。": "Outbound FRA transfer is 3 hours; return LHR transfer is 1 hour 55 minutes. The return starts from MAN, so do not skip the MAN-LHR sector even if the post-conference trip is in London.",
-  "Manchester ↔ London 火車": "Manchester ↔ London Train",
-  "7/4 從 Manchester 前往 London，7/10 晚上或 7/11 一早回 Manchester。主要路線是 Avanti West Coast 直達車：Manchester Piccadilly ↔ London Euston。": "Travel from Manchester to London on 4 July, then return to Manchester on the evening of 10 July or early 11 July. The main route is Avanti West Coast direct: Manchester Piccadilly ↔ London Euston.",
-  "建議搭法": "Recommended Plan",
-  "7/4 去程": "4 July Outbound",
-  "Manchester Piccadilly → London Euston，建議 10:00-12:00 之間出發，約 2 小時 15 分抵達。到倫敦後先寄放行李，再排 Westminster / Big Ben / London Eye。": "Manchester Piccadilly → London Euston, ideally departing between 10:00 and 12:00, with a journey time of about 2h15m. Store luggage first, then visit Westminster / Big Ben / London Eye.",
-  "7/10 回程": "10 July Return",
-  "London Euston → Manchester Piccadilly，建議傍晚或晚上回 Manchester 住一晚。這樣 7/11 去 Manchester Airport 搭 18:10 航班最安心。": "London Euston → Manchester Piccadilly, ideally returning in the evening and staying one night in Manchester. This gives the safest buffer for the 18:10 flight from Manchester Airport on 11 July.",
-  "票價估算": "Fare Estimate",
-  "每人單程，最便宜但綁定指定班次；越早買越划算。": "Per person one-way, cheapest but tied to a specific train; earlier booking is usually better.",
-  "每人單程，彈性較高，適合不想被班次綁死。": "Per person one-way, more flexible and suitable if you do not want to be tied to one train.",
-  "每人單程，最彈性但價格最高，不建議作為首選。": "Per person one-way, most flexible but the most expensive, so not the first choice.",
-  "來回預算抓法": "Round-Trip Budget",
-  "每人來回 Advance：抓 NT$2,846 / £67 / US$89 起；兩人來回抓 NT$5,692 / £134 / US$178 起。": "Per person round-trip Advance: from NT$2,846 / £67 / US$89; two people from NT$5,692 / £134 / US$178.",
-  "每人來回 Off-Peak：約 NT$6,627-6,797 / £156-£160 / US$207-212；兩人約 NT$13,254-13,594 / £312-£320 / US$414-424。": "Per person round-trip Off-Peak: about NT$6,627-6,797 / £156-£160 / US$207-212; two people about NT$13,254-13,594 / £312-£320 / US$414-424.",
-  "若買 Two Together Railcard：Railcard NT$1,487 / £35 / US$46，兩人一起搭可省 1/3，週末全天可用、平日 09:30 後可用。": "With a Two Together Railcard: NT$1,487 / £35 / US$46. Two passengers traveling together can save 1/3; valid all day on weekends and after 09:30 on weekdays.",
-  "7/4 是週六、7/10 是週五；7/10 若用 Railcard，建議選 09:30 後的車。": "4 July is Saturday and 10 July is Friday; if using the Railcard on 10 July, choose trains after 09:30.",
-  "訂票提醒": "Booking Note",
-  "Advance ticket 通常 12 週前開賣，單程票、指定班次、不可退票，但可在出發前改票並可能收 NT$425 / £10 / US$13 手續費加價差。建議直接用 Avanti 或 National Rail 查價與購票，避免第三方手續費。": "Advance tickets usually open about 12 weeks ahead. They are one-way, train-specific, and non-refundable, but can usually be changed before departure with a possible NT$425 / £10 / US$13 fee plus fare difference. Book directly with Avanti or National Rail to avoid third-party fees.",
-  "倫敦與曼徹斯特市內交通": "London & Manchester Local Transit",
-  "以公開票價與官方規則整理，保留行程需要的資訊，不放個人付款、帳號、訂位或憑證細節。": "Organized from public fare rules only, with no personal payment, account, booking, or receipt details.",
-  "市中心與多數景點一天最高扣到這個金額；單程範例約 NT$153 / £3.60 / US$4.80 peak、NT$132 / £3.10 / US$4.10 off-peak。": "Most central London sightseeing is capped at this daily amount; example single fare is about NT$153 / £3.60 / US$4.80 peak and NT$132 / £3.10 / US$4.10 off-peak.",
-  "含 Greenwich / Cutty Sark 這類稍外圍行程時，可用這個日上限估算。": "Use this daily cap for slightly outer trips such as Greenwich / Cutty Sark.",
-  "若有 Heathrow 或更外圍移動，用這個上限抓預算；Heathrow Express 不含在 TfL cap 內。": "Use this cap for Heathrow or outer-zone travel; Heathrow Express is not included in the TfL cap.",
-  "建議用同一張 contactless 卡、Apple Pay / Google Pay 或 Oyster，全程同一個媒介進出站。": "Use one contactless card, Apple Pay / Google Pay, or Oyster consistently for all taps.",
-  "Tube / DLR / Elizabeth line 要 touch in + touch out；公車只要上車 touch in。": "Tube / DLR / Elizabeth line require touch in and touch out; buses only require touch in.",
-  "倫敦旅遊段大多落在 Zone 1-2；Greenwich 多抓 Zone 1-3，比買 Day Travelcard 更直覺。": "Most London sightseeing falls in Zones 1-2; estimate Zone 1-3 for Greenwich, which is usually simpler than buying a Day Travelcard.",
-  "INNSiDE Manchester 周邊以 Deansgate-Castlefield / St Peter's Square 一帶最方便。": "Around INNSiDE Manchester, Deansgate-Castlefield / St Peter's Square are the most convenient stops.",
-  "Manchester Airport 在 Zone 4，進市區需涵蓋所有經過的 zones。": "Manchester Airport is in Zone 4; travel to the city requires all zones passed through.",
-  "Metrolink 一日票 all zones：anytime NT$302 / £7.10 / US$9.40；off-peak NT$208 / £4.90 / US$6.50。": "Metrolink all-zones day ticket: anytime NT$302 / £7.10 / US$9.40; off-peak NT$208 / £4.90 / US$6.50.",
-  "搭 Metrolink 可用 contactless 在月台讀卡機 touch in / touch out，系統會算單程、日上限或週上限。": "For Metrolink, use contactless at platform readers to touch in and touch out; the system calculates single fares and daily/weekly caps.",
-  "若只在市中心短程移動，Zone 1 一日票 anytime NT$115 / £2.70 / US$3.60；off-peak NT$81 / £1.90 / US$2.50；若會搭到機場或跨區，改抓 all zones。": "For short city-centre trips only, Zone 1 day tickets are anytime NT$115 / £2.70 / US$3.60 and off-peak NT$81 / £1.90 / US$2.50; use all-zones if going to the airport or crossing zones.",
-  "電車上不能買票；搭車前要先買好票或成功 touch in，避免罰款。": "You cannot buy tickets on the tram; buy before boarding or touch in successfully to avoid penalties.",
-  "基本資訊": "Key Details",
-  "入住": "Check-in",
-  "退房": "Check-out",
-  "2026/06/30 15:00 後": "After 15:00, 2026/06/30",
-  "2026/07/05 12:00 前": "Before 12:00, 2026/07/05",
-  "5 晚，Twin Bed，2 人": "5 nights, twin beds, 2 guests",
-  "地址": "Address",
-  "電話": "Phone",
-  "價格與政策": "Cost & Policy",
-  "房價總額：NT$38,270 / GBP 900.90 / US$1,194，已含 20% 稅。": "Total room rate: NT$38,270 / GBP 900.90 / US$1,194, including 20% tax.",
-  "平均每晚：約 NT$7,646 / GBP 180 / US$239。": "Average per night: about NT$7,646 / GBP 180 / US$239.",
-  "當地旅遊稅：NT$51 / GBP 1.20 / US$1.60 每房每晚，5 晚約 NT$255 / GBP 6 / US$8，現場付。": "Local visitor charge: NT$51 / GBP 1.20 / US$1.60 per room per night; about NT$255 / GBP 6 / US$8 for 5 nights, paid locally.",
-  "6/29 15:00 前取消免費；之後取消或 no-show 可能收 1 晚房費。": "Free cancellation before 15:00 on 29 June; later cancellation or no-show may charge 1 night's room rate.",
-  "入住需押金，可刷卡或金融卡。": "A deposit is required at check-in by credit/debit card.",
-  "倫敦住宿尚未定": "London Stay Pending",
-  "如果 7/4 就前往倫敦，INNSiDE Manchester 的 7/4 晚可能需要確認是否保留或調整。倫敦住宿建議找 Covent Garden、Bloomsbury、South Kensington、Paddington 或 King's Cross 附近。": "If moving to London on 4 July, confirm whether the 4 July night at INNSiDE Manchester should be kept or adjusted. For London, consider Covent Garden, Bloomsbury, South Kensington, Paddington, or King's Cross.",
-  "7/4 起倫敦旅遊行程": "London Itinerary From 4 July",
-  "前段留給 AIB 研討會，後段把倫敦景點依區域排開。回程票是 7/11 從 Manchester 起飛。": "Keep the first part for AIB, then group London sights by area. The return flight departs Manchester on 11 July.",
-  "前段留給 AIB 研討會，後段把倫敦景點依區域排開。回程票是 7/11 從 Manchester 起飛，建議 7/10 晚上或 7/11 一早回 Manchester。": "Keep the first part for AIB, then group London sights by area. The return flight departs Manchester on 11 July, so return to Manchester on the evening of 10 July or early 11 July.",
-  "6/29-6/30 出發與抵達": "6/29-6/30 Departure & Arrival",
-  "7/1-7/3 AIB 主會議": "7/1-7/3 AIB Main Conference",
-  "7/4 前往倫敦": "7/4 To London",
-  "7/5 大英博物館": "7/5 British Museum",
-  "7/6 格林威治": "7/6 Greenwich",
-  "7/7 西敏寺與倫敦塔": "7/7 Westminster & Tower",
-  "7/8 南肯辛頓": "7/8 South Kensington",
-  "7/9 購物與劇院": "7/9 Shopping & Theatre",
-  "7/10 緩衝回曼城": "7/10 Return Buffer",
-  "7/11-7/12 回程": "7/11-7/12 Return",
-  "台北出發，抵達 Manchester 後先穩定節奏": "Depart Taipei and settle into Manchester",
-  "6/30 10:40 抵達 MAN，建議直接進城、寄放行李、午餐與輕鬆散步。15:00 後入住 INNSiDE Manchester，晚上不要排太滿，留體力給 7/1 後的會議。": "Arrive at MAN at 10:40 on 30 June. Go into the city, store luggage, have lunch, and keep the day light. Check in at INNSiDE Manchester after 15:00 and keep the evening easy for the conference days.",
-  "會議核心日": "Core Conference Days",
-  "7/1-7/3 以 AIB 主會議、發表、networking、晚間 reception 為主。每天早上保留 30 分鐘交通緩衝，晚上只排近距離餐廳。": "1-3 July are for AIB main sessions, presentations, networking, and evening receptions. Keep a 30-minute transport buffer each morning and choose nearby restaurants at night.",
-  "Manchester → London，先用夜景進入倫敦": "Manchester → London, start with the night views",
-  "上午從 Manchester Piccadilly 搭 Avanti West Coast 到 London Euston，直達約 2 小時 15 分。先寄放行李或入住，下午排 Westminster 周邊散步：Big Ben、大笨鐘、Westminster Bridge、London Eye 外觀。晚上可去 Regent Street / Oxford Street，順路逛 Selfridges 的 Jellycat，或把 Harrods 留到南肯辛頓那天。": "Take Avanti West Coast from Manchester Piccadilly to London Euston in the morning, about 2h15m direct. Store luggage or check in, then walk around Westminster, Big Ben, Westminster Bridge, and the London Eye exterior. In the evening, go to Regent Street / Oxford Street and Selfridges Jellycat, or save Harrods for South Kensington day.",
-  "大英博物館 + Tottenham Court Road + Chinatown": "British Museum + Tottenham Court Road + Chinatown",
-  "白天以 British Museum 為主，從 Tottenham Court Road 或 Holborn 進出都方便。下午可接 Covent Garden、Soho、Oxford Street，晚上安排 Chinatown 或附近餐廳。這天適合把購物清單先看一輪，不要排太多遠距離移動。": "Focus on the British Museum by day, with convenient access via Tottenham Court Road or Holborn. Add Covent Garden, Soho, or Oxford Street in the afternoon, then Chinatown or nearby dinner at night. Keep the day compact.",
-  "格林威治一日：天文台、Cutty Sark、河岸": "Greenwich Day: Observatory, Cutty Sark, Riverside",
-  "白天安排 Greenwich：Royal Observatory、Prime Meridian、Cutty Sark、Greenwich Market 與河岸散步。天氣好可加 IFS Cloud Cable Car。晚上回市中心，可安排 Leadenhall Market 晚餐，再去 Fortnum & Mason 買茶與伴手禮。": "Spend the day in Greenwich: Royal Observatory, Prime Meridian, Cutty Sark, Greenwich Market, and the riverside. If weather is good, add IFS Cloud Cable Car. Return to central London for Leadenhall Market dinner and Fortnum & Mason shopping.",
-  "白金漢宮、西敏寺、聖保羅、倫敦塔": "Buckingham Palace, Westminster, St Paul's, Tower",
-  "上午從 Buckingham Palace、St James's Park、Westminster Abbey 開始。下午可排 St Paul's Cathedral，再到 Tower of London / Tower Bridge。傍晚視天氣與體力決定是否搭 London Eye，看夕陽或夜景最漂亮。": "Start with Buckingham Palace, St James's Park, and Westminster Abbey. In the afternoon, visit St Paul's Cathedral and Tower of London / Tower Bridge. Decide on the London Eye near sunset depending on weather and energy.",
-  "Natural History Museum + ICL + Harrods": "Natural History Museum + ICL + Harrods",
-  "白天排 South Kensington：Natural History Museum、Victoria and Albert Museum 可二選一或視體力加排，順路逛 Imperial College London 周邊。下午接 Hyde Park / Kensington Gardens，晚上去 Harrods，Jellycat、伴手禮與百貨都可以一起處理。": "Spend the day in South Kensington: Natural History Museum, optionally Victoria and Albert Museum, and the Imperial College London area. Add Hyde Park / Kensington Gardens, then Harrods in the evening for Jellycat, gifts, and department store shopping.",
-  "購物、街區與劇院緩衝日": "Shopping, Neighborhoods & Theatre Buffer",
-  "這天保留彈性：想購物可排 Oxford Street、Regent Street、Liberty、Selfridges；想拍照可排 Notting Hill 或 Covent Garden；晚上可以看 West End musical。這天也適合補買 Fortnum & Mason、Harrods 或 Boots 清單。": "Keep this day flexible: Oxford Street, Regent Street, Liberty, and Selfridges for shopping; Notting Hill or Covent Garden for photos; a West End musical at night. Also useful for Fortnum & Mason, Harrods, or Boots shopping.",
-  "倫敦最後整理，晚上或隔天一早回 Manchester": "Final London errands, then return to Manchester",
-  "上午留給未完成的景點或購物，下午整理行李。因為 7/11 18:10 是從 Manchester 起飛，最穩是 7/10 晚上從 London Euston 搭火車回 Manchester Piccadilly 住一晚；如果想多留倫敦，7/11 早上回 Manchester 也要抓很大的延誤緩衝。": "Use the morning for unfinished sights or shopping, then pack in the afternoon. Because the 18:10 flight on 11 July departs Manchester, the safest plan is to return from London Euston to Manchester Piccadilly on 10 July and stay overnight. If staying in London longer, allow a large delay buffer on 11 July.",
-  "Manchester → London Heathrow → Taipei": "Manchester → London Heathrow → Taipei",
-  "7/11 18:10 從 Manchester 機場出發，19:15 抵達 London Heathrow，再接 21:10 CI 82 回台北。7/12 18:05 抵達台北桃園。": "Depart Manchester Airport at 18:10 on 11 July, arrive London Heathrow at 19:15, then take CI 82 at 21:10 to Taipei. Arrive Taipei Taoyuan at 18:05 on 12 July.",
-  "AIB 費用與報帳整理": "AIB Budget & Reimbursement",
-  "把金額、用途與憑證放在同一張表，之後申請補助或報帳時比較快核對。": "Keep amounts, purpose, and supporting documents in one table for easier funding and reimbursement checks.",
-  "匯率估算": "Exchange Estimate",
-  "USD 1 ≈ NT$32.04；GBP 1 ≈ NT$42.48；GBP 1 ≈ US$1.33。實際報帳仍以學校核定匯率、刷卡入帳或承辦規定為準。": "USD 1 ≈ NT$32.04; GBP 1 ≈ NT$42.48; GBP 1 ≈ US$1.33. Final reimbursement should follow the university-approved rate, card settlement, or administrative rules.",
-  "項目": "Item",
-  "金額": "Amount",
-  "用途": "Purpose",
-  "憑證": "Proof",
-  "國際機票": "International flights",
-  "機票付款明細截圖": "Flight payment screenshot",
-  "AIB 會員費用": "AIB membership fee",
-  "國科會日支生活費（Manchester）": "NSTC daily allowance (Manchester)",
-  "115 年日支表：英國 Manchester 未單列，適用 United Kingdom Other": "2026 daily allowance table: Manchester is not listed separately, so United Kingdom Other applies.",
-  "依學校與國科會核定日數報支": "Reimburse according to approved days and university/NSTC rules.",
-  "INNSiDE Manchester，5 晚，已含 20% 稅": "INNSiDE Manchester, 5 nights, including 20% tax",
-  "訂房確認信": "Booking confirmation",
-  "每人約 NT$2,846 / GBP 67 / US$89 起": "From about NT$2,846 / GBP 67 / US$89 per person",
-  "7/4 去倫敦、7/10 或 7/11 回曼徹斯特": "London on 4 July; return to Manchester on 10 or 11 July",
-  "訂票後補上 e-ticket / receipt": "Add e-ticket / receipt after booking",
-  "倫敦住宿": "London accommodation",
-  "待定": "Pending",
-  "7/4 起倫敦旅遊段，住宿尚未定": "London travel segment from 4 July; accommodation pending",
-  "訂房後補上 confirmation / invoice": "Add confirmation / invoice after booking",
-  "約 NT$255 / GBP 6 / US$8": "About NT$255 / GBP 6 / US$8",
-  "NT$51 / GBP 1.20 / US$1.60 每房每晚，現場付": "NT$51 / GBP 1.20 / US$1.60 per room per night, paid locally",
-  "會議付款明細": "Conference Payment",
-  "Conference Fee NT$10,413 / GBP 245 / US$325；Doctoral Travel Stipend Donation NT$0 / GBP 0 / US$0；General AIB Donation NT$0 / GBP 0 / US$0；Total Payment NT$10,413 / GBP 245 / US$325；Payment Type: Credit Card Online。": "Conference Fee NT$10,413 / GBP 245 / US$325; Doctoral Travel Stipend Donation NT$0 / GBP 0 / US$0; General AIB Donation NT$0 / GBP 0 / US$0; Total Payment NT$10,413 / GBP 245 / US$325; Payment Type: Credit Card Online.",
-  "國科會日支費": "NSTC Daily Allowance",
-  "2026 適用 115 年新版日支表。英國 London 為 NT$16,340 / GBP 385 / US$510 每日，其他地區為 NT$10,381 / GBP 244 / US$324 每日；AIB 研討會在 Manchester，故以 NT$10,381 / GBP 244 / US$324 每日編列。實際可報天數仍以核定與學校承辦規定為準。": "The 2026 table applies. London is NT$16,340 / GBP 385 / US$510 per day; other UK areas are NT$10,381 / GBP 244 / US$324 per day. Since AIB is in Manchester, use NT$10,381 / GBP 244 / US$324 per day. Actual reimbursable days follow approval and university rules.",
-  "報帳包建議順序": "Suggested Reimbursement Packet",
-  "接受函 2 份、邀請函、會議費收據、AIB 會員費收據、機票行程與付款明細、飯店訂房確認、入住後正式發票。": "Two acceptance letters, invitation letter, conference fee receipt, AIB membership receipt, flight itinerary and payment details, hotel booking confirmation, and final hotel invoice after stay.",
-  "常用連結": "Useful Links",
-  "只放公開官方連結，不放個人收據、訂位編號、email 或付款資訊。": "Only public official links are included, with no personal receipts, booking numbers, emails, or payment details.",
-  "AIB 2026 官網": "AIB 2026 Website",
-  "會議時程": "Program",
-  "AIB 註冊": "AIB Registration",
-  "TfL 2026 票價": "TfL 2026 Fares",
-  "Metrolink 一日票": "Metrolink Day Ticket",
-  "臺灣銀行匯率": "Bank of Taiwan FX Rates",
-  "115 年國外日支表": "2026 Daily Allowance Table",
-  "AIB 2026 Manchester 英國研討會旅遊手冊": "AIB 2026 Manchester UK Travel Handbook",
-  "回到總覽": "Back to Overview"
+const statusLabels = {
+  confirmed: { zh: "已確認", en: "Confirmed" },
+  pending: { zh: "待確認", en: "Pending" },
+  book: { zh: "待預訂", en: "To book" },
+  reimburse: { zh: "待報帳", en: "To reimburse" },
+  optional: { zh: "可選", en: "Optional" },
+  alert: { zh: "需處理", en: "Action needed" }
 };
 
-function updateProgress() {
-  if (!progress) return;
+const money = {
+  flight: "NT$92,439 / GBP 2,176 / US$2,885",
+  conference: "NT$10,413 / GBP 245 / US$325",
+  membership: "NT$1,282 / GBP 30 / US$40",
+  hotel: "NT$38,270 / GBP 900.90 / US$1,194",
+  visitorCharge: "約 NT$255 / GBP 6 / US$8",
+  manchesterDaily: "NT$10,381 / GBP 244 / US$324 / day",
+  londonDaily: "NT$16,340 / GBP 385 / US$510 / day",
+  trainAdvance: "每人來回 from NT$2,846 / GBP 67 / US$89",
+  railcard: "NT$1,487 / GBP 35 / US$46"
+};
 
-  const scrollTop = window.scrollY;
-  const height = document.documentElement.scrollHeight - window.innerHeight;
-  const percent = height > 0 ? (scrollTop / height) * 100 : 0;
-  progress.style.width = `${percent}%`;
+const tripData = {
+  lastUpdated: "2026-04-17 06:10",
+  hero: {
+    home: {
+      kicker: "Travel Handbook",
+      title: { zh: "AIB 2026 Manchester\n英國研討會旅遊手冊", en: "AIB 2026 Manchester\nUK Travel Handbook" },
+      lead: {
+        zh: "把會議、航班、住宿、倫敦行程、交通與報帳資料整理成一份可分享的 travel dashboard。私人憑證不放上網，公開頁面只保留可用於規劃與核對的資訊。",
+        en: "A shareable travel dashboard for the conference, flights, accommodation, London itinerary, transport, and reimbursement notes. Private proofs stay offline; this site keeps planning-ready information."
+      }
+    },
+    conference: {
+      kicker: "Conference",
+      title: { zh: "AIB 發表與會議安排", en: "AIB Presentations & Conference Plan" },
+      lead: { zh: "AIB 2026 Manchester 會議期間為 2026/06/29-2026/07/03。已收到 Competitive Presentation 與 Interactive Presentation 接受通知。", en: "AIB 2026 Manchester runs from 29 June to 3 July 2026. Competitive and Interactive Presentation acceptances are confirmed." }
+    },
+    transport: {
+      kicker: "Transport",
+      title: { zh: "航班、火車與市內交通", en: "Flights, Trains & Local Transit" },
+      lead: { zh: "去程 TPE-FRA-MAN，7/4 移動到倫敦，回程仍由 Manchester 起飛，經 Heathrow 返台。", en: "Outbound route is TPE-FRA-MAN. Move to London on 4 July, then return to Manchester for the flight home via Heathrow." }
+    },
+    stay: {
+      kicker: "Accommodation",
+      title: { zh: "住宿與城市切換", en: "Accommodation & City Split" },
+      lead: { zh: "Manchester 會議住宿已訂；London 7/4 起尚未定。需要處理 7/4 當晚是否保留 Manchester 房間的衝突。", en: "Manchester conference hotel is booked; London stay from 4 July is pending. The 4 July Manchester/London overlap needs a decision." }
+    },
+    itinerary: {
+      kicker: "Itinerary",
+      title: { zh: "每日行程 Dashboard", en: "Daily Itinerary Dashboard" },
+      lead: { zh: "每日拆成 Must-do、Optional、Notes，方便手機上直接照著走，也保留彈性。", en: "Each day is split into Must-do, Optional, and Notes so the plan is executable on mobile while staying flexible." }
+    },
+    budget: {
+      kicker: "Reimbursement",
+      title: { zh: "費用與報帳 Dashboard", en: "Budget & Reimbursement Dashboard" },
+      lead: { zh: "所有金額同時列出新台幣、英鎊、美元；狀態與憑證分開標示，方便申請補助與報帳。", en: "Amounts are shown in TWD, GBP, and USD, with status and proof separated for easier reimbursement." }
+    },
+    documents: {
+      kicker: "Official Links",
+      title: { zh: "文件與官方連結", en: "Documents & Official Links" },
+      lead: { zh: "只放公開官方連結與文件類型提醒，不揭露訂位編號、付款資訊、email 或私人收據內容。", en: "Only public official links and document reminders are listed. Booking numbers, payment details, emails, and private receipt contents are excluded." }
+    }
+  },
+  summaryCards: [
+    { status: "confirmed", title: { zh: "AIB conference dates", en: "AIB conference dates" }, value: "2026/06/29 - 2026/07/03", note: { zh: "主會議集中在 7/1-7/3，前段留給發表、networking 與報帳資料整理。", en: "Main conference activity is concentrated on 1-3 July, with presentations, networking, and reimbursement proofs." } },
+    { status: "confirmed", title: { zh: "UK travel dates", en: "UK travel dates" }, value: "2026/06/29 - 2026/07/12", note: { zh: "6/30 抵達 Manchester，7/11 從 Manchester 起飛，7/12 抵達台北。", en: "Arrive Manchester on 30 June, depart Manchester on 11 July, arrive Taipei on 12 July." } },
+    { status: "confirmed", title: { zh: "Manchester hotel status", en: "Manchester hotel status" }, value: "INNSiDE Manchester", note: { zh: "6/30-7/5 已訂，Twin Bed，2 人，房價 GBP 900.90。", en: "Booked for 30 June-5 July, twin beds for two guests, GBP 900.90." } },
+    { status: "book", title: { zh: "London arrangement status", en: "London arrangement status" }, value: "7/4 起待預訂", note: { zh: "建議優先找 Euston / King's Cross / Bloomsbury / South Kensington 一帶。", en: "Prioritize Euston, King's Cross, Bloomsbury, or South Kensington." } }
+  ],
+  todos: [
+    { status: "alert", text: { zh: "決定 7/4 晚上是否保留 INNSiDE Manchester，避免與倫敦住宿重疊。", en: "Decide whether to keep the 4 July night at INNSiDE Manchester to avoid overlap with London." } },
+    { status: "book", text: { zh: "預訂倫敦 7/4 起住宿，並補上 confirmation / invoice。", en: "Book London accommodation from 4 July and add confirmation/invoice." } },
+    { status: "book", text: { zh: "購買 Manchester Piccadilly ↔ London Euston 火車票；若兩人同行可評估 Two Together Railcard。", en: "Book Manchester Piccadilly ↔ London Euston trains; consider Two Together Railcard if two people travel together." } },
+    { status: "reimburse", text: { zh: "報帳包整理：接受函、邀請函、AIB 收據、會員費、機票付款明細、住宿確認。", en: "Prepare reimbursement packet: acceptance letters, invitation, AIB receipts, membership fee, flight payment details, hotel confirmation." } },
+    { status: "pending", text: { zh: "等 AIB final program 公布後補上正式場次時間。", en: "Add final session times after AIB publishes the final program." } }
+  ],
+  alerts: [
+    {
+      title: { zh: "Manchester / London 住宿日期可能重疊", en: "Manchester / London stay may overlap" },
+      body: { zh: "INNSiDE Manchester 目前訂到 7/5 退房，但旅行規劃是 7/4 前往 London。若 7/4 晚上住倫敦，請確認是否修改 Manchester 訂房或接受重疊一晚作為行李與會議緩衝。", en: "INNSiDE Manchester is booked until 5 July, while the travel plan moves to London on 4 July. If staying in London on 4 July, decide whether to modify the Manchester booking or keep one overlapping night as buffer." }
+    }
+  ],
+  paperSummaries: [
+    {
+      status: "confirmed",
+      type: "Competitive / paper summary",
+      title: "Legitimacy-First Innovation: How Emerging Technology Firms Construct Mainstream Pathways under Institutional Ambiguity",
+      summary: { zh: "這篇研究探討新興科技公司如何在制度模糊、監管分散與大眾信任不足的環境中，先建立合法性，再推動主流採用。文章以 cryptocurrency 與 blockchain ventures 為脈絡，說明企業如何透過 regulatory alignment、institutional bridging 與 ecosystem orchestration，把具爭議的新科技轉化為可被市場與制度接受的發展路徑。", en: "This paper examines how emerging technology firms build legitimacy before mainstream adoption under institutional ambiguity, fragmented regulation, and public skepticism. Using cryptocurrency and blockchain ventures as the context, it explains how regulatory alignment, institutional bridging, and ecosystem orchestration help turn contested technologies into accepted market pathways." }
+    },
+    {
+      status: "confirmed",
+      type: "Interactive / paper summary",
+      title: "Signal or Noise? Maturity-Adjusted Technical Disclosure and Multi-Stage Startup Funding Decisions",
+      summary: { zh: "這篇研究分析早期科技新創如何透過技術揭露向投資人傳遞能力與可信度。文章使用 Gartner Hype Cycle 加權的技術揭露指標與 Heckman two-stage framework，區分投資人的初始篩選與後續資金配置，說明何時技術敘事能成為有效訊號，而不是市場噪音。", en: "This paper analyzes how early-stage technology startups use technical disclosure to signal capability and credibility to investors. It develops a Gartner Hype Cycle-weighted disclosure measure and uses a Heckman two-stage framework to distinguish initial investor screening from later capital allocation." }
+    }
+  ],
+  flights: [
+    { label: { zh: "去程", en: "Outbound" }, date: "2026/06/29 - 06/30", legs: [{ from: "TPE", to: "FRA", flight: "CI 61", time: "22:40 → 06:50", duration: "14h 30m", detail: { zh: "台北桃園 T1 → 法蘭克福 T3", en: "Taipei Taoyuan T1 → Frankfurt T3" } }, { from: "FRA", to: "MAN", flight: "LH 4210", time: "09:50 → 10:40", duration: "1h 50m", detail: { zh: "法蘭克福 T1 → 曼徹斯特 T2", en: "Frankfurt T1 → Manchester T2" } }] },
+    { label: { zh: "回程", en: "Return" }, date: "2026/07/11 - 07/12", legs: [{ from: "MAN", to: "LHR", flight: "BA 1371", time: "18:10 → 19:15", duration: "1h 05m", detail: { zh: "曼徹斯特 T2 → 倫敦希斯洛 T5", en: "Manchester T2 → London Heathrow T5" } }, { from: "LHR", to: "TPE", flight: "CI 82", time: "21:10 → 18:05", duration: "13h 55m", detail: { zh: "倫敦希斯洛 T3 → 台北桃園 T1", en: "London Heathrow T3 → Taipei Taoyuan T1" } }] }
+  ],
+  trainFares: [
+    { status: "book", item: "Advance", amount: "from NT$1,423 / GBP 33.50 / US$44 one-way", note: { zh: "最便宜但綁定指定班次；越早買越划算。", en: "Cheapest, train-specific, and best bought early." } },
+    { status: "optional", item: "Off-Peak", amount: "NT$3,228-3,398 / GBP 76-80 / US$101-106 one-way", note: { zh: "彈性較高，適合不想被指定班次綁死。", en: "More flexible if you do not want to be tied to a single service." } },
+    { status: "optional", item: "Two Together Railcard", amount: money.railcard, note: { zh: "兩人同行可省 1/3；週末全天、平日 09:30 後可用。", en: "Two people traveling together can save 1/3; valid all day weekends and after 09:30 weekdays." } }
+  ],
+  localTransit: [
+    { city: "London", items: ["Zones 1-2 cap: NT$378 / GBP 8.90 / US$12", "Zones 1-3 cap: NT$446 / GBP 10.50 / US$14", "Zones 1-6 cap: NT$692 / GBP 16.30 / US$22", "Use the same contactless card / Apple Pay / Google Pay / Oyster for all taps."] },
+    { city: "Manchester", items: ["INNSiDE Manchester: Deansgate-Castlefield / St Peter's Square nearby.", "Airport is Zone 4; use all zones for airport-city trips.", "All-zones day ticket: NT$302 / GBP 7.10 / US$9.40 anytime; NT$208 / GBP 4.90 / US$6.50 off-peak.", "Buy or touch in before boarding Metrolink; no onboard purchase."] }
+  ],
+  stay: [
+    { status: "confirmed", title: "INNSiDE Manchester", facts: ["Check-in: 2026/06/30 after 15:00", "Check-out: 2026/07/05 before 12:00", "Twin Bed, 2 guests, 5 nights", "1 First Street, Manchester", "+44 161 200 2500"], note: { zh: "房價總額 GBP 900.90，已含 20% 稅；旅遊稅 GBP 1.20 / 房 / 晚現場付。", en: "Total GBP 900.90 including 20% tax; local visitor charge GBP 1.20 per room per night is paid locally." } },
+    { status: "book", title: "London accommodation", facts: ["From 2026/07/04", "Area ideas: Euston, King's Cross, Bloomsbury, South Kensington, Paddington"], note: { zh: "尚未預訂。優先選擇可快速抵達 Euston 或地鐵換乘方便的區域。", en: "Not booked yet. Prioritize areas with easy access to Euston or convenient Tube connections." } },
+    { status: "alert", title: "7/4 overlap decision", facts: ["Manchester booking covers 7/4 night", "London plan starts 7/4"], note: { zh: "需要決定是否改 Manchester 訂房、保留重疊一晚，或把倫敦住宿從 7/5 開始。", en: "Decide whether to modify Manchester booking, keep one overlapping night, or start London accommodation from 5 July." } }
+  ],
+  itinerary: [
+    { date: "6/29-6/30", title: { zh: "出發與抵達 Manchester", en: "Departure & arrival in Manchester" }, status: "confirmed", must: ["TPE 22:40 → FRA 06:50", "FRA 09:50 → MAN 10:40", "15:00 後入住 INNSiDE Manchester"], optional: ["市中心輕鬆散步", "補水、整理文件、調時差"], notes: ["晚上不要排太滿，保留體力給會議。"] },
+    { date: "7/1-7/3", title: { zh: "AIB 主會議", en: "AIB main conference" }, status: "confirmed", must: ["AIB sessions / presentation", "Networking", "每日整理報帳與會議證明"], optional: ["Opening / reception", "近距離晚餐"], notes: ["每天早上保留至少 30 分鐘交通緩衝。"] },
+    { date: "7/4", title: { zh: "Manchester → London", en: "Manchester → London" }, status: "book", must: ["Manchester Piccadilly → London Euston", "寄放行李或入住", "Westminster / Big Ben / London Eye 外觀"], optional: ["Regent Street / Oxford Street", "Selfridges Jellycat"], notes: ["需先處理 Manchester 與 London 住宿是否重疊。"] },
+    { date: "7/5", title: { zh: "大英博物館與市中心", en: "British Museum & central London" }, status: "pending", must: ["British Museum", "Tottenham Court Road / Holborn", "Chinatown dinner"], optional: ["Covent Garden", "Soho", "Oxford Street"], notes: ["這天移動距離短，適合補購物清單。"] },
+    { date: "7/6", title: { zh: "格林威治一日", en: "Greenwich day" }, status: "pending", must: ["Royal Observatory", "Prime Meridian", "Cutty Sark", "Greenwich Market"], optional: ["IFS Cloud Cable Car", "Leadenhall Market", "Fortnum & Mason"], notes: ["可用倫敦 Zone 1-3 日上限估算交通。"] },
+    { date: "7/7", title: { zh: "西敏寺、倫敦塔與河岸", en: "Westminster, Tower & riverside" }, status: "pending", must: ["Buckingham Palace", "St James's Park", "Westminster Abbey", "Tower Bridge"], optional: ["St Paul's Cathedral", "Tower of London", "London Eye sunset"], notes: ["依天氣與體力調整 London Eye。"] },
+    { date: "7/8", title: { zh: "South Kensington", en: "South Kensington" }, status: "pending", must: ["Natural History Museum", "Imperial College London", "Harrods"], optional: ["Victoria and Albert Museum", "Hyde Park / Kensington Gardens"], notes: ["Harrods / Jellycat / 伴手禮可集中處理。"] },
+    { date: "7/9", title: { zh: "購物、街區與劇院緩衝", en: "Shopping, neighborhoods & theatre buffer" }, status: "optional", must: ["保留彈性"], optional: ["Liberty", "Selfridges", "Notting Hill", "Covent Garden", "West End musical"], notes: ["適合補買 Fortnum & Mason、Harrods 或 Boots。"] },
+    { date: "7/10", title: { zh: "倫敦收尾，回 Manchester", en: "Wrap London, return to Manchester" }, status: "book", must: ["整理行李", "London Euston → Manchester Piccadilly"], optional: ["上午補景點或購物"], notes: ["最穩是 7/10 晚上回 Manchester 住一晚，避免 7/11 誤機。"] },
+    { date: "7/11-7/12", title: { zh: "回程返台", en: "Return to Taipei" }, status: "confirmed", must: ["MAN 18:10 → LHR 19:15", "LHR 21:10 → TPE 18:05"], optional: ["白天只排低風險活動"], notes: ["回程不要跳過 MAN-LHR 航段。"] }
+  ],
+  expenses: [
+    { item: "International flights", amount: money.flight, currency: "TWD / GBP / USD", status: "reimburse", proof: "Flight itinerary + payment screenshot", notes: "TPE-FRA-MAN / MAN-LHR-TPE" },
+    { item: "AIB Conference Fee", amount: money.conference, currency: "TWD / GBP / USD", status: "reimburse", proof: "AIB payment receipt", notes: "Conference Fee US$325; donation US$0." },
+    { item: "AIB membership fee", amount: money.membership, currency: "TWD / GBP / USD", status: "reimburse", proof: "AIB membership receipt", notes: "AIB 40 美元收據。" },
+    { item: "NSTC daily allowance - Manchester", amount: money.manchesterDaily, currency: "TWD / GBP / USD", status: "pending", proof: "115 年國外日支表", notes: "Manchester 未單列，適用 United Kingdom Other；實際天數依核定。" },
+    { item: "INNSiDE Manchester", amount: money.hotel, currency: "TWD / GBP / USD", status: "reimburse", proof: "Booking confirmation + final invoice", notes: "5 nights, includes 20% tax." },
+    { item: "Manchester visitor charge", amount: money.visitorCharge, currency: "TWD / GBP / USD", status: "reimburse", proof: "Check-out receipt", notes: "GBP 1.20 per room per night, paid locally." },
+    { item: "Manchester ↔ London train", amount: money.trainAdvance, currency: "TWD / GBP / USD", status: "book", proof: "E-ticket / receipt after booking", notes: "7/4 outbound, 7/10 or 7/11 return." },
+    { item: "London accommodation", amount: "TBD", currency: "TWD / GBP / USD", status: "book", proof: "Confirmation / invoice after booking", notes: "From 7/4; area not decided." }
+  ],
+  links: [
+    ["AIB 2026 website", "https://www.aib.world/events/2026/"],
+    ["AIB program overview", "https://www.aib.world/events/2026/program/conference-overview/"],
+    ["AIB registration", "https://www.aib.world/events/2026/attend/registration/"],
+    ["Avanti Manchester → London", "https://www.avantiwestcoast.co.uk/travel-information/train-times/manchester-piccadilly/london-euston"],
+    ["Avanti London → Manchester", "https://www.avantiwestcoast.co.uk/travel-information/train-times/london-euston/manchester-piccadilly"],
+    ["National Rail", "https://www.nationalrail.co.uk/"],
+    ["Two Together Railcard", "https://www.nationalrail.co.uk/tickets-railcards-offers/promotions/two-together-railcard/"],
+    ["TfL adult fares PDF", "https://content.tfl.gov.uk/adult-fares.pdf"],
+    ["TfL fare capping", "https://tfl.gov.uk/fares/find-fares/capping"],
+    ["Metrolink zones", "https://tfgm.com/tickets-and-passes/fare-zones/tram"],
+    ["Metrolink day ticket", "https://tfgm.com/tickets-and-passes/tram-anytime-all-day-travelcard-adult"],
+    ["UK ETA", "https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta"],
+    ["INNSiDE Manchester", "https://www.melia.com/en/hotels/united-kingdom/manchester/innside-manchester"],
+    ["Bank of Taiwan FX rates", "https://rate.bot.com.tw/xrt?Lang=zh-TW"],
+    ["115 年國外日支表", "https://dbas.tycg.gov.tw/News_Content.aspx?n=12154&s=1591826"]
+  ]
+};
+
+const sectionNav = {
+  home: [["snapshot", "Snapshot"], ["todo", "To-do"], ["handoff", "Pages"]],
+  conference: [["accepted", "Accepted"], ["papers", "Papers"], ["rhythm", "Schedule"]],
+  transport: [["flights", "Flights"], ["train", "Train"], ["local", "Local transit"]],
+  stay: [["overview", "Overview"], ["conflict", "Conflict"], ["areas", "London areas"]],
+  itinerary: [["daily", "Daily cards"], ["return", "Return buffer"]],
+  budget: [["expenses", "Expenses"], ["totals", "Totals"], ["proofs", "Proofs"]],
+  documents: [["links", "Official links"], ["privacy", "Privacy"]]
+};
+
+const state = {
+  lang: getStoredLang()
+};
+
+function t(value) {
+  if (typeof value === "string") return value;
+  return value?.[state.lang] || value?.zh || "";
+}
+
+function statusChip(status) {
+  return `<span class="status-chip status-${status}">${t(statusLabels[status])}</span>`;
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
 }
 
 function getStoredLang() {
   try {
-    const storedLang = localStorage.getItem("aib-lang");
-    return supportedLangs.has(storedLang) ? storedLang : "zh";
+    return localStorage.getItem("aib-lang") === "en" ? "en" : "zh";
   } catch {
     return "zh";
   }
@@ -222,90 +206,406 @@ function storeLang(lang) {
   try {
     localStorage.setItem("aib-lang", lang);
   } catch {
-    // Private browsing or strict settings can block localStorage.
+    // localStorage may be unavailable in private browsing.
   }
 }
 
-function highlightCurrentPage() {
-  const page = document.body.dataset.page || "home";
+function renderChrome() {
+  const pageId = document.body.dataset.page || "home";
+  const nav = pages
+    .map((page) => {
+      const active = page.id === pageId ? ' class="active" aria-current="page"' : "";
+      return `<a href="${page.href}" data-nav="${page.id}"${active}>${t(page.label)}</a>`;
+    })
+    .join("");
 
-  navLinks.forEach((link) => {
-    const isActive = link.dataset.nav === page;
-    link.classList.toggle("active", isActive);
-    if (isActive) {
-      link.setAttribute("aria-current", "page");
-    } else {
-      link.removeAttribute("aria-current");
-    }
+  document.querySelector("[data-site-header]").innerHTML = `
+    <nav class="topbar" aria-label="${state.lang === "en" ? "Primary navigation" : "主要導覽"}">
+      <a href="./index.html" class="brand">AIB 2026</a>
+      <div class="nav-pills">${nav}</div>
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="${state.lang === "en" ? "Switch to Chinese" : "Switch to English"}">${state.lang === "en" ? "中文" : "EN"}</button>
+    </nav>
+  `;
+
+  document.querySelector("[data-site-footer]").innerHTML = `
+    <footer class="site-footer">
+      <p>${state.lang === "en" ? "AIB 2026 Manchester UK Travel Handbook" : "AIB 2026 Manchester 英國研討會旅遊手冊"}</p>
+      <a href="./index.html">${state.lang === "en" ? "Back to overview" : "回到總覽"}</a>
+    </footer>
+  `;
+
+  document.getElementById("langToggle")?.addEventListener("click", () => {
+    state.lang = state.lang === "en" ? "zh" : "en";
+    storeLang(state.lang);
+    renderApp();
   });
 }
 
-dayButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const targetId = button.dataset.day;
+function renderHero(pageId) {
+  const hero = tripData.hero[pageId] || tripData.hero.home;
+  return `
+    <div class="hero-grid handbook-hero-grid">
+      <section class="hero-copy">
+        <p class="eyebrow">${hero.kicker}</p>
+        <h1>${t(hero.title).replace("\n", "<br />")}</h1>
+        <p class="hero-lead">${t(hero.lead)}</p>
+        <div class="hero-actions">
+          <a class="button primary" href="./itinerary.html">${state.lang === "en" ? "Open itinerary" : "查看行程"}</a>
+          <a class="button secondary" href="./budget.html">${state.lang === "en" ? "Open budget" : "查看報帳"}</a>
+        </div>
+      </section>
+      <aside class="hero-panel dashboard-panel" aria-label="Trip snapshot">
+        <div><span class="panel-label">${state.lang === "en" ? "Trip" : "旅程"}</span><strong>2026/06/29 - 2026/07/12</strong></div>
+        <div><span class="panel-label">${state.lang === "en" ? "Conference" : "會議"}</span><strong>AIB 2026 Manchester</strong></div>
+        <div><span class="panel-label">${state.lang === "en" ? "Stay" : "住宿"}</span><strong>${state.lang === "en" ? "Manchester booked / London pending" : "Manchester 已訂 / London 待訂"}</strong></div>
+        <div><span class="panel-label">Last updated</span><strong>${tripData.lastUpdated}</strong></div>
+      </aside>
+    </div>
+  `;
+}
 
-    dayButtons.forEach((item) => item.classList.toggle("active", item === button));
-    dayDetails.forEach((detail) => detail.classList.toggle("active", detail.id === targetId));
-  });
+function renderQuickNav(pageId) {
+  const items = sectionNav[pageId] || [];
+  if (!items.length) return "";
+  return `
+    <nav class="quick-nav" aria-label="${state.lang === "en" ? "Section navigation" : "區塊導覽"}">
+      ${items.map(([id, label]) => `<a href="#${id}">${label}</a>`).join("")}
+    </nav>
+  `;
+}
+
+function renderHome() {
+  return `
+    ${renderQuickNav("home")}
+    <section class="section dashboard-section" id="snapshot">
+      <div class="section-heading center">
+        <p class="eyebrow">Snapshot</p>
+        <h2>${state.lang === "en" ? "Trip dashboard" : "旅程核心資訊"}</h2>
+        <p>${state.lang === "en" ? "The first screen answers what is confirmed, what is pending, and where to go next." : "先看已確認、待處理與下一步，不用在長筆記裡找重點。"}</p>
+      </div>
+      <div class="summary-grid">
+        ${tripData.summaryCards.map((card) => `
+          <article class="summary-card">
+            ${statusChip(card.status)}
+            <h3>${t(card.title)}</h3>
+            <strong>${card.value}</strong>
+            <p>${t(card.note)}</p>
+          </article>
+        `).join("")}
+      </div>
+      ${renderAlert(tripData.alerts[0])}
+    </section>
+    <section class="section compact-section" id="todo">
+      <div class="section-heading">
+        <p class="eyebrow">To-do</p>
+        <h2>${state.lang === "en" ? "Open decisions" : "目前待辦"}</h2>
+      </div>
+      <div class="todo-list">
+        ${tripData.todos.map((item) => `<article class="todo-item">${statusChip(item.status)}<p>${t(item.text)}</p></article>`).join("")}
+      </div>
+    </section>
+    <section class="section compact-section" id="handoff">
+      <div class="section-heading center">
+        <p class="eyebrow">Handbook</p>
+        <h2>${state.lang === "en" ? "Open by category" : "依類別進入頁面"}</h2>
+      </div>
+      <div class="page-grid handbook-page-grid">
+        ${pages.slice(1).map((page, index) => `
+          <a class="page-card" href="${page.href}">
+            <span>${String(index + 1).padStart(2, "0")}</span>
+            <strong>${t(page.label)}</strong>
+            <p>${pageDescriptions[page.id][state.lang]}</p>
+          </a>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+const pageDescriptions = {
+  conference: { zh: "發表文章、會議日期、接受狀態與 final program 待補提醒。", en: "Accepted work, conference dates, paper summaries, and final program reminders." },
+  transport: { zh: "航班、Manchester-London 火車、倫敦與曼徹斯特市內交通。", en: "Flights, Manchester-London trains, and London/Manchester local transit." },
+  stay: { zh: "Manchester 飯店已訂資訊、倫敦住宿待辦與日期衝突提醒。", en: "Manchester hotel details, London stay tasks, and date overlap warning." },
+  itinerary: { zh: "每日卡片化行程，分成必做、可選、交通與提醒。", en: "Card-based daily itinerary with must-do, optional, and reminder sections." },
+  budget: { zh: "三幣別費用表、憑證、狀態與報帳包順序。", en: "Three-currency expense table, proof, status, and reimbursement packet order." },
+  documents: { zh: "官方連結與文件類型，不公開私人憑證細節。", en: "Official links and document categories without exposing private proof details." }
+};
+
+function renderAlert(alert) {
+  return `
+    <aside class="alert-card" role="note">
+      <div>${statusChip("alert")}<h3>${t(alert.title)}</h3></div>
+      <p>${t(alert.body)}</p>
+    </aside>
+  `;
+}
+
+function renderConference() {
+  return `
+    ${renderQuickNav("conference")}
+    <section class="section compact-section" id="accepted">
+      <div class="section-heading">
+        <p class="eyebrow">Accepted Work</p>
+        <h2>${state.lang === "en" ? "Confirmed presentation status" : "已接受發表狀態"}</h2>
+      </div>
+      <div class="summary-grid two">
+        <article class="summary-card">${statusChip("confirmed")}<h3>Competitive Presentation</h3><p>${state.lang === "en" ? "Accepted and usable as conference presentation proof." : "已接受，可作為會議發表證明。"}</p></article>
+        <article class="summary-card">${statusChip("confirmed")}<h3>Interactive Presentation</h3><p>${state.lang === "en" ? "Accepted and usable as conference presentation proof." : "已接受，可作為會議發表證明。"}</p></article>
+      </div>
+    </section>
+    <section class="section compact-section" id="papers">
+      <div class="section-heading">
+        <p class="eyebrow">Paper Summaries</p>
+        <h2>${state.lang === "en" ? "Presentation abstracts for the handbook" : "研討會文章名稱與簡介"}</h2>
+        <p>${state.lang === "en" ? "Only titles and short summaries are included; full papers are not published here." : "只放題名與簡介，不放全文。"}</p>
+      </div>
+      <div class="stack">
+        ${tripData.paperSummaries.map((paper) => `
+          <article class="feature-card paper-card">
+            <div class="card-meta">${statusChip(paper.status)}<span>${paper.type}</span></div>
+            <h3>${paper.title}</h3>
+            <p>${t(paper.summary)}</p>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+    <section class="section compact-section" id="rhythm">
+      <div class="section-heading">
+        <p class="eyebrow">Schedule</p>
+        <h2>${state.lang === "en" ? "Conference rhythm" : "會議節奏"}</h2>
+      </div>
+      <div class="timeline-list">
+        <article><strong>6/29</strong><p>Pre-conference programming</p></article>
+        <article><strong>6/30</strong><p>Research and Policy Dialogue / Opening Plenary / Reception</p></article>
+        <article><strong>7/1-7/3</strong><p>Main Conference parallel sessions</p></article>
+      </div>
+    </section>
+  `;
+}
+
+function renderTransport() {
+  return `
+    ${renderQuickNav("transport")}
+    <section class="section compact-section" id="flights">
+      <div class="section-heading"><p class="eyebrow">Flights</p><h2>${state.lang === "en" ? "Flight routing" : "航班與轉機"}</h2></div>
+      <div class="flight-grid">
+        ${tripData.flights.map((flight) => `
+          <article class="flight-card">
+            <div class="flight-head">${statusChip("confirmed")}<strong>${t(flight.label)} · ${flight.date}</strong></div>
+            ${flight.legs.map((leg) => `
+              <div class="route">
+                <div><b>${leg.from}</b><span>${leg.time.split(" → ")[0]}<br />${leg.detail[state.lang]}</span></div>
+                <div class="line">${leg.flight}<br />${leg.duration}</div>
+                <div><b>${leg.to}</b><span>${leg.time.split(" → ")[1]}</span></div>
+              </div>
+            `).join("")}
+          </article>
+        `).join("")}
+      </div>
+      <div class="note-grid">
+        <article><h3>${state.lang === "en" ? "Flight reimbursement" : "機票報帳"}</h3><p>${money.flight}. ${state.lang === "en" ? "Base fare and taxes are documented in the fare screenshot." : "票面價與稅金 / 航空公司附加費另列在票價明細截圖。"}</p></article>
+        <article><h3>${state.lang === "en" ? "Transfer reminder" : "轉機提醒"}</h3><p>${state.lang === "en" ? "Return routing starts from MAN. Do not skip MAN-LHR even if the leisure portion is in London." : "回程為 MAN 起飛；即使後段在倫敦旅遊，也不要跳過 MAN-LHR 航段。"}</p></article>
+      </div>
+    </section>
+    <section class="section compact-section" id="train">
+      <div class="section-heading"><p class="eyebrow">Train Plan</p><h2>Manchester ↔ London</h2></div>
+      <div class="summary-grid">
+        <article class="summary-card">${statusChip("book")}<h3>7/4 Manchester → London</h3><p>Manchester Piccadilly → London Euston, ${state.lang === "en" ? "direct Avanti West Coast, about 2h15m. Suggested departure 10:00-12:00." : "Avanti West Coast 直達約 2 小時 15 分，建議 10:00-12:00 出發。"}</p></article>
+        <article class="summary-card">${statusChip("book")}<h3>7/10 London → Manchester</h3><p>${state.lang === "en" ? "Return in the evening and stay one night in Manchester for the 11 July flight buffer." : "建議傍晚或晚上回 Manchester 住一晚，替 7/11 航班保留緩衝。"}</p></article>
+      </div>
+      <div class="fare-grid dashboard-fares">
+        ${tripData.trainFares.map((fare) => `<article>${statusChip(fare.status)}<h3>${fare.item}</h3><strong>${fare.amount}</strong><p>${t(fare.note)}</p></article>`).join("")}
+      </div>
+    </section>
+    <section class="section compact-section" id="local">
+      <div class="section-heading"><p class="eyebrow">Local Transit</p><h2>${state.lang === "en" ? "London & Manchester local transport" : "倫敦與曼徹斯特市內交通"}</h2></div>
+      <div class="summary-grid two">
+        ${tripData.localTransit.map((city) => `
+          <article class="summary-card">
+            <h3>${city.city}</h3>
+            <ul class="clean-list">${city.items.map((item) => `<li>${item}</li>`).join("")}</ul>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderStay() {
+  return `
+    ${renderQuickNav("stay")}
+    <section class="section compact-section" id="overview">
+      <div class="section-heading"><p class="eyebrow">Accommodation</p><h2>${state.lang === "en" ? "Stay status" : "住宿狀態"}</h2></div>
+      <div class="summary-grid">
+        ${tripData.stay.map((item) => `
+          <article class="summary-card">
+            ${statusChip(item.status)}
+            <h3>${item.title}</h3>
+            <ul class="clean-list">${item.facts.map((fact) => `<li>${fact}</li>`).join("")}</ul>
+            <p>${t(item.note)}</p>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+    <section class="section compact-section" id="conflict">${renderAlert(tripData.alerts[0])}</section>
+    <section class="section compact-section" id="areas">
+      <div class="section-heading"><p class="eyebrow">London Areas</p><h2>${state.lang === "en" ? "Suggested booking areas" : "倫敦住宿建議區域"}</h2></div>
+      <div class="tag-cloud">
+        ${["Euston", "King's Cross", "Bloomsbury", "South Kensington", "Paddington", "Covent Garden"].map((area) => `<span>${area}</span>`).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderItinerary() {
+  return `
+    ${renderQuickNav("itinerary")}
+    <section class="section compact-section" id="daily">
+      <div class="section-heading">
+        <p class="eyebrow">Daily Cards</p>
+        <h2>${state.lang === "en" ? "Executable itinerary" : "每日卡片化行程"}</h2>
+      </div>
+      <div class="itinerary-grid">
+        ${tripData.itinerary.map((day) => `
+          <article class="itinerary-card">
+            <div class="itinerary-head"><span>${day.date}</span>${statusChip(day.status)}</div>
+            <h3>${t(day.title)}</h3>
+            ${renderMiniList(state.lang === "en" ? "Must-do" : "必做", day.must)}
+            ${renderMiniList(state.lang === "en" ? "Optional" : "可選", day.optional)}
+            ${renderMiniList(state.lang === "en" ? "Notes / transit" : "提醒 / 交通", day.notes)}
+          </article>
+        `).join("")}
+      </div>
+    </section>
+    <section class="section compact-section" id="return">
+      ${renderAlert({ title: { zh: "7/11 航班從 Manchester 起飛", en: "11 July flight departs from Manchester" }, body: { zh: "後段雖然在倫敦旅遊，回程機票仍是 MAN-LHR-TPE。建議 7/10 晚上回 Manchester，降低火車延誤與誤機風險。", en: "Even though the leisure segment is in London, the return ticket starts MAN-LHR-TPE. Return to Manchester on the evening of 10 July to reduce train-delay and missed-flight risk." } })}
+    </section>
+  `;
+}
+
+function renderMiniList(title, items) {
+  return `<div class="mini-list"><strong>${title}</strong><ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul></div>`;
+}
+
+function renderBudget() {
+  const knownTwdSubtotal = 92439 + 10413 + 1282 + 38270 + 255;
+  const heads = state.lang === "en"
+    ? ["Item", "Amount", "Currency", "Status", "Receipt / proof", "Notes"]
+    : ["項目", "金額", "幣別", "狀態", "收據 / 憑證", "備註"];
+  return `
+    ${renderQuickNav("budget")}
+    <section class="section compact-section" id="expenses">
+      <div class="section-heading">
+        <p class="eyebrow">Expense Table</p>
+        <h2>${state.lang === "en" ? "Reimbursement-ready expense list" : "報帳用費用表"}</h2>
+      </div>
+      <div class="mobile-table" role="region" aria-label="Expense table">
+        <table>
+          <thead><tr>${heads.map((head) => `<th>${head}</th>`).join("")}</tr></thead>
+          <tbody>
+            ${tripData.expenses.map((row) => `
+              <tr>
+                <td data-label="${heads[0]}">${row.item}</td>
+                <td data-label="${heads[1]}">${row.amount}</td>
+                <td data-label="${heads[2]}">${row.currency}</td>
+                <td data-label="${heads[3]}">${statusChip(row.status)}</td>
+                <td data-label="${heads[4]}">${row.proof}</td>
+                <td data-label="${heads[5]}">${row.notes}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="section compact-section" id="totals">
+      <div class="summary-grid three">
+        <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "Known fixed subtotal" : "已知固定費用小計"}</h3><strong>NT$${knownTwdSubtotal.toLocaleString("en-US")}</strong><p>${state.lang === "en" ? "Includes flights, AIB fees, Manchester hotel, and visitor charge. Excludes London hotel, trains after booking, and daily allowance days." : "含機票、AIB 費用、Manchester 住宿與旅遊稅；不含倫敦住宿、火車實際票價與日支費核定天數。"}</p></article>
+        <article class="summary-card">${statusChip("pending")}<h3>${state.lang === "en" ? "NSTC daily allowance" : "國科會日支費"}</h3><strong>${money.manchesterDaily}</strong><p>${state.lang === "en" ? "Manchester is treated as United Kingdom Other unless the school/NSTC rules say otherwise." : "Manchester 未單列，暫按 United Kingdom Other；實際依學校與國科會核定。"}</p></article>
+        <article class="summary-card">${statusChip("book")}<h3>${state.lang === "en" ? "Unknowns" : "待補金額"}</h3><strong>London stay / train final fare</strong><p>${state.lang === "en" ? "Add receipts once booked." : "訂好後補上 confirmation、invoice 或 e-ticket。"}</p></article>
+      </div>
+    </section>
+    <section class="section compact-section" id="proofs">
+      <div class="section-heading"><p class="eyebrow">Proofs</p><h2>${state.lang === "en" ? "Suggested reimbursement packet order" : "報帳包建議順序"}</h2></div>
+      <ol class="proof-list">
+        <li>Acceptance letters x 2</li>
+        <li>AIB invitation letter</li>
+        <li>AIB conference fee receipt</li>
+        <li>AIB membership fee receipt</li>
+        <li>Flight itinerary and payment details</li>
+        <li>Hotel booking confirmation and final invoice</li>
+        <li>Train e-ticket / receipt after booking</li>
+      </ol>
+    </section>
+  `;
+}
+
+function renderDocuments() {
+  return `
+    ${renderQuickNav("documents")}
+    <section class="section compact-section" id="links">
+      <div class="section-heading"><p class="eyebrow">Official Links</p><h2>${state.lang === "en" ? "Useful official links" : "常用官方連結"}</h2></div>
+      <div class="link-grid">
+        ${tripData.links.map(([label, href]) => `<a href="${href}" target="_blank" rel="noreferrer noopener">${escapeHtml(label)} <span aria-hidden="true">↗</span></a>`).join("")}
+      </div>
+    </section>
+    <section class="section compact-section" id="privacy">
+      <div class="privacy-note">
+        ${statusChip("confirmed")}
+        <h3>${state.lang === "en" ? "Privacy rule" : "公開頁面隱私原則"}</h3>
+        <p>${state.lang === "en" ? "This page intentionally avoids booking numbers, payment card details, personal email, receipt IDs, and private files." : "此頁刻意不放訂位編號、信用卡資訊、個人 email、收據編號與私人檔案內容。"}</p>
+      </div>
+    </section>
+  `;
+}
+
+const renderers = {
+  home: renderHome,
+  conference: renderConference,
+  transport: renderTransport,
+  stay: renderStay,
+  itinerary: renderItinerary,
+  budget: renderBudget,
+  documents: renderDocuments
+};
+
+function renderApp() {
+  const pageId = document.body.dataset.page || "home";
+  document.documentElement.lang = state.lang === "en" ? "en" : "zh-Hant";
+  renderChrome();
+  const heroSlot = document.querySelector("[data-page-hero]");
+  if (heroSlot) heroSlot.innerHTML = renderHero(pageId);
+  const content = document.getElementById("page-content");
+  if (content) content.innerHTML = renderers[pageId]?.() || renderHome();
+  wireBackToTop();
+  updateProgress();
+}
+
+function updateProgress() {
+  const progress = document.getElementById("progress");
+  if (!progress) return;
+  const height = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = `${height > 0 ? (window.scrollY / height) * 100 : 0}%`;
+}
+
+function wireBackToTop() {
+  const button = document.getElementById("backToTop");
+  if (!button || button.dataset.bound) return;
+  button.dataset.bound = "true";
+  button.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+}
+
+window.addEventListener("scroll", () => {
+  updateProgress();
+  document.getElementById("backToTop")?.classList.toggle("visible", window.scrollY > 500);
+}, { passive: true });
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const target = document.querySelector(link.getAttribute("href"));
+  if (!target) return;
+  event.preventDefault();
+  target.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-window.addEventListener("scroll", updateProgress, { passive: true });
-
-function collectTranslatableNodes() {
-  if (translatableNodes.length) {
-    return translatableNodes;
-  }
-
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-    acceptNode(node) {
-      const parent = node.parentElement;
-      if (!parent || parent.closest("#langToggle") || ["SCRIPT", "STYLE"].includes(parent.tagName)) {
-        return NodeFilter.FILTER_REJECT;
-      }
-      return node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
-    }
-  });
-
-  while (walker.nextNode()) {
-    translatableNodes.push(walker.currentNode);
-  }
-
-  return translatableNodes;
-}
-
-function translateTextNode(node) {
-  if (!originalText.has(node)) {
-    originalText.set(node, node.nodeValue);
-  }
-
-  const original = originalText.get(node);
-  const trimmed = original.trim();
-  if (!trimmed) return;
-
-  const leading = original.match(/^\s*/)[0];
-  const trailing = original.match(/\s*$/)[0];
-  const translated = currentLang === "en" ? translations[trimmed] : trimmed;
-  node.nodeValue = `${leading}${translated || trimmed}${trailing}`;
-}
-
-function applyLanguage() {
-  document.documentElement.lang = currentLang === "en" ? "en" : "zh-Hant";
-
-  collectTranslatableNodes().forEach(translateTextNode);
-
-  if (!langToggle) return;
-  langToggle.textContent = currentLang === "en" ? "中文" : "EN";
-  langToggle.setAttribute("aria-label", currentLang === "en" ? "切換至中文" : "Switch to English");
-}
-
-if (langToggle) {
-  langToggle.addEventListener("click", () => {
-    currentLang = currentLang === "en" ? "zh" : "en";
-    storeLang(currentLang);
-    applyLanguage();
-  });
-}
-
-highlightCurrentPage();
-applyLanguage();
-updateProgress();
+renderApp();

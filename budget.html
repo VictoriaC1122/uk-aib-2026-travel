@@ -4,8 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Budget | AIB 2026 UK Travel Handbook</title>
-    <meta name="description" content="AIB 2026 budget and reimbursement notes in TWD, GBP, and USD." />
+    <meta name="description" content="Reimbursement-ready AIB 2026 budget table with TWD, GBP, and USD amounts." />
     <meta name="theme-color" content="#302638" />
+    <meta property="og:title" content="AIB 2026 Budget & Reimbursement Dashboard" />
+    <meta property="og:description" content="Expense table, status chips, proof checklist, and reimbursement notes." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://victoriac1122.github.io/uk-aib-2026-travel/budget.html" />
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
@@ -13,64 +18,13 @@
   </head>
   <body data-page="budget">
     <div class="progress" id="progress"></div>
-    <header class="hero page-hero">
-      <nav class="topbar" aria-label="Primary navigation">
-        <a href="./index.html" class="brand">AIB 2026</a>
-        <div class="nav-pills">
-          <a href="./index.html" data-nav="home">總覽</a>
-          <a href="./conference.html" data-nav="conference">會議</a>
-          <a href="./transport.html" data-nav="transport">交通</a>
-          <a href="./stay.html" data-nav="stay">住宿</a>
-          <a href="./itinerary.html" data-nav="itinerary">行程</a>
-          <a href="./budget.html" data-nav="budget">報帳</a>
-          <a href="./links.html" data-nav="documents">文件</a>
-        </div>
-        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
-      </nav>
-      <div class="hero-grid">
-        <section class="hero-copy">
-          <p class="eyebrow">Reimbursement</p>
-          <h1>AIB 費用與報帳整理</h1>
-          <p class="hero-lead">把金額、用途與憑證放在同一張表，之後申請補助或報帳時比較快核對。</p>
-        </section>
-      </div>
+    <header class="hero page-hero" id="top">
+      <div data-site-header></div>
+      <div data-page-hero></div>
     </header>
-
-    <main>
-      <section class="section">
-        <div class="section-heading center">
-          <p class="eyebrow">Reimbursement</p>
-          <h2>AIB 費用與報帳整理</h2>
-          <p>把金額、用途與憑證放在同一張表，之後申請補助或報帳時比較快核對。</p>
-        </div>
-        <div class="currency-note">
-          <strong>匯率估算</strong>
-          <span>USD 1 ≈ NT$32.04；GBP 1 ≈ NT$42.48；GBP 1 ≈ US$1.33。實際報帳仍以學校核定匯率、刷卡入帳或承辦規定為準。</span>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>項目</th><th>金額</th><th>用途</th><th>憑證</th></tr></thead>
-            <tbody>
-              <tr><td>國際機票</td><td>NT$92,439 / GBP 2,176 / US$2,885</td><td>TPE-FRA-MAN / MAN-LHR-TPE</td><td>機票付款明細截圖</td></tr>
-              <tr><td>AIB Conference Fee</td><td>NT$10,413 / GBP 245 / US$325</td><td>AIB 2026 Manchester registration</td><td>AIB payment receipt</td></tr>
-              <tr><td>AIB 會員費用</td><td>NT$1,282 / GBP 30 / US$40</td><td>AIB membership fee</td><td>AIB membership receipt</td></tr>
-              <tr><td>國科會日支生活費（Manchester）</td><td>NT$10,381 / GBP 244 / US$324 每日</td><td>115 年日支表：英國 Manchester 未單列，適用 United Kingdom Other</td><td>依學校與國科會核定日數報支</td></tr>
-              <tr><td>住宿</td><td>NT$38,270 / GBP 900.90 / US$1,194</td><td>INNSiDE Manchester，5 晚，已含 20% 稅</td><td>訂房確認信</td></tr>
-              <tr><td>Manchester ↔ London 火車</td><td>每人約 NT$2,846 / GBP 67 / US$89 起</td><td>7/4 去倫敦、7/10 或 7/11 回曼徹斯特</td><td>訂票後補上 e-ticket / receipt</td></tr>
-              <tr><td>倫敦住宿</td><td>待定</td><td>7/4 起倫敦旅遊段，住宿尚未定</td><td>訂房後補上 confirmation / invoice</td></tr>
-              <tr><td>Manchester City Visitor Charge</td><td>約 NT$255 / GBP 6 / US$8</td><td>NT$51 / GBP 1.20 / US$1.60 每房每晚，現場付</td><td>Check-out receipt</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="note-grid">
-          <article><h3>會議付款明細</h3><p>Conference Fee NT$10,413 / GBP 245 / US$325；Doctoral Travel Stipend Donation NT$0 / GBP 0 / US$0；General AIB Donation NT$0 / GBP 0 / US$0；Total Payment NT$10,413 / GBP 245 / US$325；Payment Type: Credit Card Online。</p></article>
-          <article><h3>國科會日支費</h3><p>2026 適用 115 年新版日支表。英國 London 為 NT$16,340 / GBP 385 / US$510 每日，其他地區為 NT$10,381 / GBP 244 / US$324 每日；AIB 研討會在 Manchester，故以 NT$10,381 / GBP 244 / US$324 每日編列。實際可報天數仍以核定與學校承辦規定為準。</p></article>
-          <article><h3>報帳包建議順序</h3><p>接受函 2 份、邀請函、會議費收據、AIB 會員費收據、機票行程與付款明細、飯店訂房確認、入住後正式發票。</p></article>
-        </div>
-      </section>
-    </main>
-
-    <footer><p>AIB 2026 Manchester 英國研討會旅遊手冊</p><a href="./index.html">回到總覽</a></footer>
+    <main id="page-content"></main>
+    <div data-site-footer></div>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">Top</button>
     <script src="./script.js"></script>
   </body>
 </html>

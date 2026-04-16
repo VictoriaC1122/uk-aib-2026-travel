@@ -4,141 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AIB 2026 Manchester UK Travel Handbook</title>
-    <meta
-      name="description"
-      content="AIB 2026 Manchester conference and UK travel handbook with flights, hotel, reimbursement notes, itinerary ideas, and document checklist."
-    />
+    <meta name="description" content="Shareable AIB 2026 Manchester travel handbook with dashboard summary, conference, flights, hotels, itinerary, transport, and reimbursement notes." />
     <meta name="theme-color" content="#302638" />
+    <meta property="og:title" content="AIB 2026 Manchester UK Travel Handbook" />
+    <meta property="og:description" content="A dashboard-style handbook for AIB 2026 Manchester and the UK travel plan." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://victoriac1122.github.io/uk-aib-2026-travel/" />
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body data-page="home">
     <div class="progress" id="progress"></div>
-
     <header class="hero" id="top">
-      <nav class="topbar" aria-label="Primary navigation">
-        <a href="./index.html" class="brand">AIB 2026</a>
-        <div class="nav-pills">
-          <a href="./index.html" data-nav="home">總覽</a>
-          <a href="./conference.html" data-nav="conference">會議</a>
-          <a href="./transport.html" data-nav="transport">交通</a>
-          <a href="./stay.html" data-nav="stay">住宿</a>
-          <a href="./itinerary.html" data-nav="itinerary">行程</a>
-          <a href="./budget.html" data-nav="budget">報帳</a>
-          <a href="./links.html" data-nav="documents">文件</a>
-        </div>
-        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
-      </nav>
-
-      <div class="hero-grid">
-        <section class="hero-copy">
-          <p class="eyebrow">Manchester & United Kingdom</p>
-          <h1>AIB 2026 Manchester<br />英國研討會旅遊手冊</h1>
-          <p class="hero-lead">
-            台北出發，經法蘭克福抵達曼徹斯特。前半段完成 AIB 2026 發表與報帳資料，7/4 起移動到倫敦，把大笨鐘、博物館、格林威治、百貨與經典街區排成一條舒服的旅程。
-          </p>
-          <div class="hero-actions">
-            <a href="./itinerary.html" class="button primary">行程安排</a>
-            <a href="./budget.html" class="button secondary">報帳整理</a>
-          </div>
-        </section>
-
-        <aside class="hero-panel" aria-label="Trip summary">
-          <div>
-            <span class="panel-label">旅程日期</span>
-            <strong>2026 / 06 / 29 - 2026 / 07 / 12</strong>
-          </div>
-          <div>
-            <span class="panel-label">會議</span>
-            <strong>AIB 2026 Manchester</strong>
-          </div>
-          <div>
-            <span class="panel-label">住宿</span>
-            <strong>Manchester 已訂；London 尚未定</strong>
-          </div>
-          <div>
-            <span class="panel-label">航線</span>
-            <strong>TPE → FRA → MAN / MAN → LHR → TPE</strong>
-          </div>
-        </aside>
-      </div>
+      <div data-site-header></div>
+      <div data-page-hero></div>
     </header>
-
-    <main>
-      <section class="section page-section" id="overview" data-page="home">
-        <div class="section-heading center">
-          <p class="eyebrow">Trip Overview</p>
-          <h2>出發前最重要的四件事</h2>
-          <p>會議、航班、住宿與報帳先整理好，後面的旅行就可以放心享受。</p>
-        </div>
-        <div class="stats-grid">
-          <article>
-            <span>會議日期</span>
-            <strong>6/29 - 7/3</strong>
-            <p>AIB 官方公告地點為 Manchester，主會議集中在 7/1-7/3。</p>
-          </article>
-          <article>
-            <span>住宿</span>
-            <strong>待補倫敦</strong>
-            <p>INNSiDE Manchester 已訂；7/4 起倫敦住宿尚未定。</p>
-          </article>
-          <article>
-            <span>機票</span>
-            <strong>NT$92,439 / £2,176 / US$2,885</strong>
-            <p>台北出發，法蘭克福轉機，回程曼城經希斯洛返台。</p>
-          </article>
-          <article>
-            <span>會議費</span>
-            <strong>NT$11,695 / £275 / US$365</strong>
-            <p>Conference Fee NT$10,413 / £245 / US$325，加上 AIB 會員費 NT$1,282 / £30 / US$40。</p>
-          </article>
-        </div>
-        <div class="page-grid" aria-label="Travel categories">
-          <a class="page-card" href="./conference.html">
-            <span>01</span>
-            <strong>會議資訊</strong>
-            <p>AIB 發表、會議日期與 Manchester 會議節奏。</p>
-          </a>
-          <a class="page-card" href="./transport.html">
-            <span>02</span>
-            <strong>航班與火車</strong>
-            <p>台北往返英國航班，以及 Manchester 到 London 來回火車。</p>
-          </a>
-          <a class="page-card" href="./stay.html">
-            <span>03</span>
-            <strong>住宿安排</strong>
-            <p>INNSiDE Manchester 訂房資訊與倫敦住宿待辦。</p>
-          </a>
-          <a class="page-card" href="./itinerary.html">
-            <span>04</span>
-            <strong>倫敦行程</strong>
-            <p>7/4 起倫敦旅遊，每天只看當天重點。</p>
-          </a>
-          <a class="page-card" href="./budget.html">
-            <span>05</span>
-            <strong>報帳整理</strong>
-            <p>AIB 費用、國科會日支費、機票與住宿金額。</p>
-          </a>
-          <a class="page-card" href="./links.html">
-            <span>06</span>
-            <strong>文件清單</strong>
-            <p>接受函、邀請函、收據、ETA 與常用連結。</p>
-          </a>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      <p>AIB 2026 Manchester 英國研討會旅遊手冊</p>
-      <a href="./index.html">回到總覽</a>
-    </footer>
-
+    <main id="page-content"></main>
+    <div data-site-footer></div>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">Top</button>
     <script src="./script.js"></script>
   </body>
 </html>

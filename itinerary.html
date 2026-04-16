@@ -4,8 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Itinerary | AIB 2026 UK Travel Handbook</title>
-    <meta name="description" content="London itinerary from 4 July for AIB 2026 UK travel." />
+    <meta name="description" content="Card-based daily itinerary for AIB 2026 Manchester and London travel." />
     <meta name="theme-color" content="#302638" />
+    <meta property="og:title" content="AIB 2026 Daily Itinerary Dashboard" />
+    <meta property="og:description" content="Must-do, optional, and transit notes for each day of the UK trip." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://victoriac1122.github.io/uk-aib-2026-travel/itinerary.html" />
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
@@ -13,66 +18,13 @@
   </head>
   <body data-page="itinerary">
     <div class="progress" id="progress"></div>
-    <header class="hero page-hero">
-      <nav class="topbar" aria-label="Primary navigation">
-        <a href="./index.html" class="brand">AIB 2026</a>
-        <div class="nav-pills">
-          <a href="./index.html" data-nav="home">總覽</a>
-          <a href="./conference.html" data-nav="conference">會議</a>
-          <a href="./transport.html" data-nav="transport">交通</a>
-          <a href="./stay.html" data-nav="stay">住宿</a>
-          <a href="./itinerary.html" data-nav="itinerary">行程</a>
-          <a href="./budget.html" data-nav="budget">報帳</a>
-          <a href="./links.html" data-nav="documents">文件</a>
-        </div>
-        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
-      </nav>
-      <div class="hero-grid">
-        <section class="hero-copy">
-          <p class="eyebrow">Itinerary</p>
-          <h1>7/4 起倫敦旅遊行程</h1>
-          <p class="hero-lead">前段留給 AIB 研討會，後段把倫敦景點依區域排開。回程票是 7/11 從 Manchester 起飛。</p>
-        </section>
-      </div>
+    <header class="hero page-hero" id="top">
+      <div data-site-header></div>
+      <div data-page-hero></div>
     </header>
-
-    <main>
-      <section class="section visual-section">
-        <div class="section-heading center">
-          <p class="eyebrow">Itinerary</p>
-          <h2>7/4 起倫敦旅遊行程</h2>
-          <p>前段留給 AIB 研討會，後段把倫敦景點依區域排開。回程票是 7/11 從 Manchester 起飛，建議 7/10 晚上或 7/11 一早回 Manchester。</p>
-        </div>
-
-        <div class="days" id="days">
-          <button class="day active" type="button" data-day="d1">6/29-6/30 出發與抵達</button>
-          <button class="day" type="button" data-day="d2">7/1-7/3 AIB 主會議</button>
-          <button class="day" type="button" data-day="d3">7/4 前往倫敦</button>
-          <button class="day" type="button" data-day="d4">7/5 大英博物館</button>
-          <button class="day" type="button" data-day="d5">7/6 格林威治</button>
-          <button class="day" type="button" data-day="d6">7/7 西敏寺與倫敦塔</button>
-          <button class="day" type="button" data-day="d7">7/8 南肯辛頓</button>
-          <button class="day" type="button" data-day="d8">7/9 購物與劇院</button>
-          <button class="day" type="button" data-day="d9">7/10 緩衝回曼城</button>
-          <button class="day" type="button" data-day="d10">7/11-7/12 回程</button>
-        </div>
-
-        <div class="day-detail active" id="d1"><h3>台北出發，抵達 Manchester 後先穩定節奏</h3><p>6/30 10:40 抵達 MAN，建議直接進城、寄放行李、午餐與輕鬆散步。15:00 後入住 INNSiDE Manchester，晚上不要排太滿，留體力給 7/1 後的會議。</p></div>
-        <div class="day-detail" id="d2"><h3>會議核心日</h3><p>7/1-7/3 以 AIB 主會議、發表、networking、晚間 reception 為主。每天早上保留 30 分鐘交通緩衝，晚上只排近距離餐廳。</p></div>
-        <div class="day-detail" id="d3"><h3>Manchester → London，先用夜景進入倫敦</h3><p>上午從 Manchester Piccadilly 搭 Avanti West Coast 到 London Euston，直達約 2 小時 15 分。先寄放行李或入住，下午排 Westminster 周邊散步：Big Ben、大笨鐘、Westminster Bridge、London Eye 外觀。晚上可去 Regent Street / Oxford Street，順路逛 Selfridges 的 Jellycat，或把 Harrods 留到南肯辛頓那天。</p></div>
-        <div class="day-detail" id="d4"><h3>大英博物館 + Tottenham Court Road + Chinatown</h3><p>白天以 British Museum 為主，從 Tottenham Court Road 或 Holborn 進出都方便。下午可接 Covent Garden、Soho、Oxford Street，晚上安排 Chinatown 或附近餐廳。這天適合把購物清單先看一輪，不要排太多遠距離移動。</p></div>
-        <div class="day-detail" id="d5"><h3>格林威治一日：天文台、Cutty Sark、河岸</h3><p>白天安排 Greenwich：Royal Observatory、Prime Meridian、Cutty Sark、Greenwich Market 與河岸散步。天氣好可加 IFS Cloud Cable Car。晚上回市中心，可安排 Leadenhall Market 晚餐，再去 Fortnum & Mason 買茶與伴手禮。</p></div>
-        <div class="day-detail" id="d6"><h3>白金漢宮、西敏寺、聖保羅、倫敦塔</h3><p>上午從 Buckingham Palace、St James's Park、Westminster Abbey 開始。下午可排 St Paul's Cathedral，再到 Tower of London / Tower Bridge。傍晚視天氣與體力決定是否搭 London Eye，看夕陽或夜景最漂亮。</p></div>
-        <div class="day-detail" id="d7"><h3>Natural History Museum + ICL + Harrods</h3><p>白天排 South Kensington：Natural History Museum、Victoria and Albert Museum 可二選一或視體力加排，順路逛 Imperial College London 周邊。下午接 Hyde Park / Kensington Gardens，晚上去 Harrods，Jellycat、伴手禮與百貨都可以一起處理。</p></div>
-        <div class="day-detail" id="d8"><h3>購物、街區與劇院緩衝日</h3><p>這天保留彈性：想購物可排 Oxford Street、Regent Street、Liberty、Selfridges；想拍照可排 Notting Hill 或 Covent Garden；晚上可以看 West End musical。這天也適合補買 Fortnum & Mason、Harrods 或 Boots 清單。</p></div>
-        <div class="day-detail" id="d9"><h3>倫敦最後整理，晚上或隔天一早回 Manchester</h3><p>上午留給未完成的景點或購物，下午整理行李。因為 7/11 18:10 是從 Manchester 起飛，最穩是 7/10 晚上從 London Euston 搭火車回 Manchester Piccadilly 住一晚；如果想多留倫敦，7/11 早上回 Manchester 也要抓很大的延誤緩衝。</p></div>
-        <div class="day-detail" id="d10"><h3>Manchester → London Heathrow → Taipei</h3><p>7/11 18:10 從 Manchester 機場出發，19:15 抵達 London Heathrow，再接 21:10 CI 82 回台北。7/12 18:05 抵達台北桃園。</p></div>
-
-        <article class="photo-strip palace-photo"><div><span>London</span><a href="https://commons.wikimedia.org/wiki/File:Buckingham_Palace,_London,_United_Kingdom_(Unsplash).jpg" target="_blank" rel="noreferrer">照片來源</a></div></article>
-      </section>
-    </main>
-
-    <footer><p>AIB 2026 Manchester 英國研討會旅遊手冊</p><a href="./index.html">回到總覽</a></footer>
+    <main id="page-content"></main>
+    <div data-site-footer></div>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">Top</button>
     <script src="./script.js"></script>
   </body>
 </html>
