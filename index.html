@@ -17,20 +17,20 @@
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body data-page="home">
     <div class="progress" id="progress"></div>
 
     <header class="hero" id="top">
       <nav class="topbar" aria-label="Primary navigation">
-        <a href="#home" class="brand">AIB 2026</a>
+        <a href="./index.html" class="brand">AIB 2026</a>
         <div class="nav-pills">
-          <a href="#home" data-route="home">總覽</a>
-          <a href="#conference" data-route="conference">會議</a>
-          <a href="#transport" data-route="transport">交通</a>
-          <a href="#stay" data-route="stay">住宿</a>
-          <a href="#itinerary" data-route="itinerary">行程</a>
-          <a href="#budget" data-route="budget">報帳</a>
-          <a href="#documents" data-route="documents">文件</a>
+          <a href="./index.html" data-nav="home">總覽</a>
+          <a href="./conference.html" data-nav="conference">會議</a>
+          <a href="./transport.html" data-nav="transport">交通</a>
+          <a href="./stay.html" data-nav="stay">住宿</a>
+          <a href="./itinerary.html" data-nav="itinerary">行程</a>
+          <a href="./budget.html" data-nav="budget">報帳</a>
+          <a href="./links.html" data-nav="documents">文件</a>
         </div>
         <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
       </nav>
@@ -43,8 +43,8 @@
             台北出發，經法蘭克福抵達曼徹斯特。前半段完成 AIB 2026 發表與報帳資料，7/4 起移動到倫敦，把大笨鐘、博物館、格林威治、百貨與經典街區排成一條舒服的旅程。
           </p>
           <div class="hero-actions">
-            <a href="#itinerary" class="button primary">行程安排</a>
-            <a href="#budget" class="button secondary">報帳整理</a>
+            <a href="./itinerary.html" class="button primary">行程安排</a>
+            <a href="./budget.html" class="button secondary">報帳整理</a>
           </div>
         </section>
 
@@ -99,32 +99,32 @@
           </article>
         </div>
         <div class="page-grid" aria-label="Travel categories">
-          <a class="page-card" href="#conference">
+          <a class="page-card" href="./conference.html">
             <span>01</span>
             <strong>會議資訊</strong>
             <p>AIB 發表、會議日期與 Manchester 會議節奏。</p>
           </a>
-          <a class="page-card" href="#transport">
+          <a class="page-card" href="./transport.html">
             <span>02</span>
             <strong>航班與火車</strong>
             <p>台北往返英國航班，以及 Manchester 到 London 來回火車。</p>
           </a>
-          <a class="page-card" href="#stay">
+          <a class="page-card" href="./stay.html">
             <span>03</span>
             <strong>住宿安排</strong>
             <p>INNSiDE Manchester 訂房資訊與倫敦住宿待辦。</p>
           </a>
-          <a class="page-card" href="#itinerary">
+          <a class="page-card" href="./itinerary.html">
             <span>04</span>
             <strong>倫敦行程</strong>
             <p>7/4 起倫敦旅遊，每天只看當天重點。</p>
           </a>
-          <a class="page-card" href="#budget">
+          <a class="page-card" href="./budget.html">
             <span>05</span>
             <strong>報帳整理</strong>
             <p>AIB 費用、國科會日支費、機票與住宿金額。</p>
           </a>
-          <a class="page-card" href="#documents">
+          <a class="page-card" href="./links.html">
             <span>06</span>
             <strong>文件清單</strong>
             <p>接受函、邀請函、收據、ETA 與常用連結。</p>
@@ -132,452 +132,11 @@
         </div>
       </section>
 
-      <section class="section split page-section" id="conference-section" data-page="conference" hidden>
-        <div class="section-heading sticky-heading">
-          <p class="eyebrow">Conference</p>
-          <h2>我的發表與會議重點</h2>
-          <p>
-            AIB 2026 會議期間為 2026/06/29-2026/07/03，主辦地在 Manchester。你目前已有 Competitive Presentation 與 Interactive Presentation 的接受通知，邀請函也已下載。
-          </p>
-        </div>
-        <div class="stack">
-          <article class="feature-card">
-            <span class="card-kicker">Accepted Work</span>
-            <h3>已接受發表</h3>
-            <ul class="clean-list">
-              <li>Competitive Presentation：已接受，可作為會議發表證明。</li>
-              <li>Interactive Presentation：已接受，可作為會議發表證明。</li>
-              <li>正式題名、作者與場次時間：以 AIB 系統最後公布議程為準。</li>
-            </ul>
-          </article>
-          <article class="feature-card paper-card">
-            <span class="card-kicker">Paper 01</span>
-            <h3>Legitimacy-First Innovation: How Emerging Technology Firms Construct Mainstream Pathways under Institutional Ambiguity</h3>
-            <p>這篇研究探討新興科技公司如何在制度模糊、監管分散與大眾信任不足的環境中，先建立合法性，再推動主流採用。文章以 cryptocurrency 與 blockchain ventures 為脈絡，說明企業如何透過 regulatory alignment、institutional bridging 與 ecosystem orchestration，把具爭議的新科技轉化為可被市場與制度接受的發展路徑。</p>
-          </article>
-          <article class="feature-card paper-card">
-            <span class="card-kicker">Paper 02</span>
-            <h3>Signal or Noise? Maturity-Adjusted Technical Disclosure and Multi-Stage Startup Funding Decisions</h3>
-            <p>這篇研究分析早期科技新創如何透過技術揭露向投資人傳遞能力與可信度。文章使用 Gartner Hype Cycle 加權的技術揭露指標與 Heckman two-stage framework，區分投資人的初始篩選與後續資金配置，說明何時技術敘事能成為有效訊號，而不是市場噪音。</p>
-          </article>
-          <article class="feature-card">
-            <span class="card-kicker">Official Schedule</span>
-            <h3>會議節奏</h3>
-            <div class="mini-timeline">
-              <p><strong>6/29</strong><span>Pre-conference programming</span></p>
-              <p><strong>6/30</strong><span>Research and Policy Dialogue，下午/晚上接 Opening Plenary 與 Reception</span></p>
-              <p><strong>7/1-7/3</strong><span>Main Conference parallel sessions</span></p>
-            </div>
-          </article>
-          <article class="photo-strip manchester-photo">
-            <div>
-              <span>Manchester</span>
-              <a href="https://commons.wikimedia.org/wiki/File:Manchester_Skyline_2025.jpg" target="_blank" rel="noreferrer">照片來源</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section page-section" id="flights" data-page="transport" hidden>
-        <div class="section-heading center">
-          <p class="eyebrow">Flights</p>
-          <h2>航班與轉機</h2>
-          <p>去程經法蘭克福抵達曼徹斯特，回程從曼徹斯特經倫敦希斯洛返台。</p>
-        </div>
-        <div class="flight-grid">
-          <article class="flight-card">
-            <div class="flight-head">
-              <span>去程</span>
-              <strong>2026 / 06 / 29 - 06 / 30</strong>
-            </div>
-            <div class="route">
-              <div><b>TPE</b><span>22:40<br />台北桃園 T1</span></div>
-              <div class="line">CI 61<br />14h 30m</div>
-              <div><b>FRA</b><span>06:50<br />法蘭克福 T3</span></div>
-            </div>
-            <div class="route">
-              <div><b>FRA</b><span>09:50<br />法蘭克福 T1</span></div>
-              <div class="line">LH 4210<br />1h 50m</div>
-              <div><b>MAN</b><span>10:40<br />曼徹斯特 T2</span></div>
-            </div>
-          </article>
-
-          <article class="flight-card">
-            <div class="flight-head">
-              <span>回程</span>
-              <strong>2026 / 07 / 11 - 07 / 12</strong>
-            </div>
-            <div class="route">
-              <div><b>MAN</b><span>18:10<br />曼徹斯特 T2</span></div>
-              <div class="line">BA 1371<br />1h 05m</div>
-              <div><b>LHR</b><span>19:15<br />倫敦希斯洛 T5</span></div>
-            </div>
-            <div class="route">
-              <div><b>LHR</b><span>21:10<br />倫敦希斯洛 T3</span></div>
-              <div class="line">CI 82<br />13h 55m</div>
-              <div><b>TPE</b><span>18:05<br />台北桃園 T1</span></div>
-            </div>
-          </article>
-        </div>
-        <div class="note-grid">
-          <article>
-            <h3>機票報帳</h3>
-            <p>總額 NT$92,439 / £2,176 / US$2,885。票面價 NT$76,447 / £1,800 / US$2,386；稅金與航空公司附加費另列在票價明細截圖。</p>
-          </article>
-          <article>
-            <h3>轉機提醒</h3>
-            <p>去程 FRA 轉機 3 小時，回程 LHR 轉機 1 小時 55 分。回程為 MAN 起飛，後續旅遊若去倫敦，仍要留意不要跳過 MAN-LHR 航段。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section split page-section" id="trains" data-page="transport" hidden>
-        <div class="section-heading sticky-heading">
-          <p class="eyebrow">Train Plan</p>
-          <h2>Manchester ↔ London 火車</h2>
-          <p>7/4 從 Manchester 前往 London，7/10 晚上或 7/11 一早回 Manchester。主要路線是 Avanti West Coast 直達車：Manchester Piccadilly ↔ London Euston。</p>
-        </div>
-        <div class="stack">
-          <article class="feature-card rail-card">
-            <span class="card-kicker">Recommended Route</span>
-            <h3>建議搭法</h3>
-            <div class="rail-route">
-              <div>
-                <strong>7/4 去程</strong>
-                <p>Manchester Piccadilly → London Euston，建議 10:00-12:00 之間出發，約 2 小時 15 分抵達。到倫敦後先寄放行李，再排 Westminster / Big Ben / London Eye。</p>
-              </div>
-              <div>
-                <strong>7/10 回程</strong>
-                <p>London Euston → Manchester Piccadilly，建議傍晚或晚上回 Manchester 住一晚。這樣 7/11 去 Manchester Airport 搭 18:10 航班最安心。</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="feature-card">
-            <span class="card-kicker">Fare Range</span>
-            <h3>票價估算</h3>
-            <div class="fare-grid">
-              <div>
-                <span>Advance</span>
-                <strong>from NT$1,423 / £33.50 / US$44</strong>
-                <p>每人單程，最便宜但綁定指定班次；越早買越划算。</p>
-              </div>
-              <div>
-                <span>Off-Peak</span>
-                <strong>約 NT$3,228-3,398 / £76-£80 / US$101-106</strong>
-                <p>每人單程，彈性較高，適合不想被班次綁死。</p>
-              </div>
-              <div>
-                <span>Anytime</span>
-                <strong>約 NT$8,199 / £193 / US$256</strong>
-                <p>每人單程，最彈性但價格最高，不建議作為首選。</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="feature-card">
-            <span class="card-kicker">Budget</span>
-            <h3>來回預算抓法</h3>
-            <ul class="clean-list">
-              <li>每人來回 Advance：抓 NT$2,846 / £67 / US$89 起；兩人來回抓 NT$5,692 / £134 / US$178 起。</li>
-              <li>每人來回 Off-Peak：約 NT$6,627-6,797 / £156-£160 / US$207-212；兩人約 NT$13,254-13,594 / £312-£320 / US$414-424。</li>
-              <li>若買 Two Together Railcard：Railcard NT$1,487 / £35 / US$46，兩人一起搭可省 1/3，週末全天可用、平日 09:30 後可用。</li>
-              <li>7/4 是週六、7/10 是週五；7/10 若用 Railcard，建議選 09:30 後的車。</li>
-            </ul>
-          </article>
-
-          <article class="feature-card compact">
-            <h3>訂票提醒</h3>
-            <p>Advance ticket 通常 12 週前開賣，單程票、指定班次、不可退票，但可在出發前改票並可能收 NT$425 / £10 / US$13 手續費加價差。建議直接用 Avanti 或 National Rail 查價與購票，避免第三方手續費。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section split page-section" id="local-transit" data-page="transport" hidden>
-        <div class="section-heading sticky-heading">
-          <p class="eyebrow">Local Transit</p>
-          <h2>倫敦與曼徹斯特市內交通</h2>
-          <p>以公開票價與官方規則整理，保留行程需要的資訊，不放個人付款、帳號、訂位或憑證細節。</p>
-        </div>
-        <div class="stack">
-          <article class="feature-card rail-card">
-            <span class="card-kicker">London</span>
-            <h3>Tube / Elizabeth line / DLR</h3>
-            <div class="fare-grid">
-              <div>
-                <span>Zones 1-2</span>
-                <strong>NT$378 / £8.90 / US$12 cap</strong>
-                <p>市中心與多數景點一天最高扣到這個金額；單程範例約 NT$153 / £3.60 / US$4.80 peak、NT$132 / £3.10 / US$4.10 off-peak。</p>
-              </div>
-              <div>
-                <span>Zones 1-3</span>
-                <strong>NT$446 / £10.50 / US$14 cap</strong>
-                <p>含 Greenwich / Cutty Sark 這類稍外圍行程時，可用這個日上限估算。</p>
-              </div>
-              <div>
-                <span>Zones 1-6</span>
-                <strong>NT$692 / £16.30 / US$22 cap</strong>
-                <p>若有 Heathrow 或更外圍移動，用這個上限抓預算；Heathrow Express 不含在 TfL cap 內。</p>
-              </div>
-            </div>
-            <ul class="clean-list transit-list">
-              <li>建議用同一張 contactless 卡、Apple Pay / Google Pay 或 Oyster，全程同一個媒介進出站。</li>
-              <li>Tube / DLR / Elizabeth line 要 touch in + touch out；公車只要上車 touch in。</li>
-              <li>倫敦旅遊段大多落在 Zone 1-2；Greenwich 多抓 Zone 1-3，比買 Day Travelcard 更直覺。</li>
-            </ul>
-          </article>
-
-          <article class="feature-card">
-            <span class="card-kicker">Manchester</span>
-            <h3>Metrolink / Bee Network</h3>
-            <div class="fare-grid">
-              <div>
-                <span>City centre</span>
-                <strong>Zone 1</strong>
-                <p>INNSiDE Manchester 周邊以 Deansgate-Castlefield / St Peter's Square 一帶最方便。</p>
-              </div>
-              <div>
-                <span>Airport to city</span>
-                <strong>Zones 1-4</strong>
-                <p>Manchester Airport 在 Zone 4，進市區需涵蓋所有經過的 zones。</p>
-              </div>
-              <div>
-                <span>All zones day</span>
-                <strong>NT$302 / £7.10 / US$9.40；NT$208 / £4.90 / US$6.50</strong>
-                <p>Metrolink 一日票 all zones：anytime NT$302 / £7.10 / US$9.40；off-peak NT$208 / £4.90 / US$6.50。</p>
-              </div>
-            </div>
-            <ul class="clean-list transit-list">
-              <li>搭 Metrolink 可用 contactless 在月台讀卡機 touch in / touch out，系統會算單程、日上限或週上限。</li>
-              <li>若只在市中心短程移動，Zone 1 一日票 anytime NT$115 / £2.70 / US$3.60；off-peak NT$81 / £1.90 / US$2.50；若會搭到機場或跨區，改抓 all zones。</li>
-              <li>電車上不能買票；搭車前要先買好票或成功 touch in，避免罰款。</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="section split reverse page-section" id="hotel" data-page="stay" hidden>
-        <div class="section-heading sticky-heading">
-          <p class="eyebrow">Hotel</p>
-          <h2>住宿安排</h2>
-          <p>Manchester 會議住宿已訂；倫敦段 7/4 起尚未定，建議優先找交通方便、可直達 Euston / King's Cross 一帶的住宿，最後回曼徹斯特搭機會比較穩。</p>
-        </div>
-        <div class="hotel-layout">
-          <article class="feature-card royal-border">
-            <span class="card-kicker">Booking</span>
-            <h3>基本資訊</h3>
-            <dl class="data-list">
-              <div><dt>入住</dt><dd>2026/06/30 15:00 後</dd></div>
-              <div><dt>退房</dt><dd>2026/07/05 12:00 前</dd></div>
-              <div><dt>住宿</dt><dd>5 晚，Twin Bed，2 人</dd></div>
-              <div><dt>地址</dt><dd>1 First Street, Manchester</dd></div>
-              <div><dt>電話</dt><dd>+44 161 200 2500</dd></div>
-            </dl>
-          </article>
-          <article class="feature-card">
-            <span class="card-kicker">Cost</span>
-            <h3>價格與政策</h3>
-            <ul class="clean-list">
-              <li>房價總額：NT$38,270 / GBP 900.90 / US$1,194，已含 20% 稅。</li>
-              <li>平均每晚：約 NT$7,646 / GBP 180 / US$239。</li>
-              <li>當地旅遊稅：NT$51 / GBP 1.20 / US$1.60 每房每晚，5 晚約 NT$255 / GBP 6 / US$8，現場付。</li>
-              <li>6/29 15:00 前取消免費；之後取消或 no-show 可能收 1 晚房費。</li>
-              <li>入住需押金，可刷卡或金融卡。</li>
-            </ul>
-          </article>
-          <article class="feature-card compact">
-            <h3>倫敦住宿尚未定</h3>
-            <p>如果 7/4 就前往倫敦，INNSiDE Manchester 的 7/4 晚可能需要確認是否保留或調整。倫敦住宿建議找 Covent Garden、Bloomsbury、South Kensington、Paddington 或 King's Cross 附近。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section visual-section page-section" id="itinerary-section" data-page="itinerary" hidden>
-        <div class="section-heading center">
-          <p class="eyebrow">Itinerary</p>
-          <h2>7/4 起倫敦旅遊行程</h2>
-          <p>前段留給 AIB 研討會，後段把倫敦景點依區域排開。回程票是 7/11 從 Manchester 起飛，建議 7/10 晚上或 7/11 一早回 Manchester。</p>
-        </div>
-
-        <div class="days" id="days">
-          <button class="day active" type="button" data-day="d1">6/29-6/30 出發與抵達</button>
-          <button class="day" type="button" data-day="d2">7/1-7/3 AIB 主會議</button>
-          <button class="day" type="button" data-day="d3">7/4 前往倫敦</button>
-          <button class="day" type="button" data-day="d4">7/5 大英博物館</button>
-          <button class="day" type="button" data-day="d5">7/6 格林威治</button>
-          <button class="day" type="button" data-day="d6">7/7 西敏寺與倫敦塔</button>
-          <button class="day" type="button" data-day="d7">7/8 南肯辛頓</button>
-          <button class="day" type="button" data-day="d8">7/9 購物與劇院</button>
-          <button class="day" type="button" data-day="d9">7/10 緩衝回曼城</button>
-          <button class="day" type="button" data-day="d10">7/11-7/12 回程</button>
-        </div>
-
-        <div class="day-detail active" id="d1">
-          <h3>台北出發，抵達 Manchester 後先穩定節奏</h3>
-          <p>6/30 10:40 抵達 MAN，建議直接進城、寄放行李、午餐與輕鬆散步。15:00 後入住 INNSiDE Manchester，晚上不要排太滿，留體力給 7/1 後的會議。</p>
-        </div>
-        <div class="day-detail" id="d2">
-          <h3>會議核心日</h3>
-          <p>7/1-7/3 以 AIB 主會議、發表、networking、晚間 reception 為主。每天早上保留 30 分鐘交通緩衝，晚上只排近距離餐廳。</p>
-        </div>
-        <div class="day-detail" id="d3">
-          <h3>Manchester → London，先用夜景進入倫敦</h3>
-          <p>上午從 Manchester Piccadilly 搭 Avanti West Coast 到 London Euston，直達約 2 小時 15 分。先寄放行李或入住，下午排 Westminster 周邊散步：Big Ben、大笨鐘、Westminster Bridge、London Eye 外觀。晚上可去 Regent Street / Oxford Street，順路逛 Selfridges 的 Jellycat，或把 Harrods 留到南肯辛頓那天。</p>
-        </div>
-        <div class="day-detail" id="d4">
-          <h3>大英博物館 + Tottenham Court Road + Chinatown</h3>
-          <p>白天以 British Museum 為主，從 Tottenham Court Road 或 Holborn 進出都方便。下午可接 Covent Garden、Soho、Oxford Street，晚上安排 Chinatown 或附近餐廳。這天適合把購物清單先看一輪，不要排太多遠距離移動。</p>
-        </div>
-        <div class="day-detail" id="d5">
-          <h3>格林威治一日：天文台、Cutty Sark、河岸</h3>
-          <p>白天安排 Greenwich：Royal Observatory、Prime Meridian、Cutty Sark、Greenwich Market 與河岸散步。天氣好可加 IFS Cloud Cable Car。晚上回市中心，可安排 Leadenhall Market 晚餐，再去 Fortnum & Mason 買茶與伴手禮。</p>
-        </div>
-        <div class="day-detail" id="d6">
-          <h3>白金漢宮、西敏寺、聖保羅、倫敦塔</h3>
-          <p>上午從 Buckingham Palace、St James's Park、Westminster Abbey 開始。下午可排 St Paul's Cathedral，再到 Tower of London / Tower Bridge。傍晚視天氣與體力決定是否搭 London Eye，看夕陽或夜景最漂亮。</p>
-        </div>
-        <div class="day-detail" id="d7">
-          <h3>Natural History Museum + ICL + Harrods</h3>
-          <p>白天排 South Kensington：Natural History Museum、Victoria and Albert Museum 可二選一或視體力加排，順路逛 Imperial College London 周邊。下午接 Hyde Park / Kensington Gardens，晚上去 Harrods，Jellycat、伴手禮與百貨都可以一起處理。</p>
-        </div>
-        <div class="day-detail" id="d8">
-          <h3>購物、街區與劇院緩衝日</h3>
-          <p>這天保留彈性：想購物可排 Oxford Street、Regent Street、Liberty、Selfridges；想拍照可排 Notting Hill 或 Covent Garden；晚上可以看 West End musical。這天也適合補買 Fortnum & Mason、Harrods 或 Boots 清單。</p>
-        </div>
-        <div class="day-detail" id="d9">
-          <h3>倫敦最後整理，晚上或隔天一早回 Manchester</h3>
-          <p>上午留給未完成的景點或購物，下午整理行李。因為 7/11 18:10 是從 Manchester 起飛，最穩是 7/10 晚上從 London Euston 搭火車回 Manchester Piccadilly 住一晚；如果想多留倫敦，7/11 早上回 Manchester 也要抓很大的延誤緩衝。</p>
-        </div>
-        <div class="day-detail" id="d10">
-          <h3>Manchester → London Heathrow → Taipei</h3>
-          <p>7/11 18:10 從 Manchester 機場出發，19:15 抵達 London Heathrow，再接 21:10 CI 82 回台北。7/12 18:05 抵達台北桃園。</p>
-        </div>
-
-        <article class="photo-strip palace-photo">
-          <div>
-            <span>London</span>
-            <a href="https://commons.wikimedia.org/wiki/File:Buckingham_Palace,_London,_United_Kingdom_(Unsplash).jpg" target="_blank" rel="noreferrer">照片來源</a>
-          </div>
-        </article>
-      </section>
-
-      <section class="section page-section" id="budget-section" data-page="budget" hidden>
-        <div class="section-heading center">
-          <p class="eyebrow">Reimbursement</p>
-          <h2>AIB 費用與報帳整理</h2>
-          <p>把金額、用途與憑證放在同一張表，之後申請補助或報帳時比較快核對。</p>
-        </div>
-        <div class="currency-note">
-          <strong>匯率估算</strong>
-          <span>USD 1 ≈ NT$32.04；GBP 1 ≈ NT$42.48；GBP 1 ≈ US$1.33。實際報帳仍以學校核定匯率、刷卡入帳或承辦規定為準。</span>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>項目</th>
-                <th>金額</th>
-                <th>用途</th>
-                <th>憑證</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>國際機票</td>
-                <td>NT$92,439 / GBP 2,176 / US$2,885</td>
-                <td>TPE-FRA-MAN / MAN-LHR-TPE</td>
-                <td>機票付款明細截圖</td>
-              </tr>
-              <tr>
-                <td>AIB Conference Fee</td>
-                <td>NT$10,413 / GBP 245 / US$325</td>
-                <td>AIB 2026 Manchester registration</td>
-                <td>AIB payment receipt</td>
-              </tr>
-              <tr>
-                <td>AIB 會員費用</td>
-                <td>NT$1,282 / GBP 30 / US$40</td>
-                <td>AIB membership fee</td>
-                <td>AIB membership receipt</td>
-              </tr>
-              <tr>
-                <td>國科會日支生活費（Manchester）</td>
-                <td>NT$10,381 / GBP 244 / US$324 每日</td>
-                <td>115 年日支表：英國 Manchester 未單列，適用 United Kingdom Other</td>
-                <td>依學校與國科會核定日數報支</td>
-              </tr>
-              <tr>
-                <td>住宿</td>
-                <td>NT$38,270 / GBP 900.90 / US$1,194</td>
-                <td>INNSiDE Manchester，5 晚，已含 20% 稅</td>
-                <td>訂房確認信</td>
-              </tr>
-              <tr>
-                <td>Manchester ↔ London 火車</td>
-                <td>每人約 NT$2,846 / GBP 67 / US$89 起</td>
-                <td>7/4 去倫敦、7/10 或 7/11 回曼徹斯特</td>
-                <td>訂票後補上 e-ticket / receipt</td>
-              </tr>
-              <tr>
-                <td>倫敦住宿</td>
-                <td>待定</td>
-                <td>7/4 起倫敦旅遊段，住宿尚未定</td>
-                <td>訂房後補上 confirmation / invoice</td>
-              </tr>
-              <tr>
-                <td>Manchester City Visitor Charge</td>
-                <td>約 NT$255 / GBP 6 / US$8</td>
-                <td>NT$51 / GBP 1.20 / US$1.60 每房每晚，現場付</td>
-                <td>Check-out receipt</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="note-grid">
-          <article>
-            <h3>會議付款明細</h3>
-            <p>Conference Fee NT$10,413 / GBP 245 / US$325；Doctoral Travel Stipend Donation NT$0 / GBP 0 / US$0；General AIB Donation NT$0 / GBP 0 / US$0；Total Payment NT$10,413 / GBP 245 / US$325；Payment Type: Credit Card Online。</p>
-          </article>
-          <article>
-            <h3>國科會日支費</h3>
-            <p>2026 適用 115 年新版日支表。英國 London 為 NT$16,340 / GBP 385 / US$510 每日，其他地區為 NT$10,381 / GBP 244 / US$324 每日；AIB 研討會在 Manchester，故以 NT$10,381 / GBP 244 / US$324 每日編列。實際可報天數仍以核定與學校承辦規定為準。</p>
-          </article>
-          <article>
-            <h3>報帳包建議順序</h3>
-            <p>接受函 2 份、邀請函、會議費收據、AIB 會員費收據、機票行程與付款明細、飯店訂房確認、入住後正式發票。</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section links-band page-section" data-page="documents" hidden>
-        <div class="section-heading center">
-          <p class="eyebrow">Useful Links</p>
-          <h2>常用連結</h2>
-        </div>
-        <div class="link-grid">
-          <a href="https://www.aib.world/events/2026/" target="_blank" rel="noreferrer">AIB 2026 官網</a>
-          <a href="https://www.aib.world/events/2026/program/conference-overview/" target="_blank" rel="noreferrer">會議時程</a>
-          <a href="https://www.aib.world/events/2026/attend/registration/" target="_blank" rel="noreferrer">AIB 註冊</a>
-          <a href="https://www.avantiwestcoast.co.uk/travel-information/train-times/manchester-piccadilly/london-euston" target="_blank" rel="noreferrer">Avanti Manchester → London</a>
-          <a href="https://www.avantiwestcoast.co.uk/travel-information/train-times/london-euston/manchester-piccadilly" target="_blank" rel="noreferrer">Avanti London → Manchester</a>
-          <a href="https://content.tfl.gov.uk/adult-fares.pdf" target="_blank" rel="noreferrer">TfL 2026 票價</a>
-          <a href="https://tfl.gov.uk/fares/find-fares/capping" target="_blank" rel="noreferrer">TfL fare capping</a>
-          <a href="https://www.london.gov.uk/md3464-march-2026-transport-london-fare-changes" target="_blank" rel="noreferrer">TfL 2026 fare changes</a>
-          <a href="https://tfgm.com/tickets-and-passes/fare-zones/tram" target="_blank" rel="noreferrer">Metrolink zones</a>
-          <a href="https://tfgm.com/tickets-and-passes/tram-anytime-all-day-travelcard-adult" target="_blank" rel="noreferrer">Metrolink 一日票</a>
-          <a href="https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta" target="_blank" rel="noreferrer">UK ETA</a>
-          <a href="https://www.melia.com/en/hotels/united-kingdom/manchester/innside-manchester" target="_blank" rel="noreferrer">INNSiDE Manchester</a>
-          <a href="https://www.nationalrail.co.uk/" target="_blank" rel="noreferrer">National Rail</a>
-          <a href="https://www.nationalrail.co.uk/tickets-railcards-offers/promotions/two-together-railcard/" target="_blank" rel="noreferrer">Two Together Railcard</a>
-          <a href="https://rate.bot.com.tw/xrt?Lang=zh-TW" target="_blank" rel="noreferrer">臺灣銀行匯率</a>
-          <a href="https://dbas.tycg.gov.tw/News_Content.aspx?n=12154&s=1591826" target="_blank" rel="noreferrer">115 年國外日支表</a>
-        </div>
-      </section>
     </main>
 
     <footer>
       <p>AIB 2026 Manchester 英國研討會旅遊手冊</p>
-      <a href="#home">回到總覽</a>
+      <a href="./index.html">回到總覽</a>
     </footer>
 
     <script src="./script.js"></script>

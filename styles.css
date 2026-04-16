@@ -78,6 +78,17 @@ a {
   pointer-events: none;
 }
 
+.page-hero {
+  min-height: 420px;
+  padding-bottom: 48px;
+}
+
+.page-hero .hero-grid {
+  grid-template-columns: minmax(0, 760px);
+  padding-top: 96px;
+  margin-inline: auto;
+}
+
 .topbar {
   position: relative;
   z-index: 2;
@@ -915,6 +926,10 @@ footer a {
     background-position: 58% center;
   }
 
+  .page-hero {
+    min-height: 390px;
+  }
+
   .topbar {
     align-items: flex-start;
     flex-direction: column;
@@ -968,6 +983,10 @@ footer a {
   .hero-grid {
     padding-top: 58px;
     gap: 14px;
+  }
+
+  .page-hero .hero-grid {
+    padding-top: 58px;
   }
 
   .hero-copy {
@@ -1235,6 +1254,10 @@ footer a {
   .hero {
     min-height: 520px;
     background-position: 62% center;
+  }
+
+  .page-hero {
+    min-height: 380px;
   }
 
   .nav-pills {

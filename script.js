@@ -1,10 +1,8 @@
 const progress = document.getElementById("progress");
 const dayButtons = document.querySelectorAll(".day");
 const dayDetails = document.querySelectorAll(".day-detail");
-const pageSections = document.querySelectorAll("[data-page]");
-const routeLinks = document.querySelectorAll("[data-route]");
+const navLinks = document.querySelectorAll("[data-nav]");
 const langToggle = document.getElementById("langToggle");
-const routes = new Set(["home", "conference", "transport", "stay", "itinerary", "budget", "documents"]);
 const supportedLangs = new Set(["zh", "en"]);
 const originalText = new WeakMap();
 let translatableNodes = [];
@@ -41,6 +39,7 @@ const translations = {
   "航班與火車": "Flights & Trains",
   "台北往返英國航班，以及 Manchester 到 London 來回火車。": "Taipei-UK flights and round-trip trains between Manchester and London.",
   "住宿安排": "Accommodation",
+  "Manchester 會議住宿已訂；倫敦段 7/4 起尚未定，建議優先找交通方便、可直達 Euston / King's Cross 一帶的住宿。": "Manchester conference accommodation is booked; London accommodation from 4 July is still pending. Prioritize places with easy access to Euston / King's Cross.",
   "INNSiDE Manchester 訂房資訊與倫敦住宿待辦。": "INNSiDE Manchester booking details and London accommodation tasks.",
   "倫敦行程": "London Itinerary",
   "7/4 起倫敦旅遊，每天只看當天重點。": "London travel from 4 July, with each day kept focused.",
@@ -49,6 +48,8 @@ const translations = {
   "接受函、邀請函、收據、ETA 與常用連結。": "Acceptance letters, invitation letter, receipts, ETA, and useful links.",
   "我的發表與會議重點": "Presentations & Conference Notes",
   "AIB 2026 會議期間為 2026/06/29-2026/07/03，主辦地在 Manchester。你目前已有 Competitive Presentation 與 Interactive Presentation 的接受通知，邀請函也已下載。": "AIB 2026 runs from 29 June to 3 July 2026 in Manchester. Competitive Presentation and Interactive Presentation acceptances are confirmed, and the invitation letter has been downloaded.",
+  "正式題名、作者與場次時間以 AIB 系統最後公布議程為準。": "Final titles, authors, and session times should follow the final AIB program.",
+  "已接受，可作為會議發表證明。": "Accepted and usable as presentation proof.",
   "已接受發表": "Accepted Work",
   "Competitive Presentation：已接受，可作為會議發表證明。": "Competitive Presentation: accepted and usable as presentation proof.",
   "Interactive Presentation：已接受，可作為會議發表證明。": "Interactive Presentation: accepted and usable as presentation proof.",
@@ -59,6 +60,8 @@ const translations = {
   "Research and Policy Dialogue，下午/晚上接 Opening Plenary 與 Reception": "Research and Policy Dialogue, followed by Opening Plenary and Reception",
   "照片來源": "Photo Source",
   "航班與轉機": "Flights & Transfers",
+  "航班、火車與市內交通": "Flights, Trains & Local Transit",
+  "去程經法蘭克福抵達曼徹斯特，7/4 從 Manchester 前往 London，最後再回 Manchester 搭機返台。": "Arrive in Manchester via Frankfurt, travel from Manchester to London on 4 July, then return to Manchester for the flight home.",
   "去程經法蘭克福抵達曼徹斯特，回程從曼徹斯特經倫敦希斯洛返台。": "Outbound flight transfers in Frankfurt to Manchester; return flight departs Manchester via London Heathrow to Taipei.",
   "去程": "Outbound",
   "回程": "Return",
@@ -121,6 +124,7 @@ const translations = {
   "倫敦住宿尚未定": "London Stay Pending",
   "如果 7/4 就前往倫敦，INNSiDE Manchester 的 7/4 晚可能需要確認是否保留或調整。倫敦住宿建議找 Covent Garden、Bloomsbury、South Kensington、Paddington 或 King's Cross 附近。": "If moving to London on 4 July, confirm whether the 4 July night at INNSiDE Manchester should be kept or adjusted. For London, consider Covent Garden, Bloomsbury, South Kensington, Paddington, or King's Cross.",
   "7/4 起倫敦旅遊行程": "London Itinerary From 4 July",
+  "前段留給 AIB 研討會，後段把倫敦景點依區域排開。回程票是 7/11 從 Manchester 起飛。": "Keep the first part for AIB, then group London sights by area. The return flight departs Manchester on 11 July.",
   "前段留給 AIB 研討會，後段把倫敦景點依區域排開。回程票是 7/11 從 Manchester 起飛，建議 7/10 晚上或 7/11 一早回 Manchester。": "Keep the first part for AIB, then group London sights by area. The return flight departs Manchester on 11 July, so return to Manchester on the evening of 10 July or early 11 July.",
   "6/29-6/30 出發與抵達": "6/29-6/30 Departure & Arrival",
   "7/1-7/3 AIB 主會議": "7/1-7/3 AIB Main Conference",
@@ -184,6 +188,7 @@ const translations = {
   "報帳包建議順序": "Suggested Reimbursement Packet",
   "接受函 2 份、邀請函、會議費收據、AIB 會員費收據、機票行程與付款明細、飯店訂房確認、入住後正式發票。": "Two acceptance letters, invitation letter, conference fee receipt, AIB membership receipt, flight itinerary and payment details, hotel booking confirmation, and final hotel invoice after stay.",
   "常用連結": "Useful Links",
+  "只放公開官方連結，不放個人收據、訂位編號、email 或付款資訊。": "Only public official links are included, with no personal receipts, booking numbers, emails, or payment details.",
   "AIB 2026 官網": "AIB 2026 Website",
   "會議時程": "Program",
   "AIB 註冊": "AIB Registration",
@@ -221,20 +226,11 @@ function storeLang(lang) {
   }
 }
 
-function currentRoute() {
-  const route = window.location.hash.replace("#", "");
-  return routes.has(route) ? route : "home";
-}
+function highlightCurrentPage() {
+  const page = document.body.dataset.page || "home";
 
-function renderRoute(shouldScroll = false) {
-  const route = currentRoute();
-
-  pageSections.forEach((section) => {
-    section.hidden = section.dataset.page !== route;
-  });
-
-  routeLinks.forEach((link) => {
-    const isActive = link.dataset.route === route;
+  navLinks.forEach((link) => {
+    const isActive = link.dataset.nav === page;
     link.classList.toggle("active", isActive);
     if (isActive) {
       link.setAttribute("aria-current", "page");
@@ -242,12 +238,6 @@ function renderRoute(shouldScroll = false) {
       link.removeAttribute("aria-current");
     }
   });
-
-  if (shouldScroll) {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  updateProgress();
 }
 
 dayButtons.forEach((button) => {
@@ -259,7 +249,6 @@ dayButtons.forEach((button) => {
   });
 });
 
-window.addEventListener("hashchange", () => renderRoute(true));
 window.addEventListener("scroll", updateProgress, { passive: true });
 
 function collectTranslatableNodes() {
@@ -317,6 +306,6 @@ if (langToggle) {
   });
 }
 
-renderRoute(false);
+highlightCurrentPage();
 applyLanguage();
 updateProgress();
