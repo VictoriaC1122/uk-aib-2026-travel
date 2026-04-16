@@ -123,16 +123,32 @@ const tripData = {
     { status: "alert", title: "7/4 overlap decision", facts: ["Manchester booking covers 7/4 night", "London plan starts 7/4"], note: { zh: "需要決定是否改 Manchester 訂房、保留重疊一晚，或把倫敦住宿從 7/5 開始。", en: "Decide whether to modify Manchester booking, keep one overlapping night, or start London accommodation from 5 July." } }
   ],
   itinerary: [
-    { date: "6/29-6/30", title: { zh: "出發與抵達 Manchester", en: "Departure & arrival in Manchester" }, status: "confirmed", must: ["TPE 22:40 → FRA 06:50", "FRA 09:50 → MAN 10:40", "15:00 後入住 INNSiDE Manchester"], optional: ["市中心輕鬆散步", "補水、整理文件、調時差"], notes: ["晚上不要排太滿，保留體力給會議。"] },
-    { date: "7/1-7/3", title: { zh: "AIB 主會議", en: "AIB main conference" }, status: "confirmed", must: ["AIB sessions / presentation", "Networking", "每日整理報帳與會議證明"], optional: ["Opening / reception", "近距離晚餐"], notes: ["每天早上保留至少 30 分鐘交通緩衝。"] },
-    { date: "7/4", title: { zh: "Manchester → London", en: "Manchester → London" }, status: "book", must: ["Manchester Piccadilly → London Euston", "寄放行李或入住", "Westminster / Big Ben / London Eye 外觀"], optional: ["Regent Street / Oxford Street", "Selfridges Jellycat"], notes: ["需先處理 Manchester 與 London 住宿是否重疊。"] },
-    { date: "7/5", title: { zh: "大英博物館與市中心", en: "British Museum & central London" }, status: "pending", must: ["British Museum", "Tottenham Court Road / Holborn", "Chinatown dinner"], optional: ["Covent Garden", "Soho", "Oxford Street"], notes: ["這天移動距離短，適合補購物清單。"] },
-    { date: "7/6", title: { zh: "格林威治一日", en: "Greenwich day" }, status: "pending", must: ["Royal Observatory", "Prime Meridian", "Cutty Sark", "Greenwich Market"], optional: ["IFS Cloud Cable Car", "Leadenhall Market", "Fortnum & Mason"], notes: ["可用倫敦 Zone 1-3 日上限估算交通。"] },
-    { date: "7/7", title: { zh: "西敏寺、倫敦塔與河岸", en: "Westminster, Tower & riverside" }, status: "pending", must: ["Buckingham Palace", "St James's Park", "Westminster Abbey", "Tower Bridge"], optional: ["St Paul's Cathedral", "Tower of London", "London Eye sunset"], notes: ["依天氣與體力調整 London Eye。"] },
-    { date: "7/8", title: { zh: "South Kensington", en: "South Kensington" }, status: "pending", must: ["Natural History Museum", "Imperial College London", "Harrods"], optional: ["Victoria and Albert Museum", "Hyde Park / Kensington Gardens"], notes: ["Harrods / Jellycat / 伴手禮可集中處理。"] },
-    { date: "7/9", title: { zh: "購物、街區與劇院緩衝", en: "Shopping, neighborhoods & theatre buffer" }, status: "optional", must: ["保留彈性"], optional: ["Liberty", "Selfridges", "Notting Hill", "Covent Garden", "West End musical"], notes: ["適合補買 Fortnum & Mason、Harrods 或 Boots。"] },
+    { date: "6/29-6/30", title: { zh: "出發與抵達 Manchester", en: "Departure & arrival in Manchester" }, status: "confirmed", must: ["TPE 22:40 → FRA 06:50", "FRA 09:50 → MAN 10:40", "15:00 後入住 INNSiDE Manchester"], optional: ["市中心輕鬆散步", "補水、整理文件、調時差"], tickets: ["景點門票：GBP 0"], notes: ["晚上不要排太滿，保留體力給會議。"] },
+    { date: "7/1-7/3", title: { zh: "AIB 主會議", en: "AIB main conference" }, status: "confirmed", must: ["AIB sessions / presentation", "Networking", "每日整理報帳與會議證明"], optional: ["Opening / reception", "近距離晚餐"], tickets: ["景點門票：GBP 0；以會議活動為主"], notes: ["每天早上保留至少 30 分鐘交通緩衝。"] },
+    { date: "7/4", title: { zh: "Manchester → London", en: "Manchester → London" }, status: "book", must: ["Manchester Piccadilly → London Euston", "寄放行李或入住", "Westminster / Big Ben / London Eye 外觀"], optional: ["Regent Street / Oxford Street", "Selfridges Jellycat"], tickets: ["Big Ben / Westminster Bridge 外觀：免費", "London Eye 若搭乘：online from GBP 29 / walk-up GBP 39"], notes: ["需先處理 Manchester 與 London 住宿是否重疊。"] },
+    { date: "7/5", title: { zh: "大英博物館與市中心", en: "British Museum & central London" }, status: "pending", must: ["British Museum", "Tottenham Court Road / Holborn", "Chinatown dinner"], optional: ["Covent Garden", "Soho", "Oxford Street"], tickets: ["British Museum 常設展：免費，建議預約 free timed ticket", "特展另計，依展覽頁票價為準"], notes: ["這天移動距離短，適合補購物清單。"] },
+    { date: "7/6", title: { zh: "格林威治一日", en: "Greenwich day" }, status: "pending", must: ["Royal Observatory", "Prime Meridian", "Cutty Sark", "Greenwich Market"], optional: ["IFS Cloud Cable Car", "Leadenhall Market", "Fortnum & Mason"], tickets: ["Royal Observatory adult GBP 24 / student GBP 18", "Cutty Sark adult GBP 22 / student GBP 16.50", "Observatory + Cutty Sark Day Pass adult GBP 38 / student GBP 28.50", "IFS Cloud Cable Car one-way adult GBP 7；round trip GBP 13.50"], notes: ["可用倫敦 Zone 1-3 日上限估算交通。"] },
+    { date: "7/7", title: { zh: "西敏寺、倫敦塔與河岸", en: "Westminster, Tower & riverside" }, status: "pending", must: ["Buckingham Palace", "St James's Park", "Westminster Abbey", "Tower Bridge"], optional: ["St Paul's Cathedral", "Tower of London", "London Eye sunset"], tickets: ["Buckingham Palace 外觀：免費；State Rooms 9 Jul 才開，advance adult GBP 33", "Westminster Abbey adult GBP 31 / student GBP 28", "St Paul's Cathedral adult GBP 27 / student GBP 24", "Tower of London adult GBP 37 / student GBP 29.50", "Tower Bridge adult GBP 18 / student GBP 13.50"], notes: ["依天氣與體力調整 London Eye。Buckingham Palace State Rooms 2026/07/09 才開放，7/7 只能排外觀與 Changing the Guard。"] },
+    { date: "7/8", title: { zh: "South Kensington", en: "South Kensington" }, status: "pending", must: ["Natural History Museum", "Imperial College London", "Harrods"], optional: ["Victoria and Albert Museum", "Hyde Park / Kensington Gardens"], tickets: ["Natural History Museum 一般入場：免費，建議預約", "V&A South Kensington 一般入場：免費", "Harrods 入店：免費，購物與餐飲另計"], notes: ["Harrods / Jellycat / 伴手禮可集中處理。"] },
+    { date: "7/9", title: { zh: "購物、街區與劇院緩衝", en: "Shopping, neighborhoods & theatre buffer" }, status: "optional", must: ["保留彈性"], optional: ["Liberty", "Selfridges", "Notting Hill", "Covent Garden", "West End musical"], tickets: ["街區散步與百貨入店：免費", "West End musical：依劇目與座位浮動，訂票前再查"], notes: ["適合補買 Fortnum & Mason、Harrods 或 Boots。"] },
     { date: "7/10", title: { zh: "倫敦收尾，回 Manchester", en: "Wrap London, return to Manchester" }, status: "book", must: ["整理行李", "London Euston → Manchester Piccadilly"], optional: ["上午補景點或購物"], notes: ["最穩是 7/10 晚上回 Manchester 住一晚，避免 7/11 誤機。"] },
     { date: "7/11-7/12", title: { zh: "回程返台", en: "Return to Taipei" }, status: "confirmed", must: ["MAN 18:10 → LHR 19:15", "LHR 21:10 → TPE 18:05"], optional: ["白天只排低風險活動"], notes: ["回程不要跳過 MAN-LHR 航段。"] }
+  ],
+  attractionCosts: [
+    { status: "confirmed", day: "7/5", attraction: "British Museum", fee: "Free", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "常設展免費，建議先預約 free timed ticket；特展另計。", en: "Permanent collection is free; book a free timed ticket. Special exhibitions cost extra." }, source: "https://www.britishmuseum.org/visit" },
+    { status: "confirmed", day: "7/6", attraction: "Royal Observatory Greenwich", fee: "Adult GBP 24 / Student GBP 18", estimate: "成人約 NT$1,020 / GBP 24 / US$32", note: { zh: "若同日也去 Cutty Sark，Day Pass 通常更划算。", en: "If also visiting Cutty Sark, the Day Pass is usually better value." }, source: "https://www.rmg.co.uk/plan-your-visit/tickets-prices" },
+    { status: "confirmed", day: "7/6", attraction: "Cutty Sark", fee: "Adult GBP 22 / Student GBP 16.50", estimate: "成人約 NT$935 / GBP 22 / US$29", note: { zh: "Greenwich 一日行程可與 Royal Observatory 合買 Day Pass。", en: "Can be combined with Royal Observatory using the Day Pass." }, source: "https://www.rmg.co.uk/plan-your-visit/tickets-prices" },
+    { status: "optional", day: "7/6", attraction: "Royal Observatory + Cutty Sark Day Pass", fee: "Adult GBP 38 / Student GBP 28.50", estimate: "成人約 NT$1,614 / GBP 38 / US$51", note: { zh: "同日兩個都進去時，成人比單買省 GBP 8。", en: "If visiting both on the same day, adult Day Pass saves GBP 8 versus separate tickets." }, source: "https://www.rmg.co.uk/plan-your-visit/tickets-prices" },
+    { status: "optional", day: "7/6", attraction: "IFS Cloud Cable Car", fee: "Adult one-way GBP 7 / round trip GBP 13.50", estimate: "單程約 NT$297 / GBP 7 / US$9；來回約 NT$574 / GBP 13.50 / US$18", note: { zh: "Pay as you go 不計入 TfL daily cap。", en: "Pay as you go journeys do not count towards TfL caps." }, source: "https://www.london.gov.uk/media/111830/download" },
+    { status: "optional", day: "7/7", attraction: "Buckingham Palace State Rooms", fee: "Advance adult GBP 33 / on the day GBP 37", estimate: "預售成人約 NT$1,402 / GBP 33 / US$44", note: { zh: "2026 夏季開放 7/9-9/27；7/7 只能排外觀 / Changing the Guard。", en: "Summer 2026 opening is 9 Jul-27 Sep; on 7 Jul plan exterior / Changing the Guard only." }, source: "https://www.rct.uk/visit/the-state-rooms-buckingham-palace" },
+    { status: "pending", day: "7/7", attraction: "Westminster Abbey", fee: "Adult GBP 31 / Student GBP 28", estimate: "成人約 NT$1,317 / GBP 31 / US$41", note: { zh: "是 working church，開放時間可能因儀式調整。", en: "It is a working church, so visiting hours may change for services." }, source: "https://www.westminster-abbey.org/visit-us/prices-entry-times/" },
+    { status: "optional", day: "7/7", attraction: "St Paul's Cathedral", fee: "Adult GBP 27 / Student GBP 24", estimate: "成人約 NT$1,147 / GBP 27 / US$36", note: { zh: "Sightseeing tickets 含 Cathedral Floor、Crypt、Dome Galleries 與 multimedia guide。", en: "Sightseeing includes Cathedral Floor, Crypt, Dome Galleries, and multimedia guide." }, source: "https://www.stpauls.co.uk/ticket-types-and-prices" },
+    { status: "optional", day: "7/7", attraction: "Tower of London", fee: "Adult GBP 37 / Student GBP 29.50", estimate: "成人約 NT$1,572 / GBP 37 / US$49", note: { zh: "含 Crown Jewels 與開放區域；熱門時段建議預約。", en: "Includes Crown Jewels and open public areas; book ahead for busy periods." }, source: "https://www.hrp.org.uk/tower-of-london/visit/tickets-and-prices/" },
+    { status: "optional", day: "7/7", attraction: "Tower Bridge", fee: "Adult GBP 18 / Student GBP 13.50", estimate: "成人約 NT$765 / GBP 18 / US$24", note: { zh: "含 high-level walkways、glass floors、engine rooms。", en: "Includes high-level walkways, glass floors, and engine rooms." }, source: "https://www.towerbridge.org.uk/whats-on/entry-to-tower-bridge" },
+    { status: "optional", day: "7/4 or 7/7", attraction: "London Eye", fee: "Online from GBP 29 / walk-up GBP 39", estimate: "線上成人約 NT$1,232 / GBP 29 / US$39 起", note: { zh: "票價浮動；越早線上訂通常越便宜。", en: "Dynamic pricing; booking online earlier is usually cheaper." }, source: "https://www.londoneye.com/ticket/" },
+    { status: "confirmed", day: "7/8", attraction: "Natural History Museum", fee: "Free", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "一般入場免費，熱門時段建議預約 free ticket；特展另計。", en: "General admission is free; book a free ticket for busy times. Special exhibitions cost extra." }, source: "https://www.nhm.ac.uk/visit.html" },
+    { status: "confirmed", day: "7/8", attraction: "V&A South Kensington", fee: "Free", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "一般入場免費，不需預約；特展 / 活動另計。", en: "General admission is free and no booking is needed; exhibitions/events may cost extra." }, source: "https://www.vam.ac.uk/visiting/visitor-information/" },
+    { status: "confirmed", day: "7/8", attraction: "Harrods", fee: "Free entry", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "入店免費；購物、餐飲與餐廳服務費另計。", en: "Store entry is free; shopping, dining, and service charges are separate." }, source: "https://www.harrods.com/" }
   ],
   expenses: [
     { item: "International flights", amount: money.flight, currency: "TWD / GBP / USD", status: "reimburse", proof: "Flight itinerary + payment screenshot", notes: "TPE-FRA-MAN / MAN-LHR-TPE" },
@@ -142,6 +158,7 @@ const tripData = {
     { item: "INNSiDE Manchester", amount: money.hotel, currency: "TWD / GBP / USD", status: "reimburse", proof: "Booking confirmation + final invoice", notes: "5 nights, includes 20% tax." },
     { item: "Manchester visitor charge", amount: money.visitorCharge, currency: "TWD / GBP / USD", status: "reimburse", proof: "Check-out receipt", notes: "GBP 1.20 per room per night, paid locally." },
     { item: "Manchester ↔ London train", amount: money.trainAdvance, currency: "TWD / GBP / USD", status: "book", proof: "E-ticket / receipt after booking", notes: "7/4 outbound, 7/10 or 7/11 return." },
+    { item: "London attraction tickets", amount: "Depends on selected paid attractions", currency: "TWD / GBP / USD", status: "optional", proof: "Online ticket receipts", notes: "See Itinerary → Tickets. Many museums are free; paid items include Royal Observatory, Cutty Sark, Westminster Abbey, Tower sites, London Eye, etc." },
     { item: "London accommodation", amount: "TBD", currency: "TWD / GBP / USD", status: "book", proof: "Confirmation / invoice after booking", notes: "From 7/4; area not decided." }
   ],
   links: [
@@ -168,7 +185,7 @@ const sectionNav = {
   conference: [["accepted", "Accepted"], ["papers", "Papers"], ["rhythm", "Schedule"]],
   transport: [["flights", "Flights"], ["train", "Train"], ["local", "Local transit"]],
   stay: [["overview", "Overview"], ["conflict", "Conflict"], ["areas", "London areas"]],
-  itinerary: [["daily", "Daily cards"], ["return", "Return buffer"]],
+  itinerary: [["daily", "Daily cards"], ["tickets", "Tickets"], ["return", "Return buffer"]],
   budget: [["expenses", "Expenses"], ["totals", "Totals"], ["proofs", "Proofs"]],
   documents: [["links", "Official links"], ["privacy", "Privacy"]]
 };
@@ -506,7 +523,27 @@ function renderItinerary() {
             <h3>${t(day.title)}</h3>
             ${renderMiniList(state.lang === "en" ? "Must-do" : "必做", day.must)}
             ${renderMiniList(state.lang === "en" ? "Optional" : "可選", day.optional)}
+            ${day.tickets ? renderMiniList(state.lang === "en" ? "Tickets / fees" : "門票 / 費用", day.tickets) : ""}
             ${renderMiniList(state.lang === "en" ? "Notes / transit" : "提醒 / 交通", day.notes)}
+          </article>
+        `).join("")}
+      </div>
+    </section>
+    <section class="section compact-section" id="tickets">
+      <div class="section-heading">
+        <p class="eyebrow">Tickets</p>
+        <h2>${state.lang === "en" ? "Attraction fees to check before booking" : "景點門票與預算估算"}</h2>
+        <p>${state.lang === "en" ? "Prices are current planning references. Re-check official sites before booking for July 2026." : "以下為目前查到的規劃參考價；2026/7 出發前請再以官方網站確認。"}</p>
+      </div>
+      <div class="ticket-grid">
+        ${tripData.attractionCosts.map((item) => `
+          <article class="ticket-card">
+            <div class="ticket-card-head"><span>${item.day}</span>${statusChip(item.status)}</div>
+            <h3>${item.attraction}</h3>
+            <strong>${item.fee}</strong>
+            <p>${item.estimate}</p>
+            <small>${t(item.note)}</small>
+            <a href="${item.source}" target="_blank" rel="noreferrer noopener">${state.lang === "en" ? "Official source" : "官方來源"} ↗</a>
           </article>
         `).join("")}
       </div>

@@ -1543,9 +1543,69 @@ footer a {
   gap: 16px;
 }
 
+.ticket-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
 .itinerary-card {
   min-width: 0;
   padding: 20px;
+}
+
+.ticket-card {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 249, 0.9);
+  box-shadow: 0 14px 32px rgba(48, 38, 56, 0.08);
+}
+
+.ticket-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ticket-card-head > span {
+  color: var(--royal-blue);
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 900;
+}
+
+.ticket-card h3 {
+  margin-top: 14px;
+  font-size: 20px;
+}
+
+.ticket-card strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--slate);
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 17px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.ticket-card p,
+.ticket-card small {
+  display: block;
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.ticket-card a {
+  display: inline-flex;
+  margin-top: 14px;
+  color: var(--royal-blue);
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 13px;
+  font-weight: 900;
 }
 
 .itinerary-head {
@@ -1883,7 +1943,8 @@ footer a {
   .summary-grid,
   .summary-grid.three,
   .handbook-page-grid,
-  .itinerary-grid {
+  .itinerary-grid,
+  .ticket-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1919,7 +1980,8 @@ footer a {
   .summary-grid.two,
   .summary-grid.three,
   .handbook-page-grid,
-  .itinerary-grid {
+  .itinerary-grid,
+  .ticket-grid {
     grid-template-columns: 1fr;
   }
 
