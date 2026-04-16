@@ -432,6 +432,10 @@ h3 {
   margin-top: 10px;
 }
 
+.transit-list {
+  margin-top: 18px;
+}
+
 .rail-card {
   border-top: 5px solid var(--royal-blue);
 }
