@@ -242,10 +242,10 @@ h3 {
   align-items: center;
   justify-content: center;
   padding: 0 20px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 253, 249, 0.58);
   border-radius: var(--radius);
-  color: #fffdf9;
-  background: rgba(255, 255, 255, 0.1);
+  color: var(--slate);
+  background: rgba(255, 253, 249, 0.86);
   font-weight: 900;
   backdrop-filter: blur(10px);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -268,7 +268,7 @@ h3 {
   padding: 8px 24px;
   border: 1px solid rgba(255, 255, 255, 0.24);
   border-radius: var(--radius);
-  background: rgba(255, 253, 249, 0.13);
+  background: rgba(79, 72, 84, 0.58);
   box-shadow: 0 24px 60px rgba(20, 16, 24, 0.22);
   backdrop-filter: blur(14px);
 }
@@ -613,7 +613,7 @@ h3 {
   gap: 16px;
   padding: 18px 22px;
   color: #fffdf9;
-  background: linear-gradient(135deg, var(--slate), #493e52);
+  background: linear-gradient(135deg, #4b4350, #645b68);
 }
 
 .flight-head span {
@@ -811,7 +811,7 @@ td {
 
 th {
   color: #fffdf9;
-  background: var(--slate);
+  background: #4b4350;
   font-size: 14px;
 }
 
@@ -829,7 +829,7 @@ td:first-child {
   padding-inline: max(14px, calc((100vw - 1180px) / 2));
   color: #fffdf9;
   background:
-    linear-gradient(135deg, rgba(48, 38, 56, 0.98), rgba(19, 43, 71, 0.96));
+    linear-gradient(135deg, rgba(75, 67, 80, 0.98), rgba(91, 105, 119, 0.96));
 }
 
 .links-band .section-heading p {
@@ -851,8 +851,8 @@ td:first-child {
   padding: 16px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius);
-  color: #fffdf9;
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--slate);
+  background: rgba(255, 253, 249, 0.9);
   font-weight: 900;
   text-align: center;
   transition: transform 0.2s ease, background 0.2s ease;
@@ -860,7 +860,7 @@ td:first-child {
 
 .link-grid a:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.13);
+  background: var(--soft-gold);
 }
 
 footer {
@@ -870,7 +870,7 @@ footer {
   gap: 16px;
   padding: 28px max(14px, calc((100vw - 1180px) / 2));
   color: #fffdf9;
-  background: #17131b;
+  background: #4b4350;
 }
 
 footer p {
@@ -961,13 +961,13 @@ footer a {
 
   .nav-pills a:hover {
     color: #fffdf9;
-    background: var(--royal-blue);
+    background: #5f748c;
     transform: none;
   }
 
   .nav-pills a.active {
     color: #fffdf9;
-    background: var(--royal-blue);
+    background: #5f748c;
   }
 
   .lang-toggle {
