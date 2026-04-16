@@ -454,6 +454,14 @@ h3 {
   border-top: 5px solid var(--royal-blue);
 }
 
+.paper-card {
+  border-left: 5px solid var(--royal-red);
+}
+
+.paper-card h3 {
+  font-size: 23px;
+}
+
 .rail-route {
   display: grid;
   gap: 14px;

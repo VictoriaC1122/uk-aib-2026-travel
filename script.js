@@ -51,6 +51,8 @@ const translations = {
   "Competitive Presentation：已接受，可作為會議發表證明。": "Competitive Presentation: accepted and usable as presentation proof.",
   "Interactive Presentation：已接受，可作為會議發表證明。": "Interactive Presentation: accepted and usable as presentation proof.",
   "正式題名、作者與場次時間：以 AIB 系統最後公布議程為準。": "Final title, authors, and session time should follow the final AIB program.",
+  "這篇研究探討新興科技公司如何在制度模糊、監管分散與大眾信任不足的環境中，先建立合法性，再推動主流採用。文章以 cryptocurrency 與 blockchain ventures 為脈絡，說明企業如何透過 regulatory alignment、institutional bridging 與 ecosystem orchestration，把具爭議的新科技轉化為可被市場與制度接受的發展路徑。": "This paper examines how emerging technology firms build legitimacy before mainstream adoption under institutional ambiguity, fragmented regulation, and public skepticism. Using cryptocurrency and blockchain ventures as the context, it explains how regulatory alignment, institutional bridging, and ecosystem orchestration help transform contested technologies into market- and institutionally accepted pathways.",
+  "這篇研究分析早期科技新創如何透過技術揭露向投資人傳遞能力與可信度。文章使用 Gartner Hype Cycle 加權的技術揭露指標與 Heckman two-stage framework，區分投資人的初始篩選與後續資金配置，說明何時技術敘事能成為有效訊號，而不是市場噪音。": "This paper analyzes how early-stage technology startups use technical disclosure to signal capability and credibility to investors. It develops a Gartner Hype Cycle-weighted disclosure measure and applies a Heckman two-stage framework to distinguish initial investor screening from later capital allocation, clarifying when technology narratives function as meaningful signals rather than market noise.",
   "會議節奏": "Conference Rhythm",
   "Research and Policy Dialogue，下午/晚上接 Opening Plenary 與 Reception": "Research and Policy Dialogue, followed by Opening Plenary and Reception",
   "照片來源": "Photo Source",
