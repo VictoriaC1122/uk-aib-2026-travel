@@ -4,6 +4,7 @@ const pages = [
   { id: "transport", label: { zh: "交通", en: "Transport" }, href: "./transport.html" },
   { id: "stay", label: { zh: "住宿", en: "Stay" }, href: "./stay.html" },
   { id: "itinerary", label: { zh: "行程", en: "Itinerary" }, href: "./itinerary.html" },
+  { id: "map", label: { zh: "地圖", en: "Map" }, href: "./map.html" },
   { id: "budget", label: { zh: "報帳", en: "Budget" }, href: "./budget.html" },
   { id: "documents", label: { zh: "連結", en: "Links" }, href: "./links.html" }
 ];
@@ -61,6 +62,11 @@ const tripData = {
       kicker: "Itinerary",
       title: { zh: "每日行程安排", en: "Daily Itinerary" },
       lead: { zh: "每天只留下最值得走近的地方、可以隨心加上的片段，以及旅途中不想忘記的小提醒。", en: "Each day keeps the places worth approaching, the optional detours, and the small reminders that make travel easier." }
+    },
+    map: {
+      kicker: "Travel Map",
+      title: { zh: "英國旅程地圖", en: "UK Travel Map" },
+      lead: { zh: "Manchester 是會議基地；London 留給博物館與河岸。路線都收在這張可以慢慢打開的地圖裡。", en: "Manchester anchors the conference days; London keeps the museums and riverside walks. The route is gathered into a map you can open as you go." }
     },
     budget: {
       kicker: "Reimbursement",
@@ -152,6 +158,31 @@ const tripData = {
     { status: "confirmed", day: "7/8", attraction: "V&A South Kensington", fee: "Free", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "一般入場免費，不需預約；特展 / 活動另計。", en: "General admission is free and no booking is needed; exhibitions/events may cost extra." }, source: "https://www.vam.ac.uk/visiting/visitor-information/" },
     { status: "confirmed", day: "7/8", attraction: "Harrods", fee: "Free entry", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "入店免費；購物、餐飲與餐廳服務費另計。", en: "Store entry is free; shopping, dining, and service charges are separate." }, source: "https://www.harrods.com/" }
   ],
+  mapRouteUrl: "https://www.google.com/maps/dir/Manchester+Airport/INNSiDE+Manchester/Manchester+Piccadilly/London+Euston/Big+Ben/British+Museum/Royal+Observatory+Greenwich/Cutty+Sark/Buckingham+Palace/Westminster+Abbey/Tower+Bridge/Natural+History+Museum/Harrods/Manchester+Airport",
+  mapLocations: [
+    { status: "confirmed", city: "Manchester", title: { zh: "Manchester Airport", en: "Manchester Airport" }, query: "Manchester Airport", note: { zh: "抵達與回程都會經過的城市門口。", en: "The city gateway for both arrival and departure." } },
+    { status: "confirmed", city: "Manchester", title: { zh: "INNSiDE Manchester", en: "INNSiDE Manchester" }, query: "INNSiDE Manchester 1 First Street Manchester", note: { zh: "會議期間的住宿基地，靠近 First Street 與市中心。", en: "The conference stay base near First Street and the city centre." } },
+    { status: "book", city: "Manchester", title: { zh: "Manchester Piccadilly", en: "Manchester Piccadilly" }, query: "Manchester Piccadilly Station", note: { zh: "7/4 前往 London Euston 的起點。", en: "The starting point for the 4 July train to London Euston." } },
+    { status: "book", city: "London", title: { zh: "London Euston", en: "London Euston" }, query: "London Euston Station", note: { zh: "從曼徹斯特抵達倫敦的主要車站。", en: "The main London arrival station from Manchester." } },
+    { status: "confirmed", city: "London", title: { zh: "Big Ben / Westminster", en: "Big Ben / Westminster" }, query: "Big Ben London", note: { zh: "倫敦第一眼的河岸輪廓，適合放在抵達午後。", en: "A classic riverside first look for the London arrival afternoon." } },
+    { status: "confirmed", city: "London", title: { zh: "British Museum", en: "British Museum" }, query: "British Museum London", note: { zh: "7/5 的博物館主軸，常設展免費。", en: "The 5 July museum anchor, with free permanent collection entry." } },
+    { status: "pending", city: "London", title: { zh: "Royal Observatory Greenwich", en: "Royal Observatory Greenwich" }, query: "Royal Observatory Greenwich", note: { zh: "7/6 格林威治的時間、經線與山坡視野。", en: "Time, the prime meridian, and hilltop views for 6 July." } },
+    { status: "pending", city: "London", title: { zh: "Cutty Sark", en: "Cutty Sark" }, query: "Cutty Sark Greenwich", note: { zh: "格林威治河邊的帆船博物館。", en: "The riverside ship museum in Greenwich." } },
+    { status: "optional", city: "London", title: { zh: "Buckingham Palace", en: "Buckingham Palace" }, query: "Buckingham Palace London", note: { zh: "7/7 以外觀與 St James's Park 的散步節奏為主。", en: "Best paired with St James's Park and an exterior visit on 7 July." } },
+    { status: "pending", city: "London", title: { zh: "Westminster Abbey", en: "Westminster Abbey" }, query: "Westminster Abbey London", note: { zh: "西敏一帶的付費重點景點。", en: "A paid highlight around Westminster." } },
+    { status: "optional", city: "London", title: { zh: "Tower Bridge", en: "Tower Bridge" }, query: "Tower Bridge London", note: { zh: "河岸收束與拍照都很漂亮的一站。", en: "A graceful riverside stop for views and photos." } },
+    { status: "confirmed", city: "London", title: { zh: "Natural History Museum", en: "Natural History Museum" }, query: "Natural History Museum London", note: { zh: "7/8 South Kensington 的溫柔下午。", en: "A soft South Kensington afternoon for 8 July." } },
+    { status: "confirmed", city: "London", title: { zh: "Harrods", en: "Harrods" }, query: "Harrods London", note: { zh: "伴手禮、Jellycat 與百貨散步。", en: "Souvenirs, Jellycat, and a classic department-store wander." } }
+  ],
+  mapRoutes: [
+    { status: "confirmed", label: { zh: "6/30 抵達 Manchester", en: "30 Jun Manchester arrival" }, note: { zh: "MAN Airport → INNSiDE Manchester", en: "MAN Airport → INNSiDE Manchester" }, url: "https://www.google.com/maps/dir/Manchester+Airport/INNSiDE+Manchester+1+First+Street+Manchester" },
+    { status: "book", label: { zh: "7/4 Manchester → London", en: "4 Jul Manchester → London" }, note: { zh: "Piccadilly → Euston，再走向 Westminster 的河岸。", en: "Piccadilly → Euston, then toward the Westminster riverside." }, url: "https://www.google.com/maps/dir/Manchester+Piccadilly/London+Euston/Big+Ben+London" },
+    { status: "pending", label: { zh: "7/5 大英博物館", en: "5 Jul British Museum" }, note: { zh: "British Museum → Covent Garden / Soho 一帶。", en: "British Museum → Covent Garden / Soho area." }, url: "https://www.google.com/maps/dir/British+Museum/Covent+Garden/Soho+London" },
+    { status: "pending", label: { zh: "7/6 Greenwich", en: "6 Jul Greenwich" }, note: { zh: "Royal Observatory → Cutty Sark → Greenwich Market。", en: "Royal Observatory → Cutty Sark → Greenwich Market." }, url: "https://www.google.com/maps/dir/Royal+Observatory+Greenwich/Cutty+Sark/Greenwich+Market" },
+    { status: "pending", label: { zh: "7/7 西敏與河岸", en: "7 Jul Westminster & riverside" }, note: { zh: "Buckingham Palace → Westminster Abbey → Tower Bridge。", en: "Buckingham Palace → Westminster Abbey → Tower Bridge." }, url: "https://www.google.com/maps/dir/Buckingham+Palace/Westminster+Abbey/Tower+Bridge" },
+    { status: "confirmed", label: { zh: "7/8 South Kensington", en: "8 Jul South Kensington" }, note: { zh: "Natural History Museum → V&A → Harrods。", en: "Natural History Museum → V&A → Harrods." }, url: "https://www.google.com/maps/dir/Natural+History+Museum+London/Victoria+and+Albert+Museum/Harrods+London" },
+    { status: "book", label: { zh: "7/10 回 Manchester", en: "10 Jul return to Manchester" }, note: { zh: "London Euston → Manchester Piccadilly。", en: "London Euston → Manchester Piccadilly." }, url: "https://www.google.com/maps/dir/London+Euston/Manchester+Piccadilly" }
+  ],
   expenses: [
     { item: "International flights", amount: money.flight, currency: "TWD / GBP / USD", status: "reimburse", proof: "Flight itinerary + payment screenshot", notes: "TPE-FRA-MAN / MAN-LHR-TPE" },
     { item: "AIB Conference Fee", amount: money.conference, currency: "TWD / GBP / USD", status: "reimburse", proof: "AIB payment receipt", notes: "Conference Fee US$325; donation US$0." },
@@ -190,6 +221,7 @@ const sectionNav = {
   transport: [["flights", "Flights"], ["train", "Train"], ["local", "Local transit"]],
   stay: [["overview", "Overview"], ["conflict", "Conflict"], ["areas", "London areas"]],
   itinerary: [["daily", "每日行程"], ["tickets", "景點費用"], ["return", "回程提醒"]],
+  map: [["travel-map", "Map"], ["route-links", "Routes"], ["map-notes", "Notes"]],
   budget: [["expenses", "費用明細"], ["totals", "金額小計"], ["proofs", "憑證順序"]],
   documents: [["links", "Official links"], ["privacy", "Privacy"]]
 };
@@ -382,6 +414,7 @@ const pageDescriptions = {
   transport: { zh: "航班、Manchester-London 火車、倫敦與曼徹斯特市內交通。", en: "Flights, Manchester-London trains, and London/Manchester local transit." },
   stay: { zh: "Manchester 的房間、London 的空白，以及兩座城市之間的日期銜接。", en: "The Manchester room, the open London nights, and the handoff between the two cities." },
   itinerary: { zh: "每天的路線、停留與可以隨興加上的片段。", en: "Daily routes, pauses, and the optional moments that can be added along the way." },
+  map: { zh: "曼徹斯特與倫敦主要地點、每日路線與完整 Google Maps 路線。", en: "Manchester and London map pins, daily route links, and the full Google Maps route." },
   budget: { zh: "三幣別費用表、憑證、狀態與報帳包順序。", en: "Three-currency expense table, proof, status, and reimbursement packet order." },
   documents: { zh: "官方連結與文件類型，不公開私人憑證細節。", en: "Official links and document categories without exposing private proof details." }
 };
@@ -562,6 +595,70 @@ function renderMiniList(title, items) {
   return `<div class="mini-list"><strong>${title}</strong><ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul></div>`;
 }
 
+function mapEmbedUrl(query) {
+  return `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+}
+
+function renderMap() {
+  const defaultLocation = tripData.mapLocations[0];
+  const cityGroups = [...new Set(tripData.mapLocations.map((item) => item.city))];
+  return `
+    ${renderQuickNav("map")}
+    <section class="section compact-section" id="travel-map">
+      <div class="section-heading">
+        <p class="eyebrow">${state.lang === "en" ? "Travel Map" : "旅程地圖"}</p>
+        <h2>${state.lang === "en" ? "The route, opened gently" : "把路線輕輕展開"}</h2>
+        <p>${state.lang === "en" ? "Tap a place to open it in the map. The list keeps Manchester practical and London beautifully walkable." : "點選地點就能在右側地圖打開；曼徹斯特保留會議所需的俐落，倫敦則留給可以慢慢走的街景。"}</p>
+      </div>
+      <div class="map-actions">
+        <a href="${tripData.mapRouteUrl}" target="_blank" rel="noreferrer noopener">${state.lang === "en" ? "Open full route in Google Maps" : "開啟完整 Google Maps 路線"} ↗</a>
+      </div>
+      <div class="map-layout">
+        <div class="map-list" aria-label="${state.lang === "en" ? "Map locations" : "地圖地點"}">
+          ${tripData.mapLocations.map((location, index) => `
+            <button class="map-location-button${index === 0 ? " active" : ""}" type="button" data-map-query="${escapeHtml(location.query)}" aria-pressed="${index === 0 ? "true" : "false"}">
+              <span class="map-location-top"><span>${location.city}</span>${statusChip(location.status)}</span>
+              <span class="map-location-title">${t(location.title)}</span>
+              <span class="map-location-note">${t(location.note)}</span>
+            </button>
+          `).join("")}
+        </div>
+        <div class="map-frame-wrap">
+          <iframe id="travelMapFrame" title="${state.lang === "en" ? "AIB 2026 UK travel map" : "AIB 2026 英國旅程地圖"}" src="${mapEmbedUrl(defaultLocation.query)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+    <section class="section compact-section" id="route-links">
+      <div class="section-heading">
+        <p class="eyebrow">${state.lang === "en" ? "Daily Routes" : "每日路線"}</p>
+        <h2>${state.lang === "en" ? "Open the day you need" : "打開那一天的路"}</h2>
+      </div>
+      <div class="map-day-routes">
+        ${tripData.mapRoutes.map((route) => `
+          <a class="map-day-route-link" href="${route.url}" target="_blank" rel="noreferrer noopener">
+            <span class="map-day-route-head">${statusChip(route.status)}</span>
+            <span class="map-day-route-title">${t(route.label)}</span>
+            <span class="map-day-route-note">${t(route.note)}</span>
+          </a>
+        `).join("")}
+      </div>
+    </section>
+    <section class="section compact-section" id="map-notes">
+      <div class="summary-grid two">
+        ${cityGroups.map((city) => `
+          <article class="summary-card">
+            <h3>${city}</h3>
+            <p>${city === "Manchester"
+              ? (state.lang === "en" ? "Keep this side practical: airport, hotel, station, and conference-day movement." : "這一側保持實用：機場、飯店、車站與會議日移動。")
+              : (state.lang === "en" ? "Keep this side slow: museums, riverside walks, royal landmarks, and shopping streets." : "這一側放慢：博物館、河岸、皇室地標與百貨街區。")
+            }</p>
+          </article>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
 function renderBudget() {
   const reimbursableTotals = "NT$156,039 / GBP 3,671 / US$4,870";
   const selfFundedKnown = "NT$38,525 / GBP 906.90 / US$1,202";
@@ -648,6 +745,7 @@ const renderers = {
   transport: renderTransport,
   stay: renderStay,
   itinerary: renderItinerary,
+  map: renderMap,
   budget: renderBudget,
   documents: renderDocuments
 };
@@ -660,8 +758,25 @@ function renderApp() {
   if (heroSlot) heroSlot.innerHTML = renderHero(pageId);
   const content = document.getElementById("page-content");
   if (content) content.innerHTML = renderers[pageId]?.() || renderHome();
+  wireMap();
   wireBackToTop();
   updateProgress();
+}
+
+function wireMap() {
+  const frame = document.getElementById("travelMapFrame");
+  if (!frame) return;
+  document.querySelectorAll(".map-location-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll(".map-location-button").forEach((item) => {
+        item.classList.remove("active");
+        item.setAttribute("aria-pressed", "false");
+      });
+      button.classList.add("active");
+      button.setAttribute("aria-pressed", "true");
+      frame.src = mapEmbedUrl(button.dataset.mapQuery);
+    });
+  });
 }
 
 function updateProgress() {

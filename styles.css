@@ -172,6 +172,7 @@ a {
 
 .hero-copy {
   max-width: 760px;
+  min-width: 0;
 }
 
 .eyebrow,
@@ -227,6 +228,7 @@ h3 {
   color: rgba(255, 253, 249, 0.88);
   font-size: 18px;
   line-height: 1.9;
+  overflow-wrap: anywhere;
 }
 
 .hero-actions {
@@ -863,6 +865,166 @@ td:first-child {
   background: var(--soft-gold);
 }
 
+.map-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.map-actions a {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border: 1px solid rgba(75, 67, 80, 0.12);
+  border-radius: var(--radius);
+  color: #fffdf9;
+  background: linear-gradient(135deg, #5f748c, #4b4350);
+  font-weight: 900;
+  box-shadow: 0 14px 30px rgba(75, 67, 80, 0.12);
+}
+
+.map-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.42fr) minmax(0, 1fr);
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.map-list {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  max-height: 640px;
+  overflow: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+}
+
+.map-location-button {
+  width: 100%;
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid rgba(75, 67, 80, 0.12);
+  border-radius: var(--radius);
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(255, 253, 249, 0.96), rgba(239, 233, 225, 0.86)),
+    var(--paper);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(75, 67, 80, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.map-location-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(117, 137, 159, 0.42);
+}
+
+.map-location-button.active {
+  border-color: rgba(117, 137, 159, 0.64);
+  background:
+    radial-gradient(circle at top left, rgba(229, 220, 195, 0.54), transparent 42%),
+    linear-gradient(135deg, rgba(245, 243, 239, 0.98), rgba(255, 253, 249, 0.94));
+  box-shadow: 0 16px 34px rgba(75, 67, 80, 0.1);
+}
+
+.map-location-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--royal-red);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.map-location-title {
+  color: var(--slate);
+  font-family: "Noto Serif TC", serif;
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.map-location-note {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.map-frame-wrap {
+  min-height: 640px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.76);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 253, 249, 0.9), rgba(239, 233, 225, 0.78)),
+    var(--bone);
+  box-shadow: 0 20px 46px rgba(75, 67, 80, 0.1);
+}
+
+#travelMapFrame {
+  width: 100%;
+  height: 100%;
+  min-height: 640px;
+  border: 0;
+}
+
+.map-day-routes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.map-day-route-link {
+  min-height: 154px;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid rgba(75, 67, 80, 0.12);
+  border-radius: var(--radius);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(184, 170, 134, 0.2), transparent 40%),
+    rgba(255, 253, 249, 0.88);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.map-day-route-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(117, 137, 159, 0.44);
+}
+
+.map-day-route-head {
+  min-height: 26px;
+}
+
+.map-day-route-title {
+  color: var(--slate);
+  font-family: "Noto Serif TC", serif;
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.map-day-route-note {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
 footer {
   display: flex;
   flex-wrap: wrap;
@@ -887,7 +1049,8 @@ footer a {
   .split,
   .split.reverse,
   .flight-grid,
-  .note-grid {
+  .note-grid,
+  .map-layout {
     grid-template-columns: 1fr;
   }
 
@@ -900,7 +1063,8 @@ footer a {
   }
 
   .stats-grid,
-  .link-grid {
+  .link-grid,
+  .map-day-routes {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1064,10 +1228,39 @@ footer a {
 
   .stats-grid,
   .link-grid,
+  .map-day-routes,
   .page-grid,
   .fare-grid {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  .map-actions a {
+    width: 100%;
+  }
+
+  .map-layout {
+    gap: 12px;
+  }
+
+  .map-frame-wrap {
+    order: 1;
+    min-height: 360px;
+  }
+
+  #travelMapFrame {
+    min-height: 360px;
+  }
+
+  .map-list {
+    order: 2;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .map-location-button {
+    padding: 15px;
   }
 
   .stats-grid article {
