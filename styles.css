@@ -3794,38 +3794,46 @@ footer a {
   }
 }
 
-/* Luxury minimal finish */
+/* Morandi travel handbook finish */
 :root {
-  --slate: #514d53;
-  --ink: #302d33;
-  --royal-blue: #758b91;
-  --royal-red: #9b747b;
-  --gold: #aa9f87;
-  --soft-gold: #e5dcc8;
-  --bone: #ebe6dd;
-  --paper: #fffdf8;
-  --mist: #f7f4ef;
-  --muted: #777176;
-  --oxford: #302d35;
-  --border: rgba(68, 61, 72, 0.105);
-  --shadow: 0 10px 28px rgba(69, 61, 73, 0.07);
+  --slate: #5f5960;
+  --ink: #37323a;
+  --royal-blue: #7b8f91;
+  --royal-red: #9f7f82;
+  --gold: #aaa087;
+  --soft-gold: #e2dac6;
+  --bone: #ebe7de;
+  --paper: #fbf8f1;
+  --mist: #f3efe7;
+  --muted: #746f70;
+  --sage: #9aa89b;
+  --mauve: #a097a5;
+  --blush: #d8c8c6;
+  --oxford: #322e36;
+  --library: #6e685f;
+  --vellum: #f7f1e7;
+  --champagne: #d4c6a6;
+  --border: rgba(73, 66, 72, 0.115);
+  --shadow: 0 14px 34px rgba(69, 61, 73, 0.075);
 }
 
 body {
   background:
-    linear-gradient(180deg, #fbf8f2 0%, #f6f2eb 46%, #efebe3 100%);
+    radial-gradient(circle at 9% 0%, rgba(216, 200, 198, 0.2), transparent 30%),
+    radial-gradient(circle at 88% 8%, rgba(154, 168, 155, 0.18), transparent 28%),
+    linear-gradient(180deg, #faf7f0 0%, #f3efe7 48%, #e9e4dc 100%);
 }
 
 .progress {
   height: 3px;
-  background: linear-gradient(90deg, #9b747b, #aa9f87, #758b91);
+  background: linear-gradient(90deg, #9f7f82, #aaa087, #7b8f91);
   box-shadow: none;
 }
 
 .hero {
   min-height: 560px;
   background:
-    linear-gradient(110deg, rgba(38, 34, 43, 0.82) 0%, rgba(55, 50, 58, 0.56) 44%, rgba(88, 80, 76, 0.2) 100%),
+    linear-gradient(110deg, rgba(43, 39, 47, 0.8) 0%, rgba(72, 66, 73, 0.55) 43%, rgba(130, 115, 105, 0.22) 100%),
     url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1920px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 42% / cover;
 }
 
@@ -3836,7 +3844,7 @@ body {
 
 .brand,
 .hero-serif-note {
-  color: #e9dfc7;
+  color: #ece3cf;
 }
 
 .nav-pills,
@@ -3859,9 +3867,9 @@ body {
 .nav-pills a.active,
 .lang-toggle,
 .button.primary {
-  color: #363139;
-  background: #e8dfcc;
-  border-color: #e8dfcc;
+  color: #342f37;
+  background: #e6decb;
+  border-color: #e6decb;
   box-shadow: none;
 }
 
@@ -3879,7 +3887,7 @@ h1 {
 }
 
 .hero-panel {
-  background: rgba(47, 42, 51, 0.48);
+  background: rgba(49, 44, 52, 0.46);
 }
 
 .quick-nav,
@@ -3912,8 +3920,8 @@ h1 {
 .fare-grid div,
 .dashboard-fares article {
   border: 1px solid rgba(255, 255, 255, 0.72);
-  background: rgba(255, 253, 248, 0.82);
-  box-shadow: 0 8px 24px rgba(69, 61, 73, 0.055);
+  background: rgba(251, 248, 241, 0.84);
+  box-shadow: 0 10px 26px rgba(69, 61, 73, 0.052);
   backdrop-filter: blur(10px);
 }
 
@@ -3923,8 +3931,8 @@ h1 {
 .map-day-route-link:hover,
 .link-grid a:hover {
   transform: translateY(-2px);
-  border-color: rgba(170, 159, 135, 0.45);
-  box-shadow: 0 12px 28px rgba(69, 61, 73, 0.075);
+  border-color: rgba(151, 145, 124, 0.46);
+  box-shadow: 0 14px 30px rgba(69, 61, 73, 0.07);
 }
 
 .section {
@@ -3954,7 +3962,7 @@ h1 {
 .reminder-card p,
 .clean-list li,
 .mini-list li {
-  color: #716b70;
+  color: #706a6b;
 }
 
 .eyebrow,
@@ -3972,36 +3980,36 @@ h1 {
 }
 
 .status-confirmed {
-  color: #405248;
-  background: #e2e9df;
+  color: #465a4d;
+  background: #e1e8de;
 }
 
 .status-book,
 .status-reimburse {
-  color: #76633d;
-  background: #eee5cf;
+  color: #6f634a;
+  background: #ebe3d1;
 }
 
 .status-pending,
 .status-alert {
-  color: #815f67;
-  background: #eadadd;
+  color: #7d6065;
+  background: #eadcdb;
 }
 
 .status-self,
 .status-optional {
-  color: #5e6971;
-  background: #dfe7e8;
+  color: #5c6c70;
+  background: #dfe8e6;
 }
 
 .command-board {
   background:
-    linear-gradient(135deg, rgba(255, 253, 248, 0.9), rgba(244, 240, 232, 0.78));
+    linear-gradient(135deg, rgba(251, 248, 241, 0.9), rgba(239, 234, 224, 0.78));
 }
 
 .command-primary {
   background:
-    linear-gradient(135deg, rgba(74, 68, 78, 0.82), rgba(112, 103, 108, 0.58)),
+    linear-gradient(135deg, rgba(66, 60, 70, 0.82), rgba(102, 96, 96, 0.58)),
     url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center / cover;
 }
 
@@ -4011,12 +4019,12 @@ h1 {
 }
 
 .premium-summary .summary-card::before {
-  color: rgba(170, 159, 135, 0.16);
+  color: rgba(154, 143, 123, 0.14);
 }
 
 .literary-strip,
 .home-strip {
-  background: rgba(255, 253, 248, 0.72);
+  background: rgba(251, 248, 241, 0.74);
 }
 
 .stay-facts li,
@@ -4030,51 +4038,53 @@ h1 {
 
 .itinerary-collapse summary::after,
 .currency-switcher button {
-  background: rgba(247, 244, 239, 0.84);
+  background: rgba(243, 239, 231, 0.86);
 }
 
 .currency-switcher button.active {
   color: #fffdf8;
-  background: #758b91;
+  background: #7b8f91;
   box-shadow: none;
 }
 
 .back-to-top {
   color: #413b44;
-  background: #e6ddca;
-  border-color: rgba(170, 159, 135, 0.42);
+  background: #e4dcc9;
+  border-color: rgba(154, 143, 123, 0.42);
   box-shadow: 0 10px 22px rgba(69, 61, 73, 0.12);
 }
 
 @media (max-width: 760px) {
   body {
-    background: linear-gradient(180deg, #fbf8f2 0%, #f5f1ea 56%, #eee9e0 100%);
+    background:
+      radial-gradient(circle at 0% 0%, rgba(216, 200, 198, 0.18), transparent 34%),
+      linear-gradient(180deg, #faf7f0 0%, #f3efe7 56%, #e9e4dc 100%);
   }
 
   .hero {
     background:
-      linear-gradient(180deg, rgba(42, 37, 47, 0.68), rgba(51, 46, 56, 0.44)),
+      linear-gradient(180deg, rgba(45, 40, 49, 0.68), rgba(66, 60, 70, 0.44)),
       url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 38% / cover;
   }
 
   .hero-copy {
-    background: rgba(47, 42, 51, 0.34);
+    background: rgba(49, 44, 52, 0.34);
     box-shadow: none;
   }
 
   .hero-panel {
-    background: rgba(47, 42, 51, 0.54);
+    background: rgba(49, 44, 52, 0.54);
   }
 
   .nav-pills {
     border-color: rgba(68, 61, 72, 0.1);
-    background: rgba(255, 253, 248, 0.96);
+    background: rgba(251, 248, 241, 0.96);
     box-shadow: 0 8px 22px rgba(69, 61, 73, 0.11);
   }
 
   .nav-pills a.active {
     color: #fffdf8;
-    background: #758b91;
+    background: #7b8f91;
   }
 
   .quick-nav,
@@ -4094,7 +4104,7 @@ h1 {
   .arrival-card,
   .stay-card-rich,
   .reminder-card {
-    background: rgba(255, 253, 248, 0.88);
+    background: rgba(251, 248, 241, 0.9);
     box-shadow: 0 6px 18px rgba(69, 61, 73, 0.05);
   }
 
