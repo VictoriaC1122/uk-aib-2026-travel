@@ -547,29 +547,40 @@ h3 {
   margin-top: 14px;
 }
 
-.fare-grid div {
+.fare-grid div,
+.fare-grid article {
   min-height: 148px;
   padding: 18px;
   border: 1px solid rgba(48, 38, 56, 0.1);
   border-radius: var(--radius);
   background: rgba(255, 253, 249, 0.82);
+  min-width: 0;
 }
 
-.fare-grid span {
+.fare-grid > div > span:not(.status-chip),
+.fare-grid > article > span:not(.status-chip) {
   display: block;
   color: var(--royal-red);
   font-size: 13px;
   font-weight: 900;
 }
 
+.fare-grid .status-chip {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+}
+
 .fare-grid strong {
   display: block;
   margin: 8px 0;
   color: var(--slate);
-  font-family: var(--font-serif);
-  font-size: 19px;
-  line-height: 1.2;
-  overflow-wrap: anywhere;
+  font-family: var(--font-number);
+  font-size: clamp(17px, 4.4vw, 19px);
+  font-variant-numeric: lining-nums;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .fare-grid p {
@@ -1339,7 +1350,8 @@ footer a {
     min-height: auto;
   }
 
-  .fare-grid div {
+  .fare-grid div,
+  .fare-grid article {
     min-height: auto;
     padding: 16px;
   }
@@ -1799,7 +1811,13 @@ footer a {
 }
 
 .dashboard-fares strong {
-  overflow-wrap: anywhere;
+  max-width: 18rem;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.dashboard-fares .status-chip {
+  margin-bottom: 8px;
 }
 
 .itinerary-grid {
@@ -3023,7 +3041,50 @@ footer a {
   .summary-card strong,
   .ticket-card strong,
   .mobile-table td {
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .fare-grid,
+  .dashboard-fares {
+    gap: 14px;
+  }
+
+  .fare-grid article,
+  .fare-grid div,
+  .dashboard-fares article {
+    min-height: auto;
+    padding: 18px 17px;
+  }
+
+  .fare-grid .status-chip,
+  .dashboard-fares .status-chip {
+    display: inline-flex;
+    width: fit-content;
+    max-width: 100%;
+    border-radius: 999px;
+  }
+
+  .dashboard-fares h3 {
+    margin-top: 4px;
+    font-size: 19px;
+    line-height: 1.25;
+  }
+
+  .dashboard-fares strong,
+  .fare-grid strong {
+    max-width: 100%;
+    margin-top: 8px;
+    font-size: 17px;
+    line-height: 1.35;
+    letter-spacing: 0;
+  }
+
+  .dashboard-fares p,
+  .fare-grid p {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.65;
   }
 
   .itinerary-head,

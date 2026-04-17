@@ -117,8 +117,8 @@ const tripData = {
     { label: { zh: "回程", en: "Return" }, date: "2026/07/11 - 07/12", legs: [{ from: "MAN", to: "LHR", flight: "BA 1371", time: "18:10 → 19:15", duration: "1h 05m", detail: { zh: "曼徹斯特 T2 → 倫敦希斯洛 T5", en: "Manchester T2 → London Heathrow T5" } }, { from: "LHR", to: "TPE", flight: "CI 82", time: "21:10 → 18:05", duration: "13h 55m", detail: { zh: "倫敦希斯洛 T3 → 台北桃園 T1", en: "London Heathrow T3 → Taipei Taoyuan T1" } }] }
   ],
   trainFares: [
-    { status: "book", item: "Advance", amount: { zh: "單程 NT$1,423 起 / GBP 33.50 起 / US$44 起", en: "from NT$1,423 / GBP 33.50 / US$44 one-way" }, note: { zh: "最便宜但綁定指定班次；越早買越划算。", en: "Cheapest, train-specific, and best bought early." } },
-    { status: "optional", item: "Off-Peak", amount: "NT$3,228-3,398 / GBP 76-80 / US$101-106 one-way", note: { zh: "彈性較高，適合不想被指定班次綁死。", en: "More flexible if you do not want to be tied to a single service." } },
+    { status: "book", item: "Advance", amount: { zh: "單程 NT$1,423 起 / GBP 33.50 起 / US$44 起", en: "From NT$1,423 / GBP 33.50 / US$44" }, note: { zh: "最便宜但綁定指定班次；越早買越划算。", en: "Cheapest, train-specific, and best bought early." } },
+    { status: "optional", item: "Off-Peak", amount: { zh: "單程 NT$3,228-3,398 / GBP 76-80 / US$101-106", en: "NT$3,228-3,398 / GBP 76-80 / US$101-106" }, note: { zh: "彈性較高，適合不想被指定班次綁死。", en: "More flexible if you do not want to be tied to a single service." } },
     { status: "optional", item: "Two Together Railcard", amount: money.railcard, note: { zh: "兩人同行可省 1/3；週末全天、平日 09:30 後可用。", en: "Two people traveling together can save 1/3; valid all day weekends and after 09:30 weekdays." } }
   ],
   localTransit: [
