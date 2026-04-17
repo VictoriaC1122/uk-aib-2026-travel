@@ -1283,7 +1283,7 @@ footer a {
   }
 
   .section {
-    width: min(100% - 14px, 1180px);
+    width: min(1180px, calc(100% - 14px));
     padding: 42px 0;
   }
 
@@ -1546,7 +1546,7 @@ footer a {
   }
 
   .section {
-    width: min(100% - 12px, 1180px);
+    width: min(1180px, calc(100% - 12px));
   }
 
   .data-list div {
@@ -1571,7 +1571,7 @@ footer a {
   position: sticky;
   top: 10px;
   z-index: 20;
-  width: min(100% - 32px, 1180px);
+  width: min(1180px, calc(100% - 32px));
   margin: -30px auto 0;
   padding: 10px;
   display: flex;
@@ -2297,7 +2297,7 @@ footer a {
 @media (max-width: 760px) {
   .quick-nav {
     top: 6px;
-    width: min(100% - 14px, 1180px);
+    width: min(1180px, calc(100% - 14px));
     margin-top: -22px;
   }
 
@@ -2397,9 +2397,13 @@ footer a {
   .mobile-table tbody {
     display: grid;
     gap: 12px;
+    width: 100%;
   }
 
   .mobile-table tr {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
     padding: 16px;
     border: 1px solid rgba(255, 255, 255, 0.75);
     border-radius: var(--radius);
@@ -2623,7 +2627,7 @@ footer a {
   }
 
   .section {
-    width: min(100% - 18px, 1180px);
+    width: min(1180px, calc(100% - 18px));
     padding: 34px 0;
   }
 
@@ -2975,6 +2979,9 @@ footer a {
     top: 8px;
     z-index: 25;
     width: calc(100% - 18px);
+    max-width: calc(100vw - 18px);
+    margin-left: auto;
+    margin-right: auto;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scroll-snap-type: x proximity;
@@ -2995,7 +3002,9 @@ footer a {
   }
 
   .section {
-    width: min(100% - 20px, 1180px);
+    width: min(1180px, calc(100% - 20px));
+    margin-left: auto;
+    margin-right: auto;
     padding-block: 32px;
   }
 
@@ -3020,7 +3029,9 @@ footer a {
   .ticket-grid,
   .note-grid,
   .flight-grid {
+    width: 100%;
     gap: 12px;
+    justify-items: stretch;
   }
 
   .summary-card,
@@ -3033,6 +3044,11 @@ footer a {
   .page-card,
   .note-grid article,
   .flight-card {
+    width: 100%;
+    max-width: 100%;
+    justify-self: stretch;
+    margin-left: 0;
+    margin-right: 0;
     border-radius: 12px;
     padding: 17px;
     background: rgba(255, 253, 248, 0.93);
