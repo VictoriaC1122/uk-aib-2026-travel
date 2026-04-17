@@ -137,6 +137,34 @@ const tripData = {
     { label: { zh: "去程", en: "Outbound" }, date: "2026/06/29 - 06/30", legs: [{ from: "TPE", to: "FRA", flight: "CI 61", time: "22:40 → 06:50", duration: "14h 30m", detail: { zh: "台北桃園 T1 → 法蘭克福 T3", en: "Taipei Taoyuan T1 → Frankfurt T3" } }, { from: "FRA", to: "MAN", flight: "LH 4210", time: "09:50 → 10:40", duration: "1h 50m", detail: { zh: "法蘭克福 T1 → 曼徹斯特 T2", en: "Frankfurt T1 → Manchester T2" } }] },
     { label: { zh: "回程", en: "Return" }, date: "2026/07/11 - 07/12", legs: [{ from: "MAN", to: "LHR", flight: "BA 1371", time: "18:10 → 19:15", duration: "1h 05m", detail: { zh: "曼徹斯特 T2 → 倫敦希斯洛 T5", en: "Manchester T2 → London Heathrow T5" } }, { from: "LHR", to: "TPE", flight: "CI 82", time: "21:10 → 18:05", duration: "13h 55m", detail: { zh: "倫敦希斯洛 T3 → 台北桃園 T1", en: "London Heathrow T3 → Taipei Taoyuan T1" } }] }
   ],
+  transfers: [
+    {
+      status: "confirmed",
+      airport: { zh: "法蘭克福機場 FRA", en: "Frankfurt Airport FRA" },
+      route: "CI 61 → LH 4210",
+      layover: { zh: "停留 3 小時", en: "3-hour layover" },
+      terminals: { zh: "票面規劃：T3 → T1，當天以機場螢幕為準。", en: "Ticketed plan: T3 → T1; verify on airport screens on the day." },
+      notes: [
+        { zh: "抵達後先看 Connecting Flights / Abflug 螢幕，確認 LH 4210 的登機門與航廈。", en: "After arrival, check the Connecting Flights / departure screens for the LH 4210 gate and terminal." },
+        { zh: "不同航廈可能需要移動與再次安檢，3 小時轉機時間算舒服，但不要在抵達區停留太久。", en: "Changing terminals may involve walking/shuttle movement and another security check; 3 hours is comfortable, but keep moving after arrival." },
+        { zh: "若登機證未一次拿齊，抵達後找 Lufthansa / transfer counter 或自助機補印。", en: "If boarding passes are not issued through, use a Lufthansa / transfer counter or kiosk after arrival." }
+      ],
+      source: "https://www.frankfurt-airport.com/en/flights-and-transfer/transferring-at-fra.html"
+    },
+    {
+      status: "alert",
+      airport: { zh: "倫敦希斯洛機場 LHR", en: "London Heathrow LHR" },
+      route: "BA 1371 → CI 82",
+      layover: { zh: "停留 1 小時 55 分", en: "1h 55m layover" },
+      terminals: { zh: "票面規劃：T5 → T3。希斯洛轉機旅客需再過安檢。", en: "Ticketed plan: T5 → T3. Heathrow flight connections require security screening." },
+      notes: [
+        { zh: "BA 建議 T5 轉 T3 至少抓 90 分鐘；這段 1 小時 55 分高於建議，但仍偏緊。", en: "BA recommends at least 90 minutes for T5 to T3 connections; 1h 55m is above that but still tight." },
+        { zh: "下機後跟著 purple Flight Connections 標示，不要走 arrivals / immigration 出境。", en: "Follow the purple Flight Connections signs after landing; do not follow arrivals / immigration." },
+        { zh: "液體、筆電、行動電源等安檢規則先整理好，避免在轉機安檢卡住。", en: "Prepare liquids, laptop, and power banks for security to avoid delays at the transfer checkpoint." }
+      ],
+      source: "https://www.heathrow.com/connecting-flights"
+    }
+  ],
   trainFares: [
     { status: "book", item: "Advance", amount: { zh: "單程 NT$1,423 起 / GBP 33.50 起 / US$44 起", en: "From NT$1,423 / GBP 33.50 / US$44" }, note: { zh: "最便宜但綁定指定班次；越早買越划算。", en: "Cheapest, train-specific, and best bought early." } },
     { status: "optional", item: "Off-Peak", amount: { zh: "單程 NT$3,228-3,398 / GBP 76-80 / US$101-106", en: "NT$3,228-3,398 / GBP 76-80 / US$101-106" }, note: { zh: "彈性較高，適合不想被指定班次綁死。", en: "More flexible if you do not want to be tied to a single service." } },
@@ -279,7 +307,7 @@ const tripData = {
 const sectionNav = {
   home: [["snapshot", { zh: "旅程一覽", en: "Snapshot" }], ["todo", { zh: "行前小記", en: "To-do" }], ["handoff", { zh: "分類索引", en: "Sections" }]],
   conference: [["accepted", { zh: "接受狀態", en: "Accepted" }], ["papers", { zh: "文章簡介", en: "Papers" }], ["rhythm", { zh: "會議節奏", en: "Schedule" }]],
-  transport: [["flights", { zh: "航班", en: "Flights" }], ["train", { zh: "火車", en: "Train" }], ["local", { zh: "市內交通", en: "Local transit" }]],
+  transport: [["flights", { zh: "航班", en: "Flights" }], ["transfer", { zh: "轉機", en: "Transfers" }], ["train", { zh: "火車", en: "Train" }], ["local", { zh: "市內交通", en: "Local transit" }]],
   stay: [["overview", { zh: "住宿總覽", en: "Overview" }], ["conflict", { zh: "日期提醒", en: "Conflict" }], ["areas", { zh: "倫敦區域", en: "London areas" }]],
   itinerary: [["daily", { zh: "每日行程", en: "Daily plan" }], ["tickets", { zh: "景點費用", en: "Admission" }], ["return", { zh: "回程提醒", en: "Return note" }]],
   map: [["travel-map", { zh: "地圖", en: "Map" }], ["route-links", { zh: "每日路線", en: "Routes" }], ["map-notes", { zh: "地圖備註", en: "Notes" }]],
@@ -296,6 +324,7 @@ const readingGuides = {
   ],
   transport: [
     { zh: "國際航班已確認，回程從曼徹斯特起飛。", en: "International flights are confirmed; the return journey begins in Manchester." },
+    { zh: "法蘭克福轉機 3 小時，希斯洛轉機 1 小時 55 分。", en: "Frankfurt layover is 3 hours; Heathrow layover is 1h 55m." },
     { zh: "曼徹斯特到倫敦火車尚未預訂，Advance 票越早查越好。", en: "Manchester-London train tickets are pending; Advance fares are best checked early." },
     { zh: "倫敦與曼徹斯特市內交通都以感應付款為主。", en: "Local transit in London and Manchester is planned around contactless payment." }
   ],
@@ -691,6 +720,16 @@ function renderTransport() {
         <article><h3>${state.lang === "en" ? "Transfer reminder" : "轉機提醒"}</h3><p>${state.lang === "en" ? "Return routing starts from MAN. Do not skip MAN-LHR even if the leisure portion is in London." : "回程為 MAN 起飛；即使後段在倫敦旅遊，也不要跳過 MAN-LHR 航段。"}</p></article>
       </div>
     </section>
+    <section class="section compact-section" id="transfer">
+      ${sectionHeading(
+        state.lang === "en" ? "Transfers" : "轉機資訊",
+        state.lang === "en" ? "Frankfurt and Heathrow connection notes" : "法蘭克福與希斯洛轉機注意事項",
+        state.lang === "en" ? "Terminals and gates can change; use the airport screens on the day." : "航廈與登機門可能調整，當天以機場螢幕與航空公司通知為準。"
+      )}
+      <div class="transfer-grid">
+        ${tripData.transfers.map(renderTransferCard).join("")}
+      </div>
+    </section>
     <section class="section compact-section" id="train">
       ${sectionHeading(state.lang === "en" ? "Train" : "火車", state.lang === "en" ? "Manchester ↔ London" : "曼徹斯特 ↔ 倫敦")}
       <div class="summary-grid">
@@ -814,6 +853,22 @@ function renderItinerary() {
 function renderMiniList(title, items) {
   if (!items?.length) return "";
   return `<div class="mini-list"><strong>${escapeHtml(title)}</strong>${renderList(items, "")}</div>`;
+}
+
+function renderTransferCard(item) {
+  return `
+    <article class="transfer-card">
+      <div class="transfer-card-head">
+        ${statusChip(item.status)}
+        <span>${escapeHtml(item.route)}</span>
+      </div>
+      <h3>${escapeHtml(t(item.airport))}</h3>
+      <strong>${escapeHtml(t(item.layover))}</strong>
+      <p>${escapeHtml(t(item.terminals))}</p>
+      ${renderList(item.notes, "transfer-notes")}
+      ${externalLink(item.source, state.lang === "en" ? "Official airport guidance" : "機場官方轉機資訊")}
+    </article>
+  `;
 }
 
 function mapEmbedUrl(query) {

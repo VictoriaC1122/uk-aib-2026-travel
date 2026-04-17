@@ -1918,6 +1918,85 @@ footer a {
   counter-reset: proof;
 }
 
+.transfer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.transfer-card {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 12px;
+  background: rgba(255, 253, 248, 0.86);
+  box-shadow: 0 8px 24px rgba(69, 61, 73, 0.055);
+}
+
+.transfer-card-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.transfer-card-head > span {
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.transfer-card h3 {
+  margin-top: 16px;
+  color: var(--oxford);
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.transfer-card strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--royal-red);
+  font-family: var(--font-number);
+  font-size: 24px;
+  font-variant-numeric: lining-nums;
+  line-height: 1.15;
+}
+
+.transfer-card p {
+  margin: 10px 0 0;
+  color: var(--slate);
+  line-height: 1.7;
+}
+
+.transfer-notes {
+  margin: 14px 0 0;
+  padding-left: 18px;
+}
+
+.transfer-notes li {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.68;
+}
+
+.transfer-card a {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 16px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--slate);
+  background: rgba(247, 244, 239, 0.82);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 900;
+}
+
 .dashboard-section,
 .compact-section {
   scroll-margin-top: 88px;
@@ -3376,6 +3455,7 @@ footer a {
   .ticket-grid,
   .note-grid,
   .flight-grid,
+  .transfer-grid,
   .reminder-grid {
     width: 100%;
     gap: 12px;
@@ -3391,6 +3471,7 @@ footer a {
   .feature-card,
   .page-card,
   .reminder-card,
+  .transfer-card,
   .note-grid article,
   .flight-card {
     width: 100%;
@@ -3730,6 +3811,7 @@ h1 {
 .page-card,
 .note-grid article,
 .flight-card,
+.transfer-card,
 .stay-card-rich,
 .reminder-card,
 .currency-switcher,
@@ -3922,9 +4004,18 @@ h1 {
   .page-card,
   .note-grid article,
   .flight-card,
+  .transfer-card,
   .stay-card-rich,
   .reminder-card {
     background: rgba(255, 253, 248, 0.88);
     box-shadow: 0 6px 18px rgba(69, 61, 73, 0.05);
+  }
+
+  .transfer-card h3 {
+    font-size: 22px;
+  }
+
+  .transfer-card strong {
+    font-size: 21px;
   }
 }
