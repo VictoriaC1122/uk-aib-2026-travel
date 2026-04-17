@@ -25,7 +25,12 @@ const money = {
   conference: "NT$10,413 / GBP 245 / US$325",
   membership: "NT$1,282 / GBP 30 / US$40",
   hotel: "NT$38,270 / GBP 900.90 / US$1,194",
+  hotelPerNight: "NT$7,654 / GBP 180.18 / US$239",
+  hotelPerPersonTotal: "NT$19,135 / GBP 450.45 / US$597",
+  hotelPerPersonNight: "NT$3,827 / GBP 90.09 / US$119",
   visitorCharge: "約 NT$255 / GBP 6 / US$8",
+  visitorChargePerPerson: "約 NT$128 / GBP 3 / US$4",
+  personalKnownSelfFunded: "約 NT$19,263 / GBP 453.45 / US$601",
   manchesterDaily: "NT$10,381 / GBP 244 / US$324 / day",
   manchesterDaily5: "NT$51,905 / GBP 1,220 / US$1,620",
   londonDaily: "NT$16,340 / GBP 385 / US$510 / day",
@@ -196,9 +201,14 @@ const tripData = {
         { zh: "入住：2026/06/30 15:00 後", en: "Check-in: 30 Jun 2026 after 15:00" },
         { zh: "退房：2026/07/05 12:00 前", en: "Check-out: 5 Jul 2026 before 12:00" },
         { zh: "房型：雙床房，2 人，5 晚", en: "Room: twin beds, 2 guests, 5 nights" },
+        { zh: `兩人總價：${money.hotel}，已含 20% 稅`, en: `Total for two guests: ${money.hotel}, including 20% tax` },
+        { zh: `每晚房價：約 ${money.hotelPerNight}`, en: `Average per room night: ${money.hotelPerNight}` },
+        { zh: `一人一晚：約 ${money.hotelPerPersonNight}`, en: `Per person per night: ${money.hotelPerPersonNight}` },
+        { zh: `一人 5 晚住宿：約 ${money.hotelPerPersonTotal}`, en: `Per person for 5 nights: ${money.hotelPerPersonTotal}` },
+        { zh: `旅遊稅另計：兩人約 ${money.visitorCharge}；一人約 ${money.visitorChargePerPerson}`, en: `Visitor charge paid locally: about ${money.visitorCharge} total, about ${money.visitorChargePerPerson} per person` },
         { zh: "地址：1 First Street, Manchester", en: "Address: 1 First Street, Manchester" }
       ],
-      note: { zh: "房價總額 GBP 900.90，已含 20% 稅；旅遊稅 GBP 1.20 / 房 / 晚現場付。", en: "Total GBP 900.90 including 20% tax; local visitor charge GBP 1.20 per room per night is paid locally." }
+      note: { zh: "目前住宿金額是兩人房價；個人住宿分攤約為一半。旅遊稅 GBP 1.20 / 房 / 晚現場付。", en: "The accommodation price is for two guests; the personal share is roughly half. Local visitor charge is GBP 1.20 per room per night and paid locally." }
     },
     {
       status: "book",
@@ -279,8 +289,8 @@ const tripData = {
     { item: { zh: "國科會曼徹斯特日支費", en: "NSTC daily allowance - Manchester" }, amount: money.manchesterDaily5, amounts: { TWD: "NT$51,905", GBP: "GBP 1,220", USD: "US$1,620" }, status: "reimburse", proof: { zh: "115 年國外日支表", en: "NSTC overseas daily allowance table" }, notes: { zh: "NT$10,381 / GBP 244 / US$324 每日 × 研討會 5 天。", en: "NT$10,381 / GBP 244 / US$324 per day × 5 conference days." } }
   ],
   selfFundedExpenses: [
-    { item: { zh: "INNSiDE Manchester 住宿", en: "INNSiDE Manchester accommodation" }, amount: money.hotel, amounts: { TWD: "NT$38,270", GBP: "GBP 900.90", USD: "US$1,194" }, status: "self", proof: { zh: "訂房確認與最終發票", en: "Booking confirmation + final invoice" }, notes: { zh: "5 晚，已含 20% 稅。", en: "5 nights, includes 20% tax." } },
-    { item: { zh: "曼徹斯特旅遊稅", en: "Manchester visitor charge" }, amount: money.visitorCharge, amounts: { TWD: "約 NT$255", GBP: "GBP 6", USD: "US$8" }, status: "self", proof: { zh: "退房收據", en: "Check-out receipt" }, notes: { zh: "GBP 1.20 / 房 / 晚，現場支付。", en: "GBP 1.20 per room per night, paid locally." } },
+    { item: { zh: "INNSiDE Manchester 住宿", en: "INNSiDE Manchester accommodation" }, amount: money.hotel, amounts: { TWD: "NT$38,270", GBP: "GBP 900.90", USD: "US$1,194" }, status: "self", proof: { zh: "訂房確認與最終發票", en: "Booking confirmation + final invoice" }, notes: { zh: `兩人 5 晚總價；一人 5 晚約 ${money.hotelPerPersonTotal}，一人一晚約 ${money.hotelPerPersonNight}。`, en: `Total for two guests for 5 nights; per person about ${money.hotelPerPersonTotal}, or ${money.hotelPerPersonNight} per night.` } },
+    { item: { zh: "曼徹斯特旅遊稅", en: "Manchester visitor charge" }, amount: money.visitorCharge, amounts: { TWD: "約 NT$255", GBP: "GBP 6", USD: "US$8" }, status: "self", proof: { zh: "退房收據", en: "Check-out receipt" }, notes: { zh: `GBP 1.20 / 房 / 晚，現場支付；一人約 ${money.visitorChargePerPerson}。`, en: `GBP 1.20 per room per night, paid locally; about ${money.visitorChargePerPerson} per person.` } },
     { item: { zh: "曼徹斯特 ↔ 倫敦火車", en: "Manchester ↔ London train" }, amount: money.trainAdvance, amounts: { TWD: "NT$2,846 起", GBP: "GBP 67 起", USD: "US$89 起" }, status: "self", proof: { zh: "訂票後的電子票與收據", en: "E-ticket / receipt after booking" }, notes: { zh: "7/4 去程，7/10 或 7/11 回程。", en: "7/4 outbound, 7/10 or 7/11 return." } },
     { item: { zh: "倫敦景點門票", en: "London attraction tickets" }, amount: { zh: "依實際選擇的付費景點而定", en: "Depends on selected paid attractions" }, amounts: { TWD: "依實際選擇", GBP: "Depends", USD: "Depends" }, status: "self", proof: { zh: "線上購票收據", en: "Online ticket receipts" }, notes: { zh: "請見行程頁的景點費用；許多博物館免費，付費項目包含 Royal Observatory、Cutty Sark、Westminster Abbey、Tower of London、London Eye 等。", en: "See Itinerary → Attraction fees. Many museums are free; paid items include Royal Observatory, Cutty Sark, Westminster Abbey, Tower sites, London Eye, etc." } },
     { item: { zh: "倫敦住宿", en: "London accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "7/4 起，區域尚未決定。", en: "From 7/4; area not decided." } }
@@ -983,9 +993,9 @@ function currencySwitcher() {
 
 function renderBudget() {
   const totals = {
-    TWD: { reimburse: "NT$156,039", self: "NT$38,525" },
-    GBP: { reimburse: "GBP 3,671", self: "GBP 906.90" },
-    USD: { reimburse: "US$4,870", self: "US$1,202" }
+    TWD: { reimburse: "NT$156,039", self: "NT$38,525", personalSelf: "約 NT$19,263", hotelPerson: "NT$19,135", hotelPersonNight: "NT$3,827" },
+    GBP: { reimburse: "GBP 3,671", self: "GBP 906.90", personalSelf: "GBP 453.45", hotelPerson: "GBP 450.45", hotelPersonNight: "GBP 90.09" },
+    USD: { reimburse: "US$4,870", self: "US$1,202", personalSelf: "約 US$601", hotelPerson: "US$597", hotelPersonNight: "US$119" }
   };
   const selectedTotals = totals[state.currency] || totals.TWD;
   return `
@@ -1012,6 +1022,18 @@ function renderBudget() {
         <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "Reimbursement total" : "可報帳小計"}</h3><strong>${selectedTotals.reimburse}</strong><p>${state.lang === "en" ? "Flights, AIB conference fee, AIB membership fee, and Manchester daily allowance for 5 conference days." : "含機票、AIB 會議費、AIB 會員費，以及曼徹斯特研討會 5 天日支費。"}</p></article>
         <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "NSTC daily allowance" : "國科會日支費"}</h3><strong>${tripData.expenses[3].amounts[state.currency]}</strong><p>${state.lang === "en" ? "Calculated for 5 conference days." : "以研討會 5 天計算。"}</p></article>
         <article class="summary-card">${statusChip("self")}<h3>${state.lang === "en" ? "Self-funded known subtotal" : "已知自費小計"}</h3><strong>${selectedTotals.self}</strong><p>${state.lang === "en" ? "Known self-funded subtotal currently includes Manchester hotel and visitor charge only; London hotel, trains, and attraction tickets remain variable." : "目前只含曼徹斯特住宿與旅遊稅；倫敦住宿、火車與景點門票會依實際預訂變動。"}</p></article>
+      </div>
+    </section>
+    <section class="section compact-section" id="personal-costs">
+      ${sectionHeading(
+        state.lang === "en" ? "Personal Share" : "個人花費",
+        state.lang === "en" ? "Current personal accommodation estimate" : "目前個人住宿分攤估算",
+        state.lang === "en" ? "The Manchester room is priced for two guests, so the personal share is calculated as half of the room total." : "曼徹斯特住宿目前是兩人房價，因此個人分攤以總價除以 2 估算。"
+      )}
+      <div class="summary-grid three">
+        <article class="summary-card">${statusChip("self")}<h3>${state.lang === "en" ? "Hotel per person" : "住宿一人總額"}</h3><strong>${selectedTotals.hotelPerson}</strong><p>${state.lang === "en" ? "INNSiDE Manchester, 5 nights, half of the two-person room total." : "INNSiDE Manchester 5 晚，兩人房價的一半。"}</p></article>
+        <article class="summary-card">${statusChip("self")}<h3>${state.lang === "en" ? "Per person / night" : "一人一晚"}</h3><strong>${selectedTotals.hotelPersonNight}</strong><p>${state.lang === "en" ? "Average personal room share per night." : "平均每晚的個人住宿分攤。"}</p></article>
+        <article class="summary-card">${statusChip("self")}<h3>${state.lang === "en" ? "Known personal self-funded" : "目前個人已知自費"}</h3><strong>${selectedTotals.personalSelf}</strong><p>${state.lang === "en" ? "Manchester hotel share plus half of the visitor charge. London stay, trains, and attractions are not included yet." : "含曼徹斯特住宿個人分攤與旅遊稅一半；尚未包含倫敦住宿、火車與景點門票。"}</p></article>
       </div>
     </section>
     <section class="section compact-section" id="proofs">
