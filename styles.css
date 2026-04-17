@@ -24,6 +24,7 @@
   --font-serif: "Noto Serif TC", serif;
   --font-sans: "Noto Sans TC", sans-serif;
   --font-display: "Cormorant Garamond", "Noto Serif TC", serif;
+  --font-number: "Cormorant Garamond", "Noto Serif TC", serif;
 }
 
 * {
@@ -327,7 +328,9 @@ h3 {
   display: block;
   margin-top: 4px;
   color: #fffdf9;
+  font-family: var(--font-number);
   font-size: 17px;
+  font-variant-numeric: lining-nums;
   line-height: 1.5;
 }
 
@@ -851,6 +854,7 @@ td {
   text-align: left;
   border-bottom: 1px solid rgba(48, 38, 56, 0.12);
   vertical-align: top;
+  font-variant-numeric: lining-nums;
   overflow-wrap: anywhere;
 }
 
@@ -867,6 +871,13 @@ tbody tr:last-child td {
 td:first-child {
   color: var(--royal-blue);
   font-weight: 900;
+}
+
+.mobile-table td:nth-child(2),
+.mobile-table td[data-label="金額"],
+.mobile-table td[data-label="Amount"] {
+  font-family: var(--font-number);
+  font-size: 18px;
 }
 
 .links-band {
@@ -1639,8 +1650,9 @@ footer a {
   display: block;
   margin-top: 8px;
   color: var(--slate);
-  font-family: var(--font-sans);
+  font-family: var(--font-number);
   font-size: 18px;
+  font-variant-numeric: lining-nums;
   line-height: 1.45;
   overflow-wrap: anywhere;
 }
@@ -1662,6 +1674,7 @@ footer a {
   border-radius: 999px;
   font-family: var(--font-sans);
   font-size: 12px;
+  font-variant-numeric: lining-nums;
   font-weight: 900;
   line-height: 1;
   white-space: nowrap;
@@ -1825,7 +1838,8 @@ footer a {
 
 .ticket-card-head > span {
   color: var(--royal-blue);
-  font-family: var(--font-sans);
+  font-family: var(--font-number);
+  font-variant-numeric: lining-nums;
   font-weight: 900;
 }
 
@@ -1838,8 +1852,9 @@ footer a {
   display: block;
   margin-top: 10px;
   color: var(--slate);
-  font-family: var(--font-sans);
+  font-family: var(--font-number);
   font-size: 17px;
+  font-variant-numeric: lining-nums;
   line-height: 1.45;
   overflow-wrap: anywhere;
 }
@@ -1870,7 +1885,8 @@ footer a {
 
 .itinerary-head > span {
   color: var(--royal-blue);
-  font-family: var(--font-sans);
+  font-family: var(--font-number);
+  font-variant-numeric: lining-nums;
   font-weight: 900;
 }
 
@@ -2130,8 +2146,9 @@ footer a {
   display: block;
   margin-top: 5px;
   color: var(--slate);
-  font-family: var(--font-sans);
+  font-family: var(--font-number);
   font-size: 24px;
+  font-variant-numeric: lining-nums;
   line-height: 1.25;
 }
 
