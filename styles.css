@@ -1652,6 +1652,272 @@ footer a {
   background: var(--gold);
 }
 
+.stay-list-rich {
+  display: grid;
+  gap: 18px;
+}
+
+.stay-card-rich {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.42fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 12px;
+  background: rgba(255, 253, 248, 0.92);
+  box-shadow: var(--shadow);
+}
+
+.stay-photo,
+.stay-placeholder {
+  position: relative;
+  min-height: 260px;
+  display: block;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(184, 173, 146, 0.3), rgba(127, 146, 153, 0.24));
+}
+
+.stay-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  display: block;
+  object-fit: cover;
+}
+
+.stay-photo span {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  max-width: calc(100% - 24px);
+  padding: 6px 9px;
+  border-radius: 8px;
+  color: #fffdf8;
+  background: rgba(48, 38, 56, 0.56);
+  font-size: 12px;
+}
+
+.stay-placeholder {
+  display: grid;
+  place-items: center;
+}
+
+.stay-placeholder span {
+  color: rgba(255, 253, 248, 0.82);
+  font-family: var(--font-display);
+  font-size: 72px;
+}
+
+.stay-content {
+  min-width: 0;
+  padding: 24px 24px 22px 0;
+}
+
+.stay-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.stay-meta > span:last-child {
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.stay-content h3 {
+  margin: 14px 0 10px;
+  color: var(--oxford);
+  font-size: 28px;
+  line-height: 1.18;
+}
+
+.stay-facts {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stay-facts li {
+  padding: 9px 11px;
+  border: 1px solid rgba(87, 80, 91, 0.1);
+  border-radius: 8px;
+  background: rgba(246, 243, 238, 0.68);
+  color: var(--slate);
+  line-height: 1.55;
+}
+
+.stay-content p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.74;
+}
+
+.itinerary-accordion {
+  display: grid;
+  gap: 12px;
+}
+
+.itinerary-collapse {
+  padding: 0;
+}
+
+.itinerary-collapse summary {
+  min-height: 88px;
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 18px 20px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.itinerary-collapse summary::-webkit-details-marker {
+  display: none;
+}
+
+.itinerary-collapse summary::after {
+  content: "+";
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  grid-column: 3;
+  grid-row: 1;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--slate);
+  background: rgba(255, 253, 248, 0.78);
+  font-family: var(--font-sans);
+  font-weight: 900;
+}
+
+.itinerary-collapse[open] summary::after {
+  content: "−";
+}
+
+.itinerary-date {
+  color: var(--royal-red);
+  font-family: var(--font-number);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.itinerary-summary-title {
+  color: var(--oxford);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.itinerary-collapse summary .status-chip {
+  grid-column: 3;
+  grid-row: 1;
+  margin-right: 40px;
+}
+
+.itinerary-collapse-body {
+  padding: 0 20px 20px;
+}
+
+.currency-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 18px 0;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 12px;
+  background: rgba(255, 253, 248, 0.9);
+  box-shadow: 0 10px 26px rgba(87, 80, 91, 0.055);
+}
+
+.currency-switcher > span {
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.currency-switcher > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.currency-switcher button {
+  min-height: 38px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--slate);
+  background: rgba(246, 243, 238, 0.82);
+  font-family: var(--font-sans);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.currency-switcher button.active {
+  color: #fffdf8;
+  border-color: transparent;
+  background: var(--royal-blue);
+  box-shadow: 0 10px 20px rgba(127, 146, 153, 0.2);
+}
+
+.budget-amount-cell {
+  color: var(--oxford);
+  font-family: var(--font-number);
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.reminder-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.reminder-card {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 12px;
+  background: rgba(255, 253, 248, 0.92);
+  box-shadow: 0 12px 28px rgba(87, 80, 91, 0.065);
+}
+
+.reminder-card > div {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.reminder-card h3 {
+  margin: 2px 0 0;
+  color: var(--oxford);
+  font-size: 21px;
+  line-height: 1.3;
+}
+
+.reminder-card p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  line-height: 1.76;
+}
+
+.checklist-list {
+  counter-reset: proof;
+}
+
 .dashboard-section,
 .compact-section {
   scroll-margin-top: 88px;
@@ -3106,9 +3372,11 @@ footer a {
   .summary-grid.three,
   .handbook-page-grid,
   .itinerary-grid,
+  .itinerary-accordion,
   .ticket-grid,
   .note-grid,
-  .flight-grid {
+  .flight-grid,
+  .reminder-grid {
     width: 100%;
     gap: 12px;
     justify-items: stretch;
@@ -3122,6 +3390,7 @@ footer a {
   .todo-item,
   .feature-card,
   .page-card,
+  .reminder-card,
   .note-grid article,
   .flight-card {
     width: 100%;
@@ -3208,6 +3477,67 @@ footer a {
   .clean-list {
     margin-top: 6px;
     padding-left: 17px;
+  }
+
+  .stay-card-rich {
+    grid-template-columns: 1fr;
+  }
+
+  .stay-photo,
+  .stay-placeholder,
+  .stay-photo img {
+    min-height: 220px;
+  }
+
+  .stay-content {
+    padding: 18px;
+  }
+
+  .stay-content h3 {
+    font-size: 24px;
+  }
+
+  .itinerary-collapse summary {
+    grid-template-columns: 1fr auto;
+    gap: 8px 10px;
+    min-height: 0;
+    padding: 16px;
+  }
+
+  .itinerary-date {
+    grid-column: 1 / -1;
+    font-size: 17px;
+  }
+
+  .itinerary-summary-title {
+    font-size: 19px;
+  }
+
+  .itinerary-collapse summary .status-chip {
+    grid-column: 2;
+    margin-right: 36px;
+  }
+
+  .itinerary-collapse-body {
+    padding: 0 16px 16px;
+  }
+
+  .currency-switcher {
+    align-items: stretch;
+  }
+
+  .currency-switcher > div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .currency-switcher button {
+    padding: 0 8px;
+  }
+
+  .reminder-grid {
+    grid-template-columns: 1fr;
   }
 
   .status-chip {
