@@ -236,7 +236,47 @@ function t(value) {
 }
 
 function statusChip(status) {
-  return `<span class="status-chip status-${status}">${t(statusLabels[status])}</span>`;
+  const label = statusLabels[status] ? t(statusLabels[status]) : status;
+  return `<span class="status-chip status-${escapeHtml(status)}">${escapeHtml(label)}</span>`;
+}
+
+function sectionHeading(eyebrow, title, body = "", options = {}) {
+  const centerClass = options.center ? " center" : "";
+  const subClass = options.sub ? " sub-heading" : "";
+  const bodyMarkup = body ? `<p>${escapeHtml(body)}</p>` : "";
+  return `
+    <div class="section-heading${centerClass}${subClass}">
+      <p class="eyebrow">${escapeHtml(eyebrow)}</p>
+      <h2>${escapeHtml(title)}</h2>
+      ${bodyMarkup}
+    </div>
+  `;
+}
+
+function renderList(items, className = "clean-list") {
+  if (!items?.length) return "";
+  const classAttr = className ? ` class="${escapeHtml(className)}"` : "";
+  return `<ul${classAttr}>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
+}
+
+function renderSummaryCard({ status, title, value, note, facts }) {
+  const valueMarkup = value ? `<strong>${escapeHtml(value)}</strong>` : "";
+  const factsMarkup = facts ? renderList(facts) : "";
+  const noteMarkup = note ? `<p>${escapeHtml(t(note))}</p>` : "";
+  return `
+    <article class="summary-card">
+      ${status ? statusChip(status) : ""}
+      <h3>${escapeHtml(t(title))}</h3>
+      ${valueMarkup}
+      ${factsMarkup}
+      ${noteMarkup}
+    </article>
+  `;
+}
+
+function externalLink(href, label, className = "") {
+  const classAttr = className ? ` class="${escapeHtml(className)}"` : "";
+  return `<a${classAttr} href="${escapeHtml(href)}" target="_blank" rel="noreferrer noopener">${escapeHtml(label)} <span aria-hidden="true">↗</span></a>`;
 }
 
 function escapeHtml(value) {
@@ -296,13 +336,14 @@ function renderChrome() {
 
 function renderHero(pageId) {
   const hero = tripData.hero[pageId] || tripData.hero.home;
+  const heroTitle = escapeHtml(t(hero.title)).replace("\n", "<br />");
   return `
     <div class="hero-grid handbook-hero-grid">
       <section class="hero-copy">
-        <p class="eyebrow">${hero.kicker}</p>
-        <h1>${t(hero.title).replace("\n", "<br />")}</h1>
+        <p class="eyebrow">${escapeHtml(hero.kicker)}</p>
+        <h1>${heroTitle}</h1>
         <p class="hero-serif-note">${state.lang === "en" ? "Conference in Manchester. Travel in London." : "Conference in Manchester. Travel in London."}</p>
-        <p class="hero-lead">${t(hero.lead)}</p>
+        <p class="hero-lead">${escapeHtml(t(hero.lead))}</p>
         <div class="hero-actions">
           <a class="button primary" href="./itinerary.html">${state.lang === "en" ? "Open itinerary" : "查看行程"}</a>
           <a class="button secondary" href="./budget.html">${state.lang === "en" ? "Open budget" : "查看報帳"}</a>
@@ -323,7 +364,7 @@ function renderQuickNav(pageId) {
   if (!items.length) return "";
   return `
     <nav class="quick-nav" aria-label="${state.lang === "en" ? "Section navigation" : "區塊導覽"}">
-      ${items.map(([id, label]) => `<a href="#${id}">${label}</a>`).join("")}
+      ${items.map(([id, label]) => `<a href="#${escapeHtml(id)}">${escapeHtml(label)}</a>`).join("")}
     </nav>
   `;
 }
@@ -332,11 +373,12 @@ function renderHome() {
   return `
     ${renderQuickNav("home")}
     <section class="section dashboard-section home-dashboard" id="snapshot">
-      <div class="section-heading center">
-        <p class="eyebrow">${state.lang === "en" ? "Overview" : "旅程總覽"}</p>
-        <h2>${state.lang === "en" ? "Conference schedule, travel plan, and budget" : "會議、交通、住宿與費用"}</h2>
-        <p>${state.lang === "en" ? "A practical handbook for the Manchester conference and London travel days." : "整理 Manchester 研討會與 London 旅遊段的重點資訊。"}</p>
-      </div>
+      ${sectionHeading(
+        state.lang === "en" ? "Overview" : "旅程總覽",
+        state.lang === "en" ? "Conference schedule, travel plan, and budget" : "會議、交通、住宿與費用",
+        state.lang === "en" ? "A practical handbook for the Manchester conference and London travel days." : "整理 Manchester 研討會與 London 旅遊段的重點資訊。",
+        { center: true }
+      )}
       <div class="command-board" aria-label="${state.lang === "en" ? "Trip highlights" : "旅程重點"}">
         <article class="command-primary">
           <span class="command-label">${state.lang === "en" ? "Current plan" : "目前安排"}</span>
@@ -356,24 +398,17 @@ function renderHome() {
         <span>Shopping</span>
       </aside>
       <div class="summary-grid premium-summary">
-        ${tripData.summaryCards.map((card) => `
-          <article class="summary-card">
-            ${statusChip(card.status)}
-            <h3>${t(card.title)}</h3>
-            <strong>${card.value}</strong>
-            <p>${t(card.note)}</p>
-          </article>
-        `).join("")}
+        ${tripData.summaryCards.map(renderSummaryCard).join("")}
       </div>
       ${renderAlert(tripData.alerts[0])}
     </section>
     <section class="section compact-section" id="todo">
-      <div class="section-heading">
-        <p class="eyebrow">${state.lang === "en" ? "To-do" : "待辦事項"}</p>
-        <h2>${state.lang === "en" ? "Items still pending" : "尚未完成的事項"}</h2>
-      </div>
+      ${sectionHeading(
+        state.lang === "en" ? "To-do" : "待辦事項",
+        state.lang === "en" ? "Items still pending" : "尚未完成的事項"
+      )}
       <div class="todo-list">
-        ${tripData.todos.map((item) => `<article class="todo-item">${statusChip(item.status)}<p>${t(item.text)}</p></article>`).join("")}
+        ${tripData.todos.map((item) => `<article class="todo-item">${statusChip(item.status)}<p>${escapeHtml(t(item.text))}</p></article>`).join("")}
       </div>
     </section>
     <section class="section compact-section home-strip" aria-label="Trip highlights">
@@ -399,16 +434,18 @@ function renderHome() {
       </article>
     </section>
     <section class="section compact-section" id="handoff">
-      <div class="section-heading center">
-        <p class="eyebrow">${state.lang === "en" ? "Sections" : "分類"}</p>
-        <h2>${state.lang === "en" ? "Browse by category" : "依類別查看"}</h2>
-      </div>
+      ${sectionHeading(
+        state.lang === "en" ? "Sections" : "分類",
+        state.lang === "en" ? "Browse by category" : "依類別查看",
+        "",
+        { center: true }
+      )}
       <div class="page-grid handbook-page-grid">
         ${pages.slice(1).map((page, index) => `
           <a class="page-card" href="${page.href}">
             <span>${String(index + 1).padStart(2, "0")}</span>
-            <strong>${t(page.label)}</strong>
-            <p>${pageDescriptions[page.id][state.lang]}</p>
+            <strong>${escapeHtml(t(page.label))}</strong>
+            <p>${escapeHtml(pageDescriptions[page.id][state.lang])}</p>
           </a>
         `).join("")}
       </div>
@@ -429,8 +466,8 @@ const pageDescriptions = {
 function renderAlert(alert) {
   return `
     <aside class="alert-card" role="note">
-      <div>${statusChip("alert")}<h3>${t(alert.title)}</h3></div>
-      <p>${t(alert.body)}</p>
+      <div>${statusChip("alert")}<h3>${escapeHtml(t(alert.title))}</h3></div>
+      <p>${escapeHtml(t(alert.body))}</p>
     </aside>
   `;
 }
@@ -439,36 +476,32 @@ function renderConference() {
   return `
     ${renderQuickNav("conference")}
     <section class="section compact-section" id="accepted">
-      <div class="section-heading">
-        <p class="eyebrow">Accepted Work</p>
-        <h2>${state.lang === "en" ? "Confirmed presentation status" : "已接受發表狀態"}</h2>
-      </div>
+      ${sectionHeading("Accepted Work", state.lang === "en" ? "Confirmed presentation status" : "已接受發表狀態")}
       <div class="summary-grid two">
-        <article class="summary-card">${statusChip("confirmed")}<h3>Competitive Presentation</h3><p>${state.lang === "en" ? "Accepted and usable as conference presentation proof." : "已接受，可作為會議發表證明。"}</p></article>
-        <article class="summary-card">${statusChip("confirmed")}<h3>Interactive Presentation</h3><p>${state.lang === "en" ? "Accepted and usable as conference presentation proof." : "已接受，可作為會議發表證明。"}</p></article>
+        ${[
+          { status: "confirmed", title: "Competitive Presentation", note: state.lang === "en" ? "Accepted and usable as conference presentation proof." : "已接受，可作為會議發表證明。" },
+          { status: "confirmed", title: "Interactive Presentation", note: state.lang === "en" ? "Accepted and usable as conference presentation proof." : "已接受，可作為會議發表證明。" }
+        ].map(renderSummaryCard).join("")}
       </div>
     </section>
     <section class="section compact-section" id="papers">
-      <div class="section-heading">
-        <p class="eyebrow">Paper Summaries</p>
-        <h2>${state.lang === "en" ? "Presentation abstracts for the handbook" : "研討會文章名稱與簡介"}</h2>
-        <p>${state.lang === "en" ? "Only titles and short summaries are included; full papers are not published here." : "只放題名與簡介，不放全文。"}</p>
-      </div>
+      ${sectionHeading(
+        "Paper Summaries",
+        state.lang === "en" ? "Presentation abstracts for the handbook" : "研討會文章名稱與簡介",
+        state.lang === "en" ? "Only titles and short summaries are included; full papers are not published here." : "只放題名與簡介，不放全文。"
+      )}
       <div class="stack">
         ${tripData.paperSummaries.map((paper) => `
           <article class="feature-card paper-card">
-            <div class="card-meta">${statusChip(paper.status)}<span>${paper.type}</span></div>
-            <h3>${paper.title}</h3>
-            <p>${t(paper.summary)}</p>
+            <div class="card-meta">${statusChip(paper.status)}<span>${escapeHtml(paper.type)}</span></div>
+            <h3>${escapeHtml(paper.title)}</h3>
+            <p>${escapeHtml(t(paper.summary))}</p>
           </article>
         `).join("")}
       </div>
     </section>
     <section class="section compact-section" id="rhythm">
-      <div class="section-heading">
-        <p class="eyebrow">Schedule</p>
-        <h2>${state.lang === "en" ? "Conference rhythm" : "會議節奏"}</h2>
-      </div>
+      ${sectionHeading("Schedule", state.lang === "en" ? "Conference rhythm" : "會議節奏")}
       <div class="timeline-list">
         <article><strong>6/29</strong><p>Pre-conference programming</p></article>
         <article><strong>6/30</strong><p>Research and Policy Dialogue / Opening Plenary / Reception</p></article>
@@ -482,16 +515,16 @@ function renderTransport() {
   return `
     ${renderQuickNav("transport")}
     <section class="section compact-section" id="flights">
-      <div class="section-heading"><p class="eyebrow">${state.lang === "en" ? "Flights" : "航班"}</p><h2>${state.lang === "en" ? "Flight details" : "航班與轉機"}</h2></div>
+      ${sectionHeading(state.lang === "en" ? "Flights" : "航班", state.lang === "en" ? "Flight details" : "航班與轉機")}
       <div class="flight-grid">
         ${tripData.flights.map((flight) => `
           <article class="flight-card">
             <div class="flight-head">${statusChip("confirmed")}<strong>${t(flight.label)} · ${flight.date}</strong></div>
             ${flight.legs.map((leg) => `
               <div class="route">
-                <div><b>${leg.from}</b><span>${leg.time.split(" → ")[0]}<br />${leg.detail[state.lang]}</span></div>
-                <div class="line">${leg.flight}<br />${leg.duration}</div>
-                <div><b>${leg.to}</b><span>${leg.time.split(" → ")[1]}</span></div>
+                <div><b>${escapeHtml(leg.from)}</b><span>${escapeHtml(leg.time.split(" → ")[0])}<br />${escapeHtml(leg.detail[state.lang])}</span></div>
+                <div class="line">${escapeHtml(leg.flight)}<br />${escapeHtml(leg.duration)}</div>
+                <div><b>${escapeHtml(leg.to)}</b><span>${escapeHtml(leg.time.split(" → ")[1])}</span></div>
               </div>
             `).join("")}
           </article>
@@ -503,22 +536,31 @@ function renderTransport() {
       </div>
     </section>
     <section class="section compact-section" id="train">
-      <div class="section-heading"><p class="eyebrow">${state.lang === "en" ? "Train" : "火車"}</p><h2>Manchester ↔ London</h2></div>
+      ${sectionHeading(state.lang === "en" ? "Train" : "火車", "Manchester ↔ London")}
       <div class="summary-grid">
-        <article class="summary-card">${statusChip("book")}<h3>7/4 Manchester → London</h3><p>Manchester Piccadilly → London Euston, ${state.lang === "en" ? "direct Avanti West Coast, about 2h15m. A late-morning train keeps the day unhurried." : "Avanti West Coast 直達約 2 小時 15 分；上午晚一點出發，抵達倫敦時仍有從容的下午。"}</p></article>
-        <article class="summary-card">${statusChip("book")}<h3>7/10 London → Manchester</h3><p>${state.lang === "en" ? "An evening return gives Manchester one quiet night before the flight." : "傍晚或晚上回到 Manchester，讓隔天航班前多一晚安定。"}</p></article>
+        ${[
+          { status: "book", title: "7/4 Manchester → London", note: `Manchester Piccadilly → London Euston, ${state.lang === "en" ? "direct Avanti West Coast, about 2h15m. A late-morning train keeps the day unhurried." : "Avanti West Coast 直達約 2 小時 15 分；上午晚一點出發，抵達倫敦時仍有從容的下午。"}` },
+          { status: "book", title: "7/10 London → Manchester", note: state.lang === "en" ? "An evening return gives Manchester one quiet night before the flight." : "傍晚或晚上回到 Manchester，讓隔天航班前多一晚安定。" }
+        ].map(renderSummaryCard).join("")}
       </div>
       <div class="fare-grid dashboard-fares">
-        ${tripData.trainFares.map((fare) => `<article>${statusChip(fare.status)}<h3>${fare.item}</h3><strong>${fare.amount}</strong><p>${t(fare.note)}</p></article>`).join("")}
+        ${tripData.trainFares.map((fare) => `
+          <article>
+            ${statusChip(fare.status)}
+            <h3>${escapeHtml(fare.item)}</h3>
+            <strong>${escapeHtml(fare.amount)}</strong>
+            <p>${escapeHtml(t(fare.note))}</p>
+          </article>
+        `).join("")}
       </div>
     </section>
     <section class="section compact-section" id="local">
-      <div class="section-heading"><p class="eyebrow">${state.lang === "en" ? "Getting Around" : "市內交通"}</p><h2>${state.lang === "en" ? "London & Manchester local transport" : "倫敦與曼徹斯特市內交通"}</h2></div>
+      ${sectionHeading(state.lang === "en" ? "Getting Around" : "市內交通", state.lang === "en" ? "London & Manchester local transport" : "倫敦與曼徹斯特市內交通")}
       <div class="summary-grid two">
         ${tripData.localTransit.map((city) => `
           <article class="summary-card">
-            <h3>${city.city}</h3>
-            <ul class="clean-list">${city.items.map((item) => `<li>${item}</li>`).join("")}</ul>
+            <h3>${escapeHtml(city.city)}</h3>
+            ${renderList(city.items)}
           </article>
         `).join("")}
       </div>
@@ -530,21 +572,14 @@ function renderStay() {
   return `
     ${renderQuickNav("stay")}
     <section class="section compact-section" id="overview">
-      <div class="section-heading"><p class="eyebrow">${state.lang === "en" ? "Accommodation" : "住宿"}</p><h2>${state.lang === "en" ? "Where to stay" : "住宿安排"}</h2></div>
+      ${sectionHeading(state.lang === "en" ? "Accommodation" : "住宿", state.lang === "en" ? "Where to stay" : "住宿安排")}
       <div class="summary-grid">
-        ${tripData.stay.map((item) => `
-          <article class="summary-card">
-            ${statusChip(item.status)}
-            <h3>${item.title}</h3>
-            <ul class="clean-list">${item.facts.map((fact) => `<li>${fact}</li>`).join("")}</ul>
-            <p>${t(item.note)}</p>
-          </article>
-        `).join("")}
+        ${tripData.stay.map(renderSummaryCard).join("")}
       </div>
     </section>
     <section class="section compact-section" id="conflict">${renderAlert(tripData.alerts[0])}</section>
     <section class="section compact-section" id="areas">
-      <div class="section-heading"><p class="eyebrow">London Areas</p><h2>${state.lang === "en" ? "London neighborhoods to consider" : "幾個適合停留的倫敦街區"}</h2></div>
+      ${sectionHeading("London Areas", state.lang === "en" ? "London neighborhoods to consider" : "幾個適合停留的倫敦街區")}
       <div class="tag-cloud">
         ${["Euston", "King's Cross", "Bloomsbury", "South Kensington", "Paddington", "Covent Garden"].map((area) => `<span>${area}</span>`).join("")}
       </div>
@@ -556,15 +591,12 @@ function renderItinerary() {
   return `
     ${renderQuickNav("itinerary")}
     <section class="section compact-section" id="daily">
-      <div class="section-heading">
-        <p class="eyebrow">${state.lang === "en" ? "Daily Plan" : "每日行程"}</p>
-        <h2>${state.lang === "en" ? "What to do each day" : "每天怎麼安排"}</h2>
-      </div>
+      ${sectionHeading(state.lang === "en" ? "Daily Plan" : "每日行程", state.lang === "en" ? "What to do each day" : "每天怎麼安排")}
       <div class="itinerary-grid">
         ${tripData.itinerary.map((day) => `
           <article class="itinerary-card">
-            <div class="itinerary-head"><span>${day.date}</span>${statusChip(day.status)}</div>
-            <h3>${t(day.title)}</h3>
+            <div class="itinerary-head"><span>${escapeHtml(day.date)}</span>${statusChip(day.status)}</div>
+            <h3>${escapeHtml(t(day.title))}</h3>
             ${renderMiniList(state.lang === "en" ? "Main stops" : "主要停留", day.must)}
             ${renderMiniList(state.lang === "en" ? "Optional" : "可選", day.optional)}
             ${day.tickets ? renderMiniList(state.lang === "en" ? "Admission / fees" : "門票 / 費用", day.tickets) : ""}
@@ -574,20 +606,20 @@ function renderItinerary() {
       </div>
     </section>
     <section class="section compact-section" id="tickets">
-      <div class="section-heading">
-        <p class="eyebrow">${state.lang === "en" ? "Admission" : "景點費用"}</p>
-        <h2>${state.lang === "en" ? "Attraction fees to check before booking" : "景點門票與預算估算"}</h2>
-        <p>${state.lang === "en" ? "Prices are current planning references. Re-check official sites before booking for July 2026." : "以下為目前查到的規劃參考價；2026/7 出發前請再以官方網站確認。"}</p>
-      </div>
+      ${sectionHeading(
+        state.lang === "en" ? "Admission" : "景點費用",
+        state.lang === "en" ? "Attraction fees to check before booking" : "景點門票與預算估算",
+        state.lang === "en" ? "Prices are current planning references. Re-check official sites before booking for July 2026." : "以下為目前查到的規劃參考價；2026/7 出發前請再以官方網站確認。"
+      )}
       <div class="ticket-grid">
         ${tripData.attractionCosts.map((item) => `
           <article class="ticket-card">
-            <div class="ticket-card-head"><span>${item.day}</span>${statusChip(item.status)}</div>
-            <h3>${item.attraction}</h3>
-            <strong>${item.fee}</strong>
-            <p>${item.estimate}</p>
-            <small>${t(item.note)}</small>
-            <a href="${item.source}" target="_blank" rel="noreferrer noopener">${state.lang === "en" ? "Official source" : "官方來源"} ↗</a>
+            <div class="ticket-card-head"><span>${escapeHtml(item.day)}</span>${statusChip(item.status)}</div>
+            <h3>${escapeHtml(item.attraction)}</h3>
+            <strong>${escapeHtml(item.fee)}</strong>
+            <p>${escapeHtml(item.estimate)}</p>
+            <small>${escapeHtml(t(item.note))}</small>
+            ${externalLink(item.source, state.lang === "en" ? "Official source" : "官方來源")}
           </article>
         `).join("")}
       </div>
@@ -599,7 +631,8 @@ function renderItinerary() {
 }
 
 function renderMiniList(title, items) {
-  return `<div class="mini-list"><strong>${title}</strong><ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul></div>`;
+  if (!items?.length) return "";
+  return `<div class="mini-list"><strong>${escapeHtml(title)}</strong>${renderList(items, "")}</div>`;
 }
 
 function mapEmbedUrl(query) {
@@ -612,21 +645,21 @@ function renderMap() {
   return `
     ${renderQuickNav("map")}
     <section class="section compact-section" id="travel-map">
-      <div class="section-heading">
-        <p class="eyebrow">${state.lang === "en" ? "Travel Map" : "旅程地圖"}</p>
-        <h2>${state.lang === "en" ? "The route, opened gently" : "把路線輕輕展開"}</h2>
-        <p>${state.lang === "en" ? "Tap a place to open it in the map. The list keeps Manchester practical and London beautifully walkable." : "點選地點就能在右側地圖打開；曼徹斯特保留會議所需的俐落，倫敦則留給可以慢慢走的街景。"}</p>
-      </div>
+      ${sectionHeading(
+        state.lang === "en" ? "Travel Map" : "旅程地圖",
+        state.lang === "en" ? "The route, opened gently" : "把路線輕輕展開",
+        state.lang === "en" ? "Tap a place to open it in the map. The list keeps Manchester practical and London beautifully walkable." : "點選地點就能在右側地圖打開；曼徹斯特保留會議所需的俐落，倫敦則留給可以慢慢走的街景。"
+      )}
       <div class="map-actions">
-        <a href="${tripData.mapRouteUrl}" target="_blank" rel="noreferrer noopener">${state.lang === "en" ? "Open full route in Google Maps" : "開啟完整 Google Maps 路線"} ↗</a>
+        ${externalLink(tripData.mapRouteUrl, state.lang === "en" ? "Open full route in Google Maps" : "開啟完整 Google Maps 路線")}
       </div>
       <div class="map-layout">
         <div class="map-list" aria-label="${state.lang === "en" ? "Map locations" : "地圖地點"}">
           ${tripData.mapLocations.map((location, index) => `
             <button class="map-location-button${index === 0 ? " active" : ""}" type="button" data-map-query="${escapeHtml(location.query)}" aria-pressed="${index === 0 ? "true" : "false"}">
-              <span class="map-location-top"><span>${location.city}</span>${statusChip(location.status)}</span>
-              <span class="map-location-title">${t(location.title)}</span>
-              <span class="map-location-note">${t(location.note)}</span>
+              <span class="map-location-top"><span>${escapeHtml(location.city)}</span>${statusChip(location.status)}</span>
+              <span class="map-location-title">${escapeHtml(t(location.title))}</span>
+              <span class="map-location-note">${escapeHtml(t(location.note))}</span>
             </button>
           `).join("")}
         </div>
@@ -636,16 +669,13 @@ function renderMap() {
       </div>
     </section>
     <section class="section compact-section" id="route-links">
-      <div class="section-heading">
-        <p class="eyebrow">${state.lang === "en" ? "Daily Routes" : "每日路線"}</p>
-        <h2>${state.lang === "en" ? "Open the day you need" : "打開那一天的路"}</h2>
-      </div>
+      ${sectionHeading(state.lang === "en" ? "Daily Routes" : "每日路線", state.lang === "en" ? "Open the day you need" : "打開那一天的路")}
       <div class="map-day-routes">
         ${tripData.mapRoutes.map((route) => `
-          <a class="map-day-route-link" href="${route.url}" target="_blank" rel="noreferrer noopener">
+          <a class="map-day-route-link" href="${escapeHtml(route.url)}" target="_blank" rel="noreferrer noopener">
             <span class="map-day-route-head">${statusChip(route.status)}</span>
-            <span class="map-day-route-title">${t(route.label)}</span>
-            <span class="map-day-route-note">${t(route.note)}</span>
+            <span class="map-day-route-title">${escapeHtml(t(route.label))}</span>
+            <span class="map-day-route-note">${escapeHtml(t(route.note))}</span>
           </a>
         `).join("")}
       </div>
@@ -654,7 +684,7 @@ function renderMap() {
       <div class="summary-grid two">
         ${cityGroups.map((city) => `
           <article class="summary-card">
-            <h3>${city}</h3>
+            <h3>${escapeHtml(city)}</h3>
             <p>${city === "Manchester"
               ? (state.lang === "en" ? "Keep this side practical: airport, hotel, station, and conference-day movement." : "這一側保持實用：機場、飯店、車站與會議日移動。")
               : (state.lang === "en" ? "Keep this side slow: museums, riverside walks, royal landmarks, and shopping streets." : "這一側放慢：博物館、河岸、皇室地標與百貨街區。")
@@ -666,44 +696,52 @@ function renderMap() {
   `;
 }
 
+function expenseTableHeads() {
+  return state.lang === "en"
+    ? ["Item", "Amount", "Currency", "Status", "Receipt / proof", "Notes"]
+    : ["項目", "金額", "幣別", "狀態", "收據 / 憑證", "備註"];
+}
+
+function renderExpenseTable(rows, label) {
+  const heads = expenseTableHeads();
+  return `
+    <div class="mobile-table" role="region" aria-label="${escapeHtml(label)}">
+      <table>
+        <thead><tr>${heads.map((head) => `<th>${escapeHtml(head)}</th>`).join("")}</tr></thead>
+        <tbody>
+          ${rows.map((row) => `
+            <tr>
+              <td data-label="${escapeHtml(heads[0])}">${escapeHtml(row.item)}</td>
+              <td data-label="${escapeHtml(heads[1])}">${escapeHtml(row.amount)}</td>
+              <td data-label="${escapeHtml(heads[2])}">${escapeHtml(row.currency)}</td>
+              <td data-label="${escapeHtml(heads[3])}">${statusChip(row.status)}</td>
+              <td data-label="${escapeHtml(heads[4])}">${escapeHtml(row.proof)}</td>
+              <td data-label="${escapeHtml(heads[5])}">${escapeHtml(row.notes)}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>`;
+}
+
 function renderBudget() {
   const reimbursableTotals = "NT$156,039 / GBP 3,671 / US$4,870";
   const selfFundedKnown = "NT$38,525 / GBP 906.90 / US$1,202";
-  const heads = state.lang === "en"
-    ? ["Item", "Amount", "Currency", "Status", "Receipt / proof", "Notes"]
-    : ["項目", "金額", "幣別", "狀態", "收據 / 憑證", "備註"];
-  const renderExpenseTable = (rows, label) => `
-      <div class="mobile-table" role="region" aria-label="${label}">
-        <table>
-          <thead><tr>${heads.map((head) => `<th>${head}</th>`).join("")}</tr></thead>
-          <tbody>
-            ${rows.map((row) => `
-              <tr>
-                <td data-label="${heads[0]}">${row.item}</td>
-                <td data-label="${heads[1]}">${row.amount}</td>
-                <td data-label="${heads[2]}">${row.currency}</td>
-                <td data-label="${heads[3]}">${statusChip(row.status)}</td>
-                <td data-label="${heads[4]}">${row.proof}</td>
-                <td data-label="${heads[5]}">${row.notes}</td>
-              </tr>
-            `).join("")}
-          </tbody>
-        </table>
-      </div>`;
   return `
     ${renderQuickNav("budget")}
     <section class="section compact-section" id="expenses">
-      <div class="section-heading">
-        <p class="eyebrow">${state.lang === "en" ? "Reimbursement" : "報帳"}</p>
-        <h2>${state.lang === "en" ? "Items to claim" : "可報帳項目"}</h2>
-        <p>${state.lang === "en" ? "Only these items are listed for reimbursement. Other trip costs are separated below as self-funded." : "目前只有以下項目列入報帳；其他旅遊相關費用另列在自費。"}</p>
-      </div>
+      ${sectionHeading(
+        state.lang === "en" ? "Reimbursement" : "報帳",
+        state.lang === "en" ? "Items to claim" : "可報帳項目",
+        state.lang === "en" ? "Only these items are listed for reimbursement. Other trip costs are separated below as self-funded." : "目前只有以下項目列入報帳；其他旅遊相關費用另列在自費。"
+      )}
       ${renderExpenseTable(tripData.expenses, state.lang === "en" ? "Reimbursable expenses" : "可報帳項目")}
-      <div class="section-heading sub-heading">
-        <p class="eyebrow">${state.lang === "en" ? "Self-funded" : "自費"}</p>
-        <h2>${state.lang === "en" ? "Personal travel costs" : "自費項目"}</h2>
-        <p>${state.lang === "en" ? "Keep receipts for personal records, but do not include these in the reimbursement total." : "以下可保留收據自用，但不列入這次報帳金額。"}</p>
-      </div>
+      ${sectionHeading(
+        state.lang === "en" ? "Self-funded" : "自費",
+        state.lang === "en" ? "Personal travel costs" : "自費項目",
+        state.lang === "en" ? "Keep receipts for personal records, but do not include these in the reimbursement total." : "以下可保留收據自用，但不列入這次報帳金額。",
+        { sub: true }
+      )}
       ${renderExpenseTable(tripData.selfFundedExpenses, state.lang === "en" ? "Self-funded expenses" : "自費項目")}
     </section>
     <section class="section compact-section" id="totals">
@@ -714,7 +752,7 @@ function renderBudget() {
       </div>
     </section>
     <section class="section compact-section" id="proofs">
-      <div class="section-heading"><p class="eyebrow">Proofs</p><h2>${state.lang === "en" ? "Reimbursement documents" : "報帳資料順序"}</h2></div>
+      ${sectionHeading("Proofs", state.lang === "en" ? "Reimbursement documents" : "報帳資料順序")}
       <ol class="proof-list">
         <li>Acceptance letters x 2</li>
         <li>AIB invitation letter</li>
@@ -731,9 +769,9 @@ function renderDocuments() {
   return `
     ${renderQuickNav("documents")}
     <section class="section compact-section" id="links">
-      <div class="section-heading"><p class="eyebrow">Official Links</p><h2>${state.lang === "en" ? "Useful official links" : "常用官方連結"}</h2></div>
+      ${sectionHeading("Official Links", state.lang === "en" ? "Useful official links" : "常用官方連結")}
       <div class="link-grid">
-        ${tripData.links.map(([label, href]) => `<a href="${href}" target="_blank" rel="noreferrer noopener">${escapeHtml(label)} <span aria-hidden="true">↗</span></a>`).join("")}
+        ${tripData.links.map(([label, href]) => externalLink(href, label)).join("")}
       </div>
     </section>
     <section class="section compact-section" id="privacy">

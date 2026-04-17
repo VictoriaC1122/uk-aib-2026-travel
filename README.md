@@ -7,9 +7,10 @@ This public version intentionally summarizes reimbursement items and document na
 ## Sections
 
 - Conference overview and accepted presentation status
-- Flight itinerary and ticket cost summary
-- INNSiDE Manchester hotel plan
-- Reimbursement table for AIB, flight, and hotel costs
+- Flight, train, local transit, and map notes
+- INNSiDE Manchester hotel plan and London accommodation status
+- Reimbursement table for international flights, AIB conference fee, AIB membership fee, and NSTC Manchester daily allowance
+- Separate self-funded list for hotel, London travel, attractions, and other personal costs
 - Suggested UK itinerary that keeps Manchester as the return airport
 - Official links and reference sources
 
