@@ -3833,8 +3833,9 @@ body {
 .hero {
   min-height: 560px;
   background:
-    linear-gradient(110deg, rgba(43, 39, 47, 0.8) 0%, rgba(72, 66, 73, 0.55) 43%, rgba(130, 115, 105, 0.22) 100%),
-    url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1920px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 42% / cover;
+    linear-gradient(110deg, rgba(43, 39, 47, 0.58) 0%, rgba(72, 66, 73, 0.34) 44%, rgba(130, 115, 105, 0.06) 100%),
+    linear-gradient(180deg, rgba(43, 39, 47, 0.18), rgba(43, 39, 47, 0.28)),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1920px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 34% / cover;
 }
 
 .hero::after {
@@ -4009,8 +4010,8 @@ h1 {
 
 .command-primary {
   background:
-    linear-gradient(135deg, rgba(66, 60, 70, 0.82), rgba(102, 96, 96, 0.58)),
-    url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center / cover;
+    linear-gradient(135deg, rgba(66, 60, 70, 0.64), rgba(102, 96, 96, 0.28)),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 34% / cover;
 }
 
 .command-primary::after,
@@ -4063,17 +4064,17 @@ h1 {
 
   .hero {
     background:
-      linear-gradient(180deg, rgba(45, 40, 49, 0.68), rgba(66, 60, 70, 0.44)),
-      url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 38% / cover;
+      linear-gradient(180deg, rgba(45, 40, 49, 0.46), rgba(66, 60, 70, 0.32)),
+      url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") 56% 32% / cover;
   }
 
   .hero-copy {
-    background: rgba(49, 44, 52, 0.34);
+    background: rgba(49, 44, 52, 0.24);
     box-shadow: none;
   }
 
   .hero-panel {
-    background: rgba(49, 44, 52, 0.54);
+    background: rgba(49, 44, 52, 0.42);
   }
 
   .nav-pills {
