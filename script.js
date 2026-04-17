@@ -6,6 +6,7 @@ const pages = [
   { id: "itinerary", label: { zh: "行程", en: "Itinerary" }, href: "./itinerary.html" },
   { id: "budget", label: { zh: "預算", en: "Budget" }, href: "./budget.html" },
   { id: "reminders", label: { zh: "提醒", en: "Reminders" }, href: "./reminders.html" },
+  { id: "firstTime", label: { zh: "初訪英國", en: "First UK Visit" }, href: "./first-time.html" },
   { id: "map", label: { zh: "地圖", en: "Map" }, href: "./map.html" },
   { id: "documents", label: { zh: "連結", en: "Links" }, href: "./links.html" }
 ];
@@ -47,7 +48,7 @@ const currencies = [
 const hotelImage = "https://englandrover.com/wp-content/uploads/2018/11/innside-melia-manchester-05.jpg";
 
 const tripData = {
-  lastUpdated: "2026-04-17 06:10",
+  lastUpdated: "2026-04-17 12:05",
   hero: {
     home: {
       kicker: { zh: "旅程總覽", en: "Trip Overview" },
@@ -92,6 +93,11 @@ const tripData = {
       title: { zh: "提醒與待確認事項", en: "Reminders & Pending Items" },
       lead: { zh: "把住宿日期、火車、倫敦住宿、報帳與回程航段集中在一頁，出發前快速核對。", en: "Accommodation overlap, trains, London stay, reimbursement, and return routing are collected for quick checks." }
     },
+    firstTime: {
+      kicker: { zh: "初次到英國", en: "First UK Visit" },
+      title: { zh: "第一次去英國的實用提醒", en: "First-Time UK Notes" },
+      lead: { zh: "入境、付款、交通、禮貌與安全，整理成出發前可以快速掃過的一頁。", en: "Arrival, payment, transport, etiquette, and safety notes in one calm pre-departure page." }
+    },
     documents: {
       kicker: { zh: "官方連結", en: "Official Links" },
       title: { zh: "文件與官方連結", en: "Documents & Official Links" },
@@ -124,6 +130,85 @@ const tripData = {
     { status: "reimburse", title: { zh: "報帳資料", en: "Reimbursement packet" }, body: { zh: "機票、AIB 會議費、AIB 會員費、國科會日支費是本次可報帳項目；其他列自費。", en: "Flights, AIB conference fee, AIB membership fee, and NSTC daily allowance are claimable; the rest is self-funded." } },
     { status: "confirmed", title: { zh: "回程航段", en: "Return routing" }, body: { zh: "7/11 回程從 MAN 起飛，仍需搭 MAN-LHR；不要因為人在倫敦就跳過第一段。", en: "The 11 July return ticket starts from MAN, so the MAN-LHR segment must not be skipped." } }
   ],
+  firstTimeNotes: {
+    essentials: [
+      {
+        status: "confirmed",
+        title: { zh: "入境文件放在手邊", en: "Keep entry documents close" },
+        body: { zh: "護照、UK ETA 核准信、回程機票、住宿資料與 AIB 邀請函放在同一個容易拿的位置。台灣護照旅客通常會走人工查驗；被問目的時，簡短說明參加 AIB conference in Manchester，再接 London travel。", en: "Keep your passport, UK ETA approval, return ticket, accommodation details, and AIB invitation together. Taiwan passport holders should expect a staffed border check; if asked, briefly say you are attending the AIB conference in Manchester, followed by London travel." },
+        source: "https://www.gov.uk/uk-border-control/at-border-control"
+      },
+      {
+        status: "confirmed",
+        title: { zh: "ETA 已核准，但仍帶著紀錄", en: "ETA approved, but keep the record" },
+        body: { zh: "UK ETA 是登機與入境前的重要旅行授權。雖然系統會連到護照，手機與雲端仍留一份核准信，比現場翻信件安心。", en: "The UK ETA is an important travel authorization before boarding and arrival. It is linked to the passport, but keeping a copy on your phone and cloud storage makes checks easier." },
+        source: "https://www.gov.uk/guidance/check-when-you-can-get-an-electronic-travel-authorisation-eta"
+      },
+      {
+        status: "alert",
+        title: { zh: "不要帶肉類、乳製品入境", en: "Avoid meat and dairy in luggage" },
+        body: { zh: "從台灣等非歐盟地區入境英國，肉類與乳製品通常不能帶。餅乾、巧克力、乾燥麵條等較單純的包裝食品比較安全；不確定就不要帶，或出發前查官方清單。", en: "When entering Great Britain from outside the EU, meat and milk-based products are generally not allowed. Simple packaged snacks such as biscuits, chocolate, or plain dried noodles are usually safer; if unsure, skip it or check the official list before packing." },
+        source: "https://www.gov.uk/guidance/personal-food-plant-and-animal-product-imports"
+      },
+      {
+        status: "alert",
+        title: { zh: "購物免稅額留一點餘裕", en: "Leave room in your customs allowance" },
+        body: { zh: "從境外帶入英國的自用品與禮物有個人免稅額；若超過，需申報並可能繳稅。高單價購物與伴手禮建議留收據，也不要替別人攜帶商業用途物品。", en: "Goods and gifts brought into the UK have personal allowance limits. If you exceed them, you may need to declare and pay tax or duty. Keep receipts for higher-value purchases and do not carry commercial goods for someone else." },
+        source: "https://www.gov.uk/duty-free-goods/arrivals-from-outside-the-eu"
+      }
+    ],
+    city: [
+      {
+        status: "confirmed",
+        title: { zh: "用同一張卡刷進刷出", en: "Tap with the same card" },
+        body: { zh: "倫敦地鐵、巴士與火車使用 contactless、Apple Pay、Google Pay 或 Oyster 時，進出站要用同一張卡或同一支手機。巴士只需上車刷一次；地鐵與火車通常要進出站都刷。", en: "For London transport, use the same contactless card, Apple Pay, Google Pay, or Oyster card for the whole journey. Buses need one tap when boarding; Tube and rail journeys usually require tap in and tap out." },
+        source: "https://tfl.gov.uk/fares/find-fares/capping"
+      },
+      {
+        status: "alert",
+        title: { zh: "過馬路先看右邊", en: "Look right first" },
+        body: { zh: "英國靠左行駛，過馬路的第一眼常常跟台灣相反。路口地上常有 LOOK RIGHT / LOOK LEFT，跟著標示看，晚上與雨天更保守一點。", en: "Traffic drives on the left, so the first direction to check often feels opposite from Taiwan. Many crossings have LOOK RIGHT / LOOK LEFT on the ground; follow the markings and be more cautious at night or in rain." }
+      },
+      {
+        status: "confirmed",
+        title: { zh: "手扶梯右站左走", en: "Stand right, walk left" },
+        body: { zh: "倫敦地鐵手扶梯習慣右側站立、左側通行。若行李大，站穩、靠右，比急著走更安全。", en: "On London Underground escalators, stand on the right and leave the left side for walking. With luggage, staying steady on the right is better than rushing." }
+      },
+      {
+        status: "optional",
+        title: { zh: "備一點現金，但不用太多", en: "Carry a little cash, not a lot" },
+        body: { zh: "英國多數地方可刷卡，交通也以感應付款為主。身上留少量英鎊給小店、寄物櫃或臨時情況即可，其他以信用卡與手機付款為主。", en: "Most places in the UK accept cards, and transport is contactless-friendly. Keep a small amount of GBP for small shops, lockers, or backup, and use cards or mobile wallets for most payments." }
+      }
+    ],
+    daily: [
+      {
+        status: "confirmed",
+        title: { zh: "插頭與充電", en: "Plugs and charging" },
+        body: { zh: "英國使用 Type G 三孔插頭，電壓 230V。筆電與手機充電器通常支援 100-240V，但仍看一下變壓器標示；行動電源放隨身行李，不托運。", en: "The UK uses Type G three-pin plugs and 230V power. Laptop and phone chargers usually support 100-240V, but check the label. Power banks should stay in carry-on luggage." }
+      },
+      {
+        status: "confirmed",
+        title: { zh: "小費不用緊張", en: "Tipping is simple" },
+        body: { zh: "餐廳常自動加 service charge，帳單有寫就不必再給。沒有 service charge、服務也不錯時，可抓 10% 左右；咖啡店、速食與外帶不需要。", en: "Restaurants often add a service charge; if it is on the bill, you do not need to add more. If there is no service charge and service is good, around 10% is fine. Cafes, fast food, and takeaway do not require tips." }
+      },
+      {
+        status: "alert",
+        title: { zh: "手機與包包放內側", en: "Keep phone and bag inward" },
+        body: { zh: "倫敦熱門景點、地鐵口與購物街人多，手機不要長時間拿在馬路側。包包拉鍊朝內，護照與備用卡分開放。", en: "Busy London sights, Tube entrances, and shopping streets can be crowded. Avoid holding your phone on the road side for long; keep zippers inward and separate your passport from backup cards." }
+      },
+      {
+        status: "optional",
+        title: { zh: "英式禮貌簡短就好", en: "British politeness can be brief" },
+        body: { zh: "Please、thank you、sorry、excuse me 很好用。排隊是基本默契；要問路或請人讓路，先說 excuse me 就很自然。", en: "Please, thank you, sorry, and excuse me go a long way. Queuing matters; if you need directions or space to pass, starting with excuse me feels natural." }
+      }
+    ],
+    firstDay: [
+      { zh: "抵達後先確認回程與轉機資料都在手機離線檔案裡。", en: "After arrival, make sure return and transfer details are saved offline on your phone." },
+      { zh: "從機場到飯店先用同一張交通付款工具，避免日上限失效。", en: "Use the same payment method for airport-to-city transport to keep fare capping simple." },
+      { zh: "15:00 後入住 INNSiDE Manchester；若太早到，先寄放行李與吃點東西。", en: "INNSiDE Manchester check-in is after 15:00; if you arrive early, leave luggage and get food." },
+      { zh: "第一晚不要塞滿行程，補水、洗澡、整理文件，比多跑一個點更值得。", en: "Keep the first evening light: hydrate, shower, and organize documents rather than squeezing in another stop." }
+    ]
+  },
   paperSummaries: [
     {
       status: "confirmed",
@@ -308,6 +393,9 @@ const tripData = {
     ["Metrolink zones", "https://tfgm.com/tickets-and-passes/fare-zones/tram"],
     ["Metrolink day ticket", "https://tfgm.com/tickets-and-passes/tram-anytime-all-day-travelcard-adult"],
     ["UK ETA", "https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta"],
+    ["UK border control", "https://www.gov.uk/uk-border-control/at-border-control"],
+    ["UK customs personal allowance", "https://www.gov.uk/duty-free-goods/arrivals-from-outside-the-eu"],
+    ["Bringing food into Great Britain", "https://www.gov.uk/guidance/personal-food-plant-and-animal-product-imports"],
     ["INNSiDE Manchester", "https://www.melia.com/en/hotels/united-kingdom/manchester/innside-manchester"],
     ["Bank of Taiwan FX rates", "https://rate.bot.com.tw/xrt?Lang=zh-TW"],
     ["115 年國外日支表", "https://dbas.tycg.gov.tw/News_Content.aspx?n=12154&s=1591826"]
@@ -323,6 +411,7 @@ const sectionNav = {
   map: [["travel-map", { zh: "地圖", en: "Map" }], ["route-links", { zh: "每日路線", en: "Routes" }], ["map-notes", { zh: "地圖備註", en: "Notes" }]],
   budget: [["expenses", { zh: "費用明細", en: "Expenses" }], ["totals", { zh: "金額小計", en: "Totals" }], ["proofs", { zh: "憑證順序", en: "Proofs" }]],
   reminders: [["pending", { zh: "待處理", en: "Pending" }], ["quick-check", { zh: "行前核對", en: "Checklist" }]],
+  firstTime: [["entry", { zh: "入境", en: "Entry" }], ["city", { zh: "城市移動", en: "City basics" }], ["daily", { zh: "日常提醒", en: "Daily notes" }], ["arrival", { zh: "抵達第一天", en: "First day" }]],
   documents: [["links", { zh: "官方連結", en: "Official links" }], ["privacy", { zh: "隱私原則", en: "Privacy" }]]
 };
 
@@ -362,6 +451,11 @@ const readingGuides = {
     { zh: "這頁只放需要再次確認的事情。", en: "This page keeps only items that need a second check." },
     { zh: "住宿、火車、報帳與回程航段是最重要的核對點。", en: "Accommodation, trains, reimbursement, and return routing are the main checks." },
     { zh: "出發前可把此頁當成最後確認清單。", en: "Use this page as the final pre-departure checklist." }
+  ],
+  firstTime: [
+    { zh: "入境文件、ETA、住宿與回程資料放在同一處，手機離線也能開。", en: "Keep entry documents, ETA, accommodation, and return details together and available offline." },
+    { zh: "倫敦交通用同一張卡或同一支手機刷進刷出。", en: "Use the same card or device to tap in and out on London transport." },
+    { zh: "食物、免稅額與高單價購物以 GOV.UK 規則為準。", en: "Food, customs allowances, and high-value shopping should follow GOV.UK rules." }
   ],
   documents: [
     { zh: "只放官方連結與文件類型，不公開私人憑證內容。", en: "Only official links and document types are shown; private proof details are not public." },
@@ -653,6 +747,7 @@ const pageDescriptions = {
   map: { zh: "曼徹斯特與倫敦主要地點、每日路線與完整 Google 地圖路線。", en: "Manchester and London map pins, daily route links, and the full Google Maps route." },
   budget: { zh: "可報帳、自費與貨幣切換，所有費用集中整理。", en: "Reimbursable and self-funded costs with a currency switcher." },
   reminders: { zh: "住宿、火車、報帳與回程航段的行前提醒。", en: "Pre-departure reminders for stay, trains, claims, and return routing." },
+  firstTime: { zh: "第一次到英國的入境、交通、付款、禮貌與安全提醒。", en: "First-time UK notes for entry, transport, payment, etiquette, and safety." },
   documents: { zh: "官方連結與文件類型，不公開私人憑證細節。", en: "Official links and document categories without exposing private proof details." }
 };
 
@@ -1106,6 +1201,71 @@ function renderReminders() {
   `;
 }
 
+function renderFirstTimeNoteCard(item) {
+  const sourceMarkup = item.source
+    ? externalLink(item.source, state.lang === "en" ? "Official source" : "官方資料")
+    : "";
+  return `
+    <article class="first-note-card">
+      <div class="first-note-head">
+        ${statusChip(item.status)}
+        <h3>${escapeHtml(t(item.title))}</h3>
+      </div>
+      <p>${escapeHtml(t(item.body))}</p>
+      ${sourceMarkup}
+    </article>
+  `;
+}
+
+function renderFirstTime() {
+  return `
+    ${renderQuickNav("firstTime")}
+    ${renderReadingGuide("firstTime")}
+    <section class="section compact-section first-time-intro" id="entry">
+      ${sectionHeading(
+        state.lang === "en" ? "Entry" : "入境",
+        state.lang === "en" ? "Documents, ETA, and what to keep ready" : "文件、ETA 與入境時手邊要有的東西",
+        state.lang === "en" ? "Keep the tone simple at the border: conference first, travel after." : "入境時說明簡單清楚：先到曼徹斯特參加會議，後段到倫敦旅行。"
+      )}
+      <div class="first-note-grid">
+        ${tripData.firstTimeNotes.essentials.map(renderFirstTimeNoteCard).join("")}
+      </div>
+    </section>
+    <section class="section compact-section" id="city">
+      ${sectionHeading(
+        state.lang === "en" ? "City Basics" : "城市移動",
+        state.lang === "en" ? "Transport, payment, and street rhythm" : "交通付款、走路與城市節奏"
+      )}
+      <div class="first-note-grid">
+        ${tripData.firstTimeNotes.city.map(renderFirstTimeNoteCard).join("")}
+      </div>
+    </section>
+    <section class="section compact-section" id="daily">
+      ${sectionHeading(
+        state.lang === "en" ? "Daily Notes" : "日常提醒",
+        state.lang === "en" ? "Small habits that make the trip smoother" : "幾個讓旅程更順的小習慣"
+      )}
+      <div class="first-note-grid">
+        ${tripData.firstTimeNotes.daily.map(renderFirstTimeNoteCard).join("")}
+      </div>
+    </section>
+    <section class="section compact-section" id="arrival">
+      ${sectionHeading(
+        state.lang === "en" ? "First Day" : "抵達第一天",
+        state.lang === "en" ? "After landing in Manchester" : "抵達曼徹斯特之後"
+      )}
+      <div class="arrival-card">
+        <div>
+          ${statusChip("confirmed")}
+          <h3>${state.lang === "en" ? "Keep the first evening light" : "第一晚留給安頓"}</h3>
+          <p>${state.lang === "en" ? "The best first-day plan is not ambitious. It is clean, hydrated, and ready for the conference." : "第一天不需要太用力。能順利抵達、吃點東西、整理文件、調整時差，就很好。"}</p>
+        </div>
+        ${renderList(tripData.firstTimeNotes.firstDay, "arrival-list")}
+      </div>
+    </section>
+  `;
+}
+
 const renderers = {
   home: renderHome,
   conference: renderConference,
@@ -1115,6 +1275,7 @@ const renderers = {
   map: renderMap,
   budget: renderBudget,
   reminders: renderReminders,
+  firstTime: renderFirstTime,
   documents: renderDocuments
 };
 

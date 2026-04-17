@@ -12,6 +12,7 @@ This public version intentionally summarizes reimbursement items and document na
 - Reimbursement table for international flights, AIB conference fee, AIB membership fee, and NSTC Manchester daily allowance
 - Separate self-funded list for hotel, London travel, attractions, and other personal costs
 - Suggested UK itinerary that keeps Manchester as the return airport
+- First-time UK visit notes for entry, transport, payment, etiquette, and safety
 - Official links and reference sources
 
 ## Deployment

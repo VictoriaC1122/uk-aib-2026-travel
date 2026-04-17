@@ -1997,6 +1997,89 @@ footer a {
   font-weight: 900;
 }
 
+.first-note-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.first-note-card,
+.arrival-card {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 14px;
+  background: rgba(255, 253, 248, 0.86);
+  box-shadow: 0 8px 24px rgba(69, 61, 73, 0.055);
+}
+
+.first-note-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.first-note-head {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.first-note-card h3,
+.arrival-card h3 {
+  margin: 2px 0 0;
+  color: var(--oxford);
+  font-size: 22px;
+  line-height: 1.32;
+}
+
+.first-note-card p,
+.arrival-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.78;
+}
+
+.first-note-card a {
+  align-self: flex-start;
+  margin-top: auto;
+  color: var(--royal-blue);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.first-note-card a:hover {
+  text-decoration: underline;
+}
+
+.arrival-card {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.arrival-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.arrival-list li {
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(68, 61, 72, 0.08);
+  border-radius: 10px;
+  color: var(--muted);
+  background: rgba(247, 244, 239, 0.72);
+  line-height: 1.65;
+}
+
 .dashboard-section,
 .compact-section {
   scroll-margin-top: 88px;
@@ -3812,6 +3895,8 @@ h1 {
 .note-grid article,
 .flight-card,
 .transfer-card,
+.first-note-card,
+.arrival-card,
 .stay-card-rich,
 .reminder-card,
 .currency-switcher,
@@ -4005,6 +4090,8 @@ h1 {
   .note-grid article,
   .flight-card,
   .transfer-card,
+  .first-note-card,
+  .arrival-card,
   .stay-card-rich,
   .reminder-card {
     background: rgba(255, 253, 248, 0.88);
@@ -4017,5 +4104,26 @@ h1 {
 
   .transfer-card strong {
     font-size: 21px;
+  }
+
+  .first-note-grid,
+  .arrival-card {
+    grid-template-columns: 1fr;
+  }
+
+  .first-note-card,
+  .arrival-card {
+    padding: 18px;
+  }
+
+  .first-note-head {
+    display: grid;
+    gap: 10px;
+    justify-content: stretch;
+  }
+
+  .first-note-card h3,
+  .arrival-card h3 {
+    font-size: 20px;
   }
 }
