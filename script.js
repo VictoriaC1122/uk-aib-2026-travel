@@ -332,6 +332,16 @@ function renderChrome() {
     storeLang(state.lang);
     renderApp();
   });
+
+  scrollActiveMobileNavIntoView();
+}
+
+function scrollActiveMobileNavIntoView() {
+  const active = document.querySelector(".nav-pills a.active");
+  if (!active || window.matchMedia("(min-width: 761px)").matches) return;
+  requestAnimationFrame(() => {
+    active.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  });
 }
 
 function renderHero(pageId) {
