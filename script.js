@@ -236,6 +236,44 @@ const sectionNav = {
   documents: [["links", { zh: "官方連結", en: "Official links" }], ["privacy", { zh: "隱私原則", en: "Privacy" }]]
 };
 
+const readingGuides = {
+  conference: [
+    { zh: "兩篇 AIB 發表已確認，頁面只放題名與簡介。", en: "Two AIB presentations are confirmed; only titles and short summaries are shown." },
+    { zh: "正式場次時間等 final program 公布後再補。", en: "Formal session times will be added after the final program is published." },
+    { zh: "接受函與邀請函用於證明會議發表與出國目的。", en: "Acceptance and invitation letters support the conference and travel purpose." }
+  ],
+  transport: [
+    { zh: "國際航班已確認，回程從曼徹斯特起飛。", en: "International flights are confirmed; the return journey begins in Manchester." },
+    { zh: "曼徹斯特到倫敦火車尚未預訂，Advance 票越早查越好。", en: "Manchester-London train tickets are pending; Advance fares are best checked early." },
+    { zh: "倫敦與曼徹斯特市內交通都以感應付款為主。", en: "Local transit in London and Manchester is planned around contactless payment." }
+  ],
+  stay: [
+    { zh: "曼徹斯特住宿已訂，倫敦住宿待定。", en: "Manchester accommodation is booked; London accommodation is still open." },
+    { zh: "7/4 晚的住宿日期有重疊，可保留為緩衝。", en: "The 4 July night overlaps and can remain a buffer." },
+    { zh: "倫敦住宿以交通方便、回車站順路為優先。", en: "London areas are chosen for easy access and a simple return to the station." }
+  ],
+  itinerary: [
+    { zh: "每日行程分成主要停留、可選、門票費用與交通提醒。", en: "Each day is separated into main stops, optional ideas, fees, and transit notes." },
+    { zh: "倫敦段以博物館、河岸、格林威治與購物街區為主。", en: "The London days center on museums, riverside walks, Greenwich, and shopping streets." },
+    { zh: "付費景點已列參考票價，出發前再以官方網站確認。", en: "Paid attractions include reference prices; re-check official sites before departure." }
+  ],
+  map: [
+    { zh: "點地點卡片即可切換右側地圖。", en: "Tap a place card to change the map." },
+    { zh: "每日路線可直接開啟 Google 地圖。", en: "Daily route links open directly in Google Maps." },
+    { zh: "曼徹斯特偏實用移動，倫敦偏散步路線。", en: "Manchester is practical movement; London is more walkable." }
+  ],
+  budget: [
+    { zh: "報帳只列機票、AIB 會議費、AIB 會員費與國科會日支費。", en: "Claims include only flights, AIB conference fee, AIB membership fee, and NSTC daily allowance." },
+    { zh: "住宿、火車、景點與倫敦旅遊列在自費。", en: "Accommodation, trains, attractions, and London travel stay self-funded." },
+    { zh: "報帳憑證順序已整理在頁面底部。", en: "The proof order is listed at the bottom of the page." }
+  ],
+  documents: [
+    { zh: "只放官方連結與文件類型，不公開私人憑證內容。", en: "Only official links and document types are shown; private proof details are not public." },
+    { zh: "報帳、簽證與旅行確認資料可以依此核對。", en: "Use this page to check reimbursement, travel authorization, and travel proof links." },
+    { zh: "訂位編號、付款資訊與 email 不放在公開頁面。", en: "Booking numbers, payment details, and email addresses stay off the public site." }
+  ]
+};
+
 const state = {
   lang: getStoredLang()
 };
@@ -389,6 +427,22 @@ function renderQuickNav(pageId) {
   `;
 }
 
+function renderReadingGuide(pageId) {
+  const items = readingGuides[pageId];
+  if (!items?.length) return "";
+  return `
+    <section class="section reader-guide" aria-label="${state.lang === "en" ? "Page reading guide" : "本頁閱讀重點"}">
+      <div class="reader-guide-title">
+        <p class="eyebrow">${state.lang === "en" ? "At a Glance" : "本頁重點"}</p>
+        <h2>${state.lang === "en" ? "Read this page quickly" : "快速掌握這一頁"}</h2>
+      </div>
+      <ul class="reader-guide-list">
+        ${items.map((item) => `<li>${escapeHtml(t(item))}</li>`).join("")}
+      </ul>
+    </section>
+  `;
+}
+
 function renderHome() {
   return `
     ${renderQuickNav("home")}
@@ -495,6 +549,7 @@ function renderAlert(alert) {
 function renderConference() {
   return `
     ${renderQuickNav("conference")}
+    ${renderReadingGuide("conference")}
     <section class="section compact-section" id="accepted">
       ${sectionHeading(state.lang === "en" ? "Accepted Work" : "接受發表", state.lang === "en" ? "Confirmed presentation status" : "已接受發表狀態")}
       <div class="summary-grid two">
@@ -534,6 +589,7 @@ function renderConference() {
 function renderTransport() {
   return `
     ${renderQuickNav("transport")}
+    ${renderReadingGuide("transport")}
     <section class="section compact-section" id="flights">
       ${sectionHeading(state.lang === "en" ? "Flights" : "航班", state.lang === "en" ? "Flight details" : "航班與轉機")}
       <div class="flight-grid">
@@ -591,6 +647,7 @@ function renderTransport() {
 function renderStay() {
   return `
     ${renderQuickNav("stay")}
+    ${renderReadingGuide("stay")}
     <section class="section compact-section" id="overview">
       ${sectionHeading(state.lang === "en" ? "Accommodation" : "住宿", state.lang === "en" ? "Where to stay" : "住宿安排")}
       <div class="summary-grid">
@@ -610,6 +667,7 @@ function renderStay() {
 function renderItinerary() {
   return `
     ${renderQuickNav("itinerary")}
+    ${renderReadingGuide("itinerary")}
     <section class="section compact-section" id="daily">
       ${sectionHeading(state.lang === "en" ? "Daily Plan" : "每日行程", state.lang === "en" ? "What to do each day" : "每天怎麼安排")}
       <div class="itinerary-grid">
@@ -670,6 +728,7 @@ function renderMap() {
   const cityGroups = [...new Set(tripData.mapLocations.map((item) => item.city))];
   return `
     ${renderQuickNav("map")}
+    ${renderReadingGuide("map")}
     <section class="section compact-section" id="travel-map">
       ${sectionHeading(
         state.lang === "en" ? "Travel Map" : "旅程地圖",
@@ -755,6 +814,7 @@ function renderBudget() {
   const selfFundedKnown = "NT$38,525 / GBP 906.90 / US$1,202";
   return `
     ${renderQuickNav("budget")}
+    ${renderReadingGuide("budget")}
     <section class="section compact-section" id="expenses">
       ${sectionHeading(
         state.lang === "en" ? "Reimbursement" : "報帳",
@@ -794,6 +854,7 @@ function renderBudget() {
 function renderDocuments() {
   return `
     ${renderQuickNav("documents")}
+    ${renderReadingGuide("documents")}
     <section class="section compact-section" id="links">
       ${sectionHeading(state.lang === "en" ? "Official Links" : "官方連結", state.lang === "en" ? "Useful official links" : "常用官方連結")}
       <div class="link-grid">
