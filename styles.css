@@ -3629,3 +3629,302 @@ footer a {
     min-width: 62px;
   }
 }
+
+/* Luxury minimal finish */
+:root {
+  --slate: #514d53;
+  --ink: #302d33;
+  --royal-blue: #758b91;
+  --royal-red: #9b747b;
+  --gold: #aa9f87;
+  --soft-gold: #e5dcc8;
+  --bone: #ebe6dd;
+  --paper: #fffdf8;
+  --mist: #f7f4ef;
+  --muted: #777176;
+  --oxford: #302d35;
+  --border: rgba(68, 61, 72, 0.105);
+  --shadow: 0 10px 28px rgba(69, 61, 73, 0.07);
+}
+
+body {
+  background:
+    linear-gradient(180deg, #fbf8f2 0%, #f6f2eb 46%, #efebe3 100%);
+}
+
+.progress {
+  height: 3px;
+  background: linear-gradient(90deg, #9b747b, #aa9f87, #758b91);
+  box-shadow: none;
+}
+
+.hero {
+  min-height: 560px;
+  background:
+    linear-gradient(110deg, rgba(38, 34, 43, 0.82) 0%, rgba(55, 50, 58, 0.56) 44%, rgba(88, 80, 76, 0.2) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1920px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 42% / cover;
+}
+
+.hero::after {
+  height: 170px;
+  background: linear-gradient(180deg, transparent 0%, rgba(247, 244, 239, 0.98) 100%);
+}
+
+.brand,
+.hero-serif-note {
+  color: #e9dfc7;
+}
+
+.nav-pills,
+.hero-panel,
+.hero-copy {
+  border-color: rgba(255, 253, 248, 0.18);
+  box-shadow: none;
+}
+
+.nav-pills {
+  background: rgba(255, 253, 248, 0.11);
+}
+
+.nav-pills a {
+  font-family: var(--font-sans);
+  font-weight: 800;
+}
+
+.nav-pills a:hover,
+.nav-pills a.active,
+.lang-toggle,
+.button.primary {
+  color: #363139;
+  background: #e8dfcc;
+  border-color: #e8dfcc;
+  box-shadow: none;
+}
+
+h1 {
+  text-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.hero-lead {
+  color: rgba(255, 253, 248, 0.86);
+}
+
+.button {
+  border-color: rgba(255, 253, 248, 0.45);
+  box-shadow: none;
+}
+
+.hero-panel {
+  background: rgba(47, 42, 51, 0.48);
+}
+
+.quick-nav,
+.reader-guide,
+.summary-card,
+.todo-item,
+.itinerary-card,
+.ticket-card,
+.alert-card,
+.privacy-note,
+.feature-card,
+.page-card,
+.note-grid article,
+.flight-card,
+.stay-card-rich,
+.reminder-card,
+.currency-switcher,
+.mobile-table,
+.proof-list li,
+.map-location-button,
+.map-day-route-link,
+.link-grid a,
+.command-board,
+.home-strip,
+.timeline-list article,
+.fare-grid article,
+.fare-grid div,
+.dashboard-fares article {
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: rgba(255, 253, 248, 0.82);
+  box-shadow: 0 8px 24px rgba(69, 61, 73, 0.055);
+  backdrop-filter: blur(10px);
+}
+
+.summary-card:hover,
+.page-card:hover,
+.map-location-button:hover,
+.map-day-route-link:hover,
+.link-grid a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(170, 159, 135, 0.45);
+  box-shadow: 0 12px 28px rgba(69, 61, 73, 0.075);
+}
+
+.section {
+  padding-top: 58px;
+  padding-bottom: 58px;
+}
+
+.section-heading {
+  margin-bottom: 20px;
+}
+
+.section-heading h2,
+.reader-guide h2,
+.stay-content h3,
+.reminder-card h3,
+.itinerary-summary-title {
+  color: #2f2b33;
+}
+
+.section-heading p,
+.summary-card p,
+.todo-item p,
+.itinerary-card p,
+.ticket-card p,
+.reader-guide-list li,
+.stay-content p,
+.reminder-card p,
+.clean-list li,
+.mini-list li {
+  color: #716b70;
+}
+
+.eyebrow,
+.card-kicker,
+.panel-label {
+  color: #9e927b;
+  letter-spacing: 1.25px;
+}
+
+.status-chip {
+  min-height: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.status-confirmed {
+  color: #405248;
+  background: #e2e9df;
+}
+
+.status-book,
+.status-reimburse {
+  color: #76633d;
+  background: #eee5cf;
+}
+
+.status-pending,
+.status-alert {
+  color: #815f67;
+  background: #eadadd;
+}
+
+.status-self,
+.status-optional {
+  color: #5e6971;
+  background: #dfe7e8;
+}
+
+.command-board {
+  background:
+    linear-gradient(135deg, rgba(255, 253, 248, 0.9), rgba(244, 240, 232, 0.78));
+}
+
+.command-primary {
+  background:
+    linear-gradient(135deg, rgba(74, 68, 78, 0.82), rgba(112, 103, 108, 0.58)),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center / cover;
+}
+
+.command-primary::after,
+.premium-summary .summary-card::after {
+  opacity: 0.68;
+}
+
+.premium-summary .summary-card::before {
+  color: rgba(170, 159, 135, 0.16);
+}
+
+.literary-strip,
+.home-strip {
+  background: rgba(255, 253, 248, 0.72);
+}
+
+.stay-facts li,
+.mini-list {
+  border-color: rgba(68, 61, 72, 0.09);
+}
+
+.stay-facts li {
+  background: rgba(247, 244, 239, 0.72);
+}
+
+.itinerary-collapse summary::after,
+.currency-switcher button {
+  background: rgba(247, 244, 239, 0.84);
+}
+
+.currency-switcher button.active {
+  color: #fffdf8;
+  background: #758b91;
+  box-shadow: none;
+}
+
+.back-to-top {
+  color: #413b44;
+  background: #e6ddca;
+  border-color: rgba(170, 159, 135, 0.42);
+  box-shadow: 0 10px 22px rgba(69, 61, 73, 0.12);
+}
+
+@media (max-width: 760px) {
+  body {
+    background: linear-gradient(180deg, #fbf8f2 0%, #f5f1ea 56%, #eee9e0 100%);
+  }
+
+  .hero {
+    background:
+      linear-gradient(180deg, rgba(42, 37, 47, 0.68), rgba(51, 46, 56, 0.44)),
+      url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 38% / cover;
+  }
+
+  .hero-copy {
+    background: rgba(47, 42, 51, 0.34);
+    box-shadow: none;
+  }
+
+  .hero-panel {
+    background: rgba(47, 42, 51, 0.54);
+  }
+
+  .nav-pills {
+    border-color: rgba(68, 61, 72, 0.1);
+    background: rgba(255, 253, 248, 0.96);
+    box-shadow: 0 8px 22px rgba(69, 61, 73, 0.11);
+  }
+
+  .nav-pills a.active {
+    color: #fffdf8;
+    background: #758b91;
+  }
+
+  .quick-nav,
+  .reader-guide,
+  .summary-card,
+  .itinerary-card,
+  .ticket-card,
+  .alert-card,
+  .privacy-note,
+  .todo-item,
+  .feature-card,
+  .page-card,
+  .note-grid article,
+  .flight-card,
+  .stay-card-rich,
+  .reminder-card {
+    background: rgba(255, 253, 248, 0.88);
+    box-shadow: 0 6px 18px rgba(69, 61, 73, 0.05);
+  }
+}
