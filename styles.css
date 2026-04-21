@@ -4138,3 +4138,271 @@ h1 {
     font-size: 20px;
   }
 }
+
+/* Mobile reading and header polish */
+.topbar {
+  padding: 6px;
+  border: 1px solid rgba(255, 253, 248, 0.14);
+  border-radius: 12px;
+  background: rgba(49, 44, 52, 0.18);
+  backdrop-filter: blur(14px);
+}
+
+.brand {
+  padding: 4px 8px;
+}
+
+.hero-copy {
+  padding: 22px 0;
+}
+
+.hero-panel {
+  border-radius: 12px;
+}
+
+@media (max-width: 760px) {
+  body {
+    padding-bottom: calc(82px + env(safe-area-inset-bottom));
+    font-size: 16px;
+    line-height: 1.78;
+  }
+
+  .hero {
+    min-height: 500px;
+    padding: 12px 12px 36px;
+  }
+
+  .page-hero {
+    min-height: 340px;
+  }
+
+  .topbar {
+    width: 100%;
+    min-height: 54px;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 9px;
+    border-color: rgba(255, 253, 248, 0.2);
+    background: rgba(44, 39, 48, 0.38);
+  }
+
+  .brand {
+    max-width: calc(100% - 64px);
+    padding: 0;
+    font-size: 20px;
+  }
+
+  .brand small {
+    max-width: 180px;
+    overflow: hidden;
+    color: rgba(255, 253, 248, 0.78);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .lang-toggle {
+    position: static;
+    flex: 0 0 auto;
+    width: 48px;
+    min-height: 38px;
+    color: #342f37;
+    background: rgba(230, 222, 203, 0.94);
+  }
+
+  .nav-pills {
+    left: 10px;
+    right: 10px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    display: flex;
+    grid-template-columns: none;
+    justify-content: flex-start;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 7px;
+    border-radius: 12px;
+    scroll-padding-inline: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-pills a {
+    min-width: max-content;
+    min-height: 38px;
+    flex: 0 0 auto;
+    padding: 0 13px;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .hero-grid,
+  .page-hero .hero-grid {
+    padding-top: 46px;
+  }
+
+  .handbook-hero-grid {
+    gap: 10px;
+  }
+
+  .hero-copy {
+    padding: 16px 14px;
+    border-color: rgba(255, 253, 248, 0.16);
+    border-radius: 12px;
+    background: rgba(44, 39, 48, 0.18);
+    backdrop-filter: blur(7px);
+  }
+
+  h1 {
+    margin-top: 10px;
+    font-size: clamp(27px, 8.2vw, 34px);
+    line-height: 1.18;
+    text-wrap: balance;
+  }
+
+  h2 {
+    font-size: clamp(24px, 6.5vw, 30px);
+    line-height: 1.24;
+  }
+
+  h3 {
+    font-size: 20px;
+    line-height: 1.32;
+  }
+
+  .hero-serif-note {
+    margin-top: 9px;
+    font-size: 18px;
+  }
+
+  .hero-lead {
+    margin-top: 11px;
+    font-size: 15.5px;
+    line-height: 1.72;
+  }
+
+  .hero-actions {
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .button {
+    min-height: 40px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+  .hero-panel {
+    padding: 5px 14px;
+    border-color: rgba(255, 253, 248, 0.18);
+    background: rgba(44, 39, 48, 0.34);
+  }
+
+  .hero-panel > div {
+    padding: 10px 0;
+  }
+
+  .hero-panel strong {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .quick-nav {
+    width: calc(100% - 20px);
+    margin-top: -18px;
+    padding: 8px;
+    border-radius: 12px;
+  }
+
+  .quick-nav a {
+    min-height: 34px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+
+  .section {
+    width: min(1180px, calc(100% - 24px));
+    padding: 34px 0;
+  }
+
+  .reader-guide {
+    gap: 12px;
+    padding: 18px;
+    border-radius: 12px;
+  }
+
+  .summary-card,
+  .todo-item,
+  .feature-card,
+  .page-card,
+  .note-grid article,
+  .flight-card,
+  .transfer-card,
+  .first-note-card,
+  .arrival-card,
+  .stay-card-rich,
+  .reminder-card,
+  .ticket-card,
+  .map-location-button,
+  .map-day-route-link {
+    border-radius: 12px;
+  }
+
+  .summary-card,
+  .todo-item,
+  .feature-card,
+  .page-card,
+  .note-grid article,
+  .transfer-card,
+  .first-note-card,
+  .arrival-card,
+  .reminder-card,
+  .ticket-card {
+    padding: 18px;
+  }
+
+  .clean-list li,
+  .mini-list li,
+  .stay-content p,
+  .summary-card p,
+  .todo-item p,
+  .ticket-card p,
+  .reminder-card p,
+  .first-note-card p,
+  .arrival-card p {
+    line-height: 1.68;
+  }
+}
+
+@media (max-width: 430px) {
+  body {
+    padding-bottom: calc(82px + env(safe-area-inset-bottom));
+  }
+
+  .hero {
+    min-height: 492px;
+  }
+
+  .page-hero {
+    min-height: 330px;
+  }
+
+  .nav-pills {
+    grid-template-columns: none;
+  }
+
+  .nav-pills a {
+    min-height: 38px;
+    padding-inline: 12px;
+    font-size: 11.5px;
+  }
+
+  .hero-copy {
+    padding: 15px 13px;
+  }
+
+  .section {
+    width: min(1180px, calc(100% - 22px));
+  }
+}
