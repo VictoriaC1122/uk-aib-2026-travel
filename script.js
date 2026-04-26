@@ -649,27 +649,27 @@ function renderHome() {
     <section class="section dashboard-section home-dashboard" id="snapshot">
       ${sectionHeading(
         state.lang === "en" ? "Overview" : "旅程總覽",
-        state.lang === "en" ? "Conference schedule, travel plan, and budget" : "會議、交通、住宿與費用",
-        state.lang === "en" ? "A practical handbook for the Manchester conference and London travel days." : "整理曼徹斯特研討會與倫敦旅遊段的重點資訊。",
+        state.lang === "en" ? "Manchester for the conference, London for the open afternoons" : "曼徹斯特留給會議，倫敦留給後段的漫步",
+        state.lang === "en" ? "A quiet first glance at dates, rooms, trains, and the small decisions still waiting." : "把日期、住宿、火車與還沒定下來的細節，收進首頁第一眼。",
         { center: true }
       )}
       <div class="command-board" aria-label="${state.lang === "en" ? "Trip highlights" : "旅程重點"}">
         <article class="command-primary">
-          <span class="command-label">${state.lang === "en" ? "Current plan" : "目前安排"}</span>
-          <h3>${state.lang === "en" ? "Manchester first, London after the conference." : "前段曼徹斯特會議，後段倫敦旅遊"}</h3>
-          <p>${state.lang === "en" ? "Flights, conference fees, and the Manchester stay are confirmed. London accommodation and train tickets are still pending." : "航班、會議費與曼徹斯特住宿已確認；倫敦住宿與火車票尚待預訂。"}</p>
+          <span class="command-label">${state.lang === "en" ? "Summer note" : "夏日旅程筆記"}</span>
+          <h3>${state.lang === "en" ? "Conference mornings, train windows, and a London chapter that begins after AIB." : "會議的早晨、火車窗景，還有 AIB 結束後才展開的倫敦篇章"}</h3>
+          <p>${state.lang === "en" ? "The route is already clear: arrive in Manchester, stay close to the conference, then move south for museums, riverside light, and a slower final stretch." : "行程的骨架已經清楚：先落在曼徹斯特，住在會議附近，之後南下倫敦，把博物館、河岸與最後幾天的鬆弛感接起來。"}</p>
         </article>
         <div class="command-metrics">
-          <article><span>${state.lang === "en" ? "To claim" : "可報帳小計"}</span><strong>NT$156,039</strong></article>
-          <article><span>${state.lang === "en" ? "Manchester stay" : "曼徹斯特住宿"}</span><strong>${state.lang === "en" ? "5 nights" : "5 晚"}</strong></article>
-          <article><span>${state.lang === "en" ? "London nights" : "倫敦夜晚"}</span><strong>${state.lang === "en" ? "open" : "未定"}</strong></article>
+          <article><span>${state.lang === "en" ? "Conference week" : "會議週"}</span><strong>2026/06/29-07/03</strong><p>${state.lang === "en" ? "AIB Manchester" : "AIB Manchester"}</p></article>
+          <article><span>${state.lang === "en" ? "Manchester stay" : "曼徹斯特住宿"}</span><strong>${state.lang === "en" ? "INNSiDE · 5 nights" : "INNSiDE · 5 晚"}</strong><p>${state.lang === "en" ? "already confirmed" : "已經確認"}</p></article>
+          <article><span>${state.lang === "en" ? "London chapter" : "倫敦段"}</span><strong>${state.lang === "en" ? "from 7/4" : "7/4 起"}</strong><p>${state.lang === "en" ? "stay and trains still open" : "住宿與火車仍待安排"}</p></article>
         </div>
       </div>
       <aside class="literary-strip" aria-label="${state.lang === "en" ? "Trip tone" : "旅程語氣"}">
-        <span>${state.lang === "en" ? "Conference" : "會議"}</span>
         <span>${state.lang === "en" ? "Research" : "研究"}</span>
+        <span>${state.lang === "en" ? "Conference" : "會議"}</span>
         <span>${state.lang === "en" ? "Museums" : "博物館"}</span>
-        <span>${state.lang === "en" ? "Shopping" : "購物"}</span>
+        <span>${state.lang === "en" ? "Riverside walks" : "河岸散步"}</span>
       </aside>
       <div class="summary-grid premium-summary">
         ${tripData.summaryCards.map(renderSummaryCard).join("")}
