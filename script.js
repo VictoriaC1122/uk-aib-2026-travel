@@ -640,19 +640,7 @@ function renderQuickNav(pageId) {
 }
 
 function renderReadingGuide(pageId) {
-  const items = readingGuides[pageId];
-  if (!items?.length) return "";
-  return `
-    <section class="section reader-guide" aria-label="${state.lang === "en" ? "Page reading guide" : "本頁閱讀重點"}">
-      <div class="reader-guide-title">
-        <p class="eyebrow">${state.lang === "en" ? "At a Glance" : "本頁重點"}</p>
-        <h2>${state.lang === "en" ? "Read this page quickly" : "快速掌握這一頁"}</h2>
-      </div>
-      <ul class="reader-guide-list">
-        ${items.map((item) => `<li>${escapeHtml(t(item))}</li>`).join("")}
-      </ul>
-    </section>
-  `;
+  return "";
 }
 
 function renderHome() {
