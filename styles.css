@@ -4101,17 +4101,17 @@ h1 {
 
   .hero {
     background:
-      linear-gradient(180deg, rgba(45, 40, 49, 0.46), rgba(66, 60, 70, 0.32)),
-      url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") 56% 32% / cover;
+      linear-gradient(180deg, rgba(45, 40, 49, 0.34), rgba(66, 60, 70, 0.22)),
+      url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1200px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") 28% 28% / cover;
   }
 
   .hero-copy {
-    background: rgba(49, 44, 52, 0.24);
+    background: rgba(44, 39, 48, 0.14);
     box-shadow: none;
   }
 
   .hero-panel {
-    background: rgba(49, 44, 52, 0.42);
+    background: rgba(44, 39, 48, 0.28);
   }
 
   .nav-pills {
@@ -4420,6 +4420,7 @@ h1 {
 
   .hero {
     min-height: 492px;
+    background-position: 24% 24%;
   }
 
   .page-hero {
