@@ -60,7 +60,7 @@ const tripData = {
     },
     conference: {
       kicker: { zh: "會議安排", en: "Conference" },
-      title: { zh: "Conference Dashboard", en: "Conference Dashboard" },
+      title: { zh: "會議總覽", en: "Conference Dashboard" },
       lead: { zh: "會議日期、註冊、現場節奏與需要保留的文件集中整理。", en: "Conference dates, registration, on-site rhythm, and supporting documents in one view." }
     },
     transport: {
@@ -466,12 +466,12 @@ const readingGuides = {
 
 const dashboardData = {
   topStatus: [
-    { status: "confirmed", title: { zh: "Conference dates", en: "Conference dates" }, value: "2026/06/29 - 2026/07/03", note: { zh: "AIB Manchester", en: "AIB Manchester" } },
-    { status: "confirmed", title: { zh: "Flight booked", en: "Flight booked" }, value: "TPE → FRA → MAN", note: { zh: "回程由 MAN 出發", en: "Return starts from MAN" } },
-    { status: "confirmed", title: { zh: "Manchester hotel booked", en: "Manchester hotel booked" }, value: "INNSiDE Manchester", note: { zh: "6/30 - 7/5", en: "30 Jun - 5 Jul" } },
-    { status: "book", title: { zh: "London hotel pending", en: "London hotel pending" }, value: { zh: "7/4 起待定", en: "Open from 4 Jul" }, note: { zh: "待決定區域與飯店", en: "Area and hotel to decide" } },
-    { status: "reimburse", title: { zh: "Reimbursement items", en: "Reimbursement items" }, value: { zh: "4 項", en: "4 items" }, note: { zh: "機票、會議費、會員費、日支費", en: "Flights, fee, membership, allowance" } },
-    { status: "pending", title: { zh: "Documents checklist", en: "Documents checklist" }, value: { zh: "7 項整理中", en: "7 items tracked" }, note: { zh: "文件頁可逐項確認", en: "Tracked in the documents page" } }
+    { status: "confirmed", title: { zh: "會議日期", en: "Conference dates" }, value: "2026/06/29 - 2026/07/03", note: { zh: "AIB Manchester", en: "AIB Manchester" } },
+    { status: "confirmed", title: { zh: "機票已訂", en: "Flight booked" }, value: "TPE → FRA → MAN", note: { zh: "回程由 MAN 出發", en: "Return starts from MAN" } },
+    { status: "confirmed", title: { zh: "曼徹斯特住宿已訂", en: "Manchester hotel booked" }, value: "INNSiDE Manchester", note: { zh: "6/30 - 7/5", en: "30 Jun - 5 Jul" } },
+    { status: "book", title: { zh: "倫敦住宿待定", en: "London hotel pending" }, value: { zh: "7/4 起待定", en: "Open from 4 Jul" }, note: { zh: "待決定區域與飯店", en: "Area and hotel to decide" } },
+    { status: "reimburse", title: { zh: "可報帳項目", en: "Reimbursement items" }, value: { zh: "4 項", en: "4 items" }, note: { zh: "機票、會議費、會員費、日支費", en: "Flights, fee, membership, allowance" } },
+    { status: "pending", title: { zh: "文件清單", en: "Documents checklist" }, value: { zh: "7 項整理中", en: "7 items tracked" }, note: { zh: "文件頁可逐項確認", en: "Tracked in the documents page" } }
   ],
   quickActions: [
     ["itinerary-preview", { zh: "查看行程", en: "View itinerary" }, { zh: "每天的安排與提醒", en: "Daily plan and reminders" }],
@@ -490,10 +490,10 @@ const dashboardData = {
     { label: { zh: "Pending decisions", en: "Pending decisions" }, value: { zh: "倫敦住宿、火車票", en: "London hotel and train tickets" } }
   ],
   conferenceCards: [
-    { status: "confirmed", title: { zh: "Conference period", en: "Conference period" }, value: "2026/06/29 - 2026/07/03", note: { zh: "Manchester", en: "Manchester" } },
-    { status: "confirmed", title: { zh: "Registration", en: "Registration" }, value: "US$325", note: { zh: "付款完成", en: "Paid" } },
-    { status: "confirmed", title: { zh: "Acceptance letters", en: "Acceptance letters" }, value: { zh: "2 份", en: "2 files" }, note: { zh: "可作會議證明", en: "Saved for conference proof" } },
-    { status: "pending", title: { zh: "Final program", en: "Final program" }, value: { zh: "待公布", en: "Pending" }, note: { zh: "公布後再補場次時間", en: "Add session times after release" } }
+    { status: "confirmed", title: { zh: "會議期間", en: "Conference period" }, value: "2026/06/29 - 2026/07/03", note: { zh: "Manchester", en: "Manchester" } },
+    { status: "confirmed", title: { zh: "註冊狀態", en: "Registration" }, value: "US$325", note: { zh: "付款完成", en: "Paid" } },
+    { status: "confirmed", title: { zh: "接受函", en: "Acceptance letters" }, value: { zh: "2 份", en: "2 files" }, note: { zh: "可作會議證明", en: "Saved for conference proof" } },
+    { status: "pending", title: { zh: "最終議程", en: "Final program" }, value: { zh: "待公布", en: "Pending" }, note: { zh: "公布後再補場次時間", en: "Add session times after release" } }
   ],
   conferenceTimeline: [
     { date: "6/29", title: { zh: "預備日", en: "Preparation day" }, note: { zh: "抵達與會前安排。", en: "Arrival and pre-conference setup." } },
@@ -547,14 +547,14 @@ const dashboardData = {
     }
   ],
   documentChecklist: [
-    { status: "confirmed", title: { zh: "Acceptance letters", en: "Acceptance letters" }, note: { zh: "兩份接受函可作會議證明。", en: "Two acceptance letters saved for conference proof." } },
-    { status: "confirmed", title: { zh: "Invitation letter", en: "Invitation letter" }, note: { zh: "可用於出國與行政資料。", en: "Saved for travel and admin support." } },
-    { status: "confirmed", title: { zh: "Registration receipt", en: "Registration receipt" }, note: { zh: "AIB conference fee 已付款。", en: "AIB conference fee receipt is on file." } },
-    { status: "confirmed", title: { zh: "Flight receipt", en: "Flight receipt" }, note: { zh: "機票行程單與付款明細已整理。", en: "Flight itinerary and payment proof are saved." } },
-    { status: "confirmed", title: { zh: "Hotel confirmation", en: "Hotel confirmation" }, note: { zh: "曼徹斯特訂房確認可直接使用。", en: "Manchester hotel confirmation is ready to use." } },
-    { status: "confirmed", title: { zh: "ETA / passport-related documents", en: "ETA / passport-related documents" }, note: { zh: "ETA 核准紀錄與護照資料需放同一處。", en: "Keep ETA approval and passport details together." } },
-    { status: "reimburse", title: { zh: "Reimbursement documents", en: "Reimbursement documents" }, note: { zh: "報帳文件可依報帳頁順序整理。", en: "Arrange claim documents in the budget-page order." } },
-    { status: "pending", title: { zh: "Travel insurance if applicable", en: "Travel insurance if applicable" }, note: { zh: "若有投保，再補上保單資訊。", en: "Add policy details only if insurance is purchased." } }
+    { status: "confirmed", title: { zh: "接受函", en: "Acceptance letters" }, note: { zh: "兩份接受函可作會議證明。", en: "Two acceptance letters saved for conference proof." } },
+    { status: "confirmed", title: { zh: "邀請函", en: "Invitation letter" }, note: { zh: "可用於出國與行政資料。", en: "Saved for travel and admin support." } },
+    { status: "confirmed", title: { zh: "註冊收據", en: "Registration receipt" }, note: { zh: "AIB conference fee 已付款。", en: "AIB conference fee receipt is on file." } },
+    { status: "confirmed", title: { zh: "機票收據", en: "Flight receipt" }, note: { zh: "機票行程單與付款明細已整理。", en: "Flight itinerary and payment proof are saved." } },
+    { status: "confirmed", title: { zh: "住宿確認", en: "Hotel confirmation" }, note: { zh: "曼徹斯特訂房確認可直接使用。", en: "Manchester hotel confirmation is ready to use." } },
+    { status: "confirmed", title: { zh: "ETA 與護照資料", en: "ETA / passport-related documents" }, note: { zh: "ETA 核准紀錄與護照資料需放同一處。", en: "Keep ETA approval and passport details together." } },
+    { status: "reimburse", title: { zh: "報帳文件", en: "Reimbursement documents" }, note: { zh: "報帳文件可依報帳頁順序整理。", en: "Arrange claim documents in the budget-page order." } },
+    { status: "pending", title: { zh: "旅遊保險（如有）", en: "Travel insurance if applicable" }, note: { zh: "若有投保，再補上保單資訊。", en: "Add policy details only if insurance is purchased." } }
   ]
 };
 
@@ -632,6 +632,22 @@ function renderSummaryCard({ status, title, value, note, facts }) {
   `;
 }
 
+function renderMetaRow(items, className = "") {
+  const validItems = (items || []).filter((item) => item?.label && item?.value);
+  if (!validItems.length) return "";
+  const classAttr = className ? ` ${escapeHtml(className)}` : "";
+  return `
+    <div class="meta-row${classAttr}">
+      ${validItems.map((item) => `
+        <div class="meta-pill">
+          <span>${escapeHtml(t(item.label))}</span>
+          <strong>${escapeHtml(t(item.value))}</strong>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
 function externalLink(href, label, className = "") {
   const classAttr = className ? ` class="${escapeHtml(className)}"` : "";
   return `<a${classAttr} href="${escapeHtml(href)}" target="_blank" rel="noreferrer noopener">${escapeHtml(label)} <span aria-hidden="true">↗</span></a>`;
@@ -672,7 +688,7 @@ function renderChrome() {
 
   document.querySelector("[data-site-header]").innerHTML = `
     <nav class="topbar" aria-label="${state.lang === "en" ? "Primary navigation" : "主要導覽"}">
-      <a href="./index.html" class="brand"><span>AIB 2026 Manchester</span><small>UK Travel Handbook</small></a>
+      <a href="./index.html" class="brand"><span>AIB 2026 Manchester</span><small>${state.lang === "en" ? "UK Travel Handbook" : "英國旅程手冊"}</small></a>
       <div class="nav-pills">${nav}</div>
       <button class="lang-toggle" id="langToggle" type="button" aria-label="${state.lang === "en" ? "Switch to Chinese" : "Switch to English"}">${state.lang === "en" ? "中文" : "EN"}</button>
     </nav>
@@ -680,7 +696,7 @@ function renderChrome() {
 
   document.querySelector("[data-site-footer]").innerHTML = `
     <footer class="site-footer">
-      <p>AIB 2026 Manchester · UK Travel Handbook</p>
+      <p>AIB 2026 Manchester · ${state.lang === "en" ? "UK Travel Handbook" : "英國旅程手冊"}</p>
       <a href="./index.html">${state.lang === "en" ? "Back to overview" : "回到總覽"}</a>
     </footer>
   `;
@@ -711,7 +727,7 @@ function renderHero(pageId) {
       <section class="hero-copy">
         <p class="eyebrow">${escapeHtml(t(hero.kicker))}</p>
         <h1>${heroTitle}</h1>
-        <p class="hero-serif-note">${homePage ? "UK Travel Handbook" : escapeHtml(t(hero.lead))}</p>
+        <p class="hero-serif-note">${homePage ? (state.lang === "en" ? "UK Travel Handbook" : "英國旅程手冊") : escapeHtml(t(hero.lead))}</p>
         ${homePage ? `<p class="hero-lead">${state.lang === "en" ? "29 Jun 2026 – 12 Jul 2026 · Manchester & London" : "2026/06/29 – 2026/07/12 · Manchester & London"}</p>` : ""}
         <div class="hero-actions">
           <a class="button primary" href="${homePage ? "#quick-actions" : "./index.html"}">${homePage ? (state.lang === "en" ? "Open dashboard" : "查看總覽") : (state.lang === "en" ? "Back to dashboard" : "回到總覽")}</a>
@@ -749,7 +765,7 @@ function renderHome() {
       ${sectionHeading(
         state.lang === "en" ? "Top Summary" : "旅程總覽",
         state.lang === "en" ? "A neutral dashboard for conference and travel planning" : "把會議與旅程的核心資訊收成一個 dashboard",
-        state.lang === "en" ? "Conference timing, travel status, hotel decisions, reimbursement items, and key documents at a glance." : "會議日期、交通狀態、住宿安排、報帳項目與文件清單，都先整理在同一頁。"
+        state.lang === "en" ? "Conference timing, travel status, hotel decisions, and document checks in one place." : "會議日期、交通狀態、住宿安排與文件檢查，先收在同一頁。"
       )}
       <div class="summary-grid premium-summary top-summary-grid">
         ${dashboardData.topStatus.map(renderSummaryCard).join("")}
@@ -759,7 +775,7 @@ function renderHome() {
       ${sectionHeading(
         state.lang === "en" ? "Quick Actions" : "快速入口",
         state.lang === "en" ? "Jump to the section you need" : "直接跳到要處理的區塊",
-        state.lang === "en" ? "Use the cards below as a dashboard shortcut." : "用卡片快速進到目前最常看的區塊。"
+        state.lang === "en" ? "Open the page you need without scrolling through everything." : "不用一路往下滑，直接打開要看的頁面。"
       )}
       <div class="page-grid quick-actions-grid">
         ${dashboardData.quickActions.map(([id, title, note]) => `
@@ -774,7 +790,7 @@ function renderHome() {
       ${sectionHeading(
         state.lang === "en" ? "At a Glance" : "一眼掌握",
         state.lang === "en" ? "Core trip details" : "旅程核心資訊",
-        state.lang === "en" ? "Useful when checking dates, cities, route, and unresolved items." : "適合快速核對日期、城市、路線與還沒定下來的項目。"
+        state.lang === "en" ? "Dates, route, hotel status, and open decisions." : "日期、路線、住宿狀態與待決定事項。"
       )}
       <div class="summary-grid three">
         ${dashboardData.glance.map((item) => `
@@ -789,7 +805,7 @@ function renderHome() {
       ${sectionHeading(
         state.lang === "en" ? "Timeline Preview" : "時間軸預覽",
         state.lang === "en" ? "Main trip phases" : "旅程主要階段",
-        state.lang === "en" ? "A dashboard-style overview before opening the full itinerary page." : "先用 dashboard 形式看整體節奏，再進入完整行程頁。"
+        state.lang === "en" ? "A quick read before opening the full itinerary." : "先快速看整體節奏，再進到完整行程頁。"
       )}
       <div class="timeline-groups">
         ${dashboardData.timelineGroups.map((group) => `
@@ -815,7 +831,7 @@ function renderHome() {
       </div>
     </section>
     <section class="section compact-section" id="transport-preview">
-      ${sectionHeading(state.lang === "en" ? "Transport Dashboard" : "交通摘要", state.lang === "en" ? "Flights, trains, and local transit" : "航班、火車與市內交通", state.lang === "en" ? "Use the transport page for the full card layout and station notes." : "完整資訊可在交通頁查看航班卡、火車卡與市內交通卡。")}
+      ${sectionHeading(state.lang === "en" ? "Transport Dashboard" : "交通摘要", state.lang === "en" ? "Flights, trains, and local transit" : "航班、火車與市內交通", state.lang === "en" ? "Flight routing is fixed; train and local transit details are grouped separately." : "航班路線已定，火車與市內交通另外整理。")}
       <div class="summary-grid three">
         <article class="summary-card">${statusChip("confirmed")}<h3>${state.lang === "en" ? "Flight route" : "航班路線"}</h3><strong>TPE → FRA → MAN</strong><p>${state.lang === "en" ? "Return: MAN → LHR → TPE" : "回程：MAN → LHR → TPE"}</p></article>
         <article class="summary-card">${statusChip("book")}<h3>${state.lang === "en" ? "Train booking" : "火車訂票"}</h3><strong>${state.lang === "en" ? "Manchester Piccadilly ↔ London Euston" : "Manchester Piccadilly ↔ London Euston"}</strong><p>${state.lang === "en" ? "Advance fares are not booked yet." : "Advance 票尚未預訂。"}</p></article>
@@ -823,14 +839,14 @@ function renderHome() {
       </div>
     </section>
     <section class="section compact-section" id="hotel-preview">
-      ${sectionHeading(state.lang === "en" ? "Hotel Dashboard" : "住宿摘要", state.lang === "en" ? "Booked stay and open decision" : "已訂住宿與待定決策", state.lang === "en" ? "Manchester is locked in. London is still an open choice." : "曼徹斯特住宿已確認，倫敦住宿仍待決定。")}
+      ${sectionHeading(state.lang === "en" ? "Hotel Dashboard" : "住宿摘要", state.lang === "en" ? "Booked stay and open decision" : "已訂住宿與待定決策", state.lang === "en" ? "Manchester is booked. London is still open." : "曼徹斯特已訂，倫敦仍待決定。")}
       <div class="summary-grid two">
         ${tripData.stay.slice(0, 2).map(renderSummaryCard).join("")}
       </div>
       ${renderAlert(tripData.alerts[0])}
     </section>
     <section class="section compact-section" id="budget-preview">
-      ${sectionHeading(state.lang === "en" ? "Budget Summary" : "預算摘要", state.lang === "en" ? "Claims and self-funded items" : "可報帳與自費分開整理", state.lang === "en" ? "Use the budget page for full multi-currency tables." : "完整三幣別明細請看預算頁。")}
+      ${sectionHeading(state.lang === "en" ? "Budget Summary" : "預算摘要", state.lang === "en" ? "Claims and self-funded items" : "可報帳與自費分開整理", state.lang === "en" ? "The budget page keeps the full three-currency breakdown." : "完整三幣別金額在預算頁。")}
       <div class="summary-grid three">
         <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "Flight total" : "機票"}</h3><strong>${money.flight}</strong></article>
         <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "Conference fees" : "會議相關費用"}</h3><strong>${money.conference}</strong><p>${state.lang === "en" ? `Membership: ${money.membership}` : `會員費：${money.membership}`}</p></article>
@@ -838,7 +854,7 @@ function renderHome() {
       </div>
     </section>
     <section class="section compact-section" id="documents-preview">
-      ${sectionHeading(state.lang === "en" ? "Document Checklist" : "文件清單", state.lang === "en" ? "Track essential files" : "重要文件逐項確認", state.lang === "en" ? "The full checklist and official links are grouped in the documents page." : "完整 checklist 與官方連結整理在文件頁。")}
+      ${sectionHeading(state.lang === "en" ? "Document Checklist" : "文件清單", state.lang === "en" ? "Track essential files" : "重要文件逐項確認", state.lang === "en" ? "Official links and checklist items are grouped in one place." : "官方連結與 checklist 集中在同一頁。")}
       <div class="checklist-grid">
         ${dashboardData.documentChecklist.slice(0, 6).map((item) => `
           <article class="checklist-card">
@@ -850,7 +866,7 @@ function renderHome() {
       </div>
     </section>
     <section class="section compact-section" id="reminders-preview">
-      ${sectionHeading(state.lang === "en" ? "Pending Decisions" : "待處理項目", state.lang === "en" ? "What still needs attention" : "目前還需要處理的事", state.lang === "en" ? "These are the remaining practical items before departure." : "出發前剩下的實際處理項目集中放在這裡。")}
+      ${sectionHeading(state.lang === "en" ? "Pending Decisions" : "待處理項目", state.lang === "en" ? "What still needs attention" : "目前還需要處理的事", state.lang === "en" ? "These are the remaining practical items before departure." : "出發前還沒收尾的事情放在這裡。")}
       <div class="todo-list">
         ${tripData.todos.map((item) => `<article class="todo-item">${statusChip(item.status)}<p>${escapeHtml(t(item.text))}</p></article>`).join("")}
       </div>
@@ -935,6 +951,11 @@ function renderTransport() {
         ${tripData.flights.map((flight) => `
           <article class="flight-card">
             <div class="flight-head">${statusChip("confirmed")}<strong>${t(flight.label)} · ${flight.date}</strong></div>
+            ${renderMetaRow([
+              { label: state.lang === "en" ? "Route" : "路線", value: flight.legs.map((leg) => `${leg.from} → ${leg.to}`).join(" · ") },
+              { label: state.lang === "en" ? "Flights" : "航班", value: flight.legs.map((leg) => leg.flight).join(" / ") },
+              { label: state.lang === "en" ? "Key note" : "重點", value: state.lang === "en" ? (flight.label.en === "Outbound" ? "Frankfurt transfer" : "Starts from Manchester") : (flight.label.zh === "去程" ? "法蘭克福轉機" : "回程從曼徹斯特起飛") }
+            ], "flight-meta")}
             ${flight.legs.map((leg) => `
               <div class="route">
                 <div><b>${escapeHtml(leg.from)}</b><span>${escapeHtml(leg.time.split(" → ")[0])}<br />${escapeHtml(leg.detail[state.lang])}</span></div>
@@ -964,9 +985,37 @@ function renderTransport() {
       ${sectionHeading(state.lang === "en" ? "Train" : "火車", state.lang === "en" ? "Manchester ↔ London" : "曼徹斯特 ↔ 倫敦")}
       <div class="summary-grid">
         ${[
-          { status: "book", title: { zh: "7/4 曼徹斯特 → 倫敦", en: "7/4 Manchester → London" }, note: { zh: "Manchester Piccadilly → London Euston，Avanti West Coast 直達約 2 小時 15 分；上午晚一點出發，抵達倫敦時仍有從容的下午。", en: "Manchester Piccadilly → London Euston, direct Avanti West Coast, about 2h15m. A late-morning train keeps the day unhurried." } },
-          { status: "book", title: { zh: "7/10 倫敦 → 曼徹斯特", en: "7/10 London → Manchester" }, note: { zh: "建議傍晚或晚上回到曼徹斯特，隔天搭機會更從容。", en: "An evening return to Manchester makes the next day's flight easier." } }
-        ].map(renderSummaryCard).join("")}
+          {
+            status: "book",
+            title: { zh: "7/4 曼徹斯特 → 倫敦", en: "7/4 Manchester → London" },
+            value: { zh: "Manchester Piccadilly → London Euston", en: "Manchester Piccadilly → London Euston" },
+            note: { zh: "Avanti West Coast 直達約 2 小時 15 分。", en: "Direct Avanti West Coast, about 2h15m." },
+            meta: [
+              { label: { zh: "建議時段", en: "Window" }, value: { zh: "上午晚一點", en: "Late morning" } },
+              { label: { zh: "票種", en: "Fare" }, value: "Advance / Off-Peak" },
+              { label: { zh: "提醒", en: "Reminder" }, value: { zh: "越早查越好", en: "Check early" } }
+            ]
+          },
+          {
+            status: "book",
+            title: { zh: "7/10 倫敦 → 曼徹斯特", en: "7/10 London → Manchester" },
+            value: { zh: "London Euston → Manchester Piccadilly", en: "London Euston → Manchester Piccadilly" },
+            note: { zh: "建議傍晚或晚上回到曼徹斯特。", en: "An evening return keeps the next day easier." },
+            meta: [
+              { label: { zh: "建議時段", en: "Window" }, value: { zh: "傍晚至晚上", en: "Evening" } },
+              { label: { zh: "票種", en: "Fare" }, value: "Advance / Off-Peak" },
+              { label: { zh: "提醒", en: "Reminder" }, value: { zh: "隔天搭機更從容", en: "Better before the flight" } }
+            ]
+          }
+        ].map((item) => `
+          <article class="summary-card">
+            ${statusChip(item.status)}
+            <h3>${escapeHtml(t(item.title))}</h3>
+            <strong>${escapeHtml(t(item.value))}</strong>
+            ${renderMetaRow(item.meta)}
+            <p>${escapeHtml(t(item.note))}</p>
+          </article>
+        `).join("")}
       </div>
       <div class="fare-grid dashboard-fares">
         ${tripData.trainFares.map((fare) => `
@@ -985,6 +1034,17 @@ function renderTransport() {
         ${tripData.localTransit.map((city) => `
           <article class="summary-card">
             <h3>${escapeHtml(t(city.city))}</h3>
+            ${renderMetaRow(
+              state.lang === "en"
+                ? [
+                    { label: "Mode", value: city.city.en === "London" ? "Tube / Elizabeth line / DLR" : "Metrolink / Bee Network" },
+                    { label: "Payment", value: city.city.en === "London" ? "Contactless / Oyster" : "Contactless / tickets" }
+                  ]
+                : [
+                    { label: "系統", value: city.city.zh === "倫敦" ? "Tube / Elizabeth line / DLR" : "Metrolink / Bee Network" },
+                    { label: "付款", value: city.city.zh === "倫敦" ? "感應支付 / Oyster" : "感應支付 / 車票" }
+                  ]
+            )}
             ${renderList(city.items)}
           </article>
         `).join("")}
@@ -1015,6 +1075,11 @@ function renderStay() {
             <div class="stay-content">
               <div class="stay-meta">${statusChip(stay.status)}<span>${escapeHtml(t(stay.city))}</span></div>
               <h3>${escapeHtml(t(stay.title))}</h3>
+              ${renderMetaRow([
+                { label: state.lang === "en" ? "Dates" : "日期", value: state.lang === "en" ? "30 Jun – 5 Jul" : "6/30 – 7/5" },
+                { label: state.lang === "en" ? "Room" : "房型", value: state.lang === "en" ? "Twin · 2 guests" : "雙床房 · 2 人" },
+                { label: state.lang === "en" ? "Cost" : "費用", value: money.hotel }
+              ])}
               ${renderList(stay.facts, "stay-facts")}
               <p>${escapeHtml(t(stay.note))}</p>
             </div>
@@ -1029,6 +1094,10 @@ function renderStay() {
         <article class="summary-card">
           ${statusChip("pending")}
           <h3>${state.lang === "en" ? "Why these areas work" : "這些區域為什麼方便"}</h3>
+          ${renderMetaRow([
+            { label: state.lang === "en" ? "Return rail" : "回程火車", value: "Euston access" },
+            { label: state.lang === "en" ? "Style" : "類型", value: state.lang === "en" ? "Central and practical" : "交通方便、步行友善" }
+          ])}
           ${renderList([
             state.lang === "en" ? "Euston / King's Cross: easiest rail access." : "Euston / King's Cross：往返火車最直接。",
             state.lang === "en" ? "Bloomsbury: central and walkable." : "Bloomsbury：市中心，步行方便。",
@@ -1119,8 +1188,10 @@ function renderTransferCard(item) {
         <span>${escapeHtml(item.route)}</span>
       </div>
       <h3>${escapeHtml(t(item.airport))}</h3>
-      <strong>${escapeHtml(t(item.layover))}</strong>
-      <p>${escapeHtml(t(item.terminals))}</p>
+      ${renderMetaRow([
+        { label: state.lang === "en" ? "Layover" : "停留", value: item.layover },
+        { label: state.lang === "en" ? "Terminal flow" : "航廈", value: item.terminals }
+      ])}
       ${renderList(item.notes, "transfer-notes")}
       ${externalLink(item.source, state.lang === "en" ? "Official airport guidance" : "機場官方轉機資訊")}
     </article>
@@ -1256,19 +1327,19 @@ function renderBudget() {
         state.lang === "en" ? "Three-currency tables keep reimbursement and self-funded items separate." : "三幣別金額分開整理可報帳與自費項目。"
       )}
       <div class="summary-grid three">
-        <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "Flight total" : "機票總額"}</h3><strong>${money.flight}</strong></article>
-        <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "Conference fee" : "會議費"}</h3><strong>${money.conference}</strong></article>
-        <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "AIB membership fee" : "AIB 會員費"}</h3><strong>${money.membership}</strong></article>
-        <article class="summary-card">${statusChip("self")}<h3>${state.lang === "en" ? "Manchester hotel" : "曼徹斯特住宿"}</h3><strong>${money.hotel}</strong></article>
-        <article class="summary-card">${statusChip("self")}<h3>${state.lang === "en" ? "Train estimate" : "火車預估"}</h3><strong>${t(money.trainAdvance)}</strong></article>
-        <article class="summary-card">${statusChip("pending")}<h3>${state.lang === "en" ? "Pending items" : "待確認項目"}</h3><strong>${state.lang === "en" ? "London hotel / London transit / attraction mix" : "倫敦住宿 / 倫敦交通 / 景點組合"}</strong></article>
+        <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "Flight total" : "機票總額"}</h3><strong>${money.flight}</strong>${renderMetaRow([{ label: state.lang === "en" ? "Status" : "狀態", value: state.lang === "en" ? "Claimable" : "可報帳" }, { label: state.lang === "en" ? "Proof" : "憑證", value: state.lang === "en" ? "Fare details saved" : "票價明細已存" }])}</article>
+        <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "Conference fee" : "會議費"}</h3><strong>${money.conference}</strong>${renderMetaRow([{ label: state.lang === "en" ? "Status" : "狀態", value: state.lang === "en" ? "Claimable" : "可報帳" }, { label: state.lang === "en" ? "Proof" : "憑證", value: state.lang === "en" ? "Receipt ready" : "收據已備" }])}</article>
+        <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "AIB membership fee" : "AIB 會員費"}</h3><strong>${money.membership}</strong>${renderMetaRow([{ label: state.lang === "en" ? "Status" : "狀態", value: state.lang === "en" ? "Claimable" : "可報帳" }, { label: state.lang === "en" ? "Proof" : "憑證", value: state.lang === "en" ? "Receipt ready" : "收據已備" }])}</article>
+        <article class="summary-card">${statusChip("self")}<h3>${state.lang === "en" ? "Manchester hotel" : "曼徹斯特住宿"}</h3><strong>${money.hotel}</strong>${renderMetaRow([{ label: state.lang === "en" ? "Stay" : "住宿", value: state.lang === "en" ? "5 nights / 2 guests" : "5 晚 / 2 人" }, { label: state.lang === "en" ? "Personal share" : "個人分攤", value: money.hotelPerPersonTotal }])}</article>
+        <article class="summary-card">${statusChip("self")}<h3>${state.lang === "en" ? "Train estimate" : "火車預估"}</h3><strong>${t(money.trainAdvance)}</strong>${renderMetaRow([{ label: state.lang === "en" ? "Type" : "票種", value: "Advance / Off-Peak" }, { label: state.lang === "en" ? "Railcard" : "Railcard", value: money.railcard }])}</article>
+        <article class="summary-card">${statusChip("pending")}<h3>${state.lang === "en" ? "Pending items" : "待確認項目"}</h3><strong>${state.lang === "en" ? "London hotel / London transit / attraction mix" : "倫敦住宿 / 倫敦交通 / 景點組合"}</strong>${renderMetaRow([{ label: state.lang === "en" ? "Action" : "處理", value: state.lang === "en" ? "Book and review" : "預訂與確認" }, { label: state.lang === "en" ? "Timing" : "時點", value: state.lang === "en" ? "Before departure" : "出發前" }])}</article>
       </div>
       ${currencySwitcher()}
       ${renderExpenseTable(tripData.expenses, state.lang === "en" ? "Reimbursable expenses" : "可報帳項目")}
       ${sectionHeading(
         state.lang === "en" ? "Self-funded" : "自費",
         state.lang === "en" ? "Personal travel costs" : "自費項目",
-        state.lang === "en" ? "Keep receipts for personal records, but do not include these in the reimbursement total." : "以下可保留收據自用，但不列入這次報帳金額。",
+        state.lang === "en" ? "Keep receipts for your own records; these stay outside the reimbursement total." : "以下費用可留收據自用，不列入這次報帳金額。",
         { sub: true }
       )}
       ${renderExpenseTable(tripData.selfFundedExpenses, state.lang === "en" ? "Self-funded expenses" : "自費項目")}
