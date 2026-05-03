@@ -519,6 +519,11 @@ function renderList(items, className = "clean-list") {
   return `<ul${classAttr}>${items.map((item) => `<li>${escapeHtml(t(item))}</li>`).join("")}</ul>`;
 }
 
+function renderScribbleNote(text, className = "") {
+  const classAttr = className ? ` ${escapeHtml(className)}` : "";
+  return `<span class="scribble-note${classAttr}">${escapeHtml(t(text))}</span>`;
+}
+
 function renderSummaryCard({ status, title, value, note, facts }) {
   const valueMarkup = value ? `<strong>${escapeHtml(t(value))}</strong>` : "";
   const factsMarkup = facts ? renderList(facts) : "";
@@ -611,6 +616,13 @@ function renderHero(pageId) {
     <div class="hero-grid handbook-hero-grid">
       <section class="hero-copy">
         <p class="eyebrow">${escapeHtml(t(hero.kicker))}</p>
+        ${renderScribbleNote(
+          {
+            zh: pageId === "home" ? "這趟先整理好" : "帶著走就好",
+            en: pageId === "home" ? "all in one place" : "easy to carry"
+          },
+          "hero-scribble"
+        )}
         <h1>${heroTitle}</h1>
         <p class="hero-serif-note">${state.lang === "en" ? "Conference in Manchester. Travel in London." : "曼徹斯特會議，倫敦旅行。"}</p>
         <p class="hero-lead">${escapeHtml(t(hero.lead))}</p>
@@ -656,6 +668,10 @@ function renderHome() {
       <div class="command-board" aria-label="${state.lang === "en" ? "Trip highlights" : "旅程重點"}">
         <article class="command-primary">
           <span class="command-label">${state.lang === "en" ? "Trip plan" : "旅程安排"}</span>
+          ${renderScribbleNote(
+            { zh: "主要動線已定", en: "route mostly set" },
+            "command-scribble"
+          )}
           <h3>${state.lang === "en" ? "Arrive in Manchester for AIB, then continue to London after the conference." : "先到曼徹斯特參加 AIB，會後再接倫敦行程。"}</h3>
           <p>${state.lang === "en" ? "The main route is set. What remains is the London stay, train tickets, and a few final bookings." : "主要動線已經確定，現在剩下倫敦住宿、火車票與少數細節要補齊。"}</p>
         </article>
@@ -718,6 +734,13 @@ function renderHome() {
         ${pages.slice(1).map((page, index) => `
           <a class="page-card" href="${page.href}">
             <span>${String(index + 1).padStart(2, "0")}</span>
+            ${renderScribbleNote(
+              {
+                zh: ["先看這裡", "交通很重要", "先訂房", "每天走哪裡", "地點整理", "花費集中", "出發前看", "第一次去必看", "連結放這裡"][index] || "整理好了",
+                en: ["start here", "transport first", "book stay", "day by day", "map notes", "costs here", "before departure", "first trip", "links here"][index] || "kept together"
+              },
+              "page-card-scribble"
+            )}
             <strong>${escapeHtml(t(page.label))}</strong>
             <p>${escapeHtml(pageDescriptions[page.id][state.lang])}</p>
           </a>
@@ -872,6 +895,7 @@ function renderStay() {
               <a class="stay-photo" href="${escapeHtml(stay.link)}" target="_blank" rel="noreferrer noopener" aria-label="${state.lang === "en" ? "Open hotel photo source" : "開啟飯店圖片來源"}">
                 <img src="${escapeHtml(stay.image)}" alt="${escapeHtml(t(stay.title))}" loading="lazy" />
                 <span>${escapeHtml(t(stay.imageCredit))}</span>
+                ${renderScribbleNote({ zh: "先住這裡", en: "staying here" }, "photo-scribble")}
               </a>
             ` : `<div class="stay-placeholder"><span>${String(index + 1).padStart(2, "0")}</span></div>`}
             <div class="stay-content">

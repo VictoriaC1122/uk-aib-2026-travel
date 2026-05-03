@@ -4574,6 +4574,42 @@ body::before {
   transform: rotate(-8deg);
 }
 
+.scribble-note {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  padding: 5px 12px 4px;
+  border: 1.2px solid rgba(255, 251, 244, 0.62);
+  border-radius: 999px 999px 999px 10px;
+  color: rgba(255, 251, 244, 0.92);
+  background: rgba(255, 251, 244, 0.08);
+  font-family: var(--font-note);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.hero-scribble {
+  position: absolute;
+  top: 24px;
+  right: 34px;
+  transform: rotate(5deg);
+}
+
+.hero-scribble::after {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 50%;
+  width: 14px;
+  height: 1.2px;
+  background: rgba(255, 251, 244, 0.72);
+  transform: translateY(-50%);
+}
+
 .hero-panel {
   border-radius: 22px 18px 16px 24px / 20px 18px 24px 16px;
   background:
@@ -4858,6 +4894,25 @@ h1 {
   transform: rotate(12deg);
 }
 
+.command-scribble {
+  position: absolute;
+  right: 28px;
+  top: 28px;
+  transform: rotate(7deg);
+}
+
+.command-scribble::after {
+  content: "";
+  position: absolute;
+  right: -18px;
+  bottom: -8px;
+  width: 24px;
+  height: 16px;
+  border-right: 1.2px dashed rgba(255, 251, 244, 0.72);
+  border-bottom: 1.2px dashed rgba(255, 251, 244, 0.72);
+  border-radius: 0 0 12px 0;
+}
+
 .command-label {
   min-height: 34px;
   border-radius: 999px 999px 999px 12px;
@@ -4895,6 +4950,31 @@ h1 {
 .first-note-card a {
   border-radius: 999px 999px 999px 12px;
   background: rgba(255, 252, 246, 0.8);
+}
+
+.page-card {
+  overflow: hidden;
+}
+
+.page-card-scribble {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 4px 10px 3px;
+  border-color: rgba(159, 127, 130, 0.22);
+  color: #8a6f73;
+  background: rgba(255, 250, 244, 0.74);
+  font-size: 16px;
+  transform: rotate(7deg);
+}
+
+.photo-scribble {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  color: #fffdf8;
+  background: rgba(48, 38, 56, 0.24);
+  transform: rotate(5deg);
 }
 
 .stay-photo::after,
@@ -4939,6 +5019,11 @@ h1 {
 
   .hero-serif-note {
     font-size: 24px;
+  }
+
+  .hero-scribble {
+    top: 18px;
+    right: 18px;
   }
 
   .button {
@@ -4995,5 +5080,16 @@ h1 {
     width: 54px;
     height: 48px;
     font-size: 18px;
+  }
+
+  .command-scribble,
+  .page-card-scribble,
+  .photo-scribble {
+    font-size: 15px;
+  }
+
+  .command-scribble {
+    right: 18px;
+    top: 18px;
   }
 }
