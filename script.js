@@ -648,6 +648,25 @@ function renderMetaRow(items, className = "") {
   `;
 }
 
+function renderOverviewStatCard({ title, value, note }) {
+  return `
+    <article class="overview-stat">
+      <div class="overview-stat-label">${escapeHtml(t(title))}</div>
+      <div class="overview-stat-value">${escapeHtml(t(value))}</div>
+      ${note ? `<p>${escapeHtml(t(note))}</p>` : ""}
+    </article>
+  `;
+}
+
+function renderMiniHighlightCard(label, value) {
+  return `
+    <article class="mini-highlight">
+      <div class="mini-highlight-label">${escapeHtml(t(label))}</div>
+      <div class="mini-highlight-value">${escapeHtml(t(value))}</div>
+    </article>
+  `;
+}
+
 function externalLink(href, label, className = "") {
   const classAttr = className ? ` class="${escapeHtml(className)}"` : "";
   return `<a${classAttr} href="${escapeHtml(href)}" target="_blank" rel="noreferrer noopener">${escapeHtml(label)} <span aria-hidden="true">↗</span></a>`;
@@ -722,16 +741,35 @@ function renderHero(pageId) {
   const hero = tripData.hero[pageId] || tripData.hero.home;
   const homePage = pageId === "home";
   const heroTitle = escapeHtml(t(hero.title)).replace("\n", "<br />");
+  if (homePage) {
+    return `
+      <div class="editorial-hero">
+        <p class="eyebrow">${escapeHtml(t(hero.kicker))}</p>
+        <h1>${heroTitle}</h1>
+        <p class="hero-serif-note">${state.lang === "en" ? "UK Travel Handbook" : "英國旅程手冊"}</p>
+        <p class="hero-lead">${state.lang === "en" ? "29 Jun 2026 – 12 Jul 2026" : "2026/06/29 – 2026/07/12"}</p>
+        <div class="hero-destination-line">${state.lang === "en" ? "Manchester • London" : "Manchester • London"}</div>
+        <div class="hero-actions editorial-hero-actions">
+          <a class="button primary" href="#quick-actions">${state.lang === "en" ? "Open dashboard" : "查看總覽"}</a>
+          <a class="button secondary" href="./itinerary.html">${state.lang === "en" ? "Open itinerary" : "查看行程"}</a>
+        </div>
+        <div class="editorial-hero-strip">
+          <span>${state.lang === "en" ? "Conference 6/29–7/3" : "會議 6/29–7/3"}</span>
+          <span>${state.lang === "en" ? "Flight booked" : "機票已訂"}</span>
+          <span>${state.lang === "en" ? "London hotel pending" : "倫敦住宿待定"}</span>
+        </div>
+      </div>
+    `;
+  }
   return `
     <div class="hero-grid handbook-hero-grid">
       <section class="hero-copy">
         <p class="eyebrow">${escapeHtml(t(hero.kicker))}</p>
         <h1>${heroTitle}</h1>
-        <p class="hero-serif-note">${homePage ? (state.lang === "en" ? "UK Travel Handbook" : "英國旅程手冊") : escapeHtml(t(hero.lead))}</p>
-        ${homePage ? `<p class="hero-lead">${state.lang === "en" ? "29 Jun 2026 – 12 Jul 2026 · Manchester & London" : "2026/06/29 – 2026/07/12 · Manchester & London"}</p>` : ""}
+        <p class="hero-serif-note">${escapeHtml(t(hero.lead))}</p>
         <div class="hero-actions">
-          <a class="button primary" href="${homePage ? "#quick-actions" : "./index.html"}">${homePage ? (state.lang === "en" ? "Open dashboard" : "查看總覽") : (state.lang === "en" ? "Back to dashboard" : "回到總覽")}</a>
-          <a class="button secondary" href="${homePage ? "./itinerary.html" : "./links.html"}">${homePage ? (state.lang === "en" ? "Open itinerary" : "查看行程") : (state.lang === "en" ? "Useful links" : "官方連結")}</a>
+          <a class="button primary" href="./index.html">${state.lang === "en" ? "Back to dashboard" : "回到總覽"}</a>
+          <a class="button secondary" href="./links.html">${state.lang === "en" ? "Useful links" : "官方連結"}</a>
         </div>
       </section>
       <aside class="hero-panel dashboard-panel" aria-label="${state.lang === "en" ? "Trip snapshot" : "旅程摘要"}">
@@ -762,51 +800,67 @@ function renderHome() {
   return `
     ${renderQuickNav("home")}
     <section class="section dashboard-section home-dashboard" id="snapshot">
-      ${sectionHeading(
-        state.lang === "en" ? "Top Summary" : "旅程總覽",
-        state.lang === "en" ? "A neutral dashboard for conference and travel planning" : "把會議與旅程的核心資訊收成一個 dashboard",
-        state.lang === "en" ? "Conference timing, travel status, hotel decisions, and document checks in one place." : "會議日期、交通狀態、住宿安排與文件檢查，先收在同一頁。"
-      )}
-      <div class="summary-grid premium-summary top-summary-grid">
-        ${dashboardData.topStatus.map(renderSummaryCard).join("")}
-      </div>
+      <article class="section-card intro-card">
+        <div class="section-label">${state.lang === "en" ? "Journey Overview" : "旅程總覽"}</div>
+        <h2>${state.lang === "en" ? "Conference first, then a London chapter that can still stay flexible." : "先是曼徹斯特的會議段，接著再把倫敦留給城市、博物館與一點餘裕。"}</h2>
+        <p class="lead">${state.lang === "en" ? "The core structure is set: flights are booked, Manchester stay is in place, and the remaining choices mainly sit in London." : "旅程主架構已經定下來：機票已訂、曼徹斯特住宿已確定，現在主要只剩倫敦那一段還保留彈性。"}</p>
+        <div class="overview-grid">
+          ${dashboardData.topStatus.map(renderOverviewStatCard).join("")}
+        </div>
+      </article>
     </section>
     <section class="section compact-section" id="quick-actions">
-      ${sectionHeading(
-        state.lang === "en" ? "Quick Actions" : "快速入口",
-        state.lang === "en" ? "Jump to the section you need" : "直接跳到要處理的區塊",
-        state.lang === "en" ? "Open the page you need without scrolling through everything." : "不用一路往下滑，直接打開要看的頁面。"
-      )}
-      <div class="page-grid quick-actions-grid">
-        ${dashboardData.quickActions.map(([id, title, note]) => `
-          <a class="page-card action-card" href="#${id}">
-            <strong>${escapeHtml(t(title))}</strong>
-            <p>${escapeHtml(t(note))}</p>
-          </a>
-        `).join("")}
-      </div>
+      <article class="section-card">
+        <div class="section-label">${state.lang === "en" ? "Quick Actions" : "快速入口"}</div>
+        <h2>${state.lang === "en" ? "Open the chapter you need." : "直接打開要看的章節。"}</h2>
+        <p class="lead">${state.lang === "en" ? "These cards work like shortcuts, so the handbook feels easier to move through." : "用卡片當捷徑，整個 handbook 讀起來會輕鬆很多。"}</p>
+        <div class="itinerary-highlights quick-actions-grid">
+          ${dashboardData.quickActions.map(([id, title, note]) => `
+            <a class="mini-highlight action-highlight" href="#${id}">
+              <div class="mini-highlight-label">${escapeHtml(t(note))}</div>
+              <div class="mini-highlight-value">${escapeHtml(t(title))}</div>
+            </a>
+          `).join("")}
+        </div>
+      </article>
     </section>
     <section class="section compact-section" id="at-a-glance">
-      ${sectionHeading(
-        state.lang === "en" ? "At a Glance" : "一眼掌握",
-        state.lang === "en" ? "Core trip details" : "旅程核心資訊",
-        state.lang === "en" ? "Dates, route, hotel status, and open decisions." : "日期、路線、住宿狀態與待決定事項。"
-      )}
-      <div class="summary-grid three">
-        ${dashboardData.glance.map((item) => `
-          <article class="summary-card">
-            <h3>${escapeHtml(t(item.label))}</h3>
-            <strong>${escapeHtml(t(item.value))}</strong>
+      <article class="section-card cover-story">
+        <div class="section-label">${state.lang === "en" ? "At a Glance" : "一眼掌握"}</div>
+        <h2>${state.lang === "en" ? "The structure is clear even before the details are." : "細節還能再慢慢補，但整體節奏已經很清楚。"}</h2>
+        <div class="cover-story-grid">
+          <article class="cover-copy">
+            <p class="cover-lead">${state.lang === "en" ? "Manchester holds the conference days and the booked hotel; London opens up after that for museums, city walks, and the softer part of the trip." : "曼徹斯特負責會議與已經訂好的住宿；倫敦則留給博物館、城市散步，還有旅程後段比較輕鬆的節奏。"}</p>
+            <div class="cover-points">
+              ${dashboardData.glance.slice(0, 3).map((item) => `
+                <div class="cover-point">
+                  <div class="cover-point-title">${escapeHtml(t(item.label))}</div>
+                  <div class="cover-point-desc">${escapeHtml(t(item.value))}</div>
+                </div>
+              `).join("")}
+            </div>
           </article>
-        `).join("")}
-      </div>
+          <article class="photo-feature london-photo">
+            <div class="photo-caption">
+              <span>${state.lang === "en" ? "London chapter" : "London chapter"}</span>
+            </div>
+          </article>
+          <article class="photo-feature manchester-photo">
+            <div class="photo-caption">
+              <span>${state.lang === "en" ? "Conference base" : "Conference base"}</span>
+            </div>
+          </article>
+        </div>
+        <div class="itinerary-highlights glance-highlights">
+          ${dashboardData.glance.slice(3).map((item) => renderMiniHighlightCard(item.label, item.value)).join("")}
+        </div>
+      </article>
     </section>
     <section class="section compact-section" id="itinerary-preview">
-      ${sectionHeading(
-        state.lang === "en" ? "Timeline Preview" : "時間軸預覽",
-        state.lang === "en" ? "Main trip phases" : "旅程主要階段",
-        state.lang === "en" ? "A quick read before opening the full itinerary." : "先快速看整體節奏，再進到完整行程頁。"
-      )}
+      <article class="section-card">
+      <div class="section-label">${state.lang === "en" ? "Timeline Preview" : "時間軸預覽"}</div>
+      <h2>${state.lang === "en" ? "Read the trip in phases first." : "先用階段去看這趟旅程。"}</h2>
+      <p class="lead">${state.lang === "en" ? "This keeps the trip readable before opening the full day-by-day page." : "先看整體節奏，再進到每天的細節，閱讀會比較順。"}</p>
       <div class="timeline-groups">
         ${dashboardData.timelineGroups.map((group) => `
           <article class="timeline-phase">
@@ -829,6 +883,7 @@ function renderHome() {
           </article>
         `).join("")}
       </div>
+      </article>
     </section>
     <section class="section compact-section" id="transport-preview">
       ${sectionHeading(state.lang === "en" ? "Transport Dashboard" : "交通摘要", state.lang === "en" ? "Flights, trains, and local transit" : "航班、火車與市內交通", state.lang === "en" ? "Flight routing is fixed; train and local transit details are grouped separately." : "航班路線已定，火車與市內交通另外整理。")}
@@ -1058,37 +1113,46 @@ function renderStay() {
     ${renderQuickNav("stay")}
     ${renderReadingGuide("stay")}
     <section class="section compact-section" id="overview">
-      ${sectionHeading(
-        state.lang === "en" ? "Hotel Dashboard" : "住宿總覽",
-        state.lang === "en" ? "Booked stay and key hotel details" : "已訂住宿與重點資訊",
-        state.lang === "en" ? "Manchester is booked. London remains a pending decision." : "曼徹斯特住宿已訂，倫敦住宿仍待決定。"
-      )}
+      <article class="section-card">
+      <div class="section-label">${state.lang === "en" ? "Stay Plan" : "住宿安排"}</div>
+      <h2>${state.lang === "en" ? "One booked base in Manchester, one London decision still open." : "曼徹斯特先穩穩住下來，倫敦那段再留給最後決定。"}</h2>
+      <p class="lead">${state.lang === "en" ? "The booked hotel already covers the conference chapter. London can stay open until the station plan feels clear." : "會議段的住宿已經先固定好；倫敦那一段可以等車站與路線想清楚後再定。"}</p>
       <div class="stay-list-rich">
         ${tripData.stay.slice(0, 1).map((stay, index) => `
           <article class="stay-card-rich${stay.image ? " with-image" : ""}">
             ${stay.image ? `
-              <a class="stay-photo" href="${escapeHtml(stay.link)}" target="_blank" rel="noreferrer noopener" aria-label="${state.lang === "en" ? "Open hotel photo source" : "開啟飯店圖片來源"}">
-                <img src="${escapeHtml(stay.image)}" alt="${escapeHtml(t(stay.title))}" loading="lazy" />
-                <span>${escapeHtml(t(stay.imageCredit))}</span>
-              </a>
+              <div class="stay-card-image-wrap">
+                <img class="stay-card-image" src="${escapeHtml(stay.image)}" alt="${escapeHtml(t(stay.title))}" loading="lazy" />
+              </div>
             ` : `<div class="stay-placeholder"><span>${String(index + 1).padStart(2, "0")}</span></div>`}
-            <div class="stay-content">
-              <div class="stay-meta">${statusChip(stay.status)}<span>${escapeHtml(t(stay.city))}</span></div>
-              <h3>${escapeHtml(t(stay.title))}</h3>
-              ${renderMetaRow([
-                { label: state.lang === "en" ? "Dates" : "日期", value: state.lang === "en" ? "30 Jun – 5 Jul" : "6/30 – 7/5" },
-                { label: state.lang === "en" ? "Room" : "房型", value: state.lang === "en" ? "Twin · 2 guests" : "雙床房 · 2 人" },
-                { label: state.lang === "en" ? "Cost" : "費用", value: money.hotel }
-              ])}
-              ${renderList(stay.facts, "stay-facts")}
-              <p>${escapeHtml(t(stay.note))}</p>
+            <div class="stay-card-top">
+              <div class="stay-card-head">
+                <div class="stay-card-kicker">${escapeHtml(t(stay.city))}</div>
+                <h3 class="stay-card-local">${escapeHtml(t(stay.title))}</h3>
+                <p class="stay-card-note">${escapeHtml(t(stay.note))}</p>
+              </div>
+              <div class="stay-side">
+                ${statusChip(stay.status)}
+                <a class="stay-map-link" href="${escapeHtml(stay.link)}" target="_blank" rel="noreferrer noopener">${state.lang === "en" ? "View hotel" : "查看飯店"}</a>
+              </div>
             </div>
+            <div class="stay-detail-chips">
+              <span>${state.lang === "en" ? "30 Jun – 5 Jul" : "6/30 – 7/5"}</span>
+              <span>${state.lang === "en" ? "Twin room · 2 guests" : "雙床房 · 2 人"}</span>
+              <span>${money.hotel}</span>
+              <span>${money.hotelPerPersonTotal}</span>
+            </div>
+            ${renderList(stay.facts, "stay-facts")}
           </article>
         `).join("")}
       </div>
+      </article>
     </section>
     <section class="section compact-section" id="decision">
-      ${sectionHeading(state.lang === "en" ? "London Hotel Decision" : "倫敦住宿待定", state.lang === "en" ? "Area choice still open" : "區域與飯店尚未最後決定", state.lang === "en" ? "Choose an area with simple rail access back to Euston." : "優先選交通方便、回 Euston 順路的區域。")}
+      <article class="section-card">
+      <div class="section-label">${state.lang === "en" ? "London Decision" : "倫敦住宿待定"}</div>
+      <h2>${state.lang === "en" ? "London is still the flexible chapter." : "倫敦這一段還保留著最後的彈性。"}</h2>
+      <p class="lead">${state.lang === "en" ? "The easiest version is still the same: stay near practical stations and keep the return to Manchester simple." : "最舒服的版本其實很明確：住在交通順的區域，讓回曼徹斯特那天不要太趕。"}</p>
       <div class="summary-grid two">
         ${tripData.stay.slice(1, 2).map(renderSummaryCard).join("")}
         <article class="summary-card">
@@ -1107,6 +1171,7 @@ function renderStay() {
         </article>
       </div>
       ${renderAlert(tripData.alerts[0])}
+      </article>
     </section>
     <section class="section compact-section" id="areas">
       ${sectionHeading(state.lang === "en" ? "Recommended Areas" : "區域建議", state.lang === "en" ? "Useful neighborhoods to compare" : "幾個適合比價與比較的區域")}
@@ -1122,33 +1187,57 @@ function renderItinerary() {
     ${renderQuickNav("itinerary")}
     ${renderReadingGuide("itinerary")}
     <section class="section compact-section" id="timeline">
-      ${sectionHeading(state.lang === "en" ? "Timeline View" : "時間軸行程", state.lang === "en" ? "Trip flow by phase" : "依旅程階段查看安排", state.lang === "en" ? "Each card shows date, city, purpose, transport, reminders, and optional notes." : "每張卡包含日期、城市、目的、交通、提醒與可選備註。")}
-      <div class="timeline-groups">
-        ${dashboardData.timelineGroups.map((group) => `
-          <article class="timeline-phase">
-            <div class="timeline-phase-head"><h3>${escapeHtml(t(group.title))}</h3></div>
-            <div class="timeline-card-grid">
-              ${group.entries.map((entry) => `
-                <article class="timeline-card">
-                  <div class="timeline-card-top">
-                    <strong>${escapeHtml(t(entry.date))}</strong>
-                    <span>${escapeHtml(t(entry.city))}</span>
-                  </div>
-                  <h4>${escapeHtml(t(entry.purpose))}</h4>
-                  <p><b>${state.lang === "en" ? "Transport" : "交通"}</b> ${escapeHtml(t(entry.transport))}</p>
-                  <div class="timeline-card-stack">
-                    <div>
-                      <small>${state.lang === "en" ? "Key reminders" : "提醒"}</small>
-                      ${renderList(entry.reminders)}
-                    </div>
-                    ${entry.optional?.length ? `<div><small>${state.lang === "en" ? "Optional notes" : "可選備註"}</small>${renderList(entry.optional)}</div>` : ""}
-                  </div>
-                </article>
-              `).join("")}
+      <article class="section-card">
+      <div class="section-label">${state.lang === "en" ? "Day by Day" : "每日行程"}</div>
+      <h2>${state.lang === "en" ? "Open each day only when you need it." : "每天各自收好，要看的時候再打開。"}</h2>
+      <p class="lead">${state.lang === "en" ? "This keeps the page lighter and much easier to read on mobile." : "這樣一來頁面不會太長，手機上讀起來也會舒服很多。"}</p>
+      <div class="itinerary-highlights">
+        ${[
+          [{ zh: "旅程長度", en: "Trip length" }, { zh: "14 天", en: "14 days" }],
+          [{ zh: "主城市", en: "Main cities" }, { zh: "Manchester / London", en: "Manchester / London" }],
+          [{ zh: "還沒定的事", en: "Open items" }, { zh: "倫敦住宿 / 火車", en: "London hotel / trains" }]
+        ].map(([label, value]) => renderMiniHighlightCard(label, value)).join("")}
+      </div>
+      <div class="itinerary-timeline">
+        ${tripData.itinerary.map((day, index) => `
+          <details class="day-card"${index < 2 ? " open" : ""}>
+            <summary class="day-header">
+              <span class="day-index">${state.lang === "en" ? `Day ${index + 1}` : `Day ${index + 1}`}</span>
+              <h3 class="day-title">${escapeHtml(day.date)} · ${escapeHtml(t(day.title))}</h3>
+              <p class="day-summary">${escapeHtml(t(day.notes?.[0] || day.must?.[0] || ""))}</p>
+            </summary>
+            <div class="day-content-top">
+              <div class="day-focus-label">${state.lang === "en" ? "Main focus" : "當日主軸"}</div>
+              <div class="day-focus-text">${escapeHtml(t(day.must?.[0] || day.title))}</div>
             </div>
-          </article>
+            <div class="day-detail-list">
+              <article class="day-detail-item">
+                <div class="day-detail-title">${state.lang === "en" ? "Must-do" : "主要安排"}</div>
+                <div class="day-detail-desc">${renderList(day.must, "plain-list")}</div>
+              </article>
+              ${day.optional?.length ? `
+                <article class="day-detail-item">
+                  <div class="day-detail-title">${state.lang === "en" ? "Optional" : "可彈性安排"}</div>
+                  <div class="day-detail-desc">${renderList(day.optional, "plain-list")}</div>
+                </article>
+              ` : ""}
+              ${day.tickets?.length ? `
+                <article class="day-detail-item">
+                  <div class="day-detail-title">${state.lang === "en" ? "Fees" : "費用"}</div>
+                  <div class="day-detail-desc">${renderList(day.tickets, "plain-list")}</div>
+                </article>
+              ` : ""}
+              ${day.notes?.length ? `
+                <article class="day-detail-item">
+                  <div class="day-detail-title">${state.lang === "en" ? "Notes" : "提醒"}</div>
+                  <div class="day-detail-desc">${renderList(day.notes, "plain-list")}</div>
+                </article>
+              ` : ""}
+            </div>
+          </details>
         `).join("")}
       </div>
+      </article>
     </section>
     <section class="section compact-section" id="tickets">
       ${sectionHeading(
