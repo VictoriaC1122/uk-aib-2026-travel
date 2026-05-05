@@ -4,6 +4,7 @@ const pages = [
   { id: "transport", label: { zh: "交通", en: "Transport" }, href: "./transport.html" },
   { id: "stay", label: { zh: "住宿", en: "Stay" }, href: "./stay.html" },
   { id: "itinerary", label: { zh: "行程", en: "Itinerary" }, href: "./itinerary.html" },
+  { id: "shopping", label: { zh: "購物", en: "Shopping" }, href: "./shopping.html" },
   { id: "budget", label: { zh: "預算", en: "Budget" }, href: "./budget.html" },
   { id: "reminders", label: { zh: "提醒", en: "Reminders" }, href: "./reminders.html" },
   { id: "firstTime", label: { zh: "初訪英國", en: "First UK Visit" }, href: "./first-time.html" },
@@ -77,6 +78,11 @@ const tripData = {
       kicker: { zh: "每日行程", en: "Itinerary" },
       title: { zh: "每日行程安排", en: "Daily Itinerary" },
       lead: { zh: "每天分成主要行程、可調整安排與提醒，查起來更直覺。", en: "Each day is grouped into main plans, optional stops, and reminders for easier reading." }
+    },
+    shopping: {
+      kicker: { zh: "英國購物", en: "Shopping" },
+      title: { zh: "英國有什麼值得買", en: "What to Buy in the UK" },
+      lead: { zh: "把茶葉、餅乾、果醬、超市零食與藥妝分開整理，逛的時候會比較順。", en: "Tea, biscuits, preserves, supermarket snacks, and pharmacy staples are grouped separately for easier browsing." }
     },
     map: {
       kicker: { zh: "旅程地圖", en: "Travel Map" },
@@ -402,12 +408,159 @@ const tripData = {
   ]
 };
 
+const shoppingData = {
+  highlights: [
+    { label: { zh: "最穩定的伴手禮", en: "Most reliable picks" }, value: { zh: "茶葉、餅乾、果醬", en: "Tea, biscuits, preserves" } },
+    { label: { zh: "最好買的地方", en: "Best places to shop" }, value: { zh: "Fortnum、Twinings、M&S、Boots", en: "Fortnum, Twinings, M&S, Boots" } },
+    { label: { zh: "好帶回台灣", en: "Easy to pack" }, value: { zh: "茶包、shortbread、marmalade", en: "Tea bags, shortbread, marmalade" } }
+  ],
+  categories: [
+    {
+      title: { zh: "茶葉與茶具", en: "Tea and tea gifts" },
+      lead: {
+        zh: "如果只買一類英國伴手禮，茶通常最穩。包裝好看、重量輕，也很有英國感。",
+        en: "If you only buy one kind of British souvenir, tea is usually the safest choice. It packs well and feels distinctly British."
+      },
+      items: [
+        {
+          name: "Fortnum & Mason",
+          note: {
+            zh: "經典會先看 Royal Blend、Earl Grey Classic、Breakfast Blend，也很適合搭配茶餅乾或果醬一起買。",
+            en: "Classic starting points are Royal Blend, Earl Grey Classic, and Breakfast Blend, often paired with biscuits or preserves."
+          },
+          where: { zh: "Piccadilly 主店最完整", en: "Best selection at the Piccadilly flagship" },
+          source: "https://www.fortnumandmason.com/tea/black-tea"
+        },
+        {
+          name: "Twinings",
+          note: {
+            zh: "English Breakfast、Earl Grey、Lady Grey 都很穩，適合想買價格比較好入手、品牌辨識度又高的選擇。",
+            en: "English Breakfast, Earl Grey, and Lady Grey are dependable if you want something classic and easier on budget."
+          },
+          where: { zh: "The Strand 店很有代表性", en: "The Strand shop is the iconic stop" },
+          source: "https://twinings.co.uk/collections/black-tea"
+        },
+        {
+          name: "Whittard of Chelsea",
+          note: {
+            zh: "比起傳統茶莊，口味和包裝會更像送禮店，選擇也常帶一點季節感。",
+            en: "It feels slightly more gift-oriented, with a wide range and more seasonal presentation."
+          },
+          where: { zh: "Covent Garden 或 Chelsea 一帶可逛", en: "Look around Covent Garden or Chelsea" },
+          source: "https://www.whittard.co.uk/tea/"
+        }
+      ]
+    },
+    {
+      title: { zh: "餅乾、shortbread、下午茶點心", en: "Biscuits, shortbread, and tea snacks" },
+      lead: {
+        zh: "這一類很適合補成「送人」用的伴手禮，外盒通常比超市零食更體面。",
+        en: "These work well as giftable souvenirs, and the tins or boxes usually look more polished than supermarket snacks."
+      },
+      items: [
+        {
+          name: "Walkers Shortbread",
+          note: {
+            zh: "蘇格蘭 shortbread 很經典，奶油味重、接受度高，鐵盒版尤其適合送禮。",
+            en: "Classic Scottish shortbread with rich butter flavor; tins are especially good for gifting."
+          },
+          where: { zh: "超市、百貨食品區都常見", en: "Easy to find in supermarkets and food halls" },
+          source: "https://www.walkersshortbread.com/"
+        },
+        {
+          name: "Fortnum biscuits",
+          note: {
+            zh: "如果想買更像英式 afternoon tea 的餅乾，可以直接看 Fortnum 的 biscuit selection。",
+            en: "If you want something closer to a classic afternoon tea gift, Fortnum's biscuit range is an easy pick."
+          },
+          where: { zh: "可和茶葉一起買", en: "Easy to pair with tea in one stop" },
+          source: "https://www.fortnumandmason.com/biscuits"
+        },
+        {
+          name: "Marks & Spencer biscuits",
+          note: {
+            zh: "如果想在預算和質感之間抓平衡，M&S 的餅乾和巧克力常常很好買。",
+            en: "M&S is a good middle ground if you want something polished without going fully luxury."
+          },
+          where: { zh: "市中心門市很多", en: "Easy to find across city centres" },
+          source: "https://www.marksandspencer.com/l/food-to-order/chocolate-biscuits-and-sweets"
+        }
+      ]
+    },
+    {
+      title: { zh: "果醬、marmalade、英式 pantry", en: "Marmalade, jam, and pantry picks" },
+      lead: {
+        zh: "如果對方平常會吃早餐抹醬，這一類其實很英國，也比買裝飾品更實用。",
+        en: "If the recipient actually uses breakfast spreads, this category feels very British and more useful than decorative souvenirs."
+      },
+      items: [
+        {
+          name: "Fortnum preserves",
+          note: {
+            zh: "橘子 marmalade、草莓 jam、lemon curd 都很有代表性，但玻璃瓶記得包好放托運。",
+            en: "Orange marmalade, strawberry jam, and lemon curd are classic, but glass jars should be packed carefully in checked luggage."
+          },
+          where: { zh: "Fortnum 食品區最齊", en: "Best range in Fortnum's food hall" },
+          source: "https://www.fortnumandmason.com/food-hall/preserves-marmalades"
+        },
+        {
+          name: "Tiptree",
+          note: {
+            zh: "Tiptree 的 jam 和 marmalade 也很經典，超市或食品店比較容易看到。",
+            en: "Tiptree jams and marmalades are also classic and often easier to spot in food shops or supermarkets."
+          },
+          where: { zh: "Waitrose、食品店可留意", en: "Check Waitrose and food shops" },
+          source: "https://www.tiptree.com/collections/jams"
+        }
+      ]
+    },
+    {
+      title: { zh: "超市零食與藥妝", en: "Supermarket snacks and pharmacy staples" },
+      lead: {
+        zh: "這一區比較適合買給自己，或補一些不用太正式、但很實用的小東西。",
+        en: "This section is better for personal shopping or easy extras that do not need to look too formal."
+      },
+      items: [
+        {
+          name: "M&S / Waitrose snacks",
+          note: {
+            zh: "M&S 餅乾、巧克力、茶包禮盒很適合一次補齊；Waitrose 則適合找 pantry 類與茶點。",
+            en: "M&S is great for biscuits, chocolate, and boxed tea gifts, while Waitrose is good for pantry picks and tea snacks."
+          },
+          where: { zh: "倫敦市中心很容易遇到", en: "Easy to find around central London" },
+          source: "https://www.marksandspencer.com/l/food-to-order/chocolate-biscuits-and-sweets"
+        },
+        {
+          name: "Boots",
+          note: {
+            zh: "如果要補英國常見藥妝、護手霜、維他命、旅行用品，Boots 會很順手。",
+            en: "Boots is the easy stop for pharmacy basics, hand cream, vitamins, and travel supplies."
+          },
+          where: { zh: "Oxford Street、車站附近常有大型門市", en: "Large branches are common near stations and main shopping streets" },
+          source: "https://www.boots.com/"
+        }
+      ]
+    }
+  ],
+  suggestions: [
+    { title: { zh: "送老師或長輩", en: "For teachers or elders" }, text: { zh: "茶葉 + biscuits 或 marmalade，通常最穩。", en: "Tea plus biscuits or marmalade is the safest combination." } },
+    { title: { zh: "送朋友", en: "For friends" }, text: { zh: "M&S 或 Fortnum 的茶點禮盒會比單買零食更完整。", en: "An M&S or Fortnum snack-and-tea box feels more complete than loose supermarket snacks." } },
+    { title: { zh: "買給自己", en: "For yourself" }, text: { zh: "Boots、M&S、Waitrose 這三個地方最容易買得輕鬆。", en: "Boots, M&S, and Waitrose are the easiest places for personal shopping." } }
+  ],
+  packing: [
+    { zh: "茶包、餅乾最適合手提或托運。", en: "Tea bags and biscuits are easy in either carry-on or checked luggage." },
+    { zh: "果醬、lemon curd 這類玻璃瓶建議托運，並另外包好。", en: "Glass jars such as marmalade or lemon curd are better in checked luggage with extra padding." },
+    { zh: "若最後在機場補買，先留一點行李重量與空間。", en: "Leave a little weight and space if you plan to buy extra at the airport." }
+  ]
+};
+
 const sectionNav = {
   home: [["snapshot", { zh: "總覽", en: "Summary" }], ["quick-actions", { zh: "快速入口", en: "Quick actions" }], ["at-a-glance", { zh: "一眼掌握", en: "At a glance" }], ["itinerary-preview", { zh: "時間軸", en: "Timeline" }], ["documents-preview", { zh: "文件", en: "Documents" }]],
   conference: [["accepted", { zh: "會議狀態", en: "Status" }], ["rhythm", { zh: "會議節奏", en: "Timeline" }], ["checklist", { zh: "文件", en: "Checklist" }]],
   transport: [["flights", { zh: "航班", en: "Flights" }], ["transfer", { zh: "轉機", en: "Transfers" }], ["train", { zh: "火車", en: "Train" }], ["local", { zh: "市內交通", en: "Local transit" }]],
   stay: [["overview", { zh: "住宿總覽", en: "Overview" }], ["decision", { zh: "倫敦待定", en: "Decision" }], ["areas", { zh: "區域建議", en: "Areas" }]],
   itinerary: [["timeline", { zh: "時間軸", en: "Timeline" }], ["tickets", { zh: "景點費用", en: "Admission" }], ["return", { zh: "回程提醒", en: "Return" }]],
+  shopping: [["shopping-overview", { zh: "總覽", en: "Overview" }], ["tea", { zh: "茶與點心", en: "Tea" }], ["pantry", { zh: "果醬與 pantry", en: "Pantry" }], ["essentials", { zh: "超市與藥妝", en: "Essentials" }]],
   map: [["travel-map", { zh: "地圖", en: "Map" }], ["route-links", { zh: "每日路線", en: "Routes" }], ["map-notes", { zh: "地圖備註", en: "Notes" }]],
   budget: [["expenses", { zh: "費用總覽", en: "Budget" }], ["totals", { zh: "小計", en: "Totals" }], ["proofs", { zh: "憑證", en: "Proofs" }]],
   reminders: [["pending", { zh: "待處理", en: "Pending" }], ["quick-check", { zh: "最後確認", en: "Final check" }]],
@@ -996,6 +1149,7 @@ const pageDescriptions = {
   transport: { zh: "航班、轉機、火車與市內交通。", en: "Flights, transfers, trains, and local transit." },
   stay: { zh: "已訂住宿、待定住宿與區域決策。", en: "Booked stay, pending stay, and area decisions." },
   itinerary: { zh: "時間軸行程、景點費用與回程提醒。", en: "Timeline itinerary, attraction costs, and return notes." },
+  shopping: { zh: "茶葉、餅乾、果醬與超市購物清單。", en: "Tea, biscuits, preserves, and useful shopping notes." },
   map: { zh: "主要地點、每日路線與地圖連結。", en: "Key locations, daily routes, and map links." },
   budget: { zh: "報帳、自費與三幣別金額整理。", en: "Claims, self-funded items, and three-currency amounts." },
   reminders: { zh: "待處理項目與最後確認清單。", en: "Pending items and final checks." },
@@ -1307,6 +1461,72 @@ function renderItinerary() {
     </section>
     <section class="section compact-section" id="return">
       ${renderAlert({ title: { zh: "7/11 航班從曼徹斯特起飛", en: "11 July flight departs from Manchester" }, body: { zh: "雖然後面會在倫敦停留，回程機票仍是 MAN-LHR-TPE。建議 7/10 晚上先回到曼徹斯特。", en: "Even though the later days are in London, the return ticket still starts MAN-LHR-TPE. It is better to return to Manchester on the evening of 10 July." } })}
+    </section>
+  `;
+}
+
+function renderShoppingCategory(category, index) {
+  const sectionIds = ["tea", "tea", "pantry", "essentials"];
+  return `
+    <section class="section compact-section"${index === 0 ? ' id="tea"' : index === 2 ? ' id="pantry"' : index === 3 ? ' id="essentials"' : ""}>
+      <article class="section-card">
+        <div class="section-label">${escapeHtml(t(category.title))}</div>
+        <h2>${escapeHtml(t(category.title))}</h2>
+        <p class="lead">${escapeHtml(t(category.lead))}</p>
+        <div class="shopping-grid">
+          ${category.items.map((item) => `
+            <article class="shopping-card">
+              <div class="shopping-card-top">
+                <h3>${escapeHtml(item.name)}</h3>
+                ${statusChip(index === 3 ? "optional" : "confirmed")}
+              </div>
+              <p>${escapeHtml(t(item.note))}</p>
+              ${renderMetaRow([
+                { label: state.lang === "en" ? "Where to look" : "去哪裡找", value: item.where }
+              ])}
+              ${externalLink(item.source, state.lang === "en" ? "Official page" : "官方頁面", "shopping-link")}
+            </article>
+          `).join("")}
+        </div>
+      </article>
+    </section>
+  `;
+}
+
+function renderShopping() {
+  return `
+    ${renderQuickNav("shopping")}
+    <section class="section compact-section" id="shopping-overview">
+      <article class="section-card intro-card">
+        <div class="section-label">${state.lang === "en" ? "Shopping Guide" : "購物指南"}</div>
+        <h2>${state.lang === "en" ? "Tea first, then biscuits, preserves, and the practical extras." : "先看茶葉，再看餅乾、果醬，最後補超市和藥妝。"}</h2>
+        <p class="lead">${state.lang === "en" ? "This page keeps the classic UK shopping ideas together, so you can decide what is worth carrying home before you start buying." : "把比較值得買、也比較有英國感的東西先整理在一起，逛之前就能先想好哪些值得帶回來。"}</p>
+        <div class="itinerary-highlights">
+          ${shoppingData.highlights.map((item) => renderMiniHighlightCard(item.label, item.value)).join("")}
+        </div>
+        <div class="summary-grid three shopping-suggestion-grid">
+          ${shoppingData.suggestions.map((item) => `
+            <article class="summary-card">
+              <h3>${escapeHtml(t(item.title))}</h3>
+              <p>${escapeHtml(t(item.text))}</p>
+            </article>
+          `).join("")}
+        </div>
+      </article>
+    </section>
+    ${shoppingData.categories.map((category, index) => renderShoppingCategory(category, index)).join("")}
+    <section class="section compact-section">
+      <article class="section-card">
+        <div class="section-label">${state.lang === "en" ? "Packing Notes" : "打包提醒"}</div>
+        <h2>${state.lang === "en" ? "What travels well" : "哪些東西最好帶"}</h2>
+        <div class="bullet-stack shopping-note-list">
+          ${shoppingData.packing.map((item) => `
+            <article class="bullet-card">
+              <p class="bullet-desc">${escapeHtml(t(item))}</p>
+            </article>
+          `).join("")}
+        </div>
+      </article>
     </section>
   `;
 }
@@ -1645,6 +1865,7 @@ const renderers = {
   transport: renderTransport,
   stay: renderStay,
   itinerary: renderItinerary,
+  shopping: renderShopping,
   map: renderMap,
   budget: renderBudget,
   reminders: renderReminders,
