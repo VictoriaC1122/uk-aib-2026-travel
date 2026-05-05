@@ -700,16 +700,44 @@ function renderChrome() {
   const pageId = document.body.dataset.page || "home";
   const nav = pages
     .map((page) => {
-      const active = page.id === pageId ? ' class="active" aria-current="page"' : "";
+      const active = page.id === pageId ? ' class="nav-item active" aria-current="page"' : ' class="nav-item"';
       return `<a href="${page.href}" data-nav="${page.id}"${active}>${t(page.label)}</a>`;
+    })
+    .join("");
+  const bottomNav = pages
+    .map((page) => {
+      const active = page.id === pageId ? ' class="bottom-nav-item active" aria-current="page"' : ' class="bottom-nav-item"';
+      return `<a href="${page.href}" data-nav="${page.id}"${active}><span>${t(page.label)}</span></a>`;
+    })
+    .join("");
+  const langButtons = [
+    { id: "zh", label: "繁中" },
+    { id: "en", label: "EN" }
+  ]
+    .map((lang) => `
+      <button class="pill-btn${state.lang === lang.id ? " active" : ""}" type="button" data-lang="${lang.id}" aria-label="${lang.id === "en" ? "Switch language to English" : "Switch language to Traditional Chinese"}">${lang.label}</button>
+    `)
+    .join("");
+  const currencyButtons = currencies
+    .map((currency) => {
+      const label = state.lang === "en" ? currency.id : t(currency.label);
+      return `<button class="pill-btn${state.currency === currency.id ? " active" : ""}" type="button" data-currency="${currency.id}" aria-label="${state.lang === "en" ? `Switch currency to ${currency.id}` : `切換為${t(currency.label)}` }">${escapeHtml(label)}</button>`;
     })
     .join("");
 
   document.querySelector("[data-site-header]").innerHTML = `
-    <nav class="topbar" aria-label="${state.lang === "en" ? "Primary navigation" : "主要導覽"}">
-      <a href="./index.html" class="brand"><span>AIB 2026 Manchester</span><small>${state.lang === "en" ? "UK Travel Handbook" : "英國旅程手冊"}</small></a>
-      <div class="nav-pills">${nav}</div>
-      <button class="lang-toggle" id="langToggle" type="button" aria-label="${state.lang === "en" ? "Switch to Chinese" : "Switch to English"}">${state.lang === "en" ? "中文" : "EN"}</button>
+    <div class="control-dock" aria-label="${state.lang === "en" ? "Language and currency controls" : "語言與貨幣控制"}">
+      <div class="control-group">
+        <div class="control-label">${state.lang === "en" ? "Language" : "語言"}</div>
+        <div class="control-buttons" role="tablist" aria-label="${state.lang === "en" ? "Language switcher" : "語言切換"}">${langButtons}</div>
+      </div>
+      <div class="control-group">
+        <div class="control-label">${state.lang === "en" ? "Currency" : "貨幣"}</div>
+        <div class="control-buttons" role="tablist" aria-label="${state.lang === "en" ? "Currency switcher" : "貨幣切換"}">${currencyButtons}</div>
+      </div>
+    </div>
+    <nav class="main-nav" aria-label="${state.lang === "en" ? "Primary page tabs" : "主要分頁"}">
+      ${nav}
     </nav>
   `;
 
@@ -718,19 +746,24 @@ function renderChrome() {
       <p>AIB 2026 Manchester · ${state.lang === "en" ? "UK Travel Handbook" : "英國旅程手冊"}</p>
       <a href="./index.html">${state.lang === "en" ? "Back to overview" : "回到總覽"}</a>
     </footer>
+    <nav class="bottom-nav" aria-label="${state.lang === "en" ? "Primary mobile navigation" : "主要手機導覽"}">
+      ${bottomNav}
+    </nav>
   `;
 
-  document.getElementById("langToggle")?.addEventListener("click", () => {
-    state.lang = state.lang === "en" ? "zh" : "en";
-    storeLang(state.lang);
-    renderApp();
+  document.querySelectorAll("[data-lang]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.lang = button.dataset.lang;
+      storeLang(state.lang);
+      renderApp();
+    });
   });
 
   scrollActiveMobileNavIntoView();
 }
 
 function scrollActiveMobileNavIntoView() {
-  const active = document.querySelector(".nav-pills a.active");
+  const active = document.querySelector(".main-nav .nav-item.active, .bottom-nav .bottom-nav-item.active");
   if (!active || window.matchMedia("(min-width: 761px)").matches) return;
   requestAnimationFrame(() => {
     active.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
@@ -749,6 +782,20 @@ function renderHero(pageId) {
         <p class="hero-serif-note">${state.lang === "en" ? "UK Travel Handbook" : "英國旅程手冊"}</p>
         <p class="hero-lead">${state.lang === "en" ? "29 Jun 2026 – 12 Jul 2026" : "2026/06/29 – 2026/07/12"}</p>
         <div class="hero-destination-line">${state.lang === "en" ? "Manchester • London" : "Manchester • London"}</div>
+        <div class="hero-summary-grid">
+          ${[
+            [{ zh: "會議", en: "Conference" }, "2026/06/29 – 2026/07/03"],
+            [{ zh: "航班", en: "Flights" }, { zh: "已訂", en: "Booked" }],
+            [{ zh: "曼徹斯特住宿", en: "Manchester stay" }, { zh: "已確認", en: "Confirmed" }],
+            [{ zh: "倫敦住宿", en: "London stay" }, { zh: "待決定", en: "Pending" }],
+            [{ zh: "文件", en: "Documents" }, { zh: "已整理", en: "Ready" }]
+          ].map(([label, value]) => `
+            <article class="summary-card hero-summary-card">
+              <div class="summary-label">${escapeHtml(t(label))}</div>
+              <div class="summary-value">${escapeHtml(t(value))}</div>
+            </article>
+          `).join("")}
+        </div>
         <div class="hero-actions editorial-hero-actions">
           <a class="button primary" href="#quick-actions">${state.lang === "en" ? "Open dashboard" : "查看總覽"}</a>
           <a class="button secondary" href="./itinerary.html">${state.lang === "en" ? "Open itinerary" : "查看行程"}</a>
