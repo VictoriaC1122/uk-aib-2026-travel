@@ -418,14 +418,14 @@ const shoppingData = {
     {
       title: { zh: "茶葉與茶具", en: "Tea and tea gifts" },
       lead: {
-        zh: "如果只買一類英國伴手禮，茶通常最穩。包裝好看、重量輕，也很有英國感。",
-        en: "If you only buy one kind of British souvenir, tea is usually the safest choice. It packs well and feels distinctly British."
+        zh: "茶葉通常最容易買，也最容易帶回來。",
+        en: "Tea is usually the easiest category to buy and carry."
       },
       items: [
         {
           name: "Fortnum & Mason",
           note: {
-            zh: "經典會先看 Royal Blend、Earl Grey Classic、Breakfast Blend，也很適合搭配茶餅乾或果醬一起買。",
+            zh: "常見會看 Royal Blend、Earl Grey Classic、Breakfast Blend，也可以和餅乾或果醬一起買。",
             en: "Classic starting points are Royal Blend, Earl Grey Classic, and Breakfast Blend, often paired with biscuits or preserves."
           },
           where: { zh: "Piccadilly 主店最完整", en: "Best selection at the Piccadilly flagship" },
@@ -434,7 +434,7 @@ const shoppingData = {
         {
           name: "Twinings",
           note: {
-            zh: "English Breakfast、Earl Grey、Lady Grey 都很穩，適合想買價格比較好入手、品牌辨識度又高的選擇。",
+            zh: "English Breakfast、Earl Grey、Lady Grey 都很常見，價格也比較好入手。",
             en: "English Breakfast, Earl Grey, and Lady Grey are dependable if you want something classic and easier on budget."
           },
           where: { zh: "The Strand 店很有代表性", en: "The Strand shop is the iconic stop" },
@@ -443,7 +443,7 @@ const shoppingData = {
         {
           name: "Whittard of Chelsea",
           note: {
-            zh: "比起傳統茶莊，口味和包裝會更像送禮店，選擇也常帶一點季節感。",
+            zh: "包裝選擇很多，也常有季節口味。",
             en: "It feels slightly more gift-oriented, with a wide range and more seasonal presentation."
           },
           where: { zh: "Covent Garden 或 Chelsea 一帶可逛", en: "Look around Covent Garden or Chelsea" },
@@ -454,14 +454,14 @@ const shoppingData = {
     {
       title: { zh: "餅乾、shortbread、下午茶點心", en: "Biscuits, shortbread, and tea snacks" },
       lead: {
-        zh: "這一類很適合補成「送人」用的伴手禮，外盒通常比超市零食更體面。",
-        en: "These work well as giftable souvenirs, and the tins or boxes usually look more polished than supermarket snacks."
+        zh: "這一類很常拿來當伴手禮，盒裝也比較完整。",
+        en: "These are common souvenir picks, especially in boxed or tinned formats."
       },
       items: [
         {
           name: "Walkers Shortbread",
           note: {
-            zh: "蘇格蘭 shortbread 很經典，奶油味重、接受度高，鐵盒版尤其適合送禮。",
+            zh: "蘇格蘭 shortbread 很常見，鐵盒版也方便送人。",
             en: "Classic Scottish shortbread with rich butter flavor; tins are especially good for gifting."
           },
           where: { zh: "超市、百貨食品區都常見", en: "Easy to find in supermarkets and food halls" },
@@ -470,7 +470,7 @@ const shoppingData = {
         {
           name: "Fortnum biscuits",
           note: {
-            zh: "如果想買更像英式 afternoon tea 的餅乾，可以直接看 Fortnum 的 biscuit selection。",
+            zh: "如果想找英式下午茶那種路線，可以看 Fortnum 的 biscuit selection。",
             en: "If you want something closer to a classic afternoon tea gift, Fortnum's biscuit range is an easy pick."
           },
           where: { zh: "可和茶葉一起買", en: "Easy to pair with tea in one stop" },
@@ -479,7 +479,7 @@ const shoppingData = {
         {
           name: "Marks & Spencer biscuits",
           note: {
-            zh: "如果想在預算和質感之間抓平衡，M&S 的餅乾和巧克力常常很好買。",
+            zh: "M&S 的餅乾和巧克力很常見，也比較好入手。",
             en: "M&S is a good middle ground if you want something polished without going fully luxury."
           },
           where: { zh: "市中心門市很多", en: "Easy to find across city centres" },
@@ -490,14 +490,14 @@ const shoppingData = {
     {
       title: { zh: "果醬、marmalade、英式 pantry", en: "Marmalade, jam, and pantry picks" },
       lead: {
-        zh: "如果對方平常會吃早餐抹醬，這一類其實很英國，也比買裝飾品更實用。",
-        en: "If the recipient actually uses breakfast spreads, this category feels very British and more useful than decorative souvenirs."
+        zh: "如果平常會吃抹醬，果醬和 marmalade 也很適合買。",
+        en: "If you actually use breakfast spreads, jams and marmalade are good picks."
       },
       items: [
         {
           name: "Fortnum preserves",
           note: {
-            zh: "橘子 marmalade、草莓 jam、lemon curd 都很有代表性，但玻璃瓶記得包好放托運。",
+            zh: "橘子 marmalade、草莓 jam、lemon curd 都很常見，但玻璃瓶記得包好放托運。",
             en: "Orange marmalade, strawberry jam, and lemon curd are classic, but glass jars should be packed carefully in checked luggage."
           },
           where: { zh: "Fortnum 食品區最齊", en: "Best range in Fortnum's food hall" },
@@ -506,7 +506,7 @@ const shoppingData = {
         {
           name: "Tiptree",
           note: {
-            zh: "Tiptree 的 jam 和 marmalade 也很經典，超市或食品店比較容易看到。",
+            zh: "Tiptree 的 jam 和 marmalade 也很常見，超市或食品店都可能看到。",
             en: "Tiptree jams and marmalades are also classic and often easier to spot in food shops or supermarkets."
           },
           where: { zh: "Waitrose、食品店可留意", en: "Check Waitrose and food shops" },
@@ -517,14 +517,14 @@ const shoppingData = {
     {
       title: { zh: "超市零食與藥妝", en: "Supermarket snacks and pharmacy staples" },
       lead: {
-        zh: "這一區比較適合買給自己，或補一些不用太正式、但很實用的小東西。",
-        en: "This section is better for personal shopping or easy extras that do not need to look too formal."
+        zh: "這一區比較偏自己用，或補一些實用小物。",
+        en: "This section is mostly for personal shopping or practical extras."
       },
       items: [
         {
           name: "M&S / Waitrose snacks",
           note: {
-            zh: "M&S 餅乾、巧克力、茶包禮盒很適合一次補齊；Waitrose 則適合找 pantry 類與茶點。",
+            zh: "M&S 可以一起看餅乾、巧克力、茶包禮盒；Waitrose 則適合找 pantry 類和茶點。",
             en: "M&S is great for biscuits, chocolate, and boxed tea gifts, while Waitrose is good for pantry picks and tea snacks."
           },
           where: { zh: "倫敦市中心很容易遇到", en: "Easy to find around central London" },
@@ -533,7 +533,7 @@ const shoppingData = {
         {
           name: "Boots",
           note: {
-            zh: "如果要補英國常見藥妝、護手霜、維他命、旅行用品，Boots 會很順手。",
+            zh: "如果要買藥妝、護手霜、維他命或旅行用品，可以看 Boots。",
             en: "Boots is the easy stop for pharmacy basics, hand cream, vitamins, and travel supplies."
           },
           where: { zh: "Oxford Street、車站附近常有大型門市", en: "Large branches are common near stations and main shopping streets" },
@@ -543,9 +543,9 @@ const shoppingData = {
     }
   ],
   suggestions: [
-    { title: { zh: "送老師或長輩", en: "For teachers or elders" }, text: { zh: "茶葉 + biscuits 或 marmalade，通常最穩。", en: "Tea plus biscuits or marmalade is the safest combination." } },
-    { title: { zh: "送朋友", en: "For friends" }, text: { zh: "M&S 或 Fortnum 的茶點禮盒會比單買零食更完整。", en: "An M&S or Fortnum snack-and-tea box feels more complete than loose supermarket snacks." } },
-    { title: { zh: "買給自己", en: "For yourself" }, text: { zh: "Boots、M&S、Waitrose 這三個地方最容易買得輕鬆。", en: "Boots, M&S, and Waitrose are the easiest places for personal shopping." } }
+    { title: { zh: "送老師或長輩", en: "For teachers or elders" }, text: { zh: "茶葉配餅乾或 marmalade，最常見。", en: "Tea with biscuits or marmalade is the most common combination." } },
+    { title: { zh: "送朋友", en: "For friends" }, text: { zh: "M&S 或 Fortnum 的盒裝茶點比較完整。", en: "Boxed tea snacks from M&S or Fortnum feel more complete." } },
+    { title: { zh: "買給自己", en: "For yourself" }, text: { zh: "Boots、M&S、Waitrose 都很好逛。", en: "Boots, M&S, and Waitrose are all easy stops." } }
   ],
   packing: [
     { zh: "茶包、餅乾最適合手提或托運。", en: "Tea bags and biscuits are easy in either carry-on or checked luggage." },
@@ -1002,8 +1002,8 @@ function renderHome() {
     <section class="section dashboard-section home-dashboard" id="snapshot">
       <article class="section-card intro-card">
         <div class="section-label">${state.lang === "en" ? "Journey Overview" : "旅程總覽"}</div>
-        <h2>${state.lang === "en" ? "Conference first, then a London chapter that can still stay flexible." : "先是曼徹斯特的會議段，接著再把倫敦留給城市、博物館與一點餘裕。"}</h2>
-        <p class="lead">${state.lang === "en" ? "The core structure is set: flights are booked, Manchester stay is in place, and the remaining choices mainly sit in London." : "旅程主架構已經定下來：機票已訂、曼徹斯特住宿已確定，現在主要只剩倫敦那一段還保留彈性。"}</p>
+        <h2>${state.lang === "en" ? "Manchester for the conference, then London for the rest of the trip." : "先在曼徹斯特開會，後面再去倫敦。"}</h2>
+        <p class="lead">${state.lang === "en" ? "Flights and the Manchester hotel are already set. The main open item is the London stay." : "機票和曼徹斯特住宿都已經定了，現在主要剩倫敦住宿還沒決定。"}</p>
         <div class="overview-grid">
           ${dashboardData.topStatus.map(renderOverviewStatCard).join("")}
         </div>
@@ -1012,8 +1012,8 @@ function renderHome() {
     <section class="section compact-section" id="quick-actions">
       <article class="section-card">
         <div class="section-label">${state.lang === "en" ? "Quick Actions" : "快速入口"}</div>
-        <h2>${state.lang === "en" ? "Open the chapter you need." : "直接打開要看的章節。"}</h2>
-        <p class="lead">${state.lang === "en" ? "These cards work like shortcuts, so the handbook feels easier to move through." : "用卡片當捷徑，整個 handbook 讀起來會輕鬆很多。"}</p>
+        <h2>${state.lang === "en" ? "Open the page you need." : "直接打開要看的頁面。"}</h2>
+        <p class="lead">${state.lang === "en" ? "Use these as shortcuts." : "這裡就是快速入口。"}</p>
         <div class="itinerary-highlights quick-actions-grid">
           ${dashboardData.quickActions.map(([id, title, note]) => `
             <a class="mini-highlight action-highlight" href="#${id}">
@@ -1027,10 +1027,10 @@ function renderHome() {
     <section class="section compact-section" id="at-a-glance">
       <article class="section-card cover-story">
         <div class="section-label">${state.lang === "en" ? "At a Glance" : "一眼掌握"}</div>
-        <h2>${state.lang === "en" ? "The structure is clear even before the details are." : "細節還能再慢慢補，但整體節奏已經很清楚。"}</h2>
+        <h2>${state.lang === "en" ? "Main dates, route, and open items." : "先看日期、路線和還沒定的事。"}</h2>
         <div class="cover-story-grid">
           <article class="cover-copy">
-            <p class="cover-lead">${state.lang === "en" ? "Manchester holds the conference days and the booked hotel; London opens up after that for museums, city walks, and the softer part of the trip." : "曼徹斯特負責會議與已經訂好的住宿；倫敦則留給博物館、城市散步，還有旅程後段比較輕鬆的節奏。"}</p>
+            <p class="cover-lead">${state.lang === "en" ? "Manchester covers the conference days and the booked hotel. London starts after that, with museums, city walks, and shopping." : "曼徹斯特是會議和已訂住宿的部分。後面到倫敦，主要就是博物館、市區景點和購物。"}</p>
             <div class="cover-points">
               ${dashboardData.glance.slice(0, 3).map((item) => `
                 <div class="cover-point">
@@ -1059,8 +1059,8 @@ function renderHome() {
     <section class="section compact-section" id="itinerary-preview">
       <article class="section-card">
       <div class="section-label">${state.lang === "en" ? "Timeline Preview" : "時間軸預覽"}</div>
-      <h2>${state.lang === "en" ? "Read the trip in phases first." : "先用階段去看這趟旅程。"}</h2>
-      <p class="lead">${state.lang === "en" ? "This keeps the trip readable before opening the full day-by-day page." : "先看整體節奏，再進到每天的細節，閱讀會比較順。"}</p>
+      <h2>${state.lang === "en" ? "Trip timeline" : "旅程時間軸"}</h2>
+      <p class="lead">${state.lang === "en" ? "A short overview before the full itinerary page." : "先快速看整體安排，再進完整行程頁。"}</p>
       <div class="timeline-groups">
         ${dashboardData.timelineGroups.map((group) => `
           <article class="timeline-phase">
@@ -1316,8 +1316,8 @@ function renderStay() {
     <section class="section compact-section" id="overview">
       <article class="section-card">
       <div class="section-label">${state.lang === "en" ? "Stay Plan" : "住宿安排"}</div>
-      <h2>${state.lang === "en" ? "One booked base in Manchester, one London decision still open." : "曼徹斯特先穩穩住下來，倫敦那段再留給最後決定。"}</h2>
-      <p class="lead">${state.lang === "en" ? "The booked hotel already covers the conference chapter. London can stay open until the station plan feels clear." : "會議段的住宿已經先固定好；倫敦那一段可以等車站與路線想清楚後再定。"}</p>
+      <h2>${state.lang === "en" ? "Manchester is booked. London is still open." : "曼徹斯特已訂，倫敦還沒定。"}</h2>
+      <p class="lead">${state.lang === "en" ? "The conference stay is fixed. London can be booked after the station area is decided." : "會議那幾天的住宿已經確定，倫敦可以等區域想好再訂。"}</p>
       <div class="stay-list-rich">
         ${tripData.stay.slice(0, 1).map((stay, index) => `
           <article class="stay-card-rich${stay.image ? " with-image" : ""}">
@@ -1352,8 +1352,8 @@ function renderStay() {
     <section class="section compact-section" id="decision">
       <article class="section-card">
       <div class="section-label">${state.lang === "en" ? "London Decision" : "倫敦住宿待定"}</div>
-      <h2>${state.lang === "en" ? "London is still the flexible chapter." : "倫敦這一段還保留著最後的彈性。"}</h2>
-      <p class="lead">${state.lang === "en" ? "The easiest version is still the same: stay near practical stations and keep the return to Manchester simple." : "最舒服的版本其實很明確：住在交通順的區域，讓回曼徹斯特那天不要太趕。"}</p>
+      <h2>${state.lang === "en" ? "London hotel decision" : "倫敦住宿選擇"}</h2>
+      <p class="lead">${state.lang === "en" ? "A station-friendly area keeps the return to Manchester simpler." : "選車站交通方便的區域，回曼徹斯特那天會比較簡單。"}</p>
       <div class="summary-grid two">
         ${tripData.stay.slice(1, 2).map(renderSummaryCard).join("")}
         <article class="summary-card">
@@ -1390,8 +1390,8 @@ function renderItinerary() {
     <section class="section compact-section" id="timeline">
       <article class="section-card">
       <div class="section-label">${state.lang === "en" ? "Day by Day" : "每日行程"}</div>
-      <h2>${state.lang === "en" ? "Open each day only when you need it." : "每天各自收好，要看的時候再打開。"}</h2>
-      <p class="lead">${state.lang === "en" ? "This keeps the page lighter and much easier to read on mobile." : "這樣一來頁面不會太長，手機上讀起來也會舒服很多。"}</p>
+      <h2>${state.lang === "en" ? "Daily itinerary" : "每日行程"}</h2>
+      <p class="lead">${state.lang === "en" ? "Open the day you need." : "要看哪一天，就打開哪一天。"}</p>
       <div class="itinerary-highlights">
         ${[
           [{ zh: "旅程長度", en: "Trip length" }, { zh: "14 天", en: "14 days" }],
@@ -1499,8 +1499,8 @@ function renderShopping() {
     <section class="section compact-section" id="shopping-overview">
       <article class="section-card intro-card">
         <div class="section-label">${state.lang === "en" ? "Shopping Guide" : "購物指南"}</div>
-        <h2>${state.lang === "en" ? "Tea first, then biscuits, preserves, and the practical extras." : "先看茶葉，再看餅乾、果醬，最後補超市和藥妝。"}</h2>
-        <p class="lead">${state.lang === "en" ? "This page keeps the classic UK shopping ideas together, so you can decide what is worth carrying home before you start buying." : "把比較值得買、也比較有英國感的東西先整理在一起，逛之前就能先想好哪些值得帶回來。"}</p>
+        <h2>${state.lang === "en" ? "Tea, biscuits, preserves, and a few practical extras." : "茶葉、餅乾、果醬，還有幾樣實用的東西。"}</h2>
+        <p class="lead">${state.lang === "en" ? "A simple list of common UK souvenirs and where to look for them." : "把常見的英國伴手禮和購買方向整理在這裡。"}</p>
         <div class="itinerary-highlights">
           ${shoppingData.highlights.map((item) => renderMiniHighlightCard(item.label, item.value)).join("")}
         </div>
