@@ -7553,6 +7553,286 @@ body {
   }
 }
 
+/* Desktop refinement pass */
+
+.desktop-dashboard-shell {
+  width: min(1260px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.desktop-dashboard-sidebar {
+  display: none;
+}
+
+.desktop-sidebar-card {
+  padding: 20px 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(92, 108, 128, 0.12);
+  background: linear-gradient(180deg, rgba(255, 251, 246, 0.92), rgba(246, 241, 234, 0.82));
+  box-shadow: 0 18px 42px rgba(40, 54, 73, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.desktop-anchor-nav,
+.desktop-meta-list {
+  display: grid;
+  gap: 10px;
+}
+
+.desktop-anchor-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 16px;
+  color: var(--text-mid);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(92, 108, 128, 0.08);
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.desktop-anchor-link:hover {
+  color: var(--app-navy);
+  background: rgba(169, 191, 211, 0.12);
+  transform: translateY(-1px);
+}
+
+.desktop-anchor-link.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--app-navy) 0%, var(--app-navy-soft) 100%);
+  box-shadow: 0 12px 24px rgba(40, 54, 73, 0.16);
+}
+
+.desktop-meta-list div,
+.booking-key-details .desktop-meta-list div {
+  display: grid;
+  gap: 6px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(92, 108, 128, 0.08);
+}
+
+.desktop-meta-list div:first-child,
+.booking-key-details .desktop-meta-list div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.desktop-meta-list span,
+.booking-key-details .desktop-meta-list span {
+  color: var(--text-light);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.desktop-meta-list strong,
+.booking-key-details .desktop-meta-list strong {
+  color: var(--app-navy);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.desktop-overview-card .overview-grid {
+  margin-top: 24px;
+}
+
+.desktop-flight-grid .summary-card,
+.desktop-notes-grid .note-card {
+  padding: 22px;
+}
+
+.booking-key-details {
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(92, 108, 128, 0.1);
+}
+
+.desktop-dashboard-main .section {
+  padding-bottom: 24px;
+}
+
+@media (min-width: 1025px) {
+  body[data-page="home"] .quick-nav {
+    display: none;
+  }
+
+  body[data-page="home"] .mobile-section-tabs {
+    display: none !important;
+  }
+
+  .hero {
+    min-height: 500px;
+    padding: 92px 32px 92px;
+  }
+
+  .mobile-dashboard-hero {
+    width: min(1180px, 100%);
+    padding: 28px 32px 30px;
+    border-radius: 30px;
+    gap: 16px;
+  }
+
+  .mobile-dashboard-hero h1 {
+    max-width: 11ch;
+    font-size: clamp(3.2rem, 4.6vw, 4.7rem);
+  }
+
+  .mobile-dashboard-hero .hero-serif-note {
+    max-width: 56ch;
+    font-size: 17px;
+  }
+
+  .hero-chip-row {
+    max-width: 960px;
+  }
+
+  .hero-summary-grid.hero-compact-summary {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .hero-summary-card {
+    min-height: 122px;
+    padding: 18px 16px;
+  }
+
+  .hero-summary-card .summary-value {
+    font-size: 16px;
+  }
+
+  .desktop-dashboard-shell {
+    display: grid;
+    grid-template-columns: 252px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+    margin-top: 8px;
+  }
+
+  .desktop-dashboard-sidebar {
+    position: sticky;
+    top: 118px;
+    display: grid;
+    gap: 18px;
+  }
+
+  .desktop-dashboard-main {
+    min-width: 0;
+  }
+
+  .compact-section {
+    width: 100%;
+  }
+
+  .section-card {
+    padding: 28px;
+  }
+
+  .section-card h2 {
+    font-size: 32px;
+    line-height: 1.22;
+  }
+
+  .section-card h3 {
+    font-size: 24px;
+  }
+
+  .lead,
+  .section-card p,
+  .summary-card p,
+  .paper-card p,
+  .day-summary,
+  .budget-mobile-card p {
+    font-size: 15px;
+    line-height: 1.82;
+  }
+
+  .overview-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .alert-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .paper-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stay-list-rich.app-stay-list {
+    grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
+  }
+
+  .booking-facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .booking-action-row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .budget-summary-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .budget-card-list {
+    display: none;
+  }
+
+  .mobile-table {
+    display: block;
+  }
+
+  .checklist-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .desktop-notes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page-grid.handbook-page-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .mobile-timeline-preview {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .mobile-timeline-preview .day-card {
+    height: 100%;
+    padding: 22px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .desktop-dashboard-shell {
+    width: min(1280px, calc(100% - 72px));
+    grid-template-columns: 268px minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .mobile-dashboard-hero {
+    width: min(1220px, 100%);
+    padding: 32px 36px;
+  }
+
+  .section-card {
+    padding: 30px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .desktop-dashboard-shell {
+    width: min(1280px, calc(100% - 96px));
+  }
+}
+
 /* Final layout stability pass */
 
 html,
