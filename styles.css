@@ -6856,6 +6856,703 @@ body {
   }
 }
 
+/* Mobile app pass */
+
+:root {
+  --app-navy: #2f3e55;
+  --app-navy-soft: #536781;
+  --app-sky: #a9bfd3;
+  --app-gold: #c8b287;
+  --app-beige: #f5efe6;
+  --app-card: rgba(255, 251, 246, 0.82);
+  --app-card-strong: rgba(255, 251, 246, 0.94);
+  --app-border: rgba(92, 108, 128, 0.12);
+  --app-shadow: 0 18px 42px rgba(40, 54, 73, 0.12);
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(169, 191, 211, 0.18), transparent 26%),
+    radial-gradient(circle at 100% 0, rgba(200, 178, 135, 0.12), transparent 18%),
+    linear-gradient(180deg, #faf7f1 0%, #f5f1ea 100%);
+}
+
+.hero {
+  min-height: 430px;
+  padding: 78px 18px 52px;
+  align-items: end;
+  background:
+    radial-gradient(circle at top, rgba(255, 244, 233, 0.18), transparent 34%),
+    linear-gradient(145deg, rgba(36, 49, 67, 0.82) 0%, rgba(65, 87, 115, 0.72) 36%, rgba(123, 149, 177, 0.52) 100%),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1920px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 42% / cover;
+}
+
+.hero::after {
+  height: 110px;
+}
+
+.mobile-dashboard-hero {
+  width: min(100%, 720px);
+  margin-inline: auto;
+  padding: 22px 20px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(16, 25, 37, 0.12), rgba(20, 31, 46, 0.28));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 40px rgba(13, 21, 31, 0.16);
+  backdrop-filter: blur(14px);
+  text-align: left;
+  justify-items: start;
+}
+
+.mobile-dashboard-hero h1 {
+  max-width: 12ch;
+  margin: 0;
+  font-size: clamp(2rem, 4.3vw, 4rem);
+  line-height: 1.05;
+}
+
+.mobile-dashboard-hero .hero-serif-note {
+  max-width: 58ch;
+  margin: 0;
+  color: rgba(255, 251, 246, 0.9);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.hero-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 251, 246, 0.14);
+  color: rgba(255, 251, 246, 0.92);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.hero-compact-summary {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.hero-compact-summary .hero-summary-card {
+  background: rgba(255, 251, 246, 0.14);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.hero-compact-summary .summary-value {
+  font-size: 15px;
+}
+
+.section-card,
+.summary-card,
+.stay-card-rich,
+.paper-card,
+.budget-mobile-card,
+.checklist-group-card,
+.mobile-section-tab,
+.alert-card,
+.day-card,
+.page-card {
+  border-radius: 24px;
+  border: 1px solid var(--app-border);
+  background: linear-gradient(180deg, var(--app-card-strong) 0%, var(--app-card) 100%);
+  box-shadow: var(--app-shadow);
+  backdrop-filter: blur(14px);
+}
+
+.section-card h2 {
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+}
+
+.section-card h3,
+.paper-card h3,
+.stay-card-local,
+.day-title {
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+  line-height: 1.35;
+}
+
+.lead,
+.section-card p,
+.summary-card p,
+.paper-card p,
+.checklist-text,
+.day-summary,
+.day-detail-desc,
+.stay-card-note,
+.budget-mobile-card p {
+  font-size: 15px;
+  line-height: 1.78;
+}
+
+.app-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(200, 178, 135, 0.18);
+  color: var(--app-navy-soft);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.alert-card-grid,
+.paper-grid,
+.budget-card-list,
+.checklist-groups {
+  display: grid;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.alert-card-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.alert-card-head,
+.paper-card-head,
+.budget-mobile-head,
+.checklist-group-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.app-alert-card {
+  padding: 20px;
+}
+
+.app-alert-card h3 {
+  margin-top: 14px;
+}
+
+.app-alert-card p {
+  margin-top: 10px;
+}
+
+.paper-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.paper-card {
+  padding: 22px;
+}
+
+.paper-session-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  margin-top: 14px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(169, 191, 211, 0.18);
+  color: var(--app-navy);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.paper-coauthor {
+  margin: 14px 0 0;
+  color: var(--text-mid);
+}
+
+.paper-prep-block {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(92, 108, 128, 0.12);
+}
+
+.paper-prep-title {
+  color: var(--text-light);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.paper-status-row,
+.booking-facts,
+.booking-action-row,
+.budget-mobile-amounts {
+  display: grid;
+  gap: 10px;
+}
+
+.paper-status-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.paper-status-pill,
+.booking-facts > div,
+.budget-mobile-amounts > div {
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.64);
+  border: 1px solid rgba(92, 108, 128, 0.1);
+}
+
+.paper-status-pill span,
+.booking-facts span,
+.budget-mobile-amounts span {
+  display: block;
+  color: var(--text-light);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.paper-status-pill strong,
+.booking-facts strong,
+.budget-mobile-amounts strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--app-navy);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.mobile-timeline-preview {
+  margin-top: 22px;
+}
+
+.day-header {
+  gap: 12px;
+}
+
+.day-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.day-card summary {
+  padding: 0;
+  min-height: 44px;
+}
+
+.day-type-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.day-type-conference {
+  background: rgba(169, 191, 211, 0.2);
+  color: var(--app-navy);
+}
+
+.day-type-travel {
+  background: rgba(200, 178, 135, 0.18);
+  color: #6f5736;
+}
+
+.day-type-free {
+  background: rgba(132, 153, 177, 0.12);
+  color: var(--text-mid);
+}
+
+.app-stay-list {
+  margin-top: 22px;
+}
+
+.booking-card {
+  gap: 18px;
+}
+
+.booking-facts {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.booking-action-row {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.booking-action-row .button {
+  justify-content: center;
+  padding-inline: 12px;
+}
+
+.hotel-decision-card {
+  padding: 22px;
+}
+
+.budget-summary-grid {
+  margin-bottom: 18px;
+}
+
+.budget-card-list {
+  display: none;
+}
+
+.budget-mobile-card {
+  padding: 20px;
+}
+
+.budget-mobile-card h3 {
+  margin-top: 10px;
+}
+
+.budget-mobile-amounts {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+.budget-mobile-card p {
+  margin-top: 14px;
+}
+
+.checklist-groups {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.checklist-group-card {
+  padding: 20px;
+}
+
+.checklist-items {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.checklist-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(92, 108, 128, 0.1);
+  cursor: pointer;
+}
+
+.checklist-item input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.checkmark {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(83, 103, 129, 0.4);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.checklist-item.checked .checkmark {
+  background: linear-gradient(135deg, var(--app-navy) 0%, var(--app-navy-soft) 100%);
+  border-color: transparent;
+}
+
+.checklist-item.checked .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 6px;
+  height: 11px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(40deg);
+}
+
+.checklist-item.checked .checklist-text {
+  color: var(--app-navy);
+}
+
+.mobile-section-tabs {
+  display: none;
+}
+
+.button,
+.main-nav .nav-item,
+.quick-nav a,
+.bottom-nav .bottom-nav-item,
+.pill-btn {
+  min-height: 44px;
+}
+
+@media (max-width: 1024px) {
+  .alert-card-grid,
+  .paper-grid,
+  .checklist-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-action-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: calc(94px + env(safe-area-inset-bottom));
+  }
+
+  .main-nav {
+    display: none !important;
+  }
+
+  .mobile-section-tabs {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    z-index: 240;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+    padding: 10px;
+    border-radius: 24px;
+    background: rgba(255, 251, 246, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    box-shadow: 0 20px 50px rgba(40, 54, 73, 0.18);
+    backdrop-filter: blur(18px);
+  }
+
+  .mobile-section-tab {
+    min-width: 0;
+    min-height: 58px;
+    padding: 8px 4px;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 5px;
+    color: var(--text-light);
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .mobile-section-tab.active {
+    color: #fff;
+    background: linear-gradient(135deg, var(--app-navy) 0%, var(--app-navy-soft) 100%);
+  }
+
+  .mobile-section-tab-icon {
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+  }
+
+  .mobile-section-tab-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .hero {
+    min-height: 360px;
+    padding: 112px 12px 28px;
+  }
+
+  .mobile-dashboard-hero {
+    padding: 18px 16px;
+    border-radius: 24px;
+  }
+
+  .mobile-dashboard-hero h1 {
+    font-size: 32px;
+    max-width: 10ch;
+  }
+
+  .hero-chip-row {
+    gap: 6px;
+  }
+
+  .hero-chip {
+    min-height: 32px;
+    padding-inline: 10px;
+    font-size: 11px;
+  }
+
+  .hero-compact-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .control-dock {
+    width: calc(100% - 12px);
+    margin-top: 6px;
+  }
+
+  .control-group {
+    padding: 8px;
+  }
+
+  .pill-btn {
+    min-width: 0;
+    font-size: 12px;
+  }
+
+  .compact-section {
+    width: calc(100% - 12px);
+  }
+
+  .section-card {
+    padding: 18px 14px;
+  }
+
+  .section-card h2 {
+    font-size: 24px;
+  }
+
+  .lead,
+  .section-card p,
+  .summary-card p,
+  .paper-card p,
+  .day-summary,
+  .checklist-text,
+  .budget-mobile-card p {
+    font-size: 15px;
+  }
+
+  .overview-grid,
+  .summary-grid,
+  .summary-grid.two,
+  .summary-grid.three,
+  .paper-grid,
+  .alert-card-grid,
+  .checklist-groups,
+  .booking-facts,
+  .booking-action-row,
+  .budget-mobile-amounts,
+  .paper-status-row,
+  .hero-compact-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .stay-card-rich,
+  .paper-card,
+  .budget-mobile-card,
+  .checklist-group-card,
+  .app-alert-card,
+  .hotel-decision-card,
+  .day-card {
+    padding: 18px 14px;
+  }
+
+  .stay-card-image-wrap,
+  .stay-card-image {
+    min-height: 190px;
+  }
+
+  .budget-card-list {
+    display: grid;
+  }
+
+  .mobile-table {
+    display: none;
+  }
+
+  .checkmark {
+    width: 26px;
+    height: 26px;
+  }
+
+  .checklist-item {
+    grid-template-columns: 30px minmax(0, 1fr);
+    padding: 14px 12px;
+  }
+
+  .day-card summary {
+    min-height: 52px;
+  }
+
+  .day-header-top {
+    align-items: flex-start;
+  }
+
+  .quick-nav {
+    gap: 8px;
+    padding: 8px 2px 2px;
+  }
+
+  .quick-nav a {
+    padding: 0 14px;
+    min-height: 42px;
+    font-size: 13px;
+  }
+
+  .back-to-top {
+    bottom: calc(92px + env(safe-area-inset-bottom));
+    right: 12px;
+  }
+}
+
+@media (max-width: 430px) {
+  .mobile-section-tabs {
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .mobile-section-tab {
+    min-height: 54px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 390px) {
+  .mobile-dashboard-hero h1 {
+    font-size: 31px;
+  }
+
+  .hero-chip {
+    font-size: 10px;
+  }
+
+  .mobile-section-tab {
+    min-height: 52px;
+  }
+}
+
+@media (max-width: 375px) {
+  .mobile-dashboard-hero h1 {
+    font-size: 30px;
+  }
+
+  .section-card h2 {
+    font-size: 22px;
+  }
+
+  .lead,
+  .section-card p,
+  .summary-card p,
+  .paper-card p,
+  .checklist-text {
+    font-size: 15px;
+  }
+}
+
 /* Final layout stability pass */
 
 html,
