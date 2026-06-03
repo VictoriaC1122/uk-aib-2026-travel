@@ -11408,3 +11408,343 @@ main#page-content {
     top: 74px;
   }
 }
+
+/* Structural layout repair pass */
+.topbar.handbook-topbar,
+.main-nav,
+.editorial-hero,
+.page-hero .hero-grid,
+.section,
+.quick-nav,
+.desktop-page-shell,
+.desktop-dashboard-shell,
+.site-footer {
+  width: min(1240px, calc(100% - 40px)) !important;
+}
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.site-footer p,
+.site-footer a {
+  min-width: 0;
+}
+
+.section-card,
+.summary-card,
+.page-card,
+.shopping-card,
+.paper-card,
+.flight-card,
+.transfer-card,
+.ticket-card,
+.budget-mobile-card,
+.alert-card,
+.day-chapter-card,
+.day-guide-card,
+.day-guide-section-head,
+.desktop-sidebar-card,
+.practical-guide-card,
+.snapshot-card,
+.journey-route-card,
+.highlight-story-card {
+  overflow: hidden;
+}
+
+.section-card *,
+.summary-card *,
+.page-card *,
+.shopping-card *,
+.paper-card *,
+.flight-card *,
+.transfer-card *,
+.ticket-card *,
+.budget-mobile-card *,
+.alert-card *,
+.day-chapter-card *,
+.day-guide-card *,
+.desktop-sidebar-card * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.hero-signal-strip,
+.hero-facts,
+.journey-route-grid,
+.handbook-overview-grid,
+.snapshot-grid,
+.journey-highlight-grid,
+.day-chapter-grid,
+.practical-guide-grid,
+.guide-meta-row,
+.guide-detail-grid {
+  align-items: stretch;
+}
+
+.hero-signal-strip,
+.hero-facts {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.journey-route-grid,
+.handbook-overview-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.snapshot-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.day-chapter-grid,
+.journey-highlight-grid,
+.practical-guide-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.guide-meta-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.guide-detail-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.desktop-page-shell {
+  display: grid !important;
+  grid-template-columns: minmax(280px, 320px) minmax(0, 1fr) !important;
+  gap: 28px !important;
+  align-items: start !important;
+}
+
+.desktop-page-sidebar {
+  position: sticky !important;
+  top: 112px !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 18px !important;
+  align-self: start !important;
+}
+
+.desktop-anchor-nav {
+  display: grid !important;
+  gap: 10px !important;
+}
+
+.desktop-anchor-link {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.desktop-anchor-link.active {
+  border-color: rgba(142, 120, 80, 0.28);
+  background: rgba(255, 255, 255, 0.96);
+  color: #22314b;
+  box-shadow: 0 16px 34px rgba(31, 41, 51, 0.08);
+}
+
+@media (min-width: 1181px) {
+  body:not([data-page="home"]) .quick-nav {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1280px) {
+  .topbar.handbook-topbar,
+  .main-nav,
+  .editorial-hero,
+  .page-hero .hero-grid,
+  .section,
+  .quick-nav,
+  .desktop-page-shell,
+  .desktop-dashboard-shell,
+  .site-footer {
+    width: min(100%, calc(100% - 32px)) !important;
+  }
+
+  .journey-route-grid,
+  .handbook-overview-grid,
+  .guide-meta-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .desktop-page-shell {
+    grid-template-columns: 1fr !important;
+  }
+
+  .desktop-page-sidebar {
+    position: static !important;
+    top: auto !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 600px;
+    padding-bottom: 84px;
+  }
+
+  .control-dock {
+    width: 100%;
+    max-width: none;
+  }
+
+  .main-nav .nav-item {
+    white-space: nowrap;
+  }
+
+  .hero-signal-strip,
+  .hero-facts,
+  .snapshot-grid,
+  .journey-route-grid,
+  .handbook-overview-grid,
+  .journey-highlight-grid,
+  .day-chapter-grid,
+  .practical-guide-grid,
+  .guide-meta-row,
+  .guide-detail-grid,
+  .desktop-page-sidebar {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .day-guide-nav {
+    top: 82px;
+  }
+}
+
+@media (max-width: 820px) {
+  .topbar.handbook-topbar,
+  .main-nav,
+  .editorial-hero,
+  .page-hero .hero-grid,
+  .section,
+  .quick-nav,
+  .desktop-page-shell,
+  .desktop-dashboard-shell,
+  .site-footer {
+    width: min(100%, calc(100% - 24px)) !important;
+  }
+
+  .topbar.handbook-topbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .control-dock {
+    margin-left: 0;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .hero-signal-strip,
+  .hero-facts,
+  .snapshot-grid,
+  .journey-route-grid,
+  .handbook-overview-grid,
+  .journey-highlight-grid,
+  .day-chapter-grid,
+  .practical-guide-grid,
+  .guide-meta-row,
+  .guide-detail-grid,
+  .desktop-page-sidebar {
+    grid-template-columns: 1fr !important;
+  }
+
+  .section-card {
+    padding: 26px 22px !important;
+  }
+
+  .day-guide-nav {
+    top: 72px;
+  }
+}
+
+@media (max-width: 430px) {
+  .topbar.handbook-topbar,
+  .main-nav,
+  .editorial-hero,
+  .page-hero .hero-grid,
+  .section,
+  .quick-nav,
+  .desktop-page-shell,
+  .desktop-dashboard-shell,
+  .site-footer {
+    width: min(100%, calc(100% - 16px)) !important;
+  }
+
+  .hero {
+    min-height: 540px;
+    padding-inline: 12px;
+  }
+
+  .section {
+    padding: 38px 0;
+  }
+
+  .section-card {
+    padding: 22px 18px !important;
+    border-radius: 24px !important;
+  }
+
+  .handbook-home-hero h1 {
+    font-size: clamp(2.15rem, 11vw, 3rem);
+    line-height: 1.02;
+  }
+
+  .hero-subtitle,
+  .hero-dates,
+  .destinations,
+  .hero-intro,
+  .section-card p,
+  .section-card .lead,
+  .day-guide-intro,
+  .day-chapter-lead {
+    font-size: 15px !important;
+  }
+
+  .hero-actions,
+  .editorial-hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .button,
+  .editorial-hero-actions .button,
+  .stay-action-grid .button,
+  .booking-action-row .button {
+    width: 100%;
+  }
+
+  .main-nav {
+    padding: 6px;
+  }
+
+  .main-nav .nav-item {
+    min-height: 40px;
+    padding-inline: 12px;
+    font-size: 12px;
+  }
+
+  .day-guide-summary,
+  .day-guide-body,
+  .day-guide-section-head,
+  .day-chapter-card,
+  .snapshot-card,
+  .journey-route-card,
+  .highlight-story-card,
+  .day-story-card {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .day-guide-nav {
+    top: 68px;
+    padding-top: 4px;
+  }
+}
