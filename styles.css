@@ -726,6 +726,14 @@ h3 {
   line-height: 1.55;
 }
 
+.flight-extra-copy {
+  margin: 0;
+  padding: 0 20px 20px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
 .line {
   position: relative;
   color: var(--royal-red);

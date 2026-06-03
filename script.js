@@ -321,9 +321,9 @@ const tripData = {
     {
       label: { zh: "巴黎回曼城", en: "Paris → Manchester" },
       date: "2026/07/11",
-      note: { zh: "Air France Business Standard", en: "Air France Business Standard" },
+      note: { zh: "AF1068｜Air France Business Standard", en: "AF1068 · Air France Business Standard" },
       legs: [
-        { from: "CDG", to: "MAN", flight: "Air France", time: "12:50 → 13:25", duration: "1h 35m", detail: { zh: "巴黎戴高樂 T2E → 曼徹斯特 T2", en: "Paris CDG T2E → Manchester T2" } }
+        { from: "CDG", to: "MAN", flight: "AF 1068", time: "12:50 → 13:25", duration: "1h 35m", detail: { zh: "巴黎戴高樂 T2E → 曼徹斯特 T2", en: "Paris CDG T2E → Manchester T2" } }
       ]
     },
     {
@@ -504,7 +504,7 @@ const tripData = {
     { item: { zh: "曼徹斯特旅遊稅", en: "Manchester visitor charge" }, amount: money.visitorCharge, amounts: { TWD: "約 NT$255", GBP: "GBP 6", EUR: "EUR 7", USD: "US$8" }, status: "self", proof: { zh: "退房收據", en: "Check-out receipt" }, notes: { zh: `GBP 1.20 / 房 / 晚，現場支付；一人約 ${money.visitorChargePerPerson}。`, en: `GBP 1.20 per room per night, paid locally; about ${money.visitorChargePerPerson} per person.` } },
     { item: { zh: "曼徹斯特 → 倫敦火車", en: "Manchester → London train" }, amount: { zh: "每人單程 NT$1,423 起 / GBP 33.50 起 / EUR 39 起 / US$44 起", en: "per person one-way from NT$1,423 / GBP 33.50 / EUR 39 / US$44" }, amounts: { TWD: "NT$1,423 起", GBP: "GBP 33.50 起", EUR: "EUR 39 起", USD: "US$44 起" }, status: "self", proof: { zh: "訂票後的電子票與收據", en: "E-ticket / receipt after booking" }, notes: { zh: "7/4 建議搭 Avanti West Coast。", en: "Avanti West Coast is the current recommendation for 4 July." } },
     { item: { zh: "Eurostar 倫敦 → 巴黎", en: "Eurostar London → Paris" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "Eurostar 電子票與收據", en: "Eurostar e-ticket and receipt" }, notes: { zh: "7/7 出發，車程約 2 小時 20 分。", en: "Departure is on 7 July, with a journey of about 2h20." } },
-    { item: { zh: "巴黎 → 曼徹斯特航段", en: "Paris → Manchester flight" }, amount: { zh: "NT$12,930 / EUR 354.05", en: "NT$12,930 / EUR 354.05" }, amounts: { TWD: "NT$12,930", GBP: "約 GBP 300", EUR: "EUR 354.05", USD: "待確認" }, status: "self", proof: { zh: "Air France 電子票與付款證明", en: "Air France e-ticket and payment proof" }, notes: { zh: "Air France Business Standard；含 Lounge、優先安檢與優先登機。", en: "Air France Business Standard with lounge access, priority security, and priority boarding." } },
+    { item: { zh: "巴黎 → 曼徹斯特航段", en: "Paris → Manchester flight" }, amount: { zh: "NT$12,930 / EUR 354.05", en: "NT$12,930 / EUR 354.05" }, amounts: { TWD: "NT$12,930", GBP: "約 GBP 300", EUR: "EUR 354.05", USD: "待確認" }, status: "self", proof: { zh: "Air France 電子票（敏感資訊不公開）與付款證明", en: "Air France e-ticket (sensitive details kept private) and payment proof" }, notes: { zh: "AF1068｜CDG T2E 12:50 → MAN T2 13:25；Business Standard、SkyPriority、2 件托運行李（每件 32kg）。", en: "AF1068 · CDG T2E 12:50 → MAN T2 13:25; Business Standard, SkyPriority, and 2 checked bags up to 32kg each." } },
     { item: { zh: "倫敦住宿", en: "London accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "首選 The Langham London，備選 The Clermont Charing Cross。", en: "The Langham London is the first choice, with The Clermont Charing Cross as the alternative." } },
     { item: { zh: "巴黎住宿", en: "Paris accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "首選 Pullman Paris Tour Eiffel。", en: "Pullman Paris Tour Eiffel is the current first choice." } },
     { item: { zh: "倫敦 / 巴黎景點與遊船", en: "London / Paris attractions and cruise" }, amount: { zh: "依實際選擇", en: "Depends on selected stops" }, amounts: { TWD: "依實際選擇", GBP: "Depends", EUR: "Depends", USD: "Depends" }, status: "self", proof: { zh: "線上購票收據", en: "Online ticket receipts" }, notes: { zh: "目前確定有免費散步景點，也保留 Eiffel Tower、Louvre 與塞納河遊船的彈性。", en: "The route includes free city walks, with Eiffel Tower, the Louvre, and a Seine cruise left flexible." } }
@@ -518,6 +518,9 @@ const tripData = {
     ["Two Together Railcard", "https://www.nationalrail.co.uk/tickets-railcards-offers/promotions/two-together-railcard/"],
     ["Eurostar", "https://www.eurostar.com/"],
     ["Air France", "https://wwws.airfrance.com/"],
+    ["Air France SkyPriority", "https://wwws.airfrance.fr/en/information/aeroport/skypriority"],
+    ["Air France lounges", "https://wwws.airfrance.fr/en/information/prepare/salons"],
+    ["Air France baggage information", "https://wwws.airfrance.fr/en/information/bagages"],
     ["TfL adult fares PDF", "https://content.tfl.gov.uk/adult-fares.pdf"],
     ["TfL fare capping", "https://tfl.gov.uk/fares/find-fares/capping"],
     ["Metrolink zones", "https://tfgm.com/tickets-and-passes/fare-zones/tram"],
@@ -1173,7 +1176,7 @@ function renderPaperCard(paper) {
       <p class="paper-coauthor"><strong>${state.lang !== "zh" ? "Coauthor" : "共同作者"}</strong> ${escapeHtml(t(paper.coauthor))}</p>
       <div class="paper-prep-block">
         <div class="paper-prep-title">${state.lang !== "zh" ? "Preparation checklist" : "準備清單"}</div>
-        ${renderList(paper.checklist[state.lang], "plain-list")}
+        ${renderList(paper.checklist[state.lang] || paper.checklist.en || paper.checklist.zh, "plain-list")}
       </div>
       <div class="paper-status-row">
         ${paper.placeholders.map((item) => `
@@ -1871,7 +1874,7 @@ function renderHome() {
             <a class="page-card" href="${page.href}">
               <span>${String(index + 1).padStart(2, "0")}</span>
               <strong>${escapeHtml(t(page.label))}</strong>
-              <p>${escapeHtml(pageDescriptions[page.id][state.lang])}</p>
+              <p>${escapeHtml(t(pageDescriptions[page.id]))}</p>
             </a>
           `).join("")}
         </div>
@@ -2140,11 +2143,22 @@ function renderFlights() {
             ], "flight-meta")}
             ${flight.legs.map((leg) => `
               <div class="route">
-                <div><b>${escapeHtml(leg.from)}</b><span>${escapeHtml(leg.time.split(" → ")[0])}<br />${escapeHtml(leg.detail[state.lang])}</span></div>
+                <div><b>${escapeHtml(leg.from)}</b><span>${escapeHtml(leg.time.split(" → ")[0])}<br />${escapeHtml(t(leg.detail))}</span></div>
                 <div class="line">${escapeHtml(leg.flight)}<br />${escapeHtml(leg.duration)}</div>
                 <div><b>${escapeHtml(leg.to)}</b><span>${escapeHtml(leg.time.split(" → ")[1])}</span></div>
               </div>
             `).join("")}
+            ${t(flight.label) === t({ zh: "巴黎回曼城", en: "Paris → Manchester" }) ? `
+              ${renderMetaRow([
+                { label: state.lang !== "zh" ? "Check-in" : "最晚報到", value: "11:50" },
+                { label: state.lang !== "zh" ? "Checked baggage" : "托運行李", value: state.lang !== "zh" ? "2 × 32 kg" : "2 件，每件 32kg" },
+                { label: state.lang !== "zh" ? "Airport" : "出發航廈", value: "CDG Terminal 2E" }
+              ], "flight-meta")}
+              <p class="flight-extra-copy">${state.lang !== "zh"
+                ? "This public version keeps the useful travel details only. Booking reference, ticket number, FOID, QR code, and seat assignment stay in private notes."
+                : "公開頁面只放旅程上真的會用到的資訊。定位編號、票號、證件資訊、QR code 和座位號都留在私人檔案，不放上網。"
+              }</p>
+            ` : ""}
           </article>
         `).join("")}
       </div>
@@ -2159,7 +2173,9 @@ function renderFlights() {
       ${sectionHeading(state.lang !== "zh" ? "Ticket Notes" : "票務備註", state.lang !== "zh" ? "Payment and connection notes" : "票價與銜接備註")}
       <div class="note-grid">
         <article><h3>${state.lang !== "zh" ? "International flight total" : "國際機票"}</h3><p>${money.flight}. ${state.lang !== "zh" ? "Base fare and taxes are already saved in the fare screenshot." : "票面價、稅金和航空公司附加費都已經留在票價明細截圖。"}</p></article>
-        <article><h3>${state.lang !== "zh" ? "Paris to Manchester" : "巴黎回曼徹斯特"}</h3><p>${state.lang !== "zh" ? "Air France Business Standard: EUR 354.05 / NT$12,930, with lounge access and priority handling." : "Air France Business Standard：EUR 354.05 / NT$12,930，含 Lounge、優先安檢和優先登機。"}</p></article>
+        <article><h3>${state.lang !== "zh" ? "Paris to Manchester" : "巴黎回曼徹斯特"}</h3><p>${state.lang !== "zh" ? "AF1068 leaves CDG Terminal 2E at 12:50 and lands at Manchester Terminal 2 at 13:25. Latest check-in shown on the e-ticket is 11:50." : "AF1068 會在 12:50 從戴高樂 2E 起飛，13:25 抵達曼徹斯特 T2。電子機票上列的最晚報到時間是 11:50。"}</p></article>
+        <article><h3>${state.lang !== "zh" ? "Air France Business at CDG" : "戴高樂法航商務艙權益"}</h3><p>${state.lang !== "zh" ? "The e-ticket shows Business + SkyPriority. In practice, this usually means priority check-in, bag drop, security / border shortcuts where available, lounge access on the day, and priority boarding." : "票面上有 Business 和 SkyPriority。實際到機場時，通常可用優先報到 / 托運、機場提供時的優先安檢或邊檢動線、當日可用的法航 Lounge，以及優先登機。"}</p></article>
+        <article><h3>${state.lang !== "zh" ? "Baggage and privacy" : "行李與隱私"}</h3><p>${state.lang !== "zh" ? "The ticket confirms 2 checked bags up to 32 kg each. Booking reference, ticket number, FOID, and other personal identifiers are intentionally kept off the public site." : "電子機票確認這段可托運 2 件行李、每件 32kg。定位號、票號、FOID 和其他個人識別資訊則刻意不放在公開網站上。"}</p></article>
         <article><h3>${state.lang !== "zh" ? "Return reminder" : "回程提醒"}</h3><p>${state.lang !== "zh" ? "Do not skip the MAN-LHR segment. The ticket chain still starts from Manchester." : "不要跳過 MAN-LHR 這一段，整張回程票還是從曼徹斯特開始。"}</p></article>
       </div>
     </section>
