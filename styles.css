@@ -10750,7 +10750,9 @@ main#page-content {
 .snapshot-grid,
 .journey-highlight-grid,
 .day-preview-grid,
+.day-chapter-grid,
 .practical-guide-grid,
+.day-guide-sections,
 .day-guide-list {
   display: grid;
   gap: 18px;
@@ -10885,6 +10887,118 @@ main#page-content {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.day-chapter-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.day-chapter-card {
+  min-width: 0;
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 28px;
+  border: 1px solid rgba(30, 58, 95, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(248, 245, 239, 0.88) 100%),
+    rgba(255, 255, 255, 0.85);
+}
+
+.day-chapter-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.day-chapter-range,
+.day-guide-section-range {
+  display: inline-flex;
+  align-items: center;
+  color: #8e7850;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.day-chapter-head h3,
+.day-guide-section-head h3 {
+  margin: 10px 0 0;
+  color: #22314b;
+  font-size: 28px;
+  line-height: 1.22;
+}
+
+.day-chapter-count {
+  flex: 0 0 auto;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(142, 120, 80, 0.12);
+  color: #6a5838;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.day-chapter-lead,
+.day-guide-section-head p {
+  margin: 0;
+  color: #687284;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.day-chapter-days {
+  display: grid;
+  gap: 10px;
+}
+
+.day-chapter-day {
+  min-width: 0;
+  min-height: 72px;
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(30, 58, 95, 0.08);
+  background: rgba(248, 245, 239, 0.8);
+  color: inherit;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.day-chapter-day span {
+  color: #8e7850;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.day-chapter-day strong {
+  color: #22314b;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.day-chapter-day small {
+  color: #7a808d;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.day-chapter-link {
+  color: #22314b;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .day-story-card {
   min-width: 0;
   display: grid;
@@ -10988,8 +11102,28 @@ main#page-content {
   grid-template-columns: 1fr;
 }
 
+.day-guide-sections {
+  gap: 28px;
+}
+
+.day-guide-section {
+  display: grid;
+  gap: 18px;
+  scroll-margin-top: 130px;
+}
+
+.day-guide-section-head {
+  display: grid;
+  gap: 10px;
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(30, 58, 95, 0.08);
+  background: rgba(248, 245, 239, 0.5);
+}
+
 .day-guide-card {
   min-width: 0;
+  scroll-margin-top: 130px;
 }
 
 .day-guide-panel {
@@ -11119,10 +11253,16 @@ main#page-content {
 .day-guide-nav {
   display: flex;
   gap: 10px;
-  margin: 6px 0 4px;
+  margin: 6px 0 8px;
+  padding: 8px 0 6px;
   padding-bottom: 4px;
   overflow-x: auto;
   scrollbar-width: none;
+  position: sticky;
+  top: 88px;
+  z-index: 8;
+  background: linear-gradient(180deg, rgba(247, 243, 236, 0.96) 0%, rgba(247, 243, 236, 0.86) 78%, rgba(247, 243, 236, 0) 100%);
+  backdrop-filter: blur(14px);
 }
 
 .day-guide-nav::-webkit-scrollbar {
@@ -11159,8 +11299,21 @@ main#page-content {
   line-height: 1.45;
 }
 
+.day-guide-link.active {
+  border-color: rgba(142, 120, 80, 0.28);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 36px rgba(31, 41, 51, 0.08);
+}
+
+.day-guide-link.active span,
+.day-guide-link.active strong {
+  color: #22314b;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .day-story-card:hover,
+  .day-chapter-card:hover,
+  .day-chapter-day:hover,
   .highlight-story-card:hover,
   .snapshot-card:hover,
   .journey-route-card:hover,
@@ -11173,7 +11326,8 @@ main#page-content {
   .journey-route-grid,
   .handbook-overview-grid,
   .snapshot-grid,
-  .day-preview-grid {
+  .day-preview-grid,
+  .day-chapter-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -11196,6 +11350,7 @@ main#page-content {
   .snapshot-grid,
   .journey-highlight-grid,
   .day-preview-grid,
+  .day-chapter-grid,
   .practical-guide-grid,
   .guide-meta-row,
   .day-moment-grid,
@@ -11206,7 +11361,9 @@ main#page-content {
   .snapshot-card,
   .journey-route-card,
   .highlight-story-card,
+  .day-chapter-card,
   .day-story-card,
+  .day-guide-section-head,
   .practical-guide-card summary,
   .practical-guide-body,
   .day-guide-summary,
@@ -11221,12 +11378,20 @@ main#page-content {
 
   .highlight-story-card h3,
   .journey-route-card h3,
+  .day-chapter-head h3,
   .day-story-card h3,
+  .day-guide-section-head h3,
   .day-guide-card h3 {
     font-size: 24px;
   }
 
+  .day-chapter-head {
+    flex-direction: column;
+  }
+
   .day-guide-intro,
+  .day-chapter-lead,
+  .day-guide-section-head p,
   .day-story-card p,
   .practical-summary,
   .highlight-story-card p,
@@ -11237,5 +11402,9 @@ main#page-content {
   .day-guide-link {
     min-width: 96px;
     min-height: 52px;
+  }
+
+  .day-guide-nav {
+    top: 74px;
   }
 }

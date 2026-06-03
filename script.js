@@ -1410,6 +1410,44 @@ const dailyGuides = [
   }
 ];
 
+const dailyGuideSections = [
+  {
+    id: "chapter-arrival",
+    range: "6/29–6/30",
+    title: { zh: "抵達歐洲與進入會議前夕", en: "Arrival in Europe and the eve of the conference" },
+    lead: { zh: "這一段把長途飛行、法蘭克福轉機散步和曼徹斯特落腳接在一起，像是旅程的開場。", en: "This chapter connects the long-haul flight, the Frankfurt layover walk, and the first evening in Manchester." },
+    dayIds: ["day-1"]
+  },
+  {
+    id: "chapter-manchester",
+    range: "7/1–7/3",
+    title: { zh: "曼徹斯特會議主段", en: "The Manchester conference chapter" },
+    lead: { zh: "AIB 2026 是整趟旅程的核心，這幾天圍繞著會議節奏、發表與交流慢慢展開。", en: "AIB 2026 stays at the center of the route, with these days shaped by sessions, presentations, and conference conversations." },
+    dayIds: ["day-2", "day-3", "day-4"]
+  },
+  {
+    id: "chapter-london",
+    range: "7/4–7/6",
+    title: { zh: "倫敦城市段", en: "The London city chapter" },
+    lead: { zh: "離開曼徹斯特之後，旅程回到城市漫步、百貨與街區節奏，讓倫敦慢慢展開。", en: "After Manchester, the route returns to city walks, department stores, and an easier London rhythm." },
+    dayIds: ["day-5", "day-6", "day-7"]
+  },
+  {
+    id: "chapter-paris",
+    range: "7/7–7/10",
+    title: { zh: "巴黎段與旅行收尾", en: "Paris and the softer travel finish" },
+    lead: { zh: "從 Eurostar 進巴黎之後，把博物館、河岸與採買留在最後幾天，讓旅程慢慢收束。", en: "Once Eurostar reaches Paris, the final days shift toward museums, river walks, and a softer close." },
+    dayIds: ["day-8", "day-9", "day-10", "day-11"]
+  },
+  {
+    id: "chapter-return",
+    range: "7/11–7/12",
+    title: { zh: "返程串接", en: "The route home" },
+    lead: { zh: "最後一天不拼景點，而是把巴黎、曼徹斯特與希斯洛的接駁走順。", en: "The final chapter is about clean connections rather than one last round of sightseeing." },
+    dayIds: ["day-12"]
+  }
+];
+
 const conferenceAlerts = [
   {
     tag: "AIB",
@@ -2237,11 +2275,11 @@ function renderHome() {
       <article class="section-card handbook-days-card">
         ${sectionHeading(
           state.lang !== "zh" ? "Day-by-Day Preview" : "每日行程預覽",
-          state.lang !== "zh" ? "Read the trip day by day before opening the longer version." : "先看每天的題眼，再決定想先打開哪一天。",
-          state.lang !== "zh" ? "Each day keeps its own city, pace, and mood. Move into the full itinerary page when you want the longer reading." : "每一天都有自己的城市、主題與節奏；想看更完整的版本，再進每日行程頁細讀。"
+          state.lang !== "zh" ? "Read the route chapter by chapter before moving into the full day guide." : "先把旅程讀成幾個章節，再往下進到每天的細節。",
+          state.lang !== "zh" ? "Instead of twelve flat cards, the route is grouped the way the trip will actually feel on the road: arrival, conference, London, Paris, and the way home." : "這一段不再只是十二張平鋪的卡，而是照旅途中真正會感受到的節奏來分：抵達、會議主段、倫敦、巴黎，最後再接回程。"
         )}
-        <div class="day-preview-grid">
-          ${dailyGuides.map(renderDayPreviewCard).join("")}
+        <div class="day-chapter-grid">
+          ${dailyGuideSections.map(renderDayChapterPreview).join("")}
         </div>
       </article>
     </section>
@@ -2323,6 +2361,36 @@ function renderDayPreviewCard(day) {
       </div>
       <div class="day-story-link">${state.lang !== "zh" ? "Open the full day" : "展開當日詳細行程"}</div>
     </a>
+  `;
+}
+
+function getDayGuideById(id) {
+  return dailyGuides.find((day) => day.id === id) || null;
+}
+
+function renderDayChapterPreview(section) {
+  const days = section.dayIds.map(getDayGuideById).filter(Boolean);
+  return `
+    <article class="day-chapter-card">
+      <div class="day-chapter-head">
+        <div>
+          <span class="day-chapter-range">${escapeHtml(section.range)}</span>
+          <h3>${escapeHtml(t(section.title))}</h3>
+        </div>
+        <span class="day-chapter-count">${state.lang !== "zh" ? `${days.length} days` : `${days.length} 天`}</span>
+      </div>
+      <p class="day-chapter-lead">${escapeHtml(t(section.lead))}</p>
+      <div class="day-chapter-days">
+        ${days.map((day) => `
+          <a class="day-chapter-day" href="./itinerary.html#${escapeHtml(day.id)}">
+            <span>${escapeHtml(day.day)}</span>
+            <strong>${escapeHtml(t(day.theme))}</strong>
+            <small>${escapeHtml(day.date)} · ${escapeHtml(t(day.city))}</small>
+          </a>
+        `).join("")}
+      </div>
+      <a class="day-chapter-link" href="./itinerary.html#${escapeHtml(section.id)}">${state.lang !== "zh" ? "Read this chapter" : "看這一段旅程"}</a>
+    </article>
   `;
 }
 
@@ -2433,11 +2501,11 @@ function renderDayGuideNav() {
   `;
 }
 
-function renderDayGuideCard(day, index) {
+function renderDayGuideCard(day, index, openByDefault = false) {
   const meta = dayGuideMeta(day);
   return `
     <article class="day-guide-card" id="${escapeHtml(day.id)}">
-      <details class="day-guide-panel"${index === 0 ? " open" : ""}>
+      <details class="day-guide-panel"${openByDefault ? " open" : ""}>
         <summary class="day-guide-summary">
           <div class="day-guide-header">
             <div>
@@ -2497,6 +2565,24 @@ function renderDayGuideCard(day, index) {
         </div>
       </details>
     </article>
+  `;
+}
+
+function renderDayGuideSection(section, sectionIndex) {
+  const days = section.dayIds.map(getDayGuideById).filter(Boolean);
+  return `
+    <section class="day-guide-section" id="${escapeHtml(section.id)}">
+      <div class="day-guide-section-head">
+        <div class="day-guide-section-copy">
+          <span class="day-guide-section-range">${escapeHtml(section.range)}</span>
+          <h3>${escapeHtml(t(section.title))}</h3>
+          <p>${escapeHtml(t(section.lead))}</p>
+        </div>
+      </div>
+      <div class="day-guide-list">
+        ${days.map((day, index) => renderDayGuideCard(day, index, sectionIndex === 0 && index === 0)).join("")}
+      </div>
+    </section>
   `;
 }
 
@@ -2901,17 +2987,17 @@ function renderItinerary() {
       <article class="section-card handbook-itinerary-card">
         <div class="section-label">${state.lang !== "zh" ? "Day by Day" : "每日旅程"}</div>
         <h2>${state.lang !== "zh" ? "Daily travel guide" : "每日旅行指南"}</h2>
-        <p class="lead">${state.lang !== "zh" ? "Each day reads as a small travel chapter, with the route, mood, and practical details kept together so the page still feels useful when you are actually on the move." : "每一天都整理成一張旅程章節，讓路線、節奏和實用資訊留在同一個位置，旅途中打開來看也不會太亂。"}</p>
+        <p class="lead">${state.lang !== "zh" ? "This page is arranged the way the route unfolds in real time: first the arrival, then the conference days, then London, then Paris, and finally the way home. Open one day when you need detail, or stay at the chapter level when you only need the next move." : "這一頁照旅程真正展開的順序來讀：先抵達、再進會議主段，接著是倫敦、巴黎，最後才是返程。旅途中如果只是想確認下一段，可以停在章節層；要看細節，再打開當天就好。"}</p>
         <div class="itinerary-highlights">
           ${[
             [{ zh: "旅程主軸", en: "Travel arc" }, { zh: "法蘭克福轉機 → 曼徹斯特會議 → 倫敦 → 巴黎", en: "Frankfurt transit → Manchester conference → London → Paris" }],
             [{ zh: "核心目的", en: "Core purpose" }, { zh: "AIB 2026 發表與歐洲旅行", en: "AIB 2026 presentations with a Europe route" }],
-            [{ zh: "閱讀方式", en: "Reading style" }, { zh: "一天一張旅行指南", en: "One guide card per day" }]
+            [{ zh: "閱讀方式", en: "Reading style" }, { zh: "先看章節，再展開每天", en: "Read by chapter, then open the day you need" }]
           ].map(([label, value]) => renderMiniHighlightCard(label, value)).join("")}
         </div>
         ${renderDayGuideNav()}
-        <div class="day-guide-list">
-          ${dailyGuides.map(renderDayGuideCard).join("")}
+        <div class="day-guide-sections">
+          ${dailyGuideSections.map(renderDayGuideSection).join("")}
         </div>
       </article>
     </section>
@@ -3465,6 +3551,7 @@ function renderApp() {
   wireDesktopAnchors();
   wireBackToTop();
   wireHashDrivenSections();
+  wireDayGuideNav();
   updateProgress();
   applySecondaryLocaleText();
 }
@@ -3623,6 +3710,54 @@ function wireHashDrivenSections() {
   window.addEventListener("hashchange", () => {
     openHashTarget(window.location.hash);
   });
+}
+
+function wireDayGuideNav() {
+  const links = [...document.querySelectorAll(".day-guide-link")];
+  if (!links.length) return;
+
+  const setActive = (id) => {
+    links.forEach((link) => {
+      const active = link.getAttribute("href") === `#${id}`;
+      link.classList.toggle("active", active);
+      if (active) link.setAttribute("aria-current", "true");
+      else link.removeAttribute("aria-current");
+    });
+  };
+
+  links.forEach((link) => {
+    if (link.dataset.bound) return;
+    link.dataset.bound = "true";
+    link.addEventListener("click", () => {
+      const id = link.getAttribute("href")?.replace(/^#/, "");
+      if (id) setActive(id);
+    });
+  });
+
+  const sections = links
+    .map((link) => {
+      const targetId = link.getAttribute("href")?.replace(/^#/, "");
+      return targetId ? document.getElementById(targetId) : null;
+    })
+    .filter(Boolean);
+
+  const hashId = window.location.hash.replace(/^#/, "");
+  if (hashId && document.getElementById(hashId)) setActive(hashId);
+  else if (sections[0]?.id) setActive(sections[0].id);
+
+  if (!sections.length || typeof IntersectionObserver === "undefined") return;
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (visible?.target?.id) setActive(visible.target.id);
+  }, {
+    rootMargin: "-22% 0px -58% 0px",
+    threshold: [0.15, 0.35, 0.6]
+  });
+
+  sections.forEach((section) => observer.observe(section));
 }
 
 window.addEventListener("scroll", () => {
