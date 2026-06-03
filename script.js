@@ -1,6 +1,7 @@
 const pages = [
   { id: "home", label: { zh: "總覽", en: "Overview" }, href: "./index.html" },
   { id: "conference", label: { zh: "會議", en: "Conference" }, href: "./conference.html" },
+  { id: "flights", label: { zh: "機票", en: "Flights" }, href: "./flights.html" },
   { id: "transport", label: { zh: "交通", en: "Transport" }, href: "./transport.html" },
   { id: "stay", label: { zh: "住宿", en: "Stay" }, href: "./stay.html" },
   { id: "itinerary", label: { zh: "行程", en: "Itinerary" }, href: "./itinerary.html" },
@@ -12,7 +13,7 @@ const pages = [
   { id: "documents", label: { zh: "清單", en: "Checklist" }, href: "./links.html" }
 ];
 
-const primaryNavPageIds = ["home", "conference", "stay", "transport", "budget", "documents"];
+const primaryNavPageIds = ["home", "conference", "flights", "stay", "transport", "budget", "documents"];
 
 const primaryNavLabels = {};
 
@@ -131,8 +132,13 @@ const tripData = {
     },
     transport: {
       kicker: { zh: "交通規劃", en: "Transport" },
-      title: { zh: "航班、火車與市內交通", en: "Flights, Trains & Local Transit" },
-      lead: { zh: "先飛到曼徹斯特，後面接倫敦、巴黎，再從巴黎飛回曼徹斯特接回程。", en: "Outbound route is TPE-FRA-MAN, followed by Manchester to London, London to Paris, and a Paris flight back to Manchester before heading home." }
+      title: { zh: "火車與市內交通", en: "Trains & Local Transit" },
+      lead: { zh: "這頁集中看城市之間的火車移動，以及倫敦、曼徹斯特、巴黎市內怎麼移動。", en: "This page keeps rail movement between cities together with local transit in London, Manchester, and Paris." }
+    },
+    flights: {
+      kicker: { zh: "航班安排", en: "Flights" },
+      title: { zh: "機票與轉機", en: "Flight Plan & Transfers" },
+      lead: { zh: "去程、回程和巴黎回曼徹斯特的航段都放在這裡，轉機也一起整理。", en: "Outbound, return, and the Paris-to-Manchester segment live here, together with the transfer notes." }
     },
     stay: {
       kicker: { zh: "住宿安排", en: "Accommodation" },
@@ -670,6 +676,7 @@ const shoppingData = {
 const sectionNav = {
   home: [["overview", { zh: "旅程總覽", en: "Travel Overview" }], ["timeline", { zh: "關鍵時間軸", en: "Key Timeline" }], ["conference", { zh: "會議資訊", en: "Conference Details" }], ["hotel", { zh: "住宿安排", en: "Hotel & Stay" }], ["transport", { zh: "交通規劃", en: "Transportation Plan" }], ["budget", { zh: "費用備註", en: "Funding & Expense Notes" }], ["checklist", { zh: "行前清單", en: "Pre-departure Checklist" }]],
   conference: [["accepted", { zh: "會議狀態", en: "Status" }], ["papers", { zh: "論文", en: "Papers" }], ["alerts", { zh: "提醒", en: "Alerts" }], ["checklist", { zh: "文件", en: "Checklist" }]],
+  flights: [["overview", { zh: "航班總覽", en: "Overview" }], ["segments", { zh: "航段", en: "Segments" }], ["transfer", { zh: "轉機", en: "Transfers" }], ["notes", { zh: "票務備註", en: "Notes" }]],
   transport: [["flights", { zh: "航班", en: "Flights" }], ["transfer", { zh: "轉機", en: "Transfers" }], ["train", { zh: "火車", en: "Train" }], ["local", { zh: "市內交通", en: "Local transit" }]],
   stay: [["overview", { zh: "住宿總覽", en: "Overview" }], ["decision", { zh: "後段住宿", en: "Later stays" }], ["areas", { zh: "住宿建議", en: "Useful picks" }]],
   itinerary: [["timeline", { zh: "時間軸", en: "Timeline" }], ["tickets", { zh: "景點費用", en: "Admission" }], ["return", { zh: "回程提醒", en: "Return" }]],
@@ -686,6 +693,11 @@ const readingGuides = {
     { zh: "兩篇 AIB 發表已確認，頁面只放題名與簡介。", en: "Two AIB presentations are confirmed; only titles and short summaries are shown." },
     { zh: "兩場發表的正式 session 時間都已補上。", en: "The formal session times for both presentations are now added." },
     { zh: "接受函和邀請函主要是拿來證明會議發表和出國目的。", en: "Acceptance and invitation letters support the conference and travel purpose." }
+  ],
+  flights: [
+    { zh: "國際線和歐洲段都集中在這頁，查機票時比較不用來回翻。", en: "Long-haul and Europe flight segments are grouped here to keep the ticket view simple." },
+    { zh: "法蘭克福是長轉機，希斯洛則要抓緊節奏。", en: "Frankfurt is the long layover; Heathrow is the tighter one." },
+    { zh: "巴黎回程先飛回曼徹斯特，再接 BA 和華航返台。", en: "The Paris segment returns to Manchester before the BA and China Airlines journey home." }
   ],
   transport: [
     { zh: "國際航班已確認，回程從曼徹斯特起飛。", en: "International flights are confirmed; the return journey begins in Manchester." },
@@ -1654,7 +1666,8 @@ function renderHome() {
 
 const pageDescriptions = {
   conference: { zh: "會議日期、註冊狀態與現場節奏。", en: "Conference dates, registration status, and event rhythm." },
-  transport: { zh: "航班、轉機、火車與市內交通。", en: "Flights, transfers, trains, and local transit." },
+  flights: { zh: "去程、回程、歐洲段與轉機整理。", en: "Outbound, return, Europe segment, and transfer notes." },
+  transport: { zh: "火車、Eurostar 與市內交通。", en: "Train, Eurostar, and local transit." },
   stay: { zh: "已訂住宿、待定住宿與區域決策。", en: "Booked stay, pending stay, and area decisions." },
   itinerary: { zh: "時間軸行程、景點費用與回程提醒。", en: "Timeline itinerary, attraction costs, and return notes." },
   shopping: { zh: "茶葉、餅乾、果醬與超市購物清單。", en: "Tea, biscuits, preserves, and useful shopping notes." },
@@ -1798,29 +1811,21 @@ function renderTransport() {
     ${renderQuickNav("transport")}
     ${renderReadingGuide("transport")}
     <section class="section compact-section" id="flights">
-      ${sectionHeading(state.lang === "en" ? "Flights" : "航班", state.lang === "en" ? "Flight details" : "航班與轉機")}
-      <div class="flight-grid">
-        ${tripData.flights.map((flight) => `
-          <article class="flight-card">
-            <div class="flight-head">${statusChip("confirmed")}<strong>${t(flight.label)} · ${flight.date}</strong></div>
-            ${renderMetaRow([
-              { label: state.lang === "en" ? "Route" : "路線", value: flight.legs.map((leg) => `${leg.from} → ${leg.to}`).join(" · ") },
-              { label: state.lang === "en" ? "Flights" : "航班", value: flight.legs.map((leg) => leg.flight).join(" / ") },
-              { label: state.lang === "en" ? "Key note" : "重點", value: flight.note ? t(flight.note) : (state.lang === "en" ? (flight.label.en === "Outbound" ? "Frankfurt transfer" : "Starts from Manchester") : (flight.label.zh === "去程" ? "法蘭克福轉機" : "回程從曼徹斯特起飛")) }
-            ], "flight-meta")}
-            ${flight.legs.map((leg) => `
-              <div class="route">
-                <div><b>${escapeHtml(leg.from)}</b><span>${escapeHtml(leg.time.split(" → ")[0])}<br />${escapeHtml(leg.detail[state.lang])}</span></div>
-                <div class="line">${escapeHtml(leg.flight)}<br />${escapeHtml(leg.duration)}</div>
-                <div><b>${escapeHtml(leg.to)}</b><span>${escapeHtml(leg.time.split(" → ")[1])}</span></div>
-              </div>
-            `).join("")}
-          </article>
-        `).join("")}
-      </div>
-      <div class="note-grid">
-        <article><h3>${state.lang === "en" ? "Flight reimbursement" : "機票報帳"}</h3><p>${money.flight}. ${state.lang === "en" ? "Base fare and taxes are documented in the fare screenshot." : "票面價與稅金 / 航空公司附加費另列在票價明細截圖。"}</p></article>
-        <article><h3>${state.lang === "en" ? "Transfer reminder" : "轉機提醒"}</h3><p>${state.lang === "en" ? "The return ticket starts from MAN. Do not skip the MAN-LHR segment even if you are staying in London before departure." : "回程機票從 MAN 開始；即使最後幾天在倫敦，也不要跳過 MAN-LHR 這一段。"}</p></article>
+      ${sectionHeading(state.lang === "en" ? "Flights" : "航班", state.lang === "en" ? "Flight page moved out" : "航班已獨立成頁", state.lang === "en" ? "Open the dedicated flight page for ticket details, transfer notes, and the Paris-Manchester segment." : "機票、轉機與巴黎回曼徹斯特的航段已獨立成頁，這裡先留交通總覽。")}
+      <div class="summary-grid two">
+        <article class="summary-card">
+          ${statusChip("confirmed")}
+          <h3>${state.lang === "en" ? "Dedicated flight page" : "獨立機票頁"}</h3>
+          <strong>${state.lang === "en" ? "Outbound, return, and Europe segment" : "去程、回程與歐洲段一起看"}</strong>
+          <p>${state.lang === "en" ? "If you want to check flight numbers, terminals, and transfer rhythm, that page is now the cleanest place." : "如果要核對航班號碼、航廈和轉機節奏，直接看機票頁會最清楚。"}</p>
+          ${externalLink("./flights.html", state.lang === "en" ? "Open flight page" : "前往機票頁", "text-link-button")}
+        </article>
+        <article class="summary-card">
+          ${statusChip("alert")}
+          <h3>${state.lang === "en" ? "Keep the route in mind" : "路線先記住"}</h3>
+          <strong>${state.lang === "en" ? "TPE → FRA → MAN · CDG → MAN → LHR → TPE" : "TPE → FRA → MAN · CDG → MAN → LHR → TPE"}</strong>
+          <p>${state.lang === "en" ? "The return still starts from Manchester, even though the final city days are in London and Paris." : "雖然後段會在倫敦和巴黎停留，但回程機票仍然是從曼徹斯特開始接回台灣。"}</p>
+        </article>
       </div>
     </section>
     <section class="section compact-section" id="transfer">
@@ -1858,7 +1863,7 @@ function renderTransport() {
       </div>
     </section>
     <section class="section compact-section" id="local">
-      ${sectionHeading(state.lang === "en" ? "Getting Around" : "市內交通", state.lang === "en" ? "London & Manchester local transport" : "倫敦與曼徹斯特市內交通")}
+      ${sectionHeading(state.lang === "en" ? "Getting Around" : "市內交通", state.lang === "en" ? "London and Manchester local transport" : "倫敦與曼徹斯特市內交通")}
       <div class="summary-grid two">
         ${tripData.localTransit.map((city) => `
           <article class="summary-card">
@@ -1880,6 +1885,67 @@ function renderTransport() {
       </div>
     </section>
   `;
+}
+
+function renderFlights() {
+  return renderDesktopPageShell("flights", {
+    label: { zh: "Flights", en: "Flights" },
+    title: { zh: "機票頁面", en: "Flight page" },
+    note: { zh: "把去程、回程、巴黎回曼徹斯特和轉機節奏放在同一頁。", en: "Keep outbound, return, Paris-to-Manchester, and the transfer rhythm in one place." },
+    meta: [
+      { label: { zh: "主路線", en: "Main route" }, value: "TPE → FRA → MAN" },
+      { label: { zh: "回程", en: "Return" }, value: "CDG → MAN → LHR → TPE" },
+      { label: { zh: "長轉機", en: "Long layover" }, value: { zh: "法蘭克福", en: "Frankfurt" } },
+      { label: { zh: "票價", en: "Flight total" }, value: money.flight }
+    ]
+  }, `
+    ${renderQuickNav("flights")}
+    ${renderReadingGuide("flights")}
+    <section class="section compact-section" id="overview">
+      ${sectionHeading(state.lang === "en" ? "Flight Overview" : "航班總覽", state.lang === "en" ? "The whole route in one view" : "整段航班先看一眼", state.lang === "en" ? "This page keeps the long-haul tickets and the Europe segment together so the route is easier to follow." : "把國際段和歐洲段放在一起看，路線會比較直覺。")}
+      <div class="summary-grid three desktop-flight-grid">
+        <article class="summary-card">${statusChip("confirmed")}<h3>${state.lang === "en" ? "Outbound" : "去程"}</h3><strong>TPE → FRA → MAN</strong><p>${state.lang === "en" ? "CI 61, then LH 946 after the Frankfurt layover." : "先搭 CI 61 到法蘭克福，再接 LH 946 進曼徹斯特。"}</p></article>
+        <article class="summary-card">${statusChip("self")}<h3>${state.lang === "en" ? "Europe segment" : "歐洲段"}</h3><strong>CDG → MAN</strong><p>${state.lang === "en" ? "Air France Business Standard on 11 July, then continue to the BA/CI chain." : "7/11 法航商務艙從巴黎回曼徹斯特，再接 BA 與華航返台。"}</p></article>
+        <article class="summary-card">${statusChip("confirmed")}<h3>${state.lang === "en" ? "Homebound" : "回程"}</h3><strong>MAN → LHR → TPE</strong><p>${state.lang === "en" ? "Return still starts from Manchester, even if the final nights are elsewhere." : "即使後面在倫敦、巴黎停留，回程還是從曼徹斯特開始。"}</p></article>
+      </div>
+    </section>
+    <section class="section compact-section" id="segments">
+      ${sectionHeading(state.lang === "en" ? "Flight Segments" : "航段", state.lang === "en" ? "Ticket details and timing" : "每段機票與時間")}
+      <div class="flight-grid">
+        ${tripData.flights.map((flight) => `
+          <article class="flight-card">
+            <div class="flight-head">${statusChip("confirmed")}<strong>${t(flight.label)} · ${flight.date}</strong></div>
+            ${renderMetaRow([
+              { label: state.lang === "en" ? "Route" : "路線", value: flight.legs.map((leg) => `${leg.from} → ${leg.to}`).join(" · ") },
+              { label: state.lang === "en" ? "Flights" : "航班", value: flight.legs.map((leg) => leg.flight).join(" / ") },
+              { label: state.lang === "en" ? "Key note" : "重點", value: flight.note ? t(flight.note) : (state.lang === "en" ? (flight.label.en === "Outbound" ? "Frankfurt transfer" : "Starts from Manchester") : (flight.label.zh === "去程" ? "法蘭克福轉機" : "回程從曼徹斯特起飛")) }
+            ], "flight-meta")}
+            ${flight.legs.map((leg) => `
+              <div class="route">
+                <div><b>${escapeHtml(leg.from)}</b><span>${escapeHtml(leg.time.split(" → ")[0])}<br />${escapeHtml(leg.detail[state.lang])}</span></div>
+                <div class="line">${escapeHtml(leg.flight)}<br />${escapeHtml(leg.duration)}</div>
+                <div><b>${escapeHtml(leg.to)}</b><span>${escapeHtml(leg.time.split(" → ")[1])}</span></div>
+              </div>
+            `).join("")}
+          </article>
+        `).join("")}
+      </div>
+    </section>
+    <section class="section compact-section" id="transfer">
+      ${sectionHeading(state.lang === "en" ? "Transfers" : "轉機", state.lang === "en" ? "Frankfurt and Heathrow notes" : "法蘭克福與希斯洛提醒")}
+      <div class="transfer-grid">
+        ${tripData.transfers.map(renderTransferCard).join("")}
+      </div>
+    </section>
+    <section class="section compact-section" id="notes">
+      ${sectionHeading(state.lang === "en" ? "Ticket Notes" : "票務備註", state.lang === "en" ? "Payment and connection notes" : "票價與銜接備註")}
+      <div class="note-grid">
+        <article><h3>${state.lang === "en" ? "International flight total" : "國際機票"}</h3><p>${money.flight}. ${state.lang === "en" ? "Base fare and taxes are already saved in the fare screenshot." : "票面價、稅金和航空公司附加費都已經留在票價明細截圖。"}</p></article>
+        <article><h3>${state.lang === "en" ? "Paris to Manchester" : "巴黎回曼徹斯特"}</h3><p>${state.lang === "en" ? "Air France Business Standard: EUR 354.05 / NT$12,930, with lounge access and priority handling." : "Air France Business Standard：EUR 354.05 / NT$12,930，含 Lounge、優先安檢和優先登機。"}</p></article>
+        <article><h3>${state.lang === "en" ? "Return reminder" : "回程提醒"}</h3><p>${state.lang === "en" ? "Do not skip the MAN-LHR segment. The ticket chain still starts from Manchester." : "不要跳過 MAN-LHR 這一段，整張回程票還是從曼徹斯特開始。"}</p></article>
+      </div>
+    </section>
+  `);
 }
 
 function renderStay() {
@@ -2508,6 +2574,7 @@ function renderFirstTime() {
 const renderers = {
   home: renderHome,
   conference: renderConference,
+  flights: renderFlights,
   transport: renderTransport,
   stay: renderStay,
   itinerary: renderItinerary,
