@@ -427,16 +427,16 @@ const tripData = {
     }
   ],
   itinerary: [
-    { date: "6/29-6/30", city: { zh: "Taipei → Frankfurt → Manchester", en: "Taipei → Frankfurt → Manchester" }, kind: "travel", title: { zh: "出發、法蘭克福轉機與抵達曼徹斯特", en: "Departure, Frankfurt stop, and arrival in Manchester" }, status: "confirmed", must: ["CI61｜TPE 22:20 → FRA 06:50(+1)", "法蘭克福轉機散步：羅馬廣場 → 美因河 → MainNizza 午餐 → 歐元符號", "LH946｜FRA 16:20 → MAN 17:10", "入住曼徹斯特"], optional: ["如果時間順，可以在河邊多待一下", "抵達後輕鬆吃晚餐", "補水、整理文件、調時差"], tickets: ["法蘭克福散步：景點免費；午餐依實際消費"], notes: ["法蘭克福是長轉機，這段可以當成城市散步小停留，最後再回機場搭機。"] },
-    { date: "6/30-7/3", city: { zh: "Manchester", en: "Manchester" }, kind: "conference", title: { zh: "AIB 2026 主會議", en: "AIB 2026 conference" }, status: "confirmed", must: ["AIB Conference", "Presentation", "Networking"], optional: ["空檔回飯店整理簡報", "附近簡單晚餐"], tickets: ["景點門票：GBP 0；以會議活動為主"], notes: ["Competitive 與 Interactive 發表時段都已確認。"] },
-    { date: "7/4", city: { zh: "Manchester → London", en: "Manchester → London" }, kind: "travel", title: { zh: "轉往倫敦", en: "Move to London" }, status: "book", must: ["Avanti West Coast", "Manchester → London", "約 2 小時 10 分"], optional: ["抵達後 Big Ben", "Buckingham Palace", "St James's Park"], tickets: ["火車票待訂", "地標散步：免費"], notes: ["倫敦住宿先看 The Langham London，其次 The Clermont Charing Cross。"] },
-    { date: "7/5", city: { zh: "London", en: "London" }, kind: "free", title: { zh: "倫敦 Day 2", en: "London Day 2" }, status: "pending", must: ["Harrods", "Bond Street"], optional: ["Chanel", "Dior", "Louis Vuitton", "YSL"], tickets: ["百貨與精品街散步：免費"], notes: ["這天以精品購物與市區移動為主。"] },
-    { date: "7/6", city: { zh: "London", en: "London" }, kind: "free", title: { zh: "倫敦 Day 3", en: "London Day 3" }, status: "pending", must: ["Covent Garden", "Piccadilly Circus"], optional: ["自由活動"], tickets: ["街區散步：免費"], notes: ["可保留彈性，補逛想重訪的店或景點。"] },
-    { date: "7/7", city: { zh: "London → Paris", en: "London → Paris" }, kind: "travel", title: { zh: "Eurostar 前往巴黎", en: "Eurostar to Paris" }, status: "book", must: ["Eurostar", "約 2 小時 20 分", "市中心直達市中心"], optional: ["抵達後 Eiffel Tower", "夜景"], tickets: ["Eurostar 票待訂", "艾菲爾鐵塔票價待查"], notes: ["巴黎住宿首選是 Pullman Paris Tour Eiffel。"] },
-    { date: "7/8", city: { zh: "Paris", en: "Paris" }, kind: "free", title: { zh: "巴黎 Day 2", en: "Paris Day 2" }, status: "pending", must: ["Louvre Museum"], optional: ["周邊散步"], tickets: ["Louvre 票價待查"], notes: ["如果前一晚到得晚，這天節奏可以放慢一點。"] },
-    { date: "7/9", city: { zh: "Paris", en: "Paris" }, kind: "free", title: { zh: "巴黎 Day 3", en: "Paris Day 3" }, status: "pending", must: ["Champs-Elysees", "Arc de Triomphe"], optional: ["精品購物"], tickets: ["街區散步與購物：依實際消費"], notes: ["適合安排精品街區與城市主景。"] },
-    { date: "7/10", city: { zh: "Paris", en: "Paris" }, kind: "free", title: { zh: "巴黎 Day 4", en: "Paris Day 4" }, status: "pending", must: ["Galeries Lafayette Haussmann", "Seine", "塞納河遊船"], optional: ["最後採買"], tickets: ["遊船票價待查"], notes: ["最後一天以輕鬆收尾為主。"] },
-    { date: "7/11-7/12", city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" }, kind: "travel", title: { zh: "回程返台", en: "Return to Taipei" }, status: "confirmed", must: ["Air France Business Standard｜CDG 12:50 → MAN 13:25", "BA1371｜MAN 18:10 → LHR 19:15", "CI82｜LHR 21:10 → TPE 18:05(+1)"], optional: ["巴黎上午只排簡單移動"], tickets: ["AF 歐洲段：約 EUR 354.05 / NT$12,930"], notes: ["Air France 段含商務艙、貴賓室、優先安檢與優先登機。"] }
+    { date: "6/29-6/30", city: { zh: "Taipei → Frankfurt → Manchester", en: "Taipei → Frankfurt → Manchester" }, kind: "travel", theme: { zh: "長程飛行與轉機城市散步", en: "Long-haul departure and a layover city walk" }, title: { zh: "出發、法蘭克福轉機與抵達曼徹斯特", en: "Departure, Frankfurt stop, and arrival in Manchester" }, status: "confirmed", must: ["CI61｜TPE 22:20 → FRA 06:50(+1)", "法蘭克福轉機散步：羅馬廣場 → 美因河 → MainNizza 午餐 → 歐元符號", "LH946｜FRA 16:20 → MAN 17:10", "入住曼徹斯特"], optional: ["如果時間順，可以在河邊多待一下", "抵達後輕鬆吃晚餐", "補水、整理文件、調時差"], tickets: ["法蘭克福散步：景點免費；午餐依實際消費"], notes: ["這一天先用長程飛行把旅程拉開，法蘭克福的長轉機剛好能留一段短短的城市散步，再把節奏慢慢接回曼徹斯特。"] },
+    { date: "6/30-7/3", city: { zh: "Manchester", en: "Manchester" }, kind: "conference", theme: { zh: "會議主段與城市節奏", en: "Conference core and city rhythm" }, title: { zh: "AIB 2026 主會議", en: "AIB 2026 conference" }, status: "confirmed", must: ["AIB Conference", "Presentation", "Networking"], optional: ["空檔回飯店整理簡報", "附近簡單晚餐"], tickets: ["景點門票：GBP 0；以會議活動為主"], notes: ["這幾天的主軸很清楚，就是把發表、交流和每天的會議節奏走穩；城市本身留在空檔裡慢慢看就好。"] },
+    { date: "7/4", city: { zh: "Manchester → London", en: "Manchester → London" }, kind: "travel", theme: { zh: "從會議城市轉進倫敦街景", en: "From the conference city into London streets" }, title: { zh: "轉往倫敦", en: "Move to London" }, status: "book", must: ["Avanti West Coast", "Manchester → London", "約 2 小時 10 分"], optional: ["抵達後 Big Ben", "Buckingham Palace", "St James's Park"], tickets: ["火車票待訂", "地標散步：免費"], notes: ["上午離開曼徹斯特之後，下午就能把倫敦的第一段西敏散步接進來，從城市移動自然過渡到旅遊節奏。"] },
+    { date: "7/5", city: { zh: "London", en: "London" }, kind: "free", theme: { zh: "精品街區與城市光澤", en: "Luxury streets and city polish" }, title: { zh: "倫敦 Day 2", en: "London Day 2" }, status: "pending", must: ["Harrods", "Bond Street"], optional: ["Chanel", "Dior", "Louis Vuitton", "YSL"], tickets: ["百貨與精品街散步：免費"], notes: ["這一天適合把步調放在精品街區與百貨之間，讓逛街、喝咖啡和市區移動自然串成一段輕鬆的城市午後。"] },
+    { date: "7/6", city: { zh: "London", en: "London" }, kind: "free", theme: { zh: "街區漫步與自由留白", en: "Neighbourhood walks and open time" }, title: { zh: "倫敦 Day 3", en: "London Day 3" }, status: "pending", must: ["Covent Garden", "Piccadilly Circus"], optional: ["自由活動"], tickets: ["街區散步：免費"], notes: ["這天更像留給倫敦市中心的一次慢走，先走街區，再把剩下的時間留給臨時想停下來的店、巷子或咖啡館。"] },
+    { date: "7/7", city: { zh: "London → Paris", en: "London → Paris" }, kind: "travel", theme: { zh: "城市切換與巴黎初見", en: "A city shift and first glimpse of Paris" }, title: { zh: "Eurostar 前往巴黎", en: "Eurostar to Paris" }, status: "book", must: ["Eurostar", "約 2 小時 20 分", "市中心直達市中心"], optional: ["抵達後 Eiffel Tower", "夜景"], tickets: ["Eurostar 票待訂", "艾菲爾鐵塔票價待查"], notes: ["從倫敦進巴黎的這一段很適合當成旅程的轉場，白天把城市換掉，晚上就留給鐵塔和第一眼的巴黎夜色。"] },
+    { date: "7/8", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "博物館日與河岸步調", en: "Museum day and a slower riverside pace" }, title: { zh: "巴黎 Day 2", en: "Paris Day 2" }, status: "pending", must: ["Louvre Museum"], optional: ["周邊散步"], tickets: ["Louvre 票價待查"], notes: ["這天把重心放在羅浮宮，前後則留一點散步空間，讓博物館的密度和巴黎街景之間有自然的呼吸。"] },
+    { date: "7/9", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "大道景觀與城市主景", en: "Grand boulevards and signature landmarks" }, title: { zh: "巴黎 Day 3", en: "Paris Day 3" }, status: "pending", must: ["Champs-Elysees", "Arc de Triomphe"], optional: ["精品購物"], tickets: ["街區散步與購物：依實際消費"], notes: ["這一天適合把巴黎最具代表性的城市景觀排在一起，白天看大道與凱旋門，沿途再慢慢收進想逛的精品店。"] },
+    { date: "7/10", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "最後採買與塞納河收尾", en: "Final shopping and a Seine-side close" }, title: { zh: "巴黎 Day 4", en: "Paris Day 4" }, status: "pending", must: ["Galeries Lafayette Haussmann", "Seine", "塞納河遊船"], optional: ["最後採買"], tickets: ["遊船票價待查"], notes: ["最後一天不用排得太滿，白天留給採買，傍晚再把節奏交給塞納河，讓巴黎用比較柔和的方式收尾。"] },
+    { date: "7/11-7/12", city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" }, kind: "travel", theme: { zh: "回程接駁與長途返台", en: "Connection day and the long flight home" }, title: { zh: "回程返台", en: "Return to Taipei" }, status: "confirmed", must: ["Air France Business Standard｜CDG 12:50 → MAN 13:25", "BA1371｜MAN 18:10 → LHR 19:15", "CI82｜LHR 21:10 → TPE 18:05(+1)"], optional: ["巴黎上午只排簡單移動"], tickets: ["AF 歐洲段：約 EUR 354.05 / NT$12,930"], notes: ["這一天以順利銜接航段為主，上午不必再塞景點，把體力留給巴黎到曼徹斯特、再接希斯洛返台的長路。"] }
   ],
   attractionCosts: [
     { status: "confirmed", day: "7/4", attraction: "Big Ben / Buckingham Palace / St James's Park", fee: "Free", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "這三個點適合排成第一天的西敏散步。", en: "These three work well as a Westminster walk on the first London day." }, source: "https://www.visitlondon.com/" },
@@ -699,7 +699,7 @@ const readingGuides = {
     { zh: "倫敦先看動線，巴黎就看景和住起來的感覺。", en: "London prioritizes access; Paris leans more toward atmosphere and view." }
   ],
   itinerary: [
-    { zh: "每日行程分成主要安排、彈性行程、門票和交通提醒。", en: "Each day is separated into main stops, optional ideas, fees, and transit notes." },
+    { zh: "每日行程改成一張張可展開的旅程卡，移動、散步與會議節奏都接得起來。", en: "Each day now opens as a travel card, keeping movement, walking routes, and conference rhythm together." },
     { zh: "後段改成倫敦 3 晚、巴黎 4 晚，城市切換都補進去了。", en: "The later route is now London for 3 nights and Paris for 4 nights, with each city move added in." },
     { zh: "另外還要訂票的，主要是 Avanti、Eurostar 和幾個巴黎景點。", en: "The main items still needing tickets are Avanti, Eurostar, and a few Paris attractions." }
   ],
@@ -741,7 +741,7 @@ const dashboardData = {
   ],
   quickActions: [
     ["overview", { zh: "查看總覽", en: "View overview" }, { zh: "先看目前進度", en: "Start with the current status" }],
-    ["schedule", { zh: "查看行程", en: "View itinerary" }, { zh: "每天的安排與提醒", en: "Daily plan and reminders" }],
+    ["schedule", { zh: "查看行程", en: "View itinerary" }, { zh: "每日旅程、城市轉場和沿途節奏", en: "Daily route, city shifts, and the travel rhythm" }],
     ["hotel", { zh: "查看住宿", en: "Review hotel" }, { zh: "曼徹斯特已訂，倫敦和巴黎也先排了方向", en: "Manchester booked, with London and Paris first choices" }],
     ["papers", { zh: "查看論文", en: "Review papers" }, { zh: "Competitive 與 Interactive", en: "Competitive and Interactive" }],
     ["budget", { zh: "查看預算", en: "Reimbursement summary" }, { zh: "報帳與自費分開看", en: "Claims and self-funded costs" }],
@@ -1984,16 +1984,16 @@ function renderItinerary() {
     ${renderReadingGuide("itinerary")}
     <section class="section compact-section" id="timeline">
       <article class="section-card">
-      <div class="section-label">${state.lang === "en" ? "Day by Day" : "每日行程"}</div>
-      <h2>${state.lang === "en" ? "Daily itinerary" : "每日行程"}</h2>
-      <p class="lead">${state.lang === "en" ? "Each day opens into a compact travel card, so flights, city shifts, conference time, and walking routes stay easy to scan." : "把每天拆成一張張行程卡，移動、會議、散步和提醒都放在同一個展開層裡。"} </p>
+      <div class="section-label">${state.lang === "en" ? "Day by Day" : "每日旅程"}</div>
+      <h2>${state.lang === "en" ? "Daily itinerary" : "每日旅程"}</h2>
+      <p class="lead">${state.lang === "en" ? "Each day opens into a compact travel card, so flights, city shifts, conference time, and walking routes stay easy to scan." : "每天都整理成一張可以展開的旅程卡，移動、散步、會議和節奏都能一眼接起來。"} </p>
       <div class="itinerary-editorial-intro">
         <article class="itinerary-editorial-copy">
           <p>${state.lang === "en" ? "This page keeps the Manchester conference days, the London transition, the Paris stretch, and the return chain in one reading flow." : "這一頁把曼徹斯特會議、倫敦移動、巴黎段和回程串成同一條閱讀路線。"}</p>
           <div class="itinerary-editorial-points">
             <div><span>${state.lang === "en" ? "Conference base" : "會議主段"}</span><strong>${state.lang === "en" ? "Manchester · Jun 30 – Jul 3" : "Manchester · 6/30–7/3"}</strong></div>
-            <div><span>${state.lang === "en" ? "City move" : "城市切換"}</span><strong>${state.lang === "en" ? "London → Paris → Manchester" : "London → Paris → Manchester"}</strong></div>
-            <div><span>${state.lang === "en" ? "Reading style" : "閱讀方式"}</span><strong>${state.lang === "en" ? "Open one day at a time" : "一次看一天"}</strong></div>
+            <div><span>${state.lang === "en" ? "City move" : "城市轉場"}</span><strong>${state.lang === "en" ? "London → Paris → Manchester" : "London → Paris → Manchester"}</strong></div>
+            <div><span>${state.lang === "en" ? "Reading style" : "閱讀方式"}</span><strong>${state.lang === "en" ? "Open one day at a time" : "一天一張卡"}</strong></div>
           </div>
         </article>
       </div>
@@ -2018,40 +2018,41 @@ function renderItinerary() {
                       : (state.lang === "en" ? "Travel" : "旅程")}
                 </span>
               </div>
+              ${day.theme ? `<div class="day-theme">${escapeHtml(t(day.theme))}</div>` : ""}
               <div class="day-kicker">${escapeHtml(t(day.city || ""))}</div>
               <h3 class="day-title">${escapeHtml(day.date)} · ${escapeHtml(t(day.title))}</h3>
               <p class="day-summary">${escapeHtml(t(day.notes?.[0] || day.must?.[0] || ""))}</p>
             </summary>
             <div class="day-overview-grid">
               <div class="day-content-top">
-                <div class="day-focus-label">${state.lang === "en" ? "City" : "城市"}</div>
+                <div class="day-focus-label">${state.lang === "en" ? "City" : "所在城市"}</div>
                 <div class="day-focus-text">${escapeHtml(t(day.city || ""))}</div>
               </div>
               <div class="day-content-top">
-                <div class="day-focus-label">${state.lang === "en" ? "Transport" : "移動"}</div>
+                <div class="day-focus-label">${state.lang === "en" ? "Transport" : "移動方式"}</div>
                 <div class="day-focus-text">${escapeHtml(t(day.transport || ""))}</div>
               </div>
             </div>
             <div class="day-detail-list">
               <article class="day-detail-item">
-                <div class="day-detail-title">${state.lang === "en" ? "Must-do" : "主要安排"}</div>
+                <div class="day-detail-title">${state.lang === "en" ? "Route" : "今日路線"}</div>
                 <div class="day-detail-desc">${renderList(day.must, "plain-list")}</div>
               </article>
               ${day.optional?.length ? `
                 <article class="day-detail-item">
-                  <div class="day-detail-title">${state.lang === "en" ? "Optional" : "可彈性安排"}</div>
+                  <div class="day-detail-title">${state.lang === "en" ? "If time allows" : "順路可留"}</div>
                   <div class="day-detail-desc">${renderList(day.optional, "plain-list")}</div>
                 </article>
               ` : ""}
               ${day.tickets?.length ? `
                 <article class="day-detail-item">
-                  <div class="day-detail-title">${state.lang === "en" ? "Fees" : "費用"}</div>
+                  <div class="day-detail-title">${state.lang === "en" ? "Cost note" : "花費參考"}</div>
                   <div class="day-detail-desc">${renderList(day.tickets, "plain-list")}</div>
                 </article>
               ` : ""}
               ${day.notes?.length ? `
                 <article class="day-detail-item">
-                  <div class="day-detail-title">${state.lang === "en" ? "Notes" : "提醒"}</div>
+                  <div class="day-detail-title">${state.lang === "en" ? "Travel note" : "貼心提醒"}</div>
                   <div class="day-detail-desc">${renderList(day.notes, "plain-list")}</div>
                 </article>
               ` : ""}
@@ -2063,9 +2064,9 @@ function renderItinerary() {
     </section>
     <section class="section compact-section" id="tickets">
       ${sectionHeading(
-        state.lang === "en" ? "Admission" : "景點費用",
-        state.lang === "en" ? "Attraction fees to check before booking" : "景點門票與預算估算",
-        state.lang === "en" ? "Prices are current planning references. Re-check official sites before booking for July 2026." : "以下為目前查到的規劃參考價；2026/7 出發前請再以官方網站確認。"
+        state.lang === "en" ? "Admission" : "景點與票價",
+        state.lang === "en" ? "Attraction fees to check before booking" : "把可能用到的門票與價格先放在一起",
+        state.lang === "en" ? "Prices are current planning references. Re-check official sites before booking for July 2026." : "這裡先整理目前查到的票價方向，真正下訂前再回官網確認一次就好。"
       )}
       <div class="ticket-grid">
         ${tripData.attractionCosts.map((item) => `
