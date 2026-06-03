@@ -28,21 +28,21 @@ const statusLabels = {
 };
 
 const money = {
-  flight: "NT$92,439 / GBP 2,176 / US$2,885",
-  conference: "NT$10,413 / GBP 245 / US$325",
-  membership: "NT$1,282 / GBP 30 / US$40",
-  hotel: "NT$38,270 / GBP 900.90 / US$1,194",
-  hotelPerNight: "NT$7,654 / GBP 180.18 / US$239",
-  hotelPerPersonTotal: "NT$19,135 / GBP 450.45 / US$597",
-  hotelPerPersonNight: "NT$3,827 / GBP 90.09 / US$119",
-  visitorCharge: "約 NT$255 / GBP 6 / US$8",
-  visitorChargePerPerson: "約 NT$128 / GBP 3 / US$4",
-  personalKnownSelfFunded: "約 NT$19,263 / GBP 453.45 / US$601",
-  manchesterDaily: "NT$10,381 / GBP 244 / US$324 / day",
-  manchesterDaily5: "NT$51,905 / GBP 1,220 / US$1,620",
-  londonDaily: "NT$16,340 / GBP 385 / US$510 / day",
-  trainAdvance: { zh: "每人來回 NT$2,846 起 / GBP 67 起 / US$89 起", en: "per person return from NT$2,846 / GBP 67 / US$89" },
-  railcard: "NT$1,487 / GBP 35 / US$46"
+  flight: "NT$92,439 / GBP 2,176 / EUR 2,545 / US$2,885",
+  conference: "NT$10,413 / GBP 245 / EUR 286 / US$325",
+  membership: "NT$1,282 / GBP 30 / EUR 35 / US$40",
+  hotel: "NT$38,270 / GBP 900.90 / EUR 1,054 / US$1,194",
+  hotelPerNight: "NT$7,654 / GBP 180.18 / EUR 211 / US$239",
+  hotelPerPersonTotal: "NT$19,135 / GBP 450.45 / EUR 527 / US$597",
+  hotelPerPersonNight: "NT$3,827 / GBP 90.09 / EUR 105 / US$119",
+  visitorCharge: "約 NT$255 / GBP 6 / EUR 7 / US$8",
+  visitorChargePerPerson: "約 NT$128 / GBP 3 / EUR 4 / US$4",
+  personalKnownSelfFunded: "約 NT$19,263 / GBP 453.45 / EUR 531 / US$601",
+  manchesterDaily: "NT$10,381 / GBP 244 / EUR 285 / US$324 / day",
+  manchesterDaily5: "NT$51,905 / GBP 1,220 / EUR 1,427 / US$1,620",
+  londonDaily: "NT$16,340 / GBP 385 / EUR 450 / US$510 / day",
+  trainAdvance: { zh: "每人來回 NT$2,846 起 / GBP 67 起 / EUR 78 起 / US$89 起", en: "per person return from NT$2,846 / GBP 67 / EUR 78 / US$89" },
+  railcard: "NT$1,487 / GBP 35 / EUR 41 / US$46"
 };
 
 const homeOverviewCards = [
@@ -109,6 +109,7 @@ const homeKeyTimeline = [
 const currencies = [
   { id: "TWD", label: { zh: "新台幣", en: "TWD" }, prefix: "NT$" },
   { id: "GBP", label: { zh: "英鎊", en: "GBP" }, prefix: "GBP" },
+  { id: "EUR", label: { zh: "歐元", en: "EUR" }, prefix: "EUR" },
   { id: "USD", label: { zh: "美元", en: "USD" }, prefix: "US$" }
 ];
 
@@ -163,7 +164,7 @@ const tripData = {
     budget: {
       kicker: { zh: "預算整理", en: "Budget" },
       title: { zh: "預算、報帳與自費", en: "Budget, Claims & Self-Funded Costs" },
-      lead: { zh: "可報帳和自費分開放，金額也能切換幣別。", en: "Reimbursable and self-funded costs are separated, with TWD, GBP, and USD views." }
+      lead: { zh: "可報帳和自費分開放，金額也能切換幣別。", en: "Reimbursable and self-funded costs are separated, with TWD, GBP, EUR, and USD views." }
     },
     reminders: {
       kicker: { zh: "行前提醒", en: "Reminders" },
@@ -357,21 +358,21 @@ const tripData = {
     }
   ],
   trainFares: [
-    { status: "book", item: "Advance", amount: { zh: "單程 NT$1,423 起 / GBP 33.50 起 / US$44 起", en: "From NT$1,423 / GBP 33.50 / US$44" }, note: { zh: "最便宜但綁定指定班次；越早買越划算。", en: "Cheapest, train-specific, and best bought early." } },
-    { status: "optional", item: "Off-Peak", amount: { zh: "單程 NT$3,228-3,398 / GBP 76-80 / US$101-106", en: "NT$3,228-3,398 / GBP 76-80 / US$101-106" }, note: { zh: "彈性較高，適合不想被指定班次綁死。", en: "More flexible if you do not want to be tied to a single service." } },
+    { status: "book", item: "Advance", amount: { zh: "單程 NT$1,423 起 / GBP 33.50 起 / EUR 39 起 / US$44 起", en: "From NT$1,423 / GBP 33.50 / EUR 39 / US$44" }, note: { zh: "最便宜但綁定指定班次；越早買越划算。", en: "Cheapest, train-specific, and best bought early." } },
+    { status: "optional", item: "Off-Peak", amount: { zh: "單程 NT$3,228-3,398 / GBP 76-80 / EUR 89-94 / US$101-106", en: "NT$3,228-3,398 / GBP 76-80 / EUR 89-94 / US$101-106" }, note: { zh: "彈性較高，適合不想被指定班次綁死。", en: "More flexible if you do not want to be tied to a single service." } },
     { status: "optional", item: "Two Together Railcard", amount: money.railcard, note: { zh: "兩人同行可省 1/3；週末全天、平日 09:30 後可用。", en: "Two people traveling together can save 1/3; valid all day weekends and after 09:30 weekdays." } }
   ],
   localTransit: [
     { city: { zh: "倫敦", en: "London" }, items: [
-      { zh: "Zone 1-2 每日上限：NT$378 / GBP 8.90 / US$12", en: "Zones 1-2 cap: NT$378 / GBP 8.90 / US$12" },
-      { zh: "Zone 1-3 每日上限：NT$446 / GBP 10.50 / US$14", en: "Zones 1-3 cap: NT$446 / GBP 10.50 / US$14" },
-      { zh: "Zone 1-6 每日上限：NT$692 / GBP 16.30 / US$22", en: "Zones 1-6 cap: NT$692 / GBP 16.30 / US$22" },
+      { zh: "Zone 1-2 每日上限：NT$378 / GBP 8.90 / EUR 10.40 / US$12", en: "Zones 1-2 cap: NT$378 / GBP 8.90 / EUR 10.40 / US$12" },
+      { zh: "Zone 1-3 每日上限：NT$446 / GBP 10.50 / EUR 12.30 / US$14", en: "Zones 1-3 cap: NT$446 / GBP 10.50 / EUR 12.30 / US$14" },
+      { zh: "Zone 1-6 每日上限：NT$692 / GBP 16.30 / EUR 19.10 / US$22", en: "Zones 1-6 cap: NT$692 / GBP 16.30 / EUR 19.10 / US$22" },
       { zh: "全程使用同一張感應信用卡、Apple Pay、Google Pay 或 Oyster 進出站。", en: "Use the same contactless card / Apple Pay / Google Pay / Oyster for all taps." }
     ] },
     { city: { zh: "曼徹斯特", en: "Manchester" }, items: [
       { zh: "INNSiDE Manchester 附近可利用 Deansgate-Castlefield 或 St Peter's Square。", en: "INNSiDE Manchester: Deansgate-Castlefield / St Peter's Square nearby." },
       { zh: "機場位於 Zone 4；機場往返市區可用全區票。", en: "Airport is Zone 4; use all zones for airport-city trips." },
-      { zh: "全區日票：NT$302 / GBP 7.10 / US$9.40；離峰 NT$208 / GBP 4.90 / US$6.50。", en: "All-zones day ticket: NT$302 / GBP 7.10 / US$9.40 anytime; NT$208 / GBP 4.90 / US$6.50 off-peak." },
+      { zh: "全區日票：NT$302 / GBP 7.10 / EUR 8.30 / US$9.40；離峰 NT$208 / GBP 4.90 / EUR 5.70 / US$6.50。", en: "All-zones day ticket: NT$302 / GBP 7.10 / EUR 8.30 / US$9.40 anytime; NT$208 / GBP 4.90 / EUR 5.70 / US$6.50 off-peak." },
       { zh: "搭乘 Metrolink 前先購票或感應進站，車上不售票。", en: "Buy or touch in before boarding Metrolink; no onboard purchase." }
     ] }
   ],
@@ -486,20 +487,20 @@ const tripData = {
     { status: "confirmed", label: { zh: "7/11 巴黎 → 曼徹斯特", en: "11 Jul Paris → Manchester" }, note: { zh: "CDG T2E → MAN T2，再接 BA 與華航。", en: "CDG T2E → MAN T2, then connect to BA and China Airlines." }, url: "https://www.google.com/maps/dir/Pullman+Paris+Tour+Eiffel/Charles+de+Gaulle+Airport+Terminal+2E" }
   ],
   expenses: [
-    { item: { zh: "國際機票", en: "International flights" }, amount: money.flight, amounts: { TWD: "NT$92,439", GBP: "GBP 2,176", USD: "US$2,885" }, status: "reimburse", proof: { zh: "機票行程單與付款截圖", en: "Flight itinerary + payment screenshot" }, notes: { zh: "TPE-FRA-MAN / MAN-LHR-TPE；7/11 巴黎回曼徹斯特另列自費", en: "TPE-FRA-MAN / MAN-LHR-TPE; the 11 Jul Paris-Manchester segment is listed separately as self-funded" } },
-    { item: { zh: "AIB 會議註冊費", en: "AIB Conference Fee" }, amount: money.conference, amounts: { TWD: "NT$10,413", GBP: "GBP 245", USD: "US$325" }, status: "reimburse", proof: { zh: "AIB 付款收據", en: "AIB payment receipt" }, notes: { zh: "會議費 US$325；捐款 US$0。", en: "Conference fee US$325; donation US$0." } },
-    { item: { zh: "AIB 會員費", en: "AIB membership fee" }, amount: money.membership, amounts: { TWD: "NT$1,282", GBP: "GBP 30", USD: "US$40" }, status: "reimburse", proof: { zh: "AIB 會員費收據", en: "AIB membership receipt" }, notes: { zh: "AIB 40 美元收據。", en: "AIB US$40 receipt." } },
-    { item: { zh: "國科會曼徹斯特日支費", en: "NSTC daily allowance - Manchester" }, amount: money.manchesterDaily5, amounts: { TWD: "NT$51,905", GBP: "GBP 1,220", USD: "US$1,620" }, status: "reimburse", proof: { zh: "115 年國外日支表", en: "NSTC overseas daily allowance table" }, notes: { zh: "NT$10,381 / GBP 244 / US$324 每日 × 研討會 5 天。", en: "NT$10,381 / GBP 244 / US$324 per day × 5 conference days." } }
+    { item: { zh: "國際機票", en: "International flights" }, amount: money.flight, amounts: { TWD: "NT$92,439", GBP: "GBP 2,176", EUR: "EUR 2,545", USD: "US$2,885" }, status: "reimburse", proof: { zh: "機票行程單與付款截圖", en: "Flight itinerary + payment screenshot" }, notes: { zh: "TPE-FRA-MAN / MAN-LHR-TPE；7/11 巴黎回曼徹斯特另列自費", en: "TPE-FRA-MAN / MAN-LHR-TPE; the 11 Jul Paris-Manchester segment is listed separately as self-funded" } },
+    { item: { zh: "AIB 會議註冊費", en: "AIB Conference Fee" }, amount: money.conference, amounts: { TWD: "NT$10,413", GBP: "GBP 245", EUR: "EUR 286", USD: "US$325" }, status: "reimburse", proof: { zh: "AIB 付款收據", en: "AIB payment receipt" }, notes: { zh: "會議費 US$325；捐款 US$0。", en: "Conference fee US$325; donation US$0." } },
+    { item: { zh: "AIB 會員費", en: "AIB membership fee" }, amount: money.membership, amounts: { TWD: "NT$1,282", GBP: "GBP 30", EUR: "EUR 35", USD: "US$40" }, status: "reimburse", proof: { zh: "AIB 會員費收據", en: "AIB membership receipt" }, notes: { zh: "AIB 40 美元收據。", en: "AIB US$40 receipt." } },
+    { item: { zh: "國科會曼徹斯特日支費", en: "NSTC daily allowance - Manchester" }, amount: money.manchesterDaily5, amounts: { TWD: "NT$51,905", GBP: "GBP 1,220", EUR: "EUR 1,427", USD: "US$1,620" }, status: "reimburse", proof: { zh: "115 年國外日支表", en: "NSTC overseas daily allowance table" }, notes: { zh: "NT$10,381 / GBP 244 / EUR 285 / US$324 每日 × 研討會 5 天。", en: "NT$10,381 / GBP 244 / EUR 285 / US$324 per day × 5 conference days." } }
   ],
   selfFundedExpenses: [
-    { item: { zh: "INNSiDE Manchester 住宿", en: "INNSiDE Manchester accommodation" }, amount: money.hotel, amounts: { TWD: "NT$38,270", GBP: "GBP 900.90", USD: "US$1,194" }, status: "self", proof: { zh: "訂房確認與最終發票", en: "Booking confirmation + final invoice" }, notes: { zh: `兩人 5 晚總價；一人 5 晚約 ${money.hotelPerPersonTotal}，一人一晚約 ${money.hotelPerPersonNight}。`, en: `Total for two guests for 5 nights; per person about ${money.hotelPerPersonTotal}, or ${money.hotelPerPersonNight} per night.` } },
-    { item: { zh: "曼徹斯特旅遊稅", en: "Manchester visitor charge" }, amount: money.visitorCharge, amounts: { TWD: "約 NT$255", GBP: "GBP 6", USD: "US$8" }, status: "self", proof: { zh: "退房收據", en: "Check-out receipt" }, notes: { zh: `GBP 1.20 / 房 / 晚，現場支付；一人約 ${money.visitorChargePerPerson}。`, en: `GBP 1.20 per room per night, paid locally; about ${money.visitorChargePerPerson} per person.` } },
-    { item: { zh: "曼徹斯特 → 倫敦火車", en: "Manchester → London train" }, amount: { zh: "每人單程 NT$1,423 起 / GBP 33.50 起 / US$44 起", en: "per person one-way from NT$1,423 / GBP 33.50 / US$44" }, amounts: { TWD: "NT$1,423 起", GBP: "GBP 33.50 起", USD: "US$44 起" }, status: "self", proof: { zh: "訂票後的電子票與收據", en: "E-ticket / receipt after booking" }, notes: { zh: "7/4 建議搭 Avanti West Coast。", en: "Avanti West Coast is the current recommendation for 4 July." } },
-    { item: { zh: "Eurostar 倫敦 → 巴黎", en: "Eurostar London → Paris" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", USD: "TBD" }, status: "self", proof: { zh: "Eurostar 電子票與收據", en: "Eurostar e-ticket and receipt" }, notes: { zh: "7/7 出發，車程約 2 小時 20 分。", en: "Departure is on 7 July, with a journey of about 2h20." } },
-    { item: { zh: "巴黎 → 曼徹斯特航段", en: "Paris → Manchester flight" }, amount: { zh: "NT$12,930 / EUR 354.05", en: "NT$12,930 / EUR 354.05" }, amounts: { TWD: "NT$12,930", GBP: "約 GBP 300", USD: "待確認" }, status: "self", proof: { zh: "Air France 電子票與付款證明", en: "Air France e-ticket and payment proof" }, notes: { zh: "Air France Business Standard；含 Lounge、優先安檢與優先登機。", en: "Air France Business Standard with lounge access, priority security, and priority boarding." } },
-    { item: { zh: "倫敦住宿", en: "London accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "首選 The Langham London，備選 The Clermont Charing Cross。", en: "The Langham London is the first choice, with The Clermont Charing Cross as the alternative." } },
-    { item: { zh: "巴黎住宿", en: "Paris accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "首選 Pullman Paris Tour Eiffel。", en: "Pullman Paris Tour Eiffel is the current first choice." } },
-    { item: { zh: "倫敦 / 巴黎景點與遊船", en: "London / Paris attractions and cruise" }, amount: { zh: "依實際選擇", en: "Depends on selected stops" }, amounts: { TWD: "依實際選擇", GBP: "Depends", USD: "Depends" }, status: "self", proof: { zh: "線上購票收據", en: "Online ticket receipts" }, notes: { zh: "目前確定有免費散步景點，也保留 Eiffel Tower、Louvre 與塞納河遊船的彈性。", en: "The route includes free city walks, with Eiffel Tower, the Louvre, and a Seine cruise left flexible." } }
+    { item: { zh: "INNSiDE Manchester 住宿", en: "INNSiDE Manchester accommodation" }, amount: money.hotel, amounts: { TWD: "NT$38,270", GBP: "GBP 900.90", EUR: "EUR 1,054", USD: "US$1,194" }, status: "self", proof: { zh: "訂房確認與最終發票", en: "Booking confirmation + final invoice" }, notes: { zh: `兩人 5 晚總價；一人 5 晚約 ${money.hotelPerPersonTotal}，一人一晚約 ${money.hotelPerPersonNight}。`, en: `Total for two guests for 5 nights; per person about ${money.hotelPerPersonTotal}, or ${money.hotelPerPersonNight} per night.` } },
+    { item: { zh: "曼徹斯特旅遊稅", en: "Manchester visitor charge" }, amount: money.visitorCharge, amounts: { TWD: "約 NT$255", GBP: "GBP 6", EUR: "EUR 7", USD: "US$8" }, status: "self", proof: { zh: "退房收據", en: "Check-out receipt" }, notes: { zh: `GBP 1.20 / 房 / 晚，現場支付；一人約 ${money.visitorChargePerPerson}。`, en: `GBP 1.20 per room per night, paid locally; about ${money.visitorChargePerPerson} per person.` } },
+    { item: { zh: "曼徹斯特 → 倫敦火車", en: "Manchester → London train" }, amount: { zh: "每人單程 NT$1,423 起 / GBP 33.50 起 / EUR 39 起 / US$44 起", en: "per person one-way from NT$1,423 / GBP 33.50 / EUR 39 / US$44" }, amounts: { TWD: "NT$1,423 起", GBP: "GBP 33.50 起", EUR: "EUR 39 起", USD: "US$44 起" }, status: "self", proof: { zh: "訂票後的電子票與收據", en: "E-ticket / receipt after booking" }, notes: { zh: "7/4 建議搭 Avanti West Coast。", en: "Avanti West Coast is the current recommendation for 4 July." } },
+    { item: { zh: "Eurostar 倫敦 → 巴黎", en: "Eurostar London → Paris" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "Eurostar 電子票與收據", en: "Eurostar e-ticket and receipt" }, notes: { zh: "7/7 出發，車程約 2 小時 20 分。", en: "Departure is on 7 July, with a journey of about 2h20." } },
+    { item: { zh: "巴黎 → 曼徹斯特航段", en: "Paris → Manchester flight" }, amount: { zh: "NT$12,930 / EUR 354.05", en: "NT$12,930 / EUR 354.05" }, amounts: { TWD: "NT$12,930", GBP: "約 GBP 300", EUR: "EUR 354.05", USD: "待確認" }, status: "self", proof: { zh: "Air France 電子票與付款證明", en: "Air France e-ticket and payment proof" }, notes: { zh: "Air France Business Standard；含 Lounge、優先安檢與優先登機。", en: "Air France Business Standard with lounge access, priority security, and priority boarding." } },
+    { item: { zh: "倫敦住宿", en: "London accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "首選 The Langham London，備選 The Clermont Charing Cross。", en: "The Langham London is the first choice, with The Clermont Charing Cross as the alternative." } },
+    { item: { zh: "巴黎住宿", en: "Paris accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "首選 Pullman Paris Tour Eiffel。", en: "Pullman Paris Tour Eiffel is the current first choice." } },
+    { item: { zh: "倫敦 / 巴黎景點與遊船", en: "London / Paris attractions and cruise" }, amount: { zh: "依實際選擇", en: "Depends on selected stops" }, amounts: { TWD: "依實際選擇", GBP: "Depends", EUR: "Depends", USD: "Depends" }, status: "self", proof: { zh: "線上購票收據", en: "Online ticket receipts" }, notes: { zh: "目前確定有免費散步景點，也保留 Eiffel Tower、Louvre 與塞納河遊船的彈性。", en: "The route includes free city walks, with Eiffel Tower, the Louvre, and a Seine cruise left flexible." } }
   ],
   links: [
     ["AIB 2026 website", "https://www.aib.world/events/2026/"],
@@ -1212,6 +1213,7 @@ function renderBudgetCards(rows) {
           <div class="budget-mobile-amounts">
             <div><span>GBP</span><strong>${escapeHtml(row.amounts?.GBP || "-")}</strong></div>
             <div><span>TWD</span><strong>${escapeHtml(row.amounts?.TWD || "-")}</strong></div>
+            <div><span>EUR</span><strong>${escapeHtml(row.amounts?.EUR || "-")}</strong></div>
             <div><span>USD</span><strong>${escapeHtml(row.amounts?.USD || "-")}</strong></div>
           </div>
           <p>${escapeHtml(t(row.notes))}</p>
@@ -2323,8 +2325,8 @@ function renderMap() {
 
 function expenseTableHeads() {
   return state.lang === "en"
-    ? ["Item", "NTD", "GBP", "USD", "Status", "Receipt / proof", "Notes"]
-    : ["項目", "新台幣", "英鎊", "美元", "狀態", "收據 / 憑證", "備註"];
+    ? ["Item", "NTD", "GBP", "EUR", "USD", "Status", "Receipt / proof", "Notes"]
+    : ["項目", "新台幣", "英鎊", "歐元", "美元", "狀態", "收據 / 憑證", "備註"];
 }
 
 function renderExpenseTable(rows, label) {
@@ -2339,10 +2341,11 @@ function renderExpenseTable(rows, label) {
               <td data-label="${escapeHtml(heads[0])}">${escapeHtml(t(row.item))}</td>
               <td data-label="${escapeHtml(heads[1])}" class="budget-amount-cell">${escapeHtml(row.amounts?.TWD || "-")}</td>
               <td data-label="${escapeHtml(heads[2])}" class="budget-amount-cell">${escapeHtml(row.amounts?.GBP || "-")}</td>
-              <td data-label="${escapeHtml(heads[3])}" class="budget-amount-cell">${escapeHtml(row.amounts?.USD || "-")}</td>
-              <td data-label="${escapeHtml(heads[4])}">${statusChip(row.status)}</td>
-              <td data-label="${escapeHtml(heads[5])}">${escapeHtml(t(row.proof))}</td>
-              <td data-label="${escapeHtml(heads[6])}">${escapeHtml(t(row.notes))}</td>
+              <td data-label="${escapeHtml(heads[3])}" class="budget-amount-cell">${escapeHtml(row.amounts?.EUR || "-")}</td>
+              <td data-label="${escapeHtml(heads[4])}" class="budget-amount-cell">${escapeHtml(row.amounts?.USD || "-")}</td>
+              <td data-label="${escapeHtml(heads[5])}">${statusChip(row.status)}</td>
+              <td data-label="${escapeHtml(heads[6])}">${escapeHtml(t(row.proof))}</td>
+              <td data-label="${escapeHtml(heads[7])}">${escapeHtml(t(row.notes))}</td>
             </tr>
           `).join("")}
         </tbody>
@@ -2369,6 +2372,7 @@ function renderBudget() {
   const totals = {
     TWD: { reimburse: "NT$156,039", self: "NT$38,525", personalSelf: "約 NT$19,263", hotelPerson: "NT$19,135", hotelPersonNight: "NT$3,827" },
     GBP: { reimburse: "GBP 3,671", self: "GBP 906.90", personalSelf: "GBP 453.45", hotelPerson: "GBP 450.45", hotelPersonNight: "GBP 90.09" },
+    EUR: { reimburse: "EUR 4,293", self: "EUR 1,061", personalSelf: "約 EUR 531", hotelPerson: "EUR 527", hotelPersonNight: "EUR 105" },
     USD: { reimburse: "US$4,870", self: "US$1,202", personalSelf: "約 US$601", hotelPerson: "US$597", hotelPersonNight: "US$119" }
   };
   const selectedTotals = totals[state.currency] || totals.TWD;
@@ -2389,7 +2393,7 @@ function renderBudget() {
       ${sectionHeading(
         state.lang === "en" ? "Budget Dashboard" : "預算總覽",
         state.lang === "en" ? "Claims, hotel costs, and pending spending" : "報帳、自費與待定花費",
-        state.lang === "en" ? "Three-currency tables keep reimbursement and self-funded items separate." : "三幣別金額分開整理可報帳與自費項目。"
+        state.lang === "en" ? "Four-currency tables keep reimbursement and self-funded items separate." : "四幣別金額分開整理可報帳與自費項目。"
       )}
       <div class="summary-grid three">
         <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang === "en" ? "Flight total" : "機票總額"}</h3><strong>${money.flight}</strong>${renderMetaRow([{ label: state.lang === "en" ? "Status" : "狀態", value: state.lang === "en" ? "Claimable" : "可報帳" }, { label: state.lang === "en" ? "Proof" : "憑證", value: state.lang === "en" ? "Fare details saved" : "票價明細已存" }])}</article>
