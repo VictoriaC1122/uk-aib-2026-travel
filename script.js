@@ -517,6 +517,9 @@ const tripData = {
     ["National Rail", "https://www.nationalrail.co.uk/"],
     ["Two Together Railcard", "https://www.nationalrail.co.uk/tickets-railcards-offers/promotions/two-together-railcard/"],
     ["Eurostar", "https://www.eurostar.com/"],
+    ["Eurostar London to Paris", "https://www.eurostar.com/uk-en/train/london-to-paris"],
+    ["Eurostar check-in times", "https://www.eurostar.com/uk-en/travel-info/your-trip/check-in"],
+    ["Eurostar luggage allowance", "https://www.eurostar.com/uk-en/travel-info/travel-planning/luggage"],
     ["Air France", "https://wwws.airfrance.com/"],
     ["Air France SkyPriority", "https://wwws.airfrance.fr/en/information/aeroport/skypriority"],
     ["Air France lounges", "https://wwws.airfrance.fr/en/information/prepare/salons"],
@@ -2019,11 +2022,11 @@ function renderTransport() {
       status: "book",
       title: { zh: "7/7 倫敦 → 巴黎", en: "7 Jul London → Paris" },
       value: { zh: "St Pancras → Paris Gare du Nord", en: "St Pancras → Paris Gare du Nord" },
-      note: { zh: "Eurostar 約 2 小時 20 分，市中心直達市中心。", en: "Eurostar takes about 2h20 city centre to city centre." },
+      note: { zh: "Eurostar 約 2 小時 16 分，市中心直達市中心。", en: "Eurostar takes about 2h16 city centre to city centre." },
       meta: [
         { label: { zh: "建議時段", en: "Window" }, value: { zh: "上午或中午", en: "Morning or midday" } },
-        { label: { zh: "票種", en: "Fare" }, value: "Eurostar Standard / Plus" },
-        { label: { zh: "提醒", en: "Reminder" }, value: { zh: "需提早到站安檢", en: "Arrive early for security" } }
+        { label: { zh: "票種", en: "Fare" }, value: "Eurostar Standard / Plus / Premier" },
+        { label: { zh: "提醒", en: "Reminder" }, value: { zh: "St Pancras 建議提早到站", en: "Arrive early at St Pancras" } }
       ]
     }
   ];
@@ -2060,7 +2063,7 @@ function renderTransport() {
       </div>
     </section>
     <section class="section compact-section" id="train">
-      ${sectionHeading(state.lang !== "zh" ? "Train" : "火車", state.lang !== "zh" ? "Manchester ↔ London" : "曼徹斯特 ↔ 倫敦")}
+      ${sectionHeading(state.lang !== "zh" ? "Rail & Eurostar" : "火車與 Eurostar", state.lang !== "zh" ? "Manchester, London, and Paris rail links" : "曼徹斯特、倫敦與巴黎的鐵路移動")}
       <div class="summary-grid">
         ${trainSummaryCards.map((item) => `
           <article class="summary-card">
@@ -2081,6 +2084,30 @@ function renderTransport() {
             <p>${escapeHtml(t(fare.note))}</p>
           </article>
         `).join("")}
+      </div>
+      <div class="summary-grid two">
+        <article class="summary-card">
+          ${statusChip("book")}
+          <h3>${state.lang !== "zh" ? "London to France by train" : "倫敦去法國的火車"}</h3>
+          <strong>${state.lang !== "zh" ? "Eurostar · St Pancras → Paris Gare du Nord" : "Eurostar · St Pancras → Paris Gare du Nord"}</strong>
+          ${renderMetaRow([
+            { label: state.lang !== "zh" ? "Travel time" : "車程", value: state.lang !== "zh" ? "about 2h16" : "約 2 小時 16 分" },
+            { label: state.lang !== "zh" ? "Arrival" : "抵達", value: state.lang !== "zh" ? "city centre to city centre" : "市中心直達市中心" },
+            { label: state.lang !== "zh" ? "Documents" : "文件", value: state.lang !== "zh" ? "passport required" : "需帶護照" }
+          ])}
+          <p>${state.lang !== "zh" ? "This is the cleanest London-to-France move: leave from St Pancras and arrive straight into central Paris at Gare du Nord." : "這段最順的做法就是直接搭 Eurostar，從 St Pancras 出發，抵達巴黎北站後就已經在市中心。"}</p>
+        </article>
+        <article class="summary-card">
+          ${statusChip("alert")}
+          <h3>${state.lang !== "zh" ? "Before boarding at St Pancras" : "St Pancras 上車前"}</h3>
+          <strong>${state.lang !== "zh" ? "Check-in and border checks happen before boarding" : "上車前就會完成報到與邊境檢查"}</strong>
+          ${renderMetaRow([
+            { label: state.lang !== "zh" ? "Arrival time" : "建議到站", value: state.lang !== "zh" ? "75-90 min early is comfortable" : "提早 75-90 分鐘比較安心" },
+            { label: state.lang !== "zh" ? "Gate close" : "關門時間", value: state.lang !== "zh" ? "30 min before departure" : "發車前 30 分鐘關閘門" },
+            { label: state.lang !== "zh" ? "Luggage" : "行李", value: state.lang !== "zh" ? "2 bags + 1 small hand bag" : "2 件行李 + 1 件小型手提" }
+          ])}
+          <p>${state.lang !== "zh" ? "Eurostar recommends arriving about 75 to 90 minutes early. For Standard and Plus, check-in closes 30 minutes before departure, so leave enough time for security and passport control." : "Eurostar 這段比較像搭火車和過關的混合流程。提早到站會比較從容，因為安檢、護照檢查都在上車前完成，Standard / Plus 通常會在發車前 30 分鐘關閘門。"}</p>
+        </article>
       </div>
     </section>
     <section class="section compact-section" id="local">
