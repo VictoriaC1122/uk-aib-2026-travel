@@ -2006,58 +2006,69 @@ function renderItinerary() {
       </div>
       <div class="itinerary-timeline">
         ${tripData.itinerary.map((day, index) => `
-          <details class="day-card"${index === 0 ? " open" : ""}>
-            <summary class="day-header">
-              <div class="day-header-top">
-                <span class="day-index">${state.lang === "en" ? `Day ${index + 1}` : `Day ${index + 1}`}</span>
-                <span class="day-type-pill day-type-${escapeHtml(day.kind || "travel")}">
-                  ${day.kind === "conference"
-                    ? (state.lang === "en" ? "Conference" : "會議")
-                    : day.kind === "free"
-                      ? (state.lang === "en" ? "Free time" : "自由活動")
-                      : (state.lang === "en" ? "Travel" : "旅程")}
-                </span>
-              </div>
-              ${day.theme ? `<div class="day-theme">${escapeHtml(t(day.theme))}</div>` : ""}
-              <div class="day-kicker">${escapeHtml(t(day.city || ""))}</div>
-              <h3 class="day-title">${escapeHtml(day.date)} · ${escapeHtml(t(day.title))}</h3>
-              <p class="day-summary">${escapeHtml(t(day.notes?.[0] || day.must?.[0] || ""))}</p>
-            </summary>
-            <div class="day-overview-grid">
-              <div class="day-content-top">
-                <div class="day-focus-label">${state.lang === "en" ? "City" : "所在城市"}</div>
-                <div class="day-focus-text">${escapeHtml(t(day.city || ""))}</div>
-              </div>
-              <div class="day-content-top">
-                <div class="day-focus-label">${state.lang === "en" ? "Transport" : "移動方式"}</div>
-                <div class="day-focus-text">${escapeHtml(t(day.transport || ""))}</div>
-              </div>
+          <article class="timeline-entry timeline-entry-${escapeHtml(day.kind || "travel")}">
+            <div class="timeline-rail" aria-hidden="true">
+              <span class="timeline-node"></span>
+              <span class="timeline-line"></span>
             </div>
-            <div class="day-detail-list">
-              <article class="day-detail-item">
-                <div class="day-detail-title">${state.lang === "en" ? "Route" : "今日路線"}</div>
-                <div class="day-detail-desc">${renderList(day.must, "plain-list")}</div>
-              </article>
-              ${day.optional?.length ? `
-                <article class="day-detail-item">
-                  <div class="day-detail-title">${state.lang === "en" ? "If time allows" : "順路可留"}</div>
-                  <div class="day-detail-desc">${renderList(day.optional, "plain-list")}</div>
-                </article>
-              ` : ""}
-              ${day.tickets?.length ? `
-                <article class="day-detail-item">
-                  <div class="day-detail-title">${state.lang === "en" ? "Cost note" : "花費參考"}</div>
-                  <div class="day-detail-desc">${renderList(day.tickets, "plain-list")}</div>
-                </article>
-              ` : ""}
-              ${day.notes?.length ? `
-                <article class="day-detail-item">
-                  <div class="day-detail-title">${state.lang === "en" ? "Travel note" : "貼心提醒"}</div>
-                  <div class="day-detail-desc">${renderList(day.notes, "plain-list")}</div>
-                </article>
-              ` : ""}
+            <div class="timeline-date-block">
+              <span class="timeline-day-label">${state.lang === "en" ? `Day ${index + 1}` : `Day ${index + 1}`}</span>
+              <strong class="timeline-date-value">${escapeHtml(day.date)}</strong>
+              <span class="timeline-city-label">${escapeHtml(t(day.city || ""))}</span>
             </div>
-          </details>
+            <details class="day-card"${index === 0 ? " open" : ""}>
+              <summary class="day-header">
+                <div class="day-header-top">
+                  <span class="day-index">${state.lang === "en" ? `Day ${index + 1}` : `Day ${index + 1}`}</span>
+                  <span class="day-type-pill day-type-${escapeHtml(day.kind || "travel")}">
+                    ${day.kind === "conference"
+                      ? (state.lang === "en" ? "Conference" : "會議")
+                      : day.kind === "free"
+                        ? (state.lang === "en" ? "Free time" : "自由活動")
+                        : (state.lang === "en" ? "Travel" : "旅程")}
+                  </span>
+                </div>
+                ${day.theme ? `<div class="day-theme">${escapeHtml(t(day.theme))}</div>` : ""}
+                <div class="day-kicker">${escapeHtml(t(day.city || ""))}</div>
+                <h3 class="day-title">${escapeHtml(t(day.title))}</h3>
+                <p class="day-summary">${escapeHtml(t(day.notes?.[0] || day.must?.[0] || ""))}</p>
+              </summary>
+              <div class="day-overview-grid">
+                <div class="day-content-top">
+                  <div class="day-focus-label">${state.lang === "en" ? "City" : "所在城市"}</div>
+                  <div class="day-focus-text">${escapeHtml(t(day.city || ""))}</div>
+                </div>
+                <div class="day-content-top">
+                  <div class="day-focus-label">${state.lang === "en" ? "Transport" : "移動方式"}</div>
+                  <div class="day-focus-text">${escapeHtml(t(day.transport || ""))}</div>
+                </div>
+              </div>
+              <div class="day-detail-list">
+                <article class="day-detail-item">
+                  <div class="day-detail-title">${state.lang === "en" ? "Route" : "今日路線"}</div>
+                  <div class="day-detail-desc">${renderList(day.must, "plain-list")}</div>
+                </article>
+                ${day.optional?.length ? `
+                  <article class="day-detail-item">
+                    <div class="day-detail-title">${state.lang === "en" ? "If time allows" : "順路可留"}</div>
+                    <div class="day-detail-desc">${renderList(day.optional, "plain-list")}</div>
+                  </article>
+                ` : ""}
+                ${day.tickets?.length ? `
+                  <article class="day-detail-item">
+                    <div class="day-detail-title">${state.lang === "en" ? "Cost note" : "花費參考"}</div>
+                    <div class="day-detail-desc">${renderList(day.tickets, "plain-list")}</div>
+                  </article>
+                ` : ""}
+                ${day.notes?.length ? `
+                  <article class="day-detail-item">
+                    <div class="day-detail-title">${state.lang === "en" ? "Travel note" : "貼心提醒"}</div>
+                    <div class="day-detail-desc">${renderList(day.notes, "plain-list")}</div>
+                  </article>
+                ` : ""}
+              </div>
+            </details>
+          </article>
         `).join("")}
       </div>
       </article>
