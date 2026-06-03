@@ -12247,3 +12247,317 @@ main#page-content {
     padding-top: 4px;
   }
 }
+
+/* Light Morandi refinement */
+:root {
+  --handbook-cream: #f7f1eb;
+  --handbook-card: rgba(255, 252, 248, 0.88);
+  --handbook-border: rgba(214, 203, 196, 0.62);
+  --handbook-text: #534b49;
+  --handbook-muted: #786f6b;
+  --handbook-accent: #9d7f7b;
+  --handbook-accent-soft: #d9ccc1;
+  --handbook-sage: #a8b0a6;
+  --handbook-blue: #8f9daa;
+  --handbook-shadow: 0 18px 42px rgba(99, 82, 73, 0.08);
+  --handbook-shadow-soft: 0 12px 26px rgba(99, 82, 73, 0.07);
+}
+
+body {
+  color: var(--handbook-text);
+  background:
+    radial-gradient(circle at top, rgba(234, 221, 211, 0.34), transparent 32%),
+    radial-gradient(circle at 82% 14%, rgba(168, 176, 166, 0.14), transparent 24%),
+    linear-gradient(180deg, #faf6f1 0%, #f7f1eb 36%, #f2ece5 100%) !important;
+}
+
+body::before {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.18), transparent 12%, transparent 88%, rgba(255, 255, 255, 0.18)),
+    radial-gradient(circle at 15% 20%, rgba(157, 127, 123, 0.05), transparent 20%),
+    radial-gradient(circle at 85% 12%, rgba(143, 157, 170, 0.05), transparent 24%);
+}
+
+.progress {
+  background: linear-gradient(90deg, #b59c97, #cbbca8, #9aa9b1);
+  box-shadow: 0 0 12px rgba(181, 156, 151, 0.22);
+}
+
+.hero {
+  color: var(--handbook-text);
+  background:
+    linear-gradient(135deg, rgba(249, 244, 238, 0.42) 0%, rgba(225, 214, 206, 0.32) 30%, rgba(207, 195, 191, 0.26) 64%, rgba(171, 181, 176, 0.22) 100%),
+    radial-gradient(circle at top, rgba(255, 236, 215, 0.16), transparent 35%),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1920px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg") center 38% / cover !important;
+}
+
+.hero::before {
+  opacity: 0.18;
+}
+
+.hero-content {
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  background: linear-gradient(135deg, rgba(255, 250, 245, 0.84), rgba(249, 244, 238, 0.76));
+  box-shadow: 0 24px 56px rgba(99, 82, 73, 0.09);
+}
+
+.handbook-home-hero,
+.chapter-hero-card {
+  color: var(--handbook-text);
+}
+
+.handbook-home-hero h1,
+.chapter-hero-card h1,
+.section-card h2,
+.section-card h3,
+.page-meta-card strong,
+.page-card strong,
+.snapshot-value,
+.journey-route-card h3,
+.highlight-story-card h3,
+.day-chapter-head h3,
+.day-guide-section-head h3,
+.day-story-card h3,
+.day-guide-card h3 {
+  color: var(--handbook-text) !important;
+  text-shadow: none !important;
+}
+
+.hero-subtitle,
+.hero-dates,
+.destinations,
+.hero-intro,
+.hero-serif-note {
+  color: var(--handbook-muted) !important;
+}
+
+.eyebrow,
+.section-label,
+.panel-label,
+.journey-route-date,
+.snapshot-label,
+.day-story-index,
+.highlight-city,
+.practical-kicker,
+.day-guide-index,
+.guide-detail-title,
+.moment-card span,
+.day-chapter-range,
+.day-guide-section-range,
+.chapter-hero-fact span {
+  color: #9a8870 !important;
+}
+
+.hero-signal-card,
+.hero-fact,
+.chapter-hero-fact {
+  background: rgba(255, 255, 255, 0.58) !important;
+  border: 1px solid rgba(214, 203, 196, 0.52) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32) !important;
+}
+
+.hero-signal-card span,
+.hero-fact span {
+  color: #8a817d !important;
+}
+
+.hero-signal-card strong,
+.hero-fact strong,
+.chapter-hero-fact strong {
+  color: var(--handbook-text) !important;
+}
+
+.button {
+  min-height: 48px;
+}
+
+.button.primary,
+.hero-action-primary,
+.handbook-main-nav .nav-item.active,
+.handbook-main-nav .nav-item:hover,
+.lang-buttons .pill-btn.active,
+.currency-buttons .pill-btn.active,
+.desktop-anchor-link.active,
+.desktop-anchor-link:hover {
+  color: #fffaf5 !important;
+  background: linear-gradient(135deg, #b0928f 0%, #c5ab97 100%) !important;
+  box-shadow: 0 12px 24px rgba(160, 134, 124, 0.16) !important;
+}
+
+.button.secondary,
+.hero-action-secondary {
+  color: var(--handbook-text) !important;
+  background: rgba(255, 255, 255, 0.46) !important;
+  border-color: rgba(214, 203, 196, 0.48) !important;
+}
+
+.lang-buttons,
+.currency-buttons,
+.handbook-main-nav,
+.handbook-footer,
+.day-guide-nav,
+.page-meta-card,
+.day-chapter-day,
+.desktop-anchor-link,
+.quick-nav,
+.quick-nav a,
+.page-card,
+.section-card,
+.summary-card,
+.shopping-card,
+.paper-card,
+.flight-card,
+.transfer-card,
+.ticket-card,
+.budget-mobile-card,
+.alert-card,
+.stay-card-rich,
+.day-card,
+.timeline-stage-card,
+.day-chapter-card,
+.day-guide-section-head,
+.snapshot-card,
+.journey-route-card,
+.highlight-story-card,
+.practical-guide-card,
+.guide-meta-row div,
+.moment-card,
+.guide-detail-card {
+  border-color: rgba(214, 203, 196, 0.58) !important;
+}
+
+.lang-buttons,
+.currency-buttons,
+.handbook-main-nav,
+.handbook-footer,
+.day-guide-nav,
+.quick-nav,
+.page-intro-card,
+.section-card,
+.summary-card,
+.shopping-card,
+.paper-card,
+.flight-card,
+.transfer-card,
+.ticket-card,
+.budget-mobile-card,
+.alert-card,
+.stay-card-rich,
+.day-card,
+.timeline-stage-card,
+.day-chapter-card,
+.day-guide-section-head,
+.snapshot-card,
+.journey-route-card,
+.highlight-story-card,
+.practical-guide-card,
+.guide-meta-row div,
+.moment-card,
+.guide-detail-card,
+.page-meta-card,
+.day-chapter-day {
+  background: rgba(255, 252, 248, 0.84) !important;
+  box-shadow: var(--handbook-shadow) !important;
+  backdrop-filter: blur(14px);
+}
+
+.main-nav .nav-item,
+.quick-nav a,
+.page-inline-nav a,
+.day-chapter-link,
+.day-guide-link strong,
+.day-guide-city,
+.day-story-city {
+  color: var(--handbook-text);
+}
+
+.section-card .lead,
+.section-card p,
+.summary-card p,
+.shopping-card p,
+.paper-card p,
+.flight-card p,
+.day-summary,
+.journey-route-card p,
+.highlight-story-card p,
+.snapshot-card p,
+.day-story-card p,
+.day-guide-intro,
+.day-chapter-lead,
+.day-guide-section-head p,
+.practical-summary,
+.moment-card p,
+.guide-detail-card li,
+.page-card p,
+.desktop-sidebar-note,
+.hero-subtitle,
+.hero-dates,
+.destinations,
+.hero-intro,
+.hero-serif-note {
+  color: var(--handbook-muted) !important;
+}
+
+.hero-signal-strip,
+.hero-facts,
+.page-meta-strip,
+.journey-route-grid,
+.handbook-overview-grid,
+.snapshot-grid,
+.journey-highlight-grid,
+.day-chapter-grid,
+.practical-guide-grid,
+.day-guide-sections,
+.day-guide-list,
+.guide-meta-row,
+.guide-detail-grid {
+  gap: 20px !important;
+}
+
+.section {
+  padding: 42px 0;
+}
+
+.section-card {
+  padding: 32px 30px !important;
+}
+
+.day-guide-nav {
+  background: linear-gradient(180deg, rgba(247, 241, 235, 0.94) 0%, rgba(247, 241, 235, 0.84) 78%, rgba(247, 241, 235, 0) 100%) !important;
+}
+
+.day-guide-link.active {
+  background: rgba(255, 255, 255, 0.96) !important;
+  box-shadow: var(--handbook-shadow-soft) !important;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    padding-top: 108px;
+    padding-bottom: 136px;
+  }
+
+  .hero-content {
+    padding: 32px 28px 28px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding-top: 86px;
+    padding-bottom: 120px;
+  }
+
+  .hero-content {
+    padding: 24px 20px 22px;
+  }
+
+  .section {
+    padding: 24px 0;
+  }
+
+  .section-card,
+  .page-intro-card {
+    padding: 22px 18px !important;
+  }
+}
