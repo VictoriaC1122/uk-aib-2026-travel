@@ -1986,11 +1986,21 @@ function renderItinerary() {
       <article class="section-card">
       <div class="section-label">${state.lang === "en" ? "Day by Day" : "每日行程"}</div>
       <h2>${state.lang === "en" ? "Daily itinerary" : "每日行程"}</h2>
-      <p class="lead">${state.lang === "en" ? "Open the day you need." : "要看哪一天，就打開哪一天。"}</p>
+      <p class="lead">${state.lang === "en" ? "Each day opens into a compact travel card, so flights, city shifts, conference time, and walking routes stay easy to scan." : "把每天拆成一張張行程卡，移動、會議、散步和提醒都放在同一個展開層裡。"} </p>
+      <div class="itinerary-editorial-intro">
+        <article class="itinerary-editorial-copy">
+          <p>${state.lang === "en" ? "This page keeps the Manchester conference days, the London transition, the Paris stretch, and the return chain in one reading flow." : "這一頁把曼徹斯特會議、倫敦移動、巴黎段和回程串成同一條閱讀路線。"}</p>
+          <div class="itinerary-editorial-points">
+            <div><span>${state.lang === "en" ? "Conference base" : "會議主段"}</span><strong>${state.lang === "en" ? "Manchester · Jun 30 – Jul 3" : "Manchester · 6/30–7/3"}</strong></div>
+            <div><span>${state.lang === "en" ? "City move" : "城市切換"}</span><strong>${state.lang === "en" ? "London → Paris → Manchester" : "London → Paris → Manchester"}</strong></div>
+            <div><span>${state.lang === "en" ? "Reading style" : "閱讀方式"}</span><strong>${state.lang === "en" ? "Open one day at a time" : "一次看一天"}</strong></div>
+          </div>
+        </article>
+      </div>
         <div class="itinerary-highlights">
         ${[
           [{ zh: "旅程長度", en: "Trip length" }, { zh: "14 天", en: "14 days" }],
-          [{ zh: "主城市", en: "Main cities" }, { zh: "Manchester / London / Paris", en: "Manchester / London / Paris" }],
+          [{ zh: "主城市", en: "Main cities" }, { zh: "Frankfurt / Manchester / London / Paris", en: "Frankfurt / Manchester / London / Paris" }],
           [{ zh: "還沒定的事", en: "Open items" }, { zh: "倫敦住宿 / Eurostar / 巴黎住宿", en: "London hotel / Eurostar / Paris hotel" }]
         ].map(([label, value]) => renderMiniHighlightCard(label, value)).join("")}
       </div>
@@ -2008,12 +2018,19 @@ function renderItinerary() {
                       : (state.lang === "en" ? "Travel" : "旅程")}
                 </span>
               </div>
+              <div class="day-kicker">${escapeHtml(t(day.city || ""))}</div>
               <h3 class="day-title">${escapeHtml(day.date)} · ${escapeHtml(t(day.title))}</h3>
               <p class="day-summary">${escapeHtml(t(day.notes?.[0] || day.must?.[0] || ""))}</p>
             </summary>
-            <div class="day-content-top">
-              <div class="day-focus-label">${state.lang === "en" ? "City" : "城市"}</div>
-              <div class="day-focus-text">${escapeHtml(t(day.city || ""))}</div>
+            <div class="day-overview-grid">
+              <div class="day-content-top">
+                <div class="day-focus-label">${state.lang === "en" ? "City" : "城市"}</div>
+                <div class="day-focus-text">${escapeHtml(t(day.city || ""))}</div>
+              </div>
+              <div class="day-content-top">
+                <div class="day-focus-label">${state.lang === "en" ? "Transport" : "移動"}</div>
+                <div class="day-focus-text">${escapeHtml(t(day.transport || ""))}</div>
+              </div>
             </div>
             <div class="day-detail-list">
               <article class="day-detail-item">

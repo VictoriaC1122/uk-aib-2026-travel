@@ -5939,6 +5939,53 @@ h3 {
   margin: 26px 0 10px;
 }
 
+.itinerary-editorial-intro {
+  margin-top: 22px;
+}
+
+.itinerary-editorial-copy {
+  display: grid;
+  gap: 18px;
+  padding: 26px 28px;
+  border-radius: 24px;
+  border: 1px solid rgba(227, 220, 210, 0.92);
+  background: linear-gradient(135deg, rgba(255, 251, 246, 0.98), rgba(246, 240, 232, 0.92));
+}
+
+.itinerary-editorial-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.itinerary-editorial-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.itinerary-editorial-points div {
+  padding-top: 14px;
+  border-top: 1px solid rgba(227, 220, 210, 0.8);
+}
+
+.itinerary-editorial-points span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.itinerary-editorial-points strong {
+  display: block;
+  margin-top: 7px;
+  color: var(--slate);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
 .mini-highlight {
   padding: 18px 20px;
   border-radius: 18px;
@@ -6077,6 +6124,14 @@ h3 {
   gap: 10px;
 }
 
+.day-kicker {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .day-index {
   display: inline-flex;
   width: fit-content;
@@ -6111,6 +6166,13 @@ h3 {
   border: 1px solid rgba(227, 220, 210, 0.85);
 }
 
+.day-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
 .day-focus-label {
   color: var(--muted);
   font-size: 12px;
@@ -6125,42 +6187,21 @@ h3 {
 }
 
 .day-detail-list {
-  position: relative;
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   margin-top: 18px;
-  padding-left: 18px;
-}
-
-.day-detail-list::before {
-  content: "";
-  position: absolute;
-  left: 3px;
-  top: 6px;
-  bottom: 6px;
-  width: 2px;
-  background: linear-gradient(180deg, rgba(176, 157, 136, 0.5), rgba(176, 157, 136, 0.08));
 }
 
 .day-detail-item {
-  position: relative;
-  padding-left: 20px;
-}
-
-.day-detail-item::before {
-  content: "";
-  position: absolute;
-  left: -2px;
-  top: 8px;
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  background: #b9a996;
-  box-shadow: 0 0 0 4px rgba(185, 169, 150, 0.14);
+  padding: 18px 18px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(227, 220, 210, 0.88);
+  background: rgba(255, 251, 246, 0.92);
 }
 
 .day-detail-title {
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   color: var(--slate);
   font-size: 15px;
   font-weight: 700;
@@ -6184,6 +6225,15 @@ h3 {
   .overview-grid,
   .itinerary-highlights {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .itinerary-editorial-points,
+  .day-detail-list {
+    grid-template-columns: 1fr;
+  }
+
+  .day-overview-grid {
+    grid-template-columns: 1fr;
   }
 
   .cover-story-grid,
