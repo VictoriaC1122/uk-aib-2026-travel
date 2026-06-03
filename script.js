@@ -1884,34 +1884,26 @@ function renderChrome() {
     .join("");
 
   document.querySelector("[data-site-header]").innerHTML = `
-    <div class="topbar handbook-topbar">
-      <a class="brand handbook-brand" href="./index.html" aria-label="${state.lang !== "zh" ? "Back to the main travel handbook" : "回到首頁總覽"}">
-        <span>AIB 2026 Manchester</span>
-        <small>${state.lang !== "zh" ? "Europe travel handbook" : "歐洲旅程手冊"}</small>
-      </a>
-      <div class="control-dock" aria-label="${state.lang !== "zh" ? "Language and currency controls" : "語言與貨幣控制"}">
-        <div class="control-group">
-          <div class="control-label">${state.lang !== "zh" ? "Language" : "語言"}</div>
-          <div class="control-buttons" role="tablist" aria-label="${state.lang !== "zh" ? "Language switcher" : "語言切換"}">${langButtons}</div>
-        </div>
-        <div class="control-group">
-          <div class="control-label">${state.lang !== "zh" ? "Currency" : "貨幣"}</div>
-          <div class="control-buttons" role="tablist" aria-label="${state.lang !== "zh" ? "Currency switcher" : "貨幣切換"}">${currencyButtons}</div>
-        </div>
+    <div class="language-selector" aria-label="${state.lang !== "zh" ? "Language and currency controls" : "語言與貨幣控制"}">
+      <div class="lang-buttons" role="tablist" aria-label="${state.lang !== "zh" ? "Language switcher" : "語言切換"}">
+        ${langButtons}
+      </div>
+      <div class="currency-buttons" role="tablist" aria-label="${state.lang !== "zh" ? "Currency switcher" : "貨幣切換"}">
+        ${currencyButtons}
       </div>
     </div>
-    <nav class="main-nav" aria-label="${state.lang !== "zh" ? "Primary page tabs" : "主要分頁"}">
+    <nav class="main-nav handbook-main-nav" aria-label="${state.lang !== "zh" ? "Primary page tabs" : "主要分頁"}">
       ${nav}
     </nav>
   `;
 
   document.querySelector("[data-site-footer]").innerHTML = `
-    <footer class="site-footer">
-        <p>AIB 2026 Manchester · ${state.lang !== "zh" ? "Europe Travel Handbook" : "歐洲行程手冊"}</p>
+    <footer class="site-footer handbook-footer">
+        <p>${state.lang !== "zh" ? "AIB 2026 Manchester · Europe travel handbook" : "AIB 2026 Manchester · 英法歐洲旅程手冊"}</p>
       <a href="./index.html">${state.lang !== "zh" ? "Back to overview" : "回到總覽"}</a>
     </footer>
     ${pageId === "home"
-      ? renderHomeTabs()
+      ? ""
       : `<nav class="bottom-nav" aria-label="${state.lang !== "zh" ? "Primary mobile navigation" : "主要手機導覽"}">${bottomNav}</nav>`
     }
   `;
@@ -2155,7 +2147,7 @@ function renderHero(pageId) {
       [{ zh: "目前狀態", en: "Status" }, { zh: "主段已定，後段細節持續補齊", en: "Core route set, later details still being refined" }]
     ];
     return `
-      <div class="editorial-hero mobile-dashboard-hero handbook-home-hero">
+      <div class="editorial-hero mobile-dashboard-hero handbook-home-hero hero-content">
         <p class="eyebrow">${state.lang !== "zh" ? "Academic Conference Travel Handbook" : "學術會議旅程手冊"}</p>
         <h1>${state.lang !== "zh" ? "AIB 2026 Manchester" : "AIB 2026 Manchester"}</h1>
         <div class="hero-subtitle">${state.lang !== "zh" ? "UK & France Travel Handbook" : "英國・法國旅遊手冊"}</div>
@@ -2186,34 +2178,36 @@ function renderHero(pageId) {
     `;
   }
   return `
-    <div class="hero-grid handbook-hero-grid">
-      <section class="hero-copy">
+    <div class="hero-grid handbook-hero-grid chapter-hero-grid">
+      <section class="hero-copy chapter-hero-card hero-content">
         <p class="eyebrow">${escapeHtml(t(hero.kicker))}</p>
         <h1>${heroTitle}</h1>
         <p class="hero-serif-note">${escapeHtml(t(hero.lead))}</p>
+        <div class="chapter-hero-meta">
+          <article class="chapter-hero-fact">
+            <span>${state.lang !== "zh" ? "Trip window" : "旅程日期"}</span>
+            <strong>2026/06/29 – 2026/07/12</strong>
+          </article>
+          <article class="chapter-hero-fact">
+            <span>${state.lang !== "zh" ? "Main cities" : "主要城市"}</span>
+            <strong>${state.lang !== "zh" ? "Frankfurt · Manchester · London · Paris" : "法蘭克福 · 曼徹斯特 · 倫敦 · 巴黎"}</strong>
+          </article>
+          <article class="chapter-hero-fact">
+            <span>${state.lang !== "zh" ? "Focus" : "這頁重點"}</span>
+            <strong>${escapeHtml(t(pageDescriptions[pageId] || { zh: "旅程章節", en: "Travel chapter" }))}</strong>
+          </article>
+        </div>
         <div class="hero-actions">
           <a class="button primary" href="./index.html">${state.lang !== "zh" ? "Back to overview" : "回到旅程總覽"}</a>
           <a class="button secondary" href="./links.html">${state.lang !== "zh" ? "Useful links" : "常用連結"}</a>
         </div>
       </section>
-      <aside class="hero-panel dashboard-panel" aria-label="${state.lang !== "zh" ? "Trip snapshot" : "旅程摘要"}">
-        <div><span class="panel-label">${state.lang !== "zh" ? "Dates" : "日期"}</span><strong>2026/06/29 – 2026/07/12</strong></div>
-        <div><span class="panel-label">${state.lang !== "zh" ? "Cities" : "城市"}</span><strong>Manchester · London · Paris</strong></div>
-        <div><span class="panel-label">${state.lang !== "zh" ? "Status" : "狀態"}</span><strong>${state.lang !== "zh" ? "Flights booked · later stays in planning" : "機票已訂 · 後段住宿整理中"}</strong></div>
-        <div><span class="panel-label">${state.lang !== "zh" ? "Last updated" : "最後更新"}</span><strong>${tripData.lastUpdated}</strong></div>
-      </aside>
     </div>
   `;
 }
 
 function renderQuickNav(pageId) {
-  const items = sectionNav[pageId] || [];
-  if (!items.length) return "";
-  return `
-    <nav class="quick-nav" aria-label="${state.lang !== "zh" ? "Section navigation" : "區塊導覽"}">
-      ${items.map(([id, label]) => `<a href="#${escapeHtml(id)}">${escapeHtml(t(label))}</a>`).join("")}
-    </nav>
-  `;
+  return "";
 }
 
 function renderReadingGuide(pageId) {
@@ -2590,31 +2584,28 @@ function renderDesktopPageShell(pageId, options, content) {
   const items = sectionNav[pageId] || [];
   const meta = options.meta || [];
   return `
-    <div class="desktop-page-shell">
-      <aside class="desktop-page-sidebar" aria-label="${state.lang !== "zh" ? "Page navigation" : "頁面導覽"}">
-        <div class="desktop-sidebar-card">
+    <div class="desktop-page-shell handbook-page-shell">
+      <section class="section compact-section page-intro-section" id="overview">
+        <article class="section-card page-intro-card">
           <div class="section-label">${escapeHtml(t(options.label))}</div>
-          <h3>${escapeHtml(t(options.title))}</h3>
-          ${options.note ? `<p class="desktop-sidebar-note">${escapeHtml(t(options.note))}</p>` : ""}
-          <nav class="desktop-anchor-nav">
-            ${items.map(([id, label]) => `<a href="#${escapeHtml(id)}" class="desktop-anchor-link" data-page-anchor="${escapeHtml(id)}">${escapeHtml(t(label))}</a>`).join("")}
-          </nav>
-        </div>
-        ${meta.length ? `
-          <div class="desktop-sidebar-card desktop-sidebar-meta">
-            <div class="section-label">${state.lang !== "zh" ? "Snapshot" : "摘要"}</div>
-            <div class="desktop-meta-list">
+          <h2>${escapeHtml(t(options.title))}</h2>
+          ${options.note ? `<p class="lead">${escapeHtml(t(options.note))}</p>` : ""}
+          ${meta.length ? `
+            <div class="page-meta-strip">
               ${meta.map((item) => `
-                <div>
+                <article class="page-meta-card">
                   <span>${escapeHtml(t(item.label))}</span>
                   <strong>${escapeHtml(t(item.value))}</strong>
-                </div>
+                </article>
               `).join("")}
             </div>
-          </div>
-        ` : ""}
-      </aside>
-      <div class="desktop-page-main">
+          ` : ""}
+          <nav class="page-inline-nav" aria-label="${state.lang !== "zh" ? "Page navigation" : "頁面導覽"}">
+            ${items.map(([id, label]) => `<a href="#${escapeHtml(id)}" class="desktop-anchor-link" data-page-anchor="${escapeHtml(id)}">${escapeHtml(t(label))}</a>`).join("")}
+          </nav>
+        </article>
+      </section>
+      <div class="desktop-page-main handbook-page-main">
         ${content}
       </div>
     </div>
