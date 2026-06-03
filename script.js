@@ -1459,14 +1459,20 @@ function renderChrome() {
     .join("");
 
   document.querySelector("[data-site-header]").innerHTML = `
-    <div class="control-dock" aria-label="${state.lang !== "zh" ? "Language and currency controls" : "語言與貨幣控制"}">
-      <div class="control-group">
-        <div class="control-label">${state.lang !== "zh" ? "Language" : "語言"}</div>
-        <div class="control-buttons" role="tablist" aria-label="${state.lang !== "zh" ? "Language switcher" : "語言切換"}">${langButtons}</div>
-      </div>
-      <div class="control-group">
-        <div class="control-label">${state.lang !== "zh" ? "Currency" : "貨幣"}</div>
-        <div class="control-buttons" role="tablist" aria-label="${state.lang !== "zh" ? "Currency switcher" : "貨幣切換"}">${currencyButtons}</div>
+    <div class="topbar handbook-topbar">
+      <a class="brand handbook-brand" href="./index.html" aria-label="${state.lang !== "zh" ? "Back to the main travel dashboard" : "回到首頁總覽"}">
+        <span>AIB 2026 Manchester</span>
+        <small>${state.lang !== "zh" ? "Europe travel handbook" : "歐洲旅程手冊"}</small>
+      </a>
+      <div class="control-dock" aria-label="${state.lang !== "zh" ? "Language and currency controls" : "語言與貨幣控制"}">
+        <div class="control-group">
+          <div class="control-label">${state.lang !== "zh" ? "Language" : "語言"}</div>
+          <div class="control-buttons" role="tablist" aria-label="${state.lang !== "zh" ? "Language switcher" : "語言切換"}">${langButtons}</div>
+        </div>
+        <div class="control-group">
+          <div class="control-label">${state.lang !== "zh" ? "Currency" : "貨幣"}</div>
+          <div class="control-buttons" role="tablist" aria-label="${state.lang !== "zh" ? "Currency switcher" : "貨幣切換"}">${currencyButtons}</div>
+        </div>
       </div>
     </div>
     <nav class="main-nav" aria-label="${state.lang !== "zh" ? "Primary page tabs" : "主要分頁"}">
@@ -1711,37 +1717,45 @@ function renderHero(pageId) {
   const homePage = pageId === "home";
   const heroTitle = escapeHtml(t(hero.title)).replace("\n", "<br />");
   if (homePage) {
+    const signalCards = [
+      [{ zh: "會議主段", en: "Conference base" }, { zh: "Manchester · 6/30–7/3", en: "Manchester · Jun 30-3 Jul" }],
+      [{ zh: "後段路線", en: "Later route" }, { zh: "London · Paris", en: "London · Paris" }],
+      [{ zh: "住宿", en: "Hotel" }, "INNSiDE Manchester"],
+      [{ zh: "發表", en: "Papers" }, { zh: "Competitive + Interactive", en: "Competitive + Interactive" }]
+    ];
+    const heroFacts = [
+      [{ zh: "旅程日期", en: "Trip dates" }, { zh: "2026/06/29 – 2026/07/12", en: "2026/06/29 – 2026/07/12" }],
+      [{ zh: "主要城市", en: "Cities" }, { zh: "法蘭克福 · 曼徹斯特 · 倫敦 · 巴黎", en: "Frankfurt · Manchester · London · Paris" }],
+      [{ zh: "發表場次", en: "Sessions" }, { zh: "兩場都已確認", en: "Both sessions confirmed" }],
+      [{ zh: "目前狀態", en: "Status" }, { zh: "主段已定，後段細節持續補齊", en: "Core route set, later details still being refined" }]
+    ];
     return `
-      <div class="editorial-hero mobile-dashboard-hero">
+      <div class="editorial-hero mobile-dashboard-hero handbook-home-hero">
         <p class="eyebrow">${state.lang !== "zh" ? "Academic Conference Travel Dashboard" : "學術會議旅程總覽"}</p>
         <h1>${state.lang !== "zh" ? "AIB 2026 Manchester" : "AIB 2026 Manchester"}</h1>
-        <p class="hero-date-line">${state.lang !== "zh" ? "June 30 – July 5, 2026" : "2026 年 6 月 30 日 – 7 月 5 日"}</p>
-        <p class="hero-location-line">${state.lang !== "zh" ? "Manchester · London · Frankfurt · Paris" : "曼徹斯特 · 倫敦 · 法蘭克福 · 巴黎"}</p>
-        <p class="hero-serif-note">${state.lang !== "zh" ? "Conference plans, hotels, papers, and the full Europe route in one place." : "這裡把會議住宿、發表安排和這趟歐洲行程放在一起。"}</p>
-        <div class="hero-chip-row" aria-label="${state.lang !== "zh" ? "Trip summary" : "旅程摘要"}">
-          <span class="hero-chip">${state.lang !== "zh" ? "AIB 2026" : "AIB 2026"}</span>
-          <span class="hero-chip">${state.lang !== "zh" ? "Manchester, UK" : "Manchester, UK"}</span>
-          <span class="hero-chip">${state.lang !== "zh" ? "INNSiDE Manchester" : "INNSiDE Manchester"}</span>
-          <span class="hero-chip">${state.lang !== "zh" ? "Jun 30 – Jul 5, 2026" : "2026/06/30 – 2026/07/05"}</span>
-          <span class="hero-chip">${state.lang !== "zh" ? "Competitive + Interactive Session" : "兩種發表形式"}</span>
-        </div>
-        <div class="hero-summary-grid hero-compact-summary">
-          ${[
-            [{ zh: "會議", en: "Conference" }, "AIB 2026"],
-            [{ zh: "城市", en: "City" }, { zh: "Manchester", en: "Manchester" }],
-            [{ zh: "住宿", en: "Hotel" }, "INNSiDE Manchester"],
-            [{ zh: "停留", en: "Stay" }, { zh: "2026/06/30 – 2026/07/05", en: "Jun 30 – Jul 5, 2026" }],
-            [{ zh: "發表", en: "Papers" }, { zh: "兩種發表形式", en: "Competitive + Interactive Session" }]
-          ].map(([label, value]) => `
-            <article class="summary-card hero-summary-card">
-              <div class="summary-label">${escapeHtml(t(label))}</div>
-              <div class="summary-value">${escapeHtml(t(value))}</div>
+        <div class="hero-subtitle">${state.lang !== "zh" ? "Europe Travel Handbook" : "歐洲旅程手冊"}</div>
+        <div class="hero-dates">${state.lang !== "zh" ? "2026 / 06 / 29 - 2026 / 07 / 12" : "2026 / 06 / 29 - 2026 / 07 / 12"}</div>
+        <div class="destinations">${state.lang !== "zh" ? "Frankfurt • Manchester • London • Paris" : "法蘭克福 • 曼徹斯特 • 倫敦 • 巴黎"}</div>
+        <p class="hero-intro">${state.lang !== "zh" ? "Start with the conference days in Manchester, then shift south through London and onward to Paris, keeping flights, hotels, sessions, and city moves in one calm reading flow." : "先以曼徹斯特的會議日為主軸，接著南下倫敦，再往巴黎走，把航班、住宿、發表和城市移動整理成一條好讀的旅程線。"}</p>
+        <div class="hero-signal-strip" aria-label="${state.lang !== "zh" ? "Trip snapshot" : "旅程摘要"}">
+          ${signalCards.map(([label, value]) => `
+            <article class="hero-signal-card">
+              <span>${escapeHtml(t(label))}</span>
+              <strong>${escapeHtml(t(value))}</strong>
             </article>
           `).join("")}
         </div>
         <div class="hero-actions editorial-hero-actions">
-          <a class="button primary" href="#overview">${state.lang !== "zh" ? "Travel overview" : "查看總覽"}</a>
-          <a class="button secondary" href="#conference">${state.lang !== "zh" ? "Conference details" : "查看會議"}</a>
+          <a class="button primary" href="#timeline">${state.lang !== "zh" ? "See the day flow" : "先看每日節奏"}</a>
+          <a class="button secondary" href="#hotel">${state.lang !== "zh" ? "See stays and route" : "看住宿與移動"}</a>
+        </div>
+        <div class="hero-facts">
+          ${heroFacts.map(([label, value]) => `
+            <article class="hero-fact">
+              <span>${escapeHtml(t(label))}</span>
+              <strong>${escapeHtml(t(value))}</strong>
+            </article>
+          `).join("")}
         </div>
       </div>
     `;
