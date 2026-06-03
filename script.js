@@ -3464,6 +3464,7 @@ function renderApp() {
   wireHomeTabs();
   wireDesktopAnchors();
   wireBackToTop();
+  wireHashDrivenSections();
   updateProgress();
   applySecondaryLocaleText();
 }
@@ -3608,6 +3609,22 @@ function wireBackToTop() {
   button.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 }
 
+function openHashTarget(hash) {
+  if (!hash) return;
+  const target = document.querySelector(hash);
+  if (!target) return;
+  target.querySelector("details")?.setAttribute("open", "open");
+}
+
+function wireHashDrivenSections() {
+  openHashTarget(window.location.hash);
+  if (document.body.dataset.hashBound) return;
+  document.body.dataset.hashBound = "true";
+  window.addEventListener("hashchange", () => {
+    openHashTarget(window.location.hash);
+  });
+}
+
 window.addEventListener("scroll", () => {
   updateProgress();
   document.getElementById("backToTop")?.classList.toggle("visible", window.scrollY > 500);
@@ -3619,6 +3636,8 @@ document.addEventListener("click", (event) => {
   const target = document.querySelector(link.getAttribute("href"));
   if (!target) return;
   event.preventDefault();
+  target.querySelector("details")?.setAttribute("open", "open");
+  history.replaceState(null, "", link.getAttribute("href"));
   target.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
