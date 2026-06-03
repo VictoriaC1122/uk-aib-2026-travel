@@ -1,20 +1,19 @@
-# AIB 2026 Manchester UK Travel Handbook
+# AIB 2026 Manchester Europe Travel Handbook
 
-Public GitHub Pages handbook for the AIB 2026 Manchester conference trip.
+這是 AIB 2026 Manchester 行程網站的 GitHub Pages 版本，主段是曼徹斯特會議，後面接倫敦、巴黎與法蘭克福轉機安排。
 
-This public version intentionally summarizes reimbursement items and document names without uploading sensitive PDFs, ETA reference numbers, email addresses, payment details, booking confirmation codes, or credit card information.
+公開版只保留行程、交通、住宿、文件種類和費用整理，不會上傳敏感資料，例如 PDF 正本、ETA 編號、電子郵件、付款資訊、訂位代碼或信用卡資料。
 
-## Sections
+## 內容
 
-- Conference overview and accepted presentation status
-- Flight, train, local transit, and map notes
-- INNSiDE Manchester hotel plan and London accommodation status
-- Reimbursement table for international flights, AIB conference fee, AIB membership fee, and NSTC Manchester daily allowance
-- Separate self-funded list for hotel, London travel, attractions, and other personal costs
-- Suggested UK itinerary that keeps Manchester as the return airport
-- First-time UK visit notes for entry, transport, payment, etiquette, and safety
-- Official links and reference sources
+- 會議資訊與發表狀態
+- 航班、火車、市內交通和地圖
+- 曼徹斯特、倫敦、巴黎的住宿安排
+- 可報帳項目與自費項目整理
+- 每日行程與城市移動順序
+- 這趟歐洲行前可以先看的提醒
+- 官方連結與參考來源
 
-## Deployment
+## 部署
 
-The site is static and can be served directly from GitHub Pages.
+這個網站是純靜態頁面，可以直接部署到 GitHub Pages。
