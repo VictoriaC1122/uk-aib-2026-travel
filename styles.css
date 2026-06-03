@@ -10720,3 +10720,388 @@ main#page-content {
     width: min(100%, calc(100% - 16px));
   }
 }
+
+/* Travel handbook page refinement */
+.home-handbook-section {
+  padding-top: 40px;
+  padding-bottom: 22px;
+}
+
+.handbook-intro-card,
+.handbook-snapshot-card,
+.handbook-highlights-card,
+.handbook-days-card,
+.handbook-practical-card,
+.handbook-itinerary-card {
+  overflow: hidden;
+}
+
+.handbook-intro-card .section-heading,
+.handbook-snapshot-card .section-heading,
+.handbook-highlights-card .section-heading,
+.handbook-days-card .section-heading,
+.handbook-practical-card .section-heading,
+.handbook-itinerary-card .section-heading {
+  margin-bottom: 26px;
+}
+
+.handbook-overview-grid,
+.snapshot-grid,
+.journey-highlight-grid,
+.day-preview-grid,
+.practical-guide-grid,
+.day-guide-list {
+  display: grid;
+  gap: 18px;
+}
+
+.handbook-overview-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.snapshot-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.snapshot-card {
+  min-width: 0;
+  padding: 22px 22px 24px;
+}
+
+.snapshot-label,
+.day-story-index,
+.highlight-city,
+.practical-kicker,
+.day-guide-index,
+.guide-detail-title,
+.moment-card span {
+  display: inline-flex;
+  align-items: center;
+  color: #8e7850;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.snapshot-value {
+  display: block;
+  margin-top: 10px;
+  color: #22314b;
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.snapshot-card p {
+  margin: 12px 0 0;
+  color: #687284;
+}
+
+.journey-highlight-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.highlight-story-card {
+  min-width: 0;
+  padding: 24px;
+}
+
+.highlight-story-top,
+.day-story-top,
+.day-guide-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.highlight-date,
+.day-story-date,
+.day-guide-date {
+  color: #7a808d;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.highlight-story-card h3,
+.day-story-card h3,
+.day-guide-card h3 {
+  margin-top: 12px;
+  color: #22314b;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.highlight-story-card p {
+  margin: 14px 0 0;
+  color: #687284;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.day-preview-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.day-story-card {
+  min-width: 0;
+  display: grid;
+  gap: 12px;
+  padding: 22px;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.day-story-city,
+.day-guide-city {
+  color: #516173;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.day-story-card p {
+  margin: 0;
+  color: #687284;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.day-story-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.day-story-highlights span {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(30, 58, 95, 0.08);
+  background: rgba(248, 245, 239, 0.92);
+  color: #455569;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.day-story-link {
+  color: #22314b;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.practical-guide-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.practical-guide-card {
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.practical-guide-card summary {
+  list-style: none;
+  padding: 22px 24px;
+  display: grid;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.practical-guide-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.practical-guide-card h3 {
+  margin-top: 8px;
+  color: #22314b;
+  font-size: 24px;
+}
+
+.practical-summary {
+  color: #687284;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.practical-guide-body {
+  padding: 0 24px 24px;
+  display: grid;
+  gap: 14px;
+}
+
+.practical-guide-body .plain-list {
+  margin: 0;
+}
+
+.practical-guide-body .text-link-button {
+  justify-self: start;
+}
+
+.day-guide-list {
+  grid-template-columns: 1fr;
+}
+
+.day-guide-card {
+  min-width: 0;
+}
+
+.day-guide-panel {
+  overflow: hidden;
+}
+
+.day-guide-summary {
+  list-style: none;
+  padding: 24px 26px;
+  cursor: pointer;
+}
+
+.day-guide-summary::-webkit-details-marker {
+  display: none;
+}
+
+.day-guide-intro {
+  margin: 14px 0 0;
+  color: #687284;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.day-guide-body {
+  padding: 0 26px 26px;
+  display: grid;
+  gap: 18px;
+}
+
+.guide-meta-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.guide-meta-row div,
+.moment-card,
+.guide-detail-card {
+  min-width: 0;
+  padding: 16px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(30, 58, 95, 0.08);
+  background: rgba(248, 245, 239, 0.72);
+}
+
+.guide-meta-row span {
+  display: block;
+  margin-bottom: 6px;
+  color: #7a808d;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.guide-meta-row strong {
+  color: #22314b;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.day-moment-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.moment-card p,
+.guide-detail-card li {
+  margin: 10px 0 0;
+  color: #687284;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.guide-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.guide-detail-card .plain-list {
+  margin: 12px 0 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .day-story-card:hover,
+  .highlight-story-card:hover,
+  .snapshot-card:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .handbook-overview-grid,
+  .snapshot-grid,
+  .day-preview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .journey-highlight-grid,
+  .practical-guide-grid,
+  .day-moment-grid,
+  .guide-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .home-handbook-section {
+    padding-top: 28px;
+    padding-bottom: 14px;
+  }
+
+  .handbook-overview-grid,
+  .snapshot-grid,
+  .journey-highlight-grid,
+  .day-preview-grid,
+  .practical-guide-grid,
+  .guide-meta-row,
+  .day-moment-grid,
+  .guide-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .snapshot-card,
+  .highlight-story-card,
+  .day-story-card,
+  .practical-guide-card summary,
+  .practical-guide-body,
+  .day-guide-summary,
+  .day-guide-body {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .snapshot-value {
+    font-size: 22px;
+  }
+
+  .highlight-story-card h3,
+  .day-story-card h3,
+  .day-guide-card h3 {
+    font-size: 24px;
+  }
+
+  .day-guide-intro,
+  .day-story-card p,
+  .practical-summary,
+  .highlight-story-card p {
+    font-size: 15px;
+  }
+}
