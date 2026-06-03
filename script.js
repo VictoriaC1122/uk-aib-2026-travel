@@ -1095,6 +1095,34 @@ const journeyHighlights = [
   }
 ];
 
+const journeyRouteCards = [
+  {
+    date: "6/30",
+    title: { zh: "法蘭克福轉機", en: "Frankfurt transit" },
+    body: { zh: "用半天城市散步，把長途飛行和歐洲的第一段街景接在一起。", en: "A short city walk softens the long-haul arrival into the first European streets." }
+  },
+  {
+    date: "6/30–7/3",
+    title: { zh: "曼徹斯特會議主段", en: "Manchester conference days" },
+    body: { zh: "AIB 2026 是整趟旅程的核心，發表與交流都集中在這幾天。", en: "AIB 2026 anchors the trip, with presentations and conference exchanges concentrated here." }
+  },
+  {
+    date: "7/4–7/6",
+    title: { zh: "倫敦城市段", en: "London chapter" },
+    body: { zh: "從西敏地標到街區散步，把倫敦留給比較從容的城市節奏。", en: "From Westminster to slower district walks, London opens in a calmer city rhythm." }
+  },
+  {
+    date: "7/7–7/10",
+    title: { zh: "巴黎收尾", en: "Paris finish" },
+    body: { zh: "博物館、河岸、精品街與法式餐桌，把最後幾天留給巴黎。", en: "Museums, river walks, grand boulevards, and long dinners bring the route to Paris." }
+  },
+  {
+    date: "7/11–7/12",
+    title: { zh: "返程串接", en: "Homebound connections" },
+    body: { zh: "巴黎、曼徹斯特、希斯洛一路接回台北，最後一天以轉場順利為優先。", en: "Paris, Manchester, and Heathrow connect in sequence, with the last day centered on a clean route home." }
+  }
+];
+
 const practicalGuideSections = [
   {
     title: { zh: "航班資訊", en: "Flights" },
@@ -2163,6 +2191,9 @@ function renderHome() {
           state.lang !== "zh" ? "Frankfurt opens the route, Manchester anchors the conference, and London with Paris shape the later chapters." : "法蘭克福是開場，曼徹斯特是核心，倫敦與巴黎則把後半段慢慢展開。",
           state.lang !== "zh" ? "After the Frankfurt layover, the route settles first into Manchester for AIB 2026, then turns toward London and finishes in Paris with museums, river walks, and longer evenings." : "從法蘭克福轉機開始，先在曼徹斯特把 AIB 2026 的會議主段走穩，再接上倫敦與巴黎，讓後半段回到城市散步、博物館與晚餐的節奏。"
         )}
+        <div class="journey-route-grid">
+          ${journeyRouteCards.map(renderJourneyRouteCard).join("")}
+        </div>
         <div class="summary-grid home-overview-grid handbook-overview-grid">
           ${homeOverviewCards.map((card) => `
             <article class="summary-card travel-overview-card">
@@ -2295,6 +2326,16 @@ function renderDayPreviewCard(day) {
   `;
 }
 
+function renderJourneyRouteCard(item) {
+  return `
+    <article class="journey-route-card">
+      <span class="journey-route-date">${escapeHtml(item.date)}</span>
+      <h3>${escapeHtml(t(item.title))}</h3>
+      <p>${escapeHtml(t(item.body))}</p>
+    </article>
+  `;
+}
+
 function renderPracticalGuideCard(section, index) {
   return `
     <details class="practical-guide-card"${index === 0 ? " open" : ""}>
@@ -2313,7 +2354,87 @@ function renderPracticalGuideCard(section, index) {
   `;
 }
 
+function dayGuideMeta(day) {
+  const metaMap = {
+    "day-1": [
+      [{ zh: "移動方式", en: "Movement" }, { zh: "CI61 / 法蘭克福散步 / LH946", en: "CI61 / Frankfurt walk / LH946" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, "INNSiDE Manchester"],
+      [{ zh: "這天重心", en: "Focus" }, { zh: "順利落地、調時差、把文件放好", en: "Land smoothly, adjust to time, and keep the documents in order" }]
+    ],
+    "day-2": [
+      [{ zh: "移動方式", en: "Movement" }, { zh: "步行 / 會場動線", en: "Walking / conference venue flow" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, "INNSiDE Manchester"],
+      [{ zh: "這天重心", en: "Focus" }, { zh: "先把會議節奏走穩", en: "Settle into the conference rhythm" }]
+    ],
+    "day-3": [
+      [{ zh: "移動方式", en: "Movement" }, { zh: "步行 / 市內交通", en: "Walking / local transit" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, "INNSiDE Manchester"],
+      [{ zh: "這天重心", en: "Focus" }, { zh: "會議內容與發表準備", en: "Conference sessions and presentation prep" }]
+    ],
+    "day-4": [
+      [{ zh: "移動方式", en: "Movement" }, { zh: "會議場內移動", en: "Movement around the conference venue" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, "INNSiDE Manchester"],
+      [{ zh: "這天重心", en: "Focus" }, { zh: "Interactive 發表與會議收束", en: "Interactive session and closing the conference chapter" }]
+    ],
+    "day-5": [
+      [{ zh: "移動方式", en: "Movement" }, { zh: "Avanti West Coast", en: "Avanti West Coast" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, { zh: "倫敦住宿", en: "London hotel" }],
+      [{ zh: "這天重心", en: "Focus" }, { zh: "城市切換與倫敦第一眼", en: "The city change and London’s first impression" }]
+    ],
+    "day-6": [
+      [{ zh: "移動方式", en: "Movement" }, { zh: "Tube / 步行", en: "Tube / walking" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, { zh: "倫敦住宿", en: "London hotel" }],
+      [{ zh: "這天重心", en: "Focus" }, { zh: "精品街區與城市光澤", en: "Shopping streets and London’s polished side" }]
+    ],
+    "day-7": [
+      [{ zh: "移動方式", en: "Movement" }, { zh: "步行 / Tube", en: "Walking / Tube" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, { zh: "倫敦住宿", en: "London hotel" }],
+      [{ zh: "這天重心", en: "Focus" }, { zh: "自由留白，替明天的 Eurostar 留力", en: "Leave the day open and save energy for Eurostar" }]
+    ],
+    "day-8": [
+      [{ zh: "移動方式", en: "Movement" }, { zh: "Eurostar", en: "Eurostar" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, "Pullman Paris Tour Eiffel"],
+      [{ zh: "這天重心", en: "Focus" }, { zh: "從倫敦順順轉進巴黎", en: "A clean shift from London into Paris" }]
+    ],
+    "day-9": [
+      [{ zh: "移動方式", en: "Movement" }, { zh: "Metro / 步行", en: "Metro / walking" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, "Pullman Paris Tour Eiffel"],
+      [{ zh: "這天重心", en: "Focus" }, { zh: "把時間留給羅浮宮與周邊街景", en: "Give the day to the Louvre and nearby streets" }]
+    ],
+    "day-10": [
+      [{ zh: "移動方式", en: "Movement" }, { zh: "Metro / 步行", en: "Metro / walking" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, "Pullman Paris Tour Eiffel"],
+      [{ zh: "這天重心", en: "Focus" }, { zh: "巴黎主景、香榭麗舍與凱旋門", en: "The main Paris landmarks and boulevard rhythm" }]
+    ],
+    "day-11": [
+      [{ zh: "移動方式", en: "Movement" }, { zh: "Metro / 步行 / 視情況搭船", en: "Metro / walking / optional cruise" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, "Pullman Paris Tour Eiffel"],
+      [{ zh: "這天重心", en: "Focus" }, { zh: "最後採買，替巴黎留一個柔和收尾", en: "Final shopping and a softer Paris close" }]
+    ],
+    "day-12": [
+      [{ zh: "移動方式", en: "Movement" }, { zh: "AF1068 / BA1371 / CI82", en: "AF1068 / BA1371 / CI82" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, { zh: "回程機上", en: "Overnight on the way home" }],
+      [{ zh: "這天重心", en: "Focus" }, { zh: "把巴黎、曼徹斯特與希斯洛順順接起來", en: "Keep Paris, Manchester, and Heathrow flowing cleanly" }]
+    ]
+  };
+  return (metaMap[day.id] || []).map(([label, value]) => ({ label, value }));
+}
+
+function renderDayGuideNav() {
+  return `
+    <nav class="day-guide-nav" aria-label="${state.lang !== "zh" ? "Daily guide navigation" : "每日行程導覽"}">
+      ${dailyGuides.map((day) => `
+        <a class="day-guide-link" href="#${escapeHtml(day.id)}">
+          <span>${escapeHtml(day.day)}</span>
+          <strong>${escapeHtml(day.date)}</strong>
+        </a>
+      `).join("")}
+    </nav>
+  `;
+}
+
 function renderDayGuideCard(day, index) {
+  const meta = dayGuideMeta(day);
   return `
     <article class="day-guide-card" id="${escapeHtml(day.id)}">
       <details class="day-guide-panel"${index === 0 ? " open" : ""}>
@@ -2341,14 +2462,23 @@ function renderDayGuideCard(day, index) {
               <span>${state.lang !== "zh" ? "Day theme" : "當日主題"}</span>
               <strong>${escapeHtml(t(day.theme))}</strong>
             </div>
-          </div>
-          <div class="day-moment-grid">
-            ${day.route.map((step) => `
-              <article class="moment-card">
-                <span>${escapeHtml(t(step.label))}</span>
-                <p>${escapeHtml(t(step.text))}</p>
-              </article>
+            ${meta.map((item) => `
+              <div>
+                <span>${escapeHtml(t(item.label))}</span>
+                <strong>${escapeHtml(t(item.value))}</strong>
+              </div>
             `).join("")}
+          </div>
+          <div class="guide-block">
+            <div class="guide-block-title">${state.lang !== "zh" ? "Route flow" : "今日路線"}</div>
+            <div class="day-moment-grid">
+              ${day.route.map((step) => `
+                <article class="moment-card">
+                  <span>${escapeHtml(t(step.label))}</span>
+                  <p>${escapeHtml(t(step.text))}</p>
+                </article>
+              `).join("")}
+            </div>
           </div>
           <div class="guide-detail-grid">
             <article class="guide-detail-card">
@@ -2771,7 +2901,7 @@ function renderItinerary() {
       <article class="section-card handbook-itinerary-card">
         <div class="section-label">${state.lang !== "zh" ? "Day by Day" : "每日旅程"}</div>
         <h2>${state.lang !== "zh" ? "Daily travel guide" : "每日旅行指南"}</h2>
-        <p class="lead">${state.lang !== "zh" ? "Each day is arranged as its own travel note, so the route, city mood, and practical rhythm read together instead of as a checklist." : "每一天都整理成一張旅程卡，讓城市節奏、移動和重點行程接在一起，不再像待辦清單。"}</p>
+        <p class="lead">${state.lang !== "zh" ? "Each day reads as a small travel chapter, with the route, mood, and practical details kept together so the page still feels useful when you are actually on the move." : "每一天都整理成一張旅程章節，讓路線、節奏和實用資訊留在同一個位置，旅途中打開來看也不會太亂。"}</p>
         <div class="itinerary-highlights">
           ${[
             [{ zh: "旅程主軸", en: "Travel arc" }, { zh: "法蘭克福轉機 → 曼徹斯特會議 → 倫敦 → 巴黎", en: "Frankfurt transit → Manchester conference → London → Paris" }],
@@ -2779,6 +2909,7 @@ function renderItinerary() {
             [{ zh: "閱讀方式", en: "Reading style" }, { zh: "一天一張旅行指南", en: "One guide card per day" }]
           ].map(([label, value]) => renderMiniHighlightCard(label, value)).join("")}
         </div>
+        ${renderDayGuideNav()}
         <div class="day-guide-list">
           ${dailyGuides.map(renderDayGuideCard).join("")}
         </div>

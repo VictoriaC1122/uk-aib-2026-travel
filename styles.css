@@ -10746,6 +10746,7 @@ main#page-content {
 }
 
 .handbook-overview-grid,
+.journey-route-grid,
 .snapshot-grid,
 .journey-highlight-grid,
 .day-preview-grid,
@@ -10753,6 +10754,44 @@ main#page-content {
 .day-guide-list {
   display: grid;
   gap: 18px;
+}
+
+.journey-route-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-bottom: 22px;
+}
+
+.journey-route-card {
+  min-width: 0;
+  padding: 20px 20px 22px;
+  border-radius: 24px;
+  border: 1px solid rgba(30, 58, 95, 0.08);
+  background: linear-gradient(180deg, rgba(248, 245, 239, 0.92) 0%, rgba(255, 255, 255, 0.86) 100%);
+}
+
+.journey-route-date {
+  display: inline-flex;
+  align-items: center;
+  color: #8e7850;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.journey-route-card h3 {
+  margin-top: 12px;
+  color: #22314b;
+  font-size: 22px;
+  line-height: 1.28;
+}
+
+.journey-route-card p {
+  margin: 12px 0 0;
+  color: #687284;
+  font-size: 15px;
+  line-height: 1.82;
 }
 
 .handbook-overview-grid {
@@ -10982,8 +11021,21 @@ main#page-content {
 
 .guide-meta-row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
+}
+
+.guide-block {
+  display: grid;
+  gap: 14px;
+}
+
+.guide-block-title {
+  color: #22314b;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
 .guide-meta-row div,
@@ -11015,8 +11067,35 @@ main#page-content {
 
 .day-moment-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 14px;
+}
+
+.moment-card {
+  position: relative;
+  padding-left: 24px;
+}
+
+.moment-card::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 18px;
+  bottom: 18px;
+  width: 1px;
+  background: rgba(142, 120, 80, 0.24);
+}
+
+.moment-card::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 18px;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #c3a269;
+  box-shadow: 0 0 0 5px rgba(195, 162, 105, 0.12);
 }
 
 .moment-card p,
@@ -11037,15 +11116,61 @@ main#page-content {
   margin: 12px 0 0;
 }
 
+.day-guide-nav {
+  display: flex;
+  gap: 10px;
+  margin: 6px 0 4px;
+  padding-bottom: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.day-guide-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.day-guide-link {
+  flex: 0 0 auto;
+  min-width: 108px;
+  min-height: 54px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(30, 58, 95, 0.08);
+  background: rgba(248, 245, 239, 0.78);
+  color: #4a596c;
+  display: grid;
+  gap: 4px;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.day-guide-link span {
+  color: #8e7850;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.day-guide-link strong {
+  color: #22314b;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .day-story-card:hover,
   .highlight-story-card:hover,
-  .snapshot-card:hover {
+  .snapshot-card:hover,
+  .journey-route-card:hover,
+  .day-guide-link:hover {
     transform: translateY(-2px);
   }
 }
 
 @media (max-width: 1024px) {
+  .journey-route-grid,
   .handbook-overview-grid,
   .snapshot-grid,
   .day-preview-grid {
@@ -11054,7 +11179,7 @@ main#page-content {
 
   .journey-highlight-grid,
   .practical-guide-grid,
-  .day-moment-grid,
+  .guide-meta-row,
   .guide-detail-grid {
     grid-template-columns: 1fr;
   }
@@ -11066,6 +11191,7 @@ main#page-content {
     padding-bottom: 14px;
   }
 
+  .journey-route-grid,
   .handbook-overview-grid,
   .snapshot-grid,
   .journey-highlight-grid,
@@ -11078,6 +11204,7 @@ main#page-content {
   }
 
   .snapshot-card,
+  .journey-route-card,
   .highlight-story-card,
   .day-story-card,
   .practical-guide-card summary,
@@ -11093,6 +11220,7 @@ main#page-content {
   }
 
   .highlight-story-card h3,
+  .journey-route-card h3,
   .day-story-card h3,
   .day-guide-card h3 {
     font-size: 24px;
@@ -11101,7 +11229,13 @@ main#page-content {
   .day-guide-intro,
   .day-story-card p,
   .practical-summary,
-  .highlight-story-card p {
+  .highlight-story-card p,
+  .journey-route-card p {
     font-size: 15px;
+  }
+
+  .day-guide-link {
+    min-width: 96px;
+    min-height: 52px;
   }
 }
