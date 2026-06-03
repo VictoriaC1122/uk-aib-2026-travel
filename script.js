@@ -6,6 +6,7 @@ const pages = [
   { id: "stay", label: { zh: "住宿", en: "Stay", fr: "Séjour", de: "Unterkunft" }, href: "./stay.html" },
   { id: "itinerary", label: { zh: "行程", en: "Itinerary", fr: "Programme", de: "Reiseplan" }, href: "./itinerary.html" },
   { id: "shopping", label: { zh: "購物", en: "Shopping", fr: "Shopping", de: "Einkauf" }, href: "./shopping.html" },
+  { id: "souvenirs", label: { zh: "伴手禮", en: "Souvenirs", fr: "Souvenirs", de: "Mitbringsel" }, href: "./souvenirs.html" },
   { id: "budget", label: { zh: "預算", en: "Budget", fr: "Budget", de: "Budget" }, href: "./budget.html" },
   { id: "reminders", label: { zh: "旅程筆記", en: "Travel Notes", fr: "Notes de voyage", de: "Reisenotizen" }, href: "./reminders.html" },
   { id: "firstTime", label: { zh: "歐洲提醒", en: "Europe Notes", fr: "Notes Europe", de: "Europa-Hinweise" }, href: "./first-time.html" },
@@ -162,6 +163,11 @@ const tripData = {
       kicker: { zh: "英國購物", en: "Shopping" },
       title: { zh: "英國有什麼值得買", en: "What to Buy in the UK" },
       lead: { zh: "把茶葉、餅乾、果醬、超市零食和藥妝分開放，逛起來比較順手。", en: "Tea, biscuits, preserves, supermarket snacks, and pharmacy staples are grouped separately for easier browsing." }
+    },
+    souvenirs: {
+      kicker: { zh: "伴手禮整理", en: "Souvenirs" },
+      title: { zh: "英法德帶什麼回來", en: "What to Bring Back from the UK, France, and Germany" },
+      lead: { zh: "把英國、法國、德國比較好買、也比較好帶回來的伴手禮分開整理，臨時要買也比較好下手。", en: "A compact guide to the UK, France, and Germany gift picks that are easy to buy and easy to bring home." }
     },
     map: {
       kicker: { zh: "旅程地圖", en: "Travel Map" },
@@ -687,6 +693,154 @@ const shoppingData = {
   ]
 };
 
+const souvenirData = {
+  highlights: [
+    { label: { zh: "這頁看什麼", en: "What this page covers" }, value: { zh: "英國、法國、德國伴手禮", en: "UK, France, and Germany gift ideas" } },
+    { label: { zh: "最好帶回台灣", en: "Easy to pack" }, value: { zh: "茶葉、巧克力、軟糖、香氛", en: "Tea, chocolate, gummies, fragrance" } },
+    { label: { zh: "打包重點", en: "Packing note" }, value: { zh: "液體與玻璃瓶盡量放托運", en: "Glass jars and liquids are better in checked luggage" } }
+  ],
+  countries: [
+    {
+      id: "uk",
+      label: { zh: "United Kingdom", en: "United Kingdom" },
+      title: { zh: "英國伴手禮", en: "UK Souvenirs" },
+      lead: {
+        zh: "英國這段最穩的還是茶葉、shortbread 和果醬。東西不難買，也很適合送人。",
+        en: "Tea, shortbread, and preserves are still the safest UK souvenirs: easy to buy and easy to gift."
+      },
+      picks: [
+        {
+          name: "Fortnum & Mason 茶葉",
+          note: {
+            zh: "如果想買一樣看起來很英國、送人也穩的東西，茶葉通常最不容易出錯。",
+            en: "If you want one polished UK gift, tea is usually the easiest place to start."
+          },
+          goodFor: { zh: "送老師、長輩或正式一點的對象", en: "Good for teachers, elders, or formal gifts" },
+          where: { zh: "Piccadilly 主店或機場門市", en: "Piccadilly flagship or airport branches" },
+          source: "https://www.fortnumandmason.com/tea/black-tea"
+        },
+        {
+          name: "Walkers Shortbread",
+          note: {
+            zh: "奶油香很穩，鐵盒或盒裝都很好送，也很適合跟茶葉一起配。",
+            en: "A dependable butter-rich gift, especially in tins or boxed packs."
+          },
+          goodFor: { zh: "同事、朋友、家人一起分著吃", en: "Easy for colleagues, friends, or family sharing" },
+          where: { zh: "超市、食品區、機場免稅常見", en: "Common in supermarkets, food halls, and airport shops" },
+          source: "https://www.walkersshortbread.com/"
+        },
+        {
+          name: "Tiptree 果醬與 marmalade",
+          note: {
+            zh: "如果對方平常會吃吐司或早餐抹醬，果醬會比餅乾更有記憶點。",
+            en: "A good alternative if the person you are buying for actually uses breakfast spreads."
+          },
+          goodFor: { zh: "喜歡早餐抹醬、茶點的人", en: "Best for people who genuinely like spreads and tea snacks" },
+          where: { zh: "Waitrose、食品店、百貨超市", en: "Waitrose, food shops, and department-store groceries" },
+          source: "https://www.tiptree.com/collections/jams"
+        }
+      ]
+    },
+    {
+      id: "france",
+      label: { zh: "France", en: "France" },
+      title: { zh: "法國伴手禮", en: "France Souvenirs" },
+      lead: {
+        zh: "巴黎這段比較適合買有香氣、有包裝感的東西。比起硬塞太多甜點，選茶、香氛或護手霜會更好帶。",
+        en: "Paris is a good place for fragrance, tea, and polished small gifts that travel better than fragile desserts."
+      },
+      picks: [
+        {
+          name: "Fragonard 香水或香氛皂",
+          note: {
+            zh: "如果想帶一點法國氣味回來，這類小瓶香水或香氛皂最有旅行感。",
+            en: "Small perfume bottles or soaps feel especially Parisian without taking too much luggage space."
+          },
+          goodFor: { zh: "喜歡香氛、包裝漂亮小物的人", en: "Great for fragrance lovers and gift-focused shopping" },
+          where: { zh: "巴黎門市或百貨香氛區", en: "Paris boutiques or department-store beauty floors" },
+          source: "https://www.fragonard.com/en-us/fragrances"
+        },
+        {
+          name: "Palais des Thés 茶葉",
+          note: {
+            zh: "如果不想只買英式茶，法國茶店的調香茶和茶罐也很適合當伴手禮。",
+            en: "A nice switch if you want something more distinctly French than classic British tea."
+          },
+          goodFor: { zh: "平常有喝茶習慣、喜歡茶罐包裝的人", en: "Good for tea drinkers who enjoy a more giftable presentation" },
+          where: { zh: "巴黎門市或百貨茶區", en: "Paris boutiques and department-store tea sections" },
+          source: "https://www.palaisdesthes.com/en/"
+        },
+        {
+          name: "L'Occitane 護手霜與旅行組",
+          note: {
+            zh: "這類東西很適合補自己，也很適合拆開分送，不會像大型保養品那麼有負擔。",
+            en: "Easy for self-use or splitting into small gifts, without the weight of full-size skincare."
+          },
+          goodFor: { zh: "朋友、同事，或自己補貨", en: "A safe choice for friends, coworkers, or yourself" },
+          where: { zh: "百貨、機場、觀光區門市都常見", en: "Easy to find in department stores, airports, and tourist areas" },
+          source: "https://fr.loccitane.com/"
+        }
+      ]
+    },
+    {
+      id: "germany",
+      label: { zh: "Germany", en: "Germany" },
+      title: { zh: "德國伴手禮", en: "Germany Souvenirs" },
+      lead: {
+        zh: "德國段比較適合買零食和經典小物。價格通常比巴黎、倫敦輕一點，買起來也比較沒有壓力。",
+        en: "Germany is especially good for snacks and small classics that feel familiar but still distinct."
+      },
+      picks: [
+        {
+          name: "HARIBO Goldbears",
+          note: {
+            zh: "最經典也最好買，適合臨時補貨，分送也很方便。",
+            en: "The easiest classic to grab if you want something simple, recognizable, and shareable."
+          },
+          goodFor: { zh: "同事、朋友、多人分送", en: "Ideal for coworkers, friends, and group sharing" },
+          where: { zh: "超市、車站、機場商店", en: "Supermarkets, stations, and airport shops" },
+          source: "https://www.haribo.com/en-us/products/goldbears"
+        },
+        {
+          name: "Ritter Sport 巧克力",
+          note: {
+            zh: "一格一格方塊巧克力很好塞行李箱，口味也多，很適合挑幾種回來。",
+            en: "The square bars travel well and make it easy to mix a few flavors in one shop."
+          },
+          goodFor: { zh: "喜歡巧克力、想一次買很多種口味的人", en: "Great for chocolate lovers and flavor variety" },
+          where: { zh: "超市、車站便利店、機場", en: "Supermarkets, station kiosks, and airports" },
+          source: "https://www.ritter-sport.com/en/our-chocolate"
+        },
+        {
+          name: "Niederegger 馬滋潘",
+          note: {
+            zh: "如果對方喜歡杏仁糖或歐陸甜點，這個會比一般巧克力更有記憶點。",
+            en: "A more distinctive pick if the recipient likes marzipan or classic European sweets."
+          },
+          goodFor: { zh: "家人、長輩，或本來就喜歡 marzipan 的人", en: "Best for family, elders, or anyone who already likes marzipan" },
+          where: { zh: "百貨食品區、德國超市、機場店", en: "Food halls, German supermarkets, and airport shops" },
+          source: "https://shop.niederegger.de/"
+        },
+        {
+          name: "Ampelmann 小物",
+          note: {
+            zh: "如果想帶一點不是吃的東西，像杯子、帆布袋、文具這種柏林感小物就很剛好。",
+            en: "If you want a non-food souvenir, Berlin-themed Ampelmann goods are an easy option."
+          },
+          goodFor: { zh: "朋友、文具控、喜歡城市紀念品的人", en: "Good for friends, stationery fans, and city-souvenir lovers" },
+          where: { zh: "柏林門市、車站店、官方商店", en: "Berlin shops, station stores, and the official shop" },
+          source: "https://www.ampelmannshop.com/"
+        }
+      ]
+    }
+  ],
+  packing: [
+    { zh: "茶葉、餅乾、巧克力最適合塞在行李箱縫隙裡，重量也比較好抓。", en: "Tea, biscuits, and chocolate are the easiest to tuck into spare luggage space." },
+    { zh: "香水、護手霜、果醬這類液體或玻璃瓶，盡量放托運，外面再用衣服或氣泡袋包一下。", en: "Liquids and glass jars are better in checked luggage with a little padding." },
+    { zh: "最後如果還想在機場補買，先留一點重量和空間，不然手上會變得很滿。", en: "If you plan to buy more at the airport, leave a bit of bag space and weight up front." }
+  ]
+};
+
 const sectionNav = {
   home: [["overview", { zh: "旅程總覽", en: "Travel Overview" }], ["timeline", { zh: "關鍵時間軸", en: "Key Timeline" }], ["conference", { zh: "會議資訊", en: "Conference Details" }], ["hotel", { zh: "住宿安排", en: "Hotel & Stay" }], ["transport", { zh: "交通規劃", en: "Transportation Plan" }], ["budget", { zh: "費用備註", en: "Funding & Expense Notes" }], ["checklist", { zh: "行前清單", en: "Pre-departure Checklist" }]],
   conference: [["accepted", { zh: "會議狀態", en: "Status" }], ["papers", { zh: "論文", en: "Papers" }], ["alerts", { zh: "提醒", en: "Alerts" }], ["checklist", { zh: "文件", en: "Checklist" }]],
@@ -695,6 +849,7 @@ const sectionNav = {
   stay: [["overview", { zh: "住宿總覽", en: "Overview" }], ["decision", { zh: "後段住宿", en: "Later stays" }], ["areas", { zh: "住宿建議", en: "Useful picks" }]],
   itinerary: [["timeline", { zh: "時間軸", en: "Timeline" }], ["tickets", { zh: "景點費用", en: "Admission" }], ["return", { zh: "回程提醒", en: "Return" }]],
   shopping: [["shopping-overview", { zh: "總覽", en: "Overview" }], ["tea", { zh: "茶與點心", en: "Tea" }], ["pantry", { zh: "果醬與 pantry", en: "Pantry" }], ["essentials", { zh: "超市與藥妝", en: "Essentials" }]],
+  souvenirs: [["souvenir-overview", { zh: "總覽", en: "Overview" }], ["uk", { zh: "英國", en: "UK" }], ["france", { zh: "法國", en: "France" }], ["germany", { zh: "德國", en: "Germany" }], ["packing", { zh: "打包提醒", en: "Packing" }]],
   map: [["travel-map", { zh: "地圖", en: "Map" }], ["route-links", { zh: "每日路線", en: "Routes" }], ["map-notes", { zh: "地圖備註", en: "Notes" }]],
   budget: [["expenses", { zh: "費用總覽", en: "Budget" }], ["totals", { zh: "小計", en: "Totals" }], ["proofs", { zh: "憑證", en: "Proofs" }]],
   reminders: [["pending", { zh: "待處理", en: "Pending" }], ["quick-check", { zh: "最後確認", en: "Final check" }]],
@@ -1895,6 +2050,7 @@ const pageDescriptions = {
   stay: { zh: "已訂住宿、待定住宿與區域決策。", en: "Booked stay, pending stay, and area decisions." },
   itinerary: { zh: "時間軸行程、景點費用與回程提醒。", en: "Timeline itinerary, attraction costs, and return notes." },
   shopping: { zh: "茶葉、餅乾、果醬與超市購物清單。", en: "Tea, biscuits, preserves, and useful shopping notes." },
+  souvenirs: { zh: "英國、法國、德國伴手禮整理。", en: "Souvenir notes for the UK, France, and Germany." },
   map: { zh: "主要地點、每日路線與地圖連結。", en: "Key locations, daily routes, and map links." },
   budget: { zh: "可報帳和自費分開整理，金額也一起換算。", en: "Funding and expense notes, with three-currency amounts." },
   reminders: { zh: "還沒處理完的事和出發前最後再看一次的提醒。", en: "Pending items and final travel notes." },
@@ -2461,6 +2617,9 @@ function renderShopping() {
         <div class="section-label">${state.lang !== "zh" ? "Shopping Guide" : "購物指南"}</div>
         <h2>${state.lang !== "zh" ? "Tea, biscuits, preserves, and a few practical extras." : "茶葉、餅乾、果醬，還有幾樣實用的東西。"}</h2>
         <p class="lead">${state.lang !== "zh" ? "A simple list of common UK souvenirs and where to look for them." : "把常見的英國伴手禮和購買方向整理在這裡。"}</p>
+        <div class="hero-actions">
+          <a class="button secondary" href="./souvenirs.html">${state.lang !== "zh" ? "UK / France / Germany gift page" : "前往英法德伴手禮頁"}</a>
+        </div>
         <div class="itinerary-highlights">
           ${shoppingData.highlights.map((item) => renderMiniHighlightCard(item.label, item.value)).join("")}
         </div>
@@ -2481,6 +2640,88 @@ function renderShopping() {
         <h2>${state.lang !== "zh" ? "What travels well" : "哪些東西最好帶"}</h2>
         <div class="bullet-stack shopping-note-list">
           ${shoppingData.packing.map((item) => `
+            <article class="bullet-card">
+              <p class="bullet-desc">${escapeHtml(t(item))}</p>
+            </article>
+          `).join("")}
+        </div>
+      </article>
+    </section>
+  `;
+}
+
+function renderSouvenirCountry(country) {
+  return `
+    <section class="section compact-section" id="${escapeHtml(country.id)}">
+      <article class="section-card">
+        <div class="section-label">${escapeHtml(t(country.label))}</div>
+        <h2>${escapeHtml(t(country.title))}</h2>
+        <p class="lead">${escapeHtml(t(country.lead))}</p>
+        <div class="shopping-grid">
+          ${country.picks.map((item, index) => `
+            <article class="shopping-card">
+              <div class="shopping-card-top">
+                <h3>${escapeHtml(item.name)}</h3>
+                ${statusChip(index === country.picks.length - 1 && country.id === "germany" ? "optional" : "confirmed")}
+              </div>
+              <p>${escapeHtml(t(item.note))}</p>
+              ${renderMetaRow([
+                { label: state.lang !== "zh" ? "Good for" : "適合送誰", value: item.goodFor },
+                { label: state.lang !== "zh" ? "Where to look" : "去哪裡找", value: item.where }
+              ])}
+              ${externalLink(item.source, state.lang !== "zh" ? "Official page" : "官方頁面", "shopping-link")}
+            </article>
+          `).join("")}
+        </div>
+      </article>
+    </section>
+  `;
+}
+
+function renderSouvenirs() {
+  return `
+    ${renderQuickNav("souvenirs")}
+    <section class="section compact-section" id="souvenir-overview">
+      <article class="section-card intro-card">
+        <div class="section-label">${state.lang !== "zh" ? "Gift Guide" : "伴手禮指南"}</div>
+        <h2>${state.lang !== "zh" ? "What is easiest to bring back from the UK, France, and Germany" : "英國、法國、德國有什麼比較適合帶回來"}</h2>
+        <p class="lead">${state.lang !== "zh" ? "This page keeps the easy gift ideas together, especially the ones that still look nice after a long flight home." : "這頁先挑那種好買、好帶、飛一大圈回台灣也不太狼狽的伴手禮。"}</p>
+        <div class="hero-actions">
+          <a class="button secondary" href="./shopping.html">${state.lang !== "zh" ? "Back to UK shopping page" : "回到英國購物頁"}</a>
+        </div>
+        <div class="itinerary-highlights">
+          ${souvenirData.highlights.map((item) => renderMiniHighlightCard(item.label, item.value)).join("")}
+        </div>
+        <div class="summary-grid three shopping-suggestion-grid">
+          ${[
+            {
+              title: { zh: "想送得穩一點", en: "Safe gift picks" },
+              text: { zh: "英國茶葉、德國巧克力、法國護手霜都很好下手。", en: "UK tea, German chocolate, and French hand cream are all easy choices." }
+            },
+            {
+              title: { zh: "想買得有記憶點", en: "More distinctive picks" },
+              text: { zh: "法國香氛、德國馬滋潘、英國 marmalade 都比較有地方感。", en: "French fragrance, German marzipan, and British marmalade feel more location-specific." }
+            },
+            {
+              title: { zh: "想最後一天再補貨", en: "Last-minute shopping" },
+              text: { zh: "茶包、軟糖、巧克力最適合最後再買，行李安排也比較容易。", en: "Tea bags, gummies, and chocolate are the easiest last-minute picks." }
+            }
+          ].map((item) => `
+            <article class="summary-card">
+              <h3>${escapeHtml(t(item.title))}</h3>
+              <p>${escapeHtml(t(item.text))}</p>
+            </article>
+          `).join("")}
+        </div>
+      </article>
+    </section>
+    ${souvenirData.countries.map(renderSouvenirCountry).join("")}
+    <section class="section compact-section" id="packing">
+      <article class="section-card">
+        <div class="section-label">${state.lang !== "zh" ? "Packing Notes" : "打包提醒"}</div>
+        <h2>${state.lang !== "zh" ? "Things that travel home more smoothly" : "哪些東西帶回來會比較順"}</h2>
+        <div class="bullet-stack shopping-note-list">
+          ${souvenirData.packing.map((item) => `
             <article class="bullet-card">
               <p class="bullet-desc">${escapeHtml(t(item))}</p>
             </article>
@@ -2842,6 +3083,7 @@ const renderers = {
   stay: renderStay,
   itinerary: renderItinerary,
   shopping: renderShopping,
+  souvenirs: renderSouvenirs,
   map: renderMap,
   budget: renderBudget,
   reminders: renderReminders,
