@@ -62,31 +62,31 @@ const homeOverviewCards = [
     tag: { zh: "旅程", en: "Trip" },
     title: { zh: "旅程總覽", en: "Travel Overview" },
     value: { zh: "Jun 29 – Jul 12, 2026", en: "Jun 29 – Jul 12, 2026" },
-    note: { zh: "法蘭克福轉機開場，曼徹斯特會議居中，最後再往倫敦與巴黎。", en: "Frankfurt opens the route, Manchester holds the conference, and London with Paris follow after." }
+    note: { zh: "先到法蘭克福轉一下，再進曼徹斯特開會，後面才往倫敦和巴黎。", en: "Frankfurt opens the route, Manchester holds the conference, and London with Paris follow after." }
   },
   {
     tag: { zh: "城市", en: "City" },
     title: { zh: "目的地", en: "Destination" },
     value: { zh: "Frankfurt transit · Manchester · London · Paris", en: "Frankfurt transit · Manchester · London · Paris" },
-    note: { zh: "會議主段在曼徹斯特，後面再往倫敦和巴黎走。", en: "The conference base is Manchester, followed by London and Paris." }
+    note: { zh: "會議主段在曼徹斯特，後面幾天留給倫敦和巴黎。", en: "The conference base is Manchester, followed by London and Paris." }
   },
   {
     tag: { zh: "會議", en: "AIB" },
     title: { zh: "會議", en: "Conference" },
     value: "AIB 2026",
-    note: { zh: "6/30–7/3，兩種發表形式都已確認。", en: "30 Jun-3 Jul, with both presentation formats confirmed." }
+    note: { zh: "6/30–7/3，兩場都已確認。", en: "30 Jun-3 Jul, with both presentation formats confirmed." }
   },
   {
     tag: { zh: "住宿", en: "Hotel" },
     title: { zh: "住宿", en: "Hotel" },
     value: "INNSiDE Manchester",
-    note: { zh: "曼徹斯特、巴黎 Pullman 與 CDG 前一晚都已定，現在主要剩倫敦。", en: "Manchester, Pullman Paris, and the final CDG night are confirmed; London remains the main open stay." }
+    note: { zh: "曼徹斯特、巴黎 Pullman 和 CDG 前一晚都已定，現在主要剩倫敦。", en: "Manchester, Pullman Paris, and the final CDG night are confirmed; London remains the main open stay." }
   },
   {
     tag: { zh: "狀態", en: "Status" },
     title: { zh: "目前狀態", en: "Status" },
     value: { zh: "大致成形", en: "Core route in place" },
-    note: { zh: "航班和會議都定了，後段城市安排還在補。", en: "Flights and conference are set; the later-city plan is being refined." }
+    note: { zh: "航班和會議都定了，後面幾段再慢慢補齊。", en: "Flights and conference are set; the later-city plan is being refined." }
   }
 ];
 
@@ -94,22 +94,22 @@ const homeKeyTimeline = [
   {
     date: "Jun 30",
     title: { zh: "抵達曼徹斯特", en: "Arrival in Manchester" },
-    note: { zh: "法蘭克福轉機後到曼徹斯特，先入住、調整一下節奏。", en: "Arrive in Manchester after Frankfurt and settle into the conference week." }
+    note: { zh: "法蘭克福轉完就進曼徹斯特，先入住，把時差和移動安頓好。", en: "Arrive in Manchester after Frankfurt and settle into the conference week." }
   },
   {
     date: "Jun 30 – Jul 3",
     title: { zh: "AIB 2026 會議", en: "AIB 2026 Conference" },
-    note: { zh: "會議主日程、發表與交流集中在這段時間。", en: "Main conference sessions, presentations, and networking are centered here." }
+    note: { zh: "這幾天以 AIB 為主，發表和交流都放在這裡。", en: "Main conference sessions, presentations, and networking are centered here." }
   },
   {
     date: "Jul 4 – Jul 7",
     title: { zh: "倫敦段", en: "London segment" },
-    note: { zh: "從曼徹斯特南下倫敦，排幾個地標和購物行程。", en: "Travel south to London for landmarks, shopping, and city days." }
+    note: { zh: "從曼徹斯特南下倫敦，留給地標、街區和百貨慢慢走。", en: "Travel south to London for landmarks, shopping, and city days." }
   },
   {
     date: "Jul 7 – Jul 11",
     title: { zh: "巴黎段", en: "Paris segment" },
-    note: { zh: "搭 Eurostar 到巴黎，接著走鐵塔、羅浮宮和香榭麗舍。", en: "Take Eurostar to Paris for the Eiffel Tower, the Louvre, and the Champs-Elysees." }
+    note: { zh: "搭 Eurostar 進巴黎，後面幾天就留給鐵塔、羅浮宮和右岸。", en: "Take Eurostar to Paris for the Eiffel Tower, the Louvre, and the Champs-Elysees." }
   },
   {
     date: "Jul 11",
@@ -151,27 +151,27 @@ const tripData = {
     conference: {
       kicker: { zh: "會議安排", en: "Conference" },
       title: { zh: "會議手冊", en: "Conference Handbook" },
-      lead: { zh: "會議日期、發表時段、現場節奏和需要留著的文件，都放在這頁。", en: "Conference dates, presentation slots, on-site rhythm, and the key files all stay together here." }
+      lead: { zh: "會議日期、兩場發表時間，還有該留著的文件，都放在這頁。", en: "Conference dates, presentation slots, on-site rhythm, and the key files all stay together here." }
     },
     transport: {
       kicker: { zh: "交通規劃", en: "Transport" },
       title: { zh: "火車與市內交通", en: "Trains & Local Transit" },
-      lead: { zh: "這頁集中看城市之間的火車移動，以及倫敦、曼徹斯特、巴黎市內怎麼移動。", en: "This page keeps rail movement between cities together with local transit in London, Manchester, and Paris." }
+      lead: { zh: "城市之間怎麼移動、到了當地搭什麼，這頁一起看。", en: "This page keeps rail movement between cities together with local transit in London, Manchester, and Paris." }
     },
     flights: {
       kicker: { zh: "航班安排", en: "Flights" },
       title: { zh: "機票與轉機", en: "Flight Plan & Transfers" },
-      lead: { zh: "去程、回程和巴黎回曼徹斯特的航段都放在這裡，轉機也一起整理。", en: "Outbound, return, and the Paris-to-Manchester segment live here, together with the transfer notes." }
+      lead: { zh: "去程、回程和巴黎回曼徹斯特都放這裡，轉機也一起整理。", en: "Outbound, return, and the Paris-to-Manchester segment live here, together with the transfer notes." }
     },
     stay: {
       kicker: { zh: "住宿安排", en: "Accommodation" },
       title: { zh: "住宿與城市切換", en: "Accommodation & City Split" },
-      lead: { zh: "曼徹斯特的會議住宿已定，巴黎最後三晚也確定落在 Pullman，7/10–7/11 的 CDG 機場飯店也接上了，現在主要剩倫敦住宿要補。", en: "The Manchester conference stay is set, Pullman anchors the last Paris nights, and the 10-11 July CDG airport hotel is now in place; London is the main remaining stay to settle." }
+      lead: { zh: "曼徹斯特、Pullman 和 CDG 前一晚都已定，現在主要剩倫敦住宿要收尾。", en: "The Manchester conference stay is set, Pullman anchors the last Paris nights, and the 10-11 July CDG airport hotel is now in place; London is the main remaining stay to settle." }
     },
     itinerary: {
       kicker: { zh: "每日行程", en: "Itinerary" },
       title: { zh: "每日旅行指南", en: "Daily Travel Guide" },
-      lead: { zh: "把每一天的城市步調、移動方式和沿途重點放在一起，讀起來更像旅程手冊。", en: "Each day keeps its route, pace, and practical details together, so it reads more like a travel guide than a list." }
+      lead: { zh: "把每天會去哪裡、怎麼移動、晚上住哪裡都放在一起。", en: "Each day keeps its route, pace, and practical details together, so it reads more like a travel guide than a list." }
     },
     shopping: {
       kicker: { zh: "英國購物", en: "Shopping" },
@@ -196,12 +196,12 @@ const tripData = {
     reminders: {
       kicker: { zh: "行前提醒", en: "Reminders" },
       title: { zh: "旅程提醒與出發前確認", en: "Travel Notes Before Departure" },
-      lead: { zh: "把出發前想再看一次的細節留在這裡，不讓它們分散在各頁。", en: "Use this page for the last practical checks before leaving, without scattering them across the site." }
+      lead: { zh: "把出發前還想再看一次的事收在這裡。", en: "Use this page for the last practical checks before leaving, without scattering them across the site." }
     },
     firstTime: {
       kicker: { zh: "德英法行前提醒", en: "Germany · UK · France Travel Notes" },
       title: { zh: "這趟德英法之旅行前要留意的事", en: "Practical Notes Before the Germany · UK · France Trip" },
-      lead: { zh: "英國主段加上德國、法國移動前會用到的提醒，整理在這一頁。", en: "UK, Germany, and France travel notes collected in one place before the trip." }
+      lead: { zh: "英國主段加上德國、法國移動前會用到的提醒，都放這裡。", en: "UK, Germany, and France travel notes collected in one place before the trip." }
     },
     documents: {
       kicker: { zh: "官方連結", en: "Official Links" },
@@ -464,7 +464,7 @@ const tripData = {
         { zh: "位置：步行就能接到艾菲爾鐵塔與塞納河", en: "Location: an easy walk to the Eiffel Tower and the Seine" },
         { zh: "狀態：巴黎主住宿已確認", en: "Status: Paris anchor stay confirmed" }
       ],
-      note: { zh: "這三晚將入住 Pullman Paris Tour Eiffel，以高樓層陽台房欣賞艾菲爾鐵塔景觀，作為巴黎行程的核心住宿亮點。此次訂房目前刷卡總額為 NT$70,243 / EUR 1,915.58。", en: "These three nights stay at Pullman Paris Tour Eiffel, using a high-floor balcony room with an Eiffel Tower view as the main hotel highlight of the Paris chapter. The current booking total is NT$70,243 / EUR 1,915.58." }
+      note: { zh: "這三晚就住 Pullman Paris Tour Eiffel。房間在高樓層，陽台看得到鐵塔，價格目前是 NT$70,243 / EUR 1,915.58。", en: "These three nights stay at Pullman Paris Tour Eiffel, using a high-floor balcony room with an Eiffel Tower view as the main hotel highlight of the Paris chapter. The current booking total is NT$70,243 / EUR 1,915.58." }
     },
     {
       status: "confirmed",
@@ -496,15 +496,15 @@ const tripData = {
     }
   ],
   itinerary: [
-    { date: "6/29-6/30", city: { zh: "Taipei → Frankfurt → Manchester", en: "Taipei → Frankfurt → Manchester" }, kind: "travel", theme: { zh: "長程飛行與轉機城市散步", en: "Long-haul departure and a layover city walk" }, title: { zh: "出發、法蘭克福轉機與抵達曼徹斯特", en: "Departure, Frankfurt stop, and arrival in Manchester" }, status: "confirmed", must: ["CI61｜TPE 22:20 → FRA 06:50(+1)", "法蘭克福轉機散步：羅馬廣場 → 美因河 → MainNizza 午餐 → 歐元符號", "LH946｜FRA 16:20 → MAN 17:10", "入住曼徹斯特"], optional: ["如果時間順，可以在河邊多待一下", "抵達後輕鬆吃晚餐", "補水、整理文件、調時差"], tickets: ["法蘭克福散步：景點免費；午餐依實際消費"], notes: ["這一天先用長程飛行把旅程拉開，法蘭克福的長轉機剛好能留一段短短的城市散步，再把節奏慢慢接回曼徹斯特。"] },
-    { date: "6/30-7/3", city: { zh: "Manchester", en: "Manchester" }, kind: "conference", theme: { zh: "會議主段與城市節奏", en: "Conference core and city rhythm" }, title: { zh: "AIB 2026 主會議", en: "AIB 2026 conference" }, status: "confirmed", must: ["AIB Conference", "Presentation", "Networking"], optional: ["空檔回飯店整理簡報", "附近簡單晚餐"], tickets: ["景點門票：GBP 0；以會議活動為主"], notes: ["這幾天的主軸很清楚，就是把發表、交流和每天的會議節奏走穩；城市本身留在空檔裡慢慢看就好。"] },
-    { date: "7/4", city: { zh: "Manchester → London", en: "Manchester → London" }, kind: "travel", theme: { zh: "從會議城市轉進倫敦街景", en: "From the conference city into London streets" }, title: { zh: "轉往倫敦", en: "Move to London" }, status: "book", must: ["Avanti West Coast", "Manchester → London", "約 2 小時 10 分"], optional: ["抵達後 Big Ben", "Buckingham Palace", "St James's Park"], tickets: ["火車票待訂", "地標散步：免費"], notes: ["上午離開曼徹斯特之後，下午就能把倫敦的第一段西敏散步接進來，從城市移動自然過渡到旅遊節奏。"] },
+    { date: "6/29-6/30", city: { zh: "Taipei → Frankfurt → Manchester", en: "Taipei → Frankfurt → Manchester" }, kind: "travel", theme: { zh: "長程飛行與轉機城市散步", en: "Long-haul departure and a layover city walk" }, title: { zh: "出發、法蘭克福轉機與抵達曼徹斯特", en: "Departure, Frankfurt stop, and arrival in Manchester" }, status: "confirmed", must: ["CI61｜TPE 22:20 → FRA 06:50(+1)", "法蘭克福轉機散步：羅馬廣場 → 美因河 → MainNizza 午餐 → 歐元符號", "LH946｜FRA 16:20 → MAN 17:10", "入住曼徹斯特"], optional: ["如果時間順，可以在河邊多待一下", "抵達後輕鬆吃晚餐", "補水、整理文件、調時差"], tickets: ["法蘭克福散步：景點免費；午餐依實際消費"], notes: ["先把長途飛行和轉機走順就好。法蘭克福如果還有精神，再出去走一小段，晚上到曼徹斯特就休息。"] },
+    { date: "6/30-7/3", city: { zh: "Manchester", en: "Manchester" }, kind: "conference", theme: { zh: "會議主段與城市安排", en: "Conference core and city rhythm" }, title: { zh: "AIB 2026 主會議", en: "AIB 2026 conference" }, status: "confirmed", must: ["AIB Conference", "Presentation", "Networking"], optional: ["空檔回飯店整理簡報", "附近簡單晚餐"], tickets: ["景點門票：GBP 0；以會議活動為主"], notes: ["這幾天就以 AIB 為主。兩場發表都已確認，會議前後不要把行程塞太滿。"] },
+    { date: "7/4", city: { zh: "Manchester → London", en: "Manchester → London" }, kind: "travel", theme: { zh: "從會議城市轉進倫敦", en: "From the conference city into London streets" }, title: { zh: "轉往倫敦", en: "Move to London" }, status: "book", must: ["Avanti West Coast", "Manchester → London", "約 2 小時 10 分"], optional: ["抵達後 Big Ben", "Buckingham Palace", "St James's Park"], tickets: ["火車票待訂", "地標散步：免費"], notes: ["這天先把曼徹斯特和倫敦接順就好。到倫敦後可以先走西敏一帶，不用急著排太多點。"] },
     { date: "7/5", city: { zh: "London", en: "London" }, kind: "free", theme: { zh: "精品街區與城市光澤", en: "Luxury streets and city polish" }, title: { zh: "倫敦 Day 2", en: "London Day 2" }, status: "pending", must: ["Harrods", "Bond Street"], optional: ["Chanel", "Dior", "Louis Vuitton", "YSL"], tickets: ["百貨與精品街散步：免費"], notes: ["這一天適合把步調放在精品街區與百貨之間，讓逛街、喝咖啡和市區移動自然串成一段輕鬆的城市午後。"] },
     { date: "7/6", city: { zh: "London", en: "London" }, kind: "free", theme: { zh: "街區漫步與自由留白", en: "Neighbourhood walks and open time" }, title: { zh: "倫敦 Day 3", en: "London Day 3" }, status: "pending", must: ["Covent Garden", "Piccadilly Circus"], optional: ["自由活動"], tickets: ["街區散步：免費"], notes: ["這天更像留給倫敦市中心的一次慢走，先走街區，再把剩下的時間留給臨時想停下來的店、巷子或咖啡館。"] },
-    { date: "7/7", city: { zh: "London → Paris", en: "London → Paris" }, kind: "travel", theme: { zh: "Eurostar 進巴黎與鐵塔第一眼", en: "Eurostar into Paris and the first Eiffel evening" }, title: { zh: "抵達巴黎，入住 Pullman", en: "Arrive in Paris and check into Pullman" }, status: "confirmed", must: ["Eurostar｜St Pancras → Gare du Nord", "入住 Pullman Paris Tour Eiffel", "艾菲爾鐵塔夜景", "Pullman 陽台看鐵塔"], optional: ["塞納河邊散步"], tickets: ["Eurostar 票待訂", "鐵塔周邊散步免費"], notes: ["從倫敦進巴黎的這一段很適合當成旅程轉場。抵達後先把步調安頓進 Pullman，晚上再把鐵塔夜景和陽台閃燈留給巴黎的第一眼。"] },
+    { date: "7/7", city: { zh: "London → Paris", en: "London → Paris" }, kind: "travel", theme: { zh: "Eurostar 進巴黎與鐵塔第一晚", en: "Eurostar into Paris and the first Eiffel evening" }, title: { zh: "抵達巴黎，入住 Pullman", en: "Arrive in Paris and check into Pullman" }, status: "confirmed", must: ["Eurostar｜St Pancras → Gare du Nord", "入住 Pullman Paris Tour Eiffel", "艾菲爾鐵塔夜景", "Pullman 陽台看鐵塔"], optional: ["塞納河邊散步"], tickets: ["Eurostar 票待訂", "鐵塔周邊散步免費"], notes: ["到巴黎後先把 Pullman 安頓好。晚上就留在鐵塔附近，看完夜景再回房間，不用再排別的。"] },
     { date: "7/8", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "羅浮宮、右岸街景與百貨屋頂", en: "The Louvre, Right Bank streets, and the department-store rooftop" }, title: { zh: "巴黎 Day 2", en: "Paris Day 2" }, status: "confirmed", must: ["Louvre Museum", "Place Vendôme", "Galeries Lafayette 頂樓", "巴黎歌劇院周邊"], optional: ["右岸咖啡館小停留"], tickets: ["Louvre 票價待查", "老佛爺百貨頂樓免費"], notes: ["這天把巴黎右岸最有代表性的藝術、街景與百貨視角排在一起。上午留給羅浮宮，午後再順著 Place Vendôme、歌劇院一帶慢慢走向老佛爺頂樓。"] },
     { date: "7/9", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "精品大道與巴黎主景", en: "Luxury avenues and the grand Paris landmarks" }, title: { zh: "巴黎 Day 3", en: "Paris Day 3" }, status: "confirmed", must: ["Avenue Montaigne", "Champs-Elysees", "Arc de Triomphe", "塞納河夜景"], optional: ["精品購物", "晚餐後再看一次鐵塔"], tickets: ["街區散步與購物：依實際消費", "凱旋門票價待查"], notes: ["這一天的巴黎會比較華麗。從 Avenue Montaigne 走到香榭麗舍與凱旋門，晚上再把視線留給塞納河，城市的尺度和光澤會在這段路裡慢慢打開。"] },
-    { date: "7/10", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "蒙馬特、最後採買與轉往機場", en: "Montmartre, final shopping, and the shift to the airport" }, title: { zh: "巴黎 Day 4", en: "Paris Day 4" }, status: "confirmed", must: ["Sacré-Cœur / Montmartre", "巴黎最後採購", "回 Pullman 拿寄放行李", "入住巴黎戴高樂機場候機樓諾富特酒店"], optional: ["沿途街角拍照"], tickets: ["聖心堂與蒙馬特散步免費"], notes: ["最後一天不必把節奏塞滿。上午把巴黎留給蒙馬特和聖心堂，下午再把採買與行李收尾好，晚上順順轉往巴黎戴高樂機場候機樓諾富特酒店，隔天法航這段會從容很多。"] },
+    { date: "7/10", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "蒙馬特、最後採買與轉往機場", en: "Montmartre, final shopping, and the shift to the airport" }, title: { zh: "巴黎 Day 4", en: "Paris Day 4" }, status: "confirmed", must: ["Sacré-Cœur / Montmartre", "巴黎最後採購", "回 Pullman 拿寄放行李", "入住巴黎戴高樂機場候機樓諾富特酒店"], optional: ["沿途街角拍照"], tickets: ["聖心堂與蒙馬特散步免費"], notes: ["最後一天不要塞太滿。上午去聖心堂和蒙馬特，下午把採買和行李收好，晚上直接轉到機場邊。"] },
     { date: "7/11-7/12", city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" }, kind: "travel", theme: { zh: "回程接駁與長途返台", en: "Connection day and the long flight home" }, title: { zh: "回程返台", en: "Return to Taipei" }, status: "confirmed", must: ["Novotel Paris Charles-de-Gaulle Airport → CDG Terminal 2E", "Air France Business Standard｜CDG 12:50 → MAN 13:25", "BA1371｜MAN 18:10 → LHR 19:15", "CI82｜LHR 21:10 → TPE 18:05(+1)"], optional: ["巴黎上午只排簡單移動"], tickets: ["AF 歐洲段：約 EUR 354.05 / NT$12,930"], notes: ["這一天以順利銜接航段為主。從機場飯店接進 2E 航廈後，就把體力留給巴黎到曼徹斯特、再接希斯洛返台的長路。"] }
   ],
   attractionCosts: [
@@ -787,7 +787,7 @@ const souvenirData = {
         {
           name: "Tiptree 果醬與 marmalade",
           note: {
-            zh: "如果對方平常會吃吐司或早餐抹醬，果醬會比餅乾更有記憶點。",
+            zh: "如果對方平常會吃吐司或早餐抹醬，果醬會比餅乾更合適。",
             en: "A good alternative if the person you are buying for actually uses breakfast spreads."
           },
           goodFor: { zh: "喜歡早餐抹醬、茶點的人", en: "Best for people who genuinely like spreads and tea snacks" },
@@ -869,7 +869,7 @@ const souvenirData = {
         {
           name: "Niederegger 馬滋潘",
           note: {
-            zh: "如果對方喜歡杏仁糖或歐陸甜點，這個會比一般巧克力更有記憶點。",
+            zh: "如果對方喜歡杏仁糖或歐陸甜點，這個會比一般巧克力更對味。",
             en: "A more distinctive pick if the recipient likes marzipan or classic European sweets."
           },
           goodFor: { zh: "家人、長輩，或本來就喜歡 marzipan 的人", en: "Best for family, elders, or anyone who already likes marzipan" },
@@ -920,12 +920,12 @@ const readingGuides = {
   ],
   flights: [
     { zh: "國際線和歐洲段都集中在這頁，查機票時比較不用來回翻。", en: "Long-haul and Europe flight segments are grouped here to keep the ticket view simple." },
-    { zh: "法蘭克福是長轉機，希斯洛則要抓緊節奏。", en: "Frankfurt is the long layover; Heathrow is the tighter one." },
+    { zh: "法蘭克福時間比較長，希斯洛就要抓緊一點。", en: "Frankfurt is the long layover; Heathrow is the tighter one." },
     { zh: "巴黎回程先飛回曼徹斯特，再接 BA 和華航返台。", en: "The Paris segment returns to Manchester before the BA and China Airlines journey home." }
   ],
   transport: [
     { zh: "國際航班已確認，回程從曼徹斯特起飛。", en: "International flights are confirmed; the return journey begins in Manchester." },
-    { zh: "法蘭克福是長轉機，希斯洛則是緊一點的轉機節奏。", en: "Frankfurt is the long layover, while Heathrow remains the tighter connection." },
+    { zh: "法蘭克福轉機比較鬆，希斯洛那段就別拖。", en: "Frankfurt is the long layover, while Heathrow remains the tighter connection." },
     { zh: "英國段先是曼徹斯特到倫敦，接著再搭 Eurostar 到巴黎。", en: "Within Europe, the route moves from Manchester to London first, then on to Paris by Eurostar." },
     { zh: "倫敦與曼徹斯特市內交通都以感應付款為主。", en: "Local transit in London and Manchester is planned around contactless payment." }
   ],
@@ -935,7 +935,7 @@ const readingGuides = {
     { zh: "倫敦先看動線，巴黎就看景和住起來的感覺。", en: "London prioritizes access; Paris leans more toward atmosphere and view." }
   ],
   itinerary: [
-    { zh: "每日行程改成一張張可展開的旅程卡，移動、散步與會議節奏都接得起來。", en: "Each day now opens as a travel card, keeping movement, walking routes, and conference rhythm together." },
+    { zh: "每日行程現在是一張張打開看，不用在很多小區塊之間來回找。", en: "Each day now opens as a travel card, keeping movement, walking routes, and conference rhythm together." },
     { zh: "後段改成倫敦 3 晚、巴黎 3 晚，最後一晚住 Novotel CDG，城市切換都補進去了。", en: "The later route is now London for 3 nights, Paris for 3 nights, then one Novotel CDG airport night, with each city move fully added in." },
     { zh: "另外還要訂票的，主要是 Avanti、Eurostar 和幾個巴黎景點。", en: "The main items still needing tickets are Avanti, Eurostar, and a few Paris attractions." }
   ],
@@ -950,9 +950,9 @@ const readingGuides = {
     { zh: "報帳憑證順序已整理在頁面底部。", en: "The proof order is listed at the bottom of the page." }
   ],
   reminders: [
-    { zh: "這頁只放還要再看一次的事。", en: "This page keeps only items that need a second check." },
-    { zh: "住宿、火車、報帳與回程航段是最重要的核對點。", en: "Accommodation, trains, reimbursement, and return routing are the main checks." },
-    { zh: "出發前可以把這頁當成最後確認清單。", en: "Use this page as the final pre-departure checklist." }
+    { zh: "這頁只留真的會再回來看的事。", en: "This page keeps only items that need a second check." },
+    { zh: "住宿、火車、文件和回程航段先對這裡。", en: "Accommodation, trains, reimbursement, and return routing are the main checks." },
+    { zh: "出發前再翻一次，會比較安心。", en: "Use this page as the final pre-departure checklist." }
   ],
   firstTime: [
     { zh: "入境文件、ETA、住宿與回程資料放在同一處，手機離線也能開。", en: "Keep entry documents, ETA, accommodation, and return details together and available offline." },
@@ -977,7 +977,7 @@ const dashboardData = {
   ],
   quickActions: [
     ["overview", { zh: "查看總覽", en: "View overview" }, { zh: "先看目前進度", en: "Start with the current status" }],
-    ["schedule", { zh: "查看行程", en: "View itinerary" }, { zh: "每日旅程、城市轉場和沿途節奏", en: "Daily route, city shifts, and the travel rhythm" }],
+    ["schedule", { zh: "查看行程", en: "View itinerary" }, { zh: "每天去哪裡、怎麼走、晚上住哪裡", en: "Daily route, city shifts, and the travel rhythm" }],
     ["hotel", { zh: "查看住宿", en: "Review hotel" }, { zh: "曼徹斯特與巴黎已訂，倫敦仍待定", en: "Manchester and Paris booked, with London still open" }],
     ["papers", { zh: "查看論文", en: "Review papers" }, { zh: "Competitive 與 Interactive", en: "Competitive and Interactive" }],
     ["budget", { zh: "查看預算", en: "Reimbursement summary" }, { zh: "報帳與自費分開看", en: "Claims and self-funded costs" }],
@@ -1104,7 +1104,7 @@ const homeJourneyTimeline = [
   {
     date: "07/04–07/06",
     title: { zh: "London", en: "London" },
-    note: { zh: "西敏地標、街區散步與比較從容的城市節奏。", en: "Westminster landmarks, neighbourhood walks, and a steadier city rhythm." }
+    note: { zh: "西敏地標、街區散步，還有比較鬆一點的倫敦步調。", en: "Westminster landmarks, neighbourhood walks, and a steadier city rhythm." }
   },
   {
     date: "07/07–07/10",
@@ -1140,7 +1140,7 @@ const tripSnapshotCards = [
     note: { zh: "長程航班、英國火車、Eurostar 與市區移動。", en: "Long-haul flights, UK rail, Eurostar, and city transit." }
   },
   {
-    label: { zh: "旅程節奏", en: "Travel rhythm" },
+    label: { zh: "路線順序", en: "Travel rhythm" },
     value: { zh: "轉機 → 曼徹斯特會議 → 倫敦 → 巴黎", en: "Transit → Manchester conference → London → Paris" },
     note: { zh: "先落地曼徹斯特完成會議主段，再把倫敦與巴黎接成後半段旅行。", en: "The conference days come first in Manchester, followed by London and then Paris." }
   },
@@ -1155,32 +1155,32 @@ const journeyHighlights = [
   {
     city: { zh: "Frankfurt transit", en: "Frankfurt transit" },
     date: "6/30",
-    title: { zh: "短暫轉機，也順手走進歐洲第一段街景", en: "A brief layover that still opens with a first European city walk" },
-    body: { zh: "從羅馬廣場、美因河到 MainNizza 午餐，這段法蘭克福停留像是替旅程暖機，讓長途飛行和正式會議之間多了一個輕巧的過渡。", en: "Romerberg, the Main river, and a lunch stop at MainNizza give the long Frankfurt layover a softer start before Manchester." }
+    title: { zh: "先在法蘭克福轉一下，不用排太滿", en: "A brief layover that still opens with a first European city walk" },
+    body: { zh: "這段只抓幾個順路點就好：羅馬廣場、美因河、MainNizza 午餐，最後再回機場。重點是把長途飛行和時差安頓好。", en: "Romerberg, the Main river, and a lunch stop at MainNizza give the long Frankfurt layover a softer start before Manchester." }
   },
   {
     city: { zh: "London", en: "London" },
     date: "7/4–7/6",
-    title: { zh: "三天倫敦，留給地標、街區與城市光澤", en: "Three London days for landmarks, streets, and city polish" },
-    body: { zh: "西敏散步、Harrods、Bond Street、Covent Garden 和 Piccadilly Circus，這段不求塞滿，而是讓倫敦用自己的節奏慢慢展開。", en: "Westminster walks, Harrods, Bond Street, Covent Garden, and Piccadilly Circus shape the London stretch at an unhurried pace." }
+    title: { zh: "倫敦這幾天慢慢走就好", en: "Three London days for landmarks, streets, and city polish" },
+    body: { zh: "西敏、Harrods、Bond Street、Covent Garden 和 Piccadilly 都放得進去，但不用每一站都待很久。留點空白給街區和下午茶，會比較像在過日子。", en: "Westminster walks, Harrods, Bond Street, Covent Garden, and Piccadilly Circus shape the London stretch at an unhurried pace." }
   },
   {
     city: { zh: "Manchester", en: "Manchester" },
     date: "6/30–7/3",
-    title: { zh: "AIB 2026 Manchester 是這趟旅程的核心", en: "AIB 2026 Manchester stays at the center of the trip" },
-    body: { zh: "會議、發表和交流把曼徹斯特這幾天定成整趟旅程的主軸，也讓前後的城市段有了很清楚的重心。", en: "Conference sessions, presentations, and networking make Manchester the academic heart of the journey." }
+    title: { zh: "曼徹斯特這幾天就以 AIB 為主", en: "AIB 2026 Manchester stays at the center of the trip" },
+    body: { zh: "兩場發表都已確認，這幾天不要再塞遠的景點。先把會議、交流和每天往返顧好，其他留到後面城市段。", en: "Conference sessions, presentations, and networking make Manchester the academic heart of the journey." }
   },
   {
     city: { zh: "Paris", en: "Paris" },
     date: "7/7–7/10",
-    title: { zh: "巴黎留給鐵塔夜景、博物館、精品街與法式收尾", en: "Paris closes with tower nights, museums, and the city’s polished avenues" },
-    body: { zh: "Pullman 的陽台鐵塔景會把巴黎這一段定得很完整。白天從羅浮宮、Place Vendôme、Avenue Montaigne 到香榭麗舍慢慢走，晚上再把視線交給鐵塔與塞納河。", en: "The Pullman balcony view gives Paris a clear center, while the Louvre, Place Vendôme, Avenue Montaigne, the Champs-Elysees, and the Seine shape the days around it." }
+    title: { zh: "巴黎這幾天不用排成打卡清單", en: "Paris closes with tower nights, museums, and the city’s polished avenues" },
+    body: { zh: "白天把羅浮宮、右岸、精品街走順就好，晚上回到 Pullman 附近。這幾晚的重點其實就是房間和陽台，如果看得到鐵塔，就不用一直往外跑。", en: "The Pullman balcony view gives Paris a clear center, while the Louvre, Place Vendôme, Avenue Montaigne, the Champs-Elysees, and the Seine shape the days around it." }
   },
   {
     city: { zh: "Cross-country movement", en: "Cross-country movement" },
     date: "6/29–7/11",
-    title: { zh: "英法移動與歐洲銜接，也是這趟旅程的一部分", en: "The movement between countries is part of the travel story too" },
-    body: { zh: "從 CI、Lufthansa、Avanti、Eurostar 到 Air France 和 BA，這趟旅程不是只看目的地，也是在不同城市節奏之間慢慢切換。", en: "CI, Lufthansa, Avanti, Eurostar, Air France, and BA together shape a route defined as much by movement as by the stops themselves." }
+    title: { zh: "這趟移動很多，但路線算順", en: "The movement between countries is part of the travel story too" },
+    body: { zh: "CI、Lufthansa、Avanti、Eurostar、Air France 和 BA 都接上了。只要把每一段銜接抓好，整趟其實不會太亂。", en: "CI, Lufthansa, Avanti, Eurostar, Air France, and BA together shape a route defined as much by movement as by the stops themselves." }
   }
 ];
 
@@ -1188,45 +1188,45 @@ const journeyRouteCards = [
   {
     date: "6/30",
     title: { zh: "法蘭克福轉機", en: "Frankfurt transit" },
-    body: { zh: "用半天城市散步，把長途飛行和歐洲的第一段街景接在一起。", en: "A short city walk softens the long-haul arrival into the first European streets." }
+    body: { zh: "先轉一下，再走一小段就好，別把第一天排太滿。", en: "A short city walk softens the long-haul arrival into the first European streets." }
   },
   {
     date: "6/30–7/3",
     title: { zh: "曼徹斯特會議主段", en: "Manchester conference days" },
-    body: { zh: "AIB 2026 是整趟旅程的核心，發表與交流都集中在這幾天。", en: "AIB 2026 anchors the trip, with presentations and conference exchanges concentrated here." }
+    body: { zh: "AIB 2026 是主軸。兩場發表都在這幾天，其他安排先讓位。", en: "AIB 2026 anchors the trip, with presentations and conference exchanges concentrated here." }
   },
   {
     date: "7/4–7/6",
     title: { zh: "倫敦城市段", en: "London chapter" },
-    body: { zh: "從西敏地標到街區散步，把倫敦留給比較從容的城市節奏。", en: "From Westminster to slower district walks, London opens in a calmer city rhythm." }
+    body: { zh: "從西敏到街區散步都放這裡，慢慢走就好。", en: "From Westminster to slower district walks, London opens in a calmer city rhythm." }
   },
   {
     date: "7/7–7/10",
     title: { zh: "巴黎收尾", en: "Paris finish" },
-    body: { zh: "博物館、河岸、精品街與法式餐桌，把最後幾天留給巴黎。", en: "Museums, river walks, grand boulevards, and long dinners bring the route to Paris." }
+    body: { zh: "白天看羅浮宮或逛右岸，晚上回鐵塔附近。巴黎這幾天抓這條線就夠了。", en: "Museums, river walks, grand boulevards, and long dinners bring the route to Paris." }
   },
   {
     date: "7/11–7/12",
     title: { zh: "返程串接", en: "Homebound connections" },
-    body: { zh: "巴黎、曼徹斯特、希斯洛一路接回台北，最後一天以轉場順利為優先。", en: "Paris, Manchester, and Heathrow connect in sequence, with the last day centered on a clean route home." }
+    body: { zh: "最後一天就專心把巴黎、曼徹斯特和希斯洛接回台北。", en: "Paris, Manchester, and Heathrow connect in sequence, with the last day centered on a clean route home." }
   }
 ];
 
 const practicalGuideSections = [
   {
     title: { zh: "航班資訊", en: "Flights" },
-    summary: { zh: "去程、回程和巴黎回曼徹斯特的歐洲段都已經整理好。", en: "Outbound, return, and the Paris-Manchester Europe segment are all organized." },
+    summary: { zh: "去程、回程和巴黎回曼徹斯特都整理好了。", en: "Outbound, return, and the Paris-Manchester Europe segment are all organized." },
     points: [
       { zh: "去程：TPE → FRA → MAN。", en: "Outbound: TPE → FRA → MAN." },
       { zh: "回程：CDG → MAN → LHR → TPE。", en: "Return: CDG → MAN → LHR → TPE." },
-      { zh: "法蘭克福是長轉機，希斯洛則要抓得比較緊。", en: "Frankfurt is the long layover; Heathrow is the tighter one." }
+      { zh: "法蘭克福可以稍微走一下，希斯洛就別拖太久。", en: "Frankfurt is the long layover; Heathrow is the tighter one." }
     ],
     href: "./flights.html",
     cta: { zh: "看機票與轉機", en: "Open flight page" }
   },
   {
     title: { zh: "住宿資訊", en: "Stay" },
-    summary: { zh: "曼徹斯特已訂，巴黎最後三晚定在 Pullman，7/10 晚也已接上 Novotel CDG，現在主要剩倫敦。", en: "Manchester is booked, the last three Paris nights are set at Pullman, and the 10 July night now connects to Novotel CDG; London is the main remaining stay to settle." },
+    summary: { zh: "曼徹斯特已訂，巴黎最後三晚定在 Pullman，7/10 晚也接上 Novotel CDG，現在主要剩倫敦。", en: "Manchester is booked, the last three Paris nights are set at Pullman, and the 10 July night now connects to Novotel CDG; London is the main remaining stay to settle." },
     points: [
       { zh: "曼徹斯特：INNSiDE Manchester。", en: "Manchester: INNSiDE Manchester." },
       { zh: "倫敦：The Langham London / The Clermont Charing Cross。", en: "London: The Langham London / The Clermont Charing Cross." },
@@ -1238,7 +1238,7 @@ const practicalGuideSections = [
   },
   {
     title: { zh: "交通提醒", en: "Transport" },
-    summary: { zh: "英國段以火車為主，倫敦到巴黎則接 Eurostar。", en: "Rail shapes the UK leg, with Eurostar linking London and Paris." },
+    summary: { zh: "英國段以火車為主，倫敦到巴黎就接 Eurostar。", en: "Rail shapes the UK leg, with Eurostar linking London and Paris." },
     points: [
       { zh: "Manchester → London 建議先查 Avanti Advance 票。", en: "Check Avanti Advance fares for Manchester → London." },
       { zh: "Eurostar 建議提早到 St Pancras。", en: "Arrive at St Pancras early for Eurostar." },
@@ -1249,7 +1249,7 @@ const practicalGuideSections = [
   },
   {
     title: { zh: "會議資訊", en: "Conference" },
-    summary: { zh: "會議發表是這趟旅程最重要的主軸。", en: "The conference presentations remain the main purpose of the trip." },
+    summary: { zh: "這趟最重要的還是 AIB 發表。", en: "The conference presentations remain the main purpose of the trip." },
     points: [
       { zh: "AIB 2026 Manchester：6/30–7/3。", en: "AIB 2026 Manchester: 30 Jun-3 Jul." },
       { zh: "Competitive 和 Interactive 兩場都已確認。", en: "Both Competitive and Interactive sessions are confirmed." },
@@ -1260,7 +1260,7 @@ const practicalGuideSections = [
   },
   {
     title: { zh: "行李與穿搭", en: "Packing" },
-    summary: { zh: "這趟需要同時照顧長途飛行、會議日和城市散步。", en: "Packing needs to work for long flights, conference days, and city walking." },
+    summary: { zh: "這趟要同時顧到長途飛行、會議日和城市步行。", en: "Packing needs to work for long flights, conference days, and city walking." },
     points: [
       { zh: "會議日以穩重、舒適的正式穿著為主。", en: "Conference days call for polished but comfortable outfits." },
       { zh: "倫敦與巴黎都要保留適合步行的鞋。", en: "Leave room for shoes that can handle long city walks." },
@@ -1271,10 +1271,10 @@ const practicalGuideSections = [
   },
   {
     title: { zh: "付款與票券", en: "Payment & tickets" },
-    summary: { zh: "需要另外處理的主要是火車、Eurostar 和部分巴黎門票。", en: "The main open items are rail tickets, Eurostar, and a few Paris admissions." },
+    summary: { zh: "還要另外處理的主要是火車、Eurostar 和部分巴黎門票。", en: "The main open items are rail tickets, Eurostar, and a few Paris admissions." },
     points: [
       { zh: "倫敦、曼徹斯特交通大多可直接感應支付。", en: "Most London and Manchester transit works fine with contactless payment." },
-      { zh: "巴黎景點票券建議依當天節奏再決定。", en: "Paris attraction tickets can stay flexible a little longer." },
+      { zh: "巴黎景點票券可以等到更接近出發時再決定。", en: "Paris attraction tickets can stay flexible a little longer." },
       { zh: "高單價購物與伴手禮建議保留收據。", en: "Keep receipts for higher-value purchases and gifts." }
     ],
     href: "./budget.html",
@@ -1282,7 +1282,7 @@ const practicalGuideSections = [
   },
   {
     title: { zh: "貼心提醒", en: "Travel notes" },
-    summary: { zh: "最後幾天的城市切換和回程接駁，節奏比前段更重要。", en: "The last city changes and the return chain need a little more attention than the early days." },
+    summary: { zh: "最後幾天的城市切換和回程接駁要多留一點心。", en: "The last city changes and the return chain need a little more attention than the early days." },
     points: [
       { zh: "7/11 不要把巴黎上午排太滿。", en: "Keep the Paris morning on 11 Jul light." },
       { zh: "曼徹斯特與倫敦住宿日期要再對一次。", en: "Double-check the Manchester and London stay dates." },
@@ -1299,7 +1299,7 @@ const parisMustDoItems = [
     title: { zh: "艾菲爾鐵塔夜景", en: "Eiffel Tower at night" },
     tags: [{ zh: "夜景", en: "Night view" }, { zh: "拍照", en: "Photos" }],
     body: {
-      zh: "巴黎第一晚很適合把時間留給鐵塔。等天色慢慢暗下來，再站在河岸或廣場看燈光亮起，城市的第一眼會很完整。回飯店後若還能再從陽台看一次閃燈，這一晚就會特別值得記住。",
+      zh: "巴黎第一晚很適合把時間留給鐵塔。等天色慢慢暗下來，再站在河岸或廣場看燈光亮起。回飯店後如果還能再從陽台看一次閃燈，這一晚就很夠了。",
       en: "The first Paris evening is best left to the tower. Watch the lights come on from the riverbank or the square, then let the balcony view give the night a quieter second peak."
     }
   },
@@ -1326,7 +1326,7 @@ const parisMustDoItems = [
     title: { zh: "Avenue Montaigne 精品街", en: "Avenue Montaigne" },
     tags: [{ zh: "精品", en: "Luxury" }, { zh: "街景", en: "Street" }],
     body: {
-      zh: "如果巴黎要留一段最精緻的精品街時間，Avenue Montaigne 會比匆忙逛很多點更有記憶。這裡的節奏比較安靜，品牌立面和街道比例也很適合慢慢走、慢慢看。",
+      zh: "如果巴黎只想留一段精品街時間，Avenue Montaigne 就很夠了。這裡比較安靜，適合慢慢走，不用趕著多塞幾個點。",
       en: "If Paris gets one polished luxury stretch, this is the one. The avenue feels calmer than a rushed shopping sprint and rewards a slower walk."
     }
   },
@@ -1335,7 +1335,7 @@ const parisMustDoItems = [
     title: { zh: "香榭麗舍大道", en: "Champs-Elysees" },
     tags: [{ zh: "大道", en: "Boulevard" }, { zh: "散步", en: "Walk" }],
     body: {
-      zh: "香榭麗舍不一定要匆匆走完，它更像是把巴黎城市尺度完整打開的一段路。午間在附近停一杯咖啡或簡單午餐，整條大道的節奏會更舒服。",
+      zh: "香榭麗舍不用匆匆走完。沿路慢慢走、找地方坐一下，比硬趕完整條更舒服。",
       en: "The Champs-Elysees works best as a paced walk rather than a rush. A pause for coffee or lunch nearby makes the boulevard feel far more generous."
     }
   },
@@ -1380,7 +1380,7 @@ const parisMustDoItems = [
     title: { zh: "Pullman 陽台看鐵塔", en: "The Pullman balcony tower view" },
     tags: [{ zh: "住宿亮點", en: "Stay highlight" }, { zh: "夜晚", en: "Night" }],
     body: {
-      zh: "Pullman 的高樓層陽台房會讓巴黎這段不只是住一間飯店，而是真的有一個能記住的畫面。白天外出回來後，能在房間裡安靜看著鐵塔亮起，這會是很完整的旅行收尾。",
+      zh: "Pullman 這幾晚的重點就是陽台。如果房間看得到鐵塔，晚上就不用一直往外跑，回來安靜看燈亮起來就很好。",
       en: "The high-floor balcony room turns Pullman into more than just a hotel. Coming back at night to a quiet tower view gives the Paris chapter a very complete finish."
     }
   }
@@ -1409,15 +1409,15 @@ const dailyGuides = [
     date: "6/29-6/30",
     city: { zh: "Taipei → Frankfurt → Manchester", en: "Taipei → Frankfurt → Manchester" },
     theme: { zh: "長程飛行、轉機散步與抵達曼徹斯特", en: "Long-haul travel, a Frankfurt walk, and arrival in Manchester" },
-    intro: { zh: "旅程從長途飛行展開，法蘭克福的長轉機不只是等待，而是一段剛好能舒展身體、慢慢進入歐洲節奏的小散步。傍晚再接上飛往曼徹斯特的航段，把第一天穩穩落在飯店。", en: "The trip opens with the long-haul flight, and the Frankfurt layover becomes a small city walk before the final segment into Manchester." },
+    intro: { zh: "第一天先把出發和轉機走順就好。法蘭克福如果還有體力，就出去走一小段；傍晚再接到曼徹斯特，晚上早點休息。", en: "The trip opens with the long-haul flight, and the Frankfurt layover becomes a small city walk before the final segment into Manchester." },
     highlights: ["CI61", "羅馬廣場", "MainNizza", "LH946", "INNSiDE Manchester"],
     route: [
-      { label: { zh: "上午｜抵達歐洲", en: "Morning" }, text: { zh: "清晨抵達法蘭克福，先確認接續航班，再把轉機時間留給一小段城市散步。", en: "Arrive in Frankfurt, check the onward flight, then use part of the layover for a short walk." } },
-      { label: { zh: "中午｜午間風味", en: "Noon" }, text: { zh: "沿著羅馬廣場和美因河慢慢走，到 MainNizza 吃午餐，讓旅程從飛機模式慢慢換到城市模式。", en: "Walk from Romerberg toward the Main river and stop for lunch at MainNizza." } },
-      { label: { zh: "下午｜回到機場", en: "Afternoon" }, text: { zh: "經過歐元符號後回機場，預留緩衝再接 Lufthansa 前往曼徹斯特。", en: "Head back after the Euro sign stop and leave enough buffer before Lufthansa." } },
-      { label: { zh: "夜晚｜今晚落腳", en: "Evening" }, text: { zh: "抵達曼徹斯特後先入住、吃點東西，第一晚不要排太滿，讓身體先適應。", en: "Arrive in Manchester, check in, eat something simple, and keep the evening light." } }
+      { label: { zh: "上午｜抵達歐洲", en: "Morning" }, text: { zh: "清晨到法蘭克福後先看好下一段航班，再決定要不要出去走。", en: "Arrive in Frankfurt, check the onward flight, then use part of the layover for a short walk." } },
+      { label: { zh: "中午｜轉機散步", en: "Noon" }, text: { zh: "如果時間夠，就走羅馬廣場、美因河，再去 MainNizza 吃午餐。", en: "Walk from Romerberg toward the Main river and stop for lunch at MainNizza." } },
+      { label: { zh: "下午｜回機場", en: "Afternoon" }, text: { zh: "下午提早回機場，不要把轉機抓得太緊。", en: "Head back after the Euro sign stop and leave enough buffer before Lufthansa." } },
+      { label: { zh: "夜晚｜今晚落腳", en: "Evening" }, text: { zh: "到曼徹斯特後先入住、吃點東西，第一晚不要再加行程。", en: "Arrive in Manchester, check in, eat something simple, and keep the evening light." } }
     ],
-    notes: ["法蘭克福這段雖然是轉機，但其實很適合當成旅程的第一段暖身。", "重要文件、登機證和離線票券先整理在同一個地方。"],
+    notes: ["法蘭克福這段不用貪多，走一小段就好。", "重要文件、登機證和離線票券先放在同一個地方。"],
     tickets: ["法蘭克福散步景點免費，午餐依現場消費。"]
   },
   {
@@ -1426,13 +1426,13 @@ const dailyGuides = [
     date: "7/1",
     city: { zh: "Manchester", en: "Manchester" },
     theme: { zh: "會議主段正式開始", en: "The conference days begin in earnest" },
-    intro: { zh: "從今天開始，旅程進入最核心的學術段落。白天以 AIB 會議節奏為主，晚一點再把城市留給簡單散步或晚餐，讓這幾天穩穩圍繞著會議展開。", en: "The academic core begins here, with the day shaped mainly by the conference and the city saved for smaller moments after sessions." },
+    intro: { zh: "從今天開始就以 AIB 為主。白天先把會議顧好，晚上頂多吃飯或散步，不用另外塞景點。", en: "The academic core begins here, with the day shaped mainly by the conference and the city saved for smaller moments after sessions." },
     highlights: ["AIB Conference", "會議 sessions", "Networking", "Manchester city centre"],
     route: [
-      { label: { zh: "上午｜進入會議節奏", en: "Morning" }, text: { zh: "早上以報到、session 和第一段交流為主，把時間先交給會議本身。", en: "Settle into sessions and the first conversations of the conference day." } },
-      { label: { zh: "中午｜午間空檔", en: "Noon" }, text: { zh: "午間保留給簡單用餐和場次轉換，不急著往市區跑。", en: "Keep lunch simple and use the break for session changes rather than a longer city detour." } },
-      { label: { zh: "下午｜主會議時段", en: "Afternoon" }, text: { zh: "下午繼續 conference 主段，把重心放在內容和交流。", en: "Stay with the main conference rhythm through the afternoon." } },
-      { label: { zh: "夜晚｜城市留白", en: "Evening" }, text: { zh: "晚餐或短散步就好，讓體力留給接下來幾天。", en: "Keep the evening open for dinner or a short walk and save energy for the days ahead." } }
+      { label: { zh: "上午｜會議開始", en: "Morning" }, text: { zh: "早上先進會場，把 session 和第一輪交流走順。", en: "Settle into sessions and the first conversations of the conference day." } },
+      { label: { zh: "中午｜簡單吃飯", en: "Noon" }, text: { zh: "中午先吃飯、休息，不用特地跑遠。", en: "Keep lunch simple and use the break for session changes rather than a longer city detour." } },
+      { label: { zh: "下午｜主會議時段", en: "Afternoon" }, text: { zh: "下午繼續會議，把重點放在內容和交流。", en: "Stay with the main conference rhythm through the afternoon." } },
+      { label: { zh: "夜晚｜先收早一點", en: "Evening" }, text: { zh: "晚上簡單吃個飯就好，把體力留給後面幾天。", en: "Keep the evening open for dinner or a short walk and save energy for the days ahead." } }
     ],
     notes: ["第一個完整會議日不必再加太多旅遊安排。", "收據和文件可以每天回飯店就先整理。"],
     tickets: ["當天以會議安排為主，景點不另外收費。"]
@@ -1442,16 +1442,16 @@ const dailyGuides = [
     day: "Day 3",
     date: "7/2",
     city: { zh: "Manchester", en: "Manchester" },
-    theme: { zh: "會議日、交流與發表節奏", en: "Conference sessions, exchanges, and presentation rhythm" },
-    intro: { zh: "這一天仍然圍繞著會議走，但節奏會更像一個完整的學術工作日：場次、交流、發表準備和城市間短暫呼吸，會自然交錯在一起。", en: "This day stays anchored in the conference rhythm, with sessions, networking, and presentation prep woven together." },
+    theme: { zh: "會議日、交流與發表", en: "Conference sessions, exchanges, and presentation rhythm" },
+    intro: { zh: "今天還是會議日。場次、交流和發表準備會交錯在一起，所以行程不要另外排太多。", en: "This day stays anchored in the conference rhythm, with sessions, networking, and presentation prep woven together." },
     highlights: ["AIB sessions", "presentation prep", "networking", "Manchester"],
     route: [
-      { label: { zh: "上午｜場次與內容", en: "Morning" }, text: { zh: "上午先把主要場次走穩，讓會議內容成為今天的主軸。", en: "Use the morning for the main session blocks and keep the academic focus steady." } },
-      { label: { zh: "中午｜午間交流", en: "Noon" }, text: { zh: "中午可以留給簡單社交和 brief 的休息。", en: "Keep noon for light networking and a brief pause." } },
-      { label: { zh: "下午｜發表準備", en: "Afternoon" }, text: { zh: "下午把簡報、講稿和進場節奏再確認一次，讓後面的發表更穩。", en: "Use the afternoon to double-check slides, notes, and the flow into the presentation." } },
-      { label: { zh: "夜晚｜把節奏收回來", en: "Evening" }, text: { zh: "晚上不用硬排景點，留給休息和整理。", en: "Do not force extra sightseeing into the evening; keep it for rest and reset." } }
+      { label: { zh: "上午｜主要場次", en: "Morning" }, text: { zh: "上午先把主要場次走完，別讓外面的行程把會議切碎。", en: "Use the morning for the main session blocks and keep the academic focus steady." } },
+      { label: { zh: "中午｜簡單交流", en: "Noon" }, text: { zh: "中午吃飯、聊一下，順便讓腦袋休息。", en: "Keep noon for light networking and a brief pause." } },
+      { label: { zh: "下午｜確認發表資料", en: "Afternoon" }, text: { zh: "下午再把簡報、講稿和進場順序看一次。", en: "Use the afternoon to double-check slides, notes, and the flow into the presentation." } },
+      { label: { zh: "夜晚｜休息", en: "Evening" }, text: { zh: "晚上不要硬排景點，回飯店整理就好。", en: "Do not force extra sightseeing into the evening; keep it for rest and reset." } }
     ],
-    notes: ["如果 competitive 場次安排在這段會議日內，當天就把其他活動留白一點。", "會議日之間最重要的是把體力配得剛剛好。"],
+    notes: ["如果這天還有發表準備，就把其他活動再減一點。", "會議這幾天最重要的是把體力配好。"],
     tickets: ["仍以會議安排為主。"]
   },
   {
@@ -1460,13 +1460,13 @@ const dailyGuides = [
     date: "7/3",
     city: { zh: "Manchester", en: "Manchester" },
     theme: { zh: "Interactive 發表與會議收尾", en: "Interactive presentation and conference close" },
-    intro: { zh: "今天比較像把會議主段慢慢收起來的一天。Interactive session 是重點，其他時間則留給最後的交流、整理與準備轉往倫敦。", en: "The final conference day centers on the Interactive session, with the rest of the time helping the Manchester chapter close more gently." },
+    intro: { zh: "今天的重點很單純，就是把 Interactive 發表顧好。其他時間留給最後的交流和收尾，晚上再準備往倫敦。", en: "The final conference day centers on the Interactive session, with the rest of the time helping the Manchester chapter close more gently." },
     highlights: ["Interactive session", "09:30-10:45", "Room 2217 (UP)", "conference close"],
     route: [
-      { label: { zh: "上午｜核心發表", en: "Morning" }, text: { zh: "Interactive 發表時段是今天最重要的重心，先把進場、簡報和會議節奏留在最前面。", en: "The Interactive presentation is the day’s anchor, so keep entry, slides, and timing front and center." } },
-      { label: { zh: "中午｜緩一口氣", en: "Noon" }, text: { zh: "發表結束後，用午間空檔把節奏慢慢放下來。", en: "After the presentation, use lunch to come back down into a calmer pace." } },
-      { label: { zh: "下午｜最後交流", en: "Afternoon" }, text: { zh: "下午適合把會議最後的場次、交流和收尾整理完成。", en: "Use the afternoon for the final conversations and the last pieces of the conference." } },
-      { label: { zh: "夜晚｜準備離開曼徹斯特", en: "Evening" }, text: { zh: "晚上把文件、票券和明天往倫敦的移動收好。", en: "Get documents, tickets, and the London transfer ready before bed." } }
+      { label: { zh: "上午｜Interactive 發表", en: "Morning" }, text: { zh: "上午先專心把 Interactive 發表走完，其他事情都往後排。", en: "The Interactive presentation is the day’s anchor, so keep entry, slides, and timing front and center." } },
+      { label: { zh: "中午｜先吃飯", en: "Noon" }, text: { zh: "發表結束後先吃飯，讓整個人慢慢鬆下來。", en: "After the presentation, use lunch to come back down into a calmer pace." } },
+      { label: { zh: "下午｜最後交流", en: "Afternoon" }, text: { zh: "下午把最後幾場和最後幾個人聊完，就差不多了。", en: "Use the afternoon for the final conversations and the last pieces of the conference." } },
+      { label: { zh: "夜晚｜收行李", en: "Evening" }, text: { zh: "晚上把文件、票券和明天去倫敦的東西整理好。", en: "Get documents, tickets, and the London transfer ready before bed." } }
     ],
     notes: ["Interactive 發表已確認為 7/3 09:30-10:45，Room 2217 (UP)。", "今天也適合把會議相關文件再整理一次。"],
     tickets: ["會議日不另外安排門票行程。"]
@@ -1477,13 +1477,13 @@ const dailyGuides = [
     date: "7/4",
     city: { zh: "Manchester → London", en: "Manchester → London" },
     theme: { zh: "離開會議城市，走進倫敦第一段街景", en: "Leaving the conference city and stepping into London" },
-    intro: { zh: "這一天像是旅程的轉場。上午把曼徹斯特收尾，中午前後南下倫敦，下午就能接上西敏一帶最經典的城市步調。", en: "This day feels like a transition chapter: leave Manchester, head south, and let Westminster set the tone of London." },
+    intro: { zh: "今天就是移動日。上午離開曼徹斯特，下午進倫敦，先把西敏一帶幾個最經典的點走一遍就好。", en: "This day feels like a transition chapter: leave Manchester, head south, and let Westminster set the tone of London." },
     highlights: ["Avanti West Coast", "London Euston", "Big Ben", "Buckingham Palace", "St James's Park"],
     route: [
-      { label: { zh: "上午｜離開曼徹斯特", en: "Morning" }, text: { zh: "早上從 Manchester Piccadilly 出發，準備搭火車進倫敦。", en: "Leave from Manchester Piccadilly and settle into the rail move south." } },
-      { label: { zh: "中午｜英國段鐵路移動", en: "Noon" }, text: { zh: "Avanti 大約 2 小時 10 分，剛好把會議節奏換成旅行節奏。", en: "The Avanti ride takes about 2h10 and cleanly shifts the trip from conference mode into travel mode." } },
-      { label: { zh: "下午｜西敏散步", en: "Afternoon" }, text: { zh: "抵達後可先走 Big Ben、Buckingham Palace 和 St James's Park，讓倫敦第一眼落在最經典的城市畫面。", en: "After arrival, Big Ben, Buckingham Palace, and St James’s Park give London its classic opening scene." } },
-      { label: { zh: "夜晚｜今晚落腳", en: "Evening" }, text: { zh: "晚上回到飯店，把之後幾天的步調留給市中心慢慢展開。", en: "Settle into the hotel and leave the next days to unfold at a city pace." } }
+      { label: { zh: "上午｜離開曼徹斯特", en: "Morning" }, text: { zh: "早上從 Manchester Piccadilly 出發，先把火車這段走順。", en: "Leave from Manchester Piccadilly and settle into the rail move south." } },
+      { label: { zh: "中午｜火車南下", en: "Noon" }, text: { zh: "Avanti 大約 2 小時 10 分，剛好拿來換城市。", en: "The Avanti ride takes about 2h10 and cleanly shifts the trip from conference mode into travel mode." } },
+      { label: { zh: "下午｜先看西敏", en: "Afternoon" }, text: { zh: "抵達後先走 Big Ben、Buckingham Palace 和 St James's Park。", en: "After arrival, Big Ben, Buckingham Palace, and St James’s Park give London its classic opening scene." } },
+      { label: { zh: "夜晚｜今晚落腳", en: "Evening" }, text: { zh: "晚上回飯店就好，後面還有兩個完整倫敦日。", en: "Settle into the hotel and leave the next days to unfold at a city pace." } }
     ],
     notes: ["這天移動比景點更重要，不要把行程排太緊。", "如果倫敦住宿還沒最後確認，先以 Euston 周邊動線為優先。"],
     tickets: ["Avanti 票價會依班次而變，建議先看 Advance。"]
@@ -1494,13 +1494,13 @@ const dailyGuides = [
     date: "7/5",
     city: { zh: "London", en: "London" },
     theme: { zh: "精品街區與倫敦城市光澤", en: "Luxury streets and the polished side of London" },
-    intro: { zh: "這一天適合把倫敦的購物氣氛、百貨與精品街區慢慢串起來，不必趕景點，而是讓城市的光澤感自己浮出來。", en: "Let the day stay with London’s polished shopping districts rather than trying to rush between landmarks." },
+    intro: { zh: "這天可以把百貨和精品街放在一起走，不用趕景點。重點是留時間給街區、百貨和下午茶。", en: "Let the day stay with London’s polished shopping districts rather than trying to rush between landmarks." },
     highlights: ["Harrods", "Bond Street", "Chanel", "Dior"],
     route: [
-      { label: { zh: "上午｜城市醒來", en: "Morning" }, text: { zh: "上午可以從較慢的節奏開始，不急著一早就塞滿移動。", en: "Start the morning gently and leave room for the day to open up." } },
-      { label: { zh: "中午｜午間風味", en: "Noon" }, text: { zh: "中午前後移動到 Harrods 一帶，順著百貨與街區慢慢逛。", en: "Head toward Harrods around midday and move through the district at an easy pace." } },
-      { label: { zh: "下午｜核心街區", en: "Afternoon" }, text: { zh: "下午把 Bond Street 和精品街排在一起，動線最順。", en: "Keep Bond Street and the luxury stretch together through the afternoon." } },
-      { label: { zh: "夜晚｜今日餐桌", en: "Evening" }, text: { zh: "晚上留給晚餐和沿街散步，讓購物日有一個比較輕鬆的收尾。", en: "End with dinner and a slower walk so the shopping day can taper off naturally." } }
+      { label: { zh: "上午｜慢慢出門", en: "Morning" }, text: { zh: "早上不用太趕，這天本來就不靠密集跑點。", en: "Start the morning gently and leave room for the day to open up." } },
+      { label: { zh: "中午｜Harrods 一帶", en: "Noon" }, text: { zh: "中午前後到 Harrods，順著百貨和附近街區慢慢走。", en: "Head toward Harrods around midday and move through the district at an easy pace." } },
+      { label: { zh: "下午｜Bond Street", en: "Afternoon" }, text: { zh: "下午把 Bond Street 和精品街放在一起走，最省力。", en: "Keep Bond Street and the luxury stretch together through the afternoon." } },
+      { label: { zh: "夜晚｜晚餐就好", en: "Evening" }, text: { zh: "晚上留給晚餐和散步，不用再加別的。", en: "End with dinner and a slower walk so the shopping day can taper off naturally." } }
     ],
     notes: ["這天主要是城市享受，不用逼自己一定買什麼。", "如果有高單價購物，記得把收據留好。"],
     tickets: ["街區和百貨本身免費，花費取決於實際購物。"]
@@ -1511,13 +1511,13 @@ const dailyGuides = [
     date: "7/6",
     city: { zh: "London", en: "London" },
     theme: { zh: "街區漫步與自由留白", en: "Neighbourhood walks and a more open city day" },
-    intro: { zh: "這一天比較像把倫敦留給自己。從 Covent Garden 到 Piccadilly Circus，不是急著趕點，而是保留一些停下來的空白。", en: "This day is less about checking off landmarks and more about letting central London breathe a little." },
+    intro: { zh: "這天把倫敦留鬆一點。從 Covent Garden 到 Piccadilly Circus，想停就停，不用把路線排太硬。", en: "This day is less about checking off landmarks and more about letting central London breathe a little." },
     highlights: ["Covent Garden", "Piccadilly Circus", "自由活動"],
     route: [
-      { label: { zh: "上午｜街區醒來", en: "Morning" }, text: { zh: "上午先走 Covent Garden，把倫敦比較輕鬆的一面留在今天。", en: "Begin around Covent Garden and let the day start on London’s lighter side." } },
-      { label: { zh: "中午｜午間留白", en: "Noon" }, text: { zh: "中午可以挑一間順眼的餐廳或咖啡店，讓這天不要太像趕場。", en: "Keep lunch open enough for whichever place feels right that day." } },
-      { label: { zh: "下午｜沿途亮點", en: "Afternoon" }, text: { zh: "下午慢慢接到 Piccadilly Circus，沿途就把想逛的地方順著看。", en: "Ease toward Piccadilly Circus and let the route itself guide the afternoon." } },
-      { label: { zh: "夜晚｜城市自由時間", en: "Evening" }, text: { zh: "今晚適合把剩下想補的地方留進來，也可以直接早點回飯店。", en: "Use the evening for unfinished stops or simply return early." } }
+      { label: { zh: "上午｜先走 Covent Garden", en: "Morning" }, text: { zh: "上午先在 Covent Garden 一帶慢慢走。", en: "Begin around Covent Garden and let the day start on London’s lighter side." } },
+      { label: { zh: "中午｜找地方坐一下", en: "Noon" }, text: { zh: "中午就找一間想坐的咖啡店或餐廳，不用特別追名單。", en: "Keep lunch open enough for whichever place feels right that day." } },
+      { label: { zh: "下午｜接到 Piccadilly", en: "Afternoon" }, text: { zh: "下午再慢慢接到 Piccadilly Circus，路上想逛什麼就順著看。", en: "Ease toward Piccadilly Circus and let the route itself guide the afternoon." } },
+      { label: { zh: "夜晚｜早點回去也可以", en: "Evening" }, text: { zh: "今晚可以補前兩天沒走完的地方，也可以直接早點回飯店。", en: "Use the evening for unfinished stops or simply return early." } }
     ],
     notes: ["這天最好不要排太硬，因為隔天還要接 Eurostar。", "如果前兩天有想回頭再看的地方，就留在今天。"],
     tickets: ["以步行和市區交通為主。"]
@@ -1528,15 +1528,15 @@ const dailyGuides = [
     date: "7/7",
     city: { zh: "London → Paris", en: "London → Paris" },
     theme: { zh: "離開倫敦，住進 Pullman 與巴黎第一眼", en: "Leaving London, checking into Pullman, and meeting Paris for the first time" },
-    intro: { zh: "搭 Eurostar 進巴黎，是這趟旅程最漂亮的一次城市切換。從倫敦車站一路接到 Pullman，晚上再把艾菲爾鐵塔夜景與陽台閃燈收進來，巴黎的第一晚就會很完整。", en: "The Eurostar move turns the trip into its French chapter, linking London directly to Pullman before the Eiffel Tower lights take over the first evening." },
+    intro: { zh: "今天從倫敦進巴黎。先把 Pullman 和房間安頓好，晚上再看鐵塔夜景；如果陽台看得到鐵塔，這晚就不用再跑太多地方。", en: "The Eurostar move turns the trip into its French chapter, linking London directly to Pullman before the Eiffel Tower lights take over the first evening." },
     highlights: ["St Pancras", "Eurostar", "Pullman Paris Tour Eiffel", "Eiffel Tower night view", "Balcony tower view"],
     route: [
-      { label: { zh: "上午｜倫敦收尾", en: "Morning" }, text: { zh: "早上先把倫敦這一段收乾淨，提早前往 St Pancras，讓跨國移動有一點餘裕。", en: "Close the London chapter calmly and head to St Pancras with enough margin for the international leg." } },
-      { label: { zh: "中午｜跨國移動", en: "Noon" }, text: { zh: "Eurostar 讓這段移動很俐落，從一個城市中心直接接到另一個城市中心。", en: "Eurostar keeps the move clean: city centre to city centre." } },
-      { label: { zh: "下午｜入住 Pullman", en: "Afternoon" }, text: { zh: "抵達巴黎後先去 Pullman Paris Tour Eiffel，把房間、陽台和鐵塔視角安頓好，再把步調放慢。", en: "After arriving in Paris, check into Pullman Paris Tour Eiffel and settle into the balcony-and-tower rhythm before doing anything else." } },
-      { label: { zh: "夜晚｜鐵塔與陽台", en: "Evening" }, text: { zh: "晚上留給艾菲爾鐵塔夜景，回飯店後再從陽台看一次閃燈，這會是巴黎第一晚最值得留住的畫面。", en: "Give the evening to the Eiffel Tower, then return for the balcony sparkle view that completes the first Paris night." } }
+      { label: { zh: "上午｜離開倫敦", en: "Morning" }, text: { zh: "早上提早去 St Pancras，不要把 Eurostar 抓太緊。", en: "Close the London chapter calmly and head to St Pancras with enough margin for the international leg." } },
+      { label: { zh: "中午｜搭 Eurostar", en: "Noon" }, text: { zh: "這段移動很順，從市中心直接接到市中心。", en: "Eurostar keeps the move clean: city centre to city centre." } },
+      { label: { zh: "下午｜先去 Pullman", en: "Afternoon" }, text: { zh: "到巴黎後先去 Pullman，把房間和陽台安頓好。", en: "After arriving in Paris, check into Pullman Paris Tour Eiffel and settle into the balcony-and-tower rhythm before doing anything else." } },
+      { label: { zh: "夜晚｜鐵塔第一晚", en: "Evening" }, text: { zh: "晚上就留給鐵塔夜景，回房後再看一次陽台視角。", en: "Give the evening to the Eiffel Tower, then return for the balcony sparkle view that completes the first Paris night." } }
     ],
-    notes: ["Eurostar 上車前就會完成護照檢查，提早到站比較安心。", "巴黎第一晚不用再塞太多景點，把鐵塔夜景和 Pullman 陽台留給最主要的記憶點就很好。"],
+    notes: ["Eurostar 上車前就會完成護照檢查，提早到站比較安心。", "巴黎第一晚不要排太滿，鐵塔和 Pullman 就夠了。"],
     tickets: ["Eurostar 票待訂；鐵塔周邊夜景散步免費。"]
   },
   {
@@ -1545,15 +1545,15 @@ const dailyGuides = [
     date: "7/8",
     city: { zh: "Paris", en: "Paris" },
     theme: { zh: "羅浮宮、Place Vendôme 與巴黎右岸", en: "The Louvre, Place Vendôme, and the Right Bank" },
-    intro: { zh: "今天把焦點留給羅浮宮，但不只是一個博物館日。從博物館走到 Place Vendôme，再接老佛爺頂樓和歌劇院周邊，巴黎右岸的藝術與精品感會自然串在一起。", en: "The Louvre anchors the day, but it flows outward into Place Vendôme, the Galeries Lafayette rooftop, and the streets around the Opéra." },
+    intro: { zh: "今天就順著右岸走。羅浮宮放前面，後面再接 Place Vendôme、老佛爺頂樓和歌劇院周邊，不用把點排得太碎。", en: "The Louvre anchors the day, but it flows outward into Place Vendôme, the Galeries Lafayette rooftop, and the streets around the Opéra." },
     highlights: ["Louvre Museum", "Place Vendôme", "Galeries Lafayette Rooftop", "Palais Garnier area"],
     route: [
-      { label: { zh: "上午｜藝術主景", en: "Morning" }, text: { zh: "上午直接把精神最好的時段留給羅浮宮，先看最想看的館藏，再順著庭院與街景慢慢走出來。", en: "Use the clearest morning hours for the Louvre, then ease back out through the courtyards and streets." } },
-      { label: { zh: "中午｜右岸午間", en: "Noon" }, text: { zh: "中午從羅浮宮周邊接到 Place Vendôme，留一頓不趕時間的午餐，讓右岸的步調慢慢展開。", en: "Move from the Louvre area toward Place Vendôme and keep lunch slow enough for the Right Bank mood to build." } },
-      { label: { zh: "下午｜百貨屋頂與歌劇院", en: "Afternoon" }, text: { zh: "下午把老佛爺百貨頂樓和歌劇院周邊接起來，從高處看巴黎，再回到街面繼續散步。", en: "Use the afternoon for the Galeries Lafayette rooftop and the Opéra district, moving between city views and street-level wandering." } },
-      { label: { zh: "夜晚｜回到鐵塔視角", en: "Evening" }, text: { zh: "晚上回 Pullman，把這天的右岸節奏收進房間與陽台景裡。", en: "Return to Pullman and let the room with its balcony view close the Right Bank day." } }
+      { label: { zh: "上午｜先看羅浮宮", en: "Morning" }, text: { zh: "上午先去羅浮宮，不用貪多，挑最想看的幾個區就好。", en: "Use the clearest morning hours for the Louvre, then ease back out through the courtyards and streets." } },
+      { label: { zh: "中午｜接到 Place Vendôme", en: "Noon" }, text: { zh: "中午從羅浮宮慢慢接到 Place Vendôme，順便吃午餐。", en: "Move from the Louvre area toward Place Vendôme and keep lunch slow enough for the Right Bank mood to build." } },
+      { label: { zh: "下午｜上屋頂看巴黎", en: "Afternoon" }, text: { zh: "下午走老佛爺頂樓和歌劇院周邊，這樣路線最順。", en: "Use the afternoon for the Galeries Lafayette rooftop and the Opéra district, moving between city views and street-level wandering." } },
+      { label: { zh: "夜晚｜回 Pullman", en: "Evening" }, text: { zh: "晚上回 Pullman 就好，不用再加別的景點。", en: "Return to Pullman and let the room with its balcony view close the Right Bank day." } }
     ],
-    notes: ["羅浮宮這天不必再另外塞太多重景點，讓右岸的街景自己接下去就很完整。", "如果想在老佛爺頂樓拍照，傍晚前後的光線會很漂亮。"],
+    notes: ["羅浮宮這天不要再加太多重景點。", "如果想在老佛爺頂樓拍照，傍晚前後的光線會很好。"],
     tickets: ["Louvre 門票請依官網時段確認；老佛爺頂樓免費。"]
   },
   {
@@ -1562,15 +1562,15 @@ const dailyGuides = [
     date: "7/9",
     city: { zh: "Paris", en: "Paris" },
     theme: { zh: "Avenue Montaigne、香榭麗舍與凱旋門", en: "Avenue Montaigne, the Champs-Elysees, and the Arc" },
-    intro: { zh: "今天比較像巴黎最有光澤的一天。從 Avenue Montaigne 的精品街開始，再一路接到香榭麗舍與凱旋門，晚上把最後的城市主景留給塞納河。", en: "This is Paris at its most polished, beginning on Avenue Montaigne, stretching through the Champs-Elysees, and closing by the Seine." },
+    intro: { zh: "Avenue Montaigne、香榭麗舍和凱旋門放同一天最順。不用每個地方都待很久，重點是把右岸那段走順。", en: "This is Paris at its most polished, beginning on Avenue Montaigne, stretching through the Champs-Elysees, and closing by the Seine." },
     highlights: ["Avenue Montaigne", "Champs-Elysees", "Arc de Triomphe", "Seine night view"],
     route: [
-      { label: { zh: "上午｜精品街開場", en: "Morning" }, text: { zh: "上午先走 Avenue Montaigne，讓巴黎最俐落的精品街替這天開場。", en: "Begin on Avenue Montaigne and let Paris’s cleanest luxury stretch open the day." } },
-      { label: { zh: "中午｜大道午間", en: "Noon" }, text: { zh: "中午一路接到香榭麗舍，沿線找餐廳或咖啡館，不必把節奏排得太趕。", en: "Move into the Champs-Elysees for lunch and keep the pace deliberately unhurried." } },
-      { label: { zh: "下午｜凱旋門主景", en: "Afternoon" }, text: { zh: "下午把凱旋門留在最醒目的時段，再沿著大道慢慢把今天的城市主景走完。", en: "Leave the Arc for the clearest part of the afternoon, then finish the boulevard at a measured pace." } },
-      { label: { zh: "夜晚｜塞納河夜景", en: "Evening" }, text: { zh: "晚上把視線交給塞納河，讓這天的華麗感以更柔和的夜色收尾。", en: "Give the evening to the Seine so the day closes with something gentler than the boulevard itself." } }
+      { label: { zh: "上午｜先走 Avenue Montaigne", en: "Morning" }, text: { zh: "上午先走 Avenue Montaigne，街道安靜一點，也比較好慢慢看。", en: "Begin on Avenue Montaigne and let Paris’s cleanest luxury stretch open the day." } },
+      { label: { zh: "中午｜接到香榭麗舍", en: "Noon" }, text: { zh: "中午再接到香榭麗舍，找地方吃飯、休息。", en: "Move into the Champs-Elysees for lunch and keep the pace deliberately unhurried." } },
+      { label: { zh: "下午｜走到凱旋門", en: "Afternoon" }, text: { zh: "下午把凱旋門留在最後，剛好把整條線收完整。", en: "Leave the Arc for the clearest part of the afternoon, then finish the boulevard at a measured pace." } },
+      { label: { zh: "夜晚｜塞納河夜景", en: "Evening" }, text: { zh: "晚上去塞納河邊走一下，再回 Pullman。", en: "Give the evening to the Seine so the day closes with something gentler than the boulevard itself." } }
     ],
-    notes: ["這一天很適合把精品、城市主景和夜景放在同一條線上，不必拆成太多小點。", "如果晚餐後還有體力，再回鐵塔附近看一次夜景也很值得。"],
+    notes: ["這天就把精品街和城市主景排在同一條線上。", "如果晚餐後還有體力，再回鐵塔附近看一次夜景也不錯。"],
     tickets: ["大道與街區散步免費；若進凱旋門需另查票。"]
   },
   {
@@ -1579,15 +1579,15 @@ const dailyGuides = [
     date: "7/10",
     city: { zh: "Paris", en: "Paris" },
     theme: { zh: "蒙馬特晨景、最後採買與轉往 CDG", en: "Montmartre morning, final shopping, and the move to CDG" },
-    intro: { zh: "巴黎最後一天不必再衝太多景點，但還是可以把最有城市氣味的一段留給蒙馬特。上午看聖心堂，下午完成最後採買與行李收尾，晚上順順轉往巴黎戴高樂機場候機樓諾富特酒店，隔天的回程會輕鬆很多。", en: "The final Paris day stays lighter, but Montmartre still gives it a distinctive opening before the luggage handoff and the move to Novotel Paris Charles-de-Gaulle Airport." },
+    intro: { zh: "巴黎最後一天不要再衝太多點。上午去聖心堂和蒙馬特，下午把最後採買和行李收好，晚上直接轉到 CDG。", en: "The final Paris day stays lighter, but Montmartre still gives it a distinctive opening before the luggage handoff and the move to Novotel Paris Charles-de-Gaulle Airport." },
     highlights: ["Sacré-Cœur", "Montmartre", "最後採買", "Novotel CDG"],
     route: [
-      { label: { zh: "上午｜蒙馬特晨景", en: "Morning" }, text: { zh: "上午先去聖心堂和蒙馬特，把巴黎最後一個早晨留給高處街景與階梯之間的散步。", en: "Start at Sacré-Cœur and Montmartre, giving the final Paris morning to higher views and slower streets." } },
-      { label: { zh: "中午｜最後採買", en: "Noon" }, text: { zh: "中午之後回到市區，把想補的伴手禮、藥妝或精品一次收好。", en: "Use midday and early afternoon to finish the last gifts, beauty buys, or boutique stops." } },
-      { label: { zh: "下午｜回 Pullman 收行李", en: "Afternoon" }, text: { zh: "下午回 Pullman 取寄放行李，把巴黎這一段真正收束起來。", en: "Return to Pullman for the stored luggage and let the Paris chapter close properly." } },
-        { label: { zh: "夜晚｜前往 CDG", en: "Evening" }, text: { zh: "晚上轉往巴黎戴高樂機場候機樓諾富特酒店，把隔天的法航航段留成一段輕鬆的早晨出發。", en: "Move to Novotel Paris Charles-de-Gaulle Airport for the night so the Air France departure can begin more calmly the next morning." } }
+      { label: { zh: "上午｜先去聖心堂", en: "Morning" }, text: { zh: "上午先去聖心堂和蒙馬特，趁還有精神時慢慢走。", en: "Start at Sacré-Cœur and Montmartre, giving the final Paris morning to higher views and slower streets." } },
+      { label: { zh: "中午｜最後採買", en: "Noon" }, text: { zh: "中午之後把想補的伴手禮、藥妝或精品一次收好。", en: "Use midday and early afternoon to finish the last gifts, beauty buys, or boutique stops." } },
+      { label: { zh: "下午｜回 Pullman 拿行李", en: "Afternoon" }, text: { zh: "下午回 Pullman 取寄放行李，這樣巴黎這段就算收好了。", en: "Return to Pullman for the stored luggage and let the Paris chapter close properly." } },
+        { label: { zh: "夜晚｜前往 CDG", en: "Evening" }, text: { zh: "晚上直接轉往巴黎戴高樂機場候機樓諾富特酒店，隔天會輕鬆很多。", en: "Move to Novotel Paris Charles-de-Gaulle Airport for the night so the Air France departure can begin more calmly the next morning." } }
     ],
-    notes: ["這天的重點不是再塞滿景點，而是讓巴黎最後一段走得漂亮又不狼狽。", "去 CDG 前先把隔天的法航、英航和華航資料都離線存好。"],
+    notes: ["這天不要再塞太多點，順順收尾就好。", "去 CDG 前先把隔天的法航、英航和華航資料都離線存好。"],
     tickets: ["聖心堂與蒙馬特散步免費；採買與交通依實際安排。"]
   },
   {
@@ -1596,13 +1596,13 @@ const dailyGuides = [
     date: "7/11-7/12",
     city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" },
     theme: { zh: "巴黎收束、歐洲段接駁與返台", en: "Closing Paris and connecting all the way home" },
-    intro: { zh: "最後一天的重點不是景點，而是把回程接得乾淨。從巴黎戴高樂機場候機樓諾富特酒店出發後，巴黎到曼徹斯特、再到希斯洛，最後回台北，整段都以銜接順利為優先。", en: "The last day is about clean connections rather than sightseeing, starting from Novotel Paris Charles-de-Gaulle Airport and keeping each onward segment steady." },
+    intro: { zh: "最後一天就專心把回程接好。從 CDG 出發後，巴黎、曼徹斯特、希斯洛一路接回台北，不要再另外加行程。", en: "The last day is about clean connections rather than sightseeing, starting from Novotel Paris Charles-de-Gaulle Airport and keeping each onward segment steady." },
     highlights: ["AF1068", "CDG T2E", "BA1371", "CI82"],
     route: [
-      { label: { zh: "上午｜從 CDG 出發", en: "Morning" }, text: { zh: "早上直接從機場住宿接進航站，這樣法航這段會比較從容。", en: "Start directly from the airport stay into the terminal so the Air France leg can begin calmly." } },
-      { label: { zh: "中午｜巴黎回曼徹斯特", en: "Noon" }, text: { zh: "法航商務艙這一段是回程串接的起點，先把節奏穩住。", en: "The Air France business segment starts the homeward chain, so keep things smooth and steady." } },
-      { label: { zh: "下午｜英國境內轉場", en: "Afternoon" }, text: { zh: "抵達曼徹斯特後，接著再轉往希斯洛。", en: "After Manchester, move straight into the Heathrow connection." } },
-      { label: { zh: "夜晚｜長途返台", en: "Evening" }, text: { zh: "CI82 把這趟旅程真正收回台北，最後就只剩休息和回家。", en: "CI82 closes the journey and turns it fully toward home." } }
+      { label: { zh: "上午｜從 CDG 出發", en: "Morning" }, text: { zh: "早上直接從機場住宿進航站，這樣會比較從容。", en: "Start directly from the airport stay into the terminal so the Air France leg can begin calmly." } },
+      { label: { zh: "中午｜巴黎回曼徹斯特", en: "Noon" }, text: { zh: "法航這段是整個回程的起點，先把這段接好。", en: "The Air France business segment starts the homeward chain, so keep things smooth and steady." } },
+      { label: { zh: "下午｜再接希斯洛", en: "Afternoon" }, text: { zh: "到曼徹斯特後，再接到希斯洛。", en: "After Manchester, move straight into the Heathrow connection." } },
+      { label: { zh: "夜晚｜回台北", en: "Evening" }, text: { zh: "晚上搭 CI82 回台北，這天就以順順回家為主。", en: "CI82 closes the journey and turns it fully toward home." } }
     ],
     notes: ["7/11 上午不要再排巴黎景點。", "不要跳過 MAN-LHR 航段，希斯洛轉機要跟著 Flight Connections 走。"],
     tickets: ["AF 歐洲段：約 EUR 354.05 / NT$12,930。"]
@@ -1614,50 +1614,50 @@ const dailyGuideSections = [
     id: "chapter-arrival",
     range: "6/29–6/30",
     title: { zh: "抵達歐洲與進入會議前夕", en: "Arrival in Europe and the eve of the conference" },
-    lead: { zh: "這一段把長途飛行、法蘭克福轉機散步和曼徹斯特落腳接在一起，像是旅程的開場。", en: "This chapter connects the long-haul flight, the Frankfurt layover walk, and the first evening in Manchester." },
+    lead: { zh: "這一段先把長途飛行、轉機和入住走順，別急著排太多。", en: "This chapter connects the long-haul flight, the Frankfurt layover walk, and the first evening in Manchester." },
     dayIds: ["day-1"]
   },
   {
     id: "chapter-manchester",
     range: "7/1–7/3",
     title: { zh: "曼徹斯特會議主段", en: "The Manchester conference chapter" },
-    lead: { zh: "AIB 2026 是整趟旅程的核心，這幾天圍繞著會議節奏、發表與交流慢慢展開。", en: "AIB 2026 stays at the center of the route, with these days shaped by sessions, presentations, and conference conversations." },
+    lead: { zh: "AIB 2026 是這趟的主軸。這幾天就先把會議、發表和交流顧好。", en: "AIB 2026 stays at the center of the route, with these days shaped by sessions, presentations, and conference conversations." },
     dayIds: ["day-2", "day-3", "day-4"]
   },
   {
     id: "chapter-london",
     range: "7/4–7/6",
     title: { zh: "倫敦城市段", en: "The London city chapter" },
-    lead: { zh: "離開曼徹斯特之後，旅程回到城市漫步、百貨與街區節奏，讓倫敦慢慢展開。", en: "After Manchester, the route returns to city walks, department stores, and an easier London rhythm." },
+    lead: { zh: "離開曼徹斯特後，這幾天就留給倫敦街區、百貨和幾個經典地標。", en: "After Manchester, the route returns to city walks, department stores, and an easier London rhythm." },
     dayIds: ["day-5", "day-6", "day-7"]
   },
   {
     id: "chapter-paris",
     range: "7/7–7/10",
     title: { zh: "巴黎段與旅行收尾", en: "Paris and the softer travel finish" },
-    lead: { zh: "從 Eurostar 進巴黎之後，把博物館、河岸與採買留在最後幾天，讓旅程慢慢收束。", en: "Once Eurostar reaches Paris, the final days shift toward museums, river walks, and a softer close." },
+    lead: { zh: "進巴黎後不要排成打卡清單。白天看館、逛街，晚上回鐵塔附近就好。", en: "Once Eurostar reaches Paris, the final days shift toward museums, river walks, and a softer close." },
     dayIds: ["day-8", "day-9", "day-10", "day-11"]
   },
   {
     id: "chapter-return",
     range: "7/11–7/12",
     title: { zh: "返程串接", en: "The route home" },
-    lead: { zh: "最後一天不拼景點，而是把巴黎、曼徹斯特與希斯洛的接駁走順。", en: "The final chapter is about clean connections rather than one last round of sightseeing." },
+    lead: { zh: "最後一天不拼景點，只把巴黎、曼徹斯特和希斯洛接順。", en: "The final chapter is about clean connections rather than one last round of sightseeing." },
     dayIds: ["day-12"]
   }
 ];
 
 const dailyGuidePreviewLines = {
   "day-1": {
-    zh: "從長程飛行接上法蘭克福散步，傍晚穩穩落進曼徹斯特。",
+    zh: "先把長途飛行和轉機走順，傍晚再穩穩進曼徹斯特。",
     en: "A long-haul arrival, a Frankfurt walk, and a calm landing in Manchester."
   },
   "day-2": {
-    zh: "第一個完整會議日，以 session、交流與城市留白為主。",
+    zh: "第一個完整會議日，重點是 session、交流和早點休息。",
     en: "The first full conference day keeps its focus on sessions, conversations, and a lighter evening."
   },
   "day-3": {
-    zh: "會議內容與發表準備交錯進行，節奏像一個完整學術工作日。",
+    zh: "會議和發表準備放同一天，這天不要再加太多別的。",
     en: "Sessions and presentation prep overlap in a day that feels fully academic."
   },
   "day-4": {
@@ -1665,11 +1665,11 @@ const dailyGuidePreviewLines = {
     en: "The Interactive presentation anchors the day before the route turns toward London."
   },
   "day-5": {
-    zh: "從會議城市南下倫敦，把旅程重新交給街景與地標。",
+    zh: "從會議城市南下倫敦，先把西敏一帶接起來。",
     en: "Leave the conference city behind and let London’s streets take over."
   },
   "day-6": {
-    zh: "精品街區與百貨留給比較從容的一天，不急著趕景點。",
+    zh: "這一天留給百貨和精品街，不急著趕景點。",
     en: "A slower London day for department stores, luxury streets, and city polish."
   },
   "day-7": {
@@ -1681,15 +1681,15 @@ const dailyGuidePreviewLines = {
     en: "Reach Paris by Eurostar, then hand the first evening to Pullman and the tower lights."
   },
   "day-9": {
-    zh: "羅浮宮、右岸街景與百貨屋頂，讓巴黎慢慢展開得很完整。",
+    zh: "羅浮宮、右岸和百貨屋頂排在同一天，路線最順。",
     en: "The Louvre, the Right Bank, and the rooftop view give Paris a full second act."
   },
   "day-10": {
-    zh: "精品大道、凱旋門與塞納河，把巴黎最有光澤的一面留在這天。",
+    zh: "精品街、凱旋門和塞納河放同一天，不用拆太碎。",
     en: "Luxury avenues, the Arc, and the Seine shape Paris at its most polished."
   },
   "day-11": {
-    zh: "蒙馬特與最後採買收住巴黎，晚上再順順轉往 CDG。",
+    zh: "蒙馬特和最後採買收住巴黎，晚上再順順轉往 CDG。",
     en: "Montmartre and final shopping close Paris before the move toward CDG."
   },
   "day-12": {
@@ -1708,80 +1708,80 @@ const dayCardFrames = {
   },
   "day-2": {
     location: { zh: "曼徹斯特｜AIB 2026", en: "Manchester | AIB 2026" },
-    tags: [{ zh: "會議", en: "Conference" }, { zh: "交流", en: "Networking" }, { zh: "穩定節奏", en: "Steady pace" }],
-    kicker: { zh: "把旅程正式交給會議", en: "Let the route turn fully toward the conference" },
+    tags: [{ zh: "會議", en: "Conference" }, { zh: "交流", en: "Networking" }, { zh: "別排太滿", en: "Steady pace" }],
+    kicker: { zh: "這天先專心開會", en: "Let the route turn fully toward the conference" },
     title: { zh: "第一個完整會議日", en: "The first full conference day" },
-    note: { zh: "先讓會議節奏穩下來，不急著把城市塞進同一天；曼徹斯特這幾天的重心，本來就應該放在 AIB。", en: "Let the conference rhythm settle first. Manchester does not need to compete with sightseeing during these core days." }
+    note: { zh: "這幾天以 AIB 為主就好，別急著把城市行程塞進來。", en: "Let the conference rhythm settle first. Manchester does not need to compete with sightseeing during these core days." }
   },
   "day-3": {
     location: { zh: "曼徹斯特｜會議主段", en: "Manchester | Conference core" },
     tags: [{ zh: "會議", en: "Conference" }, { zh: "發表準備", en: "Presentation prep" }, { zh: "留白", en: "Breathing room" }],
-    kicker: { zh: "內容、交流與準備交錯的一天", en: "A day where sessions, conversations, and preparation overlap" },
-    title: { zh: "讓學術主段慢慢進入完整狀態", en: "The day when the academic core feels fully in motion" },
-    note: { zh: "今天不用刻意安排太多額外景點，把會議內容和發表準備走穩，反而會讓整段曼徹斯特更有重心。", en: "It is better to let the conference and presentation preparation take the lead than to force extra city stops into the margins." }
+    kicker: { zh: "場次和發表準備交錯的一天", en: "A day where sessions, conversations, and preparation overlap" },
+    title: { zh: "把會議內容和發表準備放前面", en: "The day when the academic core feels fully in motion" },
+    note: { zh: "今天不用另外加景點，把會議和發表準備顧好就夠了。", en: "It is better to let the conference and presentation preparation take the lead than to force extra city stops into the margins." }
   },
   "day-4": {
     location: { zh: "曼徹斯特｜Interactive 發表", en: "Manchester | Interactive session" },
     tags: [{ zh: "發表", en: "Presentation" }, { zh: "會議收尾", en: "Conference close" }, { zh: "整理", en: "Reset" }],
-    kicker: { zh: "把會議主段收得漂亮一點", en: "Let the conference chapter close cleanly" },
+    kicker: { zh: "把會議主段收好", en: "Let the conference chapter close cleanly" },
     title: { zh: "Interactive 發表與曼徹斯特收尾", en: "The Interactive session and a softer Manchester close" },
-    note: { zh: "最重要的是把 Interactive 場次走穩，其他事情都可以往後退一點，讓這段學術主線完整收束。", en: "The Interactive slot is the anchor today; everything else can soften around it so the academic chapter closes properly." }
+    note: { zh: "最重要的是把 Interactive 場次顧好，其他事情都往後放。", en: "The Interactive slot is the anchor today; everything else can soften around it so the academic chapter closes properly." }
   },
   "day-5": {
     location: { zh: "曼徹斯特｜倫敦", en: "Manchester | London" },
     tags: [{ zh: "火車", en: "Rail" }, { zh: "轉場", en: "Transfer" }, { zh: "地標", en: "Landmarks" }],
     kicker: { zh: "離開會議城市，進入倫敦第一段街景", en: "Leaving the conference city and stepping into London" },
-    title: { zh: "從北方南下，把倫敦慢慢接上來", en: "Heading south and letting London unfold" },
-    note: { zh: "這一天的美感在於切換：上午還在曼徹斯特，下午已經站在 Big Ben 和 St James’s Park 的城市軸線上。", en: "The beauty of the day is in the switch itself: Manchester in the morning, Westminster by the afternoon." }
+    title: { zh: "離開曼徹斯特，往倫敦走", en: "Heading south and letting London unfold" },
+    note: { zh: "今天的重點就是把北邊的會議城市，順順接到倫敦第一晚。", en: "The beauty of the day is in the switch itself: Manchester in the morning, Westminster by the afternoon." }
   },
   "day-6": {
     location: { zh: "倫敦｜精品街與百貨", en: "London | Luxury streets and department stores" },
     tags: [{ zh: "精品", en: "Luxury" }, { zh: "百貨", en: "Department stores" }, { zh: "城市散步", en: "City walk" }],
     kicker: { zh: "倫敦比較有光澤的一面", en: "London in its more polished register" },
     title: { zh: "把 Harrods 和 Bond Street 留給從容的一天", en: "Giving Harrods and Bond Street a slower, more polished day" },
-    note: { zh: "今天不用趕點，讓購物、街景和晚餐自己接在一起，反而比較像真正的倫敦城市日。", en: "A slower rhythm suits this day best; shopping, streets, and dinner should feel like one continuous city mood." }
+    note: { zh: "今天不用趕點，百貨、街景和晚餐順順接起來就好。", en: "A slower rhythm suits this day best; shopping, streets, and dinner should feel like one continuous city mood." }
   },
   "day-7": {
     location: { zh: "倫敦｜Covent Garden｜Piccadilly", en: "London | Covent Garden | Piccadilly" },
     tags: [{ zh: "街區", en: "Districts" }, { zh: "自由活動", en: "Free time" }, { zh: "留白", en: "Open" }],
     kicker: { zh: "讓倫敦留下一點鬆弛感", en: "Let London keep some looseness" },
     title: { zh: "最後一個倫敦日，適合把步調放慢", en: "The last London day is best kept a little slower" },
-    note: { zh: "不必把每一分鐘填滿，保留一些停下來喝咖啡、回頭補逛、或單純散步的空白，會讓隔天進巴黎更從容。", en: "Leave room for coffee, a return stop, or just a slower walk; that looseness helps the Paris transfer feel much calmer the next day." }
+    note: { zh: "留一點空白給咖啡、補逛或單純散步，隔天進巴黎會比較輕鬆。", en: "Leave room for coffee, a return stop, or just a slower walk; that looseness helps the Paris transfer feel much calmer the next day." }
   },
   "day-8": {
     location: { zh: "倫敦｜巴黎", en: "London | Paris" },
     tags: [{ zh: "Eurostar", en: "Eurostar" }, { zh: "Pullman", en: "Pullman" }, { zh: "鐵塔夜景", en: "Tower night" }],
     kicker: { zh: "從倫敦進巴黎，讓鐵塔成為第一眼", en: "Entering Paris from London, with the tower as the first image" },
     title: { zh: "住進 Pullman，把巴黎第一晚留給鐵塔", en: "Checking into Pullman and giving the first Paris night to the Eiffel Tower" },
-    note: { zh: "巴黎這一段的重心很清楚：先進 Pullman，先把房間和陽台視角收好，入夜後再去看鐵塔，節奏就會很完整。", en: "The Paris chapter works best when Pullman comes first: settle the room and balcony view, then let the tower lights take over the evening." }
+    note: { zh: "巴黎第一晚先把 Pullman 和陽台安頓好，再去看鐵塔就夠了。", en: "The Paris chapter works best when Pullman comes first: settle the room and balcony view, then let the tower lights take over the evening." }
   },
   "day-9": {
     location: { zh: "巴黎｜羅浮宮｜右岸", en: "Paris | Louvre | Right Bank" },
     tags: [{ zh: "藝術", en: "Art" }, { zh: "右岸", en: "Right Bank" }, { zh: "屋頂視角", en: "Rooftop view" }],
     kicker: { zh: "把藝術與右岸街景接在一起", en: "Bringing art and the Right Bank into one day" },
     title: { zh: "羅浮宮之後，讓巴黎在街景裡慢慢展開", en: "After the Louvre, letting Paris continue through its streets" },
-    note: { zh: "這一天最適合用一條線走完：羅浮宮、Place Vendôme、老佛爺頂樓與歌劇院周邊，從館內一路走到城市表情本身。", en: "This day works best as one line: the Louvre, Place Vendôme, the Galeries Lafayette rooftop, and the Opéra district, moving from artworks into the city’s own expression." }
+    note: { zh: "這一天就走一條線：羅浮宮、Place Vendôme、老佛爺頂樓和歌劇院周邊。", en: "This day works best as one line: the Louvre, Place Vendôme, the Galeries Lafayette rooftop, and the Opéra district, moving from artworks into the city’s own expression." }
   },
   "day-10": {
     location: { zh: "巴黎｜精品大道｜塞納河", en: "Paris | Luxury avenues | Seine" },
     tags: [{ zh: "精品", en: "Luxury" }, { zh: "夜景", en: "Night view" }, { zh: "經典地標", en: "Classics" }],
     kicker: { zh: "把巴黎最有光澤的一天留在這裡", en: "Give Paris its most polished day here" },
     title: { zh: "Avenue Montaigne、香榭麗舍與凱旋門", en: "Avenue Montaigne, the Champs-Elysees, and the Arc" },
-    note: { zh: "白天把精品街與大道主景走完，晚上再把視線交給塞納河，這樣巴黎的華麗和柔軟都會在同一天出現。", en: "Walk the luxury streets and the grand axis by day, then give the evening to the Seine so the polished and the softer sides of Paris stay together." }
+    note: { zh: "白天走精品街和大道，晚上去塞納河邊，這樣安排最順。", en: "Walk the luxury streets and the grand axis by day, then give the evening to the Seine so the polished and the softer sides of Paris stay together." }
   },
   "day-11": {
     location: { zh: "巴黎｜蒙馬特｜CDG", en: "Paris | Montmartre | CDG" },
     tags: [{ zh: "晨景", en: "Morning view" }, { zh: "最後採買", en: "Last shopping" }, { zh: "機場轉場", en: "Airport move" }],
     kicker: { zh: "巴黎最後一天，不急著趕景點", en: "The final Paris day should not feel rushed" },
     title: { zh: "蒙馬特、最後採買與轉往機場", en: "Montmartre, final shopping, and the move toward the airport" },
-    note: { zh: "巴黎最後一天比較像漂亮收尾：上午留給聖心堂和蒙馬特，下午慢慢把購物與行李收好，晚上再平順轉往巴黎戴高樂機場候機樓諾富特酒店。", en: "The last Paris day is more about a graceful finish: Montmartre in the morning, a slower afternoon for final shopping, then a calm move to Novotel Paris Charles-de-Gaulle Airport." }
+    note: { zh: "這天就把巴黎收好：上午蒙馬特，下午拿行李，晚上去 CDG。", en: "The last Paris day is more about a graceful finish: Montmartre in the morning, a slower afternoon for final shopping, then a calm move to Novotel Paris Charles-de-Gaulle Airport." }
   },
   "day-12": {
     location: { zh: "巴黎｜曼徹斯特｜希斯洛｜台北", en: "Paris | Manchester | Heathrow | Taipei" },
     tags: [{ zh: "返程", en: "Return" }, { zh: "銜接", en: "Connections" }, { zh: "長途飛行", en: "Long-haul" }],
     kicker: { zh: "把整段返程接得乾淨", en: "Keeping the return chain clean and steady" },
     title: { zh: "回家的這一天，重點是順順銜接", en: "The homebound day is about smooth connections" },
-    note: { zh: "這一天不用再追求旅遊畫面，最重要的是讓巴黎、曼徹斯特與希斯洛的銜接一段一段都順。", en: "The last day no longer needs one more sightseeing moment; what matters is keeping each connection between Paris, Manchester, and Heathrow steady." }
+    note: { zh: "這天不再排景點，最重要的是把每一段銜接走順。", en: "The last day no longer needs one more sightseeing moment; what matters is keeping each connection between Paris, Manchester, and Heathrow steady." }
   }
 };
 
@@ -2591,8 +2591,8 @@ function renderHero(pageId) {
           <div class="hero-subtitle">${state.lang !== "zh" ? "Germany · UK · France Travel Handbook" : "德英法之旅手冊"}</div>
           <div class="hero-dates">${state.lang !== "zh" ? "2026 / 06 / 29 - 2026 / 07 / 12" : "2026 / 06 / 29 - 2026 / 07 / 12"}</div>
           <div class="destinations">${state.lang !== "zh" ? "Frankfurt • Manchester • London • Paris" : "法蘭克福 • 曼徹斯特 • 倫敦 • 巴黎"}</div>
-          <p class="hero-intro">${state.lang !== "zh" ? "The route begins with a brief Frankfurt layover, settles into Manchester for AIB 2026, then opens into London streets before ending with museums, shopping, and longer evenings in Paris." : "旅程從法蘭克福短暫轉機開始，先在曼徹斯特完成 AIB 2026 的學術主段，再轉進倫敦的城市節奏，最後以巴黎的街景、博物館與法式餐桌收尾。"}</p>
-          <p class="hero-serif-note">${state.lang !== "zh" ? "The conference chapter stays in the middle on purpose, so the route can begin with a brief European opening and still finish in Paris with enough time for museums, polished streets, and the Pullman balcony view." : "這條路線刻意把會議主段放在正中央，前段保留法蘭克福短暫開場，後段才把倫敦與巴黎慢慢接上來，讓博物館、精品街與 Pullman 陽台鐵塔景都能留出比較從容的空間。"}</p>
+          <p class="hero-intro">${state.lang !== "zh" ? "The route begins with a brief Frankfurt layover, settles into Manchester for AIB 2026, then opens into London streets before ending with museums, shopping, and longer evenings in Paris." : "先在法蘭克福轉機，接著進曼徹斯特把 AIB 這段走完，後面幾天再留給倫敦和巴黎。"}</p>
+          <p class="hero-serif-note">${state.lang !== "zh" ? "The conference chapter stays in the middle on purpose, so the route can begin with a brief European opening and still finish in Paris with enough time for museums, polished streets, and the Pullman balcony view." : "曼徹斯特是主段，所以前後不要排太滿。等會議走完，再把倫敦和巴黎慢慢接上去就好。"}</p>
           <div class="hero-actions editorial-hero-actions">
             <a class="button primary hero-action-primary" href="#itinerary" data-home-tab-jump="itinerary">${state.lang !== "zh" ? "Open the daily guide" : "打開每日行程"}</a>
             <a class="button secondary hero-action-secondary" href="#overview" data-home-tab-jump="overview">${state.lang !== "zh" ? "Read the overview first" : "先讀旅程總覽"}</a>
@@ -2696,7 +2696,7 @@ function renderHeroSummaryRows() {
       ${renderHandbookSummaryRow(state.lang !== "zh" ? "Trip dates" : "旅程日期", "2026/06/29 – 2026/07/12")}
       ${renderHandbookSummaryRow(state.lang !== "zh" ? "Cities" : "主要城市", state.lang !== "zh" ? "Frankfurt · Manchester · London · Paris" : "法蘭克福 · 曼徹斯特 · 倫敦 · 巴黎")}
       ${renderHandbookSummaryRow(state.lang !== "zh" ? "Conference core" : "會議主段", "AIB 2026 Manchester · 6/30–7/3")}
-      ${renderHandbookSummaryRow(state.lang !== "zh" ? "Travel rhythm" : "旅行節奏", state.lang !== "zh" ? "Transit → conference → London → Paris" : "轉機 → 會議 → 倫敦 → 巴黎")}
+      ${renderHandbookSummaryRow(state.lang !== "zh" ? "Travel rhythm" : "路線順序", state.lang !== "zh" ? "Transit → conference → London → Paris" : "轉機 → 會議 → 倫敦 → 巴黎")}
       <p class="handbook-summary-note">${state.lang !== "zh" ? "Manchester and Paris already have fixed stays. London stays more flexible, which keeps the later route easier to adjust without breaking the whole plan." : "曼徹斯特和巴黎都已有固定住宿，倫敦則保留彈性。這樣後段比較好調整，但不會打亂整條路線。"} </p>
     </div>
   `;
@@ -2710,12 +2710,12 @@ function renderHomeOverviewPanel() {
         state.lang !== "zh" ? "AIB 2026 Manchester · Germany, UK, and France" : "AIB 2026 Manchester｜德英法之旅",
         state.lang !== "zh"
           ? "The trip begins with a brief Frankfurt layover, settles into Manchester for AIB 2026, opens into London after the conference, and closes with museums, shopping streets, and tower-view evenings in Paris."
-          : "旅程從法蘭克福短暫轉機開始，先在曼徹斯特完成 AIB 2026 的學術主段，接著進入倫敦的城市節奏，最後以巴黎的博物館、精品街與鐵塔夜景收尾。"
+          : "先在法蘭克福轉一下，再進曼徹斯特把 AIB 這段走完，後面幾天留給倫敦和巴黎。"
       )}
       <div class="handbook-overview-layout compact">
         <div class="handbook-overview-copy">
-          <p>${state.lang !== "zh" ? "This cover is meant to be read like the front of a travel handbook, not a dashboard. Read the route first, then move into the detailed days only when you need them." : "這一頁先把旅程讀成一本手冊，而不是一組資料卡。先看路線、節奏和重心，再決定什麼時候打開每天的細節。"} </p>
-          <p>${state.lang !== "zh" ? "Manchester holds the academic center of gravity; London becomes the softer middle chapter; Paris is where the route finally opens into its tower-view, museum, and shopping rhythm." : "曼徹斯特穩穩放住會議主段，倫敦則像中段的城市呼吸，巴黎才是最後把鐵塔、博物館、精品街與 Pullman 陽台視角慢慢展開的地方。"} </p>
+          <p>${state.lang !== "zh" ? "This cover is meant to be read like the front of a travel handbook, not a dashboard. Read the route first, then move into the detailed days only when you need them." : "先看整體路線就好，真的要用到哪一天時，再打開細節。"} </p>
+          <p>${state.lang !== "zh" ? "Manchester holds the academic center of gravity; London becomes the softer middle chapter; Paris is where the route finally opens into its tower-view, museum, and shopping rhythm." : "曼徹斯特這幾天以會議為主，倫敦慢慢走，巴黎最後再把羅浮宮、右岸和鐵塔附近接起來。"} </p>
           ${renderRouteLine()}
         </div>
         ${renderHeroSummaryRows()}
@@ -2725,8 +2725,8 @@ function renderHomeOverviewPanel() {
     <section class="home-tab-panel-block">
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Travel Timeline" : "旅程時間軸",
-        state.lang !== "zh" ? "Read the route in order before opening the details." : "先順著日期看一次整體節奏，再決定要往哪一段細讀。",
-        state.lang !== "zh" ? "The trip works best as a straight timeline: a brief Frankfurt opening, Manchester at the center, London as the city chapter, and Paris as the softer finish." : "整趟旅程最適合先當成一條直線來讀：法蘭克福短開場、曼徹斯特會議主段、倫敦城市章節、巴黎柔軟收尾。"
+        state.lang !== "zh" ? "Read the route in order before opening the details." : "先順著日期看一次，再決定要往哪一天細讀。",
+        state.lang !== "zh" ? "The trip works best as a straight timeline: a brief Frankfurt opening, Manchester at the center, London as the city chapter, and Paris as the softer finish." : "先把整條線看順：法蘭克福轉機、曼徹斯特會議、倫敦幾天、最後進巴黎。"
       )}
       <div class="snapshot-timeline handbook-home-timeline">
         ${homeJourneyTimeline.map(renderHandbookTimelineEntry).join("")}
@@ -2735,8 +2735,8 @@ function renderHomeOverviewPanel() {
     <section class="home-tab-panel-block overview-conference-strip">
       <article class="overview-editorial-block">
         <span class="editorial-note-label">${state.lang !== "zh" ? "AIB 2026" : "AIB 2026"}</span>
-        <h3>${state.lang !== "zh" ? "The conference stays at the center of the route." : "這趟路線的主心骨，仍然是曼徹斯特的 AIB 2026。"}</h3>
-        <p>${state.lang !== "zh" ? "Both presentation sessions are confirmed, so the most formal part of the trip is already in place. That is what makes the London and Paris chapters feel lighter rather than uncertain." : "兩場發表都已確認，代表整趟旅行最正式、最不能出錯的部分已經落位。正因為學術主段穩了，後面的倫敦與巴黎才會顯得比較從容，而不是漂浮。"} </p>
+        <h3>${state.lang !== "zh" ? "The conference stays at the center of the route." : "曼徹斯特這幾天還是整趟旅程的主軸。"}</h3>
+        <p>${state.lang !== "zh" ? "Both presentation sessions are confirmed, so the most formal part of the trip is already in place. That is what makes the London and Paris chapters feel lighter rather than uncertain." : "兩場發表都已確認，所以前後城市段可以排得輕一點。會議這幾天不要塞遠的景點，發表前後把交通和資料留好就行。"} </p>
         <div class="meta-row">
           <div class="meta-pill"><span>${state.lang !== "zh" ? "Competitive" : "Competitive"}</span><strong>15:15–16:30 · 3.006B</strong></div>
           <div class="meta-pill"><span>${state.lang !== "zh" ? "Interactive" : "Interactive"}</span><strong>09:30–10:45 · 2217</strong></div>
@@ -2746,8 +2746,8 @@ function renderHomeOverviewPanel() {
     <section class="home-tab-panel-block">
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Paris highlights" : "巴黎亮點",
-        state.lang !== "zh" ? "The final chapter is where the route turns visual." : "真正適合保留卡片的，是巴黎最後這一段最有畫面的地方。",
-        state.lang !== "zh" ? "The cards remain here because Pullman, the Eiffel Tower nights, the Louvre, and the polished Right Bank streets deserve a fuller frame." : "卡片只留在這裡，因為 Pullman 陽台、鐵塔夜景、羅浮宮和右岸精品街，本來就值得被放進比較完整的畫面裡。"
+        state.lang !== "zh" ? "The final chapter is where the route turns visual." : "巴黎這幾天另外留一區就好。",
+        state.lang !== "zh" ? "The cards remain here because Pullman, the Eiffel Tower nights, the Louvre, and the polished Right Bank streets deserve a fuller frame." : "Pullman、鐵塔夜景、羅浮宮和右岸這些地方，比較值得另外留卡。"
       )}
       <div class="paris-mustdo-grid compact">
         ${parisMustDoItems.map(renderParisMustDoCard).join("")}
@@ -2827,8 +2827,8 @@ function renderHomeHotelsPanel() {
     <section class="home-tab-panel-block">
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Hotels" : "住宿",
-        state.lang !== "zh" ? "Three city chapters, three different staying roles." : "每一段住宿都有自己的角色，不只是過夜而已。",
-        state.lang !== "zh" ? "Manchester holds the conference base, London stays flexible, Paris ends at Pullman, and the final airport night now has its own clear handoff." : "曼徹斯特是會議據點，倫敦還保留彈性，巴黎最後三晚住進 Pullman，而回程前一晚也有自己清楚的機場銜接。"
+        state.lang !== "zh" ? "Three city chapters, three different staying roles." : "每一段住宿都有自己的工作。",
+        state.lang !== "zh" ? "Manchester holds the conference base, London stays flexible, Paris ends at Pullman, and the final airport night now has its own clear handoff." : "曼徹斯特負責把會議主段住穩，倫敦還在選，巴黎住 Pullman，最後一晚再轉到 CDG。"
       )}
       <div class="hotel-ledger">
         <article class="hotel-ledger-entry">
@@ -2836,7 +2836,7 @@ function renderHomeHotelsPanel() {
             <span class="section-label">${state.lang !== "zh" ? "Conference base" : "會議據點"}</span>
             <h3>INNSiDE Manchester</h3>
           </div>
-          <p>${state.lang !== "zh" ? "30 Jun to 5 Jul · Twin room · 1 First Street. This is the practical base for the AIB chapter, close enough to keep the conference days calm." : "6/30–7/5，Twin room，位在 1 First Street。這一間的任務很明確，就是把曼徹斯特會議主段住得穩、動線住得順。"} </p>
+          <p>${state.lang !== "zh" ? "30 Jun to 5 Jul · Twin room · 1 First Street. This is the practical base for the AIB chapter, close enough to keep the conference days calm." : "6/30–7/5，Twin room，位在 1 First Street。會議這幾天就住這裡，簡單、穩定就好。"} </p>
           ${renderMetaRow([
             { label: state.lang !== "zh" ? "Stay" : "入住", value: "2026/06/30 – 2026/07/05" },
             { label: state.lang !== "zh" ? "Role" : "角色", value: state.lang !== "zh" ? "Conference base" : "會議期間據點" },
@@ -2848,7 +2848,7 @@ function renderHomeHotelsPanel() {
             <span class="section-label">${state.lang !== "zh" ? "London chapter" : "倫敦段"}</span>
             <h3>${state.lang !== "zh" ? "The Langham London / The Clermont Charing Cross" : "The Langham London / The Clermont Charing Cross"}</h3>
           </div>
-          <p>${state.lang !== "zh" ? "London is still the flexible chapter. The choice is mainly about whether you want the stronger hotel atmosphere or the cleaner station access for the next moves." : "倫敦目前還保留彈性。真正要比的是兩件事：想要比較漂亮的住宿氛圍，還是更直接的車站動線。"} </p>
+          <p>${state.lang !== "zh" ? "London is still the flexible chapter. The choice is mainly about whether you want the stronger hotel atmosphere or the cleaner station access for the next moves." : "倫敦目前還保留彈性。要比的其實就兩件事：住得漂亮一點，還是移動省力一點。"} </p>
           ${renderMetaRow([
             { label: state.lang !== "zh" ? "Stay" : "入住", value: "2026/07/04 – 2026/07/07" },
             { label: state.lang !== "zh" ? "Role" : "角色", value: state.lang !== "zh" ? "City exploration base" : "倫敦城市探索基地" },
@@ -2860,20 +2860,20 @@ function renderHomeHotelsPanel() {
             <span class="section-label">${state.lang !== "zh" ? "Paris highlight stay" : "巴黎亮點住宿"}</span>
             <h3>Pullman Paris Tour Eiffel</h3>
           </div>
-          <p>${state.lang !== "zh" ? "7 Jul to 10 Jul · Deluxe room, high floor, balcony, Eiffel Tower view. This is not only the Paris hotel; it is the visual center of the final chapter." : "7/7–7/10，Deluxe room，高樓層、陽台、Eiffel Tower view。這不只是巴黎住宿，而是最後三晚旅程最有記憶點的核心視角。"} </p>
+          <p>${state.lang !== "zh" ? "7 Jul to 10 Jul · Deluxe room, high floor, balcony, Eiffel Tower view. This is not only the Paris hotel; it is the visual center of the final chapter." : "7/7–7/10，Deluxe room，高樓層、陽台、Eiffel Tower view。巴黎這幾晚的重點就是這個房間和陽台。"} </p>
           ${renderMetaRow([
             { label: state.lang !== "zh" ? "Stay" : "入住", value: "2026/07/07 – 2026/07/10" },
             { label: state.lang !== "zh" ? "Role" : "角色", value: state.lang !== "zh" ? "Paris tower-view anchor" : "巴黎鐵塔景觀核心" },
             { label: state.lang !== "zh" ? "Cost" : "費用", value: "EUR 1,915.58 / NT$70,243" }
           ])}
-          <div class="hotel-feature-note">${state.lang !== "zh" ? "The balcony view turns the stay itself into part of the Paris itinerary." : "陽台鐵塔景會讓住宿本身變成巴黎行程的一部分。"} </div>
+          <div class="hotel-feature-note">${state.lang !== "zh" ? "The balcony view turns the stay itself into part of the Paris itinerary." : "如果房間看得到鐵塔，晚上就不用一直往外跑。"} </div>
         </article>
         <article class="hotel-ledger-entry">
           <div class="hotel-ledger-head">
             <span class="section-label">${state.lang !== "zh" ? "Departure eve" : "回程前一晚"}</span>
             <h3>${state.lang !== "zh" ? "Novotel Paris Charles-de-Gaulle Airport" : "巴黎戴高樂機場候機樓諾富特酒店"}</h3>
           </div>
-          <p>${state.lang !== "zh" ? "10 Jul to 11 Jul · Roissypole RER. This is the practical handoff stay that turns the Air France departure into a calmer airport morning." : "7/10–7/11，位在 Roissypole RER 旁。這一晚的任務很單純，就是把 Pullman 的巴黎段收好，再把隔天法航 2E 航段接成一個比較從容的早晨。"} </p>
+          <p>${state.lang !== "zh" ? "10 Jul to 11 Jul · Roissypole RER. This is the practical handoff stay that turns the Air France departure into a calmer airport morning." : "7/10–7/11，位在 Roissypole RER 旁。這晚就是讓隔天去 2E 不用一早拖著行李穿城。"} </p>
           ${renderMetaRow([
             { label: state.lang !== "zh" ? "Stay" : "入住", value: "2026/07/10 – 2026/07/11" },
             { label: state.lang !== "zh" ? "Role" : "角色", value: state.lang !== "zh" ? "Airport handoff stay" : "回程前一晚機場據點" },
@@ -2922,8 +2922,8 @@ function renderHomeLinksPanel() {
     <section class="home-tab-panel-block">
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Links" : "連結",
-        state.lang !== "zh" ? "Keep the useful links in one calmer chapter." : "把真的會用到的連結收成一頁，旅途中比較不會手忙腳亂。",
-        state.lang !== "zh" ? "Instead of scattering links across every card, keep them grouped by what you may actually need in the moment." : "與其把連結散在各張卡片上，不如按情境收好：會議、住宿、交通、地圖，這樣旅途中比較好找。"
+        state.lang !== "zh" ? "Keep the useful links in one calmer chapter." : "把真的會用到的連結收成一頁。",
+        state.lang !== "zh" ? "Instead of scattering links across every card, keep them grouped by what you may actually need in the moment." : "會議、住宿、交通、地圖分開放，旅途中比較好找。"
       )}
       <div class="link-ledger">
         ${linkGroups.map((group) => `
@@ -2947,8 +2947,8 @@ function renderHomeFlightsPanel() {
     <section class="home-tab-panel-block">
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Flights" : "機票",
-        state.lang !== "zh" ? "Read the whole route as one clean flight chain." : "把整段機票先當成一條順的航線來讀。",
-        state.lang !== "zh" ? "The long-haul arrival, the Paris return segment, and the final chain home are easier to manage when they stay in one place." : "去程、巴黎回曼徹斯特，以及最後串回台灣的回程，放在同一頁看會比拆開來更直覺。"
+        state.lang !== "zh" ? "Read the whole route as one clean flight chain." : "把整段機票先當成一條路線來看。",
+        state.lang !== "zh" ? "The long-haul arrival, the Paris return segment, and the final chain home are easier to manage when they stay in one place." : "去程、巴黎回曼徹斯特，以及最後回台灣的航段，放在同一頁最直覺。"
       )}
       <div class="route-ledger">
         <article class="route-ledger-entry">
@@ -2977,18 +2977,18 @@ function renderHomeInfoPanel() {
     <section class="home-tab-panel-block">
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Info" : "資訊",
-        state.lang !== "zh" ? "Conference notes, movement, weather, and travel basics." : "把會議、移動、穿搭與旅行提醒放在同一頁，出發前比較好整理。",
-        state.lang !== "zh" ? "This tab keeps the practical layer lighter than a checklist: formal where it needs to be, but still readable like part of the handbook." : "這一頁不把資訊寫成硬邦邦的待辦清單，而是把正式需要記住的東西放進手冊節奏裡。"
+        state.lang !== "zh" ? "Conference notes, movement, weather, and travel basics." : "把會議、移動、穿搭與旅行提醒放在同一頁。",
+        state.lang !== "zh" ? "This tab keeps the practical layer lighter than a checklist: formal where it needs to be, but still readable like part of the handbook." : "這一頁只放真的會再拿出來看的事。"
       )}
       <div class="info-ledger">
         <section class="info-ledger-block">
           <span class="section-label">${state.lang !== "zh" ? "Conference overview" : "AIB 會議主段"}</span>
           <h3>${state.lang !== "zh" ? "Two confirmed presentations in Manchester" : "曼徹斯特兩場發表已確認"}</h3>
-          <p>${state.lang !== "zh" ? "Competitive Session 3.4.11 runs 15:15–16:30 in Room 3.006B (AMBS), while the Interactive Session 5.1.20 runs 09:30–10:45 in Room 2217 (UP)." : "Competitive Session 3.4.11 為 15:15–16:30，地點在 3.006B (AMBS)；Interactive Session 5.1.20 為 09:30–10:45，地點在 2217 (UP)。"} </p>
+          <p>${state.lang !== "zh" ? "Competitive Session 3.4.11 runs 15:15–16:30 in Room 3.006B (AMBS), while the Interactive Session 5.1.20 runs 09:30–10:45 in Room 2217 (UP)." : "Competitive Session 3.4.11 為 15:15–16:30，在 3.006B (AMBS)；Interactive Session 5.1.20 為 09:30–10:45，在 2217 (UP)。"} </p>
         </section>
         <section class="info-ledger-block">
           <span class="section-label">${state.lang !== "zh" ? "Transport notes" : "交通提醒"}</span>
-          <p>${state.lang !== "zh" ? "Frankfurt is the long layover chapter and Heathrow is the tighter one. The Manchester-to-London rail move is the clean bridge into the city chapter, and Eurostar keeps London and Paris connected city centre to city centre." : "法蘭克福是長轉機，希斯洛則是比較緊的銜接；曼徹斯特到倫敦的火車是進入後段城市章節的橋，Eurostar 則讓倫敦和巴黎之間維持最乾淨的市中心對市中心移動。"} </p>
+          <p>${state.lang !== "zh" ? "Frankfurt is the long layover chapter and Heathrow is the tighter one. The Manchester-to-London rail move is the clean bridge into the city chapter, and Eurostar keeps London and Paris connected city centre to city centre." : "法蘭克福是長轉機，希斯洛比較緊；曼徹斯特到倫敦靠火車，倫敦到巴黎就接 Eurostar。"} </p>
         </section>
         <section class="info-ledger-block">
           <span class="section-label">${state.lang !== "zh" ? "Packing and safety" : "行李與安全"}</span>
@@ -2996,7 +2996,7 @@ function renderHomeInfoPanel() {
         </section>
         <section class="info-ledger-block">
           <span class="section-label">${state.lang !== "zh" ? "Weather and dressing" : "天氣與穿搭"}</span>
-          <p>${state.lang !== "zh" ? "This route will likely need light layers rather than heavy coats: conference-appropriate clothes for Manchester, relaxed city layers for London, and one slightly more polished evening look for Paris." : "這一段多半以輕薄層次穿搭為主，不需要太厚重：曼徹斯特準備比較正式的會議穿著，倫敦以城市步行舒服為主，巴黎則可多留一套稍微精緻一點的夜晚穿搭。"} </p>
+          <p>${state.lang !== "zh" ? "This route will likely need light layers rather than heavy coats: conference-appropriate clothes for Manchester, relaxed city layers for London, and one slightly more polished evening look for Paris." : "這趟以輕薄層次為主就好：曼徹斯特放正式一點的會議穿著，倫敦和巴黎留給好走的鞋。"} </p>
         </section>
       </div>
       <a class="text-link-button" href="./conference.html">${state.lang !== "zh" ? "Open the full conference page" : "查看完整會議頁"}</a>
@@ -3009,8 +3009,8 @@ function renderHomeBudgetPanel() {
     <section class="home-tab-panel-block">
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Budget" : "預算",
-        state.lang !== "zh" ? "A cleaner money view, separated by real role." : "把費用整理成比較乾淨的兩層：可報帳與自費。",
-        state.lang !== "zh" ? "The point here is not to make the trip look like an expense sheet. It is to keep the financial picture readable when you actually need it." : "這一頁不是要把旅程變成報帳表，而是在真的需要核對時，能很快看出哪些能報、哪些是自費。"
+        state.lang !== "zh" ? "A cleaner money view, separated by real role." : "把能報的和自費的分開放。",
+        state.lang !== "zh" ? "The point here is not to make the trip look like an expense sheet. It is to keep the financial picture readable when you actually need it." : "真的要對帳時，再來看這頁就好。"
       )}
       <div class="budget-ledger">
         <div class="budget-ledger-block">
@@ -3046,8 +3046,8 @@ function renderHomeVisaPanel() {
     <section class="home-tab-panel-block">
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Visa and entry" : "簽證與入境",
-        state.lang !== "zh" ? "Keep border details in one calm place." : "把入境、文件與保險提醒放在一起，出發前看一次就夠。",
-        state.lang !== "zh" ? "The trip starts in the UK chapter, then moves into France. The point here is simply to keep the essentials together rather than to turn the page into a legal memo." : "這趟路線會先進英國，再往法國移動。這一頁只保留真正要記住的文件與入境提醒，不把它寫成法律條文。"
+        state.lang !== "zh" ? "Keep border details in one calm place." : "把入境、文件與保險提醒放在一起。",
+        state.lang !== "zh" ? "The trip starts in the UK chapter, then moves into France. The point here is simply to keep the essentials together rather than to turn the page into a legal memo." : "這趟會先進英國，再往法國。這裡只放真的要記住的事。"
       )}
       <div class="visa-ledger">
         <article class="visa-ledger-entry">
@@ -3097,7 +3097,7 @@ function renderHome() {
           ${renderHomeSectionIntro(
             state.lang !== "zh" ? "Itinerary" : "行程",
             state.lang !== "zh" ? "Day by day, each page read as one chapter." : "一天一張大卡，把每天讀成一頁完整旅程。",
-            state.lang !== "zh" ? "This section keeps one full page-card for each day, so the route reads like a travel handbook rather than a set of small admin boxes." : "每一天都整理成一張完整的大型 itinerary card，不把小資訊拆成很多卡，旅途中會比較像在翻手冊，而不是在看一堆待辦。"
+            state.lang !== "zh" ? "This section keeps one full page-card for each day, so the route reads like a travel handbook rather than a set of small admin boxes." : "每一天都整理成一張完整 itinerary card。旅途中只要往下翻，不用再在很多小卡之間找資訊。"
           )}
           ${renderDaySelector()}
           <div class="day-card-stack">
@@ -3178,7 +3178,7 @@ function renderPracticalLedgerItem(section) {
 }
 
 const pageDescriptions = {
-  conference: { zh: "會議日期、註冊狀態與現場節奏。", en: "Conference dates, registration status, and event rhythm." },
+  conference: { zh: "會議日期、發表時間和要帶的資料。", en: "Conference dates, registration status, and event rhythm." },
   flights: { zh: "去程、回程、德英法移動段與轉機整理。", en: "Outbound, return, Germany-UK-France segments, and transfer notes." },
   transport: { zh: "火車、Eurostar 與市內交通。", en: "Train, Eurostar, and local transit." },
   stay: { zh: "曼徹斯特會議住宿、巴黎 Pullman 與 CDG 回程前一晚安排。", en: "Manchester conference stay, the Pullman Paris chapter, and the final CDG overnight." },
@@ -3370,7 +3370,7 @@ function dayGuideMeta(day) {
     "day-2": [
       [{ zh: "移動方式", en: "Movement" }, { zh: "步行 / 會場動線", en: "Walking / conference venue flow" }],
       [{ zh: "今晚落腳", en: "Tonight" }, "INNSiDE Manchester"],
-      [{ zh: "這天重心", en: "Focus" }, { zh: "先把會議節奏走穩", en: "Settle into the conference rhythm" }]
+      [{ zh: "這天重心", en: "Focus" }, { zh: "先把會議這幾天顧好", en: "Settle into the conference rhythm" }]
     ],
     "day-3": [
       [{ zh: "移動方式", en: "Movement" }, { zh: "步行 / 市內交通", en: "Walking / local transit" }],
@@ -3489,7 +3489,7 @@ function renderDayGuideCard(day, index, openByDefault = false) {
           </div>
           <div class="guide-detail-grid">
             <article class="guide-detail-card">
-              <div class="guide-detail-title">${state.lang !== "zh" ? "今日亮點" : "今日亮點"}</div>
+              <div class="guide-detail-title">${state.lang !== "zh" ? "Highlights" : "今天先看這幾個"}</div>
               ${renderList(day.highlights, "plain-list")}
             </article>
             <article class="guide-detail-card">
@@ -3561,7 +3561,7 @@ function renderConference() {
   return renderDesktopPageShell("conference", {
     label: { zh: "Conference", en: "Conference" },
     title: { zh: "會議手冊", en: "Conference Handbook" },
-    note: { zh: "把 AIB 2026 Manchester 的會議資訊、兩場發表時段，以及會前會後的節奏放在同一頁。", en: "Conference details, presentation slots, and the before-and-after rhythm of AIB 2026 Manchester are gathered here." },
+    note: { zh: "把 AIB 2026 Manchester 的會議資訊、兩場發表時段，還有會前會後要留意的事放在同一頁。", en: "Conference details, presentation slots, and the before-and-after rhythm of AIB 2026 Manchester are gathered here." },
     meta: [
       { label: { zh: "AIB", en: "AIB" }, value: "2026" },
       { label: { zh: "城市", en: "City" }, value: "Manchester" },
@@ -3575,14 +3575,14 @@ function renderConference() {
       ${sectionHeading(
         state.lang !== "zh" ? "Conference Overview" : "會議總覽",
         state.lang !== "zh" ? "The academic center of the trip" : "這趟旅程的核心仍是曼徹斯特的 AIB 2026 發表",
-        state.lang !== "zh" ? "Use this page for the parts that need to stay exact: session timing, paper format, receipts, and the Manchester conference rhythm." : "這一頁把需要最精準的部分放在一起：場次時間、發表形式、收據與曼徹斯特會議節奏。"
+        state.lang !== "zh" ? "Use this page for the parts that need to stay exact: session timing, paper format, receipts, and the Manchester conference rhythm." : "這一頁只放需要很準的東西：場次時間、發表形式、收據，還有曼徹斯特會議這幾天怎麼走。"
       )}
       <div class="summary-grid two">
         ${dashboardData.conferenceCards.map(renderSummaryCard).join("")}
       </div>
     </section>
     <section class="section compact-section" id="papers">
-      ${sectionHeading(state.lang !== "zh" ? "Presentation Sessions" : "發表場次", state.lang !== "zh" ? "The two sessions, each with its own role in the conference week." : "把兩場發表分開看，會更容易抓到各自的準備節奏。")}
+      ${sectionHeading(state.lang !== "zh" ? "Presentation Sessions" : "發表場次", state.lang !== "zh" ? "The two sessions, each with its own role in the conference week." : "兩場分開看，比較不會搞混。")}
       <div class="paper-grid">
         ${paperCards.map(renderPaperCard).join("")}
       </div>
@@ -3590,8 +3590,8 @@ function renderConference() {
     <section class="section compact-section" id="alerts">
       ${sectionHeading(
         state.lang !== "zh" ? "Academic Notes" : "會議提醒",
-        state.lang !== "zh" ? "Timing, documents, and the conference rhythm" : "把時間、文件與會議節奏放在一起看",
-        state.lang !== "zh" ? "This section works best as the calmer planning layer before the conference starts and again on the night before each presentation." : "這一區比較像安靜的備忘頁，適合會前再看一次，也適合發表前一晚回來確認。"
+        state.lang !== "zh" ? "Timing, documents, and the conference rhythm" : "把時間、文件與會議安排放在一起看",
+        state.lang !== "zh" ? "This section works best as the calmer planning layer before the conference starts and again on the night before each presentation." : "這區適合會前再看一次，也適合發表前一晚回來確認。"
       )}
       <div class="alert-card-grid">
         ${conferenceAlerts.map((alert) => `
@@ -3656,15 +3656,15 @@ function renderTransport() {
     <section class="section compact-section" id="flights">
       ${sectionHeading(
         state.lang !== "zh" ? "Cross-city movement" : "跨城市移動",
-        state.lang !== "zh" ? "Read the whole route as one travel line" : "把整趟德英法移動讀成一條順的路線",
-        state.lang !== "zh" ? "Flight details stay on their own page, while this chapter keeps the logic of the route together: long-haul arrival, rail shifts, Eurostar, and the final return chain." : "航班細節留在機票頁，這裡則專心整理路線邏輯：長程飛行、英國鐵路、Eurostar，以及最後回程的接駁。"
+        state.lang !== "zh" ? "Read the whole route as one travel line" : "把整趟德英法移動當成一條路線來看",
+        state.lang !== "zh" ? "Flight details stay on their own page, while this chapter keeps the logic of the route together: long-haul arrival, rail shifts, Eurostar, and the final return chain." : "航班細節留在機票頁，這裡只管移動邏輯：長程飛行、英國鐵路、Eurostar 和最後回程。"
       )}
       <div class="summary-grid two">
         <article class="summary-card">
           ${statusChip("confirmed")}
           <h3>${state.lang !== "zh" ? "Dedicated flight page" : "獨立機票頁"}</h3>
           <strong>${state.lang !== "zh" ? "Outbound, return, and Europe segment" : "去程、回程與歐洲段一起看"}</strong>
-          <p>${state.lang !== "zh" ? "If you want to check flight numbers, terminals, and transfer rhythm, that page is now the cleanest place." : "如果要核對航班號碼、航廈和轉機節奏，直接看機票頁會最清楚。"}</p>
+          <p>${state.lang !== "zh" ? "If you want to check flight numbers, terminals, and transfer rhythm, that page is now the cleanest place." : "如果要核對航班號碼、航廈和轉機時間，直接看機票頁最清楚。"}</p>
           ${externalLink("./flights.html", state.lang !== "zh" ? "Open flight page" : "前往機票頁", "text-link-button")}
         </article>
         <article class="summary-card">
@@ -3678,8 +3678,8 @@ function renderTransport() {
     <section class="section compact-section" id="transfer">
       ${sectionHeading(
         state.lang !== "zh" ? "Transfers" : "轉機資訊",
-        state.lang !== "zh" ? "Frankfurt and Heathrow, read as part of the route rather than a separate burden." : "把法蘭克福與希斯洛當成旅程的一部分來處理，節奏就不會那麼緊。",
-        state.lang !== "zh" ? "Terminals and gates can still change on the day, so these notes are here to support the route, not to replace airport screens." : "航廈與登機門還是可能臨時調整，所以這裡是幫你先抓節奏，真正出發當天還是以機場螢幕與航空公司通知為準。"
+        state.lang !== "zh" ? "Frankfurt and Heathrow, read as part of the route rather than a separate burden." : "把法蘭克福和希斯洛當成移動的一部分看就好，不用自己先嚇自己。",
+        state.lang !== "zh" ? "Terminals and gates can still change on the day, so these notes are here to support the route, not to replace airport screens." : "航廈和登機門還是可能臨時改，所以出發當天還是以機場螢幕和航空公司通知為準。"
       )}
       <div class="transfer-grid">
         ${tripData.transfers.map(renderTransferCard).join("")}
@@ -3740,8 +3740,8 @@ function renderTransport() {
     <section class="section compact-section" id="local">
       ${sectionHeading(
         state.lang !== "zh" ? "City movement" : "城市內移動",
-        state.lang !== "zh" ? "Keep the local network simple enough to use on the road" : "把市內交通讀得簡單一點，旅途中真的要用時才不會慌",
-        state.lang !== "zh" ? "These notes focus on the practical part only: which system to use, how to pay, and what kind of route is easiest once you are in the city." : "這一區只保留旅途中最實際的部分：搭什麼、怎麼付、到了城市裡之後哪種動線最省力。"
+        state.lang !== "zh" ? "Keep the local network simple enough to use on the road" : "市內交通只看真的會用到的部分",
+        state.lang !== "zh" ? "These notes focus on the practical part only: which system to use, how to pay, and what kind of route is easiest once you are in the city." : "這一區只保留最實際的部分：搭什麼、怎麼付、哪種動線最省力。"
       )}
       <div class="summary-grid two">
         ${tripData.localTransit.map((city) => `
@@ -3770,7 +3770,7 @@ function renderFlights() {
   return renderDesktopPageShell("flights", {
     label: { zh: "Flights", en: "Flights" },
     title: { zh: "航班與轉機", en: "Flights & Transfers" },
-    note: { zh: "去程、回程、巴黎回曼徹斯特，以及兩段轉機節奏都收在這裡。", en: "Outbound, return, the Paris-to-Manchester segment, and both transfer notes stay together here." },
+    note: { zh: "去程、回程、巴黎回曼徹斯特，以及兩段轉機都收在這裡。", en: "Outbound, return, the Paris-to-Manchester segment, and both transfer notes stay together here." },
     meta: [
       { label: { zh: "主路線", en: "Main route" }, value: "TPE → FRA → MAN" },
       { label: { zh: "回程", en: "Return" }, value: "CDG → MAN → LHR → TPE" },
@@ -3851,7 +3851,7 @@ function renderStay() {
   return renderDesktopPageShell("stay", {
     label: { zh: "Hotel", en: "Hotel" },
     title: { zh: "住宿筆記", en: "Stay Notes" },
-    note: { zh: "住宿不只是睡覺，而是把會議、城市移動與巴黎夜景接成一條順的路線。", en: "Each stay is part of the route itself, linking the conference days, the city moves, and the final Paris evenings into one calmer rhythm." },
+    note: { zh: "把每一段住哪裡放在一起看，轉城市時比較不會亂。", en: "Each stay is part of the route itself, linking the conference days, the city moves, and the final Paris evenings into one calmer rhythm." },
     meta: [
       { label: { zh: "會議據點", en: "Conference base" }, value: "INNSiDE Manchester" },
       { label: { zh: "巴黎主住宿", en: "Paris anchor" }, value: "Pullman Paris Tour Eiffel" },
@@ -3864,8 +3864,8 @@ function renderStay() {
     <section class="section compact-section" id="overview">
       <article class="section-card">
         <div class="section-label">${state.lang !== "zh" ? "Accommodation overview" : "住宿總覽"}</div>
-        <h2>${state.lang !== "zh" ? "Each stay carries a different role in the route." : "住宿不只是睡覺，而是把會議、城市移動與巴黎夜景接起來。"}</h2>
-        <p class="lead">${state.lang !== "zh" ? "Manchester keeps the conference days steady, London remains the decision point, Pullman becomes the Paris highlight, and Novotel CDG makes the departure morning easier." : "曼徹斯特負責把會議主段住穩，倫敦還在比交通與氣質，巴黎則交給 Pullman 的鐵塔景陽台，最後再由 Novotel CDG 把回程前一晚接成比較從容的早晨。"}</p>
+        <h2>${state.lang !== "zh" ? "Each stay carries a different role in the route." : "每一段住宿都各有用途。"}</h2>
+        <p class="lead">${state.lang !== "zh" ? "Manchester keeps the conference days steady, London remains the decision point, Pullman becomes the Paris highlight, and Novotel CDG makes the departure morning easier." : "曼徹斯特先把會議主段住穩，倫敦還在選，巴黎住 Pullman，最後一晚再轉去 CDG。這樣整條路線比較順。"} </p>
         <div class="stay-overview-grid">
           ${renderStaySnapshotCard({
             city: { zh: "Manchester", en: "Manchester" },
@@ -3886,7 +3886,7 @@ function renderStay() {
             hotel: { zh: "Pullman Paris Tour Eiffel", en: "Pullman Paris Tour Eiffel" },
             dates: { zh: "7/7 – 7/10｜3 晚", en: "7 Jul – 10 Jul · 3 nights" },
             status: "confirmed",
-            note: { zh: "高樓層陽台鐵塔景，巴黎段的核心亮點。", en: "A high-floor balcony tower view anchoring the Paris chapter." }
+            note: { zh: "高樓層陽台鐵塔景，這幾晚就住這裡。", en: "A high-floor balcony tower view anchoring the Paris chapter." }
           })}
           ${renderStaySnapshotCard({
             city: { zh: "CDG Airport", en: "CDG Airport" },
@@ -3901,8 +3901,8 @@ function renderStay() {
     <section class="section compact-section" id="manchester">
       <article class="section-card">
         <div class="section-label">${state.lang !== "zh" ? "Manchester base" : "Manchester｜會議據點"}</div>
-        <h2>${state.lang !== "zh" ? "The conference part of the route should feel easy." : "會議這一段，最重要的是住得穩、走得順。"}</h2>
-        <p class="lead">${state.lang !== "zh" ? "INNSiDE Manchester is the straightforward base for the AIB days. It keeps the conference chapter practical, central enough, and calm before the later city moves begin." : "INNSiDE Manchester 的角色很清楚：把 AIB 會議主段接穩，讓每天的重心留給發表、交流與市區移動，而不是把體力花在住宿切換上。"}</p>
+        <h2>${state.lang !== "zh" ? "The conference part of the route should feel easy." : "會議這幾天，住得穩最重要。"}</h2>
+        <p class="lead">${state.lang !== "zh" ? "INNSiDE Manchester is the straightforward base for the AIB days. It keeps the conference chapter practical, central enough, and calm before the later city moves begin." : "INNSiDE Manchester 的角色很單純：把 AIB 這幾天接穩，不要把體力花在搬飯店上。"}</p>
         <div class="stay-spotlight-grid">
           <article class="stay-card-rich with-image handbook-stay-spotlight">
             <div class="stay-card-image-wrap">
@@ -3938,8 +3938,8 @@ function renderStay() {
     <section class="section compact-section" id="london">
       <article class="section-card">
         <div class="section-label">${state.lang !== "zh" ? "London options" : "London｜候選住宿比較"}</div>
-        <h2>${state.lang !== "zh" ? "London still needs one final decision." : "倫敦這一段，現在需要的是一個清楚的最後選擇。"}</h2>
-        <p class="lead">${state.lang !== "zh" ? "The London chapter sits between the conference and Paris. The choice is less about luxury alone, and more about how station access, luggage movement, and city pace feel together." : "倫敦夾在曼徹斯特會議之後、巴黎之前，真正需要比的不是單純的高級感，而是車站動線、帶行李的便利度，以及住進城市之後的節奏感。"}</p>
+        <h2>${state.lang !== "zh" ? "London still needs one final decision." : "倫敦這幾晚，現在只差最後選擇。"}</h2>
+        <p class="lead">${state.lang !== "zh" ? "The London chapter sits between the conference and Paris. The choice is less about luxury alone, and more about how station access, luggage movement, and city pace feel together." : "倫敦夾在曼徹斯特和巴黎之間，要比的不是排場，而是行李、車站和每天出門會不會順。"}</p>
         <div class="stay-warning-card">
           <div class="stay-warning-head">
             ${statusChip("alert")}
@@ -3971,7 +3971,7 @@ function renderStay() {
             imageAlt: londonStay.photos?.[1]?.alt,
             location: { zh: "更偏向交通與車站優勢，對後面移動比較友善。", en: "Leans more toward station convenience and a cleaner movement day." },
             strengths: { zh: "離交通樞紐近，若想把英國段與巴黎段接得俐落，這間比較省力。", en: "Cleaner if the priority is staying close to key rail connections and walking light." },
-            tradeoffs: { zh: "住宿氣氛和視覺記憶點，可能沒有 The Langham 那麼完整。", en: "The hotel atmosphere may not feel as memorable as The Langham." },
+            tradeoffs: { zh: "如果很在意住宿本身的氣氛，可能還是 The Langham 比較對。", en: "The hotel atmosphere may not feel as memorable as The Langham." },
             fit: { zh: "如果重心放在 Euston、St Pancras 和市中心移動，這間的實用性很高。", en: "This is the practical pick if Euston, St Pancras, and city movement matter most." },
             link: "https://www.theclermont.co.uk/charing-cross/"
           })}
@@ -4005,8 +4005,8 @@ function renderStay() {
     <section class="section compact-section" id="paris">
       <article class="section-card paris-spotlight-card">
         <div class="section-label">${state.lang !== "zh" ? "Paris stay" : "Paris｜Pullman Paris Tour Eiffel"}</div>
-        <h2>${state.lang !== "zh" ? "The Paris chapter now has its own clear centre." : "巴黎這一段，現在有了自己的核心視角。"}</h2>
-        <p class="lead">${state.lang !== "zh" ? "These three nights revolve around one room, one balcony, and one repeated tower view. That is what turns the final chapter from a rushed checklist into a softer Paris stay." : "這三晚將入住 Pullman Paris Tour Eiffel，以高樓層陽台房欣賞艾菲爾鐵塔景觀，作為巴黎行程的核心住宿亮點。這一段不只是找地方過夜，而是把最後幾晚的巴黎節奏固定在同一個回來就能看見鐵塔的地方。"} </p>
+        <h2>${state.lang !== "zh" ? "The Paris chapter now has its own clear centre." : "巴黎這幾晚就把重點放在 Pullman。"}</h2>
+        <p class="lead">${state.lang !== "zh" ? "These three nights revolve around one room, one balcony, and one repeated tower view. That is what turns the final chapter from a rushed checklist into a softer Paris stay." : "這三晚住 Pullman Paris Tour Eiffel。白天在城裡走，晚上回到房間和陽台看鐵塔，巴黎這段就會很順。"} </p>
         <div class="paris-spotlight-grid">
           <div class="paris-spotlight-copy">
             <div class="stay-price-grid pullman-summary-grid">
@@ -4038,7 +4038,7 @@ function renderStay() {
             <div class="paris-spotlight-note">
               <h3>${state.lang !== "zh" ? "Why it fits this trip" : "為什麼很適合這趟旅程"}</h3>
               ${renderList([
-                state.lang !== "zh" ? "Tower-view balcony turns the Paris chapter into a real stay, not just a transit stop." : "陽台鐵塔景會讓巴黎這一段更像真正的停留，而不是趕行程的中繼站。",
+                state.lang !== "zh" ? "Tower-view balcony turns the Paris chapter into a real stay, not just a transit stop." : "陽台看得到鐵塔，晚上就不用一直往外跑。",
                 state.lang !== "zh" ? "Works well for evening photos, shopping bags, and slower final nights." : "很適合晚上拍照、帶著購物袋回飯店，並把最後幾晚過得輕鬆一點。",
                 state.lang !== "zh" ? "Close enough to the Eiffel Tower and Seine to keep the route elegant and simple." : "離鐵塔與塞納河夠近，行程自然會更漂亮，也比較不容易亂。"
               ], "plain-list")}
@@ -4055,7 +4055,7 @@ function renderStay() {
       <article class="section-card functional-stay-card">
         <div class="section-label">${state.lang !== "zh" ? "Airport stay" : "機場過夜安排"}</div>
         <h2>${state.lang !== "zh" ? "A quieter airport morning starts here." : "把 7/11 早上的趕路感，提前在前一晚收掉。"}</h2>
-        <p class="lead">${state.lang !== "zh" ? "This last night is deliberately more functional than romantic. Its whole job is to make the Air France departure feel lighter, shorter, and calmer." : "這一晚不是旅程亮點，而是功能型安排：讓巴黎最後一天能好好收尾，不必隔天一早帶著行李匆匆穿城，直接把法航 2E 航廈的早晨接得更穩。"} </p>
+        <p class="lead">${state.lang !== "zh" ? "This last night is deliberately more functional than romantic. Its whole job is to make the Air France departure feel lighter, shorter, and calmer." : "這一晚就是為了隔天方便。先把巴黎最後一天走完，晚上住到機場旁，隔天去 2E 會輕鬆很多。"} </p>
         <div class="stay-spotlight-grid airport-grid">
           <article class="stay-card-rich with-image airport-stay-panel">
             <div class="stay-card-image-wrap">
@@ -4081,7 +4081,7 @@ function renderStay() {
               { label: state.lang !== "zh" ? "Transit edge" : "交通優勢", value: state.lang !== "zh" ? "Roissypole RER next to CDG terminals" : "Roissypole RER 旁，接 CDG 航廈很順" }
             ])}
             <div class="functional-stay-note">
-              <p>${state.lang !== "zh" ? "This is the handoff night between the city chapter and the return chain. After Montmartre, final shopping, and the Pullman luggage pickup, the route becomes much easier once the airport stay is already settled." : "這一晚的任務，就是把巴黎城市段和回程銜接得更乾淨。完成蒙馬特、最後採買和 Pullman 取行李後，直接轉進機場邊住宿，隔天整段法航回曼徹斯特的節奏會安靜很多。"} </p>
+              <p>${state.lang !== "zh" ? "This is the handoff night between the city chapter and the return chain. After Montmartre, final shopping, and the Pullman luggage pickup, the route becomes much easier once the airport stay is already settled." : "這一晚就是把巴黎收尾。蒙馬特、最後採買和 Pullman 拿行李結束後，直接轉進機場邊住宿，隔天就不會忙。"} </p>
             </div>
           </div>
         </div>
@@ -4095,7 +4095,7 @@ function renderStay() {
         <ol class="stay-next-steps">
           <li><strong>${state.lang !== "zh" ? "Choose the final London hotel." : "決定倫敦住宿最後版本。"} </strong><span>${state.lang !== "zh" ? "The Langham and The Clermont are the two clearest options right now." : "目前最清楚的還是 The Langham London 與 The Clermont Charing Cross。"} </span></li>
           <li><strong>${state.lang !== "zh" ? "Decide what to do with the 4 July Manchester overlap." : "決定 7/4 曼徹斯特最後一晚要不要保留。"} </strong><span>${state.lang !== "zh" ? "That choice depends on the London booking and how much buffer you want after the conference." : "這會連動倫敦住宿是否確認，以及你想不想保留一晚會議後的緩衝。"} </span></li>
-          <li><strong>${state.lang !== "zh" ? "Book the London → Paris handoff." : "補上倫敦到巴黎的交通。"} </strong><span>${state.lang !== "zh" ? "Once Eurostar is fixed, the hotel rhythm from London into Pullman becomes much cleaner." : "Eurostar 一旦訂好，倫敦到 Pullman 的節奏就會整條接上。"} </span></li>
+          <li><strong>${state.lang !== "zh" ? "Book the London → Paris handoff." : "補上倫敦到巴黎的交通。"} </strong><span>${state.lang !== "zh" ? "Once Eurostar is fixed, the hotel rhythm from London into Pullman becomes much cleaner." : "Eurostar 一旦訂好，倫敦接 Pullman 就會順很多。"} </span></li>
           <li><strong>${state.lang !== "zh" ? "Check the Pullman → Novotel CDG move." : "確認 Pullman 退房後到 CDG Novotel 的移動方式。"} </strong><span>${state.lang !== "zh" ? "Keep that handoff simple so the final Paris day does not become luggage-heavy." : "把這段接順，最後一天就不會被行李和轉場打亂。"} </span></li>
           <li><strong>${state.lang !== "zh" ? "Review cancellation windows and payment status." : "再看一次各飯店取消期限與付款狀態。"} </strong><span>${state.lang !== "zh" ? "Manchester, Pullman, and Novotel are already anchored; London is the main remaining variable." : "曼徹斯特、Pullman 與 Novotel 都已接上，現在主要變數只剩倫敦。"} </span></li>
         </ol>
@@ -4121,8 +4121,8 @@ function renderItinerary() {
       <article class="section-card paris-mustdo-section-card">
         ${sectionHeading(
           state.lang !== "zh" ? "Paris Must-Do Top 10" : "Paris Must-Do Top 10｜巴黎必去清單",
-          state.lang !== "zh" ? "Ten Paris moments worth holding onto." : "把巴黎這一段最值得留住的十個畫面，整理成一頁。",
-          state.lang !== "zh" ? "These are not meant as a hard checklist. Think of them as the views, streets, museums, and night scenes that shape the Paris chapter into something memorable." : "這裡不是待辦清單，而是巴黎這一段最值得放進旅程主畫面的地方：夜景、博物館、精品街、河岸，以及回到 Pullman 陽台看鐵塔的那些時刻。"
+          state.lang !== "zh" ? "Ten Paris moments worth holding onto." : "把巴黎這幾天真的值得留的地方收在一起。",
+          state.lang !== "zh" ? "These are not meant as a hard checklist. Think of them as the views, streets, museums, and night scenes that shape the Paris chapter into something memorable." : "不用每個都當成一定要完成的清單。把這頁當成巴黎這幾天的順路點和晚上的收尾，就夠了。"
         )}
         <div class="paris-mustdo-grid">
           ${parisMustDoItems.map(renderParisMustDoCard).join("")}
@@ -4272,7 +4272,7 @@ function renderSouvenirs() {
               text: { zh: "英國茶葉、德國巧克力、法國護手霜都很好下手。", en: "UK tea, German chocolate, and French hand cream are all easy choices." }
             },
             {
-              title: { zh: "想買得有記憶點", en: "More distinctive picks" },
+              title: { zh: "想買得更像當地", en: "More distinctive picks" },
               text: { zh: "法國香氛、德國馬滋潘、英國 marmalade 都比較有地方感。", en: "French fragrance, German marzipan, and British marmalade feel more location-specific." }
             },
             {
@@ -4617,7 +4617,7 @@ function renderFirstTime() {
     <section class="section compact-section" id="city">
       ${sectionHeading(
         state.lang !== "zh" ? "City Basics" : "城市移動",
-        state.lang !== "zh" ? "Transport, payment, and street rhythm" : "交通付款、走路與城市節奏"
+        state.lang !== "zh" ? "Transport, payment, and street rhythm" : "交通付款、走路和街上要注意的事"
       )}
       <div class="first-note-grid">
         ${tripData.firstTimeNotes.city.map(renderFirstTimeNoteCard).join("")}
