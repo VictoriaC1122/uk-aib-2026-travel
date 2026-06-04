@@ -1,4 +1,4 @@
-# AIB 2026 Manchester Europe Travel Handbook
+# AIB 2026 Manchester Germany · UK · France Travel Handbook
 
 這是 AIB 2026 Manchester 行程網站的 GitHub Pages 版本，主段是曼徹斯特會議，後面接倫敦、巴黎與法蘭克福轉機安排。
 
@@ -12,7 +12,7 @@
 - 英國、法國、德國伴手禮整理
 - 可報帳項目與自費項目整理
 - 每日行程與城市移動順序
-- 這趟歐洲行前可以先看的提醒
+- 這趟德英法之旅行前可以先看的提醒
 - 官方連結與參考來源
 
 ## 部署

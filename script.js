@@ -9,7 +9,7 @@ const pages = [
   { id: "souvenirs", label: { zh: "伴手禮", en: "Souvenirs", fr: "Souvenirs", de: "Mitbringsel" }, href: "./souvenirs.html" },
   { id: "budget", label: { zh: "預算", en: "Budget", fr: "Budget", de: "Budget" }, href: "./budget.html" },
   { id: "reminders", label: { zh: "旅程筆記", en: "Travel Notes", fr: "Notes de voyage", de: "Reisenotizen" }, href: "./reminders.html" },
-  { id: "firstTime", label: { zh: "歐洲提醒", en: "Europe Notes", fr: "Notes Europe", de: "Europa-Hinweise" }, href: "./first-time.html" },
+  { id: "firstTime", label: { zh: "德英法提醒", en: "Germany · UK · France Notes", fr: "Notes Allemagne · Royaume-Uni · France", de: "Hinweise zu Deutschland · Großbritannien · Frankreich" }, href: "./first-time.html" },
   { id: "map", label: { zh: "地圖", en: "Map", fr: "Carte", de: "Karte" }, href: "./map.html" },
   { id: "documents", label: { zh: "文件", en: "Documents", fr: "Documents", de: "Dokumente" }, href: "./links.html" }
 ];
@@ -137,8 +137,8 @@ const tripData = {
       kicker: { zh: "旅程總覽", en: "Trip Overview" },
       title: { zh: "AIB 2026 Manchester", en: "AIB 2026 Manchester" },
       lead: {
-        zh: "Europe Travel Handbook",
-        en: "Europe Travel Handbook"
+        zh: "德英法之旅手冊",
+        en: "Germany · UK · France Travel Handbook"
       }
     },
     conference: {
@@ -178,7 +178,7 @@ const tripData = {
     },
     map: {
       kicker: { zh: "旅程地圖", en: "Travel Map" },
-      title: { zh: "歐洲旅程地圖", en: "Europe Travel Map" },
+      title: { zh: "德英法旅程地圖", en: "Germany · UK · France Travel Map" },
       lead: { zh: "把法蘭克福、曼徹斯特、倫敦和巴黎的重要地點跟移動路線放在一起。", en: "Key Frankfurt, Manchester, London, and Paris stops, plus the main travel routes, in one map." }
     },
     budget: {
@@ -192,8 +192,8 @@ const tripData = {
       lead: { zh: "把出發前想再看一次的細節留在這裡，不讓它們分散在各頁。", en: "Use this page for the last practical checks before leaving, without scattering them across the site." }
     },
     firstTime: {
-      kicker: { zh: "歐洲行前提醒", en: "Europe Travel Notes" },
-      title: { zh: "這趟歐洲行前要留意的事", en: "Practical Notes Before the Europe Trip" },
+      kicker: { zh: "德英法行前提醒", en: "Germany · UK · France Travel Notes" },
+      title: { zh: "這趟德英法之旅行前要留意的事", en: "Practical Notes Before the Germany · UK · France Trip" },
       lead: { zh: "英國主段加上德國、法國移動前會用到的提醒，整理在這一頁。", en: "UK, Germany, and France travel notes collected in one place before the trip." }
     },
     documents: {
@@ -1899,7 +1899,7 @@ function renderChrome() {
 
   document.querySelector("[data-site-footer]").innerHTML = `
     <footer class="site-footer handbook-footer">
-        <p>${state.lang !== "zh" ? "AIB 2026 Manchester · Europe travel handbook" : "AIB 2026 Manchester · 英法歐洲旅程手冊"}</p>
+        <p>${state.lang !== "zh" ? "AIB 2026 Manchester · Germany · UK · France travel handbook" : "AIB 2026 Manchester · 德英法之旅手冊"}</p>
       <a href="./index.html">${state.lang !== "zh" ? "Back to overview" : "回到總覽"}</a>
     </footer>
     ${pageId === "home"
@@ -1939,7 +1939,7 @@ const localeTextOverrides = {
     "Itinerary": "Programme",
     "Shopping": "Shopping",
     "Travel Notes": "Notes de voyage",
-    "Europe Notes": "Notes Europe",
+    "Germany · UK · France Notes": "Notes Allemagne · Royaume-Uni · France",
     "Map": "Carte",
     "Language": "Langue",
     "Currency": "Devise",
@@ -2021,7 +2021,7 @@ const localeTextOverrides = {
     "Itinerary": "Reiseplan",
     "Shopping": "Einkauf",
     "Travel Notes": "Reisenotizen",
-    "Europe Notes": "Europa-Hinweise",
+    "Germany · UK · France Notes": "Hinweise zu Deutschland · Großbritannien · Frankreich",
     "Map": "Karte",
     "Language": "Sprache",
     "Currency": "Währung",
@@ -2150,7 +2150,7 @@ function renderHero(pageId) {
       <div class="editorial-hero mobile-dashboard-hero handbook-home-hero hero-content">
         <p class="eyebrow">${state.lang !== "zh" ? "Academic Conference Travel Handbook" : "學術會議旅程手冊"}</p>
         <h1>${state.lang !== "zh" ? "AIB 2026 Manchester" : "AIB 2026 Manchester"}</h1>
-        <div class="hero-subtitle">${state.lang !== "zh" ? "UK & France Travel Handbook" : "英國・法國旅遊手冊"}</div>
+        <div class="hero-subtitle">${state.lang !== "zh" ? "Germany · UK · France Travel Handbook" : "德英法之旅手冊"}</div>
         <div class="hero-dates">${state.lang !== "zh" ? "2026 / 06 / 29 - 2026 / 07 / 12" : "2026 / 06 / 29 - 2026 / 07 / 12"}</div>
         <div class="destinations">${state.lang !== "zh" ? "Frankfurt • Manchester • London • Paris" : "法蘭克福 • 曼徹斯特 • 倫敦 • 巴黎"}</div>
         <p class="hero-intro">${state.lang !== "zh" ? "The route begins with a brief Frankfurt layover, settles first into Manchester for AIB 2026, then opens into London streets before ending with museums, shopping, and long dinners in Paris." : "旅程從法蘭克福短暫轉機開始，先在曼徹斯特完成 AIB 2026 的學術主段，再轉進倫敦的城市節奏，最後以巴黎的街景、博物館與法式餐桌收尾。"}</p>
@@ -2295,7 +2295,7 @@ function renderHome() {
 
 const pageDescriptions = {
   conference: { zh: "會議日期、註冊狀態與現場節奏。", en: "Conference dates, registration status, and event rhythm." },
-  flights: { zh: "去程、回程、歐洲段與轉機整理。", en: "Outbound, return, Europe segment, and transfer notes." },
+  flights: { zh: "去程、回程、德英法移動段與轉機整理。", en: "Outbound, return, Germany-UK-France segments, and transfer notes." },
   transport: { zh: "火車、Eurostar 與市內交通。", en: "Train, Eurostar, and local transit." },
   stay: { zh: "已訂住宿、待定住宿與區域決策。", en: "Booked stay, pending stay, and area decisions." },
   itinerary: { zh: "時間軸行程、景點費用與回程提醒。", en: "Timeline itinerary, attraction costs, and return notes." },
@@ -2304,7 +2304,7 @@ const pageDescriptions = {
   map: { zh: "主要地點、每日路線與地圖連結。", en: "Key locations, daily routes, and map links." },
   budget: { zh: "可報帳和自費分開整理，金額也一起換算。", en: "Funding and expense notes, with three-currency amounts." },
   reminders: { zh: "還沒處理完的事和出發前最後再看一次的提醒。", en: "Pending items and final travel notes." },
-  firstTime: { zh: "這趟歐洲行前可先看的實用提醒。", en: "Practical notes to review before this Europe trip." },
+  firstTime: { zh: "這趟德英法之旅行前可先看的實用提醒。", en: "Practical notes to review before this Germany · UK · France trip." },
   documents: { zh: "文件清單與官方連結。", en: "Document checklist and official links." }
 };
 
@@ -2982,7 +2982,7 @@ function renderItinerary() {
         <div class="itinerary-highlights">
           ${[
             [{ zh: "旅程主軸", en: "Travel arc" }, { zh: "法蘭克福轉機 → 曼徹斯特會議 → 倫敦 → 巴黎", en: "Frankfurt transit → Manchester conference → London → Paris" }],
-            [{ zh: "核心目的", en: "Core purpose" }, { zh: "AIB 2026 發表與歐洲旅行", en: "AIB 2026 presentations with a Europe route" }],
+            [{ zh: "核心目的", en: "Core purpose" }, { zh: "AIB 2026 發表與德英法之旅", en: "AIB 2026 presentations with a Germany-UK-France route" }],
             [{ zh: "閱讀方式", en: "Reading style" }, { zh: "先看章節，再展開每天", en: "Read by chapter, then open the day you need" }]
           ].map(([label, value]) => renderMiniHighlightCard(label, value)).join("")}
         </div>
@@ -3227,7 +3227,7 @@ function renderMap() {
           `).join("")}
         </div>
         <div class="map-frame-wrap">
-          <iframe id="travelMapFrame" title="${state.lang !== "zh" ? "AIB 2026 Europe travel map" : "AIB 2026 歐洲旅程地圖"}" src="${mapEmbedUrl(defaultLocation.query)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe id="travelMapFrame" title="${state.lang !== "zh" ? "AIB 2026 Germany · UK · France travel map" : "AIB 2026 德英法旅程地圖"}" src="${mapEmbedUrl(defaultLocation.query)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </section>
