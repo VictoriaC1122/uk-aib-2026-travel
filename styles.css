@@ -12630,8 +12630,72 @@ body::before {
   box-shadow: 0 16px 32px rgba(75, 67, 80, 0.06);
 }
 
+.summary-card.with-media {
+  overflow: hidden;
+}
+
+.summary-card-media,
+.summary-card-gallery,
+.paris-spotlight-photo-wrap {
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(247, 242, 236, 0.9);
+  border: 1px solid rgba(104, 92, 80, 0.1);
+  box-shadow: 0 14px 30px rgba(75, 67, 80, 0.06);
+}
+
+.summary-card-media {
+  margin-bottom: 16px;
+}
+
+.summary-card-image,
+.summary-photo-image,
+.paris-spotlight-photo {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.summary-card-image,
+.paris-spotlight-photo {
+  aspect-ratio: 16 / 11;
+}
+
+.summary-card-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin-bottom: 16px;
+}
+
+.summary-card-gallery.single {
+  grid-template-columns: 1fr;
+}
+
+.summary-photo-tile {
+  margin: 0;
+  display: grid;
+  gap: 0;
+  min-width: 0;
+}
+
+.summary-photo-image {
+  aspect-ratio: 16 / 10;
+}
+
+.summary-photo-tile figcaption {
+  padding: 10px 12px 12px;
+  color: var(--muted);
+  font-size: 0.83rem;
+  background: rgba(255, 251, 247, 0.92);
+}
+
 .paris-spotlight-note {
   padding: 20px 18px;
+}
+
+.paris-spotlight-photo-wrap {
+  margin-bottom: 16px;
 }
 
 .paris-spotlight-note h3,
@@ -12695,6 +12759,10 @@ body::before {
 }
 
 @media (max-width: 760px) {
+  .summary-card-gallery {
+    grid-template-columns: 1fr;
+  }
+
   .paris-spotlight-grid,
   .paris-mustdo-grid {
     gap: 14px;

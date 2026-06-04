@@ -129,6 +129,9 @@ const languageOptions = [
 ];
 
 const hotelImage = "https://englandrover.com/wp-content/uploads/2018/11/innside-melia-manchester-05.jpg";
+const langhamImage = "./assets/the-langham-london.jpg";
+const clermontImage = "./assets/the-clermont-charing-cross.jpg";
+const pullmanImage = "./assets/pullman-paris-tour-eiffel.jpg";
 
 const tripData = {
   lastUpdated: "2026-04-17 12:05",
@@ -421,6 +424,18 @@ const tripData = {
       status: "book",
       title: { zh: "倫敦住宿首選", en: "London first-choice stay" },
       city: { zh: "倫敦", en: "London" },
+      photos: [
+        {
+          src: langhamImage,
+          label: { zh: "The Langham London", en: "The Langham London" },
+          alt: { zh: "The Langham London 房景照片", en: "A room view at The Langham London" }
+        },
+        {
+          src: clermontImage,
+          label: { zh: "The Clermont Charing Cross", en: "The Clermont Charing Cross" },
+          alt: { zh: "The Clermont Charing Cross 外觀照片", en: "An exterior view of The Clermont Charing Cross" }
+        }
+      ],
       facts: [
         { zh: "日期：2026/07/04 – 2026/07/07（3 晚）", en: "Dates: 4 Jul 2026 – 7 Jul 2026 (3 nights)" },
         { zh: "首選：The Langham London", en: "First choice: The Langham London" },
@@ -433,6 +448,8 @@ const tripData = {
       status: "confirmed",
       title: { zh: "巴黎核心住宿", en: "Paris anchor stay" },
       city: { zh: "巴黎", en: "Paris" },
+      image: pullmanImage,
+      imageAlt: { zh: "Pullman Paris Tour Eiffel 陽台與艾菲爾鐵塔景觀照片", en: "A balcony view toward the Eiffel Tower at Pullman Paris Tour Eiffel" },
       facts: [
         { zh: "日期：2026/07/07 – 2026/07/10（3 晚）", en: "Dates: 7 Jul 2026 – 10 Jul 2026 (3 nights)" },
         { zh: "飯店：Pullman Paris Tour Eiffel", en: "Hotel: Pullman Paris Tour Eiffel" },
@@ -1772,12 +1789,29 @@ function renderScribbleNote(text, className = "") {
   return "";
 }
 
-function renderSummaryCard({ status, title, value, note, facts }) {
+function renderSummaryCard({ status, title, value, note, facts, image, imageAlt, photos }) {
   const valueMarkup = value ? `<strong>${escapeHtml(t(value))}</strong>` : "";
   const factsMarkup = facts ? renderList(facts) : "";
   const noteMarkup = note ? `<p>${escapeHtml(t(note))}</p>` : "";
+  const imageMarkup = image ? `
+    <div class="summary-card-media">
+      <img class="summary-card-image" src="${escapeHtml(image)}" alt="${escapeHtml(t(imageAlt || title))}" loading="lazy" />
+    </div>
+  ` : "";
+  const galleryMarkup = photos?.length ? `
+    <div class="summary-card-gallery${photos.length === 1 ? " single" : ""}">
+      ${photos.map((photo) => `
+        <figure class="summary-photo-tile">
+          <img class="summary-photo-image" src="${escapeHtml(photo.src)}" alt="${escapeHtml(t(photo.alt || photo.label || title))}" loading="lazy" />
+          ${photo.label ? `<figcaption>${escapeHtml(t(photo.label))}</figcaption>` : ""}
+        </figure>
+      `).join("")}
+    </div>
+  ` : "";
   return `
-    <article class="summary-card">
+    <article class="summary-card${image || photos?.length ? " with-media" : ""}">
+      ${imageMarkup}
+      ${galleryMarkup}
       ${status ? statusChip(status) : ""}
       <h3>${escapeHtml(t(title))}</h3>
       ${valueMarkup}
@@ -3057,7 +3091,7 @@ function renderStay() {
       <h2>${state.lang !== "zh" ? "London and Paris stays" : "倫敦與巴黎住宿"}</h2>
       <p class="lead">${state.lang !== "zh" ? "London still revolves around rail convenience, while Paris is now fully anchored around Pullman and the Eiffel Tower view." : "倫敦還是先看車站與步行便利；巴黎這一段則已經定下來，重心就是 Pullman 的陽台鐵塔景。"}</p>
       <div class="summary-grid two">
-        ${tripData.stay.slice(1).map(renderSummaryCard).join("")}
+        ${tripData.stay.slice(1, 3).map(renderSummaryCard).join("")}
         <article class="summary-card">
           ${statusChip("pending")}
           <h3>${state.lang !== "zh" ? "Why these choices fit" : "這些選擇為什麼順"}</h3>
@@ -3104,6 +3138,9 @@ function renderStay() {
             </div>
           </div>
           <div class="paris-spotlight-side">
+            <div class="paris-spotlight-photo-wrap">
+              <img class="paris-spotlight-photo" src="${escapeHtml(pullmanImage)}" alt="${escapeHtml(state.lang !== "zh" ? "Balcony Eiffel Tower view at Pullman Paris Tour Eiffel" : "Pullman Paris Tour Eiffel 陽台鐵塔景照片")}" loading="lazy" />
+            </div>
             <div class="paris-spotlight-note">
               <h3>${state.lang !== "zh" ? "Why it fits this trip" : "為什麼很適合這趟旅程"}</h3>
               ${renderList([
