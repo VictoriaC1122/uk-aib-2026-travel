@@ -45,6 +45,7 @@ const money = {
   hotelPerPersonNight: "NT$3,827 / GBP 90.09 / EUR 105 / US$119",
   parisHotel: "NT$70,243 / 約 GBP 1,639 / EUR 1,915.58 / 約 US$2,170",
   parisHotelPerNight: "NT$23,414 / 約 GBP 546 / EUR 638.53 / 約 US$723",
+  cdgHotel: "NT$7,034 / 約 GBP 164 / 約 EUR 192 / 約 US$217",
   visitorCharge: "約 NT$255 / GBP 6 / EUR 7 / US$8",
   visitorChargePerPerson: "約 NT$128 / GBP 3 / EUR 4 / US$4",
   personalKnownSelfFunded: "約 NT$19,263 / GBP 453.45 / EUR 531 / US$601",
@@ -78,7 +79,7 @@ const homeOverviewCards = [
     tag: { zh: "住宿", en: "Hotel" },
     title: { zh: "住宿", en: "Hotel" },
     value: "INNSiDE Manchester",
-    note: { zh: "曼徹斯特已定，巴黎 Pullman 也已確認，現在主要剩倫敦。", en: "Manchester is set, Pullman Paris is confirmed, and London remains the main open stay." }
+    note: { zh: "曼徹斯特、巴黎 Pullman 與 CDG 前一晚都已定，現在主要剩倫敦。", en: "Manchester, Pullman Paris, and the final CDG night are confirmed; London remains the main open stay." }
   },
   {
     tag: { zh: "狀態", en: "Status" },
@@ -164,7 +165,7 @@ const tripData = {
     stay: {
       kicker: { zh: "住宿安排", en: "Accommodation" },
       title: { zh: "住宿與城市切換", en: "Accommodation & City Split" },
-      lead: { zh: "曼徹斯特的會議住宿已定，巴黎最後三晚也確定落在 Pullman，現在主要剩倫敦與 CDG 機場周邊住宿要補。", en: "The Manchester conference stay is set, Pullman is fixed for the last Paris nights, and the remaining stay decisions are London and the CDG airport area." }
+      lead: { zh: "曼徹斯特的會議住宿已定，巴黎最後三晚也確定落在 Pullman，7/10–7/11 的 CDG 機場飯店也接上了，現在主要剩倫敦住宿要補。", en: "The Manchester conference stay is set, Pullman anchors the last Paris nights, and the 10-11 July CDG airport hotel is now in place; London is the main remaining stay to settle." }
     },
     itinerary: {
       kicker: { zh: "每日行程", en: "Itinerary" },
@@ -211,7 +212,7 @@ const tripData = {
     { status: "confirmed", title: { zh: "AIB 會議日期", en: "AIB conference dates" }, value: "2026/06/30 - 2026/07/03", note: { zh: "主段在曼徹斯特，重點是發表和交流。", en: "Manchester conference days, centered on presentations and networking." } },
     { status: "confirmed", title: { zh: "整段旅程日期", en: "Trip dates" }, value: "2026/06/29 - 2026/07/12", note: { zh: "曼徹斯特 → 倫敦 → 巴黎 → 曼徹斯特。", en: "Manchester → London → Paris → Manchester." } },
     { status: "confirmed", title: { zh: "曼徹斯特住宿狀態", en: "Manchester hotel status" }, value: "INNSiDE Manchester", note: { zh: "6/30-7/5 已訂，雙床房，2 人，房價 GBP 900.90。", en: "Booked for 30 June-5 July, twin beds for two guests, GBP 900.90." } },
-    { status: "book", title: { zh: "後段住宿規劃", en: "Later-stay planning" }, value: { zh: "倫敦 3 晚 / 巴黎 3 晚", en: "3 nights London / 3 nights Paris" }, note: { zh: "巴黎最後三晚已定在 Pullman，7/10 晚再轉往 CDG 機場周邊。", en: "The last three Paris nights now center on Pullman, with an airport-area stay after 10 July." } }
+    { status: "book", title: { zh: "後段住宿規劃", en: "Later-stay planning" }, value: { zh: "倫敦 3 晚 / 巴黎 3 晚 / CDG 1 晚", en: "3 nights London / 3 nights Paris / 1 night at CDG" }, note: { zh: "巴黎最後三晚已定在 Pullman，7/10 晚也已接上 Novotel CDG。", en: "The last three Paris nights are set at Pullman, and 10 July now rolls into a confirmed Novotel CDG stay." } }
   ],
   todos: [
     { status: "book", text: { zh: "倫敦住宿先看 The Langham London，不合適的話再比 The Clermont Charing Cross。", en: "For London, check The Langham London first, then The Clermont Charing Cross." } },
@@ -465,6 +466,23 @@ const tripData = {
       note: { zh: "這三晚將入住 Pullman Paris Tour Eiffel，以高樓層陽台房欣賞艾菲爾鐵塔景觀，作為巴黎行程的核心住宿亮點。此次訂房目前刷卡總額為 NT$70,243 / EUR 1,915.58。", en: "These three nights stay at Pullman Paris Tour Eiffel, using a high-floor balcony room with an Eiffel Tower view as the main hotel highlight of the Paris chapter. The current booking total is NT$70,243 / EUR 1,915.58." }
     },
     {
+      status: "confirmed",
+      title: { zh: "CDG 回程前一晚", en: "CDG pre-departure stay" },
+      city: { zh: "巴黎機場", en: "Paris airport" },
+      image: "./assets/novotel-paris-cdg-airport.png",
+      imageAlt: { zh: "巴黎戴高樂機場候機樓諾富特酒店訂房畫面", en: "Booking view for Novotel Paris Charles-de-Gaulle Airport" },
+      link: "https://www.google.com/maps/search/?api=1&query=Novotel+Paris+Charles-de-Gaulle+Airport",
+      facts: [
+        { zh: "日期：2026/07/10 – 2026/07/11（1 晚）", en: "Dates: 10 Jul 2026 – 11 Jul 2026 (1 night)" },
+        { zh: "飯店：巴黎戴高樂機場候機樓諾富特酒店", en: "Hotel: Novotel Paris Charles-de-Gaulle Airport" },
+        { zh: "位置：Roissypole RER 站旁，接 CDG 航廈很順", en: "Location: next to Roissypole RER, with an easy transfer into CDG terminals" },
+        { zh: "地址：Paris Street, Roissypole RER, 93290 Tremblay-en-France", en: "Address: Paris Street, Roissypole RER, 93290 Tremblay-en-France" },
+        { zh: `刷卡紀錄：${money.cdgHotel}`, en: `Payment note: ${money.cdgHotel}` },
+        { zh: "狀態：回程前一晚已確認", en: "Status: confirmed for the night before departure" }
+      ],
+      note: { zh: "7/10 晚不再只是泛稱 CDG 周邊住宿，而是直接住在巴黎戴高樂機場候機樓諾富特酒店。這樣 7/11 早上從飯店接進 2E 航廈會更從容。", en: "The 10 July night is no longer a vague airport-area buffer; it is now fixed at Novotel Paris Charles-de-Gaulle Airport, making the morning handoff into Terminal 2E much calmer." }
+    },
+    {
       status: "optional",
       title: { zh: "曼徹斯特住宿建議", en: "Manchester hotel ideas" },
       city: { zh: "曼徹斯特", en: "Manchester" },
@@ -485,8 +503,8 @@ const tripData = {
     { date: "7/7", city: { zh: "London → Paris", en: "London → Paris" }, kind: "travel", theme: { zh: "Eurostar 進巴黎與鐵塔第一眼", en: "Eurostar into Paris and the first Eiffel evening" }, title: { zh: "抵達巴黎，入住 Pullman", en: "Arrive in Paris and check into Pullman" }, status: "confirmed", must: ["Eurostar｜St Pancras → Gare du Nord", "入住 Pullman Paris Tour Eiffel", "艾菲爾鐵塔夜景", "Pullman 陽台看鐵塔"], optional: ["塞納河邊散步"], tickets: ["Eurostar 票待訂", "鐵塔周邊散步免費"], notes: ["從倫敦進巴黎的這一段很適合當成旅程轉場。抵達後先把步調安頓進 Pullman，晚上再把鐵塔夜景和陽台閃燈留給巴黎的第一眼。"] },
     { date: "7/8", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "羅浮宮、右岸街景與百貨屋頂", en: "The Louvre, Right Bank streets, and the department-store rooftop" }, title: { zh: "巴黎 Day 2", en: "Paris Day 2" }, status: "confirmed", must: ["Louvre Museum", "Place Vendôme", "Galeries Lafayette 頂樓", "巴黎歌劇院周邊"], optional: ["右岸咖啡館小停留"], tickets: ["Louvre 票價待查", "老佛爺百貨頂樓免費"], notes: ["這天把巴黎右岸最有代表性的藝術、街景與百貨視角排在一起。上午留給羅浮宮，午後再順著 Place Vendôme、歌劇院一帶慢慢走向老佛爺頂樓。"] },
     { date: "7/9", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "精品大道與巴黎主景", en: "Luxury avenues and the grand Paris landmarks" }, title: { zh: "巴黎 Day 3", en: "Paris Day 3" }, status: "confirmed", must: ["Avenue Montaigne", "Champs-Elysees", "Arc de Triomphe", "塞納河夜景"], optional: ["精品購物", "晚餐後再看一次鐵塔"], tickets: ["街區散步與購物：依實際消費", "凱旋門票價待查"], notes: ["這一天的巴黎會比較華麗。從 Avenue Montaigne 走到香榭麗舍與凱旋門，晚上再把視線留給塞納河，城市的尺度和光澤會在這段路裡慢慢打開。"] },
-    { date: "7/10", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "蒙馬特、最後採買與轉往機場", en: "Montmartre, final shopping, and the shift to the airport" }, title: { zh: "巴黎 Day 4", en: "Paris Day 4" }, status: "confirmed", must: ["Sacré-Cœur / Montmartre", "巴黎最後採購", "回 Pullman 拿寄放行李", "前往 CDG 機場住宿"], optional: ["沿途街角拍照"], tickets: ["聖心堂與蒙馬特散步免費"], notes: ["最後一天不必把節奏塞滿。上午把巴黎留給蒙馬特和聖心堂，下午再把採買與行李收尾好，晚上順順轉往 CDG 機場周邊住宿。"] },
-    { date: "7/11-7/12", city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" }, kind: "travel", theme: { zh: "回程接駁與長途返台", en: "Connection day and the long flight home" }, title: { zh: "回程返台", en: "Return to Taipei" }, status: "confirmed", must: ["Air France Business Standard｜CDG 12:50 → MAN 13:25", "BA1371｜MAN 18:10 → LHR 19:15", "CI82｜LHR 21:10 → TPE 18:05(+1)"], optional: ["巴黎上午只排簡單移動"], tickets: ["AF 歐洲段：約 EUR 354.05 / NT$12,930"], notes: ["這一天以順利銜接航段為主，上午不必再塞景點，把體力留給巴黎到曼徹斯特、再接希斯洛返台的長路。"] }
+    { date: "7/10", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "蒙馬特、最後採買與轉往機場", en: "Montmartre, final shopping, and the shift to the airport" }, title: { zh: "巴黎 Day 4", en: "Paris Day 4" }, status: "confirmed", must: ["Sacré-Cœur / Montmartre", "巴黎最後採購", "回 Pullman 拿寄放行李", "入住巴黎戴高樂機場候機樓諾富特酒店"], optional: ["沿途街角拍照"], tickets: ["聖心堂與蒙馬特散步免費"], notes: ["最後一天不必把節奏塞滿。上午把巴黎留給蒙馬特和聖心堂，下午再把採買與行李收尾好，晚上順順轉往巴黎戴高樂機場候機樓諾富特酒店，隔天法航這段會從容很多。"] },
+    { date: "7/11-7/12", city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" }, kind: "travel", theme: { zh: "回程接駁與長途返台", en: "Connection day and the long flight home" }, title: { zh: "回程返台", en: "Return to Taipei" }, status: "confirmed", must: ["Novotel Paris Charles-de-Gaulle Airport → CDG Terminal 2E", "Air France Business Standard｜CDG 12:50 → MAN 13:25", "BA1371｜MAN 18:10 → LHR 19:15", "CI82｜LHR 21:10 → TPE 18:05(+1)"], optional: ["巴黎上午只排簡單移動"], tickets: ["AF 歐洲段：約 EUR 354.05 / NT$12,930"], notes: ["這一天以順利銜接航段為主。從機場飯店接進 2E 航廈後，就把體力留給巴黎到曼徹斯特、再接希斯洛返台的長路。"] }
   ],
   attractionCosts: [
     { status: "confirmed", day: "7/4", attraction: "Big Ben / Buckingham Palace / St James's Park", fee: "Free", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "這三個點適合排成第一天的西敏散步。", en: "These three work well as a Westminster walk on the first London day." }, source: "https://www.visitlondon.com/" },
@@ -498,7 +516,7 @@ const tripData = {
     { status: "confirmed", day: "7/9", attraction: "Champs-Elysees / Arc de Triomphe", fee: "Depends", estimate: "依實際安排 / Depends / Depends", note: { zh: "香榭麗舍大道散步免費，若上凱旋門再另外查票。", en: "Walking the Champs-Elysees is free; check separately if you want Arc entry." }, source: "https://www.paris-arc-de-triomphe.fr/en/" },
     { status: "pending", day: "7/10", attraction: "Seine river cruise", fee: "TBD", estimate: "待查 / TBD / TBD", note: { zh: "遊船票價依公司與時段而不同。", en: "Cruise pricing varies by operator and timeslot." }, source: "https://www.bateauxparisiens.com/en.html" }
   ],
-  mapRouteUrl: "https://www.google.com/maps/dir/Manchester+Airport/INNSiDE+Manchester/Manchester+Piccadilly/London+Euston/Big+Ben/Harrods/Covent+Garden/Piccadilly+Circus/London+St+Pancras+International/Gare+du+Nord/Pullman+Paris+Tour+Eiffel/Eiffel+Tower/Louvre+Museum/Place+Vendome+Paris/Galeries+Lafayette+Haussmann/Avenue+Montaigne+Paris/Arc+de+Triomphe/Sacre-Coeur+Paris/Charles+de+Gaulle+Airport/Manchester+Airport",
+  mapRouteUrl: "https://www.google.com/maps/dir/Manchester+Airport/INNSiDE+Manchester/Manchester+Piccadilly/London+Euston/Big+Ben/Harrods/Covent+Garden/Piccadilly+Circus/London+St+Pancras+International/Gare+du+Nord/Pullman+Paris+Tour+Eiffel/Eiffel+Tower/Louvre+Museum/Place+Vendome+Paris/Galeries+Lafayette+Haussmann/Avenue+Montaigne+Paris/Arc+de+Triomphe/Sacre-Coeur+Paris/Novotel+Paris+Charles-de-Gaulle+Airport/Charles+de+Gaulle+Airport+Terminal+2E/Manchester+Airport",
   mapLocations: [
     { status: "confirmed", city: "Manchester", title: { zh: "Manchester Airport", en: "Manchester Airport" }, query: "Manchester Airport", note: { zh: "抵達與回程都會經過的城市門口。", en: "The city gateway for both arrival and departure." } },
     { status: "confirmed", city: "Manchester", title: { zh: "INNSiDE Manchester", en: "INNSiDE Manchester" }, query: "INNSiDE Manchester 1 First Street Manchester", note: { zh: "會議期間的住宿基地，靠近 First Street 與市中心。", en: "The conference stay base near First Street and the city centre." } },
@@ -519,6 +537,7 @@ const tripData = {
     { status: "confirmed", city: "Paris", title: { zh: "Galeries Lafayette Haussmann", en: "Galeries Lafayette Haussmann" }, query: "Galeries Lafayette Haussmann", note: { zh: "巴黎最後一日的採買點。", en: "A strong final shopping stop in Paris." } },
     { status: "confirmed", city: "Paris", title: { zh: "Sacré-Cœur / Montmartre", en: "Sacré-Cœur / Montmartre" }, query: "Sacré-Cœur Paris", note: { zh: "巴黎最後一天的晨間散步。", en: "The morning walk for the last Paris day." } },
     { status: "confirmed", city: "Paris", title: { zh: "Seine", en: "Seine" }, query: "Seine River Paris", note: { zh: "可接塞納河遊船。", en: "Easy to pair with a Seine cruise." } },
+    { status: "confirmed", city: "Paris", title: { zh: "Novotel Paris Charles-de-Gaulle Airport", en: "Novotel Paris Charles-de-Gaulle Airport" }, query: "Novotel Paris Charles-de-Gaulle Airport", note: { zh: "7/10–7/11 的機場過夜，隔天接法航比較從容。", en: "The airport overnight stay on 10-11 July, making the Air France departure easier." } },
     { status: "confirmed", city: "Paris", title: { zh: "CDG Terminal 2E", en: "CDG Terminal 2E" }, query: "Charles de Gaulle Airport Terminal 2E", note: { zh: "7/11 Air France Business Standard 的出發點。", en: "The departure terminal for the 11 July Air France Business Standard flight." } },
   ],
   mapRoutes: [
@@ -529,8 +548,8 @@ const tripData = {
     { status: "book", label: { zh: "7/7 倫敦 → 巴黎", en: "7 Jul London → Paris" }, note: { zh: "St Pancras → Gare du Nord → Pullman Paris Tour Eiffel。", en: "St Pancras → Gare du Nord → Pullman Paris Tour Eiffel." }, url: "https://www.google.com/maps/dir/St+Pancras+International/Gare+du+Nord/Pullman+Paris+Tour+Eiffel" },
     { status: "confirmed", label: { zh: "7/8 巴黎右岸日", en: "8 Jul Right Bank day" }, note: { zh: "Pullman → Louvre → Place Vendôme → Galeries Lafayette。", en: "Pullman → Louvre → Place Vendôme → Galeries Lafayette." }, url: "https://www.google.com/maps/dir/Pullman+Paris+Tour+Eiffel/Louvre+Museum/Place+Vendome+Paris/Galeries+Lafayette+Haussmann" },
     { status: "confirmed", label: { zh: "7/9 巴黎精品大道", en: "9 Jul Paris luxury avenue day" }, note: { zh: "Avenue Montaigne → Champs-Elysees → Arc de Triomphe → Seine。", en: "Avenue Montaigne → Champs-Elysees → Arc de Triomphe → Seine." }, url: "https://www.google.com/maps/dir/Avenue+Montaigne+Paris/Champs-Elysees/Arc+de+Triomphe/Seine+River+Paris" },
-    { status: "confirmed", label: { zh: "7/10 蒙馬特與機場轉場", en: "10 Jul Montmartre and airport move" }, note: { zh: "Sacré-Cœur → Montmartre → Pullman → Charles de Gaulle Airport。", en: "Sacré-Cœur → Montmartre → Pullman → Charles de Gaulle Airport." }, url: "https://www.google.com/maps/dir/Sacre-Coeur+Paris/Montmartre+Paris/Pullman+Paris+Tour+Eiffel/Charles+de+Gaulle+Airport" },
-    { status: "confirmed", label: { zh: "7/11 巴黎 → 曼徹斯特", en: "11 Jul Paris → Manchester" }, note: { zh: "CDG T2E → MAN T2，再接 BA 與華航。", en: "CDG T2E → MAN T2, then connect to BA and China Airlines." }, url: "https://www.google.com/maps/dir/Pullman+Paris+Tour+Eiffel/Charles+de+Gaulle+Airport+Terminal+2E" }
+    { status: "confirmed", label: { zh: "7/10 蒙馬特與機場轉場", en: "10 Jul Montmartre and airport move" }, note: { zh: "Sacré-Cœur → Montmartre → Pullman → Novotel Paris Charles-de-Gaulle Airport。", en: "Sacré-Cœur → Montmartre → Pullman → Novotel Paris Charles-de-Gaulle Airport." }, url: "https://www.google.com/maps/dir/Sacre-Coeur+Paris/Montmartre+Paris/Pullman+Paris+Tour+Eiffel/Novotel+Paris+Charles-de-Gaulle+Airport" },
+    { status: "confirmed", label: { zh: "7/11 巴黎 → 曼徹斯特", en: "11 Jul Paris → Manchester" }, note: { zh: "Novotel CDG → CDG T2E → MAN T2，再接 BA 與華航。", en: "Novotel CDG → CDG T2E → MAN T2, then connect to BA and China Airlines." }, url: "https://www.google.com/maps/dir/Novotel+Paris+Charles-de-Gaulle+Airport/Charles+de+Gaulle+Airport+Terminal+2E" }
   ],
   expenses: [
     { item: { zh: "國際機票", en: "International flights" }, amount: money.flight, amounts: { TWD: "NT$92,439", GBP: "GBP 2,176", EUR: "EUR 2,545", USD: "US$2,885" }, status: "reimburse", proof: { zh: "機票行程單與付款截圖", en: "Flight itinerary + payment screenshot" }, notes: { zh: "TPE-FRA-MAN / MAN-LHR-TPE；7/11 巴黎回曼徹斯特另列自費", en: "TPE-FRA-MAN / MAN-LHR-TPE; the 11 Jul Paris-Manchester segment is listed separately as self-funded" } },
@@ -546,6 +565,7 @@ const tripData = {
     { item: { zh: "巴黎 → 曼徹斯特航段", en: "Paris → Manchester flight" }, amount: { zh: "NT$12,930 / EUR 354.05", en: "NT$12,930 / EUR 354.05" }, amounts: { TWD: "NT$12,930", GBP: "約 GBP 300", EUR: "EUR 354.05", USD: "待確認" }, status: "self", proof: { zh: "Air France 電子票（敏感資訊不公開）與付款證明", en: "Air France e-ticket (sensitive details kept private) and payment proof" }, notes: { zh: "AF1068｜CDG T2E 12:50 → MAN T2 13:25；Business Standard、SkyPriority、2 件托運行李（每件 32kg）。", en: "AF1068 · CDG T2E 12:50 → MAN T2 13:25; Business Standard, SkyPriority, and 2 checked bags up to 32kg each." } },
     { item: { zh: "倫敦住宿", en: "London accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "首選 The Langham London，備選 The Clermont Charing Cross。", en: "The Langham London is the first choice, with The Clermont Charing Cross as the alternative." } },
     { item: { zh: "巴黎住宿", en: "Paris accommodation" }, amount: money.parisHotel, amounts: { TWD: "NT$70,243", GBP: "約 GBP 1,639", EUR: "EUR 1,915.58", USD: "約 US$2,170" }, status: "self", proof: { zh: "Pullman 訂房確認、Accor 訂單與付款紀錄", en: "Pullman booking confirmation, Accor order, and payment proof" }, notes: { zh: `Pullman Paris Tour Eiffel｜7/7–7/10，共 3 晚，鐵塔景陽台房；平均每晚約 ${money.parisHotelPerNight}。`, en: `Pullman Paris Tour Eiffel · 7-10 Jul · 3 nights · balcony room with Eiffel Tower view; average per night about ${money.parisHotelPerNight}.` } },
+    { item: { zh: "CDG 機場住宿", en: "CDG airport hotel" }, amount: { zh: "NT$7,034（原幣未公開）", en: "NT$7,034 (original currency not shown publicly)" }, amounts: { TWD: "NT$7,034", GBP: "約 GBP 164", EUR: "約 EUR 192", USD: "約 US$217" }, status: "self", proof: { zh: "Novotel 訂房畫面與刷卡紀錄", en: "Novotel booking screen and payment note" }, notes: { zh: "巴黎戴高樂機場候機樓諾富特酒店｜7/10–7/11，共 1 晚；作為法航 7/11 航段前一晚的機場過夜。", en: "Novotel Paris Charles-de-Gaulle Airport · 10-11 Jul · 1 night; the airport overnight before the 11 July Air France departure." } },
     { item: { zh: "倫敦 / 巴黎景點與遊船", en: "London / Paris attractions and cruise" }, amount: { zh: "依實際選擇", en: "Depends on selected stops" }, amounts: { TWD: "依實際選擇", GBP: "Depends", EUR: "Depends", USD: "Depends" }, status: "self", proof: { zh: "線上購票收據", en: "Online ticket receipts" }, notes: { zh: "羅浮宮、凱旋門等需要時再訂，鐵塔夜景、Place Vendôme、香榭麗舍和多數街區可直接散步。", en: "Book the Louvre or Arc only if needed; the Eiffel night view, Place Vendôme, the Champs-Elysees, and most of the streets can stay open." } }
   ],
   links: [
@@ -575,6 +595,7 @@ const tripData = {
     ["The Langham London", "https://www.langhamhotels.com/en/the-langham/london/"],
     ["The Clermont Charing Cross", "https://www.theclermont.co.uk/charing-cross/"],
     ["Pullman Paris Tour Eiffel", "https://all.accor.com/hotel/7229/index.en.shtml"],
+    ["Novotel Paris Charles-de-Gaulle Airport", "https://www.google.com/maps/search/?api=1&query=Novotel+Paris+Charles-de-Gaulle+Airport"],
     ["Bank of Taiwan FX rates", "https://rate.bot.com.tw/xrt?Lang=zh-TW"],
     ["115 年國外日支表", "https://dbas.tycg.gov.tw/News_Content.aspx?n=12154&s=1591826"]
   ]
@@ -908,13 +929,13 @@ const readingGuides = {
     { zh: "倫敦與曼徹斯特市內交通都以感應付款為主。", en: "Local transit in London and Manchester is planned around contactless payment." }
   ],
   stay: [
-    { zh: "曼徹斯特住宿已訂，巴黎 Pullman 也已確認，現在主要剩倫敦。", en: "Manchester is booked, Pullman Paris is confirmed, and London remains the main open stay." },
+    { zh: "曼徹斯特住宿已訂，巴黎 Pullman 與 CDG 前一晚也已確認，現在主要剩倫敦。", en: "Manchester is booked, Pullman Paris is confirmed, the CDG airport night is also set, and London remains the main open stay." },
     { zh: "7/4 晚的住宿日期有重疊，可以先留著當緩衝。", en: "The 4 July night overlaps and can remain a buffer." },
     { zh: "倫敦先看動線，巴黎就看景和住起來的感覺。", en: "London prioritizes access; Paris leans more toward atmosphere and view." }
   ],
   itinerary: [
     { zh: "每日行程改成一張張可展開的旅程卡，移動、散步與會議節奏都接得起來。", en: "Each day now opens as a travel card, keeping movement, walking routes, and conference rhythm together." },
-    { zh: "後段改成倫敦 3 晚、巴黎 3 晚，最後一晚改住 CDG 周邊，城市切換都補進去了。", en: "The later route is now London for 3 nights, Paris for 3 nights, then one airport night near CDG, with each city move added in." },
+    { zh: "後段改成倫敦 3 晚、巴黎 3 晚，最後一晚住 Novotel CDG，城市切換都補進去了。", en: "The later route is now London for 3 nights, Paris for 3 nights, then one Novotel CDG airport night, with each city move fully added in." },
     { zh: "另外還要訂票的，主要是 Avanti、Eurostar 和幾個巴黎景點。", en: "The main items still needing tickets are Avanti, Eurostar, and a few Paris attractions." }
   ],
   map: [
@@ -949,7 +970,7 @@ const dashboardData = {
     { status: "confirmed", title: { zh: "會議日期", en: "Conference dates" }, value: "2026/06/30 - 2026/07/03", note: { zh: "AIB Manchester", en: "AIB Manchester" } },
     { status: "confirmed", title: { zh: "機票已訂", en: "Flight booked" }, value: "TPE → FRA → MAN", note: { zh: "巴黎回曼城後再接返台", en: "Paris returns to Manchester before heading home" } },
     { status: "confirmed", title: { zh: "曼徹斯特住宿已訂", en: "Manchester hotel booked" }, value: "INNSiDE Manchester", note: { zh: "6/30 - 7/5", en: "30 Jun - 5 Jul" } },
-    { status: "book", title: { zh: "後段住宿規劃", en: "Later-stay planning" }, value: { zh: "倫敦 / 巴黎 / CDG", en: "London / Paris / CDG" }, note: { zh: "巴黎 Pullman 已訂，現在主要剩倫敦和 CDG 周邊。", en: "Pullman Paris is booked; London and the CDG area are the remaining stay pieces." } },
+    { status: "book", title: { zh: "後段住宿規劃", en: "Later-stay planning" }, value: { zh: "倫敦 / 巴黎 / CDG", en: "London / Paris / CDG" }, note: { zh: "巴黎 Pullman 與 Novotel CDG 都已接上，現在主要剩倫敦住宿。", en: "Pullman Paris and Novotel CDG are both in place; London is now the main remaining stay piece." } },
     { status: "reimburse", title: { zh: "可報帳項目", en: "Reimbursement items" }, value: { zh: "4 項", en: "4 items" }, note: { zh: "機票、會議費、會員費、日支費", en: "Flights, fee, membership, allowance" } },
     { status: "pending", title: { zh: "文件清單", en: "Documents checklist" }, value: { zh: "國際段 + 歐洲段一起整理", en: "Long-haul and Europe legs tracked together" }, note: { zh: "文件頁可逐項確認", en: "Tracked in the documents page" } }
   ],
@@ -967,7 +988,7 @@ const dashboardData = {
     { label: { zh: "Main cities", en: "Main cities" }, value: { zh: "Manchester / London / Paris", en: "Manchester / London / Paris" } },
     { label: { zh: "Flight route", en: "Flight route" }, value: "TPE → FRA → MAN / CDG → MAN → LHR → TPE" },
     { label: { zh: "Hotel status", en: "Hotel status" }, value: { zh: "曼徹斯特、巴黎已訂；倫敦待定", en: "Manchester and Paris booked; London still open" } },
-    { label: { zh: "Pending decisions", en: "Pending decisions" }, value: { zh: "倫敦住宿、Eurostar、CDG 周邊住宿", en: "London hotel, Eurostar, and the CDG-area stay" } }
+    { label: { zh: "Pending decisions", en: "Pending decisions" }, value: { zh: "倫敦住宿、Eurostar", en: "London hotel and Eurostar" } }
   ],
   conferenceCards: [
     { status: "confirmed", title: { zh: "會議期間", en: "Conference period" }, value: "2026/06/29 - 2026/07/03", note: { zh: "Manchester", en: "Manchester" } },
@@ -986,7 +1007,7 @@ const dashboardData = {
     {
       title: { zh: "Pre-trip preparation", en: "Pre-trip preparation" },
       entries: [
-        { date: { zh: "出發前", en: "Before departure" }, city: { zh: "Taipei", en: "Taipei" }, purpose: { zh: "整理文件與待辦", en: "Prepare documents and pending items" }, transport: { zh: "—", en: "—" }, reminders: [{ zh: "確認 ETA、收據、接受函、邀請函。", en: "Check ETA, receipts, acceptance letters, and invitation letter." }, { zh: "倫敦住宿、Eurostar 與 CDG 周邊住宿仍需處理。", en: "London hotel, Eurostar, and the CDG-area stay still need action." }], optional: [{ zh: "把巴黎回曼徹斯特與回台航段存成離線檔。", en: "Save the Paris-Manchester and return-home flight details offline." }] }
+        { date: { zh: "出發前", en: "Before departure" }, city: { zh: "Taipei", en: "Taipei" }, purpose: { zh: "整理文件與待辦", en: "Prepare documents and pending items" }, transport: { zh: "—", en: "—" }, reminders: [{ zh: "確認 ETA、收據、接受函、邀請函。", en: "Check ETA, receipts, acceptance letters, and invitation letter." }, { zh: "倫敦住宿與 Eurostar 仍需處理；CDG 前一晚住宿已確認。", en: "London hotel and Eurostar still need attention; the final CDG stay is already confirmed." }], optional: [{ zh: "把巴黎回曼徹斯特與回台航段存成離線檔。", en: "Save the Paris-Manchester and return-home flight details offline." }] }
       ]
     },
     {
@@ -1204,11 +1225,12 @@ const practicalGuideSections = [
   },
   {
     title: { zh: "住宿資訊", en: "Stay" },
-    summary: { zh: "曼徹斯特已訂，巴黎最後三晚也定在 Pullman，剩倫敦與 CDG 周邊住宿要補。", en: "Manchester is booked, the last three Paris nights are set at Pullman, and London with the CDG area remain to be finalized." },
+    summary: { zh: "曼徹斯特已訂，巴黎最後三晚定在 Pullman，7/10 晚也已接上 Novotel CDG，現在主要剩倫敦。", en: "Manchester is booked, the last three Paris nights are set at Pullman, and the 10 July night now connects to Novotel CDG; London is the main remaining stay to settle." },
     points: [
       { zh: "曼徹斯特：INNSiDE Manchester。", en: "Manchester: INNSiDE Manchester." },
       { zh: "倫敦：The Langham London / The Clermont Charing Cross。", en: "London: The Langham London / The Clermont Charing Cross." },
-      { zh: "巴黎：Pullman Paris Tour Eiffel，7/7–7/10，鐵塔景陽台房。", en: "Paris: Pullman Paris Tour Eiffel, 7-10 Jul, balcony room with Eiffel Tower view." }
+      { zh: "巴黎：Pullman Paris Tour Eiffel，7/7–7/10，鐵塔景陽台房。", en: "Paris: Pullman Paris Tour Eiffel, 7-10 Jul, balcony room with Eiffel Tower view." },
+      { zh: "CDG：Novotel Paris Charles-de-Gaulle Airport，7/10–7/11。", en: "CDG: Novotel Paris Charles-de-Gaulle Airport, 10-11 Jul." }
     ],
     href: "./stay.html",
     cta: { zh: "看住宿安排", en: "Open stay page" }
@@ -1556,13 +1578,13 @@ const dailyGuides = [
     date: "7/10",
     city: { zh: "Paris", en: "Paris" },
     theme: { zh: "蒙馬特晨景、最後採買與轉往 CDG", en: "Montmartre morning, final shopping, and the move to CDG" },
-    intro: { zh: "巴黎最後一天不必再衝太多景點，但還是可以把最有城市氣味的一段留給蒙馬特。上午看聖心堂，下午完成最後採買與行李收尾，晚上順順轉往 CDG 機場住宿，隔天的回程會輕鬆很多。", en: "The final Paris day stays lighter, but Montmartre still gives it a distinctive opening before the luggage handoff and the move toward CDG." },
-    highlights: ["Sacré-Cœur", "Montmartre", "最後採買", "CDG airport stay"],
+    intro: { zh: "巴黎最後一天不必再衝太多景點，但還是可以把最有城市氣味的一段留給蒙馬特。上午看聖心堂，下午完成最後採買與行李收尾，晚上順順轉往巴黎戴高樂機場候機樓諾富特酒店，隔天的回程會輕鬆很多。", en: "The final Paris day stays lighter, but Montmartre still gives it a distinctive opening before the luggage handoff and the move to Novotel Paris Charles-de-Gaulle Airport." },
+    highlights: ["Sacré-Cœur", "Montmartre", "最後採買", "Novotel CDG"],
     route: [
       { label: { zh: "上午｜蒙馬特晨景", en: "Morning" }, text: { zh: "上午先去聖心堂和蒙馬特，把巴黎最後一個早晨留給高處街景與階梯之間的散步。", en: "Start at Sacré-Cœur and Montmartre, giving the final Paris morning to higher views and slower streets." } },
       { label: { zh: "中午｜最後採買", en: "Noon" }, text: { zh: "中午之後回到市區，把想補的伴手禮、藥妝或精品一次收好。", en: "Use midday and early afternoon to finish the last gifts, beauty buys, or boutique stops." } },
       { label: { zh: "下午｜回 Pullman 收行李", en: "Afternoon" }, text: { zh: "下午回 Pullman 取寄放行李，把巴黎這一段真正收束起來。", en: "Return to Pullman for the stored luggage and let the Paris chapter close properly." } },
-      { label: { zh: "夜晚｜前往 CDG", en: "Evening" }, text: { zh: "晚上轉往 CDG 機場周邊住宿，把隔天的法航航段留成一段輕鬆的早晨出發。", en: "Move to the CDG airport area for the night so the Air France departure can begin more calmly the next morning." } }
+        { label: { zh: "夜晚｜前往 CDG", en: "Evening" }, text: { zh: "晚上轉往巴黎戴高樂機場候機樓諾富特酒店，把隔天的法航航段留成一段輕鬆的早晨出發。", en: "Move to Novotel Paris Charles-de-Gaulle Airport for the night so the Air France departure can begin more calmly the next morning." } }
     ],
     notes: ["這天的重點不是再塞滿景點，而是讓巴黎最後一段走得漂亮又不狼狽。", "去 CDG 前先把隔天的法航、英航和華航資料都離線存好。"],
     tickets: ["聖心堂與蒙馬特散步免費；採買與交通依實際安排。"]
@@ -1573,7 +1595,7 @@ const dailyGuides = [
     date: "7/11-7/12",
     city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" },
     theme: { zh: "巴黎收束、歐洲段接駁與返台", en: "Closing Paris and connecting all the way home" },
-    intro: { zh: "最後一天的重點不是景點，而是把回程接得乾淨。從 CDG 機場住宿出發後，巴黎到曼徹斯特、再到希斯洛，最後回台北，整段都以銜接順利為優先。", en: "The last day is about clean connections rather than sightseeing, starting from the CDG airport stay and keeping each onward segment steady." },
+    intro: { zh: "最後一天的重點不是景點，而是把回程接得乾淨。從巴黎戴高樂機場候機樓諾富特酒店出發後，巴黎到曼徹斯特、再到希斯洛，最後回台北，整段都以銜接順利為優先。", en: "The last day is about clean connections rather than sightseeing, starting from Novotel Paris Charles-de-Gaulle Airport and keeping each onward segment steady." },
     highlights: ["AF1068", "CDG T2E", "BA1371", "CI82"],
     route: [
       { label: { zh: "上午｜從 CDG 出發", en: "Morning" }, text: { zh: "早上直接從機場住宿接進航站，這樣法航這段會比較從容。", en: "Start directly from the airport stay into the terminal so the Air France leg can begin calmly." } },
@@ -1751,7 +1773,7 @@ const dayCardFrames = {
     tags: [{ zh: "晨景", en: "Morning view" }, { zh: "最後採買", en: "Last shopping" }, { zh: "機場轉場", en: "Airport move" }],
     kicker: { zh: "巴黎最後一天，不急著趕景點", en: "The final Paris day should not feel rushed" },
     title: { zh: "蒙馬特、最後採買與轉往機場", en: "Montmartre, final shopping, and the move toward the airport" },
-    note: { zh: "巴黎最後一天比較像漂亮收尾：上午留給聖心堂和蒙馬特，下午慢慢把購物與行李收好，晚上再平順轉往 CDG。", en: "The last Paris day is more about a graceful finish: Montmartre in the morning, a slower afternoon for final shopping, then a calm move toward CDG." }
+    note: { zh: "巴黎最後一天比較像漂亮收尾：上午留給聖心堂和蒙馬特，下午慢慢把購物與行李收好，晚上再平順轉往巴黎戴高樂機場候機樓諾富特酒店。", en: "The last Paris day is more about a graceful finish: Montmartre in the morning, a slower afternoon for final shopping, then a calm move to Novotel Paris Charles-de-Gaulle Airport." }
   },
   "day-12": {
     location: { zh: "巴黎｜曼徹斯特｜希斯洛｜台北", en: "Paris | Manchester | Heathrow | Taipei" },
@@ -2514,7 +2536,7 @@ function renderHero(pageId) {
               </article>
             `).join("")}
           </div>
-          <p class="hero-summary-note">${state.lang !== "zh" ? "Manchester and Paris are already anchored by real stays. London remains the flexible chapter, which keeps the route practical without making the cover page feel like a list of unfinished tasks." : "曼徹斯特和巴黎都已經有明確住宿據點，現在主要只剩倫敦還保留彈性。這樣既不會打亂整條路線，也不會讓首頁一打開就像未完成事項清單。"}</p>
+          <p class="hero-summary-note">${state.lang !== "zh" ? "Manchester, Pullman Paris, and the final Novotel CDG night are all anchored now. London remains the flexible chapter, which keeps the route practical without turning the cover into a list of unfinished tasks." : "曼徹斯特、巴黎 Pullman，以及回程前一晚的 Novotel CDG 都已經定下來了。現在主要只剩倫敦還保留彈性，這樣既不會打亂整條路線，也不會讓首頁一打開就像未完成事項清單。"}</p>
         </aside>
       </div>
     `;
@@ -2731,7 +2753,7 @@ function renderHomeHotelsPanel() {
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Hotels" : "住宿",
         state.lang !== "zh" ? "Three city chapters, three different staying roles." : "每一段住宿都有自己的角色，不只是過夜而已。",
-        state.lang !== "zh" ? "Manchester holds the conference base, London works as the city chapter still being balanced, and Paris ends with the Pullman tower-view stay." : "曼徹斯特是會議據點，倫敦是還在平衡中的城市住宿，巴黎則已經確定以 Pullman 的鐵塔景陽台作為最後幾晚的亮點。"
+        state.lang !== "zh" ? "Manchester holds the conference base, London stays flexible, Paris ends at Pullman, and the final airport night now has its own clear handoff." : "曼徹斯特是會議據點，倫敦還保留彈性，巴黎最後三晚住進 Pullman，而回程前一晚也有自己清楚的機場銜接。"
       )}
       <div class="hotel-ledger">
         <article class="hotel-ledger-entry">
@@ -2771,6 +2793,18 @@ function renderHomeHotelsPanel() {
           ])}
           <div class="hotel-feature-note">${state.lang !== "zh" ? "The balcony view turns the stay itself into part of the Paris itinerary." : "陽台鐵塔景會讓住宿本身變成巴黎行程的一部分。"} </div>
         </article>
+        <article class="hotel-ledger-entry">
+          <div class="hotel-ledger-head">
+            <span class="section-label">${state.lang !== "zh" ? "Departure eve" : "回程前一晚"}</span>
+            <h3>${state.lang !== "zh" ? "Novotel Paris Charles-de-Gaulle Airport" : "巴黎戴高樂機場候機樓諾富特酒店"}</h3>
+          </div>
+          <p>${state.lang !== "zh" ? "10 Jul to 11 Jul · Roissypole RER. This is the practical handoff stay that turns the Air France departure into a calmer airport morning." : "7/10–7/11，位在 Roissypole RER 旁。這一晚的任務很單純，就是把 Pullman 的巴黎段收好，再把隔天法航 2E 航段接成一個比較從容的早晨。"} </p>
+          ${renderMetaRow([
+            { label: state.lang !== "zh" ? "Stay" : "入住", value: "2026/07/10 – 2026/07/11" },
+            { label: state.lang !== "zh" ? "Role" : "角色", value: state.lang !== "zh" ? "Airport handoff stay" : "回程前一晚機場據點" },
+            { label: state.lang !== "zh" ? "Cost" : "費用", value: "NT$7,034" }
+          ])}
+        </article>
       </div>
       <a class="text-link-button" href="./stay.html">${state.lang !== "zh" ? "Open the full stay notes" : "查看完整住宿頁"}</a>
     </section>
@@ -2793,6 +2827,7 @@ function renderHomeLinksPanel() {
       items: [
         ["INNSiDE Manchester", getPublicLink("INNSiDE Manchester")],
         ["Pullman Paris Tour Eiffel", getPublicLink("Pullman Paris Tour Eiffel")],
+        ["Novotel Paris Charles-de-Gaulle Airport", getPublicLink("Novotel Paris Charles-de-Gaulle Airport")],
         ["The Langham London", getPublicLink("The Langham London")],
         [state.lang !== "zh" ? "Daily route maps" : "每日路線地圖", "./map.html"]
       ]
@@ -3071,7 +3106,7 @@ const pageDescriptions = {
   conference: { zh: "會議日期、註冊狀態與現場節奏。", en: "Conference dates, registration status, and event rhythm." },
   flights: { zh: "去程、回程、德英法移動段與轉機整理。", en: "Outbound, return, Germany-UK-France segments, and transfer notes." },
   transport: { zh: "火車、Eurostar 與市內交通。", en: "Train, Eurostar, and local transit." },
-  stay: { zh: "曼徹斯特會議住宿、巴黎 Pullman 與後段住宿安排。", en: "Manchester conference stay, the Pullman Paris chapter, and later-stay decisions." },
+  stay: { zh: "曼徹斯特會議住宿、巴黎 Pullman 與 CDG 回程前一晚安排。", en: "Manchester conference stay, the Pullman Paris chapter, and the final CDG overnight." },
   itinerary: { zh: "每日旅程、巴黎主線與回程銜接。", en: "Daily route guide, the Paris chapter, and the way home." },
   shopping: { zh: "茶葉、餅乾、果醬與超市購物清單。", en: "Tea, biscuits, preserves, and useful shopping notes." },
   souvenirs: { zh: "英國、法國、德國伴手禮整理。", en: "Souvenir notes for the UK, France, and Germany." },
@@ -3303,12 +3338,12 @@ function dayGuideMeta(day) {
       [{ zh: "這天重心", en: "Focus" }, { zh: "精品大道、凱旋門與塞納河夜景", en: "Luxury avenues, the Arc, and the Seine at night" }]
     ],
     "day-11": [
-      [{ zh: "移動方式", en: "Movement" }, { zh: "Metro / 步行 / CDG 方向移動", en: "Metro / walking / move toward CDG" }],
-      [{ zh: "今晚落腳", en: "Tonight" }, { zh: "CDG 機場住宿", en: "CDG airport stay" }],
+      [{ zh: "移動方式", en: "Movement" }, { zh: "Metro / 步行 / 前往 Roissypole", en: "Metro / walking / onward to Roissypole" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, { zh: "Novotel Paris Charles-de-Gaulle Airport", en: "Novotel Paris Charles-de-Gaulle Airport" }],
       [{ zh: "這天重心", en: "Focus" }, { zh: "蒙馬特、最後採買與機場轉場", en: "Montmartre, final shopping, and the airport handoff" }]
     ],
     "day-12": [
-      [{ zh: "移動方式", en: "Movement" }, { zh: "CDG 機場住宿 / AF1068 / BA1371 / CI82", en: "CDG airport stay / AF1068 / BA1371 / CI82" }],
+      [{ zh: "移動方式", en: "Movement" }, { zh: "Novotel CDG / AF1068 / BA1371 / CI82", en: "Novotel CDG / AF1068 / BA1371 / CI82" }],
       [{ zh: "今晚落腳", en: "Tonight" }, { zh: "回程機上", en: "Overnight on the way home" }],
       [{ zh: "這天重心", en: "Focus" }, { zh: "把巴黎、曼徹斯特與希斯洛順順接起來", en: "Keep Paris, Manchester, and Heathrow flowing cleanly" }]
     ]
@@ -3734,7 +3769,7 @@ function renderStay() {
   return renderDesktopPageShell("stay", {
     label: { zh: "Hotel", en: "Hotel" },
     title: { zh: "住宿筆記", en: "Stay Notes" },
-    note: { zh: "先把會議期間的曼徹斯特住穩，再讓倫敦和巴黎各自長出自己的停留節奏。", en: "Start with a steady Manchester conference base, then let London and Paris each take on a different staying rhythm." },
+    note: { zh: "先把會議期間的曼徹斯特住穩，再讓倫敦、巴黎與回程前一晚各自長出自己的停留節奏。", en: "Start with a steady Manchester conference base, then let London, Paris, and the final airport night each take on their own staying rhythm." },
     meta: [
       { label: { zh: "飯店", en: "Hotel" }, value: "INNSiDE Manchester" },
       { label: { zh: "住宿", en: "Stay" }, value: "Jun 30 – Jul 5, 2026" },
@@ -3747,8 +3782,8 @@ function renderStay() {
     <section class="section compact-section" id="overview">
       <article class="section-card">
       <div class="section-label">${state.lang !== "zh" ? "Stay Plan" : "住宿安排"}</div>
-      <h2>${state.lang !== "zh" ? "Manchester stays practical, while Paris already holds the softer final chapter." : "曼徹斯特先住得穩，巴黎則把最後三晚的旅行感先收好了。"}</h2>
-      <p class="lead">${state.lang !== "zh" ? "The conference days stay anchored in Manchester, Paris now has its fixed tower-view stay at Pullman, and London remains the part to balance around rail access and city rhythm." : "會議主段仍然以曼徹斯特為據點；巴黎最後三晚已經定在 Pullman 的鐵塔景房，留下最完整的收尾畫面；倫敦則繼續以車站動線、步行便利和城市節奏慢慢比到最順的一間。"}</p>
+      <h2>${state.lang !== "zh" ? "Manchester stays practical, Paris carries the softer finish, and the last airport night now has a clear place too." : "曼徹斯特先住得穩，巴黎把最後三晚的旅行感收好，回程前一晚也有了清楚的落腳點。"}</h2>
+      <p class="lead">${state.lang !== "zh" ? "The conference days stay anchored in Manchester, Paris now has its fixed tower-view stay at Pullman, the CDG overnight is confirmed at Novotel, and London remains the only chapter still being balanced around rail access and city rhythm." : "會議主段仍然以曼徹斯特為據點；巴黎最後三晚已經定在 Pullman 的鐵塔景房，7/10–7/11 也接上了巴黎戴高樂機場候機樓諾富特酒店；現在主要還在慢慢比的，只剩倫敦這一段。"}</p>
       <div class="stay-list-rich">
         ${tripData.stay.slice(0, 1).map((stay, index) => `
           <article class="stay-card-rich${stay.image ? " with-image" : ""}">
@@ -3795,10 +3830,10 @@ function renderStay() {
     <section class="section compact-section" id="decision">
       <article class="section-card">
       <div class="section-label">${state.lang !== "zh" ? "Later-City Stays" : "後段住宿安排"}</div>
-      <h2>${state.lang !== "zh" ? "London and Paris stays" : "倫敦與巴黎住宿"}</h2>
-      <p class="lead">${state.lang !== "zh" ? "London still revolves around rail convenience, while Paris is now fully anchored around Pullman and the Eiffel Tower view." : "倫敦還是先看車站與步行便利；巴黎這一段則已經定下來，重心就是 Pullman 的陽台鐵塔景。"}</p>
+      <h2>${state.lang !== "zh" ? "London, Paris, and the airport handoff" : "倫敦、巴黎與回程前一晚"}</h2>
+      <p class="lead">${state.lang !== "zh" ? "London still revolves around rail convenience, while Paris is anchored around Pullman and the departure morning is now eased by the confirmed Novotel CDG stay." : "倫敦還是先看車站與步行便利；巴黎這一段已經定在 Pullman 的陽台鐵塔景房，最後再由 Novotel CDG 把回程早晨接得更從容。"} </p>
       <div class="summary-grid two">
-        ${tripData.stay.slice(1, 3).map(renderSummaryCard).join("")}
+        ${tripData.stay.slice(1, 4).map(renderSummaryCard).join("")}
         <article class="summary-card">
           ${statusChip("pending")}
           <h3>${state.lang !== "zh" ? "Why these choices fit" : "這些選擇為什麼順"}</h3>
@@ -3842,7 +3877,7 @@ function renderStay() {
             </div>
             <div class="paris-spotlight-body">
               <p>${state.lang !== "zh" ? "The strongest reason to stay here is simple: Paris already has enough to see during the day, so coming back each night to a balcony tower view gives the final chapter of the trip a proper center." : "白天的巴黎可以留給羅浮宮、精品街、歌劇院周邊與塞納河，晚上則回到 Pullman，把鐵塔閃燈收進房間和陽台視角裡。這樣的住法很適合把最後幾天留給拍照、購物與放鬆。"} </p>
-              <p>${state.lang !== "zh" ? "It also keeps the Eiffel Tower and the Seine within easy reach, which makes the first evening, the return nights, and the final luggage handoff all feel smoother." : "飯店離艾菲爾鐵塔與塞納河都很近，第一晚看鐵塔夜景、後面幾天的夜間散步，以及 7/10 回飯店拿寄放行李，再轉往 CDG 機場住宿，動線都會順很多。"} </p>
+              <p>${state.lang !== "zh" ? "It also keeps the Eiffel Tower and the Seine within easy reach, which makes the first evening, the return nights, and the final luggage handoff before Novotel CDG all feel smoother." : "飯店離艾菲爾鐵塔與塞納河都很近，第一晚看鐵塔夜景、後面幾天的夜間散步，以及 7/10 回飯店拿寄放行李，再轉往 Novotel CDG，動線都會順很多。"} </p>
               <p>${state.lang !== "zh" ? `The current booking amount shown on the payment record is NT$70,243 / EUR 1,915.58, which works out to about ${money.parisHotelPerNight} per night.` : `目前訂房付款紀錄顯示總額為 NT$70,243 / EUR 1,915.58，換算平均每晚約 ${money.parisHotelPerNight}。`}</p>
             </div>
           </div>
@@ -3860,7 +3895,7 @@ function renderStay() {
             </div>
             <div class="paris-spotlight-note">
               <h3>${state.lang !== "zh" ? "Paris handoff" : "巴黎段收尾"}</h3>
-              <p>${state.lang !== "zh" ? "The Pullman stay ends on 10 Jul. After the final Montmartre and shopping day, return here for stored luggage, then move to the CDG airport stay for a calmer departure morning." : "Pullman 這段住到 7/10。白天完成聖心堂、蒙馬特與最後採買後，再回飯店拿寄放行李，晚上轉往 CDG 機場住宿，隔天法航航段會從容很多。"}</p>
+              <p>${state.lang !== "zh" ? "The Pullman stay ends on 10 Jul. After the final Montmartre and shopping day, return here for stored luggage, then move to Novotel Paris Charles-de-Gaulle Airport for a calmer departure morning." : "Pullman 這段住到 7/10。白天完成聖心堂、蒙馬特與最後採買後，再回飯店拿寄放行李，晚上轉往巴黎戴高樂機場候機樓諾富特酒店，隔天法航航段會從容很多。"}</p>
             </div>
           </div>
         </div>
@@ -4214,10 +4249,10 @@ function currencySwitcher() {
 
 function renderBudget() {
   const totals = {
-    TWD: { reimburse: "NT$156,039", self: "NT$121,698", personalSelf: "約 NT$19,263", hotelPerson: "NT$19,135", hotelPersonNight: "NT$3,827" },
-    GBP: { reimburse: "GBP 3,671", self: "約 GBP 2,846", personalSelf: "GBP 453.45", hotelPerson: "GBP 450.45", hotelPersonNight: "GBP 90.09" },
-    EUR: { reimburse: "EUR 4,293", self: "約 EUR 3,331", personalSelf: "約 EUR 531", hotelPerson: "EUR 527", hotelPersonNight: "EUR 105" },
-    USD: { reimburse: "US$4,870", self: "約 US$3,773", personalSelf: "約 US$601", hotelPerson: "US$597", hotelPersonNight: "US$119" }
+    TWD: { reimburse: "NT$156,039", self: "NT$128,732", personalSelf: "約 NT$19,263", hotelPerson: "NT$19,135", hotelPersonNight: "NT$3,827" },
+    GBP: { reimburse: "GBP 3,671", self: "約 GBP 3,010", personalSelf: "GBP 453.45", hotelPerson: "GBP 450.45", hotelPersonNight: "GBP 90.09" },
+    EUR: { reimburse: "EUR 4,293", self: "約 EUR 3,523", personalSelf: "約 EUR 531", hotelPerson: "EUR 527", hotelPersonNight: "EUR 105" },
+    USD: { reimburse: "US$4,870", self: "約 US$3,990", personalSelf: "約 US$601", hotelPerson: "US$597", hotelPersonNight: "US$119" }
   };
   const selectedTotals = totals[state.currency] || totals.TWD;
   return renderDesktopPageShell("budget", {
@@ -4246,7 +4281,7 @@ function renderBudget() {
         <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Manchester hotel" : "曼徹斯特住宿"}</h3><strong>${money.hotel}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Stay" : "住宿", value: state.lang !== "zh" ? "5 nights / 2 guests" : "5 晚 / 2 人" }, { label: state.lang !== "zh" ? "Personal share" : "個人分攤", value: money.hotelPerPersonTotal }])}</article>
         <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Paris hotel" : "巴黎住宿"}</h3><strong>${money.parisHotel}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Stay" : "住宿", value: state.lang !== "zh" ? "3 nights" : "3 晚" }, { label: state.lang !== "zh" ? "Room" : "房型", value: state.lang !== "zh" ? "Balcony Eiffel Tower View" : "陽台鐵塔景房" }])}</article>
         <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Train estimate" : "火車預估"}</h3><strong>${t(money.trainAdvance)}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Type" : "票種", value: "Advance / Off-Peak" }, { label: state.lang !== "zh" ? "Railcard" : "Railcard", value: money.railcard }])}</article>
-        <article class="summary-card">${statusChip("pending")}<h3>${state.lang !== "zh" ? "Pending items" : "待確認項目"}</h3><strong>${state.lang !== "zh" ? "London hotel / Eurostar / CDG stay" : "倫敦住宿 / Eurostar / CDG 周邊住宿"}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Action" : "處理", value: state.lang !== "zh" ? "Book and review" : "預訂與確認" }, { label: state.lang !== "zh" ? "Timing" : "時點", value: state.lang !== "zh" ? "Before departure" : "出發前" }])}</article>
+        <article class="summary-card">${statusChip("pending")}<h3>${state.lang !== "zh" ? "Pending items" : "待確認項目"}</h3><strong>${state.lang !== "zh" ? "London hotel / Eurostar" : "倫敦住宿 / Eurostar"}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Action" : "處理", value: state.lang !== "zh" ? "Book and review" : "預訂與確認" }, { label: state.lang !== "zh" ? "Timing" : "時點", value: state.lang !== "zh" ? "Before departure" : "出發前" }])}</article>
       </div>
       ${currencySwitcher()}
       ${renderBudgetCards(tripData.expenses)}
@@ -4264,7 +4299,7 @@ function renderBudget() {
       <div class="summary-grid three">
         <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang !== "zh" ? "Reimbursement total" : "可報帳小計"}</h3><strong>${selectedTotals.reimburse}</strong><p>${state.lang !== "zh" ? "Flights, AIB conference fee, AIB membership fee, and Manchester daily allowance for 5 conference days." : "含機票、AIB 會議費、AIB 會員費，以及曼徹斯特研討會 5 天日支費。"}</p></article>
         <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang !== "zh" ? "NSTC daily allowance" : "國科會日支費"}</h3><strong>${tripData.expenses[3].amounts[state.currency]}</strong><p>${state.lang !== "zh" ? "Calculated for 5 conference days." : "以研討會 5 天計算。"}</p></article>
-        <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Self-funded known subtotal" : "已知自費小計"}</h3><strong>${selectedTotals.self}</strong><p>${state.lang !== "zh" ? "Current known self-funded items include the Manchester hotel, visitor charge, the Pullman Paris booking, and the Air France Paris-Manchester segment. London hotel, Eurostar, and attraction choices remain open." : "目前已知自費包含曼徹斯特住宿與旅遊稅、Pullman 巴黎住宿，以及巴黎回曼徹斯特的法航航段；倫敦住宿、Eurostar 和景點組合仍待確認。"}</p></article>
+        <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Self-funded known subtotal" : "已知自費小計"}</h3><strong>${selectedTotals.self}</strong><p>${state.lang !== "zh" ? "Current known self-funded items include the Manchester hotel, visitor charge, the Pullman Paris booking, the Novotel CDG overnight, and the Air France Paris-Manchester segment. London hotel, Eurostar, and attraction choices remain open." : "目前已知自費包含曼徹斯特住宿與旅遊稅、Pullman 巴黎住宿、Novotel CDG 機場過夜，以及巴黎回曼徹斯特的法航航段；倫敦住宿、Eurostar 和景點組合仍待確認。"}</p></article>
       </div>
     </section>
     <section class="section compact-section" id="personal-costs">
