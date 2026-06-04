@@ -15578,3 +15578,742 @@ main {
     gap: 8px;
   }
 }
+
+/* Tabbed handbook redesign */
+body[data-page="home"] #page-content,
+body[data-page="itinerary"] #page-content {
+  width: min(1120px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+body[data-page="home"] main,
+body[data-page="itinerary"] main {
+  padding-bottom: calc(168px + env(safe-area-inset-bottom));
+}
+
+body[data-page="home"] .hero-home-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 420px);
+  align-items: end;
+  gap: 1.5rem;
+}
+
+body[data-page="home"] .hero-home-main,
+body[data-page="home"] .hero-overview-panel {
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.handbook-tabs-shell {
+  position: sticky;
+  top: calc(env(safe-area-inset-top) + 8px);
+  z-index: 34;
+  margin: 0 0 1.4rem;
+  padding-inline: 0.15rem;
+}
+
+.handbook-tabs-track {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0.45rem;
+  border-radius: 999px;
+  background: rgba(255, 250, 245, 0.82);
+  border: 1px solid rgba(216, 203, 193, 0.72);
+  box-shadow: 0 18px 34px rgba(105, 87, 76, 0.09);
+  backdrop-filter: blur(18px);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.handbook-tabs-track::-webkit-scrollbar {
+  display: none;
+}
+
+.handbook-tab-link {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.78rem 1.18rem;
+  border-radius: 999px;
+  color: rgba(78, 64, 57, 0.9);
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.handbook-tab-link.active,
+.handbook-tab-link:hover {
+  background: linear-gradient(135deg, #a48376 0%, #b49283 100%);
+  color: #fffaf5;
+  box-shadow: 0 10px 22px rgba(134, 97, 79, 0.18);
+}
+
+.home-tab-panels {
+  display: grid;
+  gap: 2rem;
+}
+
+.home-tab-panel[hidden] {
+  display: none !important;
+}
+
+.home-tab-panel {
+  min-width: 0;
+}
+
+.home-tab-panel-block {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(1.6rem, 2.8vw, 2.4rem);
+  border-radius: 32px;
+  background: rgba(255, 251, 247, 0.92);
+  border: 1px solid rgba(219, 206, 197, 0.72);
+  box-shadow: 0 22px 46px rgba(98, 82, 74, 0.08);
+}
+
+.tab-panel-intro {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.tab-panel-intro .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(131, 111, 100, 0.9);
+}
+
+.tab-panel-intro .section-label::before {
+  content: "";
+  width: 2.6rem;
+  height: 1px;
+  background: rgba(173, 152, 138, 0.8);
+}
+
+.tab-panel-intro h2 {
+  margin: 0;
+  font-size: clamp(2.05rem, 4.2vw, 3.1rem);
+  line-height: 1.08;
+  color: var(--handbook-text);
+}
+
+.tab-panel-intro p,
+.hotel-ledger-entry p,
+.route-ledger-entry p,
+.info-ledger-block p,
+.visa-ledger-entry p,
+.budget-ledger-row,
+.english-overview-panel p {
+  margin: 0;
+  color: rgba(83, 75, 73, 0.88);
+  line-height: 1.82;
+  font-size: 1.04rem;
+}
+
+.handbook-overview-layout.compact {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+  gap: 1.4rem;
+  align-items: start;
+}
+
+.handbook-route-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1.15rem;
+  color: rgba(90, 78, 71, 0.96);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.handbook-route-line i {
+  display: block;
+  width: 1.55rem;
+  height: 1px;
+  background: rgba(161, 132, 118, 0.7);
+}
+
+.handbook-home-timeline {
+  margin-top: 0.2rem;
+}
+
+.overview-conference-strip {
+  gap: 1rem;
+}
+
+.overview-editorial-block {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.overview-editorial-block h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  color: var(--handbook-text);
+}
+
+.overview-editorial-block p {
+  margin: 0;
+  font-size: 1.04rem;
+  line-height: 1.82;
+  color: rgba(86, 76, 72, 0.88);
+}
+
+.paris-mustdo-grid.compact {
+  gap: 1rem;
+}
+
+.day-selector-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  overflow-x: auto;
+  padding: 0.35rem 0.1rem 0.25rem;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.day-selector-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.day-selector-link {
+  flex: 0 0 auto;
+  display: grid;
+  gap: 0.18rem;
+  min-width: 104px;
+  padding: 0.9rem 1rem;
+  border-radius: 22px;
+  border: 1px solid rgba(217, 205, 196, 0.82);
+  background: rgba(255, 251, 247, 0.76);
+  color: rgba(83, 75, 73, 0.9);
+  text-decoration: none;
+  box-shadow: 0 10px 22px rgba(96, 78, 67, 0.06);
+}
+
+.day-selector-link span {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(126, 113, 105, 0.82);
+}
+
+.day-selector-link strong {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--handbook-text);
+}
+
+.day-selector-link.active {
+  background: linear-gradient(135deg, #a48376 0%, #b49283 100%);
+  border-color: transparent;
+  box-shadow: 0 14px 26px rgba(134, 97, 79, 0.16);
+}
+
+.day-selector-link.active span,
+.day-selector-link.active strong {
+  color: #fffaf5;
+}
+
+.day-card-stack {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.day-card {
+  min-width: 0;
+  padding: 2rem 1.95rem;
+  border-radius: 34px;
+  border: 1px solid rgba(219, 205, 194, 0.8);
+  background: rgba(255, 250, 245, 0.96);
+  box-shadow: 0 22px 40px rgba(102, 84, 72, 0.08);
+  scroll-margin-top: 128px;
+}
+
+.day-card-topline {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.day-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.62rem 1rem;
+  border-radius: 999px;
+  background: rgba(165, 135, 121, 0.14);
+  color: rgba(122, 89, 80, 0.96);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.day-date {
+  color: rgba(122, 109, 101, 0.88);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.day-location {
+  margin-top: 0.75rem;
+  color: rgba(101, 88, 81, 0.92);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.day-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.day-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(161, 132, 118, 0.11);
+  color: rgba(103, 87, 79, 0.9);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.day-kicker {
+  margin: 1.2rem 0 0;
+  color: rgba(151, 120, 106, 0.95);
+  font-size: 0.9rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.day-title {
+  margin: 0.55rem 0 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.08;
+  color: var(--handbook-text);
+}
+
+.day-description {
+  margin: 1rem 0 0;
+  color: rgba(83, 75, 73, 0.9);
+  font-size: 1.08rem;
+  line-height: 1.84;
+}
+
+.day-note {
+  margin-top: 1.2rem;
+  padding: 1rem 1.1rem;
+  border-radius: 22px;
+  background: rgba(246, 238, 231, 0.95);
+  border: 1px solid rgba(219, 206, 197, 0.72);
+  color: rgba(91, 80, 75, 0.9);
+  line-height: 1.78;
+}
+
+.day-flow {
+  margin-top: 1.4rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.day-flow h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--handbook-text);
+}
+
+.day-flow-list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.day-flow-row {
+  display: grid;
+  gap: 0.42rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(222, 212, 206, 0.72);
+}
+
+.day-flow-row:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.day-flow-label {
+  color: rgba(145, 118, 105, 0.96);
+  font-size: 0.86rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.day-flow-row p {
+  margin: 0;
+  color: rgba(83, 75, 73, 0.9);
+  line-height: 1.8;
+}
+
+.day-details {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.45rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(222, 212, 206, 0.74);
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: minmax(92px, 112px) minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.detail-label {
+  color: rgba(143, 120, 109, 0.92);
+  font-size: 0.84rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.detail-content {
+  color: rgba(83, 75, 73, 0.92);
+  line-height: 1.78;
+  overflow-wrap: anywhere;
+}
+
+.hotel-ledger,
+.link-ledger,
+.budget-ledger,
+.visa-ledger,
+.info-ledger,
+.route-ledger {
+  display: grid;
+  gap: 1rem;
+}
+
+.hotel-ledger-entry,
+.link-ledger-group,
+.route-ledger-entry,
+.info-ledger-block,
+.budget-ledger-block,
+.visa-ledger-entry,
+.english-overview-panel {
+  padding: 1.35rem 1.4rem;
+  border-radius: 26px;
+  border: 1px solid rgba(221, 208, 198, 0.72);
+  background: rgba(255, 251, 247, 0.82);
+}
+
+.hotel-ledger-entry.featured {
+  background: linear-gradient(180deg, rgba(255, 249, 242, 0.98) 0%, rgba(251, 244, 238, 0.92) 100%);
+  box-shadow: 0 18px 34px rgba(113, 91, 79, 0.08);
+}
+
+.hotel-ledger-head,
+.info-ledger-block,
+.visa-ledger-entry,
+.route-ledger-entry {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.hotel-ledger-head h3,
+.link-ledger-group h3,
+.info-ledger-block h3,
+.visa-ledger-entry h3,
+.route-ledger-entry h3 {
+  margin: 0;
+  font-size: 1.42rem;
+  line-height: 1.25;
+  color: var(--handbook-text);
+}
+
+.hotel-feature-note {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 18px;
+  background: rgba(214, 198, 190, 0.18);
+  color: rgba(88, 76, 71, 0.92);
+  line-height: 1.72;
+}
+
+.link-ledger-list,
+.budget-ledger-rows {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+.link-ledger-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 46px;
+  padding: 0.9rem 1rem;
+  border-radius: 18px;
+  background: rgba(255, 248, 242, 0.9);
+  color: rgba(81, 70, 66, 0.94);
+  text-decoration: none;
+}
+
+.link-ledger-row strong {
+  color: rgba(156, 127, 112, 0.98);
+  font-size: 0.84rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.budget-ledger {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.budget-ledger-row {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid rgba(223, 214, 207, 0.75);
+}
+
+.budget-ledger-row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.budget-ledger-row strong {
+  display: block;
+  max-width: 65%;
+  font-weight: 600;
+  color: var(--handbook-text);
+}
+
+.budget-ledger-row span {
+  text-align: right;
+  color: rgba(91, 78, 73, 0.92);
+  overflow-wrap: anywhere;
+}
+
+.info-ledger {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.visa-ledger {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.english-overview-panel {
+  gap: 1rem;
+}
+
+.english-overview-panel p {
+  max-width: 70ch;
+}
+
+body[data-page="home"] .topbar.handbook-topbar {
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+body[data-page="home"] .control-dock {
+  margin-left: auto;
+  max-width: min(100%, 520px);
+}
+
+@media (max-width: 1120px) {
+  body[data-page="home"] .hero-home-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .budget-ledger,
+  .info-ledger,
+  .visa-ledger {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  body[data-page="home"] #page-content,
+  body[data-page="itinerary"] #page-content {
+    width: min(calc(100% - 28px), 760px);
+  }
+
+  body[data-page="home"] main,
+  body[data-page="itinerary"] main {
+    padding-bottom: calc(160px + env(safe-area-inset-bottom));
+  }
+
+  .handbook-tabs-shell {
+    top: calc(env(safe-area-inset-top) + 8px);
+    margin-bottom: 1.1rem;
+  }
+
+  .handbook-tabs-track {
+    padding: 0.35rem;
+    gap: 0.25rem;
+  }
+
+  .handbook-tab-link {
+    min-height: 44px;
+    padding: 0.74rem 0.95rem;
+    font-size: 0.96rem;
+  }
+
+  .home-tab-panels {
+    gap: 1.35rem;
+  }
+
+  .home-tab-panel-block {
+    padding: 1.45rem 1.25rem;
+    border-radius: 28px;
+    gap: 1.15rem;
+  }
+
+  .tab-panel-intro h2 {
+    font-size: clamp(1.85rem, 7vw, 2.55rem);
+  }
+
+  body[data-page="home"] .hero-home-shell {
+    gap: 1rem;
+  }
+
+  body[data-page="home"] .handbook-home-hero h1 {
+    font-size: clamp(2.7rem, 11vw, 4.2rem);
+  }
+
+  body[data-page="home"] .topbar.handbook-topbar {
+    align-items: stretch;
+  }
+
+  body[data-page="home"] .control-dock {
+    width: 100%;
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .handbook-overview-layout.compact,
+  .paris-mustdo-grid.compact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .day-selector-bar {
+    gap: 0.55rem;
+  }
+
+  .day-selector-link {
+    min-width: 96px;
+    padding: 0.82rem 0.9rem;
+    border-radius: 20px;
+  }
+
+  .day-card {
+    padding: 1.75rem 1.5rem;
+    border-radius: 32px;
+  }
+
+  .day-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .day-description,
+  .day-note,
+  .day-flow-row p,
+  .detail-content,
+  .tab-panel-intro p,
+  .hotel-ledger-entry p,
+  .route-ledger-entry p,
+  .info-ledger-block p,
+  .visa-ledger-entry p,
+  .english-overview-panel p {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .detail-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.32rem;
+  }
+
+  .detail-label {
+    font-size: 0.8rem;
+  }
+
+  .hotel-ledger-entry,
+  .link-ledger-group,
+  .route-ledger-entry,
+  .info-ledger-block,
+  .budget-ledger-block,
+  .visa-ledger-entry,
+  .english-overview-panel {
+    padding: 1.15rem 1.1rem;
+    border-radius: 22px;
+  }
+
+  .hotel-ledger-head h3,
+  .link-ledger-group h3,
+  .info-ledger-block h3,
+  .visa-ledger-entry h3,
+  .route-ledger-entry h3 {
+    font-size: 1.25rem;
+  }
+
+  .link-ledger-row {
+    padding: 0.84rem 0.9rem;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 430px) {
+  .handbook-tab-link {
+    padding: 0.76rem 0.88rem;
+    font-size: 0.93rem;
+  }
+
+  .day-card {
+    padding: 1.62rem 1.32rem;
+  }
+
+  .day-tags span {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 390px) {
+  body[data-page="home"] #page-content,
+  body[data-page="itinerary"] #page-content {
+    width: calc(100% - 24px);
+  }
+
+  .home-tab-panel-block,
+  .day-card {
+    border-radius: 28px;
+  }
+
+  .day-card {
+    padding: 1.5rem 1.15rem;
+  }
+
+  .day-title {
+    font-size: clamp(1.88rem, 8vw, 2.6rem);
+  }
+}
