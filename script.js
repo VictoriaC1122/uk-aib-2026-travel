@@ -1051,8 +1051,7 @@ const homeSectionTabs = [
   { id: "overview", label: { zh: "總覽", en: "Overview" }, icon: "overview" },
   { id: "snapshot", label: { zh: "摘要", en: "Snapshot" }, icon: "schedule" },
   { id: "highlights", label: { zh: "亮點", en: "Highlights" }, icon: "papers" },
-  { id: "days", label: { zh: "每日故事", en: "Day by Day" }, icon: "hotel" },
-  { id: "info", label: { zh: "實用資訊", en: "Practical Info" }, icon: "checklist" }
+  { id: "days", label: { zh: "每日故事", en: "Day by Day" }, icon: "hotel" }
 ];
 
 const tripSnapshotCards = [
@@ -3957,7 +3956,7 @@ function updateProgress() {
 function wireBackToTop() {
   const button = document.getElementById("backToTop");
   if (!button) return;
-  button.textContent = state.lang !== "zh" ? "Top" : "上方";
+  button.textContent = "↑";
   button.setAttribute("aria-label", state.lang !== "zh" ? "Back to top" : "回到上方");
   if (button.dataset.bound) return;
   button.dataset.bound = "true";
