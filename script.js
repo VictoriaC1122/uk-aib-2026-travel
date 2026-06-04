@@ -159,7 +159,7 @@ const tripData = {
     stay: {
       kicker: { zh: "住宿安排", en: "Accommodation" },
       title: { zh: "住宿與城市切換", en: "Accommodation & City Split" },
-      lead: { zh: "曼徹斯特的會議住宿已定，倫敦和巴黎也先把想住的地方列出來。", en: "The Manchester conference stay is set, while London and Paris are organized into first-choice and backup stays." }
+      lead: { zh: "曼徹斯特的會議住宿已定，巴黎最後三晚也確定落在 Pullman，現在主要剩倫敦與 CDG 機場周邊住宿要補。", en: "The Manchester conference stay is set, Pullman is fixed for the last Paris nights, and the remaining stay decisions are London and the CDG airport area." }
     },
     itinerary: {
       kicker: { zh: "每日行程", en: "Itinerary" },
@@ -206,7 +206,7 @@ const tripData = {
     { status: "confirmed", title: { zh: "AIB 會議日期", en: "AIB conference dates" }, value: "2026/06/30 - 2026/07/03", note: { zh: "主段在曼徹斯特，重點是發表和交流。", en: "Manchester conference days, centered on presentations and networking." } },
     { status: "confirmed", title: { zh: "整段旅程日期", en: "Trip dates" }, value: "2026/06/29 - 2026/07/12", note: { zh: "曼徹斯特 → 倫敦 → 巴黎 → 曼徹斯特。", en: "Manchester → London → Paris → Manchester." } },
     { status: "confirmed", title: { zh: "曼徹斯特住宿狀態", en: "Manchester hotel status" }, value: "INNSiDE Manchester", note: { zh: "6/30-7/5 已訂，雙床房，2 人，房價 GBP 900.90。", en: "Booked for 30 June-5 July, twin beds for two guests, GBP 900.90." } },
-    { status: "book", title: { zh: "後段住宿規劃", en: "Later-stay planning" }, value: { zh: "倫敦 3 晚 / 巴黎 4 晚", en: "3 nights London / 4 nights Paris" }, note: { zh: "倫敦和巴黎都先排了想住的地方。", en: "First-choice stays are listed for both London and Paris." } }
+    { status: "book", title: { zh: "後段住宿規劃", en: "Later-stay planning" }, value: { zh: "倫敦 3 晚 / 巴黎 3 晚", en: "3 nights London / 3 nights Paris" }, note: { zh: "巴黎最後三晚已定在 Pullman，7/10 晚再轉往 CDG 機場周邊。", en: "The last three Paris nights now center on Pullman, with an airport-area stay after 10 July." } }
   ],
   todos: [
     { status: "book", text: { zh: "倫敦住宿先看 The Langham London，不合適的話再比 The Clermont Charing Cross。", en: "For London, check The Langham London first, then The Clermont Charing Cross." } },
@@ -430,16 +430,18 @@ const tripData = {
       note: { zh: "這段以交通便利與市中心行程順手為優先，The Langham 氣質最好，Charing Cross 則更貼近移動動線。", en: "This stay prioritizes easy central access; The Langham is the stronger first choice, while Charing Cross is the more transit-friendly alternative." }
     },
     {
-      status: "book",
-      title: { zh: "巴黎住宿首選", en: "Paris first-choice stay" },
+      status: "confirmed",
+      title: { zh: "巴黎核心住宿", en: "Paris anchor stay" },
       city: { zh: "巴黎", en: "Paris" },
       facts: [
-        { zh: "日期：2026/07/07 – 2026/07/11（4 晚）", en: "Dates: 7 Jul 2026 – 11 Jul 2026 (4 nights)" },
-        { zh: "首選：Pullman Paris Tour Eiffel", en: "First choice: Pullman Paris Tour Eiffel" },
-        { zh: "特色：艾菲爾鐵塔景", en: "Feature: Eiffel Tower view" },
-        { zh: "狀態：尚未預訂", en: "Status: not booked yet" }
+        { zh: "日期：2026/07/07 – 2026/07/10（3 晚）", en: "Dates: 7 Jul 2026 – 10 Jul 2026 (3 nights)" },
+        { zh: "飯店：Pullman Paris Tour Eiffel", en: "Hotel: Pullman Paris Tour Eiffel" },
+        { zh: "房型：Deluxe Room, High Floor, 1 King Bed, 1 Sofa Bed, Balcony, Eiffel Tower View", en: "Room: Deluxe Room, High Floor, 1 King Bed, 1 Sofa Bed, Balcony, Eiffel Tower View" },
+        { zh: "特色：32㎡、高樓層、私人陽台、艾菲爾鐵塔景觀", en: "Features: 32 sqm, high floor, private balcony, Eiffel Tower view" },
+        { zh: "位置：步行就能接到艾菲爾鐵塔與塞納河", en: "Location: an easy walk to the Eiffel Tower and the Seine" },
+        { zh: "狀態：巴黎主住宿已確認", en: "Status: Paris anchor stay confirmed" }
       ],
-      note: { zh: "如果巴黎段想住得更有旅行感，這間最接近目前想像的節奏。", en: "If the Paris stay is meant to feel more like a destination trip, this is the clearest match so far." }
+      note: { zh: "這三晚將入住 Pullman Paris Tour Eiffel，以高樓層陽台房欣賞艾菲爾鐵塔景觀，作為巴黎行程的核心住宿亮點。", en: "These three nights stay at Pullman Paris Tour Eiffel, using a high-floor balcony room with an Eiffel Tower view as the main hotel highlight of the Paris chapter." }
     },
     {
       status: "optional",
@@ -459,10 +461,10 @@ const tripData = {
     { date: "7/4", city: { zh: "Manchester → London", en: "Manchester → London" }, kind: "travel", theme: { zh: "從會議城市轉進倫敦街景", en: "From the conference city into London streets" }, title: { zh: "轉往倫敦", en: "Move to London" }, status: "book", must: ["Avanti West Coast", "Manchester → London", "約 2 小時 10 分"], optional: ["抵達後 Big Ben", "Buckingham Palace", "St James's Park"], tickets: ["火車票待訂", "地標散步：免費"], notes: ["上午離開曼徹斯特之後，下午就能把倫敦的第一段西敏散步接進來，從城市移動自然過渡到旅遊節奏。"] },
     { date: "7/5", city: { zh: "London", en: "London" }, kind: "free", theme: { zh: "精品街區與城市光澤", en: "Luxury streets and city polish" }, title: { zh: "倫敦 Day 2", en: "London Day 2" }, status: "pending", must: ["Harrods", "Bond Street"], optional: ["Chanel", "Dior", "Louis Vuitton", "YSL"], tickets: ["百貨與精品街散步：免費"], notes: ["這一天適合把步調放在精品街區與百貨之間，讓逛街、喝咖啡和市區移動自然串成一段輕鬆的城市午後。"] },
     { date: "7/6", city: { zh: "London", en: "London" }, kind: "free", theme: { zh: "街區漫步與自由留白", en: "Neighbourhood walks and open time" }, title: { zh: "倫敦 Day 3", en: "London Day 3" }, status: "pending", must: ["Covent Garden", "Piccadilly Circus"], optional: ["自由活動"], tickets: ["街區散步：免費"], notes: ["這天更像留給倫敦市中心的一次慢走，先走街區，再把剩下的時間留給臨時想停下來的店、巷子或咖啡館。"] },
-    { date: "7/7", city: { zh: "London → Paris", en: "London → Paris" }, kind: "travel", theme: { zh: "城市切換與巴黎初見", en: "A city shift and first glimpse of Paris" }, title: { zh: "Eurostar 前往巴黎", en: "Eurostar to Paris" }, status: "book", must: ["Eurostar", "約 2 小時 20 分", "市中心直達市中心"], optional: ["抵達後 Eiffel Tower", "夜景"], tickets: ["Eurostar 票待訂", "艾菲爾鐵塔票價待查"], notes: ["從倫敦進巴黎的這一段很適合當成旅程的轉場，白天把城市換掉，晚上就留給鐵塔和第一眼的巴黎夜色。"] },
-    { date: "7/8", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "博物館日與河岸步調", en: "Museum day and a slower riverside pace" }, title: { zh: "巴黎 Day 2", en: "Paris Day 2" }, status: "pending", must: ["Louvre Museum"], optional: ["周邊散步"], tickets: ["Louvre 票價待查"], notes: ["這天把重心放在羅浮宮，前後則留一點散步空間，讓博物館的密度和巴黎街景之間有自然的呼吸。"] },
-    { date: "7/9", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "大道景觀與城市主景", en: "Grand boulevards and signature landmarks" }, title: { zh: "巴黎 Day 3", en: "Paris Day 3" }, status: "pending", must: ["Champs-Elysees", "Arc de Triomphe"], optional: ["精品購物"], tickets: ["街區散步與購物：依實際消費"], notes: ["這一天適合把巴黎最具代表性的城市景觀排在一起，白天看大道與凱旋門，沿途再慢慢收進想逛的精品店。"] },
-    { date: "7/10", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "最後採買與塞納河收尾", en: "Final shopping and a Seine-side close" }, title: { zh: "巴黎 Day 4", en: "Paris Day 4" }, status: "pending", must: ["Galeries Lafayette Haussmann", "Seine", "塞納河遊船"], optional: ["最後採買"], tickets: ["遊船票價待查"], notes: ["最後一天不用排得太滿，白天留給採買，傍晚再把節奏交給塞納河，讓巴黎用比較柔和的方式收尾。"] },
+    { date: "7/7", city: { zh: "London → Paris", en: "London → Paris" }, kind: "travel", theme: { zh: "Eurostar 進巴黎與鐵塔第一眼", en: "Eurostar into Paris and the first Eiffel evening" }, title: { zh: "抵達巴黎，入住 Pullman", en: "Arrive in Paris and check into Pullman" }, status: "confirmed", must: ["Eurostar｜St Pancras → Gare du Nord", "入住 Pullman Paris Tour Eiffel", "艾菲爾鐵塔夜景", "Pullman 陽台看鐵塔"], optional: ["塞納河邊散步"], tickets: ["Eurostar 票待訂", "鐵塔周邊散步免費"], notes: ["從倫敦進巴黎的這一段很適合當成旅程轉場。抵達後先把步調安頓進 Pullman，晚上再把鐵塔夜景和陽台閃燈留給巴黎的第一眼。"] },
+    { date: "7/8", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "羅浮宮、右岸街景與百貨屋頂", en: "The Louvre, Right Bank streets, and the department-store rooftop" }, title: { zh: "巴黎 Day 2", en: "Paris Day 2" }, status: "confirmed", must: ["Louvre Museum", "Place Vendôme", "Galeries Lafayette 頂樓", "巴黎歌劇院周邊"], optional: ["右岸咖啡館小停留"], tickets: ["Louvre 票價待查", "老佛爺百貨頂樓免費"], notes: ["這天把巴黎右岸最有代表性的藝術、街景與百貨視角排在一起。上午留給羅浮宮，午後再順著 Place Vendôme、歌劇院一帶慢慢走向老佛爺頂樓。"] },
+    { date: "7/9", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "精品大道與巴黎主景", en: "Luxury avenues and the grand Paris landmarks" }, title: { zh: "巴黎 Day 3", en: "Paris Day 3" }, status: "confirmed", must: ["Avenue Montaigne", "Champs-Elysees", "Arc de Triomphe", "塞納河夜景"], optional: ["精品購物", "晚餐後再看一次鐵塔"], tickets: ["街區散步與購物：依實際消費", "凱旋門票價待查"], notes: ["這一天的巴黎會比較華麗。從 Avenue Montaigne 走到香榭麗舍與凱旋門，晚上再把視線留給塞納河，城市的尺度和光澤會在這段路裡慢慢打開。"] },
+    { date: "7/10", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "蒙馬特、最後採買與轉往機場", en: "Montmartre, final shopping, and the shift to the airport" }, title: { zh: "巴黎 Day 4", en: "Paris Day 4" }, status: "confirmed", must: ["Sacré-Cœur / Montmartre", "巴黎最後採購", "回 Pullman 拿寄放行李", "前往 CDG 機場住宿"], optional: ["沿途街角拍照"], tickets: ["聖心堂與蒙馬特散步免費"], notes: ["最後一天不必把節奏塞滿。上午把巴黎留給蒙馬特和聖心堂，下午再把採買與行李收尾好，晚上順順轉往 CDG 機場周邊住宿。"] },
     { date: "7/11-7/12", city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" }, kind: "travel", theme: { zh: "回程接駁與長途返台", en: "Connection day and the long flight home" }, title: { zh: "回程返台", en: "Return to Taipei" }, status: "confirmed", must: ["Air France Business Standard｜CDG 12:50 → MAN 13:25", "BA1371｜MAN 18:10 → LHR 19:15", "CI82｜LHR 21:10 → TPE 18:05(+1)"], optional: ["巴黎上午只排簡單移動"], tickets: ["AF 歐洲段：約 EUR 354.05 / NT$12,930"], notes: ["這一天以順利銜接航段為主，上午不必再塞景點，把體力留給巴黎到曼徹斯特、再接希斯洛返台的長路。"] }
   ],
   attractionCosts: [
@@ -475,7 +477,7 @@ const tripData = {
     { status: "confirmed", day: "7/9", attraction: "Champs-Elysees / Arc de Triomphe", fee: "Depends", estimate: "依實際安排 / Depends / Depends", note: { zh: "香榭麗舍大道散步免費，若上凱旋門再另外查票。", en: "Walking the Champs-Elysees is free; check separately if you want Arc entry." }, source: "https://www.paris-arc-de-triomphe.fr/en/" },
     { status: "pending", day: "7/10", attraction: "Seine river cruise", fee: "TBD", estimate: "待查 / TBD / TBD", note: { zh: "遊船票價依公司與時段而不同。", en: "Cruise pricing varies by operator and timeslot." }, source: "https://www.bateauxparisiens.com/en.html" }
   ],
-  mapRouteUrl: "https://www.google.com/maps/dir/Manchester+Airport/INNSiDE+Manchester/Manchester+Piccadilly/London+Euston/Big+Ben/Harrods/Covent+Garden/Piccadilly+Circus/London+St+Pancras+International/Gare+du+Nord/Pullman+Paris+Tour+Eiffel/Eiffel+Tower/Louvre+Museum/Champs-Elysees/Arc+de+Triomphe/Galeries+Lafayette+Haussmann/Charles+de+Gaulle+Airport/Manchester+Airport",
+  mapRouteUrl: "https://www.google.com/maps/dir/Manchester+Airport/INNSiDE+Manchester/Manchester+Piccadilly/London+Euston/Big+Ben/Harrods/Covent+Garden/Piccadilly+Circus/London+St+Pancras+International/Gare+du+Nord/Pullman+Paris+Tour+Eiffel/Eiffel+Tower/Louvre+Museum/Place+Vendome+Paris/Galeries+Lafayette+Haussmann/Avenue+Montaigne+Paris/Arc+de+Triomphe/Sacre-Coeur+Paris/Charles+de+Gaulle+Airport/Manchester+Airport",
   mapLocations: [
     { status: "confirmed", city: "Manchester", title: { zh: "Manchester Airport", en: "Manchester Airport" }, query: "Manchester Airport", note: { zh: "抵達與回程都會經過的城市門口。", en: "The city gateway for both arrival and departure." } },
     { status: "confirmed", city: "Manchester", title: { zh: "INNSiDE Manchester", en: "INNSiDE Manchester" }, query: "INNSiDE Manchester 1 First Street Manchester", note: { zh: "會議期間的住宿基地，靠近 First Street 與市中心。", en: "The conference stay base near First Street and the city centre." } },
@@ -487,11 +489,14 @@ const tripData = {
     { status: "confirmed", city: "London", title: { zh: "Covent Garden", en: "Covent Garden" }, query: "Covent Garden London", note: { zh: "倫敦 Day 3 的第一站。", en: "The first stop on London Day 3." } },
     { status: "confirmed", city: "London", title: { zh: "Piccadilly Circus", en: "Piccadilly Circus" }, query: "Piccadilly Circus London", note: { zh: "Covent Garden 後接續最順。", en: "Pairs naturally after Covent Garden." } },
     { status: "book", city: "London", title: { zh: "St Pancras International", en: "St Pancras International" }, query: "St Pancras International", note: { zh: "7/7 Eurostar 前往巴黎的起點。", en: "The 7 July Eurostar departure point to Paris." } },
-    { status: "book", city: "Paris", title: { zh: "Pullman Paris Tour Eiffel", en: "Pullman Paris Tour Eiffel" }, query: "Pullman Paris Tour Eiffel", note: { zh: "巴黎住宿首選，重點是鐵塔景。", en: "The Paris first-choice stay, mainly for the Eiffel Tower view." } },
+    { status: "confirmed", city: "Paris", title: { zh: "Pullman Paris Tour Eiffel", en: "Pullman Paris Tour Eiffel" }, query: "Pullman Paris Tour Eiffel", note: { zh: "巴黎最後三晚的核心住宿，重點是陽台鐵塔景。", en: "The main stay for the last three Paris nights, centered on the balcony tower view." } },
     { status: "confirmed", city: "Paris", title: { zh: "Eiffel Tower", en: "Eiffel Tower" }, query: "Eiffel Tower", note: { zh: "抵達巴黎後的第一個城市重點。", en: "The first big Paris stop after arrival." } },
     { status: "confirmed", city: "Paris", title: { zh: "Louvre Museum", en: "Louvre Museum" }, query: "Louvre Museum", note: { zh: "巴黎 Day 2 的主要行程。", en: "The anchor stop for Paris Day 2." } },
+    { status: "confirmed", city: "Paris", title: { zh: "Place Vendôme", en: "Place Vendôme" }, query: "Place Vendôme Paris", note: { zh: "羅浮宮之後很適合接進右岸街景。", en: "A graceful Right Bank stop after the Louvre." } },
+    { status: "confirmed", city: "Paris", title: { zh: "Avenue Montaigne", en: "Avenue Montaigne" }, query: "Avenue Montaigne Paris", note: { zh: "巴黎精品街主段。", en: "The core luxury-shopping avenue in Paris." } },
     { status: "confirmed", city: "Paris", title: { zh: "Champs-Elysees / Arc de Triomphe", en: "Champs-Elysees / Arc de Triomphe" }, query: "Arc de Triomphe Paris", note: { zh: "巴黎 Day 3 的主景與購物段。", en: "The main Paris Day 3 landmark and shopping corridor." } },
     { status: "confirmed", city: "Paris", title: { zh: "Galeries Lafayette Haussmann", en: "Galeries Lafayette Haussmann" }, query: "Galeries Lafayette Haussmann", note: { zh: "巴黎最後一日的採買點。", en: "A strong final shopping stop in Paris." } },
+    { status: "confirmed", city: "Paris", title: { zh: "Sacré-Cœur / Montmartre", en: "Sacré-Cœur / Montmartre" }, query: "Sacré-Cœur Paris", note: { zh: "巴黎最後一天的晨間散步。", en: "The morning walk for the last Paris day." } },
     { status: "confirmed", city: "Paris", title: { zh: "Seine", en: "Seine" }, query: "Seine River Paris", note: { zh: "可接塞納河遊船。", en: "Easy to pair with a Seine cruise." } },
     { status: "confirmed", city: "Paris", title: { zh: "CDG Terminal 2E", en: "CDG Terminal 2E" }, query: "Charles de Gaulle Airport Terminal 2E", note: { zh: "7/11 Air France Business Standard 的出發點。", en: "The departure terminal for the 11 July Air France Business Standard flight." } },
   ],
@@ -501,9 +506,9 @@ const tripData = {
     { status: "pending", label: { zh: "7/5 倫敦購物日", en: "5 Jul London shopping day" }, note: { zh: "Harrods → Bond Street。", en: "Harrods → Bond Street." }, url: "https://www.google.com/maps/dir/Harrods+London/Bond+Street+London" },
     { status: "pending", label: { zh: "7/6 倫敦市中心", en: "6 Jul central London" }, note: { zh: "Covent Garden → Piccadilly Circus。", en: "Covent Garden → Piccadilly Circus." }, url: "https://www.google.com/maps/dir/Covent+Garden/Piccadilly+Circus" },
     { status: "book", label: { zh: "7/7 倫敦 → 巴黎", en: "7 Jul London → Paris" }, note: { zh: "St Pancras → Gare du Nord → Pullman Paris Tour Eiffel。", en: "St Pancras → Gare du Nord → Pullman Paris Tour Eiffel." }, url: "https://www.google.com/maps/dir/St+Pancras+International/Gare+du+Nord/Pullman+Paris+Tour+Eiffel" },
-    { status: "pending", label: { zh: "7/8 巴黎博物館日", en: "8 Jul Paris museum day" }, note: { zh: "Pullman → Louvre Museum。", en: "Pullman → Louvre Museum." }, url: "https://www.google.com/maps/dir/Pullman+Paris+Tour+Eiffel/Louvre+Museum" },
-    { status: "pending", label: { zh: "7/9 巴黎景點與購物", en: "9 Jul Paris landmarks & shopping" }, note: { zh: "Champs-Elysees → Arc de Triomphe。", en: "Champs-Elysees → Arc de Triomphe." }, url: "https://www.google.com/maps/dir/Champs-Elysees/Arc+de+Triomphe" },
-    { status: "pending", label: { zh: "7/10 巴黎收尾", en: "10 Jul Paris wrap-up" }, note: { zh: "Galeries Lafayette → Seine。", en: "Galeries Lafayette → Seine." }, url: "https://www.google.com/maps/dir/Galeries+Lafayette+Haussmann/Seine+River+Paris" },
+    { status: "confirmed", label: { zh: "7/8 巴黎右岸日", en: "8 Jul Right Bank day" }, note: { zh: "Pullman → Louvre → Place Vendôme → Galeries Lafayette。", en: "Pullman → Louvre → Place Vendôme → Galeries Lafayette." }, url: "https://www.google.com/maps/dir/Pullman+Paris+Tour+Eiffel/Louvre+Museum/Place+Vendome+Paris/Galeries+Lafayette+Haussmann" },
+    { status: "confirmed", label: { zh: "7/9 巴黎精品大道", en: "9 Jul Paris luxury avenue day" }, note: { zh: "Avenue Montaigne → Champs-Elysees → Arc de Triomphe → Seine。", en: "Avenue Montaigne → Champs-Elysees → Arc de Triomphe → Seine." }, url: "https://www.google.com/maps/dir/Avenue+Montaigne+Paris/Champs-Elysees/Arc+de+Triomphe/Seine+River+Paris" },
+    { status: "confirmed", label: { zh: "7/10 蒙馬特與機場轉場", en: "10 Jul Montmartre and airport move" }, note: { zh: "Sacré-Cœur → Montmartre → Pullman → Charles de Gaulle Airport。", en: "Sacré-Cœur → Montmartre → Pullman → Charles de Gaulle Airport." }, url: "https://www.google.com/maps/dir/Sacre-Coeur+Paris/Montmartre+Paris/Pullman+Paris+Tour+Eiffel/Charles+de+Gaulle+Airport" },
     { status: "confirmed", label: { zh: "7/11 巴黎 → 曼徹斯特", en: "11 Jul Paris → Manchester" }, note: { zh: "CDG T2E → MAN T2，再接 BA 與華航。", en: "CDG T2E → MAN T2, then connect to BA and China Airlines." }, url: "https://www.google.com/maps/dir/Pullman+Paris+Tour+Eiffel/Charles+de+Gaulle+Airport+Terminal+2E" }
   ],
   expenses: [
@@ -519,8 +524,8 @@ const tripData = {
     { item: { zh: "Eurostar 倫敦 → 巴黎", en: "Eurostar London → Paris" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "Eurostar 電子票與收據", en: "Eurostar e-ticket and receipt" }, notes: { zh: "7/7 出發，車程約 2 小時 20 分。", en: "Departure is on 7 July, with a journey of about 2h20." } },
     { item: { zh: "巴黎 → 曼徹斯特航段", en: "Paris → Manchester flight" }, amount: { zh: "NT$12,930 / EUR 354.05", en: "NT$12,930 / EUR 354.05" }, amounts: { TWD: "NT$12,930", GBP: "約 GBP 300", EUR: "EUR 354.05", USD: "待確認" }, status: "self", proof: { zh: "Air France 電子票（敏感資訊不公開）與付款證明", en: "Air France e-ticket (sensitive details kept private) and payment proof" }, notes: { zh: "AF1068｜CDG T2E 12:50 → MAN T2 13:25；Business Standard、SkyPriority、2 件托運行李（每件 32kg）。", en: "AF1068 · CDG T2E 12:50 → MAN T2 13:25; Business Standard, SkyPriority, and 2 checked bags up to 32kg each." } },
     { item: { zh: "倫敦住宿", en: "London accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "首選 The Langham London，備選 The Clermont Charing Cross。", en: "The Langham London is the first choice, with The Clermont Charing Cross as the alternative." } },
-    { item: { zh: "巴黎住宿", en: "Paris accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "首選 Pullman Paris Tour Eiffel。", en: "Pullman Paris Tour Eiffel is the current first choice." } },
-    { item: { zh: "倫敦 / 巴黎景點與遊船", en: "London / Paris attractions and cruise" }, amount: { zh: "依實際選擇", en: "Depends on selected stops" }, amounts: { TWD: "依實際選擇", GBP: "Depends", EUR: "Depends", USD: "Depends" }, status: "self", proof: { zh: "線上購票收據", en: "Online ticket receipts" }, notes: { zh: "目前確定有免費散步景點，也保留 Eiffel Tower、Louvre 與塞納河遊船的彈性。", en: "The route includes free city walks, with Eiffel Tower, the Louvre, and a Seine cruise left flexible." } }
+    { item: { zh: "巴黎住宿", en: "Paris accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "Pullman Paris Tour Eiffel｜7/7–7/10，共 3 晚，鐵塔景陽台房。", en: "Pullman Paris Tour Eiffel · 7-10 Jul · 3 nights · balcony room with Eiffel Tower view." } },
+    { item: { zh: "倫敦 / 巴黎景點與遊船", en: "London / Paris attractions and cruise" }, amount: { zh: "依實際選擇", en: "Depends on selected stops" }, amounts: { TWD: "依實際選擇", GBP: "Depends", EUR: "Depends", USD: "Depends" }, status: "self", proof: { zh: "線上購票收據", en: "Online ticket receipts" }, notes: { zh: "羅浮宮、凱旋門等需要時再訂，鐵塔夜景、Place Vendôme、香榭麗舍和多數街區可直接散步。", en: "Book the Louvre or Arc only if needed; the Eiffel night view, Place Vendôme, the Champs-Elysees, and most of the streets can stay open." } }
   ],
   links: [
     ["AIB 2026 website", "https://www.aib.world/events/2026/"],
@@ -853,8 +858,8 @@ const sectionNav = {
   conference: [["accepted", { zh: "會議狀態", en: "Status" }], ["papers", { zh: "論文", en: "Papers" }], ["alerts", { zh: "提醒", en: "Notes" }], ["checklist", { zh: "文件", en: "Documents" }]],
   flights: [["overview", { zh: "航班總覽", en: "Overview" }], ["segments", { zh: "航段", en: "Segments" }], ["transfer", { zh: "轉機", en: "Transfers" }], ["notes", { zh: "票務備註", en: "Notes" }]],
   transport: [["flights", { zh: "航班", en: "Flights" }], ["transfer", { zh: "轉機", en: "Transfers" }], ["train", { zh: "火車", en: "Train" }], ["local", { zh: "市內交通", en: "Local transit" }]],
-  stay: [["overview", { zh: "住宿總覽", en: "Overview" }], ["decision", { zh: "後段住宿", en: "Later stays" }], ["areas", { zh: "住宿建議", en: "Useful picks" }]],
-  itinerary: [["timeline", { zh: "時間軸", en: "Timeline" }], ["tickets", { zh: "景點費用", en: "Admission" }], ["return", { zh: "回程提醒", en: "Return" }]],
+  stay: [["overview", { zh: "住宿總覽", en: "Overview" }], ["decision", { zh: "後段住宿", en: "Later stays" }], ["paris", { zh: "巴黎住宿", en: "Paris stay" }], ["areas", { zh: "住宿建議", en: "Useful picks" }]],
+  itinerary: [["timeline", { zh: "時間軸", en: "Timeline" }], ["paris-must-do", { zh: "巴黎必去", en: "Paris must-do" }], ["tickets", { zh: "景點費用", en: "Admission" }], ["return", { zh: "回程提醒", en: "Return" }]],
   shopping: [["shopping-overview", { zh: "總覽", en: "Overview" }], ["tea", { zh: "茶與點心", en: "Tea" }], ["pantry", { zh: "果醬與 pantry", en: "Pantry" }], ["essentials", { zh: "超市與藥妝", en: "Essentials" }]],
   souvenirs: [["souvenir-overview", { zh: "總覽", en: "Overview" }], ["uk", { zh: "英國", en: "UK" }], ["france", { zh: "法國", en: "France" }], ["germany", { zh: "德國", en: "Germany" }], ["packing", { zh: "打包提醒", en: "Packing" }]],
   map: [["travel-map", { zh: "地圖", en: "Map" }], ["route-links", { zh: "每日路線", en: "Routes" }], ["map-notes", { zh: "地圖備註", en: "Notes" }]],
@@ -888,7 +893,7 @@ const readingGuides = {
   ],
   itinerary: [
     { zh: "每日行程改成一張張可展開的旅程卡，移動、散步與會議節奏都接得起來。", en: "Each day now opens as a travel card, keeping movement, walking routes, and conference rhythm together." },
-    { zh: "後段改成倫敦 3 晚、巴黎 4 晚，城市切換都補進去了。", en: "The later route is now London for 3 nights and Paris for 4 nights, with each city move added in." },
+    { zh: "後段改成倫敦 3 晚、巴黎 3 晚，最後一晚改住 CDG 周邊，城市切換都補進去了。", en: "The later route is now London for 3 nights, Paris for 3 nights, then one airport night near CDG, with each city move added in." },
     { zh: "另外還要訂票的，主要是 Avanti、Eurostar 和幾個巴黎景點。", en: "The main items still needing tickets are Avanti, Eurostar, and a few Paris attractions." }
   ],
   map: [
@@ -1083,9 +1088,9 @@ const journeyHighlights = [
   },
   {
     city: { zh: "Paris", en: "Paris" },
-    date: "7/7–7/11",
-    title: { zh: "巴黎留給街景、博物館、購物與法式餐桌", en: "Paris closes with museums, shopping, and the rhythm of the city" },
-    body: { zh: "鐵塔、羅浮宮、香榭麗舍和塞納河，把旅行最後一段留給巴黎最有代表性的城市景觀，也替返程前的幾天加上一點柔和的餘味。", en: "The Eiffel Tower, Louvre, Champs-Elysees, and Seine give the last days a more leisurely and atmospheric finish." }
+    date: "7/7–7/10",
+    title: { zh: "巴黎留給鐵塔夜景、博物館、精品街與法式收尾", en: "Paris closes with tower nights, museums, and the city’s polished avenues" },
+    body: { zh: "Pullman 的陽台鐵塔景會把巴黎這一段定得很完整。白天從羅浮宮、Place Vendôme、Avenue Montaigne 到香榭麗舍慢慢走，晚上再把視線交給鐵塔與塞納河。", en: "The Pullman balcony view gives Paris a clear center, while the Louvre, Place Vendôme, Avenue Montaigne, the Champs-Elysees, and the Seine shape the days around it." }
   },
   {
     city: { zh: "Cross-country movement", en: "Cross-country movement" },
@@ -1137,11 +1142,11 @@ const practicalGuideSections = [
   },
   {
     title: { zh: "住宿資訊", en: "Stay" },
-    summary: { zh: "曼徹斯特已訂，倫敦與巴黎都有首選。", en: "Manchester is booked, and London and Paris already have first-choice stays." },
+    summary: { zh: "曼徹斯特已訂，巴黎最後三晚也定在 Pullman，剩倫敦與 CDG 周邊住宿要補。", en: "Manchester is booked, the last three Paris nights are set at Pullman, and London with the CDG area remain to be finalized." },
     points: [
       { zh: "曼徹斯特：INNSiDE Manchester。", en: "Manchester: INNSiDE Manchester." },
       { zh: "倫敦：The Langham London / The Clermont Charing Cross。", en: "London: The Langham London / The Clermont Charing Cross." },
-      { zh: "巴黎：Pullman Paris Tour Eiffel。", en: "Paris: Pullman Paris Tour Eiffel." }
+      { zh: "巴黎：Pullman Paris Tour Eiffel，7/7–7/10，鐵塔景陽台房。", en: "Paris: Pullman Paris Tour Eiffel, 7-10 Jul, balcony room with Eiffel Tower view." }
     ],
     href: "./stay.html",
     cta: { zh: "看住宿安排", en: "Open stay page" }
@@ -1202,6 +1207,115 @@ const practicalGuideSections = [
     cta: { zh: "看更多提醒", en: "Open Europe notes" }
   }
 ];
+
+const parisMustDoItems = [
+  {
+    area: { zh: "7/7 夜晚", en: "7 Jul evening" },
+    title: { zh: "艾菲爾鐵塔夜景", en: "Eiffel Tower at night" },
+    tags: [{ zh: "夜景", en: "Night view" }, { zh: "拍照", en: "Photos" }],
+    body: {
+      zh: "巴黎第一晚很適合把時間留給鐵塔。等天色慢慢暗下來，再站在河岸或廣場看燈光亮起，城市的第一眼會很完整。回飯店後若還能再從陽台看一次閃燈，這一晚就會特別值得記住。",
+      en: "The first Paris evening is best left to the tower. Watch the lights come on from the riverbank or the square, then let the balcony view give the night a quieter second peak."
+    }
+  },
+  {
+    area: { zh: "7/8 上午", en: "8 Jul morning" },
+    title: { zh: "羅浮宮", en: "The Louvre" },
+    tags: [{ zh: "藝術", en: "Art" }, { zh: "經典", en: "Classic" }],
+    body: {
+      zh: "羅浮宮適合放在精神最清楚的一天上午，不必急著貪多，而是挑幾個最想看的館藏慢慢走。走出博物館後，整個巴黎右岸的街景也會自然接上這份藝術感。",
+      en: "The Louvre fits best in the clearest part of the day. Choose a few rooms you really care about and let the Right Bank streets carry the museum mood outward."
+    }
+  },
+  {
+    area: { zh: "7/8 下午", en: "8 Jul afternoon" },
+    title: { zh: "老佛爺百貨頂樓", en: "Galeries Lafayette rooftop" },
+    tags: [{ zh: "視角", en: "View" }, { zh: "拍照", en: "Photos" }],
+    body: {
+      zh: "老佛爺頂樓很適合當成巴黎右岸日的高處收尾。從屋頂看出去，歌劇院周邊和巴黎屋頂線條會讓整段步行變得很有層次，而且拍照很好看。",
+      en: "The rooftop is a strong high-point for the Right Bank day. It gives the Opéra district and the Paris rooftops a layered view that photographs beautifully."
+    }
+  },
+  {
+    area: { zh: "7/9 上午", en: "9 Jul morning" },
+    title: { zh: "Avenue Montaigne 精品街", en: "Avenue Montaigne" },
+    tags: [{ zh: "精品", en: "Luxury" }, { zh: "街景", en: "Street" }],
+    body: {
+      zh: "如果巴黎要留一段最精緻的精品街時間，Avenue Montaigne 會比匆忙逛很多點更有記憶。這裡的節奏比較安靜，品牌立面和街道比例也很適合慢慢走、慢慢看。",
+      en: "If Paris gets one polished luxury stretch, this is the one. The avenue feels calmer than a rushed shopping sprint and rewards a slower walk."
+    }
+  },
+  {
+    area: { zh: "7/9 白天", en: "9 Jul daytime" },
+    title: { zh: "香榭麗舍大道", en: "Champs-Elysees" },
+    tags: [{ zh: "大道", en: "Boulevard" }, { zh: "散步", en: "Walk" }],
+    body: {
+      zh: "香榭麗舍不一定要匆匆走完，它更像是把巴黎城市尺度完整打開的一段路。午間在附近停一杯咖啡或簡單午餐，整條大道的節奏會更舒服。",
+      en: "The Champs-Elysees works best as a paced walk rather than a rush. A pause for coffee or lunch nearby makes the boulevard feel far more generous."
+    }
+  },
+  {
+    area: { zh: "7/9 下午", en: "9 Jul afternoon" },
+    title: { zh: "凱旋門", en: "Arc de Triomphe" },
+    tags: [{ zh: "地標", en: "Landmark" }, { zh: "主景", en: "Signature" }],
+    body: {
+      zh: "凱旋門很適合放在下午視線最好的時段，和香榭麗舍接成同一條線。當你走近它時，巴黎那種寬闊、正式、帶點戲劇感的城市氣質會很明顯。",
+      en: "The Arc works well when the light is still clear and the avenue leads directly into it. Up close, it carries the city’s grand and ceremonial side very clearly."
+    }
+  },
+  {
+    area: { zh: "7/8 或 7/9", en: "8 or 9 Jul" },
+    title: { zh: "Place Vendôme", en: "Place Vendôme" },
+    tags: [{ zh: "珠寶", en: "Jewelry" }, { zh: "街角", en: "Corner" }],
+    body: {
+      zh: "Place Vendôme 不需要待很久，卻很值得特地走一趟。它的安靜和精緻感，會讓羅浮宮、右岸與精品街之間多一個很巴黎的停頓。",
+      en: "Place Vendôme does not need much time, but it is worth the detour. Its quiet polish adds a distinctly Parisian pause between museums and boutiques."
+    }
+  },
+  {
+    area: { zh: "7/9 夜晚", en: "9 Jul evening" },
+    title: { zh: "塞納河夜景", en: "Seine at night" },
+    tags: [{ zh: "夜景", en: "Night view" }, { zh: "散步", en: "Walk" }],
+    body: {
+      zh: "如果白天的巴黎比較華麗，夜晚的塞納河會把它收得更柔。無論是河邊散步還是短短看一段夜色，這裡都很適合把一天放慢下來。",
+      en: "If the day has been polished and bright, the Seine softens everything at night. Even a short walk here is enough to slow the city back down."
+    }
+  },
+  {
+    area: { zh: "7/10 上午", en: "10 Jul morning" },
+    title: { zh: "聖心堂", en: "Sacré-Cœur" },
+    tags: [{ zh: "高處", en: "Hilltop" }, { zh: "晨間", en: "Morning" }],
+    body: {
+      zh: "聖心堂最適合放在巴黎最後一個早晨，趁城市還沒完全熱起來時走上去。從階梯看出去的城市線條和蒙馬特的小街，會讓最後一天有一種比較輕的開場。",
+      en: "Sacré-Cœur suits the final Paris morning, before the city fully speeds up. The steps, the height, and the nearby lanes give the day a lighter beginning."
+    }
+  },
+  {
+    area: { zh: "7/7–7/10 夜晚", en: "7-10 Jul nights" },
+    title: { zh: "Pullman 陽台看鐵塔", en: "The Pullman balcony tower view" },
+    tags: [{ zh: "住宿亮點", en: "Stay highlight" }, { zh: "夜晚", en: "Night" }],
+    body: {
+      zh: "Pullman 的高樓層陽台房會讓巴黎這段不只是住一間飯店，而是真的有一個能記住的畫面。白天外出回來後，能在房間裡安靜看著鐵塔亮起，這會是很完整的旅行收尾。",
+      en: "The high-floor balcony room turns Pullman into more than just a hotel. Coming back at night to a quiet tower view gives the Paris chapter a very complete finish."
+    }
+  }
+];
+
+function renderParisMustDoCard(item, index) {
+  return `
+    <article class="paris-mustdo-card">
+      <div class="paris-mustdo-top">
+        <span class="paris-mustdo-index">${String(index + 1).padStart(2, "0")}</span>
+        <span class="paris-mustdo-area">${escapeHtml(t(item.area))}</span>
+      </div>
+      <h3>${escapeHtml(t(item.title))}</h3>
+      <div class="paris-mustdo-tags">
+        ${item.tags.map((tag) => `<span>${escapeHtml(t(tag))}</span>`).join("")}
+      </div>
+      <p>${escapeHtml(t(item.body))}</p>
+    </article>
+  `;
+}
 
 const dailyGuides = [
   {
@@ -1328,68 +1442,68 @@ const dailyGuides = [
     day: "Day 8",
     date: "7/7",
     city: { zh: "London → Paris", en: "London → Paris" },
-    theme: { zh: "離開倫敦，進入巴黎第一眼", en: "Leaving London and stepping into Paris" },
-    intro: { zh: "搭 Eurostar 進巴黎，是這趟旅程最漂亮的一次城市切換。白天從倫敦出發，晚上就能把巴黎鐵塔和夜景接進旅程裡。", en: "The Eurostar move turns the trip into its French chapter, with Paris waiting at the end of the day." },
-    highlights: ["St Pancras", "Eurostar", "Paris Gare du Nord", "Eiffel Tower"],
+    theme: { zh: "離開倫敦，住進 Pullman 與巴黎第一眼", en: "Leaving London, checking into Pullman, and meeting Paris for the first time" },
+    intro: { zh: "搭 Eurostar 進巴黎，是這趟旅程最漂亮的一次城市切換。從倫敦車站一路接到 Pullman，晚上再把艾菲爾鐵塔夜景與陽台閃燈收進來，巴黎的第一晚就會很完整。", en: "The Eurostar move turns the trip into its French chapter, linking London directly to Pullman before the Eiffel Tower lights take over the first evening." },
+    highlights: ["St Pancras", "Eurostar", "Pullman Paris Tour Eiffel", "Eiffel Tower night view", "Balcony tower view"],
     route: [
-      { label: { zh: "上午｜倫敦收尾", en: "Morning" }, text: { zh: "早上先整理行李，預留時間前往 St Pancras。", en: "Pack up in the morning and leave enough time for St Pancras." } },
+      { label: { zh: "上午｜倫敦收尾", en: "Morning" }, text: { zh: "早上先把倫敦這一段收乾淨，提早前往 St Pancras，讓跨國移動有一點餘裕。", en: "Close the London chapter calmly and head to St Pancras with enough margin for the international leg." } },
       { label: { zh: "中午｜跨國移動", en: "Noon" }, text: { zh: "Eurostar 讓這段移動很俐落，從一個城市中心直接接到另一個城市中心。", en: "Eurostar keeps the move clean: city centre to city centre." } },
-      { label: { zh: "下午｜巴黎初見", en: "Afternoon" }, text: { zh: "抵達巴黎後先移動到飯店，把步調放慢，再開始巴黎第一段街景。", en: "After arriving in Paris, head to the hotel first and ease into the city." } },
-      { label: { zh: "夜晚｜城市夜色", en: "Evening" }, text: { zh: "晚上可以把鐵塔或周邊夜景留給巴黎第一眼。", en: "Leave the Eiffel Tower or a nearby night view for Paris’s first impression." } }
+      { label: { zh: "下午｜入住 Pullman", en: "Afternoon" }, text: { zh: "抵達巴黎後先去 Pullman Paris Tour Eiffel，把房間、陽台和鐵塔視角安頓好，再把步調放慢。", en: "After arriving in Paris, check into Pullman Paris Tour Eiffel and settle into the balcony-and-tower rhythm before doing anything else." } },
+      { label: { zh: "夜晚｜鐵塔與陽台", en: "Evening" }, text: { zh: "晚上留給艾菲爾鐵塔夜景，回飯店後再從陽台看一次閃燈，這會是巴黎第一晚最值得留住的畫面。", en: "Give the evening to the Eiffel Tower, then return for the balcony sparkle view that completes the first Paris night." } }
     ],
-    notes: ["Eurostar 上車前就會完成護照檢查，提早到站比較安心。", "這天的美感在於城市切換本身，不必再塞滿其他景點。"],
-    tickets: ["Eurostar 票待訂；若想上鐵塔需另外查正式票。"]
+    notes: ["Eurostar 上車前就會完成護照檢查，提早到站比較安心。", "巴黎第一晚不用再塞太多景點，把鐵塔夜景和 Pullman 陽台留給最主要的記憶點就很好。"],
+    tickets: ["Eurostar 票待訂；鐵塔周邊夜景散步免費。"]
   },
   {
     id: "day-9",
     day: "Day 9",
     date: "7/8",
     city: { zh: "Paris", en: "Paris" },
-    theme: { zh: "博物館日與塞納河一帶的步調", en: "A museum day with a slower Paris pace" },
-    intro: { zh: "今天把焦點留給羅浮宮。前後不必再塞太多行程，讓一整天可以專心待在博物館和巴黎的街景裡。", en: "This day gives its weight to the Louvre, with enough air around it to keep the city from feeling rushed." },
-    highlights: ["Louvre Museum", "巴黎街景", "河岸散步"],
+    theme: { zh: "羅浮宮、Place Vendôme 與巴黎右岸", en: "The Louvre, Place Vendôme, and the Right Bank" },
+    intro: { zh: "今天把焦點留給羅浮宮，但不只是一個博物館日。從博物館走到 Place Vendôme，再接老佛爺頂樓和歌劇院周邊，巴黎右岸的藝術與精品感會自然串在一起。", en: "The Louvre anchors the day, but it flows outward into Place Vendôme, the Galeries Lafayette rooftop, and the streets around the Opéra." },
+    highlights: ["Louvre Museum", "Place Vendôme", "Galeries Lafayette Rooftop", "Palais Garnier area"],
     route: [
-      { label: { zh: "上午｜核心景點", en: "Morning" }, text: { zh: "上午直接把重心放在羅浮宮，讓最重要的博物館留在精神最好的時段。", en: "Use the clearest part of the day for the Louvre itself." } },
-      { label: { zh: "中午｜午間風味", en: "Noon" }, text: { zh: "中午附近簡單用餐，讓節奏不要被趕路切碎。", en: "Keep lunch nearby so the day does not break apart into too much movement." } },
-      { label: { zh: "下午｜沿途亮點", en: "Afternoon" }, text: { zh: "下午留給周邊街景或河岸散步，讓博物館日有呼吸。", en: "Use the afternoon for the surrounding streets or a quieter river walk." } },
-      { label: { zh: "夜晚｜今晚落腳", en: "Evening" }, text: { zh: "晚上回飯店休息，讓巴黎的節奏慢慢沉下來。", en: "Return to the hotel and let the pace settle." } }
+      { label: { zh: "上午｜藝術主景", en: "Morning" }, text: { zh: "上午直接把精神最好的時段留給羅浮宮，先看最想看的館藏，再順著庭院與街景慢慢走出來。", en: "Use the clearest morning hours for the Louvre, then ease back out through the courtyards and streets." } },
+      { label: { zh: "中午｜右岸午間", en: "Noon" }, text: { zh: "中午從羅浮宮周邊接到 Place Vendôme，留一頓不趕時間的午餐，讓右岸的步調慢慢展開。", en: "Move from the Louvre area toward Place Vendôme and keep lunch slow enough for the Right Bank mood to build." } },
+      { label: { zh: "下午｜百貨屋頂與歌劇院", en: "Afternoon" }, text: { zh: "下午把老佛爺百貨頂樓和歌劇院周邊接起來，從高處看巴黎，再回到街面繼續散步。", en: "Use the afternoon for the Galeries Lafayette rooftop and the Opéra district, moving between city views and street-level wandering." } },
+      { label: { zh: "夜晚｜回到鐵塔視角", en: "Evening" }, text: { zh: "晚上回 Pullman，把這天的右岸節奏收進房間與陽台景裡。", en: "Return to Pullman and let the room with its balcony view close the Right Bank day." } }
     ],
-    notes: ["羅浮宮這天不建議再排太多別的大景點。", "如果想拍照，前後留一點散步時間會更舒服。"],
-    tickets: ["Louvre 門票請依官網時段確認。"]
+    notes: ["羅浮宮這天不必再另外塞太多重景點，讓右岸的街景自己接下去就很完整。", "如果想在老佛爺頂樓拍照，傍晚前後的光線會很漂亮。"],
+    tickets: ["Louvre 門票請依官網時段確認；老佛爺頂樓免費。"]
   },
   {
     id: "day-10",
     day: "Day 10",
     date: "7/9",
     city: { zh: "Paris", en: "Paris" },
-    theme: { zh: "大道景觀、凱旋門與巴黎主景", en: "Grand boulevards, the Arc, and a classic Paris scene" },
-    intro: { zh: "今天比較像巴黎城市主景的一天。香榭麗舍大道和凱旋門放在一起，讓城市的尺度感和華麗感在同一段路裡慢慢出來。", en: "This day belongs to Paris in its broad, ceremonial, and more cinematic scale." },
-    highlights: ["Champs-Elysees", "Arc de Triomphe", "精品購物"],
+    theme: { zh: "Avenue Montaigne、香榭麗舍與凱旋門", en: "Avenue Montaigne, the Champs-Elysees, and the Arc" },
+    intro: { zh: "今天比較像巴黎最有光澤的一天。從 Avenue Montaigne 的精品街開始，再一路接到香榭麗舍與凱旋門，晚上把最後的城市主景留給塞納河。", en: "This is Paris at its most polished, beginning on Avenue Montaigne, stretching through the Champs-Elysees, and closing by the Seine." },
+    highlights: ["Avenue Montaigne", "Champs-Elysees", "Arc de Triomphe", "Seine night view"],
     route: [
-      { label: { zh: "上午｜城市主景", en: "Morning" }, text: { zh: "上午可以先往凱旋門或大道一帶移動，讓視線先打開。", en: "Move toward the Arc or the avenue in the morning and let the city open wide." } },
-      { label: { zh: "中午｜午間風味", en: "Noon" }, text: { zh: "中午沿著大道附近找餐廳或咖啡館，保留一點巴黎式停留。", en: "Use the avenue or nearby streets for a slower lunch break." } },
-      { label: { zh: "下午｜沿途亮點", en: "Afternoon" }, text: { zh: "下午再把精品街與周邊想逛的店一路接起來。", en: "Use the afternoon to fold in nearby shopping or any boutiques that matter most." } },
-      { label: { zh: "夜晚｜城市餘韻", en: "Evening" }, text: { zh: "晚上可以把巴黎這一段最華麗的城市印象收進來。", en: "Let the evening hold on to the most polished side of Paris." } }
+      { label: { zh: "上午｜精品街開場", en: "Morning" }, text: { zh: "上午先走 Avenue Montaigne，讓巴黎最俐落的精品街替這天開場。", en: "Begin on Avenue Montaigne and let Paris’s cleanest luxury stretch open the day." } },
+      { label: { zh: "中午｜大道午間", en: "Noon" }, text: { zh: "中午一路接到香榭麗舍，沿線找餐廳或咖啡館，不必把節奏排得太趕。", en: "Move into the Champs-Elysees for lunch and keep the pace deliberately unhurried." } },
+      { label: { zh: "下午｜凱旋門主景", en: "Afternoon" }, text: { zh: "下午把凱旋門留在最醒目的時段，再沿著大道慢慢把今天的城市主景走完。", en: "Leave the Arc for the clearest part of the afternoon, then finish the boulevard at a measured pace." } },
+      { label: { zh: "夜晚｜塞納河夜景", en: "Evening" }, text: { zh: "晚上把視線交給塞納河，讓這天的華麗感以更柔和的夜色收尾。", en: "Give the evening to the Seine so the day closes with something gentler than the boulevard itself." } }
     ],
-    notes: ["這天適合把購物和景觀放在一起，不用拆成太多點。", "如果體力夠，再看要不要進一步延伸夜景。"],
-    tickets: ["街景免費，若進 Arc 需另查票。"]
+    notes: ["這一天很適合把精品、城市主景和夜景放在同一條線上，不必拆成太多小點。", "如果晚餐後還有體力，再回鐵塔附近看一次夜景也很值得。"],
+    tickets: ["大道與街區散步免費；若進凱旋門需另查票。"]
   },
   {
     id: "day-11",
     day: "Day 11",
     date: "7/10",
     city: { zh: "Paris", en: "Paris" },
-    theme: { zh: "最後採買與塞納河收尾", en: "Final shopping and a Seine-side close" },
-    intro: { zh: "巴黎最後一天不必再用力衝景點，留給採買、整理與塞納河邊的慢慢收尾，反而更像旅行真正結束前的樣子。", en: "The final Paris day works best when it softens rather than accelerates, leaving room for purchases and the Seine." },
-    highlights: ["Galeries Lafayette", "Seine", "遊船", "最後採買"],
+    theme: { zh: "蒙馬特晨景、最後採買與轉往 CDG", en: "Montmartre morning, final shopping, and the move to CDG" },
+    intro: { zh: "巴黎最後一天不必再衝太多景點，但還是可以把最有城市氣味的一段留給蒙馬特。上午看聖心堂，下午完成最後採買與行李收尾，晚上順順轉往 CDG 機場住宿，隔天的回程會輕鬆很多。", en: "The final Paris day stays lighter, but Montmartre still gives it a distinctive opening before the luggage handoff and the move toward CDG." },
+    highlights: ["Sacré-Cœur", "Montmartre", "最後採買", "CDG airport stay"],
     route: [
-      { label: { zh: "上午｜最後採買", en: "Morning" }, text: { zh: "上午把想補買的東西集中處理，讓行李和購物都能有條理地收尾。", en: "Use the morning for last shopping and to make the suitcase logic easier." } },
-      { label: { zh: "中午｜午間風味", en: "Noon" }, text: { zh: "中午簡單休息一下，讓最後一天不要又變成趕行程。", en: "Keep lunch calm and avoid turning the final day into another rush." } },
-      { label: { zh: "下午｜河岸步調", en: "Afternoon" }, text: { zh: "下午把巴黎交給塞納河，讓城市以比較柔和的方式收尾。", en: "Give the afternoon to the Seine so the city can close in a gentler way." } },
-      { label: { zh: "夜晚｜今晚落腳", en: "Evening" }, text: { zh: "回飯店整理明天的航班文件與行李，讓返程日輕一點。", en: "Return to the hotel and get tomorrow’s flight documents and luggage in order." } }
+      { label: { zh: "上午｜蒙馬特晨景", en: "Morning" }, text: { zh: "上午先去聖心堂和蒙馬特，把巴黎最後一個早晨留給高處街景與階梯之間的散步。", en: "Start at Sacré-Cœur and Montmartre, giving the final Paris morning to higher views and slower streets." } },
+      { label: { zh: "中午｜最後採買", en: "Noon" }, text: { zh: "中午之後回到市區，把想補的伴手禮、藥妝或精品一次收好。", en: "Use midday and early afternoon to finish the last gifts, beauty buys, or boutique stops." } },
+      { label: { zh: "下午｜回 Pullman 收行李", en: "Afternoon" }, text: { zh: "下午回 Pullman 取寄放行李，把巴黎這一段真正收束起來。", en: "Return to Pullman for the stored luggage and let the Paris chapter close properly." } },
+      { label: { zh: "夜晚｜前往 CDG", en: "Evening" }, text: { zh: "晚上轉往 CDG 機場周邊住宿，把隔天的法航航段留成一段輕鬆的早晨出發。", en: "Move to the CDG airport area for the night so the Air France departure can begin more calmly the next morning." } }
     ],
-    notes: ["塞納河遊船可視體力和天氣決定。", "晚上先把隔天回程串接資料整理好。"],
-    tickets: ["遊船票依實際選擇而定。"]
+    notes: ["這天的重點不是再塞滿景點，而是讓巴黎最後一段走得漂亮又不狼狽。", "去 CDG 前先把隔天的法航、英航和華航資料都離線存好。"],
+    tickets: ["聖心堂與蒙馬特散步免費；採買與交通依實際安排。"]
   },
   {
     id: "day-12",
@@ -1397,10 +1511,10 @@ const dailyGuides = [
     date: "7/11-7/12",
     city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" },
     theme: { zh: "巴黎收束、歐洲段接駁與返台", en: "Closing Paris and connecting all the way home" },
-    intro: { zh: "最後一天的重點不是景點，而是把回程接得乾淨。巴黎到曼徹斯特、再到希斯洛，最後回台北，這整段需要留出足夠的餘裕。", en: "The last day is about clean connections rather than extra sightseeing, keeping the route back home steady all the way through." },
+    intro: { zh: "最後一天的重點不是景點，而是把回程接得乾淨。從 CDG 機場住宿出發後，巴黎到曼徹斯特、再到希斯洛，最後回台北，整段都以銜接順利為優先。", en: "The last day is about clean connections rather than sightseeing, starting from the CDG airport stay and keeping each onward segment steady." },
     highlights: ["AF1068", "CDG T2E", "BA1371", "CI82"],
     route: [
-      { label: { zh: "上午｜離開巴黎", en: "Morning" }, text: { zh: "上午只保留最必要的移動，提早前往 CDG。", en: "Keep only the essential movement in the morning and head early to CDG." } },
+      { label: { zh: "上午｜從 CDG 出發", en: "Morning" }, text: { zh: "早上直接從機場住宿接進航站，這樣法航這段會比較從容。", en: "Start directly from the airport stay into the terminal so the Air France leg can begin calmly." } },
       { label: { zh: "中午｜巴黎回曼徹斯特", en: "Noon" }, text: { zh: "法航商務艙這一段是回程串接的起點，先把節奏穩住。", en: "The Air France business segment starts the homeward chain, so keep things smooth and steady." } },
       { label: { zh: "下午｜英國境內轉場", en: "Afternoon" }, text: { zh: "抵達曼徹斯特後，接著再轉往希斯洛。", en: "After Manchester, move straight into the Heathrow connection." } },
       { label: { zh: "夜晚｜長途返台", en: "Evening" }, text: { zh: "CI82 把這趟旅程真正收回台北，最後就只剩休息和回家。", en: "CI82 closes the journey and turns it fully toward home." } }
@@ -2297,8 +2411,8 @@ const pageDescriptions = {
   conference: { zh: "會議日期、註冊狀態與現場節奏。", en: "Conference dates, registration status, and event rhythm." },
   flights: { zh: "去程、回程、德英法移動段與轉機整理。", en: "Outbound, return, Germany-UK-France segments, and transfer notes." },
   transport: { zh: "火車、Eurostar 與市內交通。", en: "Train, Eurostar, and local transit." },
-  stay: { zh: "已訂住宿、待定住宿與區域決策。", en: "Booked stay, pending stay, and area decisions." },
-  itinerary: { zh: "時間軸行程、景點費用與回程提醒。", en: "Timeline itinerary, attraction costs, and return notes." },
+  stay: { zh: "曼徹斯特會議住宿、巴黎 Pullman 與後段住宿安排。", en: "Manchester conference stay, the Pullman Paris chapter, and later-stay decisions." },
+  itinerary: { zh: "每日旅程、巴黎主線與回程銜接。", en: "Daily route guide, the Paris chapter, and the way home." },
   shopping: { zh: "茶葉、餅乾、果醬與超市購物清單。", en: "Tea, biscuits, preserves, and useful shopping notes." },
   souvenirs: { zh: "英國、法國、德國伴手禮整理。", en: "Souvenir notes for the UK, France, and Germany." },
   map: { zh: "主要地點、每日路線與地圖連結。", en: "Key locations, daily routes, and map links." },
@@ -2456,25 +2570,25 @@ function dayGuideMeta(day) {
     "day-8": [
       [{ zh: "移動方式", en: "Movement" }, { zh: "Eurostar", en: "Eurostar" }],
       [{ zh: "今晚落腳", en: "Tonight" }, "Pullman Paris Tour Eiffel"],
-      [{ zh: "這天重心", en: "Focus" }, { zh: "從倫敦順順轉進巴黎", en: "A clean shift from London into Paris" }]
+      [{ zh: "這天重心", en: "Focus" }, { zh: "入住 Pullman，晚上把鐵塔留給巴黎第一眼", en: "Check into Pullman and let the Eiffel Tower shape the first Paris evening" }]
     ],
     "day-9": [
       [{ zh: "移動方式", en: "Movement" }, { zh: "Metro / 步行", en: "Metro / walking" }],
       [{ zh: "今晚落腳", en: "Tonight" }, "Pullman Paris Tour Eiffel"],
-      [{ zh: "這天重心", en: "Focus" }, { zh: "把時間留給羅浮宮與周邊街景", en: "Give the day to the Louvre and nearby streets" }]
+      [{ zh: "這天重心", en: "Focus" }, { zh: "羅浮宮、右岸街景與百貨屋頂", en: "The Louvre, Right Bank streets, and the rooftop view" }]
     ],
     "day-10": [
       [{ zh: "移動方式", en: "Movement" }, { zh: "Metro / 步行", en: "Metro / walking" }],
       [{ zh: "今晚落腳", en: "Tonight" }, "Pullman Paris Tour Eiffel"],
-      [{ zh: "這天重心", en: "Focus" }, { zh: "巴黎主景、香榭麗舍與凱旋門", en: "The main Paris landmarks and boulevard rhythm" }]
+      [{ zh: "這天重心", en: "Focus" }, { zh: "精品大道、凱旋門與塞納河夜景", en: "Luxury avenues, the Arc, and the Seine at night" }]
     ],
     "day-11": [
-      [{ zh: "移動方式", en: "Movement" }, { zh: "Metro / 步行 / 視情況搭船", en: "Metro / walking / optional cruise" }],
-      [{ zh: "今晚落腳", en: "Tonight" }, "Pullman Paris Tour Eiffel"],
-      [{ zh: "這天重心", en: "Focus" }, { zh: "最後採買，替巴黎留一個柔和收尾", en: "Final shopping and a softer Paris close" }]
+      [{ zh: "移動方式", en: "Movement" }, { zh: "Metro / 步行 / CDG 方向移動", en: "Metro / walking / move toward CDG" }],
+      [{ zh: "今晚落腳", en: "Tonight" }, { zh: "CDG 機場住宿", en: "CDG airport stay" }],
+      [{ zh: "這天重心", en: "Focus" }, { zh: "蒙馬特、最後採買與機場轉場", en: "Montmartre, final shopping, and the airport handoff" }]
     ],
     "day-12": [
-      [{ zh: "移動方式", en: "Movement" }, { zh: "AF1068 / BA1371 / CI82", en: "AF1068 / BA1371 / CI82" }],
+      [{ zh: "移動方式", en: "Movement" }, { zh: "CDG 機場住宿 / AF1068 / BA1371 / CI82", en: "CDG airport stay / AF1068 / BA1371 / CI82" }],
       [{ zh: "今晚落腳", en: "Tonight" }, { zh: "回程機上", en: "Overnight on the way home" }],
       [{ zh: "這天重心", en: "Focus" }, { zh: "把巴黎、曼徹斯特與希斯洛順順接起來", en: "Keep Paris, Manchester, and Heathrow flowing cleanly" }]
     ]
@@ -2879,12 +2993,12 @@ function renderStay() {
   return renderDesktopPageShell("stay", {
     label: { zh: "Hotel", en: "Hotel" },
     title: { zh: "住宿筆記", en: "Stay Notes" },
-    note: { zh: "曼徹斯特已訂，倫敦與巴黎則另外整理成後半段住宿方向。", en: "Manchester is booked, while London and Paris are kept as the later stay plan." },
+    note: { zh: "曼徹斯特會議住宿已訂，巴黎最後三晚已定在 Pullman，倫敦與 CDG 周邊則保留作為後段銜接。", en: "Manchester is booked, the final three Paris nights are fixed at Pullman, and London with the CDG airport stay remain part of the later route planning." },
     meta: [
       { label: { zh: "飯店", en: "Hotel" }, value: "INNSiDE Manchester" },
       { label: { zh: "住宿", en: "Stay" }, value: "Jun 30 – Jul 5, 2026" },
       { label: { zh: "房型", en: "Room" }, value: { zh: "Twin Bed", en: "Twin Bed" } },
-      { label: { zh: "後段", en: "Later stays" }, value: { zh: "London / Paris", en: "London / Paris" } }
+      { label: { zh: "後段", en: "Later stays" }, value: { zh: "London / Paris / CDG", en: "London / Paris / CDG" } }
     ]
   }, `
     ${renderQuickNav("stay")}
@@ -2892,8 +3006,8 @@ function renderStay() {
     <section class="section compact-section" id="overview">
       <article class="section-card">
       <div class="section-label">${state.lang !== "zh" ? "Stay Plan" : "住宿安排"}</div>
-      <h2>${state.lang !== "zh" ? "Manchester is fixed, and the later-city stays are lined up." : "曼徹斯特已定，後段城市住宿也排出方向了。"}</h2>
-      <p class="lead">${state.lang !== "zh" ? "The conference hotel is fixed first, then London and Paris are compared by access, atmosphere, and route convenience." : "先把會議那幾天住穩，再把倫敦與巴黎依交通、氣質和動線排出首選。"}</p>
+      <h2>${state.lang !== "zh" ? "Manchester is fixed, and the later-city stays now have a clearer shape." : "曼徹斯特已定，後半段住宿也慢慢長出自己的節奏。"}</h2>
+      <p class="lead">${state.lang !== "zh" ? "The conference days stay anchored in Manchester, Paris now has a fixed tower-view chapter at Pullman, and London remains the part to balance around rail access and city rhythm." : "先把會議那幾天住穩，再把巴黎最後三晚定在 Pullman 的鐵塔景房。倫敦則繼續以車站動線和城市步調為主，慢慢比到最順的一間。"}</p>
       <div class="stay-list-rich">
         ${tripData.stay.slice(0, 1).map((stay, index) => `
           <article class="stay-card-rich${stay.image ? " with-image" : ""}">
@@ -2941,7 +3055,7 @@ function renderStay() {
       <article class="section-card">
       <div class="section-label">${state.lang !== "zh" ? "Later-City Stays" : "後段住宿安排"}</div>
       <h2>${state.lang !== "zh" ? "London and Paris stays" : "倫敦與巴黎住宿"}</h2>
-      <p class="lead">${state.lang !== "zh" ? "London stays closer to the rail rhythm, while Paris leans more toward the travel atmosphere." : "倫敦先看交通與步行便利，巴黎則更偏向旅程感與景觀。"}</p>
+      <p class="lead">${state.lang !== "zh" ? "London still revolves around rail convenience, while Paris is now fully anchored around Pullman and the Eiffel Tower view." : "倫敦還是先看車站與步行便利；巴黎這一段則已經定下來，重心就是 Pullman 的陽台鐵塔景。"}</p>
       <div class="summary-grid two">
         ${tripData.stay.slice(1).map(renderSummaryCard).join("")}
         <article class="summary-card">
@@ -2960,6 +3074,50 @@ function renderStay() {
         </article>
       </div>
       ${renderAlert(tripData.alerts[0])}
+      </article>
+    </section>
+    <section class="section compact-section" id="paris">
+      <article class="section-card paris-spotlight-card">
+        <div class="section-label">${state.lang !== "zh" ? "Paris Stay" : "巴黎住宿"}</div>
+        <h2>${state.lang !== "zh" ? "Pullman Paris Tour Eiffel" : "Pullman Paris Tour Eiffel"}</h2>
+        <p class="lead">${state.lang !== "zh" ? "These three nights are built around a high-floor balcony room with an Eiffel Tower view, giving the Paris chapter one clear place to return to each evening." : "這三晚將入住 Pullman Paris Tour Eiffel，以高樓層陽台房欣賞艾菲爾鐵塔景觀，作為巴黎行程的核心住宿亮點。"}</p>
+        <div class="paris-spotlight-grid">
+          <div class="paris-spotlight-copy">
+            ${renderMetaRow([
+              { label: state.lang !== "zh" ? "Stay dates" : "入住日期", value: state.lang !== "zh" ? "7 Jul – 10 Jul 2026" : "2026/07/07 – 2026/07/10" },
+              { label: state.lang !== "zh" ? "Nights" : "晚數", value: state.lang !== "zh" ? "3 nights" : "3 晚" },
+              { label: state.lang !== "zh" ? "Room" : "房型", value: state.lang !== "zh" ? "Deluxe Room, High Floor, Balcony, Eiffel Tower View" : "Deluxe Room｜高樓層｜陽台｜鐵塔景" }
+            ], "paris-meta-row")}
+            <div class="paris-feature-chips">
+              ${[
+                state.lang !== "zh" ? "32 sqm" : "32㎡",
+                state.lang !== "zh" ? "High floor" : "高樓層",
+                state.lang !== "zh" ? "Private balcony" : "私人陽台",
+                state.lang !== "zh" ? "Eiffel Tower view" : "艾菲爾鐵塔景觀",
+                state.lang !== "zh" ? "Photo-friendly stay" : "適合拍照",
+                state.lang !== "zh" ? "Walkable to Seine" : "近塞納河"
+              ].map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
+            </div>
+            <div class="paris-spotlight-body">
+              <p>${state.lang !== "zh" ? "The strongest reason to stay here is simple: Paris already has enough to see during the day, so coming back each night to a balcony tower view gives the final chapter of the trip a proper center." : "白天的巴黎可以留給羅浮宮、精品街、歌劇院周邊與塞納河，晚上則回到 Pullman，把鐵塔閃燈收進房間和陽台視角裡。這樣的住法很適合把最後幾天留給拍照、購物與放鬆。"} </p>
+              <p>${state.lang !== "zh" ? "It also keeps the Eiffel Tower and the Seine within easy reach, which makes the first evening, the return nights, and the final luggage handoff all feel smoother." : "飯店離艾菲爾鐵塔與塞納河都很近，第一晚看鐵塔夜景、後面幾天的夜間散步，以及 7/10 回飯店拿寄放行李，再轉往 CDG 機場住宿，動線都會順很多。"} </p>
+            </div>
+          </div>
+          <div class="paris-spotlight-side">
+            <div class="paris-spotlight-note">
+              <h3>${state.lang !== "zh" ? "Why it fits this trip" : "為什麼很適合這趟旅程"}</h3>
+              ${renderList([
+                state.lang !== "zh" ? "Tower-view balcony turns the Paris chapter into a real stay, not just a transit stop." : "陽台鐵塔景會讓巴黎這一段更像真正的停留，而不是趕行程的中繼站。",
+                state.lang !== "zh" ? "Works well for evening photos, shopping bags, and slower final nights." : "很適合晚上拍照、帶著購物袋回飯店，並把最後幾晚過得輕鬆一點。",
+                state.lang !== "zh" ? "Close enough to the Eiffel Tower and Seine to keep the route elegant and simple." : "離鐵塔與塞納河夠近，行程自然會更漂亮，也比較不容易亂。"
+              ], "plain-list")}
+            </div>
+            <div class="paris-spotlight-note">
+              <h3>${state.lang !== "zh" ? "Paris handoff" : "巴黎段收尾"}</h3>
+              <p>${state.lang !== "zh" ? "The Pullman stay ends on 10 Jul. After the final Montmartre and shopping day, return here for stored luggage, then move to the CDG airport stay for a calmer departure morning." : "Pullman 這段住到 7/10。白天完成聖心堂、蒙馬特與最後採買後，再回飯店拿寄放行李，晚上轉往 CDG 機場住宿，隔天法航航段會從容很多。"}</p>
+            </div>
+          </div>
+        </div>
       </article>
     </section>
     <section class="section compact-section" id="areas">
@@ -2989,6 +3147,18 @@ function renderItinerary() {
         ${renderDayGuideNav()}
         <div class="day-guide-sections">
           ${dailyGuideSections.map(renderDayGuideSection).join("")}
+        </div>
+      </article>
+    </section>
+    <section class="section compact-section" id="paris-must-do">
+      <article class="section-card paris-mustdo-section-card">
+        ${sectionHeading(
+          state.lang !== "zh" ? "Paris Must-Do Top 10" : "Paris Must-Do Top 10｜巴黎必去清單",
+          state.lang !== "zh" ? "Ten Paris moments worth holding onto." : "把巴黎這一段最值得留住的十個畫面，整理成一頁。",
+          state.lang !== "zh" ? "These are not meant as a hard checklist. Think of them as the views, streets, museums, and night scenes that shape the Paris chapter into something memorable." : "這裡不是待辦清單，而是巴黎這一段最值得放進旅程主畫面的地方：夜景、博物館、精品街、河岸，以及回到 Pullman 陽台看鐵塔的那些時刻。"
+        )}
+        <div class="paris-mustdo-grid">
+          ${parisMustDoItems.map(renderParisMustDoCard).join("")}
         </div>
       </article>
     </section>
