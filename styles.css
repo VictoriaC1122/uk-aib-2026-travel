@@ -15579,16 +15579,68 @@ main {
   }
 }
 
-/* Tabbed handbook redesign */
-body[data-page="home"] #page-content,
-body[data-page="itinerary"] #page-content {
-  width: min(1120px, calc(100% - 40px));
-  margin-inline: auto;
+/* Handbook layout layer */
+:root {
+  --handbook-shell: min(calc(100% - 40px), 1120px);
+  --handbook-shell-wide: min(calc(100% - 48px), 1180px);
+  --handbook-shell-narrow: min(calc(100% - 48px), 760px);
+  --handbook-section-gap: clamp(1.35rem, 2vw, 2rem);
+  --handbook-card-radius: 30px;
+  --handbook-soft-radius: 24px;
+  --handbook-surface: rgba(255, 251, 247, 0.9);
+  --handbook-surface-solid: rgba(255, 250, 245, 0.96);
+  --handbook-border: rgba(219, 206, 197, 0.72);
+  --handbook-shadow: 0 18px 38px rgba(103, 85, 73, 0.07);
+  --handbook-shadow-soft: 0 10px 22px rgba(96, 78, 67, 0.06);
+  --handbook-chip-bg: rgba(244, 235, 228, 0.95);
+  --handbook-chip-text: rgba(103, 87, 79, 0.92);
+  --handbook-accent: #a48376;
+  --handbook-accent-deep: #8f6d60;
+}
+
+html,
+body {
+  max-width: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg,
+table {
+  max-width: 100%;
+  height: auto;
 }
 
 body[data-page="home"] main,
 body[data-page="itinerary"] main {
   padding-bottom: calc(168px + env(safe-area-inset-bottom));
+}
+
+body[data-page="home"] #page-content,
+body[data-page="itinerary"] #page-content,
+body[data-page="stay"] .desktop-page-shell {
+  width: var(--handbook-shell);
+  margin-inline: auto;
+}
+
+body[data-page="home"] .topbar.handbook-topbar,
+body[data-page="home"] .site-footer,
+body[data-page="home"] .handbook-tabs-shell {
+  width: var(--handbook-shell);
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+body[data-page="home"] .topbar.handbook-topbar {
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+body[data-page="home"] .control-dock {
+  margin-left: auto;
+  max-width: min(100%, 520px);
 }
 
 body[data-page="home"] .hero-home-shell {
@@ -15599,9 +15651,24 @@ body[data-page="home"] .hero-home-shell {
 }
 
 body[data-page="home"] .hero-home-main,
-body[data-page="home"] .hero-overview-panel {
+body[data-page="home"] .hero-overview-panel,
+body[data-page="home"] .hero-home-shell > *,
+body[data-page="home"] .home-tab-panel-block,
+body[data-page="home"] .summary-card,
+body[data-page="home"] .hotel-ledger-entry,
+body[data-page="home"] .route-ledger-entry,
+body[data-page="home"] .info-ledger-block,
+body[data-page="home"] .budget-ledger-block,
+body[data-page="home"] .visa-ledger-entry,
+body[data-page="home"] .day-card,
+body[data-page="stay"] .section-card,
+body[data-page="stay"] .stay-card-rich,
+body[data-page="stay"] .stay-overview-card,
+body[data-page="stay"] .stay-stat-card,
+body[data-page="stay"] .stay-candidate-card,
+body[data-page="stay"] .stay-warning-card,
+body[data-page="stay"] .functional-stay-note {
   min-width: 0;
-  width: 100%;
   max-width: 100%;
 }
 
@@ -15613,29 +15680,39 @@ body[data-page="home"] .hero-overview-panel {
   padding-inline: 0.15rem;
 }
 
-.handbook-tabs-track {
+.handbook-tabs-track,
+.day-selector-bar {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  width: 100%;
   overflow-x: auto;
   white-space: nowrap;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.handbook-tabs-track::-webkit-scrollbar,
+.day-selector-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.handbook-tabs-track {
+  gap: 0.35rem;
+  width: 100%;
   padding: 0.45rem;
   border-radius: 999px;
   background: rgba(255, 250, 245, 0.82);
   border: 1px solid rgba(216, 203, 193, 0.72);
-  box-shadow: 0 18px 34px rgba(105, 87, 76, 0.09);
+  box-shadow: var(--handbook-shadow);
   backdrop-filter: blur(18px);
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
 }
 
-.handbook-tabs-track::-webkit-scrollbar {
-  display: none;
+.handbook-tab-link,
+.day-selector-link {
+  flex: 0 0 auto;
+  text-decoration: none;
 }
 
 .handbook-tab-link {
-  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -15645,42 +15722,103 @@ body[data-page="home"] .hero-overview-panel {
   color: rgba(78, 64, 57, 0.9);
   font-size: 0.98rem;
   font-weight: 600;
-  text-decoration: none;
   transition: background 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 .handbook-tab-link.active,
-.handbook-tab-link:hover {
-  background: linear-gradient(135deg, #a48376 0%, #b49283 100%);
+.handbook-tab-link:hover,
+.day-selector-link.active {
+  background: linear-gradient(135deg, var(--handbook-accent) 0%, #b49283 100%);
   color: #fffaf5;
-  box-shadow: 0 10px 22px rgba(134, 97, 79, 0.18);
+  box-shadow: 0 12px 24px rgba(134, 97, 79, 0.15);
 }
 
-.home-tab-panels {
+.home-tab-panels,
+.tab-panel-intro,
+.overview-editorial-block,
+.day-card-stack,
+.hotel-ledger,
+.link-ledger,
+.budget-ledger,
+.visa-ledger,
+.info-ledger,
+.route-ledger,
+.stay-overview-grid,
+.stay-price-grid,
+.stay-candidate-grid-wrapper,
+.stay-warning-options,
+.stay-info-list,
+.stay-next-steps,
+.stay-info-stack {
   display: grid;
-  gap: 2rem;
+  gap: var(--handbook-section-gap);
 }
 
 .home-tab-panel[hidden] {
   display: none !important;
 }
 
-.home-tab-panel {
-  min-width: 0;
+.home-tab-panel,
+.home-tab-panel-block,
+.handbook-overview-layout,
+.paris-mustdo-grid,
+.day-card,
+.hotel-ledger-entry,
+.link-ledger-group,
+.route-ledger-entry,
+.info-ledger-block,
+.budget-ledger-block,
+.visa-ledger-entry,
+.english-overview-panel,
+.stay-overview-card,
+.stay-stat-card,
+.stay-warning-card,
+.stay-candidate-card,
+.functional-stay-note,
+.stay-info-item,
+.stay-next-steps li,
+.stay-candidate-row,
+.detail-content,
+.route-ledger-entry p,
+.hotel-ledger-entry p,
+.info-ledger-block p,
+.visa-ledger-entry p,
+.english-overview-panel p,
+.tab-panel-intro p,
+.day-description,
+.day-note,
+.day-flow-row p,
+.budget-ledger-row span {
+  overflow-wrap: anywhere;
+}
+
+.home-tab-panel-block,
+.day-card,
+.hotel-ledger-entry,
+.link-ledger-group,
+.route-ledger-entry,
+.info-ledger-block,
+.budget-ledger-block,
+.visa-ledger-entry,
+.english-overview-panel,
+.stay-overview-card,
+.stay-stat-card,
+.stay-warning-card,
+.stay-candidate-card,
+.functional-stay-note,
+.stay-next-steps li {
+  border-radius: var(--handbook-card-radius);
+  border: 1px solid var(--handbook-border);
+  background: var(--handbook-surface);
+  box-shadow: var(--handbook-shadow);
 }
 
 .home-tab-panel-block {
-  display: grid;
   gap: 1.5rem;
   padding: clamp(1.6rem, 2.8vw, 2.4rem);
-  border-radius: 32px;
-  background: rgba(255, 251, 247, 0.92);
-  border: 1px solid rgba(219, 206, 197, 0.72);
-  box-shadow: 0 22px 46px rgba(98, 82, 74, 0.08);
 }
 
 .tab-panel-intro {
-  display: grid;
   gap: 0.8rem;
 }
 
@@ -15746,16 +15884,7 @@ body[data-page="home"] .hero-overview-panel {
   background: rgba(161, 132, 118, 0.7);
 }
 
-.handbook-home-timeline {
-  margin-top: 0.2rem;
-}
-
-.overview-conference-strip {
-  gap: 1rem;
-}
-
 .overview-editorial-block {
-  display: grid;
   gap: 0.95rem;
 }
 
@@ -15778,22 +15907,11 @@ body[data-page="home"] .hero-overview-panel {
 }
 
 .day-selector-bar {
-  display: flex;
-  align-items: center;
   gap: 0.7rem;
-  overflow-x: auto;
   padding: 0.35rem 0.1rem 0.25rem;
-  white-space: nowrap;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-
-.day-selector-bar::-webkit-scrollbar {
-  display: none;
 }
 
 .day-selector-link {
-  flex: 0 0 auto;
   display: grid;
   gap: 0.18rem;
   min-width: 104px;
@@ -15802,8 +15920,7 @@ body[data-page="home"] .hero-overview-panel {
   border: 1px solid rgba(217, 205, 196, 0.82);
   background: rgba(255, 251, 247, 0.76);
   color: rgba(83, 75, 73, 0.9);
-  text-decoration: none;
-  box-shadow: 0 10px 22px rgba(96, 78, 67, 0.06);
+  box-shadow: var(--handbook-shadow-soft);
 }
 
 .day-selector-link span {
@@ -15819,36 +15936,20 @@ body[data-page="home"] .hero-overview-panel {
   color: var(--handbook-text);
 }
 
-.day-selector-link.active {
-  background: linear-gradient(135deg, #a48376 0%, #b49283 100%);
-  border-color: transparent;
-  box-shadow: 0 14px 26px rgba(134, 97, 79, 0.16);
-}
-
-.day-selector-link.active span,
-.day-selector-link.active strong {
-  color: #fffaf5;
-}
-
-.day-card-stack {
-  display: grid;
-  gap: 1.5rem;
-}
-
 .day-card {
-  min-width: 0;
   padding: 2rem 1.95rem;
-  border-radius: 34px;
-  border: 1px solid rgba(219, 205, 194, 0.8);
-  background: rgba(255, 250, 245, 0.96);
-  box-shadow: 0 22px 40px rgba(102, 84, 72, 0.08);
+  background: var(--handbook-surface-solid);
   scroll-margin-top: 128px;
 }
 
-.day-card-topline {
+.day-card-topline,
+.stay-overview-card-head,
+.stay-candidate-head,
+.stay-warning-head {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  justify-content: space-between;
+  gap: 0.8rem;
   flex-wrap: wrap;
 }
 
@@ -15865,11 +15966,20 @@ body[data-page="home"] .hero-overview-panel {
   font-weight: 700;
 }
 
+.day-date,
+.day-kicker,
+.detail-label,
+.stay-overview-city,
+.stay-stat-card span,
+.stay-candidate-row span,
+.stay-info-item span {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .day-date {
   color: rgba(122, 109, 101, 0.88);
   font-size: 0.95rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .day-location {
@@ -15879,21 +15989,26 @@ body[data-page="home"] .hero-overview-panel {
   line-height: 1.65;
 }
 
-.day-tags {
+.day-tags,
+.stay-area-chip-cloud {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+}
+
+.day-tags {
   margin-top: 1rem;
 }
 
-.day-tags span {
+.day-tags span,
+.stay-area-chip-cloud span {
   display: inline-flex;
   align-items: center;
   min-height: 34px;
-  padding: 0.4rem 0.8rem;
+  padding: 0.38rem 0.8rem;
   border-radius: 999px;
-  background: rgba(161, 132, 118, 0.11);
-  color: rgba(103, 87, 79, 0.9);
+  background: var(--handbook-chip-bg);
+  color: var(--handbook-chip-text);
   font-size: 0.84rem;
   font-weight: 600;
 }
@@ -15902,8 +16017,6 @@ body[data-page="home"] .hero-overview-panel {
   margin: 1.2rem 0 0;
   color: rgba(151, 120, 106, 0.95);
   font-size: 0.9rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
 }
 
 .day-title {
@@ -15920,56 +16033,83 @@ body[data-page="home"] .hero-overview-panel {
   line-height: 1.84;
 }
 
-.day-note {
-  margin-top: 1.2rem;
+.day-note,
+.hotel-feature-note,
+.paris-spotlight-note,
+.functional-stay-note {
   padding: 1rem 1.1rem;
-  border-radius: 22px;
+  border-radius: var(--handbook-soft-radius);
   background: rgba(246, 238, 231, 0.95);
   border: 1px solid rgba(219, 206, 197, 0.72);
   color: rgba(91, 80, 75, 0.9);
   line-height: 1.78;
 }
 
-.day-flow {
-  margin-top: 1.4rem;
-  display: grid;
-  gap: 1rem;
+.day-note {
+  margin-top: 1.2rem;
 }
 
-.day-flow h3 {
-  margin: 0;
-  font-size: 1.05rem;
-  color: var(--handbook-text);
-}
-
-.day-flow-list {
+.day-flow,
+.day-flow-list,
+.stay-candidate-grid {
   display: grid;
   gap: 0.9rem;
 }
 
-.day-flow-row {
+.day-flow {
+  margin-top: 1.4rem;
+  gap: 1rem;
+}
+
+.day-flow h3,
+.hotel-ledger-head h3,
+.link-ledger-group h3,
+.info-ledger-block h3,
+.visa-ledger-entry h3,
+.route-ledger-entry h3,
+.stay-overview-card h3,
+.stay-candidate-head h3,
+.stay-warning-head h3 {
+  margin: 0;
+  line-height: 1.25;
+  color: var(--handbook-text);
+}
+
+.day-flow h3 {
+  font-size: 1.05rem;
+}
+
+.day-flow-row,
+.stay-candidate-row {
   display: grid;
-  gap: 0.42rem;
-  padding-top: 0.9rem;
+  gap: 0.4rem;
+  padding-top: 0.85rem;
   border-top: 1px solid rgba(222, 212, 206, 0.72);
 }
 
-.day-flow-row:first-child {
+.day-flow-row:first-child,
+.stay-candidate-row:first-child {
   padding-top: 0;
   border-top: none;
 }
 
-.day-flow-label {
+.day-flow-label,
+.detail-label,
+.stay-overview-city,
+.stay-stat-card span,
+.stay-candidate-row span,
+.stay-info-item span {
   color: rgba(145, 118, 105, 0.96);
-  font-size: 0.86rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
-.day-flow-row p {
-  margin: 0;
-  color: rgba(83, 75, 73, 0.9);
-  line-height: 1.8;
+.day-flow-row p,
+.stay-candidate-row,
+.stay-warning-options > div,
+.stay-next-steps li,
+.detail-content {
+  color: rgba(83, 75, 73, 0.94);
+  line-height: 1.78;
 }
 
 .day-details {
@@ -15987,29 +16127,6 @@ body[data-page="home"] .hero-overview-panel {
   align-items: start;
 }
 
-.detail-label {
-  color: rgba(143, 120, 109, 0.92);
-  font-size: 0.84rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.detail-content {
-  color: rgba(83, 75, 73, 0.92);
-  line-height: 1.78;
-  overflow-wrap: anywhere;
-}
-
-.hotel-ledger,
-.link-ledger,
-.budget-ledger,
-.visa-ledger,
-.info-ledger,
-.route-ledger {
-  display: grid;
-  gap: 1rem;
-}
-
 .hotel-ledger-entry,
 .link-ledger-group,
 .route-ledger-entry,
@@ -16019,13 +16136,11 @@ body[data-page="home"] .hero-overview-panel {
 .english-overview-panel {
   padding: 1.35rem 1.4rem;
   border-radius: 26px;
-  border: 1px solid rgba(221, 208, 198, 0.72);
-  background: rgba(255, 251, 247, 0.82);
 }
 
-.hotel-ledger-entry.featured {
+.hotel-ledger-entry.featured,
+.functional-stay-card {
   background: linear-gradient(180deg, rgba(255, 249, 242, 0.98) 0%, rgba(251, 244, 238, 0.92) 100%);
-  box-shadow: 0 18px 34px rgba(113, 91, 79, 0.08);
 }
 
 .hotel-ledger-head,
@@ -16041,19 +16156,7 @@ body[data-page="home"] .hero-overview-panel {
 .info-ledger-block h3,
 .visa-ledger-entry h3,
 .route-ledger-entry h3 {
-  margin: 0;
   font-size: 1.42rem;
-  line-height: 1.25;
-  color: var(--handbook-text);
-}
-
-.hotel-feature-note {
-  margin-top: 1rem;
-  padding: 0.9rem 1rem;
-  border-radius: 18px;
-  background: rgba(214, 198, 190, 0.18);
-  color: rgba(88, 76, 71, 0.92);
-  line-height: 1.72;
 }
 
 .link-ledger-list,
@@ -16083,8 +16186,13 @@ body[data-page="home"] .hero-overview-panel {
   text-transform: uppercase;
 }
 
-.budget-ledger {
+.budget-ledger,
+.info-ledger {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.visa-ledger {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .budget-ledger-row {
@@ -16097,8 +16205,8 @@ body[data-page="home"] .hero-overview-panel {
 }
 
 .budget-ledger-row:first-child {
-  border-top: none;
   padding-top: 0;
+  border-top: none;
 }
 
 .budget-ledger-row strong {
@@ -16110,16 +16218,6 @@ body[data-page="home"] .hero-overview-panel {
 
 .budget-ledger-row span {
   text-align: right;
-  color: rgba(91, 78, 73, 0.92);
-  overflow-wrap: anywhere;
-}
-
-.info-ledger {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.visa-ledger {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .english-overview-panel {
@@ -16135,27 +16233,6 @@ body[data-page="home"] .hero-overview-panel {
   background: rgba(241, 225, 208, 0.94);
 }
 
-.stay-overview-grid,
-.stay-price-grid,
-.stay-candidate-grid-wrapper,
-.stay-warning-options,
-.stay-info-list {
-  display: grid;
-  gap: 1rem;
-}
-
-.stay-overview-card,
-.stay-stat-card,
-.stay-warning-card,
-.stay-candidate-card,
-.functional-stay-note {
-  min-width: 0;
-  border-radius: 26px;
-  border: 1px solid rgba(221, 208, 198, 0.72);
-  background: rgba(255, 251, 247, 0.88);
-  box-shadow: 0 18px 34px rgba(103, 85, 73, 0.06);
-}
-
 .stay-overview-card,
 .stay-stat-card,
 .stay-candidate-card,
@@ -16163,30 +16240,11 @@ body[data-page="home"] .hero-overview-panel {
   padding: 1.2rem 1.2rem 1.15rem;
 }
 
-.stay-overview-card-head,
-.stay-candidate-head,
-.stay-warning-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-}
-
-.stay-overview-city {
-  color: rgba(143, 120, 109, 0.95);
-  font-size: 0.82rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
 .stay-overview-card h3,
 .stay-candidate-head h3,
 .stay-warning-head h3 {
-  margin: 0.7rem 0 0;
+  margin-top: 0.7rem;
   font-size: 1.34rem;
-  line-height: 1.26;
-  color: var(--handbook-text);
 }
 
 .stay-overview-card strong,
@@ -16200,22 +16258,12 @@ body[data-page="home"] .hero-overview-panel {
 
 .stay-overview-card p,
 .stay-stat-card p,
-.stay-candidate-row p,
 .stay-warning-card p,
 .functional-stay-note p {
   margin: 0.72rem 0 0;
   color: rgba(87, 76, 72, 0.9);
   font-size: 0.98rem;
   line-height: 1.8;
-}
-
-.stay-stat-card span,
-.stay-candidate-row span,
-.stay-info-item span {
-  color: rgba(145, 118, 105, 0.96);
-  font-size: 0.8rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
 }
 
 .stay-spotlight-grid,
@@ -16230,7 +16278,6 @@ body[data-page="home"] .hero-overview-panel {
 }
 
 .stay-info-item {
-  min-width: 0;
   display: grid;
   gap: 0.45rem;
   padding: 1rem 1rem 0.95rem;
@@ -16239,17 +16286,25 @@ body[data-page="home"] .hero-overview-panel {
   background: rgba(255, 248, 243, 0.84);
 }
 
-.stay-info-item strong,
-.stay-candidate-row,
-.stay-warning-options > div {
-  color: rgba(83, 75, 73, 0.94);
-  line-height: 1.72;
-  overflow-wrap: anywhere;
-}
-
 .stay-candidate-card {
   display: grid;
   gap: 1rem;
+}
+
+.stay-card-image-wrap,
+.candidate-image-wrap,
+.paris-spotlight-photo-wrap {
+  overflow: hidden;
+}
+
+.stay-card-image,
+.candidate-image,
+.paris-spotlight-photo {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .candidate-image-wrap,
@@ -16260,42 +16315,6 @@ body[data-page="home"] .hero-overview-panel {
 .stay-candidate-copy {
   display: grid;
   gap: 1rem;
-}
-
-.stay-candidate-grid {
-  display: grid;
-  gap: 0.85rem;
-}
-
-.stay-candidate-row {
-  display: grid;
-  gap: 0.35rem;
-  padding-top: 0.85rem;
-  border-top: 1px solid rgba(222, 212, 206, 0.72);
-}
-
-.stay-candidate-row:first-child {
-  padding-top: 0;
-  border-top: none;
-}
-
-.stay-area-chip-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-  margin-top: 0.2rem;
-}
-
-.stay-area-chip-cloud span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 34px;
-  padding: 0.38rem 0.8rem;
-  border-radius: 999px;
-  background: rgba(244, 235, 228, 0.95);
-  color: rgba(103, 87, 79, 0.92);
-  font-size: 0.87rem;
-  font-weight: 600;
 }
 
 .stay-warning-card {
@@ -16315,7 +16334,8 @@ body[data-page="home"] .hero-overview-panel {
   border: 1px solid rgba(223, 214, 207, 0.72);
 }
 
-.stay-warning-options strong {
+.stay-warning-options strong,
+.stay-next-steps strong {
   color: var(--handbook-text);
   font-size: 1rem;
 }
@@ -16324,18 +16344,7 @@ body[data-page="home"] .hero-overview-panel {
   margin-bottom: 1rem;
 }
 
-.functional-stay-card {
-  background: linear-gradient(180deg, rgba(252, 248, 243, 0.98) 0%, rgba(248, 242, 236, 0.94) 100%);
-}
-
-.stay-info-stack {
-  display: grid;
-  gap: 1rem;
-}
-
 .stay-next-steps {
-  display: grid;
-  gap: 1rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -16343,17 +16352,8 @@ body[data-page="home"] .hero-overview-panel {
 }
 
 .stay-next-steps li {
-  min-width: 0;
-  display: grid;
-  gap: 0.45rem;
   padding: 1.15rem 1.15rem 1.1rem 4rem;
   position: relative;
-  border-radius: 24px;
-  border: 1px solid rgba(221, 208, 198, 0.72);
-  background: rgba(255, 251, 247, 0.84);
-  color: rgba(87, 76, 72, 0.9);
-  line-height: 1.8;
-  overflow-wrap: anywhere;
 }
 
 .stay-next-steps li::before {
@@ -16374,50 +16374,18 @@ body[data-page="home"] .hero-overview-panel {
   font-weight: 700;
 }
 
-.stay-next-steps strong {
-  color: var(--handbook-text);
-  font-size: 1rem;
-}
-
-html,
-body {
-  max-width: 100%;
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-  max-width: 100%;
-  height: auto;
-}
-
-table {
-  max-width: 100%;
-}
-
-body[data-page="home"] .topbar.handbook-topbar {
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-body[data-page="home"] .control-dock {
-  margin-left: auto;
-  max-width: min(100%, 520px);
-}
-
 @media (max-width: 1120px) {
-  body[data-page="home"] .hero-home-shell {
+  body[data-page="home"] .hero-home-shell,
+  .handbook-overview-layout.compact,
+  .paris-mustdo-grid.compact,
+  .stay-spotlight-grid,
+  .airport-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .budget-ledger,
   .info-ledger,
-  .visa-ledger {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
+  .visa-ledger,
   .stay-overview-grid,
   .stay-price-grid,
   .stay-candidate-grid-wrapper,
@@ -16426,16 +16394,12 @@ body[data-page="home"] .control-dock {
   .stay-next-steps {
     grid-template-columns: minmax(0, 1fr);
   }
-
-  .stay-spotlight-grid,
-  .airport-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 760px) {
   body[data-page="home"] #page-content,
-  body[data-page="itinerary"] #page-content {
+  body[data-page="itinerary"] #page-content,
+  body[data-page="stay"] .desktop-page-shell {
     width: min(calc(100% - 28px), 760px);
   }
 
@@ -16445,13 +16409,12 @@ body[data-page="home"] .control-dock {
   }
 
   .handbook-tabs-shell {
-    top: calc(env(safe-area-inset-top) + 8px);
     margin-bottom: 1.1rem;
   }
 
   .handbook-tabs-track {
-    padding: 0.35rem;
     gap: 0.25rem;
+    padding: 0.35rem;
   }
 
   .handbook-tab-link {
@@ -16465,9 +16428,9 @@ body[data-page="home"] .control-dock {
   }
 
   .home-tab-panel-block {
+    gap: 1.15rem;
     padding: 1.45rem 1.25rem;
     border-radius: 28px;
-    gap: 1.15rem;
   }
 
   .tab-panel-intro h2 {
@@ -16490,11 +16453,6 @@ body[data-page="home"] .control-dock {
     width: 100%;
     margin-left: 0;
     max-width: 100%;
-  }
-
-  .handbook-overview-layout.compact,
-  .paris-mustdo-grid.compact {
-    grid-template-columns: minmax(0, 1fr);
   }
 
   .day-selector-bar {
@@ -16597,14 +16555,16 @@ body[data-page="home"] .control-dock {
     padding: 1.62rem 1.32rem;
   }
 
-  .day-tags span {
+  .day-tags span,
+  .stay-area-chip-cloud span {
     font-size: 0.8rem;
   }
 }
 
 @media (max-width: 390px) {
   body[data-page="home"] #page-content,
-  body[data-page="itinerary"] #page-content {
+  body[data-page="itinerary"] #page-content,
+  body[data-page="stay"] .desktop-page-shell {
     width: calc(100% - 24px);
   }
 
@@ -16623,15 +16583,10 @@ body[data-page="home"] .control-dock {
 }
 
 @media (min-width: 1024px) {
-  :root {
-    --site-shell: min(1180px, calc(100% - 48px));
-    --site-shell-narrow: min(980px, calc(100% - 48px));
-  }
-
   body[data-page="home"] .hero {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-inline: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
     padding-inline: 24px;
     overflow: hidden;
   }
@@ -16641,7 +16596,7 @@ body[data-page="home"] .control-dock {
   body[data-page="home"] #page-content,
   body[data-page="home"] .site-footer,
   body[data-page="stay"] .desktop-page-shell {
-    width: min(100% - 48px, 1180px) !important;
+    width: var(--handbook-shell-wide);
     max-width: 1180px;
     margin-inline: auto;
   }
@@ -16651,38 +16606,24 @@ body[data-page="home"] .control-dock {
   }
 
   body[data-page="home"] .hero-home-shell.hero-content {
-    width: min(100% - 48px, 1180px);
+    width: var(--handbook-shell-wide);
     max-width: 1180px;
     margin-inline: auto;
-    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr) !important;
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
     gap: clamp(24px, 4vw, 56px);
     overflow: hidden;
-  }
-
-  body[data-page="home"] .hero-home-main,
-  body[data-page="home"] .hero-overview-panel,
-  body[data-page="home"] .home-tab-panel-block,
-  body[data-page="home"] .summary-card,
-  body[data-page="home"] .day-card,
-  body[data-page="home"] .hotel-ledger-entry,
-  body[data-page="home"] .route-ledger-entry,
-  body[data-page="home"] .info-ledger-block,
-  body[data-page="home"] .budget-ledger-block,
-  body[data-page="home"] .visa-ledger-entry,
-  body[data-page="stay"] .section-card,
-  body[data-page="stay"] .stay-card-rich,
-  body[data-page="stay"] .stay-overview-card,
-  body[data-page="stay"] .stay-candidate-card,
-  body[data-page="stay"] .stay-stat-card {
-    min-width: 0;
-    max-width: 100%;
   }
 
   body[data-page="home"] .handbook-home-hero h1,
   body[data-page="home"] .hero-subtitle,
   body[data-page="home"] .hero-dates,
   body[data-page="home"] .hero-intro,
-  body[data-page="home"] .hero-serif-note {
+  body[data-page="home"] .hero-serif-note,
+  body[data-page="home"] .page-inline-nav,
+  body[data-page="stay"] .section-card h2,
+  body[data-page="stay"] .section-card p,
+  body[data-page="stay"] .stay-card-local,
+  body[data-page="stay"] .stay-card-note {
     overflow-wrap: anywhere;
     word-break: normal;
   }
@@ -16693,19 +16634,13 @@ body[data-page="home"] .control-dock {
   }
 
   body[data-page="home"] .hero-overview-grid,
-  body[data-page="home"] .hero-signal-strip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
+  body[data-page="home"] .hero-signal-strip,
   body[data-page="home"] .paris-mustdo-grid.compact {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  body[data-page="home"] .info-ledger,
   body[data-page="home"] .budget-ledger {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  body[data-page="home"] .info-ledger {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -16713,9 +16648,9 @@ body[data-page="home"] .control-dock {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  body[data-page="home"] .link-ledger-list,
-  body[data-page="home"] .budget-ledger-rows {
-    min-width: 0;
+  body[data-page="home"] .home-tab-panel-block .tab-panel-intro p,
+  body[data-page="stay"] .lead {
+    max-width: 760px;
   }
 
   body[data-page="stay"] .section {
@@ -16737,15 +16672,18 @@ body[data-page="home"] .control-dock {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  body[data-page="stay"] .stay-candidate-grid-wrapper {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
+  body[data-page="stay"] .stay-candidate-grid-wrapper,
   body[data-page="stay"] .stay-warning-options {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   body[data-page="stay"] .stay-next-steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="stay"] .stay-card-image,
+  body[data-page="stay"] .candidate-image,
+  body[data-page="stay"] .paris-spotlight-photo {
+    aspect-ratio: 16 / 10;
   }
 }
