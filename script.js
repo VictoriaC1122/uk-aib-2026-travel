@@ -1054,6 +1054,43 @@ const homeSectionTabs = [
   { id: "days", label: { zh: "每日故事", en: "Day by Day" }, icon: "hotel" }
 ];
 
+const handbookContents = [
+  { id: "overview", number: "01", title: { zh: "旅程總覽", en: "Trip Overview" } },
+  { id: "conference-focus", number: "02", title: { zh: "AIB 會議主段", en: "AIB conference core" } },
+  { id: "city-route", number: "03", title: { zh: "城市路線", en: "City route" } },
+  { id: "highlights", number: "04", title: { zh: "巴黎亮點", en: "Paris highlights" } },
+  { id: "days", number: "05", title: { zh: "每日行程", en: "Day-by-day guide" } },
+  { id: "practical", number: "06", title: { zh: "住宿與交通", en: "Stay and transport" } }
+];
+
+const homeJourneyTimeline = [
+  {
+    date: "06/30",
+    title: { zh: "Frankfurt", en: "Frankfurt" },
+    note: { zh: "短暫轉機散步，替歐洲段留下一個輕巧開場。", en: "A short layover walk that opens the Europe chapter gently." }
+  },
+  {
+    date: "06/30–07/03",
+    title: { zh: "Manchester", en: "Manchester" },
+    note: { zh: "AIB 2026 會議主段與兩場發表都放在這裡。", en: "The AIB 2026 conference core and both presentations stay here." }
+  },
+  {
+    date: "07/04–07/06",
+    title: { zh: "London", en: "London" },
+    note: { zh: "西敏地標、街區散步與比較從容的城市節奏。", en: "Westminster landmarks, neighbourhood walks, and a steadier city rhythm." }
+  },
+  {
+    date: "07/07–07/10",
+    title: { zh: "Paris", en: "Paris" },
+    note: { zh: "鐵塔夜景、博物館、精品街與 Pullman 陽台視角。", en: "Tower nights, museums, shopping streets, and the Pullman balcony view." }
+  },
+  {
+    date: "07/11–07/12",
+    title: { zh: "Return", en: "Return" },
+    note: { zh: "從巴黎接回曼徹斯特與希斯洛，再一路返台。", en: "From Paris back through Manchester and Heathrow, then home." }
+  }
+];
+
 const tripSnapshotCards = [
   {
     label: { zh: "天數", en: "Trip length" },
@@ -1581,6 +1618,57 @@ const dailyGuideSections = [
     dayIds: ["day-12"]
   }
 ];
+
+const dailyGuidePreviewLines = {
+  "day-1": {
+    zh: "從長程飛行接上法蘭克福散步，傍晚穩穩落進曼徹斯特。",
+    en: "A long-haul arrival, a Frankfurt walk, and a calm landing in Manchester."
+  },
+  "day-2": {
+    zh: "第一個完整會議日，以 session、交流與城市留白為主。",
+    en: "The first full conference day keeps its focus on sessions, conversations, and a lighter evening."
+  },
+  "day-3": {
+    zh: "會議內容與發表準備交錯進行，節奏像一個完整學術工作日。",
+    en: "Sessions and presentation prep overlap in a day that feels fully academic."
+  },
+  "day-4": {
+    zh: "Interactive 發表是今天的主軸，晚上開始替離開曼徹斯特做準備。",
+    en: "The Interactive presentation anchors the day before the route turns toward London."
+  },
+  "day-5": {
+    zh: "從會議城市南下倫敦，把旅程重新交給街景與地標。",
+    en: "Leave the conference city behind and let London’s streets take over."
+  },
+  "day-6": {
+    zh: "精品街區與百貨留給比較從容的一天，不急著趕景點。",
+    en: "A slower London day for department stores, luxury streets, and city polish."
+  },
+  "day-7": {
+    zh: "把 Covent Garden 與 Piccadilly 留給散步，也替 Eurostar 前夕留白。",
+    en: "Keep Covent Garden and Piccadilly light, with room left for tomorrow’s Eurostar."
+  },
+  "day-8": {
+    zh: "搭 Eurostar 進巴黎，晚上讓 Pullman 與鐵塔夜景接手第一印象。",
+    en: "Reach Paris by Eurostar, then hand the first evening to Pullman and the tower lights."
+  },
+  "day-9": {
+    zh: "羅浮宮、右岸街景與百貨屋頂，讓巴黎慢慢展開得很完整。",
+    en: "The Louvre, the Right Bank, and the rooftop view give Paris a full second act."
+  },
+  "day-10": {
+    zh: "精品大道、凱旋門與塞納河，把巴黎最有光澤的一面留在這天。",
+    en: "Luxury avenues, the Arc, and the Seine shape Paris at its most polished."
+  },
+  "day-11": {
+    zh: "蒙馬特與最後採買收住巴黎，晚上再順順轉往 CDG。",
+    en: "Montmartre and final shopping close Paris before the move toward CDG."
+  },
+  "day-12": {
+    zh: "回程的重點是把巴黎、曼徹斯特與希斯洛順順接回家。",
+    en: "The last day is all about connecting Paris, Manchester, and Heathrow cleanly."
+  }
+};
 
 const conferenceAlerts = [
   {
@@ -2297,12 +2385,6 @@ function renderHero(pageId) {
   const homePage = pageId === "home";
   const heroTitle = escapeHtml(t(hero.title)).replace("\n", "<br />");
   if (homePage) {
-    const signalCards = [
-      [{ zh: "旅程主軸", en: "Main arc" }, { zh: "會議發表 × 城市旅行", en: "Conference core × city travel" }],
-      [{ zh: "會議據點", en: "Conference base" }, { zh: "Manchester · 6/30–7/3", en: "Manchester · Jun 30-3 Jul" }],
-      [{ zh: "城市段落", en: "City chapters" }, { zh: "Frankfurt · London · Paris", en: "Frankfurt · London · Paris" }],
-      [{ zh: "巴黎亮點", en: "Paris close" }, { zh: "Pullman 鐵塔景陽台", en: "Pullman tower-view balcony" }]
-    ];
     const heroFacts = [
       [{ zh: "旅程日期", en: "Trip dates" }, { zh: "2026/06/29 – 2026/07/12", en: "2026/06/29 – 2026/07/12" }],
       [{ zh: "主要城市", en: "Cities" }, { zh: "法蘭克福 · 曼徹斯特 · 倫敦 · 巴黎", en: "Frankfurt · Manchester · London · Paris" }],
@@ -2318,14 +2400,7 @@ function renderHero(pageId) {
           <div class="hero-dates">${state.lang !== "zh" ? "2026 / 06 / 29 - 2026 / 07 / 12" : "2026 / 06 / 29 - 2026 / 07 / 12"}</div>
           <div class="destinations">${state.lang !== "zh" ? "Frankfurt • Manchester • London • Paris" : "法蘭克福 • 曼徹斯特 • 倫敦 • 巴黎"}</div>
           <p class="hero-intro">${state.lang !== "zh" ? "The route begins with a brief Frankfurt layover, settles into Manchester for AIB 2026, then opens into London streets before ending with museums, shopping, and longer evenings in Paris." : "旅程從法蘭克福短暫轉機開始，先在曼徹斯特完成 AIB 2026 的學術主段，再轉進倫敦的城市節奏，最後以巴黎的街景、博物館與法式餐桌收尾。"}</p>
-          <div class="hero-signal-strip" aria-label="${state.lang !== "zh" ? "Trip snapshot" : "旅程摘要"}">
-            ${signalCards.map(([label, value]) => `
-              <article class="hero-signal-card">
-                <span>${escapeHtml(t(label))}</span>
-                <strong>${escapeHtml(t(value))}</strong>
-              </article>
-            `).join("")}
-          </div>
+          <p class="hero-serif-note">${state.lang !== "zh" ? "The conference chapter stays in the middle on purpose, so the route can begin with a brief European opening and still finish in Paris with enough time for museums, polished streets, and the Pullman balcony view." : "這條路線刻意把會議主段放在正中央，前段保留法蘭克福短暫開場，後段才把倫敦與巴黎慢慢接上來，讓博物館、精品街與 Pullman 陽台鐵塔景都能留出比較從容的空間。"}</p>
           <div class="hero-actions editorial-hero-actions">
             <a class="button primary hero-action-primary" href="#days">${state.lang !== "zh" ? "Open the daily guide" : "打開每日行程"}</a>
             <a class="button secondary hero-action-secondary" href="#highlights">${state.lang !== "zh" ? "See the trip highlights" : "先看旅程亮點"}</a>
@@ -2334,9 +2409,9 @@ function renderHero(pageId) {
         <aside class="hero-overview-panel" aria-label="${state.lang !== "zh" ? "Trip status summary" : "旅程狀態摘要"}">
           <div class="hero-overview-head">
             <span>${state.lang !== "zh" ? "Trip summary" : "旅程摘要"}</span>
-            <strong>${state.lang !== "zh" ? "A quick read before everything else" : "先看懂整趟旅程的大方向"}</strong>
+            <strong>${state.lang !== "zh" ? "A calm reading before the details" : "先用一頁讀懂整趟旅程的主線"}</strong>
           </div>
-          <div class="hero-facts hero-overview-grid">
+          <div class="hero-facts hero-overview-grid hero-overview-rows">
             ${heroFacts.map(([label, value]) => `
               <article class="hero-fact">
                 <span>${escapeHtml(t(label))}</span>
@@ -2344,6 +2419,7 @@ function renderHero(pageId) {
               </article>
             `).join("")}
           </div>
+          <p class="hero-summary-note">${state.lang !== "zh" ? "Manchester and Paris are already anchored by real stays. London remains the flexible chapter, which keeps the route practical without making the cover page feel like a list of unfinished tasks." : "曼徹斯特和巴黎都已經有明確住宿據點，現在主要只剩倫敦還保留彈性。這樣既不會打亂整條路線，也不會讓首頁一打開就像未完成事項清單。"}</p>
         </aside>
       </div>
     `;
@@ -2398,53 +2474,80 @@ function renderHome() {
   return `
     ${renderQuickNav("home")}
     <section class="section home-handbook-section" id="overview">
-      <article class="section-card intro-card handbook-intro-card">
+      <article class="section-card intro-card handbook-intro-card handbook-cover-card">
         ${sectionHeading(
           state.lang !== "zh" ? "Travel Overview" : "旅程總覽",
-          state.lang !== "zh" ? "One route, four city chapters, and a clear conference center." : "先把整趟旅程讀成一條清楚的路線，再慢慢展開每個城市。",
-          state.lang !== "zh" ? "Frankfurt opens the route with a short layover walk, Manchester holds the academic core, London softens the middle stretch, and Paris closes the trip with museums, right-bank streets, and a tower-view stay." : "法蘭克福先用半天轉機散步替旅程暖身，曼徹斯特把 AIB 2026 的主段穩穩放在中央，倫敦留給城市漫步與街區節奏，最後再用巴黎的博物館、右岸街景與 Pullman 鐵塔景陽台把這段旅程收好。"
+          state.lang !== "zh" ? "A conference route held together like a travel handbook." : "先把旅程讀成一本手冊，再往下翻每一段城市節奏。",
+          state.lang !== "zh" ? "Frankfurt gives the route a brief European opening, Manchester holds the academic center, London softens the middle stretch, and Paris brings the trip into its museum, river, and tower-view finish." : "法蘭克福先用半天轉機散步把歐洲感打開，曼徹斯特穩穩放住 AIB 2026 的學術核心，接著才把倫敦與巴黎慢慢接成後半段城市旅行。"
         )}
-        <div class="journey-route-grid">
-          ${journeyRouteCards.map(renderJourneyRouteCard).join("")}
+        <div class="handbook-overview-layout">
+          <div class="handbook-overview-copy">
+            <p>${state.lang !== "zh" ? "Think of this site as the route itself: first the long-haul arrival, then the Manchester conference chapter, then London, then Paris, and finally the chain back home." : "這一頁不把旅程拆成零碎資料，而是先把它讀成一條路線：長程抵達、曼徹斯特會議主段、倫敦城市段、巴黎收尾，最後再一路接回台灣。"}</p>
+            <p>${state.lang !== "zh" ? "The front of the handbook stays light on admin. What matters first is where the trip goes, how the cities connect, and which moments are worth holding onto." : "首頁先不急著把行政細節推到最前面。真正需要先看懂的，是城市之間怎麼銜接、會議放在旅程的哪裡，以及哪些場景會成為這趟路線最值得記住的畫面。"}</p>
+          </div>
+          <aside class="handbook-summary-panel" aria-label="${state.lang !== "zh" ? "Trip summary" : "旅程摘要"}">
+            ${renderHandbookSummaryRow(
+              state.lang !== "zh" ? "Trip dates" : "旅程日期",
+              "2026/06/29 – 2026/07/12"
+            )}
+            ${renderHandbookSummaryRow(
+              state.lang !== "zh" ? "Cities" : "主要城市",
+              state.lang !== "zh" ? "Frankfurt · Manchester · London · Paris" : "法蘭克福 · 曼徹斯特 · 倫敦 · 巴黎"
+            )}
+            ${renderHandbookSummaryRow(
+              state.lang !== "zh" ? "Conference base" : "會議據點",
+              state.lang !== "zh" ? "AIB 2026 Manchester · 6/30–7/3" : "AIB 2026 Manchester · 6/30–7/3"
+            )}
+            ${renderHandbookSummaryRow(
+              state.lang !== "zh" ? "Later chapter" : "後段重心",
+              state.lang !== "zh" ? "London streets, Pullman balcony, and the Paris finish" : "倫敦街區、Pullman 陽台與巴黎收尾"
+            )}
+            <p class="handbook-summary-note">${state.lang !== "zh" ? "Manchester and Paris are already anchored by confirmed stays, while London remains the one chapter still asking for a final hotel decision." : "曼徹斯特和巴黎已經有清楚住宿據點，現在主要只剩倫敦這一段還要把最後的飯店決定補齊。"}</p>
+          </aside>
         </div>
-        <div class="summary-grid home-overview-grid handbook-overview-grid">
-          ${homeOverviewCards.map((card) => `
-            <article class="summary-card travel-overview-card">
-              ${renderAppTag(card.tag)}
-              <h3>${escapeHtml(t(card.title))}</h3>
-              <strong>${escapeHtml(t(card.value))}</strong>
-              <p>${escapeHtml(t(card.note))}</p>
-            </article>
-          `).join("")}
-        </div>
+        ${renderHandbookToc()}
       </article>
     </section>
 
     <section class="section home-handbook-section" id="snapshot">
-      <article class="section-card handbook-snapshot-card">
+      <article class="section-card handbook-snapshot-card handbook-timeline-section-card">
         ${sectionHeading(
           state.lang !== "zh" ? "Trip Snapshot" : "旅程摘要",
-          state.lang !== "zh" ? "A compact read of the route before the details." : "在進入細節之前，先把移動節奏、會議主軸和體力感受看清楚。",
-          state.lang !== "zh" ? "Read this as the quiet planning layer: how the trip is paced, where the hotels sit, and which days ask for more movement." : "把這一區當成行前翻閱的一頁：天數多不多、城市切換順不順、哪些日子移動感比較重、住宿該怎麼安排心裡先有底。"
+          state.lang !== "zh" ? "Read the route in order before opening the details." : "先順著日期看一次整體節奏，再決定要往哪一段細讀。",
+          state.lang !== "zh" ? "The summary works best as a timeline: what changes city, where the conference sits, and where the trip becomes lighter or more movement-heavy." : "把這一區當成旅程時間軸來讀：哪一天換城市、會議放在哪裡、哪些段落比較像正式主線，哪些時候又慢慢回到旅行本身。"
         )}
-        <div class="snapshot-grid">
-          ${tripSnapshotCards.map(renderSnapshotCard).join("")}
-        </div>
-        <div class="home-key-timeline">
-          ${homeKeyTimeline.map((item) => renderHomeTimelineCard(item)).join("")}
+        <div class="snapshot-handbook-layout">
+          <div class="snapshot-timeline" aria-label="${state.lang !== "zh" ? "Trip timeline" : "旅程時間軸"}">
+            ${homeJourneyTimeline.map(renderHandbookTimelineEntry).join("")}
+          </div>
+          <div class="editorial-note-stack">
+            <article class="editorial-note-block" id="conference-focus">
+              <span class="editorial-note-label">${state.lang !== "zh" ? "AIB Conference Core" : "AIB 會議主段"}</span>
+              <h3>${state.lang !== "zh" ? "Manchester keeps the route centered." : "曼徹斯特把整趟旅程穩穩放在正中央。"}</h3>
+              <p>${state.lang !== "zh" ? "The conference days do not just happen inside the trip; they give the whole route its reason and rhythm. Both presentation slots are confirmed, so the academic chapter is already clearly anchored." : "AIB 2026 不是順便穿插在旅行裡，而是整條路線最清楚的核心。兩場發表都已確認，代表最重要的學術段落已經安穩落位，前後的城市安排才有了主心骨。"}</p>
+            </article>
+            <article class="editorial-note-block" id="city-route">
+              <span class="editorial-note-label">${state.lang !== "zh" ? "City Route" : "城市路線"}</span>
+              <h3>${state.lang !== "zh" ? "The route grows lighter after the conference." : "會議之後，路線才慢慢回到城市旅行的節奏。"}</h3>
+              <p>${state.lang !== "zh" ? "Frankfurt appears only briefly, London holds the slower middle chapter, and Paris takes the closing role with the Pullman tower-view stay, museums, shopping streets, and longer evenings." : "法蘭克福只短暫開場，倫敦留給比較從容的城市步調，最後再把巴黎交給 Pullman 鐵塔景、博物館、精品街與比較長的夜晚。這樣的安排不是趕景點，而是把旅程的輕重放得很清楚。"}</p>
+            </article>
+          </div>
         </div>
       </article>
     </section>
 
     <section class="section home-handbook-section" id="highlights">
-      <article class="section-card handbook-highlights-card">
+      <article class="section-card handbook-highlights-card handbook-paris-highlights-card">
         ${sectionHeading(
-          state.lang !== "zh" ? "Journey Highlights" : "旅程亮點",
-          state.lang !== "zh" ? "The chapters that give this route its mood." : "先記住這趟旅程最有畫面的幾個段落，再往下讀就會順很多。",
-          state.lang !== "zh" ? "These cards keep the route in scenes rather than lists: the first layover, the conference center, the London streets, the Paris finish, and the movement between them." : "這一區不是景點名單，而是旅途中真正會留下感覺的幾個場景：轉機開場、會議主段、倫敦街區、巴黎收尾，以及不同城市之間的銜接。"
+          state.lang !== "zh" ? "Paris Highlights" : "Paris Highlights｜巴黎亮點",
+          state.lang !== "zh" ? "Keep the cards for the scenes that deserve a fuller frame." : "真正值得做成亮點卡的，留給巴黎最後這一段最有畫面的地方。",
+          state.lang !== "zh" ? "Pullman’s balcony, tower nights, museum hours, and the polished Right Bank are the parts of the route that benefit from a fuller, more visual read." : "巴黎這段不需要做成一張張待辦事項卡。真正值得被放大的是 Pullman 的陽台鐵塔景、夜裡的塞納河、羅浮宮、右岸街區與精品大道，因為這些地方本來就更像旅程裡會反覆回想的畫面。"
         )}
-        <div class="journey-highlight-grid">
-          ${journeyHighlights.map(renderJourneyHighlightCard).join("")}
+        <div class="paris-handbook-intro">
+          <p>${state.lang !== "zh" ? "Pullman Paris Tour Eiffel is not just a room here; it becomes the Paris base that ties the final chapter together. The rest of the highlights then orbit around that tower-view evening rhythm." : "Pullman Paris Tour Eiffel 在這裡不只是住宿，而是巴黎段的核心視角。先有陽台與鐵塔夜景，接著再把羅浮宮、老佛爺頂樓、Avenue Montaigne、香榭麗舍與塞納河夜景一個個接上去，最後幾天的節奏就會非常完整。"}</p>
+        </div>
+        <div class="paris-mustdo-grid">
+          ${parisMustDoItems.map(renderParisMustDoCard).join("")}
         </div>
       </article>
     </section>
@@ -2452,28 +2555,75 @@ function renderHome() {
     <section class="section home-handbook-section" id="days">
       <article class="section-card handbook-days-card">
         ${sectionHeading(
-          state.lang !== "zh" ? "Day-by-Day Preview" : "每日行程預覽",
-          state.lang !== "zh" ? "Read the route by chapter before opening each day." : "先用章節理解這趟路線，再決定要展開哪一天。",
-          state.lang !== "zh" ? "Instead of twelve flat entries, the route is grouped the way it will actually feel on the road: arrival, conference, London, Paris, and the way home." : "這裡不把十二天排成流水帳，而是照旅途中真的會感受到的段落來讀：抵達、會議主段、倫敦、巴黎，最後再接回程。"
+          state.lang !== "zh" ? "Day-by-Day Guide" : "每日行程",
+          state.lang !== "zh" ? "Keep each day folded until you actually need it." : "讓每天先維持收合，旅途中要用到哪一天，再打開哪一天。",
+          state.lang !== "zh" ? "Each day now stays compact until opened: just the date, city, mood, and one line first, then the route, stay, and notes when you want more." : "這一區先只看日期、城市、當日主題與一句摘要；真的需要時，再展開看今天的路線、住宿、移動與貼心提醒。這樣手機上比較像在翻手冊，不會一進來就被資訊淹沒。"
         )}
-        <div class="day-chapter-grid">
-          ${dailyGuideSections.map(renderDayChapterPreview).join("")}
+        <div class="home-day-sections">
+          ${dailyGuideSections.map(renderHomeDaySection).join("")}
         </div>
       </article>
     </section>
 
-    <section class="section home-handbook-section" id="info">
-      <article class="section-card handbook-practical-card">
+    <section class="section home-handbook-section" id="practical">
+      <article class="section-card handbook-practical-card handbook-practical-ledger-card">
         ${sectionHeading(
-          state.lang !== "zh" ? "Practical Info" : "實用資訊",
-          state.lang !== "zh" ? "The practical layer, kept quiet and easy to find." : "把真正會常用到的資訊留在後面，需要時很好找。",
-          state.lang !== "zh" ? "Flights, stays, transport, conference notes, packing, and payment details stay here, so the front of the handbook can remain focused on the trip itself." : "航班、住宿、交通、會議、行李和付款資訊都留在這裡。這樣首頁前半段可以專心講旅程，實用資料則在需要時再翻出來。"
+          state.lang !== "zh" ? "Stay & Transport" : "住宿與交通",
+          state.lang !== "zh" ? "Keep the practical pieces together, but quiet." : "把真正需要常查的內容放在一起，但不要搶走旅程本身的閱讀感。",
+          state.lang !== "zh" ? "Hotels, long-distance moves, conference files, and the ticket layer stay here as a slim appendix at the end of the cover page." : "住宿、跨城市移動、會議文件和票券這一層，就留在首頁最後像附錄一樣的地方。需要時很好找，不需要時也不會讓首頁看起來像報帳清單。"
         )}
-        <div class="practical-guide-grid">
-          ${practicalGuideSections.map((section, index) => renderPracticalGuideCard(section, index)).join("")}
+        <div class="practical-ledger">
+          ${practicalGuideSections.map(renderPracticalLedgerItem).join("")}
         </div>
       </article>
     </section>
+  `;
+}
+
+function renderHandbookSummaryRow(label, value) {
+  return `
+    <div class="handbook-summary-row">
+      <span>${escapeHtml(label)}</span>
+      <strong>${escapeHtml(value)}</strong>
+    </div>
+  `;
+}
+
+function renderHandbookToc() {
+  return `
+    <nav class="handbook-toc" aria-label="${state.lang !== "zh" ? "Handbook contents" : "手冊目錄"}">
+      ${handbookContents.map((item) => `
+        <a class="handbook-toc-item" href="#${escapeHtml(item.id)}">
+          <span class="handbook-toc-index">${escapeHtml(item.number)}</span>
+          <span class="handbook-toc-label">${escapeHtml(t(item.title))}</span>
+        </a>
+      `).join("")}
+    </nav>
+  `;
+}
+
+function renderHandbookTimelineEntry(item) {
+  return `
+    <article class="snapshot-timeline-item">
+      <span class="snapshot-timeline-date">${escapeHtml(item.date)}</span>
+      <div class="snapshot-timeline-copy">
+        <h3>${escapeHtml(t(item.title))}</h3>
+        <p>${escapeHtml(t(item.note))}</p>
+      </div>
+    </article>
+  `;
+}
+
+function renderPracticalLedgerItem(section) {
+  return `
+    <article class="practical-ledger-item">
+      <div class="practical-ledger-copy">
+        <span class="practical-ledger-label">${state.lang !== "zh" ? "Appendix" : "附錄"}</span>
+        <h3>${escapeHtml(t(section.title))}</h3>
+        <p>${escapeHtml(t(section.summary))}</p>
+      </div>
+      <a class="text-link-button" href="${escapeHtml(section.href)}">${escapeHtml(t(section.cta))}</a>
+    </article>
   `;
 }
 
@@ -2556,6 +2706,10 @@ function getDayGuideById(id) {
   return dailyGuides.find((day) => day.id === id) || null;
 }
 
+function dayPreviewLine(day) {
+  return t(dailyGuidePreviewLines[day.id] || day.intro);
+}
+
 function renderDayChapterPreview(section) {
   const days = section.dayIds.map(getDayGuideById).filter(Boolean);
   return `
@@ -2579,6 +2733,52 @@ function renderDayChapterPreview(section) {
       </div>
       <a class="day-chapter-link" href="./itinerary.html#${escapeHtml(section.id)}">${state.lang !== "zh" ? "Read this chapter" : "看這一段旅程"}</a>
     </article>
+  `;
+}
+
+function renderHomeDayAccordion(day) {
+  return `
+    <details class="home-day-accordion">
+      <summary class="home-day-summary">
+        <div class="home-day-meta">
+          <span class="home-day-index">${escapeHtml(day.day)}</span>
+          <span class="home-day-date">${escapeHtml(day.date)}</span>
+          <span class="home-day-city">${escapeHtml(t(day.city))}</span>
+        </div>
+        <h4>${escapeHtml(t(day.theme))}</h4>
+        <p>${escapeHtml(dayPreviewLine(day))}</p>
+      </summary>
+      <div class="home-day-body">
+        <div class="home-day-route-list">
+          ${day.route.slice(0, 4).map((step) => `
+            <div class="home-day-route-item">
+              <strong>${escapeHtml(t(step.label))}</strong>
+              <span>${escapeHtml(t(step.text))}</span>
+            </div>
+          `).join("")}
+        </div>
+        <div class="home-day-highlights">
+          ${day.highlights.slice(0, 4).map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
+        </div>
+        <a class="text-link-button" href="./itinerary.html#${escapeHtml(day.id)}">${state.lang !== "zh" ? "Open the full day" : "看完整當日行程"}</a>
+      </div>
+    </details>
+  `;
+}
+
+function renderHomeDaySection(section) {
+  const days = section.dayIds.map(getDayGuideById).filter(Boolean);
+  return `
+    <section class="home-day-section">
+      <div class="home-day-section-head">
+        <span class="home-day-section-range">${escapeHtml(section.range)}</span>
+        <h3>${escapeHtml(t(section.title))}</h3>
+        <p>${escapeHtml(t(section.lead))}</p>
+      </div>
+      <div class="home-day-accordion-list">
+        ${days.map(renderHomeDayAccordion).join("")}
+      </div>
+    </section>
   `;
 }
 
@@ -2703,12 +2903,10 @@ function renderDayGuideCard(day, index, openByDefault = false) {
             <span class="day-guide-city">${escapeHtml(t(day.city))}</span>
           </div>
           <h3>${escapeHtml(t(day.theme))}</h3>
-          <p class="day-guide-intro">${escapeHtml(t(day.intro))}</p>
-          <div class="day-story-highlights">
-            ${day.highlights.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
-          </div>
+          <p class="day-guide-teaser">${escapeHtml(dayPreviewLine(day))}</p>
         </summary>
         <div class="day-guide-body">
+          <p class="day-guide-intro">${escapeHtml(t(day.intro))}</p>
           <div class="guide-meta-row">
             <div>
               <span>${state.lang !== "zh" ? "City" : "城市"}</span>
@@ -2724,6 +2922,9 @@ function renderDayGuideCard(day, index, openByDefault = false) {
                 <strong>${escapeHtml(t(item.value))}</strong>
               </div>
             `).join("")}
+          </div>
+          <div class="day-story-highlights">
+            ${day.highlights.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
           </div>
           <div class="guide-block">
             <div class="guide-block-title">${state.lang !== "zh" ? "Route flow" : "今日路線"}</div>
@@ -2768,7 +2969,7 @@ function renderDayGuideSection(section, sectionIndex) {
         </div>
       </div>
       <div class="day-guide-list">
-        ${days.map((day, index) => renderDayGuideCard(day, index, sectionIndex === 0 && index === 0)).join("")}
+        ${days.map((day, index) => renderDayGuideCard(day, index, false)).join("")}
       </div>
     </section>
   `;
@@ -3241,13 +3442,12 @@ function renderItinerary() {
       <article class="section-card handbook-itinerary-card">
         <div class="section-label">${state.lang !== "zh" ? "Day by Day" : "每日旅程"}</div>
         <h2>${state.lang !== "zh" ? "Daily travel guide" : "每日旅行指南"}</h2>
-        <p class="lead">${state.lang !== "zh" ? "Read the route as it actually unfolds on the road: a short Frankfurt opening, the Manchester conference core, the London city days, the Paris finish, and then the route home. Open the day you need, or keep it at chapter level when all you want is the next move." : "這一頁照旅途中真正會感受到的順序來讀：先是法蘭克福短暫開場，再進曼徹斯特的會議主段，接著接上倫敦，最後把巴黎留給旅程收尾。旅途中如果只是想確認下一段，停在章節層就夠；要看細節，再展開當天即可。"}</p>
-        <div class="itinerary-highlights">
-          ${[
-            [{ zh: "旅程主軸", en: "Travel arc" }, { zh: "法蘭克福轉機 → 曼徹斯特會議 → 倫敦 → 巴黎", en: "Frankfurt transit → Manchester conference → London → Paris" }],
-            [{ zh: "核心目的", en: "Core purpose" }, { zh: "AIB 2026 發表與德英法之旅", en: "AIB 2026 presentations with a Germany-UK-France route" }],
-            [{ zh: "閱讀方式", en: "Reading style" }, { zh: "先看章節，再展開每天", en: "Read by chapter, then open the day you need" }]
-          ].map(([label, value]) => renderMiniHighlightCard(label, value)).join("")}
+        <p class="lead">${state.lang !== "zh" ? "Read the trip in the order it is actually lived: Frankfurt first, then the conference chapter in Manchester, then London, then Paris, and finally the way home. Each day now stays folded until you need it." : "這一頁照旅途中真正會經過的順序往下讀：先是法蘭克福轉機，再進曼徹斯特的會議主段，接著接上倫敦，最後把巴黎留給旅程收尾。每一天預設都先收合，旅途中只要打開當下需要的那一頁就好。"}</p>
+        <div class="itinerary-preface-strip">
+          <span>${state.lang !== "zh" ? "Frankfurt transit" : "法蘭克福轉機"}</span>
+          <span>${state.lang !== "zh" ? "AIB conference core" : "AIB 會議主段"}</span>
+          <span>${state.lang !== "zh" ? "London chapter" : "倫敦城市段"}</span>
+          <span>${state.lang !== "zh" ? "Paris finish" : "巴黎收尾"}</span>
         </div>
         ${renderDayGuideNav()}
         <div class="day-guide-sections">

@@ -15104,3 +15104,477 @@ main {
     min-height: 52px !important;
   }
 }
+
+/* Handbook information-architecture refresh */
+.handbook-cover-card,
+.handbook-timeline-section-card,
+.handbook-paris-highlights-card,
+.handbook-days-card,
+.handbook-practical-ledger-card {
+  padding: clamp(24px, 3vw, 38px) !important;
+}
+
+.handbook-overview-layout,
+.snapshot-handbook-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.14fr) minmax(280px, 0.86fr);
+  gap: 28px;
+  margin-top: 26px;
+  align-items: start;
+}
+
+.handbook-overview-copy,
+.editorial-note-stack,
+.home-day-sections,
+.practical-ledger {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.handbook-overview-copy p,
+.editorial-note-block p,
+.paris-handbook-intro p,
+.home-day-summary p,
+.home-day-route-item span,
+.practical-ledger-copy p,
+.snapshot-timeline-copy p {
+  margin: 0;
+}
+
+.handbook-summary-panel {
+  min-width: 0;
+  padding: 22px 24px;
+  border-radius: 28px;
+  border: 1px solid rgba(206, 192, 183, 0.58);
+  background: rgba(255, 252, 248, 0.8);
+  box-shadow: 0 16px 34px rgba(92, 79, 71, 0.06);
+}
+
+.handbook-summary-row {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(205, 193, 184, 0.52);
+}
+
+.handbook-summary-row:last-of-type {
+  border-bottom: none;
+}
+
+.handbook-summary-row span,
+.editorial-note-label,
+.snapshot-timeline-date,
+.home-day-section-range,
+.handbook-toc-index,
+.practical-ledger-label,
+.home-day-index,
+.home-day-date {
+  color: #8f7b66;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.handbook-summary-row strong {
+  color: #554d49;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.handbook-summary-note {
+  margin: 10px 0 0;
+  color: #6d6560;
+  font-size: 14px;
+  line-height: 1.82;
+}
+
+.handbook-toc {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 24px;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(205, 193, 184, 0.52);
+}
+
+.handbook-toc-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(222, 213, 206, 0.62);
+  color: #554d49;
+  text-decoration: none;
+}
+
+.handbook-toc-item:hover {
+  color: #8f5b54;
+}
+
+.handbook-toc-label {
+  min-width: 0;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.snapshot-timeline {
+  position: relative;
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+  padding-left: 24px;
+}
+
+.snapshot-timeline::before {
+  content: "";
+  position: absolute;
+  inset: 8px auto 8px 7px;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(167, 139, 118, 0.32), rgba(167, 139, 118, 0.08));
+}
+
+.snapshot-timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 18px;
+  min-width: 0;
+}
+
+.snapshot-timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(183, 151, 133, 0.92);
+  box-shadow: 0 0 0 6px rgba(243, 234, 227, 0.96);
+}
+
+.snapshot-timeline-date {
+  padding-top: 2px;
+}
+
+.snapshot-timeline-copy {
+  min-width: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.snapshot-timeline-copy h3 {
+  margin: 0;
+  color: #554d49;
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  line-height: 1.28;
+}
+
+.snapshot-timeline-copy p,
+.editorial-note-block p,
+.paris-handbook-intro p,
+.home-day-summary p,
+.home-day-route-item span,
+.practical-ledger-copy p {
+  color: #6f6762;
+  font-size: 15px;
+  line-height: 1.82;
+}
+
+.editorial-note-block {
+  padding: 4px 0 16px;
+  border-bottom: 1px solid rgba(214, 203, 196, 0.54);
+}
+
+.editorial-note-block:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.editorial-note-block h3,
+.home-day-summary h4,
+.practical-ledger-copy h3 {
+  margin: 6px 0 0;
+  color: #554d49;
+  font-family: var(--font-display);
+  font-size: 1.34rem;
+  line-height: 1.3;
+}
+
+.paris-handbook-intro {
+  margin-top: 10px;
+  max-width: 70ch;
+}
+
+.home-day-section {
+  display: grid;
+  gap: 14px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(214, 203, 196, 0.52);
+}
+
+.home-day-section:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.home-day-section-head {
+  display: grid;
+  gap: 6px;
+}
+
+.home-day-section-head h3 {
+  margin: 0;
+  color: #554d49;
+  font-family: var(--font-display);
+  font-size: 1.42rem;
+  line-height: 1.28;
+}
+
+.home-day-section-head p {
+  margin: 0;
+  color: #6f6762;
+  font-size: 15px;
+  line-height: 1.82;
+}
+
+.home-day-accordion-list {
+  display: grid;
+  gap: 12px;
+}
+
+.home-day-accordion {
+  min-width: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(223, 214, 208, 0.72);
+}
+
+.home-day-accordion:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.home-day-summary {
+  display: grid;
+  gap: 8px;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding-right: 30px;
+}
+
+.home-day-summary::-webkit-details-marker {
+  display: none;
+}
+
+.home-day-summary::after,
+.day-guide-summary::after {
+  content: "+";
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #8f7b66;
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.home-day-accordion[open] .home-day-summary::after,
+.day-guide-panel[open] .day-guide-summary::after {
+  content: "−";
+}
+
+.home-day-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  min-width: 0;
+}
+
+.home-day-city {
+  color: #8a807b;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.home-day-body {
+  display: grid;
+  gap: 12px;
+  padding-top: 12px;
+}
+
+.home-day-route-list {
+  display: grid;
+  gap: 10px;
+}
+
+.home-day-route-item {
+  display: grid;
+  gap: 4px;
+}
+
+.home-day-route-item strong {
+  color: #554d49;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.home-day-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.home-day-highlights span,
+.itinerary-preface-strip span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 199, 190, 0.64);
+  background: rgba(255, 251, 246, 0.72);
+  color: #625854;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.practical-ledger-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: end;
+  padding: 18px 0;
+  border-top: 1px solid rgba(214, 203, 196, 0.54);
+}
+
+.practical-ledger-item:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.practical-ledger-copy {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.itinerary-preface-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 20px;
+}
+
+.day-guide-summary {
+  display: grid;
+  gap: 8px;
+  position: relative;
+  padding-right: 34px;
+}
+
+.day-guide-teaser {
+  margin: 0;
+  color: #6f6762;
+  font-size: 15px;
+  line-height: 1.78;
+}
+
+.day-guide-body > .day-guide-intro {
+  margin: 0;
+}
+
+.hero-overview-rows {
+  grid-template-columns: 1fr !important;
+}
+
+@media (max-width: 1024px) {
+  .handbook-overview-layout,
+  .snapshot-handbook-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .handbook-cover-card,
+  .handbook-timeline-section-card,
+  .handbook-paris-highlights-card,
+  .handbook-days-card,
+  .handbook-practical-ledger-card {
+    padding: 22px 18px !important;
+  }
+
+  .handbook-toc {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin-top: 22px;
+    padding-top: 18px;
+  }
+
+  .handbook-summary-panel {
+    padding: 18px 18px 16px;
+    border-radius: 24px;
+  }
+
+  .handbook-summary-row,
+  .snapshot-timeline-item,
+  .practical-ledger-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .snapshot-timeline {
+    gap: 18px;
+    padding-left: 20px;
+  }
+
+  .snapshot-timeline-item::before {
+    left: -20px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .home-day-section-head h3,
+  .editorial-note-block h3,
+  .home-day-summary h4,
+  .practical-ledger-copy h3,
+  .snapshot-timeline-copy h3 {
+    font-size: 1.18rem;
+  }
+
+  .home-day-summary p,
+  .home-day-route-item span,
+  .snapshot-timeline-copy p,
+  .editorial-note-block p,
+  .home-day-section-head p,
+  .practical-ledger-copy p {
+    font-size: 14px;
+    line-height: 1.72;
+  }
+
+  .home-day-body {
+    gap: 10px;
+  }
+
+  .home-day-highlights {
+    gap: 6px;
+  }
+
+  .itinerary-preface-strip {
+    margin-top: 14px;
+    gap: 8px;
+  }
+}
