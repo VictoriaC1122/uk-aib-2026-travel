@@ -16130,6 +16130,273 @@ body[data-page="home"] .hero-overview-panel {
   max-width: 70ch;
 }
 
+.status-compare {
+  color: #7d5a47;
+  background: rgba(241, 225, 208, 0.94);
+}
+
+.stay-overview-grid,
+.stay-price-grid,
+.stay-candidate-grid-wrapper,
+.stay-warning-options,
+.stay-info-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.stay-overview-card,
+.stay-stat-card,
+.stay-warning-card,
+.stay-candidate-card,
+.functional-stay-note {
+  min-width: 0;
+  border-radius: 26px;
+  border: 1px solid rgba(221, 208, 198, 0.72);
+  background: rgba(255, 251, 247, 0.88);
+  box-shadow: 0 18px 34px rgba(103, 85, 73, 0.06);
+}
+
+.stay-overview-card,
+.stay-stat-card,
+.stay-candidate-card,
+.functional-stay-note {
+  padding: 1.2rem 1.2rem 1.15rem;
+}
+
+.stay-overview-card-head,
+.stay-candidate-head,
+.stay-warning-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.stay-overview-city {
+  color: rgba(143, 120, 109, 0.95);
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.stay-overview-card h3,
+.stay-candidate-head h3,
+.stay-warning-head h3 {
+  margin: 0.7rem 0 0;
+  font-size: 1.34rem;
+  line-height: 1.26;
+  color: var(--handbook-text);
+}
+
+.stay-overview-card strong,
+.stay-stat-card strong {
+  display: block;
+  margin-top: 0.72rem;
+  color: rgba(85, 70, 64, 0.96);
+  font-size: 1rem;
+  line-height: 1.62;
+}
+
+.stay-overview-card p,
+.stay-stat-card p,
+.stay-candidate-row p,
+.stay-warning-card p,
+.functional-stay-note p {
+  margin: 0.72rem 0 0;
+  color: rgba(87, 76, 72, 0.9);
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+
+.stay-stat-card span,
+.stay-candidate-row span,
+.stay-info-item span {
+  color: rgba(145, 118, 105, 0.96);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.stay-spotlight-grid,
+.airport-grid {
+  display: grid;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.stay-info-list {
+  margin-top: 0.4rem;
+}
+
+.stay-info-item {
+  min-width: 0;
+  display: grid;
+  gap: 0.45rem;
+  padding: 1rem 1rem 0.95rem;
+  border-radius: 20px;
+  border: 1px solid rgba(223, 214, 207, 0.72);
+  background: rgba(255, 248, 243, 0.84);
+}
+
+.stay-info-item strong,
+.stay-candidate-row,
+.stay-warning-options > div {
+  color: rgba(83, 75, 73, 0.94);
+  line-height: 1.72;
+  overflow-wrap: anywhere;
+}
+
+.stay-candidate-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.candidate-image-wrap,
+.candidate-image {
+  aspect-ratio: 16 / 10;
+}
+
+.stay-candidate-copy {
+  display: grid;
+  gap: 1rem;
+}
+
+.stay-candidate-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.stay-candidate-row {
+  display: grid;
+  gap: 0.35rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(222, 212, 206, 0.72);
+}
+
+.stay-candidate-row:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.stay-area-chip-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.2rem;
+}
+
+.stay-area-chip-cloud span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.38rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(244, 235, 228, 0.95);
+  color: rgba(103, 87, 79, 0.92);
+  font-size: 0.87rem;
+  font-weight: 600;
+}
+
+.stay-warning-card {
+  display: grid;
+  gap: 1rem;
+  padding: 1.35rem 1.35rem 1.3rem;
+  border-color: rgba(194, 154, 134, 0.4);
+  background: linear-gradient(180deg, rgba(255, 247, 242, 0.98) 0%, rgba(251, 242, 236, 0.94) 100%);
+}
+
+.stay-warning-options > div {
+  display: grid;
+  gap: 0.4rem;
+  padding: 1rem;
+  border-radius: 20px;
+  background: rgba(255, 250, 245, 0.8);
+  border: 1px solid rgba(223, 214, 207, 0.72);
+}
+
+.stay-warning-options strong {
+  color: var(--handbook-text);
+  font-size: 1rem;
+}
+
+.pullman-summary-grid {
+  margin-bottom: 1rem;
+}
+
+.functional-stay-card {
+  background: linear-gradient(180deg, rgba(252, 248, 243, 0.98) 0%, rgba(248, 242, 236, 0.94) 100%);
+}
+
+.stay-info-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.stay-next-steps {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: stay-steps;
+}
+
+.stay-next-steps li {
+  min-width: 0;
+  display: grid;
+  gap: 0.45rem;
+  padding: 1.15rem 1.15rem 1.1rem 4rem;
+  position: relative;
+  border-radius: 24px;
+  border: 1px solid rgba(221, 208, 198, 0.72);
+  background: rgba(255, 251, 247, 0.84);
+  color: rgba(87, 76, 72, 0.9);
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.stay-next-steps li::before {
+  counter-increment: stay-steps;
+  content: counter(stay-steps, decimal-leading-zero);
+  position: absolute;
+  left: 1.1rem;
+  top: 1.08rem;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(165, 135, 121, 0.12);
+  color: rgba(122, 89, 80, 0.96);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.stay-next-steps strong {
+  color: var(--handbook-text);
+  font-size: 1rem;
+}
+
+html,
+body {
+  max-width: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  max-width: 100%;
+}
+
 body[data-page="home"] .topbar.handbook-topbar {
   align-items: flex-start;
   gap: 1rem;
@@ -16149,6 +16416,20 @@ body[data-page="home"] .control-dock {
   .info-ledger,
   .visa-ledger {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stay-overview-grid,
+  .stay-price-grid,
+  .stay-candidate-grid-wrapper,
+  .stay-warning-options,
+  .stay-info-list,
+  .stay-next-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stay-spotlight-grid,
+  .airport-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -16281,6 +16562,29 @@ body[data-page="home"] .control-dock {
     padding: 0.84rem 0.9rem;
     border-radius: 16px;
   }
+
+  .stay-overview-card,
+  .stay-stat-card,
+  .stay-candidate-card,
+  .functional-stay-note {
+    padding: 1.05rem 1rem;
+    border-radius: 22px;
+  }
+
+  .stay-warning-card {
+    padding: 1.1rem 1rem;
+    border-radius: 22px;
+  }
+
+  .stay-next-steps li {
+    padding: 1rem 1rem 0.95rem 3.4rem;
+    border-radius: 22px;
+  }
+
+  .stay-next-steps li::before {
+    left: 0.95rem;
+    top: 0.95rem;
+  }
 }
 
 @media (max-width: 430px) {
@@ -16315,5 +16619,133 @@ body[data-page="home"] .control-dock {
 
   .day-title {
     font-size: clamp(1.88rem, 8vw, 2.6rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --site-shell: min(1180px, calc(100% - 48px));
+    --site-shell-narrow: min(980px, calc(100% - 48px));
+  }
+
+  body[data-page="home"] .hero {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: 0 !important;
+    padding-inline: 24px;
+    overflow: hidden;
+  }
+
+  body[data-page="home"] .topbar.handbook-topbar,
+  body[data-page="home"] .handbook-tabs-shell,
+  body[data-page="home"] #page-content,
+  body[data-page="home"] .site-footer,
+  body[data-page="stay"] .desktop-page-shell {
+    width: min(100% - 48px, 1180px) !important;
+    max-width: 1180px;
+    margin-inline: auto;
+  }
+
+  body[data-page="home"] #page-content {
+    padding-top: 18px;
+  }
+
+  body[data-page="home"] .hero-home-shell.hero-content {
+    width: min(100% - 48px, 1180px);
+    max-width: 1180px;
+    margin-inline: auto;
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr) !important;
+    gap: clamp(24px, 4vw, 56px);
+    overflow: hidden;
+  }
+
+  body[data-page="home"] .hero-home-main,
+  body[data-page="home"] .hero-overview-panel,
+  body[data-page="home"] .home-tab-panel-block,
+  body[data-page="home"] .summary-card,
+  body[data-page="home"] .day-card,
+  body[data-page="home"] .hotel-ledger-entry,
+  body[data-page="home"] .route-ledger-entry,
+  body[data-page="home"] .info-ledger-block,
+  body[data-page="home"] .budget-ledger-block,
+  body[data-page="home"] .visa-ledger-entry,
+  body[data-page="stay"] .section-card,
+  body[data-page="stay"] .stay-card-rich,
+  body[data-page="stay"] .stay-overview-card,
+  body[data-page="stay"] .stay-candidate-card,
+  body[data-page="stay"] .stay-stat-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  body[data-page="home"] .handbook-home-hero h1,
+  body[data-page="home"] .hero-subtitle,
+  body[data-page="home"] .hero-dates,
+  body[data-page="home"] .hero-intro,
+  body[data-page="home"] .hero-serif-note {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  body[data-page="home"] .handbook-overview-layout.compact {
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+    gap: 24px;
+  }
+
+  body[data-page="home"] .hero-overview-grid,
+  body[data-page="home"] .hero-signal-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="home"] .paris-mustdo-grid.compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="home"] .budget-ledger {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="home"] .info-ledger {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="home"] .visa-ledger {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  body[data-page="home"] .link-ledger-list,
+  body[data-page="home"] .budget-ledger-rows {
+    min-width: 0;
+  }
+
+  body[data-page="stay"] .section {
+    scroll-margin-top: 124px;
+  }
+
+  body[data-page="stay"] .stay-overview-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  body[data-page="stay"] .stay-spotlight-grid,
+  body[data-page="stay"] .airport-grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+  }
+
+  body[data-page="stay"] .stay-price-grid,
+  body[data-page="stay"] .pullman-summary-grid,
+  body[data-page="stay"] .stay-info-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="stay"] .stay-candidate-grid-wrapper {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  body[data-page="stay"] .stay-warning-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  body[data-page="stay"] .stay-next-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

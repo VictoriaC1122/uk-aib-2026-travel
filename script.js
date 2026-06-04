@@ -29,6 +29,7 @@ const statusLabels = {
   confirmed: { zh: "已確認", en: "Confirmed", fr: "Confirmé", de: "Bestätigt" },
   pending: { zh: "待確認", en: "Pending", fr: "En attente", de: "Offen" },
   book: { zh: "待預訂", en: "To book", fr: "À réserver", de: "Zu buchen" },
+  compare: { zh: "比價中", en: "Comparing", fr: "En comparaison", de: "Im Vergleich" },
   reimburse: { zh: "待報帳", en: "To reimburse", fr: "À rembourser", de: "Abzurechnen" },
   self: { zh: "自費", en: "Self-funded", fr: "À sa charge", de: "Selbst bezahlt" },
   optional: { zh: "可選", en: "Optional", fr: "Optionnel", de: "Optional" },
@@ -900,7 +901,7 @@ const sectionNav = {
   conference: [["accepted", { zh: "會議狀態", en: "Status" }], ["papers", { zh: "論文", en: "Papers" }], ["alerts", { zh: "提醒", en: "Notes" }], ["checklist", { zh: "文件", en: "Documents" }]],
   flights: [["overview", { zh: "航班總覽", en: "Overview" }], ["segments", { zh: "航段", en: "Segments" }], ["transfer", { zh: "轉機", en: "Transfers" }], ["notes", { zh: "票務備註", en: "Notes" }]],
   transport: [["flights", { zh: "航班", en: "Flights" }], ["transfer", { zh: "轉機", en: "Transfers" }], ["train", { zh: "火車", en: "Train" }], ["local", { zh: "市內交通", en: "Local transit" }]],
-  stay: [["overview", { zh: "住宿總覽", en: "Overview" }], ["decision", { zh: "後段住宿", en: "Later stays" }], ["paris", { zh: "巴黎住宿", en: "Paris stay" }], ["areas", { zh: "住宿建議", en: "Useful picks" }]],
+  stay: [["overview", { zh: "住宿總覽", en: "Overview" }], ["manchester", { zh: "曼徹斯特", en: "Manchester" }], ["london", { zh: "倫敦候選", en: "London options" }], ["paris", { zh: "巴黎住宿", en: "Paris stay" }], ["cdg", { zh: "機場過夜", en: "Airport stay" }], ["next", { zh: "下一步", en: "Next steps" }]],
   itinerary: [["timeline", { zh: "時間軸", en: "Timeline" }], ["paris-must-do", { zh: "巴黎必去", en: "Paris must-do" }], ["tickets", { zh: "景點費用", en: "Admission" }], ["return", { zh: "回程提醒", en: "Return" }]],
   shopping: [["shopping-overview", { zh: "總覽", en: "Overview" }], ["tea", { zh: "茶與點心", en: "Tea" }], ["pantry", { zh: "果醬與 pantry", en: "Pantry" }], ["essentials", { zh: "超市與藥妝", en: "Essentials" }]],
   souvenirs: [["souvenir-overview", { zh: "總覽", en: "Overview" }], ["uk", { zh: "英國", en: "UK" }], ["france", { zh: "法國", en: "France" }], ["germany", { zh: "德國", en: "Germany" }], ["packing", { zh: "打包提醒", en: "Packing" }]],
@@ -2039,6 +2040,80 @@ function renderMetaRow(items, className = "") {
         </div>
       `).join("")}
     </div>
+  `;
+}
+
+function renderStaySnapshotCard({ city, hotel, dates, status, note }) {
+  return `
+    <article class="stay-overview-card">
+      <div class="stay-overview-card-head">
+        <span class="stay-overview-city">${escapeHtml(t(city))}</span>
+        ${statusChip(status)}
+      </div>
+      <h3>${escapeHtml(t(hotel))}</h3>
+      <strong>${escapeHtml(t(dates))}</strong>
+      <p>${escapeHtml(t(note))}</p>
+    </article>
+  `;
+}
+
+function renderStayStatCard(label, value, note = "") {
+  return `
+    <article class="stay-stat-card">
+      <span>${escapeHtml(t(label))}</span>
+      <strong>${escapeHtml(t(value))}</strong>
+      ${note ? `<p>${escapeHtml(t(note))}</p>` : ""}
+    </article>
+  `;
+}
+
+function renderStayInfoList(items) {
+  return `
+    <div class="stay-info-list">
+      ${items.map((item) => `
+        <div class="stay-info-item">
+          <span>${escapeHtml(t(item.label))}</span>
+          <strong>${escapeHtml(t(item.value))}</strong>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderStayCandidateCard({ status, title, image, imageAlt, location, strengths, tradeoffs, fit, link }) {
+  return `
+    <article class="stay-candidate-card${image ? " with-image" : ""}">
+      ${image ? `
+        <div class="stay-card-image-wrap candidate-image-wrap">
+          <img class="stay-card-image candidate-image" src="${escapeHtml(image)}" alt="${escapeHtml(t(imageAlt || title))}" loading="lazy" />
+        </div>
+      ` : ""}
+      <div class="stay-candidate-copy">
+        <div class="stay-candidate-head">
+          ${statusChip(status)}
+          <h3>${escapeHtml(t(title))}</h3>
+        </div>
+        <div class="stay-candidate-grid">
+          <div class="stay-candidate-row">
+            <span>${state.lang !== "zh" ? "Position" : "定位"}</span>
+            <p>${escapeHtml(t(location))}</p>
+          </div>
+          <div class="stay-candidate-row">
+            <span>${state.lang !== "zh" ? "Best part" : "優點"}</span>
+            <p>${escapeHtml(t(strengths))}</p>
+          </div>
+          <div class="stay-candidate-row">
+            <span>${state.lang !== "zh" ? "Watch-out" : "缺點"}</span>
+            <p>${escapeHtml(t(tradeoffs))}</p>
+          </div>
+          <div class="stay-candidate-row">
+            <span>${state.lang !== "zh" ? "Why it fits" : "適合原因"}</span>
+            <p>${escapeHtml(t(fit))}</p>
+          </div>
+        </div>
+        ${link ? `<a class="stay-map-link" href="${escapeHtml(link)}" target="_blank" rel="noreferrer noopener">${state.lang !== "zh" ? "View hotel" : "查看飯店"}</a>` : ""}
+      </div>
+    </article>
   `;
 }
 
@@ -3766,105 +3841,180 @@ function renderFlights() {
 }
 
 function renderStay() {
+  const manchesterStay = tripData.stay[0];
+  const londonStay = tripData.stay[1];
+  const parisStay = tripData.stay[2];
+  const cdgStay = tripData.stay[3];
+  const manchesterIdeas = tripData.stay[4];
+  const londonAreas = ["Euston", "King's Cross", "Bloomsbury", "South Kensington", "Paddington"];
+
   return renderDesktopPageShell("stay", {
     label: { zh: "Hotel", en: "Hotel" },
     title: { zh: "住宿筆記", en: "Stay Notes" },
-    note: { zh: "先把會議期間的曼徹斯特住穩，再讓倫敦、巴黎與回程前一晚各自長出自己的停留節奏。", en: "Start with a steady Manchester conference base, then let London, Paris, and the final airport night each take on their own staying rhythm." },
+    note: { zh: "住宿不只是睡覺，而是把會議、城市移動與巴黎夜景接成一條順的路線。", en: "Each stay is part of the route itself, linking the conference days, the city moves, and the final Paris evenings into one calmer rhythm." },
     meta: [
-      { label: { zh: "飯店", en: "Hotel" }, value: "INNSiDE Manchester" },
-      { label: { zh: "住宿", en: "Stay" }, value: "Jun 30 – Jul 5, 2026" },
-      { label: { zh: "房型", en: "Room" }, value: { zh: "Twin Bed", en: "Twin Bed" } },
-      { label: { zh: "後段", en: "Later stays" }, value: { zh: "London / Paris / CDG", en: "London / Paris / CDG" } }
+      { label: { zh: "會議據點", en: "Conference base" }, value: "INNSiDE Manchester" },
+      { label: { zh: "巴黎主住宿", en: "Paris anchor" }, value: "Pullman Paris Tour Eiffel" },
+      { label: { zh: "回程前一晚", en: "Departure eve" }, value: { zh: "Novotel CDG", en: "Novotel CDG" } },
+      { label: { zh: "待補齊", en: "Still open" }, value: { zh: "倫敦住宿", en: "London stay" } }
     ]
   }, `
     ${renderQuickNav("stay")}
     ${renderReadingGuide("stay")}
     <section class="section compact-section" id="overview">
       <article class="section-card">
-      <div class="section-label">${state.lang !== "zh" ? "Stay Plan" : "住宿安排"}</div>
-      <h2>${state.lang !== "zh" ? "Manchester stays practical, Paris carries the softer finish, and the last airport night now has a clear place too." : "曼徹斯特先住得穩，巴黎把最後三晚的旅行感收好，回程前一晚也有了清楚的落腳點。"}</h2>
-      <p class="lead">${state.lang !== "zh" ? "The conference days stay anchored in Manchester, Paris now has its fixed tower-view stay at Pullman, the CDG overnight is confirmed at Novotel, and London remains the only chapter still being balanced around rail access and city rhythm." : "會議主段仍然以曼徹斯特為據點；巴黎最後三晚已經定在 Pullman 的鐵塔景房，7/10–7/11 也接上了巴黎戴高樂機場候機樓諾富特酒店；現在主要還在慢慢比的，只剩倫敦這一段。"}</p>
-      <div class="stay-list-rich">
-        ${tripData.stay.slice(0, 1).map((stay, index) => `
-          <article class="stay-card-rich${stay.image ? " with-image" : ""}">
-            ${stay.image ? `
-              <div class="stay-card-image-wrap">
-                <img class="stay-card-image" src="${escapeHtml(stay.image)}" alt="${escapeHtml(t(stay.title))}" loading="lazy" />
-              </div>
-            ` : `<div class="stay-placeholder"><span>${String(index + 1).padStart(2, "0")}</span></div>`}
-            <div class="stay-card-top">
-              <div class="stay-card-head">
-                <div class="stay-card-kicker">${escapeHtml(t(stay.city))}</div>
-                <h3 class="stay-card-local">${escapeHtml(t(stay.title))}</h3>
-                <p class="stay-card-note">${escapeHtml(t(stay.note))}</p>
-              </div>
-              <div class="stay-side">
-                ${statusChip(stay.status)}
-                <a class="stay-map-link" href="${escapeHtml(stay.link)}" target="_blank" rel="noreferrer noopener">${state.lang !== "zh" ? "View hotel" : "查看飯店"}</a>
-              </div>
-            </div>
-            <div class="stay-detail-chips">
-              <span>${state.lang !== "zh" ? "Jun 30 – Jul 5, 2026" : "2026/06/30 – 2026/07/05"}</span>
-              <span>${state.lang !== "zh" ? "5 nights" : "5 晚"}</span>
-              <span>${state.lang !== "zh" ? "The INNSiDE Room Twin Bed" : "The INNSiDE Room Twin Bed"}</span>
-              <span>approx. GBP 900.90</span>
-              <span>${money.hotelPerPersonTotal}</span>
-            </div>
-            <div class="booking-facts">
-              <div><span>${state.lang !== "zh" ? "Address" : "地址"}</span><strong>1 First Street, Manchester</strong></div>
-              <div><span>${state.lang !== "zh" ? "Guests" : "入住人數"}</span><strong>${state.lang !== "zh" ? "2 guests" : "2 人"}</strong></div>
-              <div><span>${state.lang !== "zh" ? "Cancellation" : "取消規則"}</span><strong>${state.lang !== "zh" ? "Within 24 hours = 1 night penalty" : "24 小時內取消 = 1 晚房費"}</strong></div>
-            </div>
-            <div class="booking-action-row">
-              <a class="button secondary" href="https://www.melia.com/en/hotels/united-kingdom/manchester/innside-manchester" target="_blank" rel="noreferrer noopener" aria-label="${state.lang !== "zh" ? "Open booking page" : "開啟訂房頁"}">${state.lang !== "zh" ? "Open booking" : "查看訂房"}</a>
-              <a class="button secondary" href="https://www.google.com/maps/search/?api=1&query=INNSiDE+Manchester+1+First+Street+Manchester" target="_blank" rel="noreferrer noopener" aria-label="${state.lang !== "zh" ? "Open map" : "開啟地圖"}">${state.lang !== "zh" ? "Map" : "地圖"}</a>
-              <a class="button secondary" href="./links.html" aria-label="${state.lang !== "zh" ? "Open contact and links page" : "開啟連結頁"}">${state.lang !== "zh" ? "Links" : "連結"}</a>
-              <a class="button secondary" href="./budget.html" aria-label="${state.lang !== "zh" ? "Open reimbursement page" : "開啟費用頁"}">${state.lang !== "zh" ? "Expense notes" : "費用說明"}</a>
-            </div>
-            ${renderList(stay.facts, "stay-facts")}
-          </article>
-        `).join("")}
-      </div>
+        <div class="section-label">${state.lang !== "zh" ? "Accommodation overview" : "住宿總覽"}</div>
+        <h2>${state.lang !== "zh" ? "Each stay carries a different role in the route." : "住宿不只是睡覺，而是把會議、城市移動與巴黎夜景接起來。"}</h2>
+        <p class="lead">${state.lang !== "zh" ? "Manchester keeps the conference days steady, London remains the decision point, Pullman becomes the Paris highlight, and Novotel CDG makes the departure morning easier." : "曼徹斯特負責把會議主段住穩，倫敦還在比交通與氣質，巴黎則交給 Pullman 的鐵塔景陽台，最後再由 Novotel CDG 把回程前一晚接成比較從容的早晨。"}</p>
+        <div class="stay-overview-grid">
+          ${renderStaySnapshotCard({
+            city: { zh: "Manchester", en: "Manchester" },
+            hotel: manchesterStay.title,
+            dates: { zh: "6/30 – 7/5｜INNSiDE Manchester", en: "30 Jun – 5 Jul · INNSiDE Manchester" },
+            status: "confirmed",
+            note: { zh: "AIB 會議期間據點，住穩就好。", en: "The practical base for the conference stretch." }
+          })}
+          ${renderStaySnapshotCard({
+            city: { zh: "London", en: "London" },
+            hotel: { zh: "The Langham / Clermont", en: "The Langham / Clermont" },
+            dates: { zh: "7/4 – 7/7｜3 晚待選", en: "4 Jul – 7 Jul · 3 nights under review" },
+            status: "compare",
+            note: { zh: "目前重點是車站動線與住宿氣質之間的取捨。", en: "The tradeoff is mainly between rail convenience and hotel atmosphere." }
+          })}
+          ${renderStaySnapshotCard({
+            city: { zh: "Paris", en: "Paris" },
+            hotel: { zh: "Pullman Paris Tour Eiffel", en: "Pullman Paris Tour Eiffel" },
+            dates: { zh: "7/7 – 7/10｜3 晚", en: "7 Jul – 10 Jul · 3 nights" },
+            status: "confirmed",
+            note: { zh: "高樓層陽台鐵塔景，巴黎段的核心亮點。", en: "A high-floor balcony tower view anchoring the Paris chapter." }
+          })}
+          ${renderStaySnapshotCard({
+            city: { zh: "CDG Airport", en: "CDG Airport" },
+            hotel: { zh: "Novotel Paris Charles-de-Gaulle Airport", en: "Novotel Paris Charles-de-Gaulle Airport" },
+            dates: { zh: "7/10 – 7/11｜1 晚", en: "10 Jul – 11 Jul · 1 night" },
+            status: "confirmed",
+            note: { zh: "把法航 2E 的早班動線接得更輕鬆。", en: "A calmer handoff into the Air France 2E departure morning." }
+          })}
+        </div>
       </article>
     </section>
-    <section class="section compact-section" id="decision">
+    <section class="section compact-section" id="manchester">
       <article class="section-card">
-      <div class="section-label">${state.lang !== "zh" ? "Later-City Stays" : "後段住宿安排"}</div>
-      <h2>${state.lang !== "zh" ? "London, Paris, and the airport handoff" : "倫敦、巴黎與回程前一晚"}</h2>
-      <p class="lead">${state.lang !== "zh" ? "London still revolves around rail convenience, while Paris is anchored around Pullman and the departure morning is now eased by the confirmed Novotel CDG stay." : "倫敦還是先看車站與步行便利；巴黎這一段已經定在 Pullman 的陽台鐵塔景房，最後再由 Novotel CDG 把回程早晨接得更從容。"} </p>
-      <div class="summary-grid two">
-        ${tripData.stay.slice(1, 4).map(renderSummaryCard).join("")}
-        <article class="summary-card">
-          ${statusChip("pending")}
-          <h3>${state.lang !== "zh" ? "Why these choices fit" : "這些選擇為什麼順"}</h3>
-          ${renderMetaRow([
-            { label: state.lang !== "zh" ? "London" : "倫敦", value: state.lang !== "zh" ? "Rail and central access" : "車站動線與市中心步行" },
-            { label: state.lang !== "zh" ? "Paris" : "巴黎", value: state.lang !== "zh" ? "Tower view and relaxed stay" : "鐵塔景與旅行感" }
-          ])}
-          ${renderList([
-            state.lang !== "zh" ? "The Langham London: strongest first-choice city stay." : "The Langham London：整體質感最好，最像這段旅程的主住宿。",
-            state.lang !== "zh" ? "The Clermont Charing Cross: better if station access matters most." : "The Clermont Charing Cross：如果更在意車站動線，會更直接。",
-            state.lang !== "zh" ? "Pullman Paris Tour Eiffel: matches the Paris skyline mood best." : "Pullman Paris Tour Eiffel：最貼近巴黎段想要的鐵塔景節奏。",
-            state.lang !== "zh" ? "Manchester alternatives stay useful if the conference base changes later." : "Manchester 的三間建議可留著，若後面想換飯店就直接比。"
-          ])}
-        </article>
-      </div>
-      ${renderAlert(tripData.alerts[0])}
+        <div class="section-label">${state.lang !== "zh" ? "Manchester base" : "Manchester｜會議據點"}</div>
+        <h2>${state.lang !== "zh" ? "The conference part of the route should feel easy." : "會議這一段，最重要的是住得穩、走得順。"}</h2>
+        <p class="lead">${state.lang !== "zh" ? "INNSiDE Manchester is the straightforward base for the AIB days. It keeps the conference chapter practical, central enough, and calm before the later city moves begin." : "INNSiDE Manchester 的角色很清楚：把 AIB 會議主段接穩，讓每天的重心留給發表、交流與市區移動，而不是把體力花在住宿切換上。"}</p>
+        <div class="stay-spotlight-grid">
+          <article class="stay-card-rich with-image handbook-stay-spotlight">
+            <div class="stay-card-image-wrap">
+              <img class="stay-card-image" src="${escapeHtml(manchesterStay.image)}" alt="${escapeHtml(t(manchesterStay.title))}" loading="lazy" />
+            </div>
+            <div class="stay-card-top">
+              <div class="stay-card-head">
+                <div class="stay-card-kicker">${escapeHtml(t(manchesterStay.city))}</div>
+                <h3 class="stay-card-local">${escapeHtml(t(manchesterStay.title))}</h3>
+                <p class="stay-card-note">${escapeHtml(t(manchesterStay.note))}</p>
+              </div>
+              <div class="stay-side">
+                ${statusChip(manchesterStay.status)}
+                <a class="stay-map-link" href="https://www.google.com/maps/search/?api=1&query=INNSiDE+Manchester+1+First+Street+Manchester" target="_blank" rel="noreferrer noopener">${state.lang !== "zh" ? "Map" : "地圖"}</a>
+              </div>
+            </div>
+            ${renderStayInfoList([
+              { label: state.lang !== "zh" ? "Check-in" : "入住", value: state.lang !== "zh" ? "30 Jun 2026 after 15:00" : "2026/06/30 15:00 後" },
+              { label: state.lang !== "zh" ? "Check-out" : "退房", value: state.lang !== "zh" ? "5 Jul 2026 before 12:00" : "2026/07/05 12:00 前" },
+              { label: state.lang !== "zh" ? "Address" : "地址", value: "1 First Street, Manchester" },
+              { label: state.lang !== "zh" ? "Cancellation" : "取消規則", value: state.lang !== "zh" ? "Within 24 hours = 1 night penalty" : "入住前 24 小時內取消 = 1 晚房費" }
+            ])}
+          </article>
+          <div class="stay-price-grid">
+            ${renderStayStatCard(state.lang !== "zh" ? "Total for the room" : "總價", money.hotel, state.lang !== "zh" ? "Twin room for two guests, taxes included." : "雙床房、兩人入住，已含稅。")}
+            ${renderStayStatCard(state.lang !== "zh" ? "Per person" : "每人約", money.hotelPerPersonTotal, state.lang !== "zh" ? "The personal share before local visitor charge." : "住宿分攤先看這一格，旅遊稅另計。")}
+            ${renderStayStatCard(state.lang !== "zh" ? "Average per night" : "平均每晚", money.hotelPerNight, state.lang !== "zh" ? "Useful when comparing London later." : "後面比倫敦住宿時，這個數字會比較直覺。")}
+            ${renderStayStatCard(state.lang !== "zh" ? "Visitor charge" : "旅遊稅", money.visitorCharge, state.lang !== "zh" ? "Paid locally at the hotel." : "現場支付；兩人合計約這個數字。")}
+          </div>
+        </div>
+      </article>
+    </section>
+    <section class="section compact-section" id="london">
+      <article class="section-card">
+        <div class="section-label">${state.lang !== "zh" ? "London options" : "London｜候選住宿比較"}</div>
+        <h2>${state.lang !== "zh" ? "London still needs one final decision." : "倫敦這一段，現在需要的是一個清楚的最後選擇。"}</h2>
+        <p class="lead">${state.lang !== "zh" ? "The London chapter sits between the conference and Paris. The choice is less about luxury alone, and more about how station access, luggage movement, and city pace feel together." : "倫敦夾在曼徹斯特會議之後、巴黎之前，真正需要比的不是單純的高級感，而是車站動線、帶行李的便利度，以及住進城市之後的節奏感。"}</p>
+        <div class="stay-warning-card">
+          <div class="stay-warning-head">
+            ${statusChip("alert")}
+            <h3>${state.lang !== "zh" ? "7/4 overlaps with the Manchester booking" : "7/4 晚有重疊，需要先決定怎麼接"}</h3>
+          </div>
+          <p>${state.lang !== "zh" ? "Manchester is currently booked through 5 July, while the London plan starts on 4 July. Once London is final, choose whether the last Manchester night stays as buffer or should be released." : "曼徹斯特目前訂到 7/5 退房，但倫敦預計從 7/4 開始住。等倫敦確定後，需要決定這一晚是保留當緩衝、取消最後一晚，還是乾脆 7/5 再移動。"} </p>
+          <div class="stay-warning-options">
+            <div><strong>${state.lang !== "zh" ? "Keep as buffer" : "保留備案"}</strong><span>${state.lang !== "zh" ? "Safer if the conference runs long or luggage feels heavy." : "如果想讓會議後的轉場更鬆一點，這是最保守的做法。"}</span></div>
+            <div><strong>${state.lang !== "zh" ? "Cancel the last night" : "取消最後一晚"}</strong><span>${state.lang !== "zh" ? "Works if London is fully set and the move on 4 July is confirmed." : "倫敦一旦訂好、也確定 7/4 移動，就能把這一晚收回來。"}</span></div>
+            <div><strong>${state.lang !== "zh" ? "Move on 5 July instead" : "7/5 再移動"}</strong><span>${state.lang !== "zh" ? "The London chapter becomes shorter, but Manchester stays uncomplicated." : "倫敦會少一晚，但整段銜接會最不費力。"} </span></div>
+          </div>
+        </div>
+        <div class="stay-candidate-grid-wrapper">
+          ${renderStayCandidateCard({
+            status: "compare",
+            title: "The Langham London",
+            image: londonStay.photos?.[0]?.src,
+            imageAlt: londonStay.photos?.[0]?.alt,
+            location: { zh: "偏向整體質感與城市氛圍，適合把倫敦住成真正的停留。", en: "Best if the London chapter should feel more polished and properly anchored." },
+            strengths: { zh: "住宿氣氛完整，整體最像這趟旅程會想住的主住宿。", en: "The strongest overall hotel atmosphere and the most fitting flagship stay for London." },
+            tradeoffs: { zh: "若重點是接火車與帶行李移動，未必比更靠車站的選擇直接。", en: "Not always the cleanest choice if station access and luggage movement come first." },
+            fit: { zh: "如果想讓倫敦這幾晚住得漂亮、安靜、像一段真正城市停留，這間最適合。", en: "This fits best if London should feel like a proper city stay, not just a handoff between trains." },
+            link: "https://www.langhamhotels.com/en/the-langham/london/"
+          })}
+          ${renderStayCandidateCard({
+            status: "pending",
+            title: "The Clermont Charing Cross",
+            image: londonStay.photos?.[1]?.src,
+            imageAlt: londonStay.photos?.[1]?.alt,
+            location: { zh: "更偏向交通與車站優勢，對後面移動比較友善。", en: "Leans more toward station convenience and a cleaner movement day." },
+            strengths: { zh: "離交通樞紐近，若想把英國段與巴黎段接得俐落，這間比較省力。", en: "Cleaner if the priority is staying close to key rail connections and walking light." },
+            tradeoffs: { zh: "住宿氣氛和視覺記憶點，可能沒有 The Langham 那麼完整。", en: "The hotel atmosphere may not feel as memorable as The Langham." },
+            fit: { zh: "如果重心放在 Euston、St Pancras 和市中心移動，這間的實用性很高。", en: "This is the practical pick if Euston, St Pancras, and city movement matter most." },
+            link: "https://www.theclermont.co.uk/charing-cross/"
+          })}
+          <article class="stay-candidate-card areas-card">
+            <div class="stay-candidate-copy">
+              <div class="stay-candidate-head">
+                ${statusChip("compare")}
+                <h3>${state.lang !== "zh" ? "Other candidate areas" : "也值得看的區域"}</h3>
+              </div>
+              <div class="stay-candidate-grid">
+                <div class="stay-candidate-row">
+                  <span>${state.lang !== "zh" ? "Priority" : "目前重點"}</span>
+                  <p>${state.lang !== "zh" ? "The route still wants rail convenience first, then a calm walking radius once luggage is dropped." : "目前仍以車站動線優先，接著才看放下行李後能不能舒舒服服走進市中心。"} </p>
+                </div>
+                <div class="stay-candidate-row">
+                  <span>${state.lang !== "zh" ? "Useful areas" : "可留意區域"}</span>
+                  <div class="stay-area-chip-cloud">
+                    ${londonAreas.map((area) => `<span>${escapeHtml(area)}</span>`).join("")}
+                  </div>
+                </div>
+                <div class="stay-candidate-row">
+                  <span>${state.lang !== "zh" ? "Also worth keeping" : "備看飯店"}</span>
+                  <p>${escapeHtml((manchesterIdeas.facts || []).map((item) => t(item)).join(" · "))}</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
       </article>
     </section>
     <section class="section compact-section" id="paris">
       <article class="section-card paris-spotlight-card">
-        <div class="section-label">${state.lang !== "zh" ? "Paris Stay" : "巴黎住宿"}</div>
-        <h2>${state.lang !== "zh" ? "Pullman Paris Tour Eiffel" : "Pullman Paris Tour Eiffel"}</h2>
-        <p class="lead">${state.lang !== "zh" ? "These three nights are built around a high-floor balcony room with an Eiffel Tower view, giving the Paris chapter one clear place to return to each evening." : "這三晚將入住 Pullman Paris Tour Eiffel，以高樓層陽台房欣賞艾菲爾鐵塔景觀，作為巴黎行程的核心住宿亮點。"}</p>
+        <div class="section-label">${state.lang !== "zh" ? "Paris stay" : "Paris｜Pullman Paris Tour Eiffel"}</div>
+        <h2>${state.lang !== "zh" ? "The Paris chapter now has its own clear centre." : "巴黎這一段，現在有了自己的核心視角。"}</h2>
+        <p class="lead">${state.lang !== "zh" ? "These three nights revolve around one room, one balcony, and one repeated tower view. That is what turns the final chapter from a rushed checklist into a softer Paris stay." : "這三晚將入住 Pullman Paris Tour Eiffel，以高樓層陽台房欣賞艾菲爾鐵塔景觀，作為巴黎行程的核心住宿亮點。這一段不只是找地方過夜，而是把最後幾晚的巴黎節奏固定在同一個回來就能看見鐵塔的地方。"} </p>
         <div class="paris-spotlight-grid">
           <div class="paris-spotlight-copy">
-            ${renderMetaRow([
-              { label: state.lang !== "zh" ? "Stay dates" : "入住日期", value: state.lang !== "zh" ? "7 Jul – 10 Jul 2026" : "2026/07/07 – 2026/07/10" },
-              { label: state.lang !== "zh" ? "Nights" : "晚數", value: state.lang !== "zh" ? "3 nights" : "3 晚" },
-              { label: state.lang !== "zh" ? "Room" : "房型", value: state.lang !== "zh" ? "Deluxe Room, High Floor, Balcony, Eiffel Tower View" : "Deluxe Room｜高樓層｜陽台｜鐵塔景" },
-              { label: state.lang !== "zh" ? "Booking total" : "訂房總價", value: money.parisHotel }
-            ], "paris-meta-row")}
+            <div class="stay-price-grid pullman-summary-grid">
+              ${renderStayStatCard(state.lang !== "zh" ? "Stay dates" : "入住日期", state.lang !== "zh" ? "7 Jul – 10 Jul 2026" : "2026/07/07 – 2026/07/10")}
+              ${renderStayStatCard(state.lang !== "zh" ? "Nights" : "晚數", state.lang !== "zh" ? "3 nights" : "3 晚")}
+              ${renderStayStatCard(state.lang !== "zh" ? "Room" : "房型", state.lang !== "zh" ? "Deluxe Room · High Floor · Balcony · Eiffel Tower View" : "Deluxe Room · 高樓層 · 陽台 · 鐵塔景")}
+              ${renderStayStatCard(state.lang !== "zh" ? "Booking total" : "總價", money.parisHotel, state.lang !== "zh" ? `Average per night: ${money.parisHotelPerNight}` : `平均每晚約 ${money.parisHotelPerNight}`)}
+            </div>
             <div class="paris-feature-chips">
               ${[
                 state.lang !== "zh" ? "32 sqm" : "32㎡",
@@ -3901,11 +4051,55 @@ function renderStay() {
         </div>
       </article>
     </section>
-    <section class="section compact-section" id="areas">
-      ${sectionHeading(state.lang !== "zh" ? "Useful Picks" : "住宿建議關鍵字", state.lang !== "zh" ? "Hotels and station areas worth keeping in view" : "把目前最值得留意的飯店與區域放在一起")}
-      <div class="tag-cloud">
-        ${["The Langham London", "The Clermont Charing Cross", "Pullman Paris Tour Eiffel", "Manchester Marriott", "Hyatt Regency Manchester", "Hilton Manchester Deansgate"].map((area) => `<span>${area}</span>`).join("")}
-      </div>
+    <section class="section compact-section" id="cdg">
+      <article class="section-card functional-stay-card">
+        <div class="section-label">${state.lang !== "zh" ? "Airport stay" : "機場過夜安排"}</div>
+        <h2>${state.lang !== "zh" ? "A quieter airport morning starts here." : "把 7/11 早上的趕路感，提前在前一晚收掉。"}</h2>
+        <p class="lead">${state.lang !== "zh" ? "This last night is deliberately more functional than romantic. Its whole job is to make the Air France departure feel lighter, shorter, and calmer." : "這一晚不是旅程亮點，而是功能型安排：讓巴黎最後一天能好好收尾，不必隔天一早帶著行李匆匆穿城，直接把法航 2E 航廈的早晨接得更穩。"} </p>
+        <div class="stay-spotlight-grid airport-grid">
+          <article class="stay-card-rich with-image airport-stay-panel">
+            <div class="stay-card-image-wrap">
+              <img class="stay-card-image" src="${escapeHtml(cdgStay.image)}" alt="${escapeHtml(t(cdgStay.imageAlt))}" loading="lazy" />
+            </div>
+            <div class="stay-card-top">
+              <div class="stay-card-head">
+                <div class="stay-card-kicker">${escapeHtml(t(cdgStay.city))}</div>
+                <h3 class="stay-card-local">${escapeHtml(t(cdgStay.title))}</h3>
+                <p class="stay-card-note">${escapeHtml(t(cdgStay.note))}</p>
+              </div>
+              <div class="stay-side">
+                ${statusChip(cdgStay.status)}
+                <a class="stay-map-link" href="${escapeHtml(cdgStay.link)}" target="_blank" rel="noreferrer noopener">${state.lang !== "zh" ? "Map" : "地圖"}</a>
+              </div>
+            </div>
+          </article>
+          <div class="stay-info-stack">
+            ${renderStayInfoList([
+              { label: state.lang !== "zh" ? "Stay" : "入住", value: state.lang !== "zh" ? "10 Jul – 11 Jul 2026" : "2026/07/10 – 2026/07/11" },
+              { label: state.lang !== "zh" ? "Address" : "地址", value: "Paris Street, Roissypole RER, 93290 Tremblay-en-France" },
+              { label: state.lang !== "zh" ? "Payment note" : "付款紀錄", value: money.cdgHotel },
+              { label: state.lang !== "zh" ? "Transit edge" : "交通優勢", value: state.lang !== "zh" ? "Roissypole RER next to CDG terminals" : "Roissypole RER 旁，接 CDG 航廈很順" }
+            ])}
+            <div class="functional-stay-note">
+              <p>${state.lang !== "zh" ? "This is the handoff night between the city chapter and the return chain. After Montmartre, final shopping, and the Pullman luggage pickup, the route becomes much easier once the airport stay is already settled." : "這一晚的任務，就是把巴黎城市段和回程銜接得更乾淨。完成蒙馬特、最後採買和 Pullman 取行李後，直接轉進機場邊住宿，隔天整段法航回曼徹斯特的節奏會安靜很多。"} </p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section class="section compact-section" id="next">
+      <article class="section-card">
+        <div class="section-label">${state.lang !== "zh" ? "Next steps" : "下一步確認清單"}</div>
+        <h2>${state.lang !== "zh" ? "The route is mostly set; these are the last pieces to tighten." : "住宿主線大致已定，剩下的只是把最後幾個接點收好。"}</h2>
+        <p class="lead">${state.lang !== "zh" ? "Nothing here needs to feel like a hard admin list. Think of it more as the final stitching that keeps the London, Paris, and departure chapters connected." : "這裡不是催促式待辦，而是最後幾個需要收尾的接點：倫敦住哪裡、7/4 到底怎麼接、Pullman 退房後怎麼去 CDG，以及各飯店取消與付款狀態再看一次。"} </p>
+        <ol class="stay-next-steps">
+          <li><strong>${state.lang !== "zh" ? "Choose the final London hotel." : "決定倫敦住宿最後版本。"} </strong><span>${state.lang !== "zh" ? "The Langham and The Clermont are the two clearest options right now." : "目前最清楚的還是 The Langham London 與 The Clermont Charing Cross。"} </span></li>
+          <li><strong>${state.lang !== "zh" ? "Decide what to do with the 4 July Manchester overlap." : "決定 7/4 曼徹斯特最後一晚要不要保留。"} </strong><span>${state.lang !== "zh" ? "That choice depends on the London booking and how much buffer you want after the conference." : "這會連動倫敦住宿是否確認，以及你想不想保留一晚會議後的緩衝。"} </span></li>
+          <li><strong>${state.lang !== "zh" ? "Book the London → Paris handoff." : "補上倫敦到巴黎的交通。"} </strong><span>${state.lang !== "zh" ? "Once Eurostar is fixed, the hotel rhythm from London into Pullman becomes much cleaner." : "Eurostar 一旦訂好，倫敦到 Pullman 的節奏就會整條接上。"} </span></li>
+          <li><strong>${state.lang !== "zh" ? "Check the Pullman → Novotel CDG move." : "確認 Pullman 退房後到 CDG Novotel 的移動方式。"} </strong><span>${state.lang !== "zh" ? "Keep that handoff simple so the final Paris day does not become luggage-heavy." : "把這段接順，最後一天就不會被行李和轉場打亂。"} </span></li>
+          <li><strong>${state.lang !== "zh" ? "Review cancellation windows and payment status." : "再看一次各飯店取消期限與付款狀態。"} </strong><span>${state.lang !== "zh" ? "Manchester, Pullman, and Novotel are already anchored; London is the main remaining variable." : "曼徹斯特、Pullman 與 Novotel 都已接上，現在主要變數只剩倫敦。"} </span></li>
+        </ol>
+      </article>
     </section>
   `);
 }
