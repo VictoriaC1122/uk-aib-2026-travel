@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap");
+
 :root {
   --slate: #57505b;
   --ink: #37343a;
@@ -12782,5 +12784,898 @@ body::before {
 
   .paris-mustdo-top {
     align-items: flex-start;
+  }
+}
+
+/* Final handbook layout system */
+:root {
+  --site-shell: min(1120px, calc(100% - 32px));
+  --site-shell-narrow: min(980px, calc(100% - 32px));
+  --page-gap: 24px;
+  --section-gap: 20px;
+  --card-radius: 28px;
+  --soft-shadow: 0 20px 50px rgba(92, 79, 71, 0.08);
+  --soft-shadow-hover: 0 24px 56px rgba(92, 79, 71, 0.12);
+  --font-body: "Noto Serif TC", "Noto Sans TC", serif;
+  --font-serif: "Noto Serif TC", serif;
+  --font-sans: "Inter", "Noto Sans TC", sans-serif;
+  --font-display: "Cormorant Garamond", "Noto Serif TC", serif;
+  --font-number: "Inter", "Noto Sans TC", sans-serif;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body,
+main,
+header,
+section,
+article,
+aside,
+nav,
+div {
+  min-width: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+iframe,
+svg {
+  max-width: 100%;
+}
+
+body {
+  color: #524b48;
+  font-family: var(--font-body);
+}
+
+[class*="grid"],
+[class*="list"],
+.route,
+.page-meta-strip,
+.booking-facts,
+.booking-action-row,
+.hero-actions,
+.editorial-hero-actions,
+.control-buttons,
+.page-inline-nav,
+.stay-detail-chips,
+.tag-cloud {
+  min-width: 0;
+}
+
+.hero,
+.page-hero,
+.topbar.handbook-topbar,
+.main-nav,
+.editorial-hero,
+.page-hero .hero-grid,
+.section,
+.quick-nav,
+.mobile-section-tabs,
+.desktop-page-shell,
+.desktop-dashboard-shell,
+.site-footer {
+  width: var(--site-shell) !important;
+  margin-inline: auto;
+}
+
+.hero {
+  min-height: clamp(560px, 72vh, 760px);
+  padding: 26px 16px 96px;
+  background-position: center 40% !important;
+}
+
+.page-hero {
+  min-height: 480px;
+  padding-bottom: 88px;
+}
+
+.topbar.handbook-topbar {
+  position: relative;
+  z-index: 4;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.handbook-brand {
+  display: grid;
+  gap: 6px;
+  align-self: stretch;
+  color: #fffaf4;
+  text-shadow: 0 8px 22px rgba(31, 29, 28, 0.14);
+}
+
+.handbook-brand span {
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2vw, 2rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.handbook-brand small {
+  color: rgba(255, 249, 243, 0.88);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.control-dock {
+  position: relative;
+  margin-left: auto;
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  max-width: min(100%, 540px);
+  padding: 8px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(255, 252, 248, 0.18);
+  box-shadow: 0 18px 44px rgba(68, 57, 49, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.control-group {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 8px 10px 10px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.control-label {
+  margin-bottom: 6px;
+  color: rgba(255, 250, 244, 0.84);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.control-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pill-btn {
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.main-nav {
+  position: relative;
+  z-index: 4;
+  margin-top: 0;
+  padding: 8px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  justify-content: flex-start;
+  border-radius: 999px;
+  scrollbar-width: none;
+}
+
+.main-nav::-webkit-scrollbar,
+.quick-nav::-webkit-scrollbar,
+.mobile-section-tabs::-webkit-scrollbar,
+.day-guide-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.main-nav .nav-item,
+.quick-nav a,
+.mobile-section-tab,
+.day-guide-link,
+.desktop-anchor-link,
+.page-inline-nav a,
+.bottom-nav .bottom-nav-item {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.main-nav .nav-item {
+  min-height: 42px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  min-width: 0;
+}
+
+.hero-home-shell.hero-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.14fr) minmax(300px, 0.86fr);
+  gap: 24px;
+  padding: 44px 0 0 !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.hero-home-main,
+.hero-overview-panel,
+.chapter-hero-card {
+  min-width: 0;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  background: linear-gradient(135deg, rgba(255, 251, 247, 0.84), rgba(248, 242, 236, 0.76));
+  box-shadow: var(--soft-shadow);
+  backdrop-filter: blur(18px);
+}
+
+.hero-home-main,
+.chapter-hero-card {
+  padding: 34px clamp(24px, 3vw, 40px);
+}
+
+.hero-overview-panel {
+  padding: 24px;
+  display: grid;
+  gap: 16px;
+  align-self: end;
+}
+
+.hero-overview-head {
+  display: grid;
+  gap: 6px;
+}
+
+.hero-overview-head span {
+  color: #8f7b66;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-overview-head strong {
+  color: #554d49;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.handbook-home-hero h1,
+.chapter-hero-card h1 {
+  max-width: 11ch;
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 6vw, 5.4rem);
+  font-weight: 600;
+  line-height: 0.96;
+  letter-spacing: 0.01em;
+}
+
+.chapter-hero-card h1 {
+  max-width: none;
+  font-size: clamp(2.8rem, 4vw, 4.1rem);
+}
+
+.hero-subtitle {
+  margin-top: 14px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-dates,
+.destinations {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.hero-dates {
+  margin-top: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero-intro,
+.hero-serif-note {
+  max-width: 60ch;
+  margin-top: 18px;
+  font-size: 16px;
+  line-height: 1.95;
+}
+
+.hero-signal-strip {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.hero-signal-card,
+.hero-fact,
+.chapter-hero-fact {
+  min-width: 0;
+  padding: 16px 18px;
+  border-radius: 22px !important;
+}
+
+.hero-actions,
+.editorial-hero-actions,
+.booking-action-row,
+.page-inline-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-actions {
+  margin-top: 22px;
+}
+
+.hero-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 0;
+}
+
+.chapter-hero-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.hero-summary-grid,
+.hero-summary-grid.hero-compact-summary,
+.summary-grid,
+.journey-route-grid,
+.snapshot-grid,
+.journey-highlight-grid,
+.day-chapter-grid,
+.practical-guide-grid,
+.paper-grid,
+.shopping-grid,
+.ticket-grid,
+.checklist-grid,
+.alert-card-grid,
+.fare-grid,
+.note-grid,
+.booking-facts,
+.page-meta-strip {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+}
+
+.summary-grid.two,
+.summary-grid.three,
+.journey-highlight-grid,
+.day-chapter-grid,
+.practical-guide-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+.journey-route-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+
+.snapshot-grid {
+  margin-bottom: 20px;
+}
+
+.home-key-timeline {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+}
+
+.home-timeline-card {
+  min-width: 0;
+  padding: 22px 20px 24px;
+  border-radius: 24px;
+  border: 1px solid rgba(214, 203, 196, 0.52);
+  background: rgba(255, 252, 248, 0.7);
+  box-shadow: 0 16px 34px rgba(92, 79, 71, 0.06);
+}
+
+.home-timeline-date {
+  display: inline-flex;
+  align-items: center;
+  color: #9a8870;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.home-timeline-card h3 {
+  margin: 12px 0 0;
+  color: #554d49;
+  font-size: 1.32rem;
+  line-height: 1.32;
+}
+
+.home-timeline-card p {
+  margin: 12px 0 0;
+  color: #786f6b;
+  font-size: 15px;
+  line-height: 1.82;
+}
+
+.mobile-section-tabs,
+.quick-nav,
+.page-inline-nav,
+.day-guide-nav {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-inline: contain;
+}
+
+.mobile-section-tabs,
+.quick-nav {
+  padding: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(214, 203, 196, 0.5);
+  background: rgba(255, 252, 248, 0.78);
+  box-shadow: 0 16px 34px rgba(92, 79, 71, 0.07);
+}
+
+.mobile-section-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 0 auto 18px;
+}
+
+.mobile-section-tab,
+.quick-nav a,
+.page-inline-nav a {
+  min-height: 42px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(214, 203, 196, 0.45);
+  background: rgba(255, 251, 246, 0.9);
+  color: #615854;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mobile-section-tab.active,
+.quick-nav a.active,
+.page-inline-nav a.active,
+.main-nav .nav-item.active,
+.bottom-nav .bottom-nav-item.active {
+  color: #fffaf5 !important;
+  background: linear-gradient(135deg, #b0928f 0%, #c3aa97 100%) !important;
+  border-color: rgba(176, 146, 143, 0.4) !important;
+  box-shadow: 0 12px 24px rgba(160, 134, 124, 0.16) !important;
+}
+
+.mobile-section-tab-icon {
+  width: 15px;
+  height: 15px;
+  display: inline-flex;
+}
+
+.mobile-section-tab-icon svg {
+  width: 15px;
+  height: 15px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.85;
+}
+
+.desktop-page-shell {
+  width: var(--site-shell) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: var(--page-gap) !important;
+}
+
+.desktop-page-main {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+
+.page-intro-card {
+  display: grid;
+  gap: 16px;
+}
+
+.page-inline-nav {
+  margin-top: 6px;
+}
+
+.section {
+  width: var(--site-shell) !important;
+  padding: 38px 0;
+}
+
+.section-card,
+.summary-card,
+.page-card,
+.shopping-card,
+.paper-card,
+.flight-card,
+.transfer-card,
+.ticket-card,
+.checklist-group-card,
+.checklist-card,
+.budget-mobile-card,
+.desktop-sidebar-card,
+.alert-card,
+.stay-card-rich,
+.day-card,
+.timeline-stage-card,
+.day-chapter-card,
+.day-guide-card,
+.snapshot-card,
+.journey-route-card,
+.highlight-story-card,
+.practical-guide-card,
+.home-timeline-card {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--card-radius) !important;
+  box-shadow: var(--soft-shadow) !important;
+}
+
+.section-card {
+  padding: 32px 30px !important;
+}
+
+.section-card h2,
+.section-card h3,
+.summary-card h3,
+.paper-card h3,
+.flight-card h3,
+.shopping-card h3,
+.ticket-card h3,
+.checklist-card h3,
+.day-chapter-head h3,
+.day-guide-card h3,
+.day-guide-section-head h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.section-card h2 {
+  font-size: clamp(2.1rem, 3.2vw, 3rem);
+  line-height: 1.1;
+}
+
+.section-card p,
+.section-card .lead,
+.summary-card p,
+.shopping-card p,
+.paper-card p,
+.flight-card p,
+.day-guide-intro,
+.day-chapter-lead,
+.day-guide-section-head p,
+.moment-card p,
+.guide-detail-card li,
+.practical-summary,
+.home-timeline-card p {
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.guide-meta-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)) !important;
+  gap: 12px;
+}
+
+.guide-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)) !important;
+  gap: 14px;
+}
+
+.day-guide-nav {
+  top: 84px;
+  margin: 4px 0 10px;
+  padding: 8px 0 8px;
+}
+
+.day-guide-link {
+  min-width: 112px;
+  min-height: 56px;
+  padding: 12px 14px;
+}
+
+.day-guide-section,
+.day-guide-card,
+.day-guide-list,
+.day-guide-sections {
+  min-width: 0;
+}
+
+.paris-spotlight-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  gap: 22px;
+}
+
+.paris-mustdo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 18px;
+}
+
+.summary-card-gallery,
+.paris-spotlight-photo-wrap {
+  width: 100%;
+}
+
+.stay-card-image,
+.summary-card-image,
+.summary-photo-image,
+.paris-spotlight-photo {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.site-footer {
+  width: var(--site-shell) !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.bottom-nav {
+  padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .section-card:hover,
+  .summary-card:hover,
+  .snapshot-card:hover,
+  .journey-route-card:hover,
+  .highlight-story-card:hover,
+  .day-chapter-card:hover,
+  .home-timeline-card:hover,
+  .paris-mustdo-card:hover,
+  .quick-nav a:hover,
+  .main-nav .nav-item:hover,
+  .mobile-section-tab:hover,
+  .day-guide-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--soft-shadow-hover) !important;
+  }
+}
+
+@media (max-width: 1180px) {
+  :root {
+    --site-shell: min(100%, calc(100% - 28px));
+    --site-shell-narrow: min(100%, calc(100% - 28px));
+  }
+
+  .hero-home-shell.hero-content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-overview-panel {
+    align-self: stretch;
+  }
+
+  .paris-spotlight-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 620px;
+    padding-bottom: 90px;
+  }
+
+  .page-hero {
+    min-height: 450px;
+  }
+
+  .topbar.handbook-topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .control-dock {
+    margin-left: 0;
+    max-width: none;
+    width: 100%;
+  }
+
+  .main-nav .nav-item {
+    min-height: 40px;
+    padding-inline: 14px;
+  }
+}
+
+@media (max-width: 820px) {
+  :root {
+    --site-shell: min(100%, calc(100% - 24px));
+    --site-shell-narrow: min(100%, calc(100% - 24px));
+  }
+
+  .hero {
+    min-height: 580px;
+    padding-bottom: 82px;
+  }
+
+  .hero-home-main,
+  .hero-overview-panel,
+  .chapter-hero-card {
+    padding: 24px 22px;
+    border-radius: 26px;
+  }
+
+  .hero-overview-grid,
+  .hero-signal-strip,
+  .page-meta-strip,
+  .guide-meta-row,
+  .guide-detail-grid,
+  .booking-facts {
+    grid-template-columns: 1fr !important;
+  }
+
+  .section {
+    padding: 30px 0;
+  }
+
+  .section-card {
+    padding: 26px 22px !important;
+  }
+
+  .day-guide-nav {
+    top: 76px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --site-shell: min(100%, calc(100% - 16px));
+    --site-shell-narrow: min(100%, calc(100% - 16px));
+  }
+
+  .hero {
+    min-height: 520px;
+    padding: 18px 12px 72px;
+    background-position: center 34% !important;
+  }
+
+  .page-hero {
+    min-height: 400px;
+    padding-bottom: 70px;
+  }
+
+  .hero-home-shell.hero-content {
+    padding-top: 18px !important;
+    gap: 16px;
+  }
+
+  .handbook-home-hero h1,
+  .chapter-hero-card h1 {
+    max-width: 100%;
+    font-size: clamp(2.45rem, 12vw, 3.4rem);
+    line-height: 0.98;
+  }
+
+  .hero-subtitle,
+  .hero-dates,
+  .destinations,
+  .hero-intro,
+  .hero-serif-note,
+  .section-card .lead,
+  .section-card p,
+  .day-guide-intro,
+  .day-chapter-lead,
+  .day-guide-section-head p,
+  .moment-card p,
+  .guide-detail-card li {
+    font-size: 15px !important;
+  }
+
+  .hero-overview-grid,
+  .hero-signal-strip,
+  .summary-grid,
+  .journey-route-grid,
+  .snapshot-grid,
+  .journey-highlight-grid,
+  .day-chapter-grid,
+  .practical-guide-grid,
+  .home-key-timeline,
+  .page-meta-strip,
+  .guide-meta-row,
+  .guide-detail-grid,
+  .paris-mustdo-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-actions,
+  .editorial-hero-actions,
+  .booking-action-row,
+  .page-inline-nav {
+    flex-direction: column;
+  }
+
+  .hero-actions .button,
+  .editorial-hero-actions .button,
+  .booking-action-row .button,
+  .page-inline-nav a {
+    width: 100%;
+  }
+
+  .main-nav,
+  .quick-nav,
+  .mobile-section-tabs {
+    padding: 6px;
+  }
+
+  .main-nav .nav-item,
+  .quick-nav a,
+  .mobile-section-tab,
+  .page-inline-nav a {
+    min-height: 40px;
+    padding-inline: 12px;
+    font-size: 12px;
+  }
+
+  .section {
+    padding: 24px 0;
+  }
+
+  .section-card,
+  .home-timeline-card {
+    padding: 22px 18px !important;
+    border-radius: 24px !important;
+  }
+
+  .day-guide-summary,
+  .day-guide-body,
+  .day-guide-section-head,
+  .day-chapter-card,
+  .practical-guide-card summary,
+  .practical-guide-body {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .day-guide-nav {
+    top: 70px;
   }
 }
