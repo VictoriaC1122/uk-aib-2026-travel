@@ -16719,3 +16719,205 @@ body[data-page="stay"] .functional-stay-note,
     aspect-ratio: 16 / 10;
   }
 }
+
+/* Final stability and handbook cleanup */
+:where(
+  main,
+  section,
+  article,
+  aside,
+  nav,
+  header,
+  footer,
+  div,
+  img,
+  picture,
+  video,
+  canvas,
+  svg,
+  table
+) {
+  max-width: 100%;
+}
+
+body[data-page] main,
+body[data-page] .desktop-page-shell,
+body[data-page] .desktop-page-main,
+body[data-page] .handbook-page-main,
+body[data-page] .home-tab-panels,
+body[data-page] .home-tab-panel,
+body[data-page] .home-tab-panel-block,
+body[data-page] .section-card {
+  min-width: 0;
+}
+
+:is(
+  .hero-home-shell.hero-content,
+  .handbook-overview-layout.compact,
+  .hero-overview-grid,
+  .page-meta-strip,
+  .meta-row,
+  .summary-grid,
+  .paper-grid,
+  .ticket-grid,
+  .transfer-grid,
+  .flight-grid,
+  .note-grid,
+  .shopping-grid,
+  .link-grid,
+  .checklist-grid,
+  .reminder-grid,
+  .first-note-grid,
+  .map-layout,
+  .route-ledger,
+  .hotel-ledger,
+  .info-ledger,
+  .budget-ledger,
+  .visa-ledger,
+  .stay-overview-grid,
+  .stay-price-grid,
+  .stay-candidate-grid-wrapper,
+  .stay-warning-options,
+  .stay-info-list,
+  .stay-next-steps,
+  .stay-spotlight-grid,
+  .airport-grid,
+  .day-card-stack,
+  .day-flow-list,
+  .guide-meta-row,
+  .guide-detail-grid,
+  .booking-action-row,
+  .route
+) > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.handbook-tabs-shell,
+.handbook-tabs-track,
+.day-selector-bar,
+.quick-nav {
+  max-width: 100%;
+}
+
+.handbook-tabs-track,
+.day-selector-bar,
+.quick-nav {
+  overscroll-behavior-x: contain;
+}
+
+.handbook-tab-link,
+.day-selector-link,
+.quick-nav a,
+.button,
+.booking-action-row .button {
+  min-height: 44px;
+}
+
+.summary-card,
+.paper-card,
+.ticket-card,
+.transfer-card,
+.flight-card,
+.checklist-card,
+.reminder-card,
+.first-note-card,
+.shopping-card,
+.route-ledger-entry,
+.info-ledger-block,
+.budget-ledger-block,
+.visa-ledger-entry,
+.link-ledger-group,
+.stay-overview-card,
+.stay-stat-card,
+.stay-candidate-card,
+.stay-warning-card,
+.functional-stay-note {
+  border-radius: min(var(--handbook-card-radius), 30px);
+  box-shadow: var(--handbook-shadow-soft);
+}
+
+.summary-grid:not(.two):not(.three),
+.paper-grid,
+.ticket-grid,
+.transfer-grid,
+.flight-grid,
+.note-grid,
+.shopping-grid,
+.link-grid,
+.checklist-grid,
+.reminder-grid,
+.first-note-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+@media (max-width: 768px) {
+  .summary-grid,
+  .summary-grid.two,
+  .summary-grid.three,
+  .paper-grid,
+  .ticket-grid,
+  .transfer-grid,
+  .flight-grid,
+  .note-grid,
+  .shopping-grid,
+  .link-grid,
+  .checklist-grid,
+  .reminder-grid,
+  .first-note-grid,
+  .info-ledger,
+  .budget-ledger,
+  .visa-ledger,
+  .stay-overview-grid,
+  .stay-price-grid,
+  .stay-candidate-grid-wrapper,
+  .stay-warning-options,
+  .stay-info-list,
+  .stay-next-steps,
+  .stay-spotlight-grid,
+  .airport-grid,
+  .guide-meta-row,
+  .guide-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .route {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .route .line {
+    justify-self: start;
+    text-align: left;
+  }
+}
+
+@media (min-width: 1024px) {
+  body[data-page="home"] .handbook-tabs-shell,
+  body[data-page="home"] .home-tab-panels,
+  body[data-page="stay"] .desktop-page-shell {
+    width: min(100% - 48px, 1180px);
+    max-width: 1180px;
+    margin-inline: auto;
+  }
+
+  body[data-page="home"] .handbook-tabs-shell {
+    margin-bottom: 1.6rem;
+  }
+
+  body[data-page="home"] .home-tab-panels {
+    gap: 1.6rem;
+  }
+
+  body[data-page="home"] .hero-home-shell.hero-content,
+  body[data-page="home"] .handbook-overview-layout.compact,
+  body[data-page="stay"] .stay-spotlight-grid,
+  body[data-page="stay"] .airport-grid {
+    align-items: start;
+  }
+
+  body[data-page="home"] .hero-home-main,
+  body[data-page="home"] .hero-overview-panel {
+    min-width: 0;
+  }
+}
