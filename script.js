@@ -43,6 +43,8 @@ const money = {
   hotelPerNight: "NT$7,654 / GBP 180.18 / EUR 211 / US$239",
   hotelPerPersonTotal: "NT$19,135 / GBP 450.45 / EUR 527 / US$597",
   hotelPerPersonNight: "NT$3,827 / GBP 90.09 / EUR 105 / US$119",
+  parisHotel: "NT$70,243 / 約 GBP 1,639 / EUR 1,915.58 / 約 US$2,170",
+  parisHotelPerNight: "NT$23,414 / 約 GBP 546 / EUR 638.53 / 約 US$723",
   visitorCharge: "約 NT$255 / GBP 6 / EUR 7 / US$8",
   visitorChargePerPerson: "約 NT$128 / GBP 3 / EUR 4 / US$4",
   personalKnownSelfFunded: "約 NT$19,263 / GBP 453.45 / EUR 531 / US$601",
@@ -76,7 +78,7 @@ const homeOverviewCards = [
     tag: { zh: "住宿", en: "Hotel" },
     title: { zh: "住宿", en: "Hotel" },
     value: "INNSiDE Manchester",
-    note: { zh: "曼徹斯特已定，倫敦和巴黎也列了想住的地方。", en: "Manchester is set; London and Paris first choices are listed." }
+    note: { zh: "曼徹斯特已定，巴黎 Pullman 也已確認，現在主要剩倫敦。", en: "Manchester is set, Pullman Paris is confirmed, and London remains the main open stay." }
   },
   {
     tag: { zh: "狀態", en: "Status" },
@@ -454,11 +456,13 @@ const tripData = {
         { zh: "日期：2026/07/07 – 2026/07/10（3 晚）", en: "Dates: 7 Jul 2026 – 10 Jul 2026 (3 nights)" },
         { zh: "飯店：Pullman Paris Tour Eiffel", en: "Hotel: Pullman Paris Tour Eiffel" },
         { zh: "房型：Deluxe Room, High Floor, 1 King Bed, 1 Sofa Bed, Balcony, Eiffel Tower View", en: "Room: Deluxe Room, High Floor, 1 King Bed, 1 Sofa Bed, Balcony, Eiffel Tower View" },
+        { zh: `訂房總價：${money.parisHotel}`, en: `Booking total: ${money.parisHotel}` },
+        { zh: `平均每晚：約 ${money.parisHotelPerNight}`, en: `Average per night: ${money.parisHotelPerNight}` },
         { zh: "特色：32㎡、高樓層、私人陽台、艾菲爾鐵塔景觀", en: "Features: 32 sqm, high floor, private balcony, Eiffel Tower view" },
         { zh: "位置：步行就能接到艾菲爾鐵塔與塞納河", en: "Location: an easy walk to the Eiffel Tower and the Seine" },
         { zh: "狀態：巴黎主住宿已確認", en: "Status: Paris anchor stay confirmed" }
       ],
-      note: { zh: "這三晚將入住 Pullman Paris Tour Eiffel，以高樓層陽台房欣賞艾菲爾鐵塔景觀，作為巴黎行程的核心住宿亮點。", en: "These three nights stay at Pullman Paris Tour Eiffel, using a high-floor balcony room with an Eiffel Tower view as the main hotel highlight of the Paris chapter." }
+      note: { zh: "這三晚將入住 Pullman Paris Tour Eiffel，以高樓層陽台房欣賞艾菲爾鐵塔景觀，作為巴黎行程的核心住宿亮點。此次訂房目前刷卡總額為 NT$70,243 / EUR 1,915.58。", en: "These three nights stay at Pullman Paris Tour Eiffel, using a high-floor balcony room with an Eiffel Tower view as the main hotel highlight of the Paris chapter. The current booking total is NT$70,243 / EUR 1,915.58." }
     },
     {
       status: "optional",
@@ -541,7 +545,7 @@ const tripData = {
     { item: { zh: "Eurostar 倫敦 → 巴黎", en: "Eurostar London → Paris" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "Eurostar 電子票與收據", en: "Eurostar e-ticket and receipt" }, notes: { zh: "7/7 出發，車程約 2 小時 20 分。", en: "Departure is on 7 July, with a journey of about 2h20." } },
     { item: { zh: "巴黎 → 曼徹斯特航段", en: "Paris → Manchester flight" }, amount: { zh: "NT$12,930 / EUR 354.05", en: "NT$12,930 / EUR 354.05" }, amounts: { TWD: "NT$12,930", GBP: "約 GBP 300", EUR: "EUR 354.05", USD: "待確認" }, status: "self", proof: { zh: "Air France 電子票（敏感資訊不公開）與付款證明", en: "Air France e-ticket (sensitive details kept private) and payment proof" }, notes: { zh: "AF1068｜CDG T2E 12:50 → MAN T2 13:25；Business Standard、SkyPriority、2 件托運行李（每件 32kg）。", en: "AF1068 · CDG T2E 12:50 → MAN T2 13:25; Business Standard, SkyPriority, and 2 checked bags up to 32kg each." } },
     { item: { zh: "倫敦住宿", en: "London accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "首選 The Langham London，備選 The Clermont Charing Cross。", en: "The Langham London is the first choice, with The Clermont Charing Cross as the alternative." } },
-    { item: { zh: "巴黎住宿", en: "Paris accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "Pullman Paris Tour Eiffel｜7/7–7/10，共 3 晚，鐵塔景陽台房。", en: "Pullman Paris Tour Eiffel · 7-10 Jul · 3 nights · balcony room with Eiffel Tower view." } },
+    { item: { zh: "巴黎住宿", en: "Paris accommodation" }, amount: money.parisHotel, amounts: { TWD: "NT$70,243", GBP: "約 GBP 1,639", EUR: "EUR 1,915.58", USD: "約 US$2,170" }, status: "self", proof: { zh: "Pullman 訂房確認、Accor 訂單與付款紀錄", en: "Pullman booking confirmation, Accor order, and payment proof" }, notes: { zh: `Pullman Paris Tour Eiffel｜7/7–7/10，共 3 晚，鐵塔景陽台房；平均每晚約 ${money.parisHotelPerNight}。`, en: `Pullman Paris Tour Eiffel · 7-10 Jul · 3 nights · balcony room with Eiffel Tower view; average per night about ${money.parisHotelPerNight}.` } },
     { item: { zh: "倫敦 / 巴黎景點與遊船", en: "London / Paris attractions and cruise" }, amount: { zh: "依實際選擇", en: "Depends on selected stops" }, amounts: { TWD: "依實際選擇", GBP: "Depends", EUR: "Depends", USD: "Depends" }, status: "self", proof: { zh: "線上購票收據", en: "Online ticket receipts" }, notes: { zh: "羅浮宮、凱旋門等需要時再訂，鐵塔夜景、Place Vendôme、香榭麗舍和多數街區可直接散步。", en: "Book the Louvre or Arc only if needed; the Eiffel night view, Place Vendôme, the Champs-Elysees, and most of the streets can stay open." } }
   ],
   links: [
@@ -904,7 +908,7 @@ const readingGuides = {
     { zh: "倫敦與曼徹斯特市內交通都以感應付款為主。", en: "Local transit in London and Manchester is planned around contactless payment." }
   ],
   stay: [
-    { zh: "曼徹斯特住宿已訂，倫敦和巴黎也都先列了方向。", en: "Manchester is booked, and London and Paris now have first-choice stays listed." },
+    { zh: "曼徹斯特住宿已訂，巴黎 Pullman 也已確認，現在主要剩倫敦。", en: "Manchester is booked, Pullman Paris is confirmed, and London remains the main open stay." },
     { zh: "7/4 晚的住宿日期有重疊，可以先留著當緩衝。", en: "The 4 July night overlaps and can remain a buffer." },
     { zh: "倫敦先看動線，巴黎就看景和住起來的感覺。", en: "London prioritizes access; Paris leans more toward atmosphere and view." }
   ],
@@ -945,14 +949,14 @@ const dashboardData = {
     { status: "confirmed", title: { zh: "會議日期", en: "Conference dates" }, value: "2026/06/30 - 2026/07/03", note: { zh: "AIB Manchester", en: "AIB Manchester" } },
     { status: "confirmed", title: { zh: "機票已訂", en: "Flight booked" }, value: "TPE → FRA → MAN", note: { zh: "巴黎回曼城後再接返台", en: "Paris returns to Manchester before heading home" } },
     { status: "confirmed", title: { zh: "曼徹斯特住宿已訂", en: "Manchester hotel booked" }, value: "INNSiDE Manchester", note: { zh: "6/30 - 7/5", en: "30 Jun - 5 Jul" } },
-    { status: "book", title: { zh: "後段住宿規劃", en: "Later-stay planning" }, value: { zh: "倫敦 / 巴黎", en: "London / Paris" }, note: { zh: "先列了想住的地方", en: "First-choice stays listed" } },
+    { status: "book", title: { zh: "後段住宿規劃", en: "Later-stay planning" }, value: { zh: "倫敦 / 巴黎 / CDG", en: "London / Paris / CDG" }, note: { zh: "巴黎 Pullman 已訂，現在主要剩倫敦和 CDG 周邊。", en: "Pullman Paris is booked; London and the CDG area are the remaining stay pieces." } },
     { status: "reimburse", title: { zh: "可報帳項目", en: "Reimbursement items" }, value: { zh: "4 項", en: "4 items" }, note: { zh: "機票、會議費、會員費、日支費", en: "Flights, fee, membership, allowance" } },
     { status: "pending", title: { zh: "文件清單", en: "Documents checklist" }, value: { zh: "國際段 + 歐洲段一起整理", en: "Long-haul and Europe legs tracked together" }, note: { zh: "文件頁可逐項確認", en: "Tracked in the documents page" } }
   ],
   quickActions: [
     ["overview", { zh: "查看總覽", en: "View overview" }, { zh: "先看目前進度", en: "Start with the current status" }],
     ["schedule", { zh: "查看行程", en: "View itinerary" }, { zh: "每日旅程、城市轉場和沿途節奏", en: "Daily route, city shifts, and the travel rhythm" }],
-    ["hotel", { zh: "查看住宿", en: "Review hotel" }, { zh: "曼徹斯特已訂，倫敦和巴黎也先排了方向", en: "Manchester booked, with London and Paris first choices" }],
+    ["hotel", { zh: "查看住宿", en: "Review hotel" }, { zh: "曼徹斯特與巴黎已訂，倫敦仍待定", en: "Manchester and Paris booked, with London still open" }],
     ["papers", { zh: "查看論文", en: "Review papers" }, { zh: "Competitive 與 Interactive", en: "Competitive and Interactive" }],
     ["budget", { zh: "查看預算", en: "Reimbursement summary" }, { zh: "報帳與自費分開看", en: "Claims and self-funded costs" }],
     ["checklist", { zh: "文件清單", en: "Document checklist" }, { zh: "收據、確認信、ETA", en: "Receipts, confirmations, ETA" }]
@@ -962,8 +966,8 @@ const dashboardData = {
     { label: { zh: "Conference period", en: "Conference period" }, value: "2026/06/30 – 2026/07/03" },
     { label: { zh: "Main cities", en: "Main cities" }, value: { zh: "Manchester / London / Paris", en: "Manchester / London / Paris" } },
     { label: { zh: "Flight route", en: "Flight route" }, value: "TPE → FRA → MAN / CDG → MAN → LHR → TPE" },
-    { label: { zh: "Hotel status", en: "Hotel status" }, value: { zh: "曼徹斯特已訂；倫敦、巴黎有首選", en: "Manchester booked; London and Paris have first choices" } },
-    { label: { zh: "Pending decisions", en: "Pending decisions" }, value: { zh: "倫敦住宿、Eurostar、巴黎住宿", en: "London hotel, Eurostar, and Paris hotel" } }
+    { label: { zh: "Hotel status", en: "Hotel status" }, value: { zh: "曼徹斯特、巴黎已訂；倫敦待定", en: "Manchester and Paris booked; London still open" } },
+    { label: { zh: "Pending decisions", en: "Pending decisions" }, value: { zh: "倫敦住宿、Eurostar、CDG 周邊住宿", en: "London hotel, Eurostar, and the CDG-area stay" } }
   ],
   conferenceCards: [
     { status: "confirmed", title: { zh: "會議期間", en: "Conference period" }, value: "2026/06/29 - 2026/07/03", note: { zh: "Manchester", en: "Manchester" } },
@@ -982,7 +986,7 @@ const dashboardData = {
     {
       title: { zh: "Pre-trip preparation", en: "Pre-trip preparation" },
       entries: [
-        { date: { zh: "出發前", en: "Before departure" }, city: { zh: "Taipei", en: "Taipei" }, purpose: { zh: "整理文件與待辦", en: "Prepare documents and pending items" }, transport: { zh: "—", en: "—" }, reminders: [{ zh: "確認 ETA、收據、接受函、邀請函。", en: "Check ETA, receipts, acceptance letters, and invitation letter." }, { zh: "倫敦住宿、Eurostar 與巴黎住宿仍需處理。", en: "London hotel, Eurostar, and Paris hotel still need action." }], optional: [{ zh: "把巴黎回曼徹斯特與回台航段存成離線檔。", en: "Save the Paris-Manchester and return-home flight details offline." }] }
+        { date: { zh: "出發前", en: "Before departure" }, city: { zh: "Taipei", en: "Taipei" }, purpose: { zh: "整理文件與待辦", en: "Prepare documents and pending items" }, transport: { zh: "—", en: "—" }, reminders: [{ zh: "確認 ETA、收據、接受函、邀請函。", en: "Check ETA, receipts, acceptance letters, and invitation letter." }, { zh: "倫敦住宿、Eurostar 與 CDG 周邊住宿仍需處理。", en: "London hotel, Eurostar, and the CDG-area stay still need action." }], optional: [{ zh: "把巴黎回曼徹斯特與回台航段存成離線檔。", en: "Save the Paris-Manchester and return-home flight details offline." }] }
       ]
     },
     {
@@ -2450,7 +2454,7 @@ const pageDescriptions = {
   shopping: { zh: "茶葉、餅乾、果醬與超市購物清單。", en: "Tea, biscuits, preserves, and useful shopping notes." },
   souvenirs: { zh: "英國、法國、德國伴手禮整理。", en: "Souvenir notes for the UK, France, and Germany." },
   map: { zh: "主要地點、每日路線與地圖連結。", en: "Key locations, daily routes, and map links." },
-  budget: { zh: "可報帳和自費分開整理，金額也一起換算。", en: "Funding and expense notes, with three-currency amounts." },
+  budget: { zh: "可報帳和自費分開整理，金額也一起換算。", en: "Funding and expense notes, with four-currency amounts." },
   reminders: { zh: "還沒處理完的事和出發前最後再看一次的提醒。", en: "Pending items and final travel notes." },
   firstTime: { zh: "這趟德英法之旅行前可先看的實用提醒。", en: "Practical notes to review before this Germany · UK · France trip." },
   documents: { zh: "文件清單與官方連結。", en: "Document checklist and official links." }
@@ -3120,7 +3124,8 @@ function renderStay() {
             ${renderMetaRow([
               { label: state.lang !== "zh" ? "Stay dates" : "入住日期", value: state.lang !== "zh" ? "7 Jul – 10 Jul 2026" : "2026/07/07 – 2026/07/10" },
               { label: state.lang !== "zh" ? "Nights" : "晚數", value: state.lang !== "zh" ? "3 nights" : "3 晚" },
-              { label: state.lang !== "zh" ? "Room" : "房型", value: state.lang !== "zh" ? "Deluxe Room, High Floor, Balcony, Eiffel Tower View" : "Deluxe Room｜高樓層｜陽台｜鐵塔景" }
+              { label: state.lang !== "zh" ? "Room" : "房型", value: state.lang !== "zh" ? "Deluxe Room, High Floor, Balcony, Eiffel Tower View" : "Deluxe Room｜高樓層｜陽台｜鐵塔景" },
+              { label: state.lang !== "zh" ? "Booking total" : "訂房總價", value: money.parisHotel }
             ], "paris-meta-row")}
             <div class="paris-feature-chips">
               ${[
@@ -3135,6 +3140,7 @@ function renderStay() {
             <div class="paris-spotlight-body">
               <p>${state.lang !== "zh" ? "The strongest reason to stay here is simple: Paris already has enough to see during the day, so coming back each night to a balcony tower view gives the final chapter of the trip a proper center." : "白天的巴黎可以留給羅浮宮、精品街、歌劇院周邊與塞納河，晚上則回到 Pullman，把鐵塔閃燈收進房間和陽台視角裡。這樣的住法很適合把最後幾天留給拍照、購物與放鬆。"} </p>
               <p>${state.lang !== "zh" ? "It also keeps the Eiffel Tower and the Seine within easy reach, which makes the first evening, the return nights, and the final luggage handoff all feel smoother." : "飯店離艾菲爾鐵塔與塞納河都很近，第一晚看鐵塔夜景、後面幾天的夜間散步，以及 7/10 回飯店拿寄放行李，再轉往 CDG 機場住宿，動線都會順很多。"} </p>
+              <p>${state.lang !== "zh" ? `The current booking amount shown on the payment record is NT$70,243 / EUR 1,915.58, which works out to about ${money.parisHotelPerNight} per night.` : `目前訂房付款紀錄顯示總額為 NT$70,243 / EUR 1,915.58，換算平均每晚約 ${money.parisHotelPerNight}。`}</p>
             </div>
           </div>
           <div class="paris-spotlight-side">
@@ -3513,10 +3519,10 @@ function currencySwitcher() {
 
 function renderBudget() {
   const totals = {
-    TWD: { reimburse: "NT$156,039", self: "NT$38,525", personalSelf: "約 NT$19,263", hotelPerson: "NT$19,135", hotelPersonNight: "NT$3,827" },
-    GBP: { reimburse: "GBP 3,671", self: "GBP 906.90", personalSelf: "GBP 453.45", hotelPerson: "GBP 450.45", hotelPersonNight: "GBP 90.09" },
-    EUR: { reimburse: "EUR 4,293", self: "EUR 1,061", personalSelf: "約 EUR 531", hotelPerson: "EUR 527", hotelPersonNight: "EUR 105" },
-    USD: { reimburse: "US$4,870", self: "US$1,202", personalSelf: "約 US$601", hotelPerson: "US$597", hotelPersonNight: "US$119" }
+    TWD: { reimburse: "NT$156,039", self: "NT$121,698", personalSelf: "約 NT$19,263", hotelPerson: "NT$19,135", hotelPersonNight: "NT$3,827" },
+    GBP: { reimburse: "GBP 3,671", self: "約 GBP 2,846", personalSelf: "GBP 453.45", hotelPerson: "GBP 450.45", hotelPersonNight: "GBP 90.09" },
+    EUR: { reimburse: "EUR 4,293", self: "約 EUR 3,331", personalSelf: "約 EUR 531", hotelPerson: "EUR 527", hotelPersonNight: "EUR 105" },
+    USD: { reimburse: "US$4,870", self: "約 US$3,773", personalSelf: "約 US$601", hotelPerson: "US$597", hotelPersonNight: "US$119" }
   };
   const selectedTotals = totals[state.currency] || totals.TWD;
   return renderDesktopPageShell("budget", {
@@ -3543,8 +3549,9 @@ function renderBudget() {
         <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang !== "zh" ? "Conference fee" : "會議費"}</h3><strong>${money.conference}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Status" : "狀態", value: state.lang !== "zh" ? "Claimable" : "可報帳" }, { label: state.lang !== "zh" ? "Proof" : "憑證", value: state.lang !== "zh" ? "Receipt ready" : "收據已備" }])}</article>
         <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang !== "zh" ? "AIB membership fee" : "AIB 會員費"}</h3><strong>${money.membership}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Status" : "狀態", value: state.lang !== "zh" ? "Claimable" : "可報帳" }, { label: state.lang !== "zh" ? "Proof" : "憑證", value: state.lang !== "zh" ? "Receipt ready" : "收據已備" }])}</article>
         <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Manchester hotel" : "曼徹斯特住宿"}</h3><strong>${money.hotel}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Stay" : "住宿", value: state.lang !== "zh" ? "5 nights / 2 guests" : "5 晚 / 2 人" }, { label: state.lang !== "zh" ? "Personal share" : "個人分攤", value: money.hotelPerPersonTotal }])}</article>
+        <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Paris hotel" : "巴黎住宿"}</h3><strong>${money.parisHotel}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Stay" : "住宿", value: state.lang !== "zh" ? "3 nights" : "3 晚" }, { label: state.lang !== "zh" ? "Room" : "房型", value: state.lang !== "zh" ? "Balcony Eiffel Tower View" : "陽台鐵塔景房" }])}</article>
         <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Train estimate" : "火車預估"}</h3><strong>${t(money.trainAdvance)}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Type" : "票種", value: "Advance / Off-Peak" }, { label: state.lang !== "zh" ? "Railcard" : "Railcard", value: money.railcard }])}</article>
-        <article class="summary-card">${statusChip("pending")}<h3>${state.lang !== "zh" ? "Pending items" : "待確認項目"}</h3><strong>${state.lang !== "zh" ? "London hotel / London transit / attraction mix" : "倫敦住宿 / 倫敦交通 / 景點組合"}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Action" : "處理", value: state.lang !== "zh" ? "Book and review" : "預訂與確認" }, { label: state.lang !== "zh" ? "Timing" : "時點", value: state.lang !== "zh" ? "Before departure" : "出發前" }])}</article>
+        <article class="summary-card">${statusChip("pending")}<h3>${state.lang !== "zh" ? "Pending items" : "待確認項目"}</h3><strong>${state.lang !== "zh" ? "London hotel / Eurostar / CDG stay" : "倫敦住宿 / Eurostar / CDG 周邊住宿"}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Action" : "處理", value: state.lang !== "zh" ? "Book and review" : "預訂與確認" }, { label: state.lang !== "zh" ? "Timing" : "時點", value: state.lang !== "zh" ? "Before departure" : "出發前" }])}</article>
       </div>
       ${currencySwitcher()}
       ${renderBudgetCards(tripData.expenses)}
@@ -3562,7 +3569,7 @@ function renderBudget() {
       <div class="summary-grid three">
         <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang !== "zh" ? "Reimbursement total" : "可報帳小計"}</h3><strong>${selectedTotals.reimburse}</strong><p>${state.lang !== "zh" ? "Flights, AIB conference fee, AIB membership fee, and Manchester daily allowance for 5 conference days." : "含機票、AIB 會議費、AIB 會員費，以及曼徹斯特研討會 5 天日支費。"}</p></article>
         <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang !== "zh" ? "NSTC daily allowance" : "國科會日支費"}</h3><strong>${tripData.expenses[3].amounts[state.currency]}</strong><p>${state.lang !== "zh" ? "Calculated for 5 conference days." : "以研討會 5 天計算。"}</p></article>
-        <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Self-funded known subtotal" : "已知自費小計"}</h3><strong>${selectedTotals.self}</strong><p>${state.lang !== "zh" ? "Current known self-funded items include Manchester hotel and visitor charge. London hotel and detailed attraction choices remain open." : "目前已知自費包含曼徹斯特住宿與旅遊稅；倫敦住宿與景點組合仍待確認。"}</p></article>
+        <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Self-funded known subtotal" : "已知自費小計"}</h3><strong>${selectedTotals.self}</strong><p>${state.lang !== "zh" ? "Current known self-funded items include the Manchester hotel, visitor charge, the Pullman Paris booking, and the Air France Paris-Manchester segment. London hotel, Eurostar, and attraction choices remain open." : "目前已知自費包含曼徹斯特住宿與旅遊稅、Pullman 巴黎住宿，以及巴黎回曼徹斯特的法航航段；倫敦住宿、Eurostar 和景點組合仍待確認。"}</p></article>
       </div>
     </section>
     <section class="section compact-section" id="personal-costs">
