@@ -16921,3 +16921,166 @@ body[data-page] .section-card {
     min-width: 0;
   }
 }
+
+/* Desktop homepage rescue */
+@media (min-width: 1024px) {
+  body[data-page="home"] .hero {
+    min-height: auto;
+    padding: 24px 24px 64px;
+    overflow: hidden;
+  }
+
+  body[data-page="home"] .hero > [data-site-header],
+  body[data-page="home"] .hero > [data-page-hero],
+  body[data-page="home"] main,
+  body[data-page="home"] #page-content,
+  body[data-page="home"] .site-footer {
+    width: min(100% - 48px, 1180px);
+    max-width: 1180px;
+    margin-inline: auto;
+  }
+
+  body[data-page="home"] .topbar.handbook-topbar {
+    width: 100%;
+    margin: 0 0 22px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 20px;
+  }
+
+  body[data-page="home"] .handbook-brand {
+    align-self: start;
+    max-width: 360px;
+  }
+
+  body[data-page="home"] .control-dock {
+    width: auto;
+    max-width: min(100%, 460px);
+    margin-left: 0;
+    flex: 0 0 auto;
+    padding: 10px;
+    gap: 10px;
+    box-shadow: 0 16px 34px rgba(92, 79, 71, 0.1);
+  }
+
+  body[data-page="home"] .control-group {
+    padding: 10px 12px 12px;
+  }
+
+  body[data-page="home"] .hero-home-shell.hero-content {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    padding-top: 0 !important;
+    display: grid;
+    grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+    align-items: start;
+    gap: clamp(24px, 3.6vw, 48px);
+    overflow: hidden;
+  }
+
+  body[data-page="home"] .hero-home-main,
+  body[data-page="home"] .hero-overview-panel {
+    min-width: 0;
+    align-self: start;
+  }
+
+  body[data-page="home"] .hero-home-main {
+    display: grid;
+    align-content: start;
+    gap: 0;
+    padding: 40px clamp(28px, 3vw, 44px);
+  }
+
+  body[data-page="home"] .hero-overview-panel {
+    padding: 28px;
+    gap: 18px;
+  }
+
+  body[data-page="home"] .handbook-home-hero h1 {
+    max-width: 7ch;
+    font-size: clamp(3rem, 4.8vw, 4.95rem);
+    line-height: 0.94;
+    text-wrap: balance;
+  }
+
+  body[data-page="home"] .hero-subtitle,
+  body[data-page="home"] .hero-dates,
+  body[data-page="home"] .destinations,
+  body[data-page="home"] .hero-intro,
+  body[data-page="home"] .hero-serif-note {
+    max-width: 36ch;
+  }
+
+  body[data-page="home"] .hero-intro,
+  body[data-page="home"] .hero-serif-note {
+    font-size: 1rem;
+    line-height: 1.82;
+  }
+
+  body[data-page="home"] .hero-overview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  body[data-page="home"] .hero-fact {
+    padding: 16px 16px 15px;
+  }
+
+  body[data-page="home"] .hero-summary-note {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.78;
+  }
+
+  body[data-page="home"] .handbook-tabs-shell {
+    width: min(100% - 48px, 1180px);
+    max-width: 1180px;
+    margin: 28px auto 0;
+    position: sticky;
+    top: calc(env(safe-area-inset-top) + 12px);
+    padding-inline: 0;
+  }
+
+  body[data-page="home"] .handbook-tabs-track {
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    justify-content: flex-start;
+    gap: 0.4rem;
+    padding: 0.5rem;
+  }
+
+  body[data-page="home"] .handbook-tab-link {
+    min-height: 46px;
+    padding: 0.8rem 1.1rem;
+    font-size: 0.95rem;
+  }
+
+  body[data-page="home"] .home-tab-panels {
+    width: min(100% - 48px, 1180px);
+    max-width: 1180px;
+    margin: 18px auto 0;
+    gap: 1.6rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1180px) {
+  body[data-page="home"] .topbar.handbook-topbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body[data-page="home"] .control-dock {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body[data-page="home"] .hero-home-shell.hero-content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body[data-page="home"] .hero-overview-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
