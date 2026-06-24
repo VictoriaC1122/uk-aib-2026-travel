@@ -498,6 +498,7 @@ const tripData = {
     { item: { zh: "巴黎住宿", en: "Paris accommodation" }, amount: money.parisHotel, amounts: { TWD: "NT$70,243", GBP: "約 GBP 1,639", EUR: "EUR 1,915.58", USD: "約 US$2,170" }, status: "self", proof: { zh: "Pullman 訂房確認、Accor 訂單與付款紀錄", en: "Pullman booking confirmation, Accor order, and payment proof" }, notes: { zh: `Pullman Paris Tour Eiffel｜7/7–7/10，共 3 晚，鐵塔景陽台房；平均每晚約 ${money.parisHotelPerNight}。`, en: `Pullman Paris Tour Eiffel · 7-10 Jul · 3 nights · balcony room with Eiffel Tower view; average per night about ${money.parisHotelPerNight}.` } },
     { item: { zh: "CDG 機場住宿", en: "CDG airport hotel" }, amount: { zh: "NT$7,034（原幣未公開）", en: "NT$7,034 (original currency not shown publicly)" }, amounts: { TWD: "NT$7,034", GBP: "約 GBP 164", EUR: "約 EUR 192", USD: "約 US$217" }, status: "self", proof: { zh: "Novotel 訂房畫面與刷卡紀錄", en: "Novotel booking screen and payment note" }, notes: { zh: "巴黎戴高樂機場候機樓諾富特酒店｜7/10–7/11，共 1 晚；作為法航 7/11 航段前一晚的機場過夜。", en: "Novotel Paris Charles-de-Gaulle Airport · 10-11 Jul · 1 night; the airport overnight before the 11 July Air France departure." } },
     { item: { zh: "歐洲 eSIM / 網卡", en: "Europe eSIM / data" }, amount: { zh: "NT$1,219", en: "NT$1,219" }, amounts: { TWD: "NT$1,219", GBP: "約 GBP 29", EUR: "約 EUR 33", USD: "約 US$38" }, status: "self", proof: { zh: "訂單截圖（公開頁不放個資）", en: "Order screenshot (personal details kept private)" }, notes: { zh: "歐洲 39 國 15 天 eSIM。出發前先裝，落地再開；原本門號留著收簡訊與驗證碼。", en: "39-country Europe eSIM for 15 days. Install before departure, activate after landing, and keep your main number for SMS and verification codes." } },
+    { item: { zh: "旅遊保險", en: "Travel insurance" }, amount: { zh: "NT$1,358", en: "NT$1,358" }, amounts: { TWD: "NT$1,358", GBP: "約 GBP 31", EUR: "約 EUR 40", USD: "約 US$42" }, status: "self", proof: { zh: "安達產險投保確認信與保費 PDF（公開頁不放保單號）", en: "Chubb confirmation email and premium PDF (policy number kept private)" }, notes: { zh: "安達產險旅綜保。保險期間從 2026/06/29 出發起到 2026/07/13；要找保單時，直接看確認信和保費 PDF。", en: "Chubb travel insurance, covering from departure on 29 Jun 2026 through 13 Jul 2026. When needed, go straight to the confirmation email and premium PDF." } },
     { item: { zh: "倫敦 / 巴黎景點與遊船", en: "London / Paris attractions and cruise" }, amount: { zh: "依實際選擇", en: "Depends on selected stops" }, amounts: { TWD: "依實際選擇", GBP: "Depends", EUR: "Depends", USD: "Depends" }, status: "self", proof: { zh: "線上購票收據", en: "Online ticket receipts" }, notes: { zh: "羅浮宮、凱旋門等需要時再訂，鐵塔夜景、Place Vendôme、香榭麗舍和多數街區可直接散步。", en: "Book the Louvre or Arc only if needed; the Eiffel night view, Place Vendôme, the Champs-Elysees, and most of the streets can stay open." } }
   ],
   links: [
@@ -886,7 +887,7 @@ const dashboardData = {
     { status: "confirmed", title: { zh: "住宿確認", en: "Hotel confirmation" }, note: { zh: "曼徹斯特訂房確認可直接使用。", en: "Manchester hotel confirmation is ready to use." } },
     { status: "confirmed", title: { zh: "ETA 與護照資料", en: "ETA / passport-related documents" }, note: { zh: "ETA 核准紀錄與護照資料需放同一處。", en: "Keep ETA approval and passport details together." } },
     { status: "reimburse", title: { zh: "報帳文件", en: "Reimbursement documents" }, note: { zh: "報帳文件可依報帳頁順序整理。", en: "Arrange claim documents in the budget-page order." } },
-    { status: "pending", title: { zh: "旅遊保險（如有）", en: "Travel insurance if applicable" }, note: { zh: "若有投保，再補上保單資訊。", en: "Add policy details only if insurance is purchased." } }
+    { status: "confirmed", title: { zh: "旅遊保險", en: "Travel insurance" }, note: { zh: "安達產險旅綜保已投保。保單確認信與保費 PDF 都已留存。", en: "Travel insurance with Chubb is confirmed. The confirmation email and premium PDF are both saved." } }
   ]
 };
 
@@ -1438,7 +1439,7 @@ const conferenceAlerts = [
     tag: "Visa",
     status: "confirmed",
     title: { zh: "護照、ETA、保險", en: "Passport, ETA, and insurance" },
-    body: { zh: "護照、ETA 核准紀錄和保險資料都留離線版。", en: "Keep passport, ETA approval, and insurance details available offline." }
+    body: { zh: "護照、ETA 核准紀錄和安達產險保單都留離線版。真的要找時，直接翻保險確認信和保費 PDF。", en: "Keep your passport, ETA approval, and Chubb insurance details available offline. When needed, go straight to the insurance confirmation email and premium PDF." }
   }
 ];
 
@@ -1519,7 +1520,7 @@ const checklistGroups = [
     title: { zh: "旅行必需品", en: "Travel essentials" },
     items: [
       { id: "essentials-adapter", text: { zh: "Type G 轉接頭、充電器與行動電源已放進行李。", en: "Type G adapter, chargers, and power bank are packed." } },
-      { id: "essentials-insurance", text: { zh: "旅遊保險若有投保，保單資訊已留存。", en: "If insured, travel insurance details are saved." } },
+      { id: "essentials-insurance", text: { zh: "安達產險旅綜保已投保，保單確認信與保費 PDF 都已留存。", en: "Chubb travel insurance is confirmed, and both the confirmation email and premium PDF are saved." } },
       { id: "essentials-packing", text: { zh: "出發前最後檢查藥品、衣物與會議穿著。", en: "Do a final check on medicine, clothing, and conference outfits." } }
     ]
   }
@@ -2676,7 +2677,7 @@ function renderHomeVisaPanel() {
         </article>
         <article class="visa-ledger-entry">
           <h3>${state.lang !== "zh" ? "Customs, tax, and insurance" : "海關、退稅與保險"}</h3>
-          <p>${state.lang !== "zh" ? "If you buy anything bigger later in London or Paris, keep the receipts. If you bought insurance, save the policy and claim contact details offline." : "如果後面在倫敦或巴黎有較大額購物，收據記得保留；保險若有投保，也建議把保單與理賠聯絡資訊一起離線存好。"} </p>
+          <p>${state.lang !== "zh" ? "Keep the bigger shopping receipts from London or Paris. The Chubb insurance confirmation and premium PDF should also stay offline with the claim contact details." : "如果後面在倫敦或巴黎有較大額購物，收據記得保留；安達產險的確認信、保費 PDF 和理賠聯絡資訊也一起離線存好。"} </p>
         </article>
       </div>
       <a class="text-link-button" href="./first-time.html">${state.lang !== "zh" ? "Open the travel notes page" : "查看德英法提醒"}</a>
@@ -3957,6 +3958,7 @@ function renderReminders() {
           state.lang !== "zh" ? "Passport and UK ETA are ready." : "護照和 UK ETA 再看一次。",
           state.lang !== "zh" ? "AIB receipts and letters are saved for reimbursement." : "AIB 收據、接受函和邀請函都先存好。",
           state.lang !== "zh" ? "The Europe eSIM is installed and the main number is left on for SMS." : "歐洲 eSIM 先裝好，原本門號留著收簡訊。",
+          state.lang !== "zh" ? "The Chubb insurance confirmation email and premium PDF are saved offline." : "安達產險確認信和保費 PDF 都先離線存好。",
           state.lang !== "zh" ? "Manchester-London trains are checked before prices rise." : "曼徹斯特到倫敦火車票再查一次。",
           state.lang !== "zh" ? "Riu, Pullman, and Novotel confirmations are saved offline." : "Riu、Pullman 和 Novotel 的訂房確認都先離線存好。",
           state.lang !== "zh" ? "Return routing starts at MAN and includes MAN-LHR." : "回程從 MAN 出發，MAN-LHR 這段不能跳過。"
