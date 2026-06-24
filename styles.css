@@ -17084,3 +17084,110 @@ body[data-page] .section-card {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* Home toolbar and itinerary visual cleanup */
+body[data-page="home"] .topbar.handbook-topbar.home-toolbar {
+  width: min(100% - 32px, 1180px);
+  margin: 0 auto 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+body[data-page="home"] .compact-home-dock {
+  width: min(100%, 420px);
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 12px;
+  border-radius: 26px;
+  background: rgba(255, 250, 245, 0.72);
+  border: 1px solid rgba(223, 214, 207, 0.72);
+  box-shadow: var(--handbook-shadow-soft);
+  backdrop-filter: blur(16px);
+}
+
+body[data-page="home"] .compact-home-row {
+  min-width: 0;
+  padding: 8px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(228, 219, 213, 0.72);
+}
+
+body[data-page="home"] .compact-home-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+body[data-page="home"] .compact-home-dock .pill-btn {
+  min-height: 40px;
+  min-width: 64px;
+}
+
+.day-visual {
+  margin-top: 1.2rem;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(223, 214, 207, 0.72);
+  background: rgba(255, 248, 243, 0.84);
+}
+
+.day-visual img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.day-visual-caption {
+  padding: 0.85rem 1rem 0.95rem;
+  color: rgba(100, 88, 80, 0.86);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+@media (min-width: 1024px) {
+  body[data-page="home"] .handbook-home-hero h1 {
+    max-width: 11ch;
+    overflow-wrap: normal;
+    word-break: keep-all;
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 760px) {
+  body[data-page="home"] .topbar.handbook-topbar.home-toolbar {
+    justify-content: stretch;
+    margin-bottom: 10px;
+  }
+
+  body[data-page="home"] .compact-home-dock {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    padding: 10px;
+    border-radius: 22px;
+  }
+
+  body[data-page="home"] .compact-home-row {
+    padding: 8px 10px;
+  }
+
+  body[data-page="home"] .compact-home-buttons {
+    justify-content: flex-start;
+  }
+
+  .day-visual {
+    border-radius: 20px;
+  }
+
+  .day-visual-caption {
+    font-size: 0.88rem;
+  }
+}
