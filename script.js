@@ -44,6 +44,8 @@ const money = {
   hotelPerNight: "NT$7,654 / GBP 180.18 / EUR 211 / US$239",
   hotelPerPersonTotal: "NT$19,135 / GBP 450.45 / EUR 527 / US$597",
   hotelPerPersonNight: "NT$3,827 / GBP 90.09 / EUR 105 / US$119",
+  londonHotel: "NT$41,649 / 約 GBP 980 / 約 EUR 1,147 / 約 US$1,300",
+  londonHotelPerNight: "NT$13,883 / 約 GBP 327 / 約 EUR 382 / 約 US$433",
   parisHotel: "NT$70,243 / 約 GBP 1,639 / EUR 1,915.58 / 約 US$2,170",
   parisHotelPerNight: "NT$23,414 / 約 GBP 546 / EUR 638.53 / 約 US$723",
   cdgHotel: "NT$7,034 / 約 GBP 164 / 約 EUR 192 / 約 US$217",
@@ -72,8 +74,7 @@ const languageOptions = [
 ];
 
 const hotelImage = "https://englandrover.com/wp-content/uploads/2018/11/innside-melia-manchester-05.jpg";
-const langhamImage = "./assets/the-langham-london.jpg";
-const clermontImage = "./assets/the-clermont-charing-cross.jpg";
+const riuImage = "./assets/riu-plaza-london-the-westminster.png";
 const pullmanImage = "./assets/pullman-paris-tour-eiffel.jpg";
 const frankfurtOldTownImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Frankfurt_R%C3%B6merberg_Ostzeile_20190524_1.jpg/1920px-Frankfurt_R%C3%B6merberg_Ostzeile_20190524_1.jpg";
 const londonWestminsterImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg/1920px-Big_Ben%2C_London%2C_United_Kingdom_%28Unsplash_bAJsKLA8RSg%29.jpg";
@@ -110,7 +111,7 @@ const tripData = {
     stay: {
       kicker: { zh: "住宿安排", en: "Accommodation" },
       title: { zh: "住宿與城市切換", en: "Accommodation & City Split" },
-      lead: { zh: "曼徹斯特、Pullman 和 CDG 前一晚都已定，現在主要只剩倫敦住宿。", en: "The Manchester conference stay is set, Pullman anchors the last Paris nights, and the 10-11 July CDG airport hotel is now in place; London is the main remaining stay to settle." }
+      lead: { zh: "曼徹斯特、倫敦、Pullman 和 CDG 前一晚都已經接好。現在主要剩 Eurostar 和巴黎最後一天的移動細節。", en: "Manchester, London, Pullman, and the CDG overnight are now in place. The main things left are Eurostar and the final Paris-to-airport handoff." }
     },
     itinerary: {
       kicker: { zh: "每日行程", en: "Itinerary" },
@@ -154,9 +155,9 @@ const tripData = {
     }
   },
   reminders: [
-    { status: "book", title: { zh: "倫敦住宿", en: "London accommodation" }, body: { zh: "7/4–7/7 先看 The Langham London；如果想省車站移動，就改看 The Clermont Charing Cross。", en: "For 4-7 July, start with The Langham London; The Clermont Charing Cross is the more station-friendly alternative." } },
+    { status: "confirmed", title: { zh: "倫敦住宿", en: "London accommodation" }, body: { zh: "7/4–7/7 直接住 Riu Plaza London The Westminster。先把 Westminster、Covent Garden 和後面去 St Pancras 的動線接順就好。", en: "For 4-7 July, the stay is now fixed at Riu Plaza London The Westminster. The main thing is to keep Westminster, Covent Garden, and the later St Pancras move simple." } },
     { status: "book", title: { zh: "曼徹斯特到倫敦", en: "Manchester to London" }, body: { zh: "7/4 可以搭 Avanti West Coast，直達約 2 小時 10 分。Advance 票早點看通常比較有空間。", en: "For 4 July, Avanti West Coast is the cleanest option at about 2h10 direct. Advance fares are best checked early." } },
-    { status: "book", title: { zh: "倫敦到巴黎", en: "London to Paris" }, body: { zh: "7/7 可以搭 Eurostar，市中心直達市中心，車程大約 2 小時 20 分。", en: "For 7 July, Eurostar is the simplest city-centre to city-centre option at about 2h20." } },
+    { status: "book", title: { zh: "倫敦到巴黎", en: "London to Paris" }, body: { zh: "7/7 從 St Pancras 搭 Eurostar 進巴黎。這段把它當成火車加過關就好，提早 75–90 分鐘到站會比較從容。", en: "On 7 July, use Eurostar from St Pancras into Paris. Treat it like a train plus border control, and arriving 75-90 minutes early makes the handoff easier." } },
     { status: "reimburse", title: { zh: "報帳資料", en: "Reimbursement packet" }, body: { zh: "這次可報帳還是以國際機票、AIB 會議費、AIB 會員費和國科會日支費為主；倫敦、巴黎段另外列自費。", en: "Claims remain limited to international flights, the AIB conference fee, the AIB membership fee, and NSTC allowance; London and Paris stay self-funded." } },
     { status: "confirmed", title: { zh: "7/11 回程", en: "11 July return flights" }, body: { zh: "7/11 會先從巴黎飛曼徹斯特，再接 BA 1371 和 CI 0082 回台北。這天不要再加別的安排。", en: "On 11 July, fly Paris to Manchester first, then connect to BA 1371 and CI 0082 back to Taipei. Keep the day focused on the flights." } }
   ],
@@ -337,28 +338,20 @@ const tripData = {
       note: { zh: "目前住宿金額是兩人房價；個人住宿分攤約為一半。旅遊稅 GBP 1.20 / 房 / 晚現場付。", en: "The accommodation price is for two guests; the personal share is roughly half. Local visitor charge is GBP 1.20 per room per night and paid locally." }
     },
     {
-      status: "book",
-      title: { zh: "倫敦住宿首選", en: "London first-choice stay" },
+      status: "confirmed",
+      title: "Riu Plaza London The Westminster",
       city: { zh: "倫敦", en: "London" },
-      photos: [
-        {
-          src: langhamImage,
-          label: { zh: "The Langham London", en: "The Langham London" },
-          alt: { zh: "The Langham London 房景照片", en: "A room view at The Langham London" }
-        },
-        {
-          src: clermontImage,
-          label: { zh: "The Clermont Charing Cross", en: "The Clermont Charing Cross" },
-          alt: { zh: "The Clermont Charing Cross 外觀照片", en: "An exterior view of The Clermont Charing Cross" }
-        }
-      ],
+      image: riuImage,
+      imageAlt: { zh: "Riu Plaza London The Westminster 訂房畫面", en: "Booking view for Riu Plaza London The Westminster" },
+      link: "https://www.google.com/maps/search/?api=1&query=Riu+Plaza+London+The+Westminster",
       facts: [
         { zh: "日期：2026/07/04 – 2026/07/07（3 晚）", en: "Dates: 4 Jul 2026 – 7 Jul 2026 (3 nights)" },
-        { zh: "首選：The Langham London", en: "First choice: The Langham London" },
-        { zh: "備選：The Clermont Charing Cross", en: "Alternative: The Clermont Charing Cross" },
-        { zh: "狀態：尚未預訂", en: "Status: not booked yet" }
+        { zh: "飯店：Riu Plaza London The Westminster", en: "Hotel: Riu Plaza London The Westminster" },
+        { zh: `訂房總價：${money.londonHotel}`, en: `Booking total: ${money.londonHotel}` },
+        { zh: `平均每晚：約 ${money.londonHotelPerNight}`, en: `Average per night: ${money.londonHotelPerNight}` },
+        { zh: "狀態：倫敦住宿已確認", en: "Status: London stay confirmed" }
       ],
-      note: { zh: "這段先看移動順不順。The Langham 房間和整體感覺比較好，Charing Cross 則比較省車程。", en: "This stay prioritizes easy central access; The Langham is the stronger first choice, while Charing Cross is the more transit-friendly alternative." }
+      note: { zh: "這段就直接住 Riu Plaza London The Westminster。7/4 抵達後接 Westminster 一圈很順，7/7 早上再往 St Pancras 去搭 Eurostar 也不會太繞。", en: "This chapter now stays at Riu Plaza London The Westminster. It works cleanly for the first Westminster walk on 4 July and still keeps the St Pancras move on 7 July manageable." }
     },
     {
       status: "confirmed",
@@ -410,13 +403,13 @@ const tripData = {
   itinerary: [
     { date: "6/29-6/30", city: { zh: "Taipei → Frankfurt → Manchester", en: "Taipei → Frankfurt → Manchester" }, kind: "travel", theme: { zh: "長程飛行、法蘭克福老城與動物園轉機線", en: "Long-haul flying, Frankfurt old town, and the zoo layover route" }, title: { zh: "出發、法蘭克福轉機散步，再接曼徹斯特", en: "Departure, a Frankfurt stop, and the final leg into Manchester" }, status: "confirmed", must: ["CI 0061｜TPE 22:20 → FRA 06:50(+1)", "T3 → T1｜接駁後搭 S8 / S9 進 Hauptwache", "羅馬廣場 → 鐵橋 → 法蘭克福大教堂", "LH 0946｜FRA 16:20 → MAN 17:10", "入住曼徹斯特"], optional: ["如果時間順，再把法蘭克福動物園一起走掉", "如果只想走短版，就留在羅馬廣場、美因河和午餐", "MainNizza 或老城附近找午餐", "抵達後輕鬆吃晚餐、補水、整理文件"], tickets: ["法蘭克福老城散步免費", "法蘭克福動物園：學生票 6 歐、Frankfurt Card 折後約 10 歐", "午餐依實際消費"], notes: ["這天的重點是把長途飛行和轉機走順。老城和動物園都是加分，不用每個點都硬走滿。"] },
     { date: "6/30-7/3", city: { zh: "Manchester", en: "Manchester" }, kind: "conference", theme: { zh: "會議主段與城市安排", en: "Conference core and city rhythm" }, title: { zh: "AIB 2026 主會議", en: "AIB 2026 conference" }, status: "confirmed", must: ["AIB Conference", "Presentation", "Networking"], optional: ["空檔回飯店整理簡報", "附近簡單晚餐"], tickets: ["景點門票：GBP 0；以會議活動為主"], notes: ["這幾天就以 AIB 為主。兩場發表都已確認，會議前後不要把行程塞太滿。"] },
-    { date: "7/4", city: { zh: "Manchester → London", en: "Manchester → London" }, kind: "travel", theme: { zh: "從會議城市轉進倫敦", en: "From the conference city into London streets" }, title: { zh: "轉往倫敦", en: "Move to London" }, status: "book", must: ["Avanti West Coast", "Manchester → London", "約 2 小時 10 分"], optional: ["抵達後 Big Ben", "Buckingham Palace", "St James's Park"], tickets: ["火車票待訂", "地標散步：免費"], notes: ["這天先把曼徹斯特和倫敦接順就好。到倫敦後可以先走西敏一帶，不用急著排太多點。"] },
+    { date: "7/4", city: { zh: "Manchester → London", en: "Manchester → London" }, kind: "travel", theme: { zh: "從會議城市轉進倫敦", en: "From the conference city into London streets" }, title: { zh: "轉往倫敦", en: "Move to London" }, status: "confirmed", must: ["Avanti West Coast", "Manchester → London", "入住 Riu Plaza London The Westminster"], optional: ["抵達後 Big Ben", "Westminster Abbey 外觀", "London Eye 河岸"], tickets: ["火車票待訂", "地標散步：免費"], notes: ["這天先把曼徹斯特和倫敦接順就好。到倫敦後先入住 Riu，再走西敏一帶，不用急著排太多點。"] },
     { date: "7/5", city: { zh: "London", en: "London" }, kind: "free", theme: { zh: "精品街區和百貨", en: "Luxury streets and city polish" }, title: { zh: "倫敦 Day 2", en: "London Day 2" }, status: "pending", must: ["Harrods", "Bond Street"], optional: ["Chanel", "Dior", "Louis Vuitton", "YSL"], tickets: ["百貨與精品街散步：免費"], notes: ["這一天就走 Harrods 和 Bond Street。中間想喝咖啡、想停就停，不用把景點塞進來。"] },
     { date: "7/6", city: { zh: "London", en: "London" }, kind: "free", theme: { zh: "街區漫步與自由留白", en: "Neighbourhood walks and open time" }, title: { zh: "倫敦 Day 3", en: "London Day 3" }, status: "pending", must: ["Covent Garden", "Piccadilly Circus"], optional: ["自由活動"], tickets: ["街區散步：免費"], notes: ["這天更像留給倫敦市中心的一次慢走，先走街區，再把剩下的時間留給臨時想停下來的店、巷子或咖啡館。"] },
-    { date: "7/7", city: { zh: "London → Paris", en: "London → Paris" }, kind: "travel", theme: { zh: "Eurostar 進巴黎與鐵塔第一晚", en: "Eurostar into Paris and the first Eiffel evening" }, title: { zh: "抵達巴黎，入住 Pullman", en: "Arrive in Paris and check into Pullman" }, status: "confirmed", must: ["Eurostar｜St Pancras → Gare du Nord", "入住 Pullman Paris Tour Eiffel", "艾菲爾鐵塔夜景", "Pullman 陽台看鐵塔"], optional: ["塞納河邊散步"], tickets: ["Eurostar 票待訂", "鐵塔周邊散步免費"], notes: ["到巴黎後先把 Pullman 安頓好。晚上就留在鐵塔附近，看完夜景再回房間，不用再排別的。"] },
+    { date: "7/7", city: { zh: "London → Paris", en: "London → Paris" }, kind: "travel", theme: { zh: "Eurostar 進巴黎與鐵塔第一晚", en: "Eurostar into Paris and the first Eiffel evening" }, title: { zh: "抵達巴黎，入住 Pullman", en: "Arrive in Paris and check into Pullman" }, status: "confirmed", must: ["Eurostar｜St Pancras → Gare du Nord", "入住 Pullman Paris Tour Eiffel", "艾菲爾鐵塔夜景", "Pullman 陽台看鐵塔"], optional: ["塞納河邊散步"], tickets: ["Eurostar 票待訂", "鐵塔周邊散步免費"], notes: ["Riu 到 St Pancras 先抓出門時間，Eurostar 這段提早到站比較安心。到了巴黎就先去 Pullman，不用一落地就趕景點。"] },
     { date: "7/8", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "羅浮宮、右岸街景與百貨屋頂", en: "The Louvre, Right Bank streets, and the department-store rooftop" }, title: { zh: "巴黎 Day 2", en: "Paris Day 2" }, status: "confirmed", must: ["Louvre Museum", "Place Vendôme", "Galeries Lafayette 頂樓", "巴黎歌劇院周邊"], optional: ["右岸咖啡館小停留"], tickets: ["Louvre 票價待查", "老佛爺百貨頂樓免費"], notes: ["這天就順著右岸走。上午先看羅浮宮，之後再接 Place Vendôme、歌劇院一帶和老佛爺頂樓。"] },
     { date: "7/9", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "右岸大道和塞納河", en: "Luxury avenues and the grand Paris landmarks" }, title: { zh: "巴黎 Day 3", en: "Paris Day 3" }, status: "confirmed", must: ["Avenue Montaigne", "Champs-Elysees", "Arc de Triomphe", "塞納河夜景"], optional: ["精品購物", "晚餐後再看一次鐵塔"], tickets: ["街區散步與購物：依實際消費", "凱旋門票價待查"], notes: ["Avenue Montaigne、香榭麗舍和凱旋門可以排同一天。晚上再去塞納河邊，不用每個地方都待很久。"] },
-    { date: "7/10", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "蒙馬特、最後採買與轉往機場", en: "Montmartre, final shopping, and the shift to the airport" }, title: { zh: "巴黎 Day 4", en: "Paris Day 4" }, status: "confirmed", must: ["Sacré-Cœur / Montmartre", "巴黎最後採購", "回 Pullman 拿寄放行李", "入住巴黎戴高樂機場候機樓諾富特酒店"], optional: ["沿途街角拍照"], tickets: ["聖心堂與蒙馬特散步免費"], notes: ["最後一天不要塞太滿。上午去聖心堂和蒙馬特，下午把採買和行李收好，晚上直接轉到機場邊。"] },
+    { date: "7/10", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "蒙馬特、最後採買與轉往機場", en: "Montmartre, final shopping, and the shift to the airport" }, title: { zh: "巴黎 Day 4", en: "Paris Day 4" }, status: "confirmed", must: ["Sacré-Cœur / Montmartre", "巴黎最後採購", "回 Pullman 拿寄放行李", "入住巴黎戴高樂機場候機樓諾富特酒店"], optional: ["沿途街角拍照"], tickets: ["聖心堂與蒙馬特散步免費"], notes: ["最後一天不要塞太滿。上午去聖心堂和蒙馬特，下午把採買和行李收好；帶著行李時，Pullman → Novotel 直接叫車最省事。"] },
     { date: "7/11-7/12", city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" }, kind: "travel", theme: { zh: "回程接駁與長途返台", en: "Connection day and the long flight home" }, title: { zh: "回程返台", en: "Return to Taipei" }, status: "confirmed", must: ["Novotel Paris Charles-de-Gaulle Airport → CDG Terminal 2E", "Air France Business Standard｜CDG 12:50 → MAN 13:25", "BA 1371｜MAN 18:10 → LHR 19:15", "CI 0082｜LHR 21:10 → TPE 18:05(+1)"], optional: ["巴黎上午只排簡單移動"], tickets: ["AF 歐洲段：約 EUR 354.05 / NT$12,930"], notes: ["這一天以順利銜接航段為主。從機場飯店接進 2E 航廈後，就把體力留給巴黎到曼徹斯特、再接希斯洛返台的長路。"] }
   ],
   attractionCosts: [
@@ -424,7 +417,7 @@ const tripData = {
     { status: "confirmed", day: "7/4", attraction: "Big Ben / Buckingham Palace / St James's Park", fee: "Free", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "這三個點適合排成第一天的西敏散步。", en: "These three work well as a Westminster walk on the first London day." }, source: "https://www.visitlondon.com/" },
     { status: "confirmed", day: "7/5", attraction: "Harrods / Bond Street", fee: "Free entry", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "精品街與百貨入店免費，主要成本會落在購物本身。", en: "Department stores and shopping streets are free to enter; the cost depends on actual purchases." }, source: "https://www.harrods.com/" },
     { status: "confirmed", day: "7/6", attraction: "Covent Garden / Piccadilly Circus", fee: "Free", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "以街區散步與自由活動為主。", en: "This day is built around walking the area and keeping time flexible." }, source: "https://www.visitlondon.com/" },
-    { status: "pending", day: "7/7", attraction: "Eurostar", fee: "TBD", estimate: "待訂 / TBD / TBD", note: { zh: "車程約 2 小時 20 分，市中心直達市中心。", en: "About 2h20 city centre to city centre." }, source: "https://www.eurostar.com/" },
+    { status: "pending", day: "7/7", attraction: "Eurostar", fee: "TBD", estimate: "待訂 / TBD / TBD", note: { zh: "車程約 2 小時 20 分。這段先當成火車加過關，St Pancras 提早 75–90 分鐘到比較安心。", en: "About 2h20. Treat it like a train plus border control, and aim to reach St Pancras 75-90 minutes early." }, source: "https://www.eurostar.com/" },
     { status: "pending", day: "7/7", attraction: "Eiffel Tower", fee: "TBD", estimate: "待查 / TBD / TBD", note: { zh: "若想上塔或看夜景，建議另外確認正式票價與時段。", en: "If you want summit or night-view access, check the official ticket windows separately." }, source: "https://www.toureiffel.paris/en" },
     { status: "pending", day: "7/8", attraction: "Louvre Museum", fee: "TBD", estimate: "待查 / TBD / TBD", note: { zh: "正式票價與預約時段以羅浮宮官網為準。", en: "Use the Louvre's official site for current admission and timeslots." }, source: "https://www.louvre.fr/en" },
     { status: "confirmed", day: "7/9", attraction: "Champs-Elysees / Arc de Triomphe", fee: "Depends", estimate: "依實際安排 / Depends / Depends", note: { zh: "香榭麗舍大道散步免費，若上凱旋門再另外查票。", en: "Walking the Champs-Elysees is free; check separately if you want Arc entry." }, source: "https://www.paris-arc-de-triomphe.fr/en/" },
@@ -491,9 +484,9 @@ const tripData = {
     { item: { zh: "INNSiDE Manchester 住宿", en: "INNSiDE Manchester accommodation" }, amount: money.hotel, amounts: { TWD: "NT$38,270", GBP: "GBP 900.90", EUR: "EUR 1,054", USD: "US$1,194" }, status: "self", proof: { zh: "訂房確認與最終發票", en: "Booking confirmation + final invoice" }, notes: { zh: `兩人 5 晚總價；一人 5 晚約 ${money.hotelPerPersonTotal}，一人一晚約 ${money.hotelPerPersonNight}。`, en: `Total for two guests for 5 nights; per person about ${money.hotelPerPersonTotal}, or ${money.hotelPerPersonNight} per night.` } },
     { item: { zh: "曼徹斯特旅遊稅", en: "Manchester visitor charge" }, amount: money.visitorCharge, amounts: { TWD: "約 NT$255", GBP: "GBP 6", EUR: "EUR 7", USD: "US$8" }, status: "self", proof: { zh: "退房收據", en: "Check-out receipt" }, notes: { zh: `GBP 1.20 / 房 / 晚，現場支付；一人約 ${money.visitorChargePerPerson}。`, en: `GBP 1.20 per room per night, paid locally; about ${money.visitorChargePerPerson} per person.` } },
     { item: { zh: "曼徹斯特 → 倫敦火車", en: "Manchester → London train" }, amount: { zh: "每人單程 NT$1,423 起 / GBP 33.50 起 / EUR 39 起 / US$44 起", en: "per person one-way from NT$1,423 / GBP 33.50 / EUR 39 / US$44" }, amounts: { TWD: "NT$1,423 起", GBP: "GBP 33.50 起", EUR: "EUR 39 起", USD: "US$44 起" }, status: "self", proof: { zh: "訂票後的電子票與收據", en: "E-ticket / receipt after booking" }, notes: { zh: "7/4 建議搭 Avanti West Coast。", en: "Avanti West Coast is the current recommendation for 4 July." } },
-    { item: { zh: "Eurostar 倫敦 → 巴黎", en: "Eurostar London → Paris" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "Eurostar 電子票與收據", en: "Eurostar e-ticket and receipt" }, notes: { zh: "7/7 出發，車程約 2 小時 20 分。", en: "Departure is on 7 July, with a journey of about 2h20." } },
+    { item: { zh: "Eurostar 倫敦 → 巴黎", en: "Eurostar London → Paris" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "Eurostar 電子票與收據", en: "Eurostar e-ticket and receipt" }, notes: { zh: "7/7 從 St Pancras 出發，車程約 2 小時 20 分；提早 75–90 分鐘到站。", en: "Departs from St Pancras on 7 July, about 2h20 total; arrive 75-90 minutes early." } },
     { item: { zh: "巴黎 → 曼徹斯特航段", en: "Paris → Manchester flight" }, amount: { zh: "NT$12,930 / EUR 354.05", en: "NT$12,930 / EUR 354.05" }, amounts: { TWD: "NT$12,930", GBP: "約 GBP 300", EUR: "EUR 354.05", USD: "待確認" }, status: "self", proof: { zh: "Air France 電子票（敏感資訊不公開）與付款證明", en: "Air France e-ticket (sensitive details kept private) and payment proof" }, notes: { zh: "AF1068｜CDG T2E 12:50 → MAN T2 13:25；Business Standard、SkyPriority、2 件托運行李（每件 32kg）。", en: "AF1068 · CDG T2E 12:50 → MAN T2 13:25; Business Standard, SkyPriority, and 2 checked bags up to 32kg each." } },
-    { item: { zh: "倫敦住宿", en: "London accommodation" }, amount: { zh: "待確認", en: "TBD" }, amounts: { TWD: "待確認", GBP: "TBD", EUR: "TBD", USD: "TBD" }, status: "self", proof: { zh: "預訂後的確認信與發票", en: "Confirmation / invoice after booking" }, notes: { zh: "首選 The Langham London，備選 The Clermont Charing Cross。", en: "The Langham London is the first choice, with The Clermont Charing Cross as the alternative." } },
+    { item: { zh: "倫敦住宿", en: "London accommodation" }, amount: money.londonHotel, amounts: { TWD: "NT$41,649", GBP: "約 GBP 980", EUR: "約 EUR 1,147", USD: "約 US$1,300" }, status: "self", proof: { zh: "Riu Plaza London The Westminster 訂房確認與刷卡紀錄", en: "Riu Plaza London The Westminster confirmation and payment note" }, notes: { zh: `Riu Plaza London The Westminster｜7/4–7/7，共 3 晚；平均每晚約 ${money.londonHotelPerNight}。`, en: `Riu Plaza London The Westminster · 4-7 Jul · 3 nights; average per night about ${money.londonHotelPerNight}.` } },
     { item: { zh: "巴黎住宿", en: "Paris accommodation" }, amount: money.parisHotel, amounts: { TWD: "NT$70,243", GBP: "約 GBP 1,639", EUR: "EUR 1,915.58", USD: "約 US$2,170" }, status: "self", proof: { zh: "Pullman 訂房確認、Accor 訂單與付款紀錄", en: "Pullman booking confirmation, Accor order, and payment proof" }, notes: { zh: `Pullman Paris Tour Eiffel｜7/7–7/10，共 3 晚，鐵塔景陽台房；平均每晚約 ${money.parisHotelPerNight}。`, en: `Pullman Paris Tour Eiffel · 7-10 Jul · 3 nights · balcony room with Eiffel Tower view; average per night about ${money.parisHotelPerNight}.` } },
     { item: { zh: "CDG 機場住宿", en: "CDG airport hotel" }, amount: { zh: "NT$7,034（原幣未公開）", en: "NT$7,034 (original currency not shown publicly)" }, amounts: { TWD: "NT$7,034", GBP: "約 GBP 164", EUR: "約 EUR 192", USD: "約 US$217" }, status: "self", proof: { zh: "Novotel 訂房畫面與刷卡紀錄", en: "Novotel booking screen and payment note" }, notes: { zh: "巴黎戴高樂機場候機樓諾富特酒店｜7/10–7/11，共 1 晚；作為法航 7/11 航段前一晚的機場過夜。", en: "Novotel Paris Charles-de-Gaulle Airport · 10-11 Jul · 1 night; the airport overnight before the 11 July Air France departure." } },
     { item: { zh: "倫敦 / 巴黎景點與遊船", en: "London / Paris attractions and cruise" }, amount: { zh: "依實際選擇", en: "Depends on selected stops" }, amounts: { TWD: "依實際選擇", GBP: "Depends", EUR: "Depends", USD: "Depends" }, status: "self", proof: { zh: "線上購票收據", en: "Online ticket receipts" }, notes: { zh: "羅浮宮、凱旋門等需要時再訂，鐵塔夜景、Place Vendôme、香榭麗舍和多數街區可直接散步。", en: "Book the Louvre or Arc only if needed; the Eiffel night view, Place Vendôme, the Champs-Elysees, and most of the streets can stay open." } }
@@ -522,8 +515,7 @@ const tripData = {
     ["UK customs personal allowance", "https://www.gov.uk/duty-free-goods/arrivals-from-outside-the-eu"],
     ["Bringing food into Great Britain", "https://www.gov.uk/guidance/personal-food-plant-and-animal-product-imports"],
     ["INNSiDE Manchester", "https://www.melia.com/en/hotels/united-kingdom/manchester/innside-manchester"],
-    ["The Langham London", "https://www.langhamhotels.com/en/the-langham/london/"],
-    ["The Clermont Charing Cross", "https://www.theclermont.co.uk/charing-cross/"],
+    ["Riu Plaza London The Westminster", "https://www.google.com/maps/search/?api=1&query=Riu+Plaza+London+The+Westminster"],
     ["Pullman Paris Tour Eiffel", "https://all.accor.com/hotel/7229/index.en.shtml"],
     ["Novotel Paris Charles-de-Gaulle Airport", "https://www.google.com/maps/search/?api=1&query=Novotel+Paris+Charles-de-Gaulle+Airport"],
     ["Bank of Taiwan FX rates", "https://rate.bot.com.tw/xrt?Lang=zh-TW"],
@@ -1177,15 +1169,15 @@ const dailyGuides = [
     date: "7/4",
     city: { zh: "Manchester → London", en: "Manchester → London" },
     theme: { zh: "先把曼徹斯特和倫敦接順，再走西敏這一圈", en: "Connect Manchester into London cleanly, then keep to Westminster" },
-    intro: { zh: "今天先從曼徹斯特進倫敦。下午和傍晚不要排太滿，先看西敏這一圈就好：大笨鐘、西敏寺外觀、國會大廈、西敏橋，再接 London Eye 河岸夜景。", en: "Move from Manchester into London first. Keep the afternoon and evening light, and use Westminster for the first London chapter: Big Ben, the Abbey exterior, Parliament, Westminster Bridge, and the London Eye." },
+    intro: { zh: "今天先從曼徹斯特進倫敦。先住進 Riu Plaza London The Westminster，再走西敏這一圈就好：大笨鐘、西敏寺外觀、國會大廈、西敏橋，最後接 London Eye 河岸。", en: "Move from Manchester into London first. Check into Riu Plaza London The Westminster, then keep the first evening to Westminster: Big Ben, the Abbey exterior, Parliament, Westminster Bridge, and the riverside by the London Eye." },
     highlights: ["Avanti West Coast", "London Euston", "Big Ben", "Westminster Abbey", "London Eye"],
     route: [
       { label: { zh: "上午｜離開曼徹斯特", en: "Morning" }, text: { zh: "早上從 Manchester Piccadilly 出發，先把火車這段走順。", en: "Leave from Manchester Piccadilly and settle into the rail move south." } },
       { label: { zh: "中午｜火車南下", en: "Noon" }, text: { zh: "Avanti 大約 2 小時 10 分，剛好拿來換城市。", en: "The Avanti ride takes about 2h10 and cleanly shifts the trip from conference mode into travel mode." } },
-      { label: { zh: "下午｜Westminster 這一圈", en: "Afternoon" }, text: { zh: "抵達後先走 Big Ben、西敏寺外觀、國會大廈和西敏橋，最後接 London Eye 河岸。", en: "After arrival, keep to Westminster: Big Ben, the Abbey exterior, Parliament, Westminster Bridge, and the London Eye riverside." } },
+      { label: { zh: "下午｜先入住，再走 Westminster", en: "Afternoon" }, text: { zh: "抵達後先把行李放進 Riu，再走 Big Ben、西敏寺外觀、國會大廈和西敏橋。", en: "Drop the bags at Riu first, then keep to Westminster: Big Ben, the Abbey exterior, Parliament, and Westminster Bridge." } },
       { label: { zh: "夜晚｜Covent Garden 或 Soho", en: "Evening" }, text: { zh: "晚上找 Covent Garden 或 Soho 吃飯就好，第一晚先把倫敦節奏接上。", en: "Dinner in Covent Garden or Soho is enough for the first London night; use it to settle into the city rather than rush more sights." } }
     ],
-    notes: ["今天先把火車、入住和西敏這段接順就好。", "住宿如果還沒最後拍板，Mayfair、Marylebone、Paddington、Victoria 這幾區都還算好接。"],
+    notes: ["今天先把火車、入住和西敏這段接順就好。", "Riu 住在 Westminster 這側，接 Big Ben 和後面幾天的市中心路線都算順。"],
     tickets: ["Avanti 票價會依班次而變，建議先看 Advance。"]
   },
   {
@@ -1231,13 +1223,13 @@ const dailyGuides = [
     intro: { zh: "今天從倫敦進巴黎。先把 Pullman 和房間安頓好，晚上再看鐵塔夜景；如果陽台看得到鐵塔，這晚就不用再跑太多地方。", en: "The Eurostar move turns the trip into its French chapter, linking London directly to Pullman before the Eiffel Tower lights take over the first evening." },
     highlights: ["St Pancras", "Eurostar", "Pullman Paris Tour Eiffel", "Eiffel Tower night view", "Balcony tower view"],
     route: [
-      { label: { zh: "上午｜倫敦最後一點時間", en: "Morning" }, text: { zh: "早上只留給咖啡和最後採買就好。Paddington、Marylebone 或 St Pancras 周邊都可以。", en: "Keep the morning to coffee and any last London shopping; Paddington, Marylebone, or St Pancras are enough." } },
-      { label: { zh: "中午｜Eurostar", en: "Noon" }, text: { zh: "Eurostar 這段不要抓太緊。進站、安檢、護照檢查都會花時間。", en: "Do not cut Eurostar too close. Boarding, security, and passport control take real time." } },
-      { label: { zh: "下午｜入住 Pullman", en: "Afternoon" }, text: { zh: "到巴黎後先去 Pullman，把房間和陽台安頓好，再去 Champ de Mars 和鐵塔周邊。", en: "Once in Paris, go to Pullman first, settle the room and balcony, then step out toward Champ de Mars and the tower area." } },
+      { label: { zh: "上午｜從 Westminster 收好出發", en: "Morning" }, text: { zh: "早上只留給咖啡和最後採買。從 Riu 去 St Pancras 不算遠，但還是先抓好出門時間。", en: "Keep the morning to coffee and any last shopping. Riu is manageable to St Pancras, but still leave enough time to move." } },
+      { label: { zh: "中午｜Eurostar", en: "Noon" }, text: { zh: "Eurostar 這段不要抓太緊。提早 75–90 分鐘到 St Pancras，先過安檢和護照檢查，再等上車。", en: "Do not cut Eurostar too close. Reach St Pancras 75-90 minutes early, clear security and passport control, then wait for boarding." } },
+      { label: { zh: "下午｜巴黎北站到 Pullman", en: "Afternoon" }, text: { zh: "到巴黎北站後，如果帶著行李，直接叫車去 Pullman 最省力。想省一點再轉地鐵或 RER。", en: "Once at Gare du Nord, a taxi or ride-hailing car is the easiest way to Pullman with luggage. Use Metro or RER only if you want the cheaper option." } },
       { label: { zh: "夜晚｜巴黎第一晚", en: "Evening" }, text: { zh: "晚上把鐵塔、Trocadéro 和陽台留給第一晚就好。", en: "Give the first Paris night only to the tower, Trocadéro, and the Pullman balcony." } }
     ],
     notes: ["巴黎第一晚不要排太滿，鐵塔和 Pullman 就夠了。", "如果房間真的看得到鐵塔，晚上就不用再一直往外跑。"],
-    tickets: ["Eurostar 票待訂；鐵塔周邊夜景散步免費。"]
+    tickets: ["Eurostar 票待訂；St Pancras 建議提早 75–90 分鐘到站。"]
   },
   {
     id: "day-9",
@@ -1285,7 +1277,7 @@ const dailyGuides = [
       { label: { zh: "上午｜聖心堂和蒙馬特", en: "Morning" }, text: { zh: "上午先走聖心堂、Place du Tertre 和 La Maison Rose，蒙馬特這段慢慢看就好。", en: "Keep the morning for Sacré-Cœur, Place du Tertre, and La Maison Rose, and let Montmartre stay slow." } },
       { label: { zh: "中午｜最後採買", en: "Noon" }, text: { zh: "中午回市區補最後的伴手禮，可以從老佛爺、Printemps 或 Le Bon Marché 裡選一個。", en: "Use midday for the last shopping and pick only one department-store stop instead of trying to cover them all." } },
       { label: { zh: "下午｜回 Pullman 拿行李", en: "Afternoon" }, text: { zh: "下午回 Pullman 拿寄放行李，這樣巴黎這段就差不多收好了。", en: "Go back to Pullman for the stored luggage and let that mark the proper end of the Paris chapter." } },
-      { label: { zh: "夜晚｜前往 CDG", en: "Evening" }, text: { zh: "晚上直接轉往巴黎戴高樂機場候機樓諾富特酒店，隔天會輕鬆很多。", en: "Move to Novotel Paris Charles-de-Gaulle Airport for the night so the next morning starts with much less pressure." } }
+      { label: { zh: "夜晚｜前往 CDG", en: "Evening" }, text: { zh: "晚上從 Pullman 帶著行李直接叫車去 Novotel CDG 最省力；如果想省一點，再改搭 RER 進 Roissypole。", en: "With luggage, the easiest move from Pullman to Novotel CDG is a direct taxi or ride-hailing car. Use RER to Roissypole only if you want the cheaper option." } }
     ],
     notes: ["這天不要再加太多點，把巴黎這段收好就夠了。", "去 CDG 前先把隔天法航、英航和華航資料都離線存好。"],
     tickets: ["聖心堂與蒙馬特散步免費；採買與交通依實際安排。"]
@@ -1692,43 +1684,6 @@ function renderStayInfoList(items) {
         </div>
       `).join("")}
     </div>
-  `;
-}
-
-function renderStayCandidateCard({ status, title, image, imageAlt, location, strengths, tradeoffs, fit, link }) {
-  return `
-    <article class="stay-candidate-card${image ? " with-image" : ""}">
-      ${image ? `
-        <div class="stay-card-image-wrap candidate-image-wrap">
-          <img class="stay-card-image candidate-image" src="${escapeHtml(image)}" alt="${escapeHtml(t(imageAlt || title))}" loading="lazy" />
-        </div>
-      ` : ""}
-      <div class="stay-candidate-copy">
-        <div class="stay-candidate-head">
-          ${statusChip(status)}
-          <h3>${escapeHtml(t(title))}</h3>
-        </div>
-        <div class="stay-candidate-grid">
-          <div class="stay-candidate-row">
-            <span>${state.lang !== "zh" ? "Position" : "定位"}</span>
-            <p>${escapeHtml(t(location))}</p>
-          </div>
-          <div class="stay-candidate-row">
-            <span>${state.lang !== "zh" ? "Best part" : "優點"}</span>
-            <p>${escapeHtml(t(strengths))}</p>
-          </div>
-          <div class="stay-candidate-row">
-            <span>${state.lang !== "zh" ? "Watch-out" : "缺點"}</span>
-            <p>${escapeHtml(t(tradeoffs))}</p>
-          </div>
-          <div class="stay-candidate-row">
-            <span>${state.lang !== "zh" ? "Why it fits" : "適合原因"}</span>
-            <p>${escapeHtml(t(fit))}</p>
-          </div>
-        </div>
-        ${link ? `<a class="stay-map-link" href="${escapeHtml(link)}" target="_blank" rel="noreferrer noopener">${state.lang !== "zh" ? "View hotel" : "查看飯店"}</a>` : ""}
-      </div>
-    </article>
   `;
 }
 
@@ -2257,7 +2212,7 @@ function renderHero(pageId) {
               </article>
             `).join("")}
           </div>
-          <p class="hero-summary-note">${state.lang !== "zh" ? "Manchester, Pullman Paris, and the final Novotel CDG night are set. The only part still open is London." : "曼徹斯特、巴黎 Pullman 和回程前一晚的 Novotel CDG 都已經定了。現在主要只剩倫敦還沒選。"} </p>
+          <p class="hero-summary-note">${state.lang !== "zh" ? "Manchester, London, Pullman Paris, and the final Novotel CDG night are all in place. The last things to settle are Eurostar and the final Paris handoff." : "曼徹斯特、倫敦、巴黎 Pullman 和回程前一晚的 Novotel CDG 都已經接好了。現在主要剩 Eurostar 和巴黎最後一天的移動細節。"} </p>
         </aside>
       </div>
     `;
@@ -2339,7 +2294,7 @@ function renderHeroSummaryRows() {
       ${renderHandbookSummaryRow(state.lang !== "zh" ? "Cities" : "主要城市", state.lang !== "zh" ? "Frankfurt · Manchester · London · Paris" : "法蘭克福 · 曼徹斯特 · 倫敦 · 巴黎")}
       ${renderHandbookSummaryRow(state.lang !== "zh" ? "Conference core" : "會議主段", "AIB 2026 Manchester · 6/30–7/3")}
       ${renderHandbookSummaryRow(state.lang !== "zh" ? "Travel rhythm" : "路線順序", state.lang !== "zh" ? "Transit → conference → London → Paris" : "轉機 → 會議 → 倫敦 → 巴黎")}
-      <p class="handbook-summary-note">${state.lang !== "zh" ? "Manchester and Paris already have fixed stays. London stays more flexible, which keeps the later route easier to adjust without breaking the whole plan." : "曼徹斯特和巴黎都已有固定住宿，倫敦則保留彈性。這樣後段比較好調整，但不會打亂整條路線。"} </p>
+      <p class="handbook-summary-note">${state.lang !== "zh" ? "The stays are now lined up: Manchester for AIB, Westminster for London, Pullman for Paris, and Novotel for the airport handoff." : "住宿現在已經接順了：曼徹斯特先顧 AIB，倫敦住 Westminster，巴黎住 Pullman，最後一晚轉去 Novotel CDG。"} </p>
     </div>
   `;
 }
@@ -2476,7 +2431,7 @@ function renderHomeHotelsPanel() {
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Hotels" : "住宿",
         state.lang !== "zh" ? "Each stop has its own role." : "每一段住宿都有自己的用途。",
-        state.lang !== "zh" ? "Manchester is for the conference days, London is still being chosen, Paris stays at Pullman, and the last night shifts to CDG." : "曼徹斯特先把會議這段住穩，倫敦還在選，巴黎住 Pullman，最後一晚再轉去 CDG。"
+        state.lang !== "zh" ? "Manchester stays with the conference, London is now fixed at Westminster, Paris stays at Pullman, and the last night shifts to CDG." : "曼徹斯特先顧會議，倫敦這幾晚住 Westminster，巴黎住 Pullman，最後一晚再轉去 CDG。"
       )}
       <div class="hotel-ledger">
         <article class="hotel-ledger-entry">
@@ -2494,13 +2449,13 @@ function renderHomeHotelsPanel() {
         <article class="hotel-ledger-entry">
           <div class="hotel-ledger-head">
             <span class="section-label">${state.lang !== "zh" ? "London chapter" : "倫敦段"}</span>
-            <h3>${state.lang !== "zh" ? "The Langham London / The Clermont Charing Cross" : "The Langham London / The Clermont Charing Cross"}</h3>
+            <h3>Riu Plaza London The Westminster</h3>
           </div>
-          <p>${state.lang !== "zh" ? "London is still open. The real choice is simple: nicer stay, or easier station movement." : "倫敦目前還保留彈性。要比的其實就兩件事：房間住得舒服一點，還是移動省力一點。"} </p>
+          <p>${state.lang !== "zh" ? "This part is fixed now. Stay near Westminster, walk the first evening locally, and keep the St Pancras handoff simple on 7 July." : "倫敦這段現在已經定了。先住 Westminster，第一晚散步不用拉太遠，7/7 去 St Pancras 也比較好接。"} </p>
           ${renderMetaRow([
             { label: state.lang !== "zh" ? "Stay" : "入住", value: "2026/07/04 – 2026/07/07" },
-            { label: state.lang !== "zh" ? "Role" : "角色", value: state.lang !== "zh" ? "London base" : "倫敦這幾晚的落腳處" },
-            { label: state.lang !== "zh" ? "Status" : "狀態", value: state.lang !== "zh" ? "To be finalized" : "待最後確認" }
+            { label: state.lang !== "zh" ? "Role" : "角色", value: state.lang !== "zh" ? "Westminster base" : "倫敦這幾晚的固定住宿" },
+            { label: state.lang !== "zh" ? "Status" : "狀態", value: state.lang !== "zh" ? "Confirmed" : "已確認" }
           ])}
         </article>
         <article class="hotel-ledger-entry featured">
@@ -2551,7 +2506,7 @@ function renderHomeLinksPanel() {
         ["INNSiDE Manchester", getPublicLink("INNSiDE Manchester")],
         ["Pullman Paris Tour Eiffel", getPublicLink("Pullman Paris Tour Eiffel")],
         ["Novotel Paris Charles-de-Gaulle Airport", getPublicLink("Novotel Paris Charles-de-Gaulle Airport")],
-        ["The Langham London", getPublicLink("The Langham London")],
+        ["Riu Plaza London The Westminster", getPublicLink("Riu Plaza London The Westminster")],
         [state.lang !== "zh" ? "Daily route maps" : "每日路線地圖", "./map.html"]
       ]
     },
@@ -2725,7 +2680,7 @@ function renderHomeEnglishPanel() {
         "A short English reading of the route, for quick sharing or a calmer high-level check."
       )}
       <p>The trip starts with a Frankfurt layover, settles into Manchester for the AIB 2026 conference and two confirmed presentation sessions, moves south to London for three city days, and then continues to Paris for the final museum, shopping, and Eiffel Tower chapter.</p>
-      <p>Manchester stays practical because it carries the academic core. London works as the city transition. Paris becomes the visual finish, especially with the Pullman balcony room facing the Eiffel Tower.</p>
+      <p>Manchester is for the conference days. London stays near Westminster so the city part and the St Pancras handoff stay simple. Paris then shifts the route toward Pullman and the Eiffel Tower view.</p>
       <div class="snapshot-timeline handbook-home-timeline english">
         ${homeJourneyTimeline.map(renderHandbookTimelineEntry).join("")}
       </div>
@@ -2816,7 +2771,7 @@ const pageDescriptions = {
   conference: { zh: "會議日期、發表時間和要帶的資料。", en: "Conference dates, registration status, and event rhythm." },
   flights: { zh: "去程、回程、德英法移動段與轉機整理。", en: "Outbound, return, Germany-UK-France segments, and transfer notes." },
   transport: { zh: "火車、Eurostar 與市內交通。", en: "Train, Eurostar, and local transit." },
-  stay: { zh: "曼徹斯特會議住宿、巴黎 Pullman 與 CDG 回程前一晚安排。", en: "Manchester conference stay, the Pullman Paris chapter, and the final CDG overnight." },
+  stay: { zh: "曼徹斯特、倫敦 Riu、巴黎 Pullman 與 CDG 回程前一晚安排。", en: "Manchester, the London Riu stay, the Pullman Paris chapter, and the final CDG overnight." },
   itinerary: { zh: "每日旅程、巴黎主線與回程銜接。", en: "Daily route guide, the Paris chapter, and the way home." },
   shopping: { zh: "茶葉、餅乾、果醬與超市購物清單。", en: "Tea, biscuits, preserves, and useful shopping notes." },
   souvenirs: { zh: "英國、法國、德國伴手禮整理。", en: "Souvenir notes for the UK, France, and Germany." },
@@ -3111,6 +3066,30 @@ function renderTransport() {
           <p>${state.lang !== "zh" ? "Eurostar recommends arriving about 75 to 90 minutes early. For Standard and Plus, check-in closes 30 minutes before departure, so leave enough time for security and passport control." : "Eurostar 這段比較像搭火車加過關。提早到站會比較從容，因為安檢和護照檢查都在上車前完成。"} </p>
         </article>
       </div>
+      <div class="summary-grid two">
+        <article class="summary-card">
+          ${statusChip("confirmed")}
+          <h3>${state.lang !== "zh" ? "From Riu to St Pancras" : "Riu 去 St Pancras 怎麼抓"}</h3>
+          <strong>${state.lang !== "zh" ? "Leave from Westminster with time in hand" : "從 Westminster 出發，時間抓寬一點"}</strong>
+          ${renderMetaRow([
+            { label: state.lang !== "zh" ? "Base" : "出發點", value: "Riu Plaza London The Westminster" },
+            { label: state.lang !== "zh" ? "Best option" : "建議方式", value: state.lang !== "zh" ? "Taxi or Tube with one easy transfer" : "計程車或搭 Tube，簡單轉一次就好" },
+            { label: state.lang !== "zh" ? "Buffer" : "抓寬", value: state.lang !== "zh" ? "Aim to arrive 75-90 min before departure" : "目標是發車前 75–90 分鐘到站" }
+          ])}
+          <p>${state.lang !== "zh" ? "From Riu, keep this move simple. If the bags are big, take a taxi straight to St Pancras. If you use the Tube, leave enough time so the station, security, and passport checks do not all stack at once." : "從 Riu 去 St Pancras，不用抓得太極限。帶大件行李就直接叫車；如果搭 Tube，也先把時間抓寬，免得車站、安檢和護照檢查全部擠在一起。"} </p>
+        </article>
+        <article class="summary-card">
+          ${statusChip("confirmed")}
+          <h3>${state.lang !== "zh" ? "Pullman to Novotel CDG" : "Pullman 去 CDG Novotel 怎麼走"}</h3>
+          <strong>${state.lang !== "zh" ? "With luggage, direct is easier" : "帶著行李時，直接一點最省力"}</strong>
+          ${renderMetaRow([
+            { label: state.lang !== "zh" ? "Easiest" : "最輕鬆", value: state.lang !== "zh" ? "Taxi / ride-hailing car" : "計程車 / 叫車" },
+            { label: state.lang !== "zh" ? "Cheaper" : "省一點", value: state.lang !== "zh" ? "RER to Roissypole" : "RER 進 Roissypole" },
+            { label: state.lang !== "zh" ? "Use case" : "適合情況", value: state.lang !== "zh" ? "After Pullman luggage pickup" : "回 Pullman 拿行李之後" }
+          ])}
+          <p>${state.lang !== "zh" ? "On 10 July, finish Montmartre and the last shopping, pick up the stored luggage at Pullman, and then move straight to Novotel CDG. With bags, a direct car is easiest. Use the RER only if you want to save money and do not mind the extra transfer." : "7/10 這天先走完蒙馬特和最後採買，再回 Pullman 拿寄放行李，之後直接轉去 Novotel CDG。帶著行李時，直接叫車最省事；想省一點，再改搭 RER 進 Roissypole。"} </p>
+        </article>
+      </div>
     </section>
     <section class="section compact-section" id="local">
       ${sectionHeading(
@@ -3216,11 +3195,8 @@ function renderFlights() {
 
 function renderStay() {
   const manchesterStay = tripData.stay[0];
-  const londonStay = tripData.stay[1];
   const parisStay = tripData.stay[2];
   const cdgStay = tripData.stay[3];
-  const manchesterIdeas = tripData.stay[4];
-  const londonAreas = ["Euston", "King's Cross", "Bloomsbury", "South Kensington", "Paddington"];
   const stayOverviewEntries = [
     {
       city: { zh: "Manchester", en: "Manchester" },
@@ -3231,10 +3207,10 @@ function renderStay() {
     },
     {
       city: { zh: "London", en: "London" },
-      hotel: { zh: "The Langham / Clermont", en: "The Langham / Clermont" },
-      dates: { zh: "7/4 – 7/7｜3 晚待選", en: "4 Jul – 7 Jul · 3 nights still open" },
-      status: "compare",
-      note: { zh: "現在主要在比車站動線和住感。", en: "Mainly weighing station access against how the stay feels." }
+      hotel: { zh: "Riu Plaza London The Westminster", en: "Riu Plaza London The Westminster" },
+      dates: { zh: "7/4 – 7/7｜3 晚", en: "4 Jul – 7 Jul · 3 nights" },
+      status: "confirmed",
+      note: { zh: "倫敦這幾晚就先住 Westminster。", en: "The London chapter is fixed in Westminster." }
     },
     {
       city: { zh: "Paris", en: "Paris" },
@@ -3263,30 +3239,19 @@ function renderStay() {
     { label: state.lang !== "zh" ? "Average per night" : "平均每晚", value: money.hotelPerNight, note: state.lang !== "zh" ? "Useful later when comparing London." : "後面比倫敦住宿時，這個數字比較直覺。" },
     { label: state.lang !== "zh" ? "Visitor charge" : "旅遊稅", value: money.visitorCharge, note: state.lang !== "zh" ? "Paid locally at the hotel." : "現場支付；兩人合計約這個數字。" }
   ];
-  const londonCandidates = [
-    {
-      status: "compare",
-      title: "The Langham London",
-      image: londonStay.photos?.[0]?.src,
-      imageAlt: londonStay.photos?.[0]?.alt,
-      location: { zh: "如果想把倫敦住得像一段完整停留，這間最像主住宿。", en: "If London should feel like a proper stay, this is the most complete option." },
-      strengths: { zh: "整體住感比較完整，放下行李後就能直接進入倫敦這段。", en: "Once the bags are down, the whole London stay feels more settled." },
-      tradeoffs: { zh: "若重點是接火車和帶行李移動，未必比更靠車站的選擇直接。", en: "Not always the easiest pick if rail access comes first." },
-      fit: { zh: "如果想讓倫敦這幾晚住得安靜一點、舒服一點，這間最順眼。", en: "Best if you want London to feel calm and properly lived-in." },
-      link: "https://www.langhamhotels.com/en/the-langham/london/"
-    },
-    {
-      status: "pending",
-      title: "The Clermont Charing Cross",
-      image: londonStay.photos?.[1]?.src,
-      imageAlt: londonStay.photos?.[1]?.alt,
-      location: { zh: "更偏交通與車站優勢，對後面移動比較友善。", en: "Leans more toward station convenience and easy onward movement." },
-      strengths: { zh: "離交通樞紐近，若想把英國段與巴黎段接得俐落，這間比較省力。", en: "Cleaner if the UK-to-Paris handoff is the main priority." },
-      tradeoffs: { zh: "如果比較在意房間住感，可能還是 The Langham 比較適合。", en: "The stay itself may feel less memorable than The Langham." },
-      fit: { zh: "如果重心放在 Euston、St Pancras 和市中心移動，這間會省力很多。", en: "Very practical if Euston, St Pancras, and central movement matter most." },
-      link: "https://www.theclermont.co.uk/charing-cross/"
-    }
+  const londonSummary = [
+    { label: state.lang !== "zh" ? "Stay dates" : "入住日期", value: state.lang !== "zh" ? "4 Jul – 7 Jul 2026" : "2026/07/04 – 2026/07/07" },
+    { label: state.lang !== "zh" ? "Nights" : "晚數", value: state.lang !== "zh" ? "3 nights" : "3 晚" },
+    { label: state.lang !== "zh" ? "Role" : "角色", value: state.lang !== "zh" ? "Westminster base before Paris" : "去巴黎前的倫敦固定住宿" },
+    { label: state.lang !== "zh" ? "Booking total" : "總價", value: money.londonHotel, note: state.lang !== "zh" ? `Average per night: ${money.londonHotelPerNight}` : `平均每晚約 ${money.londonHotelPerNight}` }
   ];
+  const londonInfoItems = [
+    { label: state.lang !== "zh" ? "Hotel" : "飯店", value: "Riu Plaza London The Westminster" },
+    { label: state.lang !== "zh" ? "Area" : "區域", value: state.lang !== "zh" ? "Westminster / Victoria side" : "Westminster / Victoria 一帶" },
+    { label: state.lang !== "zh" ? "Why here" : "為什麼住這裡", value: state.lang !== "zh" ? "Works well for Westminster, Covent Garden, and the later St Pancras move." : "Westminster、Covent Garden 和後面去 St Pancras 的動線都比較好接。" },
+    { label: state.lang !== "zh" ? "Proof" : "憑證", value: state.lang !== "zh" ? "Booking confirmed, payment saved" : "訂房已確認，付款紀錄已留存" }
+  ];
+  const londonAreaChips = ["Westminster", "Victoria", "St James's", "Covent Garden", "St Pancras"];
   const overlapOptions = [
     {
       title: { zh: "保留備案", en: "Keep as backup" },
@@ -3323,24 +3288,20 @@ function renderStay() {
   ];
   const stayNextSteps = [
     {
-      title: { zh: "決定倫敦住宿最後版本。", en: "Choose the final London hotel." },
-      note: { zh: "目前最清楚的還是 The Langham London 與 The Clermont Charing Cross。", en: "The clearest choices remain The Langham London and The Clermont Charing Cross." }
-    },
-    {
       title: { zh: "決定 7/4 曼徹斯特最後一晚要不要保留。", en: "Decide what to do with the 4 July Manchester overlap." },
-      note: { zh: "這會連動倫敦住宿是否確認，以及你想不想保留一晚會議後的緩衝。", en: "That depends on the London booking and how much buffer you want after the conference." }
+      note: { zh: "Riu 已經訂好，現在只差要不要把曼徹斯特最後一晚留著當緩衝。", en: "Riu is already booked. The remaining decision is whether the last Manchester night should stay as buffer." }
     },
     {
-      title: { zh: "補上倫敦到巴黎的交通。", en: "Lock the London → Paris handoff." },
-      note: { zh: "Eurostar 一旦訂好，倫敦接 Pullman 就會順很多。", en: "Once Eurostar is fixed, the London-to-Pullman move becomes much cleaner." }
+      title: { zh: "把 Eurostar 訂下來。", en: "Book the Eurostar segment." },
+      note: { zh: "7/7 從 Riu 去 St Pancras 不算複雜，但上車前還有安檢和護照檢查，這段先抓寬一點。", en: "The move from Riu to St Pancras is manageable, but Eurostar still needs time for security and passport control." }
     },
     {
       title: { zh: "確認 Pullman 退房後到 CDG Novotel 的移動方式。", en: "Check the Pullman → CDG Novotel move." },
-      note: { zh: "把這段接順，最後一天就不會被行李和轉場打亂。", en: "Keep this transfer simple so the last Paris day stays light." }
+      note: { zh: "如果帶著行李，直接叫車最省事；想省一點，再看 RER 進 Roissypole。", en: "With luggage, a direct car is easiest. Use the RER into Roissypole only if you want the cheaper option." }
     },
     {
       title: { zh: "再看一次各飯店取消期限與付款狀態。", en: "Review cancellation windows and payment status." },
-      note: { zh: "曼徹斯特、Pullman 與 Novotel 都已接上，現在主要變數只剩倫敦。", en: "Manchester, Pullman, and Novotel are in place; London is the main variable left." }
+      note: { zh: "曼徹斯特、Riu、Pullman 和 Novotel 都已經接好，現在主要就是再看取消期限和付款紀錄有沒有漏。", en: "Manchester, Riu, Pullman, and Novotel are all in place. This is now mostly a final check on cancellation windows and payments." }
     }
   ];
 
@@ -3350,9 +3311,9 @@ function renderStay() {
     note: { zh: "把每一段住哪裡放在一起看，轉城市時比較不會亂。", en: "Each stay is part of the route itself, linking the conference days, the city moves, and the final Paris evenings into one calmer rhythm." },
     meta: [
       { label: { zh: "會議據點", en: "Conference base" }, value: "INNSiDE Manchester" },
+      { label: { zh: "倫敦主住宿", en: "London base" }, value: "Riu Plaza Westminster" },
       { label: { zh: "巴黎主住宿", en: "Paris anchor" }, value: "Pullman Paris Tour Eiffel" },
-      { label: { zh: "回程前一晚", en: "Departure eve" }, value: { zh: "Novotel CDG", en: "Novotel CDG" } },
-      { label: { zh: "待補齊", en: "Still open" }, value: { zh: "倫敦住宿", en: "London stay" } }
+      { label: { zh: "回程前一晚", en: "Departure eve" }, value: { zh: "Novotel CDG", en: "Novotel CDG" } }
     ]
   }, `
     ${renderQuickNav("stay")}
@@ -3360,7 +3321,7 @@ function renderStay() {
       <article class="section-card">
         <div class="section-label">${state.lang !== "zh" ? "Accommodation overview" : "住宿總覽"}</div>
         <h2>${state.lang !== "zh" ? "Each stay carries a different role in the route." : "每一段住宿都各有用途。"}</h2>
-        <p class="lead">${state.lang !== "zh" ? "Manchester keeps the conference days steady, London is still open, Pullman carries the Paris nights, and Novotel CDG keeps the flight morning easier." : "曼徹斯特先把會議主段住穩，倫敦還在選，巴黎住 Pullman，最後一晚再轉去 CDG。"} </p>
+        <p class="lead">${state.lang !== "zh" ? "Manchester stays with the conference, Westminster holds the London days, Pullman carries Paris, and Novotel CDG keeps the flight morning easy." : "曼徹斯特先顧會議，倫敦住 Westminster，巴黎住 Pullman，最後一晚再轉去 CDG。"} </p>
         <div class="stay-overview-grid">
           ${stayOverviewEntries.map(renderStaySnapshotCard).join("")}
         </div>
@@ -3397,9 +3358,9 @@ function renderStay() {
     </section>
     <section class="section compact-section" id="london">
       <article class="section-card">
-        <div class="section-label">${state.lang !== "zh" ? "London options" : "London｜候選住宿比較"}</div>
-        <h2>${state.lang !== "zh" ? "London still needs one final decision." : "倫敦這幾晚，現在只差最後選擇。"}</h2>
-        <p class="lead">${state.lang !== "zh" ? "London sits between the conference and Paris. What matters most here is whether the station move is easy and whether the room feels right after a full day out." : "倫敦夾在曼徹斯特和巴黎之間。現在要比的就是車站動線順不順，還有晚上回房間後住起來舒不舒服。"} </p>
+        <div class="section-label">${state.lang !== "zh" ? "London stay" : "London｜已確認住宿"}</div>
+        <h2>${state.lang !== "zh" ? "London is fixed in Westminster." : "倫敦這段就直接住 Westminster。"}</h2>
+        <p class="lead">${state.lang !== "zh" ? "This chapter now stays at Riu Plaza London The Westminster. You can check in, walk Westminster on the first evening, and still leave cleanly for St Pancras on 7 July." : "倫敦這幾晚就直接住 Riu Plaza London The Westminster。7/4 到了先接 Westminster 一圈，7/7 去 St Pancras 也不會太繞。"} </p>
         <div class="stay-warning-card">
           <div class="stay-warning-head">
             ${statusChip("alert")}
@@ -3408,32 +3369,35 @@ function renderStay() {
           <p>${state.lang !== "zh" ? "Manchester is currently booked through 5 July, while the London plan starts on 4 July. Once London is fixed, decide whether that last Manchester night should stay as buffer or be released." : "曼徹斯特目前訂到 7/5 退房，但倫敦預計從 7/4 開始住。等倫敦確定後，再決定這一晚要不要留著當緩衝。"} </p>
           ${renderStayWarningOptions(overlapOptions)}
         </div>
-        <div class="stay-candidate-grid-wrapper">
-          ${londonCandidates.map(renderStayCandidateCard).join("")}
-          <article class="stay-candidate-card areas-card">
-            <div class="stay-candidate-copy">
-              <div class="stay-candidate-head">
-                ${statusChip("compare")}
-                <h3>${state.lang !== "zh" ? "Other candidate areas" : "也值得看的區域"}</h3>
+        <div class="stay-spotlight-grid">
+          <article class="stay-card-rich with-image handbook-stay-spotlight">
+            <div class="stay-card-image-wrap">
+              <img class="stay-card-image" src="${escapeHtml(riuImage)}" alt="${escapeHtml(state.lang !== "zh" ? "Booking view for Riu Plaza London The Westminster" : "Riu Plaza London The Westminster 訂房畫面")}" loading="lazy" />
+            </div>
+            <div class="stay-card-top">
+              <div class="stay-card-head">
+                <div class="stay-card-kicker">London</div>
+                <h3 class="stay-card-local">Riu Plaza London The Westminster</h3>
+                <p class="stay-card-note">${state.lang !== "zh" ? "Keep Westminster, Covent Garden, and the later St Pancras move inside one easy radius." : "Westminster、Covent Garden，還有後面去 St Pancras 的移動，都放在同一條比較好接的線上。"} </p>
               </div>
-              <div class="stay-candidate-grid">
-                <div class="stay-candidate-row">
-                  <span>${state.lang !== "zh" ? "Priority" : "目前重點"}</span>
-                  <p>${state.lang !== "zh" ? "The route still wants rail convenience first, then a calm walking radius once luggage is dropped." : "目前仍以車站動線優先，接著才看放下行李後能不能舒舒服服走進市中心。"} </p>
-                </div>
-                <div class="stay-candidate-row">
-                  <span>${state.lang !== "zh" ? "Useful areas" : "可留意區域"}</span>
-                  <div class="stay-area-chip-cloud">
-                    ${londonAreas.map((area) => `<span>${escapeHtml(area)}</span>`).join("")}
-                  </div>
-                </div>
-                <div class="stay-candidate-row">
-                  <span>${state.lang !== "zh" ? "Also worth keeping" : "備看飯店"}</span>
-                  <p>${escapeHtml((manchesterIdeas.facts || []).map((item) => t(item)).join(" · "))}</p>
-                </div>
+              <div class="stay-side">
+                ${statusChip("confirmed")}
+                <a class="stay-map-link" href="https://www.google.com/maps/search/?api=1&query=Riu+Plaza+London+The+Westminster" target="_blank" rel="noreferrer noopener">${state.lang !== "zh" ? "Map" : "地圖"}</a>
               </div>
             </div>
+            ${renderStayInfoList(londonInfoItems)}
           </article>
+          <div class="stay-price-grid">
+            ${londonSummary.map((item) => renderStayStatCard(item.label, item.value, item.note)).join("")}
+            <article class="stay-stat-card">
+              <span>${state.lang !== "zh" ? "Nearby rhythm" : "附近動線"}</span>
+              <strong>${state.lang !== "zh" ? "Westminster / Victoria / St Pancras" : "Westminster / Victoria / St Pancras"}</strong>
+              <p>${state.lang !== "zh" ? "These are the names worth keeping in mind when moving around London from this base." : "住在這裡時，主要就是記住 Westminster、Victoria，還有 7/7 要去的 St Pancras。"} </p>
+              <div class="stay-area-chip-cloud">
+                ${londonAreaChips.map((area) => `<span>${escapeHtml(area)}</span>`).join("")}
+              </div>
+            </article>
+          </div>
         </div>
       </article>
     </section>
@@ -3511,7 +3475,7 @@ function renderStay() {
       <article class="section-card">
         <div class="section-label">${state.lang !== "zh" ? "Next steps" : "下一步確認清單"}</div>
         <h2>${state.lang !== "zh" ? "A few things are still worth checking." : "剩下幾個地方再確認一次。"}</h2>
-        <p class="lead">${state.lang !== "zh" ? "These are simply the last loose ends: London, the 4 July overlap, the Pullman-to-CDG move, and the payment/cancellation notes." : "這裡只放最後幾個還要確認的地方：倫敦住哪裡、7/4 怎麼接、Pullman 退房後怎麼去 CDG，還有取消與付款狀態。"} </p>
+        <p class="lead">${state.lang !== "zh" ? "The stays are mostly done now. What remains is the 4 July overlap, Eurostar, the Pullman-to-CDG move, and one last pass on payment and cancellation notes." : "住宿大致都接好了。現在剩的是 7/4 的重疊、Eurostar、Pullman 去 CDG 的移動方式，還有最後一次確認付款和取消期限。"} </p>
         ${renderStayNextSteps(stayNextSteps)}
       </article>
     </section>
@@ -3850,10 +3814,10 @@ function currencySwitcher() {
 
 function renderBudget() {
   const totals = {
-    TWD: { reimburse: "NT$156,039", self: "NT$128,732", personalSelf: "約 NT$19,263", hotelPerson: "NT$19,135", hotelPersonNight: "NT$3,827" },
-    GBP: { reimburse: "GBP 3,671", self: "約 GBP 3,010", personalSelf: "GBP 453.45", hotelPerson: "GBP 450.45", hotelPersonNight: "GBP 90.09" },
-    EUR: { reimburse: "EUR 4,293", self: "約 EUR 3,523", personalSelf: "約 EUR 531", hotelPerson: "EUR 527", hotelPersonNight: "EUR 105" },
-    USD: { reimburse: "US$4,870", self: "約 US$3,990", personalSelf: "約 US$601", hotelPerson: "US$597", hotelPersonNight: "US$119" }
+    TWD: { reimburse: "NT$156,039", self: "NT$170,383", personalSelf: "約 NT$19,263", hotelPerson: "NT$19,135", hotelPersonNight: "NT$3,827" },
+    GBP: { reimburse: "GBP 3,671", self: "約 GBP 3,990", personalSelf: "GBP 453.45", hotelPerson: "GBP 450.45", hotelPersonNight: "GBP 90.09" },
+    EUR: { reimburse: "EUR 4,293", self: "約 EUR 4,670", personalSelf: "約 EUR 531", hotelPerson: "EUR 527", hotelPersonNight: "EUR 105" },
+    USD: { reimburse: "US$4,870", self: "約 US$5,290", personalSelf: "約 US$601", hotelPerson: "US$597", hotelPersonNight: "US$119" }
   };
   const selectedTotals = totals[state.currency] || totals.TWD;
   return renderDesktopPageShell("budget", {
@@ -3881,7 +3845,7 @@ function renderBudget() {
         <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Manchester hotel" : "曼徹斯特住宿"}</h3><strong>${money.hotel}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Stay" : "住宿", value: state.lang !== "zh" ? "5 nights / 2 guests" : "5 晚 / 2 人" }, { label: state.lang !== "zh" ? "Personal share" : "個人分攤", value: money.hotelPerPersonTotal }])}</article>
         <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Paris hotel" : "巴黎住宿"}</h3><strong>${money.parisHotel}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Stay" : "住宿", value: state.lang !== "zh" ? "3 nights" : "3 晚" }, { label: state.lang !== "zh" ? "Room" : "房型", value: state.lang !== "zh" ? "Balcony Eiffel Tower View" : "陽台鐵塔景房" }])}</article>
         <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Train estimate" : "火車預估"}</h3><strong>${t(money.trainAdvance)}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Type" : "票種", value: "Advance / Off-Peak" }, { label: state.lang !== "zh" ? "Railcard" : "Railcard", value: money.railcard }])}</article>
-        <article class="summary-card">${statusChip("pending")}<h3>${state.lang !== "zh" ? "Pending items" : "待確認項目"}</h3><strong>${state.lang !== "zh" ? "London hotel / Eurostar" : "倫敦住宿 / Eurostar"}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Action" : "處理", value: state.lang !== "zh" ? "Book and review" : "預訂與確認" }, { label: state.lang !== "zh" ? "Timing" : "時點", value: state.lang !== "zh" ? "Before departure" : "出發前" }])}</article>
+        <article class="summary-card">${statusChip("pending")}<h3>${state.lang !== "zh" ? "Pending items" : "待確認項目"}</h3><strong>${state.lang !== "zh" ? "Eurostar / optional attraction tickets" : "Eurostar / 可選景點票券"}</strong>${renderMetaRow([{ label: state.lang !== "zh" ? "Action" : "處理", value: state.lang !== "zh" ? "Book and review" : "預訂與確認" }, { label: state.lang !== "zh" ? "Timing" : "時點", value: state.lang !== "zh" ? "Before departure" : "出發前" }])}</article>
       </div>
       ${currencySwitcher()}
       ${renderBudgetCards(tripData.expenses)}
@@ -3899,7 +3863,7 @@ function renderBudget() {
       <div class="summary-grid three">
         <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang !== "zh" ? "Reimbursement total" : "可報帳小計"}</h3><strong>${selectedTotals.reimburse}</strong><p>${state.lang !== "zh" ? "Flights, AIB conference fee, AIB membership fee, and Manchester daily allowance for 5 conference days." : "含機票、AIB 會議費、AIB 會員費，以及曼徹斯特研討會 5 天日支費。"}</p></article>
         <article class="summary-card">${statusChip("reimburse")}<h3>${state.lang !== "zh" ? "NSTC daily allowance" : "國科會日支費"}</h3><strong>${tripData.expenses[3].amounts[state.currency]}</strong><p>${state.lang !== "zh" ? "Calculated for 5 conference days." : "以研討會 5 天計算。"}</p></article>
-        <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Self-funded known subtotal" : "已知自費小計"}</h3><strong>${selectedTotals.self}</strong><p>${state.lang !== "zh" ? "Current known self-funded items include the Manchester hotel, visitor charge, the Pullman Paris booking, the Novotel CDG overnight, and the Air France Paris-Manchester segment. London hotel, Eurostar, and attraction choices remain open." : "目前已知自費包含曼徹斯特住宿與旅遊稅、Pullman 巴黎住宿、Novotel CDG 機場過夜，以及巴黎回曼徹斯特的法航航段；倫敦住宿、Eurostar 和景點組合仍待確認。"}</p></article>
+        <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Self-funded known subtotal" : "已知自費小計"}</h3><strong>${selectedTotals.self}</strong><p>${state.lang !== "zh" ? "Current known self-funded items include Manchester, the London hotel, Pullman Paris, the Novotel CDG overnight, the Air France Paris-Manchester segment, and the visitor charge. Eurostar and any extra attraction tickets still sit outside this subtotal." : "目前已知自費包含曼徹斯特住宿與旅遊稅、倫敦住宿、Pullman 巴黎住宿、Novotel CDG 機場過夜，以及巴黎回曼徹斯特的法航航段；Eurostar 和額外景點票券還沒算進來。"}</p></article>
       </div>
     </section>
     <section class="section compact-section" id="personal-costs">
@@ -3911,7 +3875,7 @@ function renderBudget() {
       <div class="summary-grid three">
         <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Hotel per person" : "住宿一人總額"}</h3><strong>${selectedTotals.hotelPerson}</strong><p>${state.lang !== "zh" ? "INNSiDE Manchester, 5 nights, half of the two-person room total." : "INNSiDE Manchester 5 晚，兩人房價的一半。"}</p></article>
         <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Per person / night" : "一人一晚"}</h3><strong>${selectedTotals.hotelPersonNight}</strong><p>${state.lang !== "zh" ? "Average personal room share per night." : "平均每晚的個人住宿分攤。"}</p></article>
-        <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Known personal self-funded" : "目前個人已知自費"}</h3><strong>${selectedTotals.personalSelf}</strong><p>${state.lang !== "zh" ? "Manchester hotel share plus half of the visitor charge. London stay, trains, and attractions are not included yet." : "含曼徹斯特住宿個人分攤與旅遊稅一半；尚未包含倫敦住宿、火車與景點門票。"}</p></article>
+        <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Known personal self-funded" : "目前個人已知自費"}</h3><strong>${selectedTotals.personalSelf}</strong><p>${state.lang !== "zh" ? "This line still only tracks the Manchester room share plus half of the visitor charge. London, Paris, and CDG stays remain in the overall self-funded total above." : "這一格目前只先算曼徹斯特住宿個人分攤和旅遊稅一半；倫敦、巴黎和 CDG 的住宿都先放在上面的整體自費小計。"} </p></article>
       </div>
     </section>
     <section class="section compact-section" id="proofs">
@@ -3980,7 +3944,7 @@ function renderReminders() {
           state.lang !== "zh" ? "Passport and UK ETA are ready." : "護照和 UK ETA 再看一次。",
           state.lang !== "zh" ? "AIB receipts and letters are saved for reimbursement." : "AIB 收據、接受函和邀請函都先存好。",
           state.lang !== "zh" ? "Manchester-London trains are checked before prices rise." : "曼徹斯特到倫敦火車票再查一次。",
-          state.lang !== "zh" ? "London accommodation is booked or intentionally left open." : "倫敦住宿如果還沒下，就先確認自己要不要保留彈性。",
+          state.lang !== "zh" ? "Riu, Pullman, and Novotel confirmations are saved offline." : "Riu、Pullman 和 Novotel 的訂房確認都先離線存好。",
           state.lang !== "zh" ? "Return routing starts at MAN and includes MAN-LHR." : "回程從 MAN 出發，MAN-LHR 這段不能跳過。"
         ].map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
       </div>
