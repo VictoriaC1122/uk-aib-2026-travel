@@ -160,6 +160,7 @@ const tripData = {
     { status: "confirmed", title: { zh: "倫敦住宿", en: "London accommodation" }, body: { zh: "7/4–7/7 住 Riu Plaza London The Westminster。這段先顧 Westminster、Covent Garden，還有 7/7 去 St Pancras 的路。", en: "For 4-7 July, stay at Riu Plaza London The Westminster. The key parts are Westminster, Covent Garden, and the move to St Pancras on 7 July." } },
     { status: "book", title: { zh: "曼徹斯特到倫敦", en: "Manchester to London" }, body: { zh: "7/4 搭 Avanti West Coast 最單純，直達約 2 小時 10 分。火車時間先抓好就行。", en: "On 4 July, Avanti West Coast is the simplest option at about 2h10 direct. Just keep the train timing clear." } },
     { status: "book", title: { zh: "倫敦到巴黎", en: "London to Paris" }, body: { zh: "7/7 從 St Pancras 搭 Eurostar。這段不要壓線，提早 75–90 分鐘到站比較安心。", en: "On 7 July, take Eurostar from St Pancras. Do not cut it too close; arriving 75-90 minutes early is safer." } },
+    { status: "confirmed", title: { zh: "eSIM / 漫遊", en: "eSIM / roaming" }, body: { zh: "歐洲 39 國 15 天 eSIM 已買。出發前先裝好，落地再開；原本門號留著收簡訊和驗證碼就好。", en: "The 39-country Europe eSIM for 15 days is already purchased. Install it before departure, turn it on after landing, and keep your main number for SMS and verification codes." } },
     { status: "reimburse", title: { zh: "報帳資料", en: "Reimbursement packet" }, body: { zh: "可報帳還是看國際機票、AIB 會議費、AIB 會員費和國科會日支費。倫敦、巴黎段另外算。", en: "Claims stay limited to international flights, the AIB conference fee, the AIB membership fee, and NSTC allowance. London and Paris stay separate." } },
     { status: "confirmed", title: { zh: "7/11 回程", en: "11 July return flights" }, body: { zh: "7/11 先從巴黎飛曼徹斯特，再接 BA 1371 和 CI 0082 回台北。這天不要再排別的。", en: "On 11 July, fly Paris to Manchester first, then connect to BA 1371 and CI 0082 back to Taipei. Keep the day for flights only." } }
   ],
@@ -218,6 +219,11 @@ const tripData = {
         status: "confirmed",
         title: { zh: "插頭與充電", en: "Plugs and charging" },
         body: { zh: "英國使用 Type G 三孔插頭，電壓 230V。筆電與手機充電器通常支援 100-240V，但仍看一下變壓器標示；行動電源放隨身行李，不托運。", en: "The UK uses Type G three-pin plugs and 230V power. Laptop and phone chargers usually support 100-240V, but check the label. Power banks should stay in carry-on luggage." }
+      },
+      {
+        status: "confirmed",
+        title: { zh: "eSIM 先裝，主門號先留著", en: "Install the eSIM, keep your main number" },
+        body: { zh: "歐洲 39 國 15 天 eSIM 已經買了，出發前先裝進手機，到歐洲再開。原本門號先別關，收簡訊、銀行驗證碼和臨時聯絡還是會用到。", en: "The 39-country Europe eSIM for 15 days is already bought. Install it before departure and switch it on once you are in Europe. Keep your main number active for SMS, banking codes, and backup contact." }
       },
       {
         status: "confirmed",
@@ -491,6 +497,7 @@ const tripData = {
     { item: { zh: "倫敦住宿", en: "London accommodation" }, amount: money.londonHotel, amounts: { TWD: "NT$41,649", GBP: "約 GBP 980", EUR: "約 EUR 1,147", USD: "約 US$1,300" }, status: "self", proof: { zh: "Riu Plaza London The Westminster 訂房確認與刷卡紀錄", en: "Riu Plaza London The Westminster confirmation and payment note" }, notes: { zh: `Riu Plaza London The Westminster｜7/4–7/7，共 3 晚；平均每晚約 ${money.londonHotelPerNight}。`, en: `Riu Plaza London The Westminster · 4-7 Jul · 3 nights; average per night about ${money.londonHotelPerNight}.` } },
     { item: { zh: "巴黎住宿", en: "Paris accommodation" }, amount: money.parisHotel, amounts: { TWD: "NT$70,243", GBP: "約 GBP 1,639", EUR: "EUR 1,915.58", USD: "約 US$2,170" }, status: "self", proof: { zh: "Pullman 訂房確認、Accor 訂單與付款紀錄", en: "Pullman booking confirmation, Accor order, and payment proof" }, notes: { zh: `Pullman Paris Tour Eiffel｜7/7–7/10，共 3 晚，鐵塔景陽台房；平均每晚約 ${money.parisHotelPerNight}。`, en: `Pullman Paris Tour Eiffel · 7-10 Jul · 3 nights · balcony room with Eiffel Tower view; average per night about ${money.parisHotelPerNight}.` } },
     { item: { zh: "CDG 機場住宿", en: "CDG airport hotel" }, amount: { zh: "NT$7,034（原幣未公開）", en: "NT$7,034 (original currency not shown publicly)" }, amounts: { TWD: "NT$7,034", GBP: "約 GBP 164", EUR: "約 EUR 192", USD: "約 US$217" }, status: "self", proof: { zh: "Novotel 訂房畫面與刷卡紀錄", en: "Novotel booking screen and payment note" }, notes: { zh: "巴黎戴高樂機場候機樓諾富特酒店｜7/10–7/11，共 1 晚；作為法航 7/11 航段前一晚的機場過夜。", en: "Novotel Paris Charles-de-Gaulle Airport · 10-11 Jul · 1 night; the airport overnight before the 11 July Air France departure." } },
+    { item: { zh: "歐洲 eSIM / 網卡", en: "Europe eSIM / data" }, amount: { zh: "NT$1,219", en: "NT$1,219" }, amounts: { TWD: "NT$1,219", GBP: "約 GBP 29", EUR: "約 EUR 33", USD: "約 US$38" }, status: "self", proof: { zh: "訂單截圖（公開頁不放個資）", en: "Order screenshot (personal details kept private)" }, notes: { zh: "歐洲 39 國 15 天 eSIM。出發前先裝，落地再開；原本門號留著收簡訊與驗證碼。", en: "39-country Europe eSIM for 15 days. Install before departure, activate after landing, and keep your main number for SMS and verification codes." } },
     { item: { zh: "倫敦 / 巴黎景點與遊船", en: "London / Paris attractions and cruise" }, amount: { zh: "依實際選擇", en: "Depends on selected stops" }, amounts: { TWD: "依實際選擇", GBP: "Depends", EUR: "Depends", USD: "Depends" }, status: "self", proof: { zh: "線上購票收據", en: "Online ticket receipts" }, notes: { zh: "羅浮宮、凱旋門等需要時再訂，鐵塔夜景、Place Vendôme、香榭麗舍和多數街區可直接散步。", en: "Book the Louvre or Arc only if needed; the Eiffel night view, Place Vendôme, the Champs-Elysees, and most of the streets can stay open." } }
   ],
   links: [
@@ -2603,6 +2610,10 @@ function renderHomeInfoPanel() {
           <span class="section-label">${state.lang !== "zh" ? "Weather and dressing" : "天氣與穿搭"}</span>
           <p>${state.lang !== "zh" ? "Light layers should be enough: conference clothes for Manchester, easy walking clothes for London and Paris." : "這趟以輕薄層次為主就好：曼徹斯特放正式一點的會議穿著，倫敦和巴黎記得好走的鞋。"} </p>
         </section>
+        <section class="info-ledger-block">
+          <span class="section-label">${state.lang !== "zh" ? "Phone and data" : "eSIM 與連線"}</span>
+          <p>${state.lang !== "zh" ? "The Europe eSIM is already purchased. Install it before departure, switch it on after landing, and leave your main number active for SMS and banking codes." : "歐洲 eSIM 已經買了。先在台灣裝好，落地再開；原本門號留著收簡訊、銀行驗證碼和臨時聯絡就好。"} </p>
+        </section>
       </div>
       <a class="text-link-button" href="./conference.html">${state.lang !== "zh" ? "Open the full conference page" : "查看完整會議頁"}</a>
     </section>
@@ -3945,6 +3956,7 @@ function renderReminders() {
         ${[
           state.lang !== "zh" ? "Passport and UK ETA are ready." : "護照和 UK ETA 再看一次。",
           state.lang !== "zh" ? "AIB receipts and letters are saved for reimbursement." : "AIB 收據、接受函和邀請函都先存好。",
+          state.lang !== "zh" ? "The Europe eSIM is installed and the main number is left on for SMS." : "歐洲 eSIM 先裝好，原本門號留著收簡訊。",
           state.lang !== "zh" ? "Manchester-London trains are checked before prices rise." : "曼徹斯特到倫敦火車票再查一次。",
           state.lang !== "zh" ? "Riu, Pullman, and Novotel confirmations are saved offline." : "Riu、Pullman 和 Novotel 的訂房確認都先離線存好。",
           state.lang !== "zh" ? "Return routing starts at MAN and includes MAN-LHR." : "回程從 MAN 出發，MAN-LHR 這段不能跳過。"
