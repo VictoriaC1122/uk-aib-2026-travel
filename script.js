@@ -1437,8 +1437,8 @@ const conferenceAlerts = [
   {
     tag: "AIB",
     status: "alert",
-    title: { zh: "5/15 註冊期限", en: "May 15 registration deadline" },
-    body: { zh: "註冊、付款和收據先收在一起。之後要對資料會比較快。", en: "Keep registration, payment, and receipts together. It makes later checking easier." }
+    title: { zh: "註冊與收據", en: "Registration and receipts" },
+    body: { zh: "註冊、付款和收據先收在一起。之後要對資料時比較快。", en: "Keep registration, payment, and receipts together so they are easy to check later." }
   },
   {
     tag: "Hotel",
@@ -1472,9 +1472,9 @@ const paperCards = [
       en: ["Confirm session time", "Finalize slide deck", "Prepare speaking script", "Keep one printed backup"]
     },
     placeholders: [
-      { label: { zh: "Slides", en: "Slides" }, value: { zh: "待更新", en: "Pending" } },
-      { label: { zh: "Script", en: "Script" }, value: { zh: "待更新", en: "Pending" } },
-      { label: { zh: "Printout", en: "Printout" }, value: { zh: "待更新", en: "Pending" } }
+      { label: { zh: "Slides", en: "Slides" }, value: { zh: "出發前再看一次", en: "Check once more before departure" } },
+      { label: { zh: "Script", en: "Script" }, value: { zh: "發表前再順一次", en: "Run through it again before presenting" } },
+      { label: { zh: "Printout", en: "Printout" }, value: { zh: "有需要再印", en: "Print only if needed" } }
     ]
   },
   {
@@ -1488,9 +1488,9 @@ const paperCards = [
       en: ["Confirm interactive format", "Prepare slides or poster content", "Write a short explanation version", "Check print needs"]
     },
     placeholders: [
-      { label: { zh: "Slides", en: "Slides" }, value: { zh: "待更新", en: "Pending" } },
-      { label: { zh: "Script", en: "Script" }, value: { zh: "待更新", en: "Pending" } },
-      { label: { zh: "Printout", en: "Printout" }, value: { zh: "待更新", en: "Pending" } }
+      { label: { zh: "Slides", en: "Slides" }, value: { zh: "出發前再看一次", en: "Check once more before departure" } },
+      { label: { zh: "Script", en: "Script" }, value: { zh: "發表前再順一次", en: "Run through it again before presenting" } },
+      { label: { zh: "Printout", en: "Printout" }, value: { zh: "現場需要再印", en: "Print only if the session needs it" } }
     ]
   }
 ];
@@ -1753,19 +1753,6 @@ function renderAppTag(label) {
   return `<span class="app-tag">${escapeHtml(t(label))}</span>`;
 }
 
-function tabIcon(name) {
-  const icons = {
-    overview: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="8" height="7" rx="2"></rect><rect x="13" y="4" width="8" height="5" rx="2"></rect><rect x="13" y="11" width="8" height="9" rx="2"></rect><rect x="3" y="13" width="8" height="7" rx="2"></rect></svg>',
-    schedule: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="3"></rect><path d="M8 3v4M16 3v4M4 10h16"></path></svg>',
-    hotel: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14"></path><path d="M4 13h16"></path><path d="M8 8h2M14 8h2"></path></svg>',
-    transport: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17V9a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v8"></path><path d="M7 17h10"></path><path d="M8 20h.01M16 20h.01"></path><path d="M7 12h10"></path></svg>',
-    papers: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h8l4 4v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path><path d="M15 4v5h5M9 13h6M9 17h6"></path></svg>',
-    budget: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"></rect><path d="M7 12h10M7 16h5"></path></svg>',
-    checklist: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l2 2 4-5"></path><rect x="4" y="4" width="16" height="16" rx="3"></rect></svg>'
-  };
-  return icons[name] || icons.overview;
-}
-
 function renderHomeTabs() {
   return `
     <div class="handbook-tabs-shell" aria-label="${state.lang !== "zh" ? "Handbook tabs" : "旅遊手冊分頁"}">
@@ -1928,15 +1915,21 @@ function renderChrome() {
   document.querySelector("[data-site-header]").innerHTML = pageId === "home"
     ? `
       <div class="topbar handbook-topbar home-toolbar">
-        <div class="compact-home-dock" aria-label="${state.lang !== "zh" ? "Language and currency controls" : "語言與貨幣控制"}">
-          <div class="compact-home-row lang-buttons" role="tablist" aria-label="${state.lang !== "zh" ? "Language switcher" : "語言切換"}">
-            <div class="compact-home-buttons">
-              ${langButtons}
+        <a class="handbook-brand" href="./index.html" aria-label="${state.lang !== "zh" ? "Back to overview" : "回到總覽"}">
+          <span>AIB 2026 Manchester</span>
+          <small>${state.lang !== "zh" ? "Germany · UK · France travel handbook" : "德英法之旅手冊"}</small>
+        </a>
+        <div class="home-toolbar-actions">
+          <div class="compact-home-dock" aria-label="${state.lang !== "zh" ? "Language and currency controls" : "語言與貨幣控制"}">
+            <div class="compact-home-row lang-buttons" role="tablist" aria-label="${state.lang !== "zh" ? "Language switcher" : "語言切換"}">
+              <div class="compact-home-buttons">
+                ${langButtons}
+              </div>
             </div>
-          </div>
-          <div class="compact-home-row currency-buttons" role="tablist" aria-label="${state.lang !== "zh" ? "Currency switcher" : "貨幣切換"}">
-            <div class="compact-home-buttons">
-              ${currencyButtons}
+            <div class="compact-home-row currency-buttons" role="tablist" aria-label="${state.lang !== "zh" ? "Currency switcher" : "貨幣切換"}">
+              <div class="compact-home-buttons">
+                ${currencyButtons}
+              </div>
             </div>
           </div>
         </div>
@@ -2219,8 +2212,8 @@ function renderHero(pageId) {
           <div class="hero-subtitle">${state.lang !== "zh" ? "Germany · UK · France Travel Handbook" : "德英法之旅手冊"}</div>
           <div class="hero-dates">${state.lang !== "zh" ? "2026 / 06 / 29 - 2026 / 07 / 12" : "2026 / 06 / 29 - 2026 / 07 / 12"}</div>
           <div class="destinations">${state.lang !== "zh" ? "Frankfurt • Manchester • London • Paris" : "法蘭克福 • 曼徹斯特 • 倫敦 • 巴黎"}</div>
-          <p class="hero-intro">${state.lang !== "zh" ? "Frankfurt first, then Manchester for AIB, then London and Paris." : "先在法蘭克福轉一下，再進曼徹斯特跑 AIB，後面再接倫敦和巴黎。"} </p>
-          <p class="hero-serif-note">${state.lang !== "zh" ? "Keep the conference days clear. Save the city time for later." : "會議這幾天先顧發表。其他城市等 AIB 結束再走。"} </p>
+          <p class="hero-intro">${state.lang !== "zh" ? "Frankfurt first, then Manchester for AIB. London and Paris come after the conference." : "先在法蘭克福轉一下，再進曼徹斯特跑 AIB。AIB 結束後再接倫敦和巴黎。"} </p>
+          <p class="hero-serif-note">${state.lang !== "zh" ? "Keep the conference days clear. The city time can wait." : "會議這幾天先顧發表。其他城市留到後面。"} </p>
           <div class="hero-actions editorial-hero-actions">
             <a class="button primary hero-action-primary" href="#itinerary" data-home-tab-jump="itinerary">${state.lang !== "zh" ? "Open the daily guide" : "打開每日行程"}</a>
             <a class="button secondary hero-action-secondary" href="#overview" data-home-tab-jump="overview">${state.lang !== "zh" ? "Read the overview first" : "先讀旅程總覽"}</a>
@@ -2239,7 +2232,7 @@ function renderHero(pageId) {
               </article>
             `).join("")}
           </div>
-          <p class="hero-summary-note">${state.lang !== "zh" ? "Manchester, London, Pullman, and Novotel CDG are fixed. What still needs checking is Eurostar and the final Paris transfer." : "曼徹斯特、倫敦、Pullman 和 Novotel CDG 都定了。現在主要剩 Eurostar，還有巴黎最後一天怎麼接去機場。"} </p>
+          <p class="hero-summary-note">${state.lang !== "zh" ? "Manchester, London, Pullman, and Novotel CDG are fixed. What still needs checking is Eurostar and the final move to the airport." : "曼徹斯特、倫敦、Pullman 和 Novotel CDG 都定了。現在主要剩 Eurostar，還有巴黎最後一天怎麼去機場。"} </p>
         </aside>
       </div>
     `;
@@ -2320,8 +2313,8 @@ function renderHeroSummaryRows() {
       ${renderHandbookSummaryRow(state.lang !== "zh" ? "Trip dates" : "旅程日期", "2026/06/29 – 2026/07/12")}
       ${renderHandbookSummaryRow(state.lang !== "zh" ? "Cities" : "主要城市", state.lang !== "zh" ? "Frankfurt · Manchester · London · Paris" : "法蘭克福 · 曼徹斯特 · 倫敦 · 巴黎")}
       ${renderHandbookSummaryRow(state.lang !== "zh" ? "Conference dates" : "會議日期", "AIB 2026 Manchester · 6/30–7/3")}
-      ${renderHandbookSummaryRow(state.lang !== "zh" ? "Travel rhythm" : "路線順序", state.lang !== "zh" ? "Transit → conference → London → Paris" : "轉機 → 會議 → 倫敦 → 巴黎")}
-      <p class="handbook-summary-note">${state.lang !== "zh" ? "The stays are now lined up: Manchester for AIB, Westminster for London, Pullman for Paris, and Novotel for the airport handoff." : "住宿現在已經接順了：曼徹斯特先顧 AIB，倫敦住 Westminster，巴黎住 Pullman，最後一晚轉去 Novotel CDG。"} </p>
+      ${renderHandbookSummaryRow(state.lang !== "zh" ? "Route order" : "路線順序", state.lang !== "zh" ? "Transit → conference → London → Paris" : "轉機 → 會議 → 倫敦 → 巴黎")}
+      <p class="handbook-summary-note">${state.lang !== "zh" ? "The stays line up cleanly now: Manchester first, Westminster for London, Pullman for Paris, and Novotel before the flight." : "住宿現在已經接順了：曼徹斯特先顧 AIB，倫敦住 Westminster，巴黎住 Pullman，最後一晚轉去 Novotel CDG。"} </p>
     </div>
   `;
 }
@@ -2333,13 +2326,13 @@ function renderHomeOverviewPanel() {
         state.lang !== "zh" ? "Overview" : "總覽",
         state.lang !== "zh" ? "AIB 2026 Manchester · Germany, UK, and France" : "AIB 2026 Manchester｜德英法之旅",
         state.lang !== "zh"
-          ? "Frankfurt first, then Manchester for AIB, then London and Paris."
-          : "先在法蘭克福轉一下，再進曼徹斯特跑 AIB，後面再接倫敦和巴黎。"
+          ? "Frankfurt first, then Manchester for AIB. London and Paris come after that."
+          : "先在法蘭克福轉一下，再進曼徹斯特跑 AIB。後面再接倫敦和巴黎。"
       )}
       <div class="handbook-overview-layout compact">
         <div class="handbook-overview-copy">
-          <p>${state.lang !== "zh" ? "Start with the route. Open a day card only when you need it." : "先看整條路線。要用哪一天，再打開那張卡。"} </p>
-          <p>${state.lang !== "zh" ? "Manchester is for AIB. London stays around Westminster and the shopping streets. Paris stays around Pullman, the Louvre, and the Right Bank." : "曼徹斯特先顧會議。倫敦就走 Westminster、百貨和街區。巴黎就圍著 Pullman、羅浮宮和右岸走。"} </p>
+          <p>${state.lang !== "zh" ? "Start with the route. Open a day card only when you actually need it." : "先看整條路線。真的要用哪一天，再打開那張卡。"} </p>
+          <p>${state.lang !== "zh" ? "Manchester is for AIB. London stays around Westminster. Paris stays around Pullman, the Louvre, and the Right Bank." : "曼徹斯特先顧會議。倫敦先住 Westminster。巴黎就圍著 Pullman、羅浮宮和右岸走。"} </p>
           ${renderRouteLine()}
         </div>
         ${renderHeroSummaryRows()}
@@ -2360,7 +2353,7 @@ function renderHomeOverviewPanel() {
       <article class="overview-editorial-block">
         <span class="editorial-note-label">${state.lang !== "zh" ? "AIB 2026" : "AIB 2026"}</span>
         <h3>${state.lang !== "zh" ? "Keep Manchester for AIB." : "曼徹斯特先留給 AIB。"}</h3>
-        <p>${state.lang !== "zh" ? "Both sessions are confirmed, so do not load Manchester with extra sightseeing." : "兩場發表都已確認，所以曼徹斯特不要再塞遠的景點。"} </p>
+        <p>${state.lang !== "zh" ? "Both sessions are confirmed, so Manchester can stay simple around the conference." : "兩場發表都已確認，所以曼徹斯特這幾天就圍著會議走。"} </p>
         <div class="meta-row">
           <div class="meta-pill"><span>${escapeHtml(t(conferenceSessions.competitive.label))}</span><strong>${escapeHtml(t(conferenceSessions.competitive.dateLabel))} · ${escapeHtml(conferenceSessions.competitive.time.replace("-", "–"))} · ${escapeHtml(conferenceSessions.competitive.room.replace(" (AMBS)", ""))}</strong></div>
           <div class="meta-pill"><span>${escapeHtml(t(conferenceSessions.interactive.label))}</span><strong>${escapeHtml(t(conferenceSessions.interactive.dateLabel))} · ${escapeHtml(conferenceSessions.interactive.time.replace("-", "–"))} · ${escapeHtml(conferenceSessions.interactive.room.replace(" (UP)", ""))}</strong></div>
@@ -2457,8 +2450,8 @@ function renderHomeHotelsPanel() {
     <section class="home-tab-panel-block">
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Hotels" : "住宿",
-        state.lang !== "zh" ? "Each stay has its own job." : "每一段住宿都有自己的用途。",
-        state.lang !== "zh" ? "Manchester is for AIB, London stays at Westminster, Paris stays at Pullman, and the last night moves to CDG." : "曼徹斯特顧會議，倫敦住 Westminster，巴黎住 Pullman，最後一晚再轉去 CDG。"
+        state.lang !== "zh" ? "Each stay solves a different part of the route." : "每一段住宿都只是把路接順。",
+        state.lang !== "zh" ? "Manchester stays with AIB, London stays by Westminster, Paris stays at Pullman, and the last night moves to CDG." : "曼徹斯特先顧 AIB，倫敦住 Westminster，巴黎住 Pullman，最後一晚再轉去 CDG。"
       )}
       <div class="hotel-ledger">
         <article class="hotel-ledger-entry">
@@ -2475,10 +2468,10 @@ function renderHomeHotelsPanel() {
         </article>
         <article class="hotel-ledger-entry">
           <div class="hotel-ledger-head">
-            <span class="section-label">${state.lang !== "zh" ? "London chapter" : "倫敦段"}</span>
+            <span class="section-label">${state.lang !== "zh" ? "London stay" : "倫敦住宿"}</span>
             <h3>Riu Plaza London The Westminster</h3>
           </div>
-          <p>${state.lang !== "zh" ? "This one is fixed now. Stay near Westminster and keep 7 July simple for St Pancras." : "倫敦這段現在定了。住 Westminster，7/7 去 St Pancras 也比較省事。"} </p>
+          <p>${state.lang !== "zh" ? "This one is fixed now. Stay near Westminster and keep 7 July simple for St Pancras." : "倫敦這幾晚現在定了。住 Westminster，7/7 去 St Pancras 也比較省事。"} </p>
           ${renderMetaRow([
             { label: state.lang !== "zh" ? "Stay" : "入住", value: "2026/07/04 – 2026/07/07" },
             { label: state.lang !== "zh" ? "Role" : "角色", value: state.lang !== "zh" ? "Westminster base" : "倫敦這幾晚的固定住宿" },
@@ -2496,14 +2489,14 @@ function renderHomeHotelsPanel() {
             { label: state.lang !== "zh" ? "Role" : "角色", value: state.lang !== "zh" ? "Paris stay" : "巴黎這幾晚的主住宿" },
             { label: state.lang !== "zh" ? "Cost" : "費用", value: "EUR 1,915.58 / NT$70,243" }
           ])}
-          <div class="hotel-feature-note">${state.lang !== "zh" ? "If the room sees the tower, you can just stay in at night." : "如果房間看得到鐵塔，晚上就不用一直往外跑。"} </div>
+          <div class="hotel-feature-note">${state.lang !== "zh" ? "If the room sees the tower, there is no need to keep heading back out at night." : "如果房間看得到鐵塔，晚上就不用一直往外跑。"} </div>
         </article>
         <article class="hotel-ledger-entry">
           <div class="hotel-ledger-head">
             <span class="section-label">${state.lang !== "zh" ? "Departure eve" : "回程前一晚"}</span>
             <h3>${state.lang !== "zh" ? "Novotel Paris Charles-de-Gaulle Airport" : "巴黎戴高樂機場候機樓諾富特酒店"}</h3>
           </div>
-          <p>${state.lang !== "zh" ? "10 Jul to 11 Jul · Roissypole RER. This is just for the airport handoff." : "7/10–7/11，位在 Roissypole RER 旁。這晚只是在幫隔天的機場動線省力。"} </p>
+          <p>${state.lang !== "zh" ? "10 Jul to 11 Jul · Roissypole RER. This one is just there to make the airport morning easier." : "7/10–7/11，位在 Roissypole RER 旁。這晚就是讓隔天進機場輕鬆一點。"} </p>
           ${renderMetaRow([
             { label: state.lang !== "zh" ? "Stay" : "入住", value: "2026/07/10 – 2026/07/11" },
             { label: state.lang !== "zh" ? "Role" : "角色", value: state.lang !== "zh" ? "Airport handoff stay" : "回程前一晚機場據點" },
@@ -2553,7 +2546,7 @@ function renderHomeLinksPanel() {
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Links" : "連結",
         state.lang !== "zh" ? "Keep the links you actually need in one place." : "把真的會用到的連結放一起。",
-        state.lang !== "zh" ? "Conference, hotels, trains, and maps stay grouped here." : "會議、住宿、交通、地圖都放這裡。"
+        state.lang !== "zh" ? "Conference, hotels, trains, and maps stay grouped here." : "會議、住宿、交通、地圖都收在這裡。"
       )}
       <div class="link-ledger">
         ${linkGroups.map((group) => `
@@ -2578,7 +2571,7 @@ function renderHomeFlightsPanel() {
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Flights" : "機票",
         state.lang !== "zh" ? "Keep the whole flight chain in one place." : "先把整段機票看成一條線。",
-        state.lang !== "zh" ? "Look at the main China Airlines ticket first, then the Paris-to-Manchester segment." : "先看華航主票四段，再看巴黎回曼徹斯特的法航段。"
+        state.lang !== "zh" ? "Look at the main China Airlines ticket first, then the Paris-to-Manchester segment." : "先看華航主票四段，再看巴黎回曼徹斯特那段。"
       )}
       <div class="route-ledger">
         <article class="route-ledger-entry">
@@ -2608,7 +2601,7 @@ function renderHomeInfoPanel() {
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Info" : "資訊",
         state.lang !== "zh" ? "Conference notes, movement, and the practical stuff." : "把會議、移動和提醒放一起。",
-        state.lang !== "zh" ? "This page keeps only the things worth checking again on the road." : "這一頁只放路上真的會再看的事。"
+        state.lang !== "zh" ? "This page keeps only the things worth checking again on the road." : "這一頁只放路上真的會回頭看的事。"
       )}
       <div class="info-ledger">
         <section class="info-ledger-block">
@@ -2652,7 +2645,7 @@ function renderHomeBudgetPanel() {
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Budget" : "預算",
         state.lang !== "zh" ? "Keep claims and self-funded costs separate." : "把能報的和自費的分開放。",
-        state.lang !== "zh" ? "This page is only for checking numbers." : "真的要對帳時，再看這頁就好。"
+        state.lang !== "zh" ? "This page is only for checking numbers." : "真的要對數字時，再看這頁就好。"
       )}
       <div class="budget-ledger">
         <div class="budget-ledger-block">
@@ -2689,7 +2682,7 @@ function renderHomeVisaPanel() {
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Visa and entry" : "簽證與入境",
         state.lang !== "zh" ? "Keep entry notes in one place." : "把入境、文件和保險提醒放一起。",
-        state.lang !== "zh" ? "Start with the UK, then keep the France notes nearby." : "這趟會先進英國，再往法國。這裡只放真的要記住的東西。"
+        state.lang !== "zh" ? "Start with the UK, then keep the France notes nearby." : "這趟會先進英國，再往法國。這裡只留真的要記住的事。"
       )}
       <div class="visa-ledger">
         <article class="visa-ledger-entry">
@@ -2807,11 +2800,11 @@ function renderHandbookTimelineEntry(item) {
 }
 
 const pageDescriptions = {
-  conference: { zh: "會議日期、發表時間和要帶的資料。", en: "Conference dates, registration status, and event rhythm." },
+  conference: { zh: "會議日期、教室和要帶的資料。", en: "Conference dates, rooms, and what to bring." },
   flights: { zh: "去程、回程、德英法移動段與轉機整理。", en: "Outbound, return, Germany-UK-France segments, and transfer notes." },
   transport: { zh: "火車、Eurostar 與市內交通。", en: "Train, Eurostar, and local transit." },
   stay: { zh: "曼徹斯特、倫敦 Riu、巴黎 Pullman 和 CDG 前一晚怎麼接。", en: "Manchester, the London Riu stay, Pullman in Paris, and the final CDG overnight." },
-  itinerary: { zh: "每日旅程、巴黎主線與回程銜接。", en: "Daily route guide, the Paris chapter, and the way home." },
+  itinerary: { zh: "每日旅程、巴黎主線和回程怎麼接。", en: "Daily route guide, Paris days, and the way home." },
   shopping: { zh: "茶葉、餅乾、果醬與超市購物清單。", en: "Tea, biscuits, preserves, and useful shopping notes." },
   souvenirs: { zh: "英國、法國、德國伴手禮整理。", en: "Souvenir notes for the UK, France, and Germany." },
   map: { zh: "主要地點、每日路線與地圖連結。", en: "Key locations, daily routes, and map links." },
@@ -2932,7 +2925,7 @@ function renderConference() {
   return renderDesktopPageShell("conference", {
     label: { zh: "Conference", en: "Conference" },
     title: { zh: "會議手冊", en: "Conference Handbook" },
-    note: { zh: "會議時間、兩場發表和要帶的資料，都放在這一頁。", en: "Conference details, presentation slots, and the before-and-after rhythm of AIB 2026 Manchester are gathered here." },
+    note: { zh: "會議時間、兩場發表和要帶的資料，都放在這一頁。", en: "Conference details, presentation slots, and the files you need stay on this page." },
     meta: [
       { label: { zh: "AIB", en: "AIB" }, value: "2026" },
       { label: { zh: "城市", en: "City" }, value: "Manchester" },
@@ -4161,6 +4154,10 @@ const renderers = {
   documents: renderDocuments
 };
 
+let homeHashChangeHandler = null;
+let desktopAnchorObservers = [];
+let dayGuideObserver = null;
+
 function renderApp() {
   const pageId = document.body.dataset.page || "home";
   document.documentElement.lang = currentDocumentLang();
@@ -4203,7 +4200,13 @@ function wireChecklistBoard() {
 }
 
 function wireHomeTabs() {
-  if ((document.body.dataset.page || "home") !== "home") return;
+  if ((document.body.dataset.page || "home") !== "home") {
+    if (homeHashChangeHandler) {
+      window.removeEventListener("hashchange", homeHashChangeHandler);
+      homeHashChangeHandler = null;
+    }
+    return;
+  }
   const tabs = [...document.querySelectorAll("[data-home-tab]")];
   const panels = [...document.querySelectorAll("[data-home-panel]")];
   const tabJumps = [...document.querySelectorAll("[data-home-tab-jump]")];
@@ -4212,6 +4215,8 @@ function wireHomeTabs() {
   const validIds = new Set(homeSectionTabs.map((tab) => tab.id));
   const fallbackId = homeSectionTabs[0]?.id || "overview";
 
+  const shouldAutoScrollPanels = () => window.matchMedia("(max-width: 820px)").matches;
+
   const setActive = (id, updateHash = true, scrollIntoPanels = true) => {
     const nextId = validIds.has(id) ? id : fallbackId;
     tabs.forEach((tab) => {
@@ -4219,7 +4224,9 @@ function wireHomeTabs() {
       tab.classList.toggle("active", active);
       if (active) {
         tab.setAttribute("aria-current", "true");
-        tab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        if (shouldAutoScrollPanels()) {
+          tab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        }
       } else {
         tab.removeAttribute("aria-current");
       }
@@ -4233,7 +4240,7 @@ function wireHomeTabs() {
     if (updateHash) {
       history.replaceState(null, "", `#${nextId}`);
     }
-    if (scrollIntoPanels) {
+    if (scrollIntoPanels && shouldAutoScrollPanels()) {
       document.querySelector(".home-tab-panels")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
@@ -4264,14 +4271,17 @@ function wireHomeTabs() {
   };
 
   syncFromHash();
-  if (!document.body.dataset.homeHashBound) {
-    document.body.dataset.homeHashBound = "true";
-    window.addEventListener("hashchange", syncFromHash);
+  if (homeHashChangeHandler) {
+    window.removeEventListener("hashchange", homeHashChangeHandler);
   }
+  homeHashChangeHandler = syncFromHash;
+  window.addEventListener("hashchange", homeHashChangeHandler);
 }
 
 function wireDesktopAnchors() {
   if (typeof IntersectionObserver === "undefined") return;
+  desktopAnchorObservers.forEach((observer) => observer.disconnect());
+  desktopAnchorObservers = [];
   const groups = [
     { selector: "[data-desktop-anchor]", key: "desktopAnchor" },
     { selector: "[data-page-anchor]", key: "pageAnchor" }
@@ -4313,6 +4323,7 @@ function wireDesktopAnchors() {
     });
 
     sections.forEach((section) => observer.observe(section));
+    desktopAnchorObservers.push(observer);
     setActive(sections[0].id);
   });
 }
@@ -4367,6 +4378,10 @@ function wireHashDrivenSections() {
 }
 
 function wireDayGuideNav() {
+  if (dayGuideObserver) {
+    dayGuideObserver.disconnect();
+    dayGuideObserver = null;
+  }
   const links = [...document.querySelectorAll("[data-day-target], .day-guide-link")];
   if (!links.length) return;
 
@@ -4413,6 +4428,7 @@ function wireDayGuideNav() {
   });
 
   sections.forEach((section) => observer.observe(section));
+  dayGuideObserver = observer;
 }
 
 window.addEventListener("scroll", () => {
@@ -4421,8 +4437,9 @@ window.addEventListener("scroll", () => {
 }, { passive: true });
 
 document.addEventListener("click", (event) => {
+  if (event.defaultPrevented) return;
   const link = event.target.closest('a[href^="#"]');
-  if (!link) return;
+  if (!link || link.matches("[data-home-tab], [data-home-tab-jump]")) return;
   const target = document.querySelector(link.getAttribute("href"));
   if (!target) return;
   event.preventDefault();

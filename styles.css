@@ -17601,3 +17601,1873 @@ body[data-page="home"] .hero-summary-note {
     box-shadow: 0 12px 26px rgba(96, 78, 67, 0.06);
   }
 }
+
+/* Handbook structural override */
+:root {
+  --guide-shell: min(1120px, calc(100% - 32px));
+  --guide-shell-wide: min(1180px, calc(100% - 48px));
+  --guide-shell-text: min(760px, calc(100% - 32px));
+  --guide-gap: clamp(1.15rem, 2vw, 1.85rem);
+  --guide-surface: rgba(255, 250, 245, 0.92);
+  --guide-surface-strong: rgba(255, 252, 248, 0.96);
+  --guide-border: rgba(223, 211, 203, 0.78);
+  --guide-shadow: 0 16px 34px rgba(94, 76, 67, 0.08);
+  --guide-shadow-soft: 0 8px 18px rgba(94, 76, 67, 0.05);
+  --guide-radius: 30px;
+  --guide-radius-soft: 22px;
+}
+
+html,
+body {
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img,
+picture,
+video,
+canvas,
+svg,
+table {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+body[data-page] {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-padding-top: calc(env(safe-area-inset-top) + 112px);
+  scroll-padding-bottom: calc(160px + env(safe-area-inset-bottom));
+}
+
+body[data-page] main {
+  padding-bottom: calc(164px + env(safe-area-inset-bottom));
+}
+
+body[data-page="home"] main {
+  padding-bottom: calc(188px + env(safe-area-inset-bottom));
+}
+
+body[data-page] :is(main, section, article, aside, nav, header, footer, div, img, picture, video, canvas, svg, table) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+body[data-page] [id] {
+  scroll-margin-top: calc(env(safe-area-inset-top) + 112px);
+  scroll-margin-bottom: calc(144px + env(safe-area-inset-bottom));
+}
+
+#progress {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 60;
+  height: 3px;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(170, 135, 118, 0.95), rgba(213, 188, 171, 0.92));
+  box-shadow: none;
+  pointer-events: none;
+}
+
+body[data-page="home"] .hero {
+  min-height: auto;
+  padding: 20px 0 60px;
+  background-color: rgba(214, 197, 187, 0.42);
+  background-blend-mode: multiply;
+  overflow: hidden;
+}
+
+body[data-page="home"] .hero > [data-site-header],
+body[data-page="home"] .hero > [data-page-hero],
+body[data-page="home"] #page-content,
+body[data-page="home"] [data-site-footer] {
+  width: var(--guide-shell-wide);
+  margin-inline: auto;
+}
+
+body[data-page]:not([data-page="home"]) .topbar.handbook-topbar,
+body[data-page]:not([data-page="home"]) .main-nav.handbook-main-nav,
+body[data-page]:not([data-page="home"]) .desktop-page-shell,
+body[data-page]:not([data-page="home"]) [data-site-footer] {
+  width: var(--guide-shell);
+  margin-inline: auto;
+}
+
+body[data-page="home"] .topbar.handbook-topbar.home-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: clamp(16px, 2vw, 28px);
+  margin: 0 auto 18px;
+}
+
+body[data-page="home"] .handbook-brand {
+  display: grid;
+  gap: 0.22rem;
+  align-self: start;
+  max-width: min(100%, 340px);
+  color: rgba(251, 246, 241, 0.96);
+  text-decoration: none;
+  text-shadow: 0 8px 24px rgba(46, 33, 28, 0.22);
+}
+
+body[data-page="home"] .handbook-brand span {
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+
+body[data-page="home"] .handbook-brand small {
+  color: rgba(255, 248, 241, 0.86);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body[data-page="home"] .home-toolbar-actions {
+  min-width: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+body[data-page="home"] .compact-home-dock {
+  width: min(100%, 420px);
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 12px;
+  border-radius: 26px;
+  background: linear-gradient(180deg, rgba(255, 250, 245, 0.78), rgba(249, 241, 234, 0.64));
+  border: 1px solid rgba(228, 216, 208, 0.74);
+  box-shadow: 0 18px 44px rgba(90, 73, 63, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+body[data-page="home"] .compact-home-row {
+  min-width: 0;
+  padding: 10px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(251, 246, 242, 0.7));
+  border: 1px solid rgba(228, 219, 213, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+body[data-page="home"] .compact-home-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+body[data-page="home"] .compact-home-dock .pill-btn {
+  min-height: 40px;
+  min-width: 64px;
+  padding: 0.6rem 0.85rem;
+  border-color: rgba(220, 207, 198, 0.78);
+  background: rgba(255, 252, 248, 0.74);
+  color: rgba(93, 74, 67, 0.9);
+  box-shadow: none;
+}
+
+body[data-page="home"] .compact-home-dock .pill-btn.active {
+  background: linear-gradient(135deg, #af8d7f 0%, #8f6d60 100%);
+  color: #fffaf4;
+  border-color: transparent;
+  box-shadow: 0 14px 26px rgba(137, 105, 89, 0.16);
+}
+
+.topbar.handbook-topbar:not(.home-toolbar) {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 auto 1rem;
+}
+
+.control-dock {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  max-width: min(100%, 560px);
+}
+
+.control-group {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem;
+  border-radius: 22px;
+  border: 1px solid var(--guide-border);
+  background: rgba(255, 250, 245, 0.88);
+  box-shadow: var(--guide-shadow-soft);
+}
+
+.control-label {
+  color: rgba(137, 116, 104, 0.92);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.control-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.main-nav.handbook-main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0 auto 1rem;
+  padding: 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--guide-border);
+  background: rgba(255, 250, 245, 0.88);
+  box-shadow: var(--guide-shadow-soft);
+}
+
+.main-nav .nav-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  color: rgba(90, 76, 69, 0.92);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.main-nav .nav-item.active,
+.main-nav .nav-item:hover {
+  background: linear-gradient(135deg, #af8d7f 0%, #936f61 100%);
+  color: #fffaf4;
+}
+
+body[data-page="home"] .hero-home-shell.hero-content {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: clamp(24px, 4vw, 52px);
+  align-items: start;
+  padding: clamp(16px, 2vw, 22px);
+  border-radius: 38px;
+  border: 1px solid rgba(230, 220, 213, 0.65);
+  background: linear-gradient(145deg, rgba(255, 251, 247, 0.62), rgba(238, 224, 216, 0.3));
+  box-shadow: 0 26px 64px rgba(84, 67, 58, 0.14);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+body[data-page="home"] .hero-home-shell.hero-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(255, 245, 232, 0.42), transparent 44%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 42%);
+  pointer-events: none;
+}
+
+body[data-page="home"] .hero-home-main,
+body[data-page="home"] .hero-overview-panel {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  border-radius: 30px;
+  border: 1px solid rgba(232, 221, 214, 0.68);
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.95), rgba(248, 241, 236, 0.9));
+  box-shadow: 0 18px 40px rgba(94, 75, 66, 0.08);
+}
+
+body[data-page="home"] .hero-home-main {
+  display: grid;
+  gap: 0;
+  padding: clamp(24px, 3vw, 42px);
+}
+
+body[data-page="home"] .hero-overview-panel {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(20px, 2.4vw, 28px);
+}
+
+body[data-page="home"] .handbook-home-hero h1 {
+  max-width: 9.5ch;
+  margin: 0;
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+body[data-page="home"] .eyebrow,
+body[data-page="home"] .hero-overview-head span,
+.tab-panel-intro .section-label,
+.day-kicker,
+.day-date,
+.detail-label,
+.stay-overview-city,
+.stay-stat-card span,
+.stay-candidate-row span,
+.stay-info-item span {
+  color: rgba(145, 120, 108, 0.95);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body[data-page="home"] .hero-subtitle,
+body[data-page="home"] .hero-dates,
+body[data-page="home"] .destinations,
+body[data-page="home"] .hero-intro,
+body[data-page="home"] .hero-serif-note,
+body[data-page="home"] .hero-summary-note {
+  max-width: 36ch;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+body[data-page="home"] .hero-subtitle {
+  margin-top: 0.6rem;
+  color: rgba(102, 85, 78, 0.92);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+body[data-page="home"] .hero-dates,
+body[data-page="home"] .destinations {
+  color: rgba(109, 95, 88, 0.92);
+}
+
+body[data-page="home"] .hero-intro {
+  color: rgba(80, 69, 65, 0.94);
+  font-size: 1.02rem;
+  line-height: 1.72;
+}
+
+body[data-page="home"] .hero-serif-note,
+body[data-page="home"] .hero-summary-note {
+  color: rgba(92, 81, 76, 0.9);
+  font-size: 0.98rem;
+  line-height: 1.76;
+}
+
+body[data-page="home"] .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.2rem;
+}
+
+body[data-page="home"] .hero-overview-head {
+  display: grid;
+  gap: 0.38rem;
+}
+
+body[data-page="home"] .hero-overview-head strong {
+  color: var(--handbook-text);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+body[data-page="home"] .hero-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+body[data-page="home"] .hero-fact {
+  min-width: 0;
+  padding: 16px 16px 15px;
+  border-radius: 22px;
+  border: 1px solid rgba(228, 217, 210, 0.68);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(251, 246, 242, 0.8));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+body[data-page="home"] .hero-fact span {
+  display: block;
+  color: rgba(145, 120, 108, 0.88);
+  font-size: 0.78rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+body[data-page="home"] .hero-fact strong {
+  display: block;
+  margin-top: 0.42rem;
+  color: rgba(84, 73, 68, 0.98);
+  font-size: 1rem;
+  line-height: 1.48;
+  overflow-wrap: anywhere;
+}
+
+.handbook-tabs-shell {
+  position: sticky;
+  top: calc(env(safe-area-inset-top) + 8px);
+  z-index: 34;
+  width: var(--guide-shell-wide);
+  max-width: 100%;
+  margin: 1.2rem auto 0;
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.handbook-tabs-shell::-webkit-scrollbar,
+.day-selector-bar::-webkit-scrollbar,
+.bottom-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.handbook-tabs-track,
+.day-selector-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.45rem;
+  overscroll-behavior-x: contain;
+}
+
+.handbook-tabs-track {
+  width: max-content;
+  min-width: 100%;
+  max-width: none;
+  padding: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(226, 214, 206, 0.72);
+  background: linear-gradient(180deg, rgba(255, 251, 247, 0.88), rgba(249, 242, 236, 0.76));
+  box-shadow: 0 12px 28px rgba(92, 79, 71, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.handbook-tab-link,
+.day-selector-link {
+  flex: 0 0 auto;
+  text-decoration: none;
+}
+
+.handbook-tab-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.78rem 1.05rem;
+  border-radius: 999px;
+  color: rgba(93, 77, 70, 0.92);
+  font-size: 0.96rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.handbook-tab-link.active,
+.handbook-tab-link:hover,
+.day-selector-link.active {
+  background: linear-gradient(135deg, #af8d7f 0%, #936f61 100%);
+  color: #fffaf4;
+  box-shadow: 0 14px 28px rgba(137, 105, 89, 0.14);
+}
+
+.home-tab-panels,
+.tab-panel-intro,
+.overview-editorial-block,
+.day-card-stack,
+.summary-grid,
+.paper-grid,
+.ticket-grid,
+.transfer-grid,
+.flight-grid,
+.note-grid,
+.shopping-grid,
+.link-grid,
+.checklist-grid,
+.reminder-grid,
+.first-note-grid,
+.map-layout,
+.route-ledger,
+.hotel-ledger,
+.link-ledger,
+.info-ledger,
+.budget-ledger,
+.visa-ledger,
+.stay-overview-grid,
+.stay-price-grid,
+.stay-candidate-grid-wrapper,
+.stay-warning-options,
+.stay-info-list,
+.stay-next-steps,
+.stay-spotlight-grid,
+.airport-grid,
+.day-flow-list,
+.pullman-summary-grid,
+.alert-card-grid,
+.timeline-list {
+  display: grid;
+  gap: var(--guide-gap);
+}
+
+.summary-grid:not(.two):not(.three),
+.paper-grid,
+.ticket-grid,
+.transfer-grid,
+.flight-grid,
+.note-grid,
+.shopping-grid,
+.link-grid,
+.checklist-grid,
+.reminder-grid,
+.first-note-grid,
+.alert-card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+.summary-grid.two,
+.budget-ledger,
+.info-ledger,
+.pullman-summary-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.summary-grid.three,
+.visa-ledger {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+:is(
+  .summary-grid,
+  .paper-grid,
+  .ticket-grid,
+  .transfer-grid,
+  .flight-grid,
+  .note-grid,
+  .shopping-grid,
+  .link-grid,
+  .checklist-grid,
+  .reminder-grid,
+  .first-note-grid,
+  .map-layout,
+  .route-ledger,
+  .hotel-ledger,
+  .info-ledger,
+  .budget-ledger,
+  .visa-ledger,
+  .stay-overview-grid,
+  .stay-price-grid,
+  .stay-candidate-grid-wrapper,
+  .stay-warning-options,
+  .stay-info-list,
+  .stay-next-steps,
+  .stay-spotlight-grid,
+  .airport-grid,
+  .day-card-stack,
+  .day-flow-list,
+  .pullman-summary-grid,
+  .alert-card-grid
+) > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.home-tab-panels {
+  width: var(--guide-shell-wide);
+  margin: 1.1rem auto 0;
+}
+
+.home-tab-panel[hidden] {
+  display: none !important;
+}
+
+.home-tab-panel-block,
+.day-card,
+.summary-card,
+.paper-card,
+.ticket-card,
+.transfer-card,
+.flight-card,
+.checklist-card,
+.reminder-card,
+.first-note-card,
+.shopping-card,
+.hotel-ledger-entry,
+.link-ledger-group,
+.route-ledger-entry,
+.info-ledger-block,
+.budget-ledger-block,
+.visa-ledger-entry,
+.english-overview-panel,
+.stay-overview-card,
+.stay-stat-card,
+.stay-candidate-card,
+.stay-warning-card,
+.functional-stay-note,
+.section-card,
+.page-intro-card,
+.alert-card {
+  min-width: 0;
+  border-radius: var(--guide-radius);
+  border: 1px solid var(--guide-border);
+  background: var(--guide-surface-strong);
+  box-shadow: var(--guide-shadow-soft);
+  overflow-wrap: anywhere;
+}
+
+.home-tab-panel-block {
+  padding: clamp(1.35rem, 2.2vw, 2rem);
+  overflow: hidden;
+}
+
+.tab-panel-intro {
+  gap: 0.7rem;
+}
+
+.tab-panel-intro .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.8rem;
+}
+
+.tab-panel-intro .section-label::before {
+  content: "";
+  width: 2.6rem;
+  height: 1px;
+  background: rgba(173, 152, 138, 0.8);
+}
+
+.tab-panel-intro h2 {
+  margin: 0;
+  font-size: clamp(1.85rem, 3.8vw, 2.7rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--handbook-text);
+}
+
+.tab-panel-intro p,
+.overview-editorial-block p,
+.snapshot-timeline-copy p,
+.hotel-ledger-entry p,
+.route-ledger-entry p,
+.info-ledger-block p,
+.visa-ledger-entry p,
+.english-overview-panel p,
+.stay-overview-card p,
+.stay-stat-card p,
+.stay-warning-card p,
+.functional-stay-note p,
+.day-description,
+.day-note,
+.day-flow-row p,
+.detail-content {
+  margin: 0;
+  max-width: 62ch;
+  color: rgba(79, 71, 68, 0.92);
+  font-size: 1rem;
+  line-height: 1.74;
+}
+
+.handbook-overview-layout.compact {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.handbook-overview-copy {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.handbook-overview-copy p {
+  margin: 0;
+  color: rgba(82, 73, 69, 0.92);
+  line-height: 1.72;
+}
+
+.handbook-route-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 0.25rem;
+  color: rgba(90, 78, 71, 0.96);
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.handbook-route-line i {
+  display: block;
+  width: 1.55rem;
+  height: 1px;
+  background: rgba(161, 132, 118, 0.7);
+}
+
+.handbook-summary-panel {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.handbook-summary-row {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.9rem 1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(228, 217, 210, 0.68);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(251, 246, 242, 0.8));
+}
+
+.handbook-summary-row span {
+  color: rgba(145, 120, 108, 0.88);
+  font-size: 0.78rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.handbook-summary-row strong {
+  color: rgba(84, 73, 68, 0.98);
+  font-size: 1rem;
+  line-height: 1.48;
+}
+
+.handbook-summary-note {
+  padding-top: 0.25rem;
+}
+
+.handbook-toc {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.handbook-toc-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: center;
+  min-height: 54px;
+  padding: 0.9rem 1rem;
+  border-radius: 22px;
+  border: 1px solid rgba(223, 211, 203, 0.76);
+  background: rgba(255, 248, 243, 0.84);
+  color: rgba(88, 75, 70, 0.92);
+  text-decoration: none;
+}
+
+.handbook-toc-index {
+  color: rgba(151, 120, 106, 0.95);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.snapshot-timeline {
+  gap: 1rem;
+}
+
+.snapshot-timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 1rem;
+  padding-left: 0.2rem;
+}
+
+.snapshot-timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 91px;
+  top: 0.25rem;
+  bottom: -1rem;
+  width: 1px;
+  background: rgba(203, 186, 174, 0.8);
+}
+
+.snapshot-timeline-item:last-child::before {
+  bottom: 0.85rem;
+}
+
+.snapshot-timeline-date {
+  color: rgba(145, 120, 108, 0.95);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.snapshot-timeline-copy {
+  position: relative;
+  display: grid;
+  gap: 0.35rem;
+  padding-bottom: 1rem;
+}
+
+.snapshot-timeline-copy::before {
+  content: "";
+  position: absolute;
+  left: -1.22rem;
+  top: 0.22rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(165, 135, 121, 0.9);
+  box-shadow: 0 0 0 6px rgba(244, 235, 228, 0.95);
+}
+
+.snapshot-timeline-copy h3,
+.overview-editorial-block h3,
+.hotel-ledger-head h3,
+.route-ledger-entry h3,
+.stay-overview-card h3,
+.stay-candidate-head h3,
+.stay-warning-head h3,
+.day-flow h3 {
+  margin: 0;
+  color: var(--handbook-text);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.day-selector-bar {
+  padding: 0 0 0.35rem;
+  overflow-x: auto;
+}
+
+.day-selector-link {
+  display: grid;
+  gap: 0.18rem;
+  min-width: 100px;
+  padding: 0.88rem 0.95rem;
+  border-radius: 22px;
+  border: 1px solid rgba(217, 205, 196, 0.82);
+  background: rgba(255, 251, 247, 0.76);
+  color: rgba(83, 75, 73, 0.9);
+  box-shadow: var(--guide-shadow-soft);
+}
+
+.day-selector-link span {
+  color: rgba(126, 113, 105, 0.82);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.day-selector-link strong {
+  color: var(--handbook-text);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.day-card {
+  padding: 1.8rem 1.75rem;
+  scroll-margin-top: 128px;
+  box-shadow: 0 20px 44px rgba(100, 79, 68, 0.08);
+}
+
+.day-card-topline,
+.stay-overview-card-head,
+.stay-candidate-head,
+.stay-warning-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.day-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.62rem 1rem;
+  border-radius: 999px;
+  background: rgba(165, 135, 121, 0.14);
+  color: rgba(122, 89, 80, 0.96);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.day-location {
+  margin-top: 0.75rem;
+  color: rgba(101, 88, 81, 0.92);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.day-tags,
+.stay-area-chip-cloud,
+.paris-feature-chips,
+.paris-mustdo-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.day-tags {
+  margin-top: 1rem;
+}
+
+.day-tags span,
+.stay-area-chip-cloud span,
+.paris-feature-chips span,
+.paris-mustdo-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0.38rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(244, 235, 228, 0.95);
+  color: rgba(103, 87, 79, 0.92);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.day-kicker {
+  margin: 1.2rem 0 0;
+  font-size: 0.9rem;
+}
+
+.day-title {
+  margin: 0.55rem 0 0;
+  color: var(--handbook-text);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.day-note,
+.hotel-feature-note,
+.paris-spotlight-note,
+.functional-stay-note {
+  padding: 0.9rem 1rem;
+  border-radius: 24px;
+  background: rgba(246, 238, 231, 0.95);
+  border: 1px solid rgba(219, 206, 197, 0.72);
+  color: rgba(91, 80, 75, 0.9);
+  line-height: 1.68;
+}
+
+.day-note {
+  margin-top: 1.2rem;
+}
+
+.day-visual,
+.stay-card-image-wrap,
+.candidate-image-wrap,
+.paris-spotlight-photo-wrap,
+.image-card,
+.photo-card,
+.hero-image,
+.card-image {
+  overflow: hidden;
+}
+
+.day-visual {
+  margin-top: 1.2rem;
+  border-radius: 24px;
+  border: 1px solid rgba(223, 214, 207, 0.72);
+  background: rgba(255, 248, 243, 0.84);
+  box-shadow: 0 12px 28px rgba(103, 83, 72, 0.08);
+}
+
+.day-visual img,
+.stay-card-image,
+.candidate-image,
+.paris-spotlight-photo,
+.image-card img,
+.photo-card img,
+.hero-image img,
+.card-image img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.day-visual img {
+  aspect-ratio: 16 / 10;
+}
+
+.day-visual-caption {
+  padding: 0.85rem 1rem 0.95rem;
+  color: rgba(100, 88, 80, 0.86);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.day-flow {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.day-flow-list,
+.stay-candidate-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.day-flow-row,
+.stay-candidate-row {
+  display: grid;
+  gap: 0.4rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(222, 212, 206, 0.72);
+}
+
+.day-flow-row:first-child,
+.stay-candidate-row:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.day-details {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.35rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(222, 212, 206, 0.74);
+}
+
+.detail-row {
+  display: grid;
+  grid-template-columns: minmax(96px, 112px) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.hotel-ledger-entry,
+.link-ledger-group,
+.route-ledger-entry,
+.info-ledger-block,
+.budget-ledger-block,
+.visa-ledger-entry,
+.english-overview-panel,
+.stay-overview-card,
+.stay-stat-card,
+.stay-candidate-card,
+.functional-stay-note,
+.stay-warning-card {
+  padding: 1.2rem 1.2rem 1.15rem;
+}
+
+.hotel-ledger-entry.featured,
+.functional-stay-card {
+  background: linear-gradient(180deg, rgba(255, 250, 243, 0.99), rgba(247, 238, 230, 0.94));
+  border-color: rgba(214, 198, 188, 0.84);
+}
+
+.hotel-ledger-head,
+.route-ledger-entry,
+.info-ledger-block,
+.visa-ledger-entry,
+.stay-card-top,
+.stay-side,
+.paris-spotlight-body,
+.paris-spotlight-side {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.link-ledger-list,
+.budget-ledger-rows {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+.link-ledger-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 46px;
+  padding: 0.9rem 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(226, 214, 205, 0.75);
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(250, 244, 239, 0.88));
+  color: rgba(81, 70, 66, 0.94);
+  text-decoration: none;
+}
+
+.link-ledger-row strong {
+  color: rgba(156, 127, 112, 0.98);
+  font-size: 0.84rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.budget-ledger-row {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid rgba(223, 214, 207, 0.75);
+}
+
+.budget-ledger-row:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.budget-ledger-row strong {
+  display: block;
+  max-width: 65%;
+  font-weight: 600;
+  color: var(--handbook-text);
+}
+
+.budget-ledger-row span {
+  text-align: right;
+}
+
+.route {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+}
+
+.route > div {
+  min-width: 0;
+}
+
+.route b,
+.route span,
+.route .line {
+  overflow-wrap: anywhere;
+}
+
+.route .line {
+  text-align: center;
+}
+
+body[data-page="stay"] .desktop-page-shell {
+  width: var(--guide-shell-wide);
+  max-width: 1180px;
+}
+
+body[data-page="stay"] .section {
+  scroll-margin-top: 124px;
+}
+
+body[data-page="stay"] .section-card h2,
+body[data-page="stay"] .section-card p,
+body[data-page="stay"] .stay-card-local,
+body[data-page="stay"] .stay-card-note {
+  overflow-wrap: anywhere;
+}
+
+body[data-page="stay"] .stay-overview-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+body[data-page="stay"] .stay-spotlight-grid,
+body[data-page="stay"] .airport-grid {
+  grid-template-columns: minmax(0, 1.06fr) minmax(300px, 0.94fr);
+  align-items: start;
+}
+
+body[data-page="stay"] .stay-price-grid,
+body[data-page="stay"] .pullman-summary-grid,
+body[data-page="stay"] .stay-info-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body[data-page="stay"] .stay-candidate-grid-wrapper,
+body[data-page="stay"] .stay-warning-options {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+body[data-page="stay"] .stay-next-steps {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: stay-steps;
+}
+
+body[data-page="stay"] .stay-next-steps li {
+  position: relative;
+  padding: 1.15rem 1.15rem 1.1rem 4rem;
+}
+
+body[data-page="stay"] .stay-next-steps li::before {
+  counter-increment: stay-steps;
+  content: counter(stay-steps, decimal-leading-zero);
+  position: absolute;
+  left: 1.1rem;
+  top: 1.08rem;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(165, 135, 121, 0.12);
+  color: rgba(122, 89, 80, 0.96);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(env(safe-area-inset-bottom) + 12px);
+  z-index: 38;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 0.35rem;
+  width: min(calc(100% - 24px), 420px);
+  padding: 0.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(226, 214, 206, 0.72);
+  background: rgba(255, 251, 247, 0.84);
+  box-shadow: 0 12px 28px rgba(92, 79, 71, 0.08);
+  backdrop-filter: blur(14px);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bottom-nav-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.72rem 0.85rem;
+  border-radius: 999px;
+  color: rgba(93, 77, 70, 0.92);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.bottom-nav-item.active {
+  background: linear-gradient(135deg, #af8d7f 0%, #936f61 100%);
+  color: #fffaf4;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 16px;
+  bottom: calc(env(safe-area-inset-bottom) + 110px);
+  z-index: 36;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  border: 1px solid rgba(226, 214, 206, 0.72);
+  background: rgba(255, 251, 247, 0.9);
+  box-shadow: var(--guide-shadow-soft);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-tab-panel-block,
+  .day-card,
+  .hotel-ledger-entry,
+  .route-ledger-entry,
+  .info-ledger-block,
+  .budget-ledger-block,
+  .visa-ledger-entry,
+  .shopping-card,
+  .link-ledger-group,
+  .summary-card,
+  .stay-overview-card,
+  .stay-stat-card,
+  .stay-candidate-card,
+  .stay-warning-card {
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  }
+
+  .home-tab-panel-block:hover,
+  .day-card:hover,
+  .hotel-ledger-entry:hover,
+  .route-ledger-entry:hover,
+  .info-ledger-block:hover,
+  .budget-ledger-block:hover,
+  .visa-ledger-entry:hover,
+  .shopping-card:hover,
+  .link-ledger-group:hover,
+  .summary-card:hover,
+  .stay-overview-card:hover,
+  .stay-stat-card:hover,
+  .stay-candidate-card:hover,
+  .stay-warning-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 42px rgba(98, 78, 67, 0.09);
+    border-color: rgba(205, 186, 174, 0.88);
+  }
+}
+
+@media (max-width: 1120px) {
+  body[data-page="home"] .hero-home-shell.hero-content,
+  .handbook-overview-layout.compact,
+  body[data-page="stay"] .stay-spotlight-grid,
+  body[data-page="stay"] .airport-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body[data-page="home"] .hero-overview-grid,
+  body[data-page="stay"] .stay-overview-grid,
+  body[data-page="stay"] .stay-price-grid,
+  body[data-page="stay"] .pullman-summary-grid,
+  body[data-page="stay"] .stay-info-list,
+  body[data-page="stay"] .stay-candidate-grid-wrapper,
+  body[data-page="stay"] .stay-warning-options,
+  body[data-page="stay"] .stay-next-steps,
+  .budget-ledger,
+  .info-ledger,
+  .visa-ledger {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  body[data-page="home"] .topbar.handbook-topbar.home-toolbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body[data-page="home"] .home-toolbar-actions {
+    justify-content: stretch;
+  }
+
+  body[data-page="home"] .compact-home-dock {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body[data-page="home"] .hero-home-shell.hero-content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 820px) {
+  body[data-page="home"] .hero {
+    padding: 18px 0 48px;
+  }
+
+  body[data-page="home"] .hero > [data-site-header],
+  body[data-page="home"] .hero > [data-page-hero],
+  body[data-page="home"] #page-content,
+  body[data-page="home"] [data-site-footer],
+  body[data-page]:not([data-page="home"]) .topbar.handbook-topbar,
+  body[data-page]:not([data-page="home"]) .main-nav.handbook-main-nav,
+  body[data-page]:not([data-page="home"]) .desktop-page-shell,
+  body[data-page]:not([data-page="home"]) [data-site-footer] {
+    width: min(calc(100% - 28px), 820px);
+  }
+
+  .topbar.handbook-topbar:not(.home-toolbar) {
+    gap: 0.9rem;
+  }
+
+  .control-dock {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 100%;
+  }
+
+  .main-nav.handbook-main-nav {
+    padding: 0.35rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .summary-grid,
+  .summary-grid.two,
+  .summary-grid.three,
+  .paper-grid,
+  .ticket-grid,
+  .transfer-grid,
+  .flight-grid,
+  .note-grid,
+  .shopping-grid,
+  .link-grid,
+  .checklist-grid,
+  .reminder-grid,
+  .first-note-grid,
+  .budget-ledger,
+  .info-ledger,
+  .visa-ledger,
+  .route-ledger,
+  .hotel-ledger,
+  .alert-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-page="home"] .hero-home-shell.hero-content {
+    padding: 14px;
+    border-radius: 30px;
+    box-shadow: 0 18px 38px rgba(82, 64, 56, 0.12);
+  }
+
+  body[data-page="home"] .hero-home-main,
+  body[data-page="home"] .hero-overview-panel {
+    border-radius: 24px;
+  }
+
+  body[data-page="home"] .hero-home-main {
+    padding: 22px 20px;
+  }
+
+  body[data-page="home"] .hero-overview-panel {
+    padding: 18px 18px 16px;
+  }
+
+  body[data-page="home"] .hero-overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .handbook-tabs-shell {
+    width: calc(100% - 28px);
+    margin-top: 1rem;
+  }
+
+  .handbook-tabs-track {
+    gap: 0.35rem;
+    padding: 0.4rem;
+    box-shadow: 0 8px 18px rgba(92, 79, 71, 0.06);
+    backdrop-filter: blur(10px);
+  }
+
+  .handbook-tab-link {
+    padding: 0.72rem 0.95rem;
+    font-size: 0.95rem;
+  }
+
+  .home-tab-panels {
+    width: calc(100% - 28px);
+    gap: 1.35rem;
+  }
+
+  .home-tab-panel-block,
+  .day-card {
+    border-radius: 28px;
+  }
+
+  .home-tab-panel-block {
+    padding: 1.45rem 1.25rem;
+  }
+
+  .tab-panel-intro h2 {
+    font-size: clamp(1.85rem, 7vw, 2.55rem);
+  }
+
+  body[data-page="home"] .handbook-home-hero h1 {
+    max-width: none;
+    font-size: clamp(2.7rem, 11vw, 4.2rem);
+  }
+
+  .handbook-toc,
+  .snapshot-timeline-item,
+  .route,
+  .detail-row {
+    grid-template-columns: 1fr;
+  }
+
+  .snapshot-timeline-item {
+    gap: 0.45rem;
+    padding-left: 0;
+  }
+
+  .snapshot-timeline-item::before {
+    left: 0.25rem;
+    top: 1.7rem;
+    bottom: -0.5rem;
+  }
+
+  .snapshot-timeline-copy {
+    padding-left: 1.2rem;
+  }
+
+  .snapshot-timeline-copy::before {
+    left: 0;
+    top: 0.25rem;
+  }
+
+  .day-card {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .day-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .day-description,
+  .day-note,
+  .day-flow-row p,
+  .detail-content,
+  .tab-panel-intro p,
+  .hotel-ledger-entry p,
+  .route-ledger-entry p,
+  .info-ledger-block p,
+  .visa-ledger-entry p,
+  .english-overview-panel p {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .hotel-ledger-entry,
+  .link-ledger-group,
+  .route-ledger-entry,
+  .info-ledger-block,
+  .budget-ledger-block,
+  .visa-ledger-entry,
+  .english-overview-panel,
+  .stay-overview-card,
+  .stay-stat-card,
+  .stay-candidate-card,
+  .functional-stay-note,
+  .stay-warning-card {
+    padding: 1.1rem 1rem;
+    border-radius: 22px;
+  }
+
+  .day-visual {
+    border-radius: 20px;
+  }
+
+  .bottom-nav {
+    width: min(calc(100% - 24px), 420px);
+    padding: 0.3rem;
+  }
+}
+
+@media (max-width: 430px) {
+  body[data-page="home"] main {
+    padding-bottom: calc(172px + env(safe-area-inset-bottom));
+  }
+
+  body[data-page="home"] .hero > [data-site-header],
+  body[data-page="home"] .hero > [data-page-hero],
+  body[data-page="home"] #page-content,
+  body[data-page="home"] [data-site-footer],
+  body[data-page]:not([data-page="home"]) .topbar.handbook-topbar,
+  body[data-page]:not([data-page="home"]) .main-nav.handbook-main-nav,
+  body[data-page]:not([data-page="home"]) .desktop-page-shell,
+  body[data-page]:not([data-page="home"]) [data-site-footer] {
+    width: calc(100% - 24px);
+  }
+
+  body[data-page="home"] .compact-home-dock {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    border-radius: 22px;
+  }
+
+  .handbook-tabs-shell {
+    width: calc(100% - 24px);
+  }
+
+  .handbook-tab-link {
+    padding: 0.74rem 0.88rem;
+    font-size: 0.93rem;
+  }
+
+  .day-card {
+    padding: 1.62rem 1.32rem;
+    border-radius: 30px;
+  }
+
+  .day-tags span,
+  .stay-area-chip-cloud span,
+  .paris-feature-chips span,
+  .paris-mustdo-tags span {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .day-card {
+    padding: 1.5rem 1.15rem;
+    border-radius: 28px;
+  }
+
+  .day-title {
+    font-size: clamp(1.88rem, 8vw, 2.6rem);
+  }
+}
+
+@media (min-width: 761px) {
+  .bottom-nav {
+    display: none;
+  }
+
+  .back-to-top {
+    right: 24px;
+    bottom: 24px;
+  }
+}
+
+/* Final handbook stabilization pass */
+.container {
+  width: min(1120px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+body[data-page] :where(
+  .hero-home-shell.hero-content,
+  .hero-home-main,
+  .hero-overview-panel,
+  .home-toolbar-actions,
+  .handbook-tabs-shell,
+  .handbook-tabs-track,
+  .home-tab-panels,
+  .home-tab-panel,
+  .home-tab-panel-block,
+  .desktop-page-shell,
+  .desktop-page-main,
+  .section-card,
+  .summary-card,
+  .paper-card,
+  .ticket-card,
+  .transfer-card,
+  .flight-card,
+  .hotel-ledger-entry,
+  .route-ledger-entry,
+  .info-ledger-block,
+  .budget-ledger-block,
+  .visa-ledger-entry,
+  .link-ledger-group,
+  .day-card,
+  .stay-card-rich,
+  .stay-overview-card,
+  .stay-stat-card,
+  .stay-candidate-card,
+  .stay-warning-card,
+  .functional-stay-note,
+  .checklist-card,
+  .reminder-card,
+  .first-note-card
+) {
+  min-width: 0;
+  max-width: 100%;
+}
+
+body[data-page] :where(
+  .summary-card,
+  .paper-card,
+  .ticket-card,
+  .transfer-card,
+  .flight-card,
+  .hotel-ledger-entry,
+  .route-ledger-entry,
+  .info-ledger-block,
+  .budget-ledger-block,
+  .visa-ledger-entry,
+  .link-ledger-group,
+  .day-card,
+  .stay-card-rich,
+  .stay-overview-card,
+  .stay-stat-card,
+  .stay-candidate-card,
+  .stay-warning-card,
+  .functional-stay-note,
+  .checklist-card,
+  .reminder-card,
+  .first-note-card,
+  .detail-content,
+  .meta-pill,
+  .hero-fact,
+  .hero-overview-head strong
+) {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+body[data-page] :where(
+  .summary-grid,
+  .paper-grid,
+  .ticket-grid,
+  .transfer-grid,
+  .flight-grid,
+  .note-grid,
+  .shopping-grid,
+  .link-grid,
+  .checklist-grid,
+  .reminder-grid,
+  .first-note-grid,
+  .route-ledger,
+  .hotel-ledger,
+  .info-ledger,
+  .budget-ledger,
+  .visa-ledger,
+  .stay-overview-grid,
+  .stay-price-grid,
+  .stay-candidate-grid-wrapper,
+  .stay-warning-options,
+  .stay-info-list,
+  .stay-next-steps,
+  .stay-spotlight-grid,
+  .airport-grid,
+  .guide-meta-row,
+  .guide-detail-grid,
+  .day-card-stack
+) > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+body[data-page="home"] .home-toolbar-actions {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+body[data-page="home"] :where(.handbook-tabs-shell, .day-selector-bar, .quick-nav) {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-inline: contain;
+}
+
+body[data-page="home"] .handbook-tabs-track,
+body[data-page="home"] .day-selector-bar {
+  width: max-content;
+  min-width: 100%;
+}
+
+body[data-page="home"] .handbook-tab-link,
+body[data-page] .day-selector-link,
+body[data-page] .quick-nav a,
+body[data-page] .main-nav .nav-item,
+body[data-page] .bottom-nav .bottom-nav-item {
+  min-height: 44px;
+}
+
+body[data-page="home"] .hero-home-shell.hero-content {
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  align-items: start;
+}
+
+body[data-page="home"] .hero-overview-panel {
+  justify-self: end;
+  width: 100%;
+  max-width: 420px;
+}
+
+body[data-page="home"] .tab-panel-intro p,
+body[data-page="home"] .home-tab-panel-block p,
+body[data-page="stay"] .lead,
+body[data-page="conference"] .section-card p,
+body[data-page="transport"] .section-card p,
+body[data-page="reminders"] .reminder-card p {
+  max-width: 62ch;
+}
+
+@media (min-width: 1024px) {
+  body[data-page="home"] .topbar.handbook-topbar.home-toolbar,
+  body[data-page="home"] .hero-home-shell.hero-content,
+  body[data-page="home"] .handbook-tabs-shell,
+  body[data-page="home"] .home-tab-panels,
+  body[data-page="home"] [data-site-footer],
+  body[data-page="stay"] .desktop-page-shell {
+    width: min(100% - 48px, 1180px);
+    max-width: 1180px;
+    margin-inline: auto;
+  }
+
+  body[data-page="home"] .topbar.handbook-topbar.home-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 20px;
+  }
+
+  body[data-page="home"] .handbook-brand {
+    max-width: 360px;
+  }
+
+  body[data-page="home"] .compact-home-dock {
+    width: min(100%, 420px);
+    margin-left: auto;
+  }
+
+  body[data-page="home"] .handbook-tabs-shell {
+    margin: 28px auto 0;
+    padding-inline: 0;
+  }
+
+  body[data-page="home"] .handbook-tabs-track {
+    min-width: 0;
+    margin-inline: auto;
+    justify-content: center;
+  }
+
+  body[data-page="home"] .hero-overview-grid,
+  body[data-page="home"] .hero-signal-strip,
+  body[data-page="home"] .summary-grid.two,
+  body[data-page="stay"] .stay-price-grid,
+  body[data-page="stay"] .pullman-summary-grid,
+  body[data-page="stay"] .stay-info-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="home"] .info-ledger,
+  body[data-page="home"] .budget-ledger,
+  body[data-page="stay"] .stay-next-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-page="home"] .visa-ledger,
+  body[data-page="stay"] .stay-candidate-grid-wrapper,
+  body[data-page="stay"] .stay-warning-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  body[data-page="stay"] .stay-overview-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  body[data-page="stay"] .stay-spotlight-grid,
+  body[data-page="stay"] .airport-grid {
+    grid-template-columns: minmax(0, 1.06fr) minmax(300px, 0.94fr);
+  }
+}
+
+@media (max-width: 900px) {
+  body[data-page="home"] .topbar.handbook-topbar.home-toolbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body[data-page="home"] .home-toolbar-actions {
+    width: 100%;
+  }
+
+  body[data-page="home"] .compact-home-dock {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body[data-page="home"] .hero-home-shell.hero-content {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  body[data-page="home"] .hero-overview-panel {
+    max-width: none;
+    justify-self: stretch;
+  }
+}
