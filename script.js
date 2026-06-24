@@ -1,3 +1,5 @@
+const siteBuildStamp = "2026-06-25-riu-london-refresh";
+
 const pages = [
   { id: "home", label: { zh: "總覽", en: "Overview", fr: "Aperçu", de: "Überblick" }, href: "./index.html" },
   { id: "conference", label: { zh: "會議", en: "Conference", fr: "Conférence", de: "Konferenz" }, href: "./conference.html" },
