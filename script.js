@@ -238,14 +238,14 @@ const tripData = {
     {
       status: "confirmed",
       type: "Competitive / paper summary",
-      title: "Legitimacy-First Innovation: How Emerging Technology Firms Construct Mainstream Pathways under Institutional Ambiguity",
-      summary: { zh: "這篇研究在看新興科技公司碰到制度不明、監管分散、外界又還不太信任時，怎麼一步一步把自己放進主流市場。文章以 cryptocurrency 和 blockchain ventures 為脈絡，整理企業怎麼靠 regulatory alignment、institutional bridging 和 ecosystem orchestration，把原本有爭議的新技術推進更穩的位置。", en: "This paper examines how emerging technology firms build legitimacy before mainstream adoption under institutional ambiguity, fragmented regulation, and public skepticism. Using cryptocurrency and blockchain ventures as the context, it explains how regulatory alignment, institutional bridging, and ecosystem orchestration help turn contested technologies into accepted market pathways." }
+      title: "Signal or Noise? Maturity-Adjusted Technical Disclosure and Multi-Stage Startup Funding Decisions",
+      summary: { zh: "這篇研究在看早期科技新創怎麼用技術揭露讓投資人感覺到它的能力和可信度。文章使用 Gartner Hype Cycle 加權的技術揭露指標和 Heckman two-stage framework，把投資人的前段篩選和後段資金配置分開來看，也更清楚看出什麼時候技術敘事會被當成有效訊號，而不是噪音。", en: "This paper analyzes how early-stage technology startups use technical disclosure to signal capability and credibility to investors. It develops a Gartner Hype Cycle-weighted disclosure measure and uses a Heckman two-stage framework to distinguish initial investor screening from later capital allocation." }
     },
     {
       status: "confirmed",
       type: "Interactive / paper summary",
-      title: "Signal or Noise? Maturity-Adjusted Technical Disclosure and Multi-Stage Startup Funding Decisions",
-      summary: { zh: "這篇研究在看早期科技新創怎麼用技術揭露讓投資人感覺到它的能力和可信度。文章使用 Gartner Hype Cycle 加權的技術揭露指標和 Heckman two-stage framework，把投資人的前段篩選和後段資金配置分開來看，也更清楚看出什麼時候技術敘事會被當成有效訊號，而不是噪音。", en: "This paper analyzes how early-stage technology startups use technical disclosure to signal capability and credibility to investors. It develops a Gartner Hype Cycle-weighted disclosure measure and uses a Heckman two-stage framework to distinguish initial investor screening from later capital allocation." }
+      title: "Legitimacy-First Innovation: How Emerging Technology Firms Construct Mainstream Pathways under Institutional Ambiguity",
+      summary: { zh: "這篇研究在看新興科技公司碰到制度不明、監管分散、外界又還不太信任時，怎麼一步一步把自己放進主流市場。文章以 cryptocurrency 和 blockchain ventures 為脈絡，整理企業怎麼靠 regulatory alignment、institutional bridging 和 ecosystem orchestration，把原本有爭議的新技術推進更穩的位置。", en: "This paper examines how emerging technology firms build legitimacy before mainstream adoption under institutional ambiguity, fragmented regulation, and public skepticism. Using cryptocurrency and blockchain ventures as the context, it explains how regulatory alignment, institutional bridging, and ecosystem orchestration help turn contested technologies into accepted market pathways." }
     }
   ],
   flights: [
@@ -837,14 +837,14 @@ const dashboardData = {
     { status: "confirmed", title: { zh: "會議期間", en: "Conference period" }, value: "2026/06/29 - 2026/07/03", note: { zh: "Manchester", en: "Manchester" } },
     { status: "confirmed", title: { zh: "註冊狀態", en: "Registration" }, value: "US$325", note: { zh: "付款完成", en: "Paid" } },
     { status: "confirmed", title: { zh: "接受函", en: "Acceptance letters" }, value: { zh: "2 份", en: "2 files" }, note: { zh: "可作會議證明", en: "Saved for conference proof" } },
-    { status: "confirmed", title: { zh: "已確認場次", en: "Confirmed session" }, value: { zh: "Competitive 發表時段已出來", en: "Competitive slot confirmed" }, note: { zh: "15:15-16:30 · Room 3.006B (AMBS)", en: "15:15-16:30 · Room 3.006B (AMBS)" } }
+    { status: "confirmed", title: { zh: "兩場發表", en: "Both sessions" }, value: { zh: "時間和地點都已確認", en: "Time and room confirmed" }, note: { zh: "7/1 15:15-16:30 · 3.006B (AMBS) ／ 7/3 09:30-10:45 · 2217 (UP)", en: "1 Jul 15:15-16:30 · 3.006B (AMBS) / 3 Jul 09:30-10:45 · 2217 (UP)" } }
   ],
   conferenceTimeline: [
     { date: "6/29", title: { zh: "預備日", en: "Preparation day" }, note: { zh: "抵達與會前安排。", en: "Arrival and pre-conference setup." } },
     { date: "6/30", title: { zh: "開幕日", en: "Opening day" }, note: { zh: "會前活動、開幕與 reception。", en: "Pre-conference events, opening, and reception." } },
     { date: "7/1 - 7/3", title: { zh: "主會議", en: "Main conference" }, note: { zh: "平行場次、交流與收據整理。", en: "Sessions, networking, and receipt tracking." } },
-    { date: "15:15 - 16:30", title: { zh: "Competitive 發表時段", en: "Competitive presentation slot" }, note: { zh: "Session 3.4.11 · Track 4 · Room 3.006B (AMBS)", en: "Session 3.4.11 · Track 4 · Room 3.006B (AMBS)" } },
-    { date: "09:30 - 10:45", title: { zh: "Interactive 發表時段", en: "Interactive presentation slot" }, note: { zh: "Session 5.1.20 · Track 4 · Room 2217 (UP)", en: "Session 5.1.20 · Track 4 · Room 2217 (UP)" } }
+    { date: "7/1 · 15:15 - 16:30", title: { zh: "Competitive 發表時段", en: "Competitive presentation slot" }, note: { zh: "Session 3.4.11 · Strategic Intellectual Property in Cross-Border Activities · 3.006B (AMBS)", en: "Session 3.4.11 · Strategic Intellectual Property in Cross-Border Activities · 3.006B (AMBS)" } },
+    { date: "7/3 · 09:30 - 10:45", title: { zh: "Interactive 發表時段", en: "Interactive presentation slot" }, note: { zh: "Session 5.1.20 · Legitimacy, Status, and Institutional Alignment in Global Strategy · 2217 (UP)", en: "Session 5.1.20 · Legitimacy, Status, and Institutional Alignment in Global Strategy · 2217 (UP)" } }
   ],
   documentChecklist: [
     { status: "confirmed", title: { zh: "接受函", en: "Acceptance letters" }, note: { zh: "兩份接受函可作會議證明。", en: "Two acceptance letters saved for conference proof." } },
@@ -1065,7 +1065,7 @@ const dailyGuides = [
       { label: { zh: "下午｜確認發表資料", en: "Afternoon" }, text: { zh: "下午再把簡報、講稿和進場順序看一次。", en: "Use the afternoon to double-check slides, notes, and the flow into the presentation." } },
       { label: { zh: "夜晚｜休息", en: "Evening" }, text: { zh: "晚上不要硬排景點，回飯店整理就好。", en: "Do not force extra sightseeing into the evening; keep it for rest and reset." } }
     ],
-    notes: ["如果這天還有發表準備，就把其他活動再減一點。", "會議這幾天最重要的是把體力配好。"],
+    notes: ["Competitive 發表是 7/1 15:15-16:30，在 Session 3.4.11、Room 3.006B (AMBS)。", "這天如果還有發表準備，就把其他活動再減一點。"],
     tickets: ["仍以會議安排為主。"]
   },
   {
@@ -1082,7 +1082,7 @@ const dailyGuides = [
       { label: { zh: "下午｜最後交流", en: "Afternoon" }, text: { zh: "下午把最後幾場和最後幾個人聊完，就差不多了。", en: "Use the afternoon for the final conversations and the last pieces of the conference." } },
       { label: { zh: "夜晚｜收行李", en: "Evening" }, text: { zh: "晚上把文件、票券和明天去倫敦的東西整理好。", en: "Get documents, tickets, and the London transfer ready before bed." } }
     ],
-    notes: ["Interactive 發表已確認為 7/3 09:30-10:45，Room 2217 (UP)。", "今天也適合把會議相關文件再整理一次。"],
+    notes: ["Interactive 發表已確認為 7/3 09:30-10:45，在 Session 5.1.20、Room 2217 (UP)。", "今天也適合把會議相關文件再整理一次。"],
     tickets: ["會議日不另外安排門票行程。"]
   },
   {
@@ -1345,9 +1345,11 @@ const paperCards = [
     coauthor: { zh: "共同作者資訊請見私人筆記", en: "Coauthor details are kept in private notes" },
     schedule: [
       { label: { zh: "場次", en: "Session" }, value: { zh: "Session 3.4.11", en: "Session 3.4.11" } },
+      { label: { zh: "Session 主題", en: "Session title" }, value: { zh: "Strategic Intellectual Property in Cross-Border Activities (Session# 260411)", en: "Strategic Intellectual Property in Cross-Border Activities (Session# 260411)" } },
       { label: { zh: "主題軌", en: "Track" }, value: { zh: "Track 4. Global Strategy and Organization", en: "Track 4. Global Strategy and Organization" } },
       { label: { zh: "時間", en: "Time" }, value: "15:15-16:30" },
-      { label: { zh: "地點", en: "Room" }, value: "3.006B (AMBS)" }
+      { label: { zh: "地點", en: "Room" }, value: "3.006B (AMBS)" },
+      { label: { zh: "Paper ID", en: "Paper ID" }, value: "ID# 568" }
     ],
     checklist: {
       zh: ["確認 session 時間", "整理簡報版本", "準備口頭講稿", "留一份紙本備用"],
@@ -1366,9 +1368,11 @@ const paperCards = [
     coauthor: { zh: "共同作者資訊請見私人筆記", en: "Coauthor details are kept in private notes" },
     schedule: [
       { label: { zh: "場次", en: "Session" }, value: { zh: "Session 5.1.20", en: "Session 5.1.20" } },
+      { label: { zh: "Session 主題", en: "Session title" }, value: { zh: "Legitimacy, Status, and Institutional Alignment in Global Strategy (Session# 260457)", en: "Legitimacy, Status, and Institutional Alignment in Global Strategy (Session# 260457)" } },
       { label: { zh: "主題軌", en: "Track" }, value: { zh: "Track 4. Global Strategy and Organization", en: "Track 4. Global Strategy and Organization" } },
       { label: { zh: "時間", en: "Time" }, value: "09:30-10:45" },
-      { label: { zh: "地點", en: "Room" }, value: "2217 (UP)" }
+      { label: { zh: "地點", en: "Room" }, value: "2217 (UP)" },
+      { label: { zh: "Paper ID", en: "Paper ID" }, value: "ID# 1477" }
     ],
     checklist: {
       zh: ["確認互動展示形式", "整理簡報或海報內容", "準備簡短說明版本", "確認現場列印需求"],
@@ -2271,8 +2275,8 @@ function renderHomeOverviewPanel() {
         <h3>${state.lang !== "zh" ? "Keep the conference days clear." : "會議這幾天先顧好。"}</h3>
         <p>${state.lang !== "zh" ? "Both presentation sessions are confirmed. That means the Manchester part should stay simple: sessions first, transport second, sightseeing only if there is room." : "兩場發表都已確認，所以曼徹斯特這幾天不要再塞遠的景點。先把會議、交通和資料顧好就行。"} </p>
         <div class="meta-row">
-          <div class="meta-pill"><span>${state.lang !== "zh" ? "Competitive" : "Competitive"}</span><strong>15:15–16:30 · 3.006B</strong></div>
-          <div class="meta-pill"><span>${state.lang !== "zh" ? "Interactive" : "Interactive"}</span><strong>09:30–10:45 · 2217</strong></div>
+          <div class="meta-pill"><span>${state.lang !== "zh" ? "Competitive" : "Competitive"}</span><strong>7/1 · 15:15–16:30 · 3.006B</strong></div>
+          <div class="meta-pill"><span>${state.lang !== "zh" ? "Interactive" : "Interactive"}</span><strong>7/3 · 09:30–10:45 · 2217</strong></div>
         </div>
       </article>
     </section>
@@ -2517,7 +2521,7 @@ function renderHomeInfoPanel() {
         <section class="info-ledger-block">
           <span class="section-label">${state.lang !== "zh" ? "Conference overview" : "AIB 會議主段"}</span>
           <h3>${state.lang !== "zh" ? "Two confirmed presentations in Manchester" : "曼徹斯特兩場發表已確認"}</h3>
-          <p>${state.lang !== "zh" ? "Competitive Session 3.4.11 runs 15:15–16:30 in Room 3.006B (AMBS), while the Interactive Session 5.1.20 runs 09:30–10:45 in Room 2217 (UP)." : "Competitive Session 3.4.11 是 15:15–16:30，在 3.006B (AMBS)；Interactive Session 5.1.20 是 09:30–10:45，在 2217 (UP)。"} </p>
+          <p>${state.lang !== "zh" ? "Competitive is on 1 July, 15:15-16:30, in Session 3.4.11 at Room 3.006B (AMBS). Interactive is on 3 July, 09:30-10:45, in Session 5.1.20 at Room 2217 (UP)." : "Competitive 是 7/1 15:15-16:30，Session 3.4.11，地點在 3.006B (AMBS)；Interactive 是 7/3 09:30-10:45，Session 5.1.20，地點在 2217 (UP)。"} </p>
         </section>
         <section class="info-ledger-block">
           <span class="section-label">${state.lang !== "zh" ? "Transport notes" : "交通提醒"}</span>
