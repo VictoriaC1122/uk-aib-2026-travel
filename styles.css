@@ -17191,3 +17191,413 @@ body[data-page="home"] .compact-home-dock .pill-btn {
     font-size: 0.88rem;
   }
 }
+
+/* Travel handbook beauty pass */
+body[data-page] {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body[data-page="home"] .hero {
+  background-color: rgba(214, 197, 187, 0.46);
+  background-blend-mode: multiply;
+}
+
+body[data-page="home"] .topbar.handbook-topbar.home-toolbar {
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+body[data-page="home"] .handbook-brand {
+  display: inline-grid;
+  gap: 0.18rem;
+  padding: 0.25rem 0;
+  color: rgba(251, 246, 241, 0.96);
+  text-decoration: none;
+  text-shadow: 0 8px 24px rgba(46, 33, 28, 0.22);
+}
+
+body[data-page="home"] .handbook-brand span {
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+
+body[data-page="home"] .handbook-brand small {
+  font-size: 0.82rem;
+  color: rgba(255, 248, 241, 0.86);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+body[data-page="home"] .compact-home-dock {
+  background: linear-gradient(180deg, rgba(255, 250, 245, 0.78), rgba(249, 241, 234, 0.64));
+  border: 1px solid rgba(228, 216, 208, 0.74);
+  box-shadow: 0 18px 44px rgba(90, 73, 63, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+body[data-page="home"] .compact-home-row {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(251, 246, 242, 0.7));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+body[data-page="home"] .compact-home-dock .pill-btn {
+  border-color: rgba(220, 207, 198, 0.78);
+  background: rgba(255, 252, 248, 0.74);
+  color: rgba(93, 74, 67, 0.9);
+  box-shadow: none;
+}
+
+body[data-page="home"] .compact-home-dock .pill-btn.active {
+  background: linear-gradient(135deg, #af8d7f 0%, #8f6d60 100%);
+  color: #fffaf4;
+  border-color: transparent;
+  box-shadow: 0 14px 26px rgba(137, 105, 89, 0.16);
+}
+
+body[data-page="home"] .hero-home-shell.hero-content {
+  position: relative;
+  padding: clamp(16px, 2.2vw, 22px);
+  border-radius: 42px;
+  border: 1px solid rgba(230, 220, 213, 0.65);
+  background: linear-gradient(145deg, rgba(255, 251, 247, 0.62), rgba(238, 224, 216, 0.3));
+  box-shadow: 0 26px 64px rgba(84, 67, 58, 0.14);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+body[data-page="home"] .hero-home-shell.hero-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(255, 245, 232, 0.42), transparent 44%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 42%);
+  pointer-events: none;
+}
+
+body[data-page="home"] .hero-home-main,
+body[data-page="home"] .hero-overview-panel {
+  position: relative;
+  z-index: 1;
+  border-radius: 30px;
+  border: 1px solid rgba(232, 221, 214, 0.68);
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.95), rgba(248, 241, 236, 0.9));
+  box-shadow: 0 18px 40px rgba(94, 75, 66, 0.08);
+}
+
+body[data-page="home"] .hero-home-main {
+  padding: clamp(24px, 3vw, 40px);
+}
+
+body[data-page="home"] .hero-overview-panel {
+  padding: clamp(20px, 2.4vw, 28px);
+}
+
+body[data-page="home"] .eyebrow,
+body[data-page="home"] .hero-overview-head span {
+  color: rgba(146, 120, 107, 0.95);
+}
+
+body[data-page="home"] .hero-subtitle {
+  margin-top: 0.6rem;
+  color: rgba(102, 85, 78, 0.92);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+body[data-page="home"] .hero-dates,
+body[data-page="home"] .destinations {
+  color: rgba(109, 95, 88, 0.92);
+}
+
+body[data-page="home"] .hero-intro {
+  color: rgba(80, 69, 65, 0.94);
+  font-size: 1.06rem;
+  line-height: 1.72;
+}
+
+body[data-page="home"] .hero-serif-note {
+  color: rgba(104, 90, 82, 0.9);
+  font-size: 1rem;
+  line-height: 1.76;
+}
+
+body[data-page="home"] .hero-overview-head {
+  display: grid;
+  gap: 0.38rem;
+}
+
+body[data-page="home"] .hero-overview-head strong {
+  color: var(--handbook-text);
+  font-family: var(--font-display);
+  font-size: 1.48rem;
+  line-height: 1.2;
+}
+
+body[data-page="home"] .hero-fact {
+  border-radius: 22px;
+  border: 1px solid rgba(228, 217, 210, 0.68);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(251, 246, 242, 0.8));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+body[data-page="home"] .hero-fact span {
+  color: rgba(145, 120, 108, 0.88);
+}
+
+body[data-page="home"] .hero-fact strong {
+  color: rgba(84, 73, 68, 0.98);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+body[data-page="home"] .hero-summary-note {
+  color: rgba(92, 81, 76, 0.9);
+}
+
+.handbook-tabs-track {
+  gap: 0.45rem;
+  padding: 0.5rem;
+  border: 1px solid rgba(226, 214, 206, 0.72);
+  background: linear-gradient(180deg, rgba(255, 251, 247, 0.88), rgba(249, 242, 236, 0.76));
+  box-shadow: 0 12px 28px rgba(92, 79, 71, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.handbook-tab-link {
+  padding: 0.78rem 1.05rem;
+  border: 1px solid transparent;
+  color: rgba(93, 77, 70, 0.92);
+}
+
+.handbook-tab-link.active,
+.handbook-tab-link:hover {
+  background: linear-gradient(135deg, #af8d7f 0%, #936f61 100%);
+  color: #fffaf4;
+  box-shadow: 0 14px 28px rgba(137, 105, 89, 0.14);
+}
+
+.home-tab-panel-block,
+.day-card,
+.hotel-ledger-entry,
+.route-ledger-entry,
+.info-ledger-block,
+.budget-ledger-block,
+.visa-ledger-entry,
+.link-ledger-group,
+.english-overview-panel,
+.stay-overview-card,
+.stay-stat-card,
+.stay-candidate-card,
+.stay-warning-card,
+.functional-stay-note {
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.97), rgba(248, 241, 236, 0.92));
+  border-color: rgba(223, 211, 203, 0.76);
+  box-shadow: 0 16px 38px rgba(96, 78, 67, 0.07);
+}
+
+.home-tab-panel-block {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-tab-panel-block::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 112px;
+  background: linear-gradient(180deg, rgba(255, 248, 239, 0.54), transparent 78%);
+  pointer-events: none;
+}
+
+.tab-panel-intro,
+.day-card,
+.hotel-ledger-entry,
+.route-ledger-entry,
+.info-ledger-block,
+.budget-ledger-block,
+.visa-ledger-entry,
+.link-ledger-group {
+  position: relative;
+  z-index: 1;
+}
+
+.tab-panel-intro .section-label {
+  color: rgba(141, 118, 106, 0.95);
+}
+
+.tab-panel-intro h2 {
+  letter-spacing: -0.02em;
+}
+
+.tab-panel-intro p,
+.overview-editorial-block p,
+.snapshot-timeline-copy p,
+.hotel-ledger-entry p,
+.route-ledger-entry p,
+.info-ledger-block p,
+.visa-ledger-entry p,
+.english-overview-panel p {
+  max-width: 58ch;
+}
+
+.snapshot-timeline-copy h3,
+.overview-editorial-block h3,
+.hotel-ledger-head h3,
+.route-ledger-entry h3,
+.stay-overview-card h3 {
+  letter-spacing: -0.015em;
+}
+
+.paris-mustdo-grid.compact {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 1rem;
+}
+
+.shopping-card {
+  border-radius: 28px;
+  border: 1px solid rgba(223, 211, 203, 0.78);
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.98), rgba(248, 241, 236, 0.93));
+  box-shadow: 0 14px 32px rgba(98, 79, 69, 0.07);
+}
+
+.shopping-card-top,
+.paper-card-head,
+.hotel-ledger-head,
+.route-ledger-entry,
+.info-ledger-block,
+.visa-ledger-entry {
+  gap: 0.8rem;
+}
+
+.day-card {
+  border-radius: 34px;
+  box-shadow: 0 20px 44px rgba(100, 79, 68, 0.08);
+}
+
+.day-title {
+  letter-spacing: -0.03em;
+}
+
+.day-details {
+  margin-top: 1.3rem;
+  padding-top: 1.1rem;
+}
+
+.detail-row {
+  gap: 1rem;
+}
+
+.detail-content {
+  color: rgba(79, 71, 68, 0.96);
+}
+
+.day-visual {
+  box-shadow: 0 12px 28px rgba(103, 83, 72, 0.08);
+}
+
+.text-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0.86rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(214, 201, 193, 0.8);
+  background: rgba(255, 250, 246, 0.84);
+  color: rgba(96, 78, 68, 0.92);
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(96, 78, 67, 0.05);
+}
+
+.text-link-button:hover {
+  background: rgba(250, 241, 235, 0.95);
+  border-color: rgba(201, 177, 162, 0.88);
+}
+
+.link-ledger-row {
+  border: 1px solid rgba(226, 214, 205, 0.75);
+  background: linear-gradient(180deg, rgba(255, 252, 248, 0.96), rgba(250, 244, 239, 0.88));
+  box-shadow: 0 8px 18px rgba(96, 78, 67, 0.04);
+}
+
+.hotel-ledger-entry.featured,
+.functional-stay-card {
+  background: linear-gradient(180deg, rgba(255, 250, 243, 0.99), rgba(247, 238, 230, 0.94));
+  border-color: rgba(214, 198, 188, 0.84);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .home-tab-panel-block,
+  .day-card,
+  .hotel-ledger-entry,
+  .route-ledger-entry,
+  .info-ledger-block,
+  .budget-ledger-block,
+  .visa-ledger-entry,
+  .shopping-card,
+  .link-ledger-group {
+    transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  }
+
+  .home-tab-panel-block:hover,
+  .day-card:hover,
+  .hotel-ledger-entry:hover,
+  .route-ledger-entry:hover,
+  .info-ledger-block:hover,
+  .budget-ledger-block:hover,
+  .visa-ledger-entry:hover,
+  .shopping-card:hover,
+  .link-ledger-group:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 42px rgba(98, 78, 67, 0.09);
+    border-color: rgba(205, 186, 174, 0.88);
+  }
+}
+
+@media (max-width: 760px) {
+  body[data-page="home"] .hero-home-shell.hero-content {
+    padding: 12px;
+    border-radius: 30px;
+    box-shadow: 0 18px 38px rgba(82, 64, 56, 0.12);
+  }
+
+  body[data-page="home"] .hero-home-main,
+  body[data-page="home"] .hero-overview-panel {
+    border-radius: 24px;
+  }
+
+  body[data-page="home"] .hero-home-main {
+    padding: 22px 20px;
+  }
+
+  body[data-page="home"] .hero-overview-panel {
+    padding: 18px 18px 16px;
+  }
+
+  .handbook-tabs-track {
+    padding: 0.4rem;
+    gap: 0.38rem;
+    box-shadow: 0 8px 18px rgba(92, 79, 71, 0.06);
+    backdrop-filter: blur(10px);
+  }
+
+  .handbook-tab-link {
+    padding: 0.72rem 0.95rem;
+  }
+
+  .home-tab-panel-block,
+  .day-card,
+  .hotel-ledger-entry,
+  .route-ledger-entry,
+  .info-ledger-block,
+  .budget-ledger-block,
+  .visa-ledger-entry,
+  .link-ledger-group,
+  .shopping-card {
+    box-shadow: 0 12px 26px rgba(96, 78, 67, 0.06);
+  }
+}
