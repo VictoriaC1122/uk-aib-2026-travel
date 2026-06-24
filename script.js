@@ -268,11 +268,12 @@ const tripData = {
       airport: { zh: "法蘭克福機場 FRA", en: "Frankfurt Airport FRA" },
       route: "CI 0061 → LH 0946",
       layover: { zh: "停留約 9 小時 30 分", en: "About 9h 30m layover" },
-      terminals: { zh: "當天以機場螢幕與 Lufthansa 指示為準。", en: "Follow airport screens and Lufthansa guidance on the day." },
+      terminals: { zh: "抵達 T3，先轉去 T1；進城搭 Frankfurt Airport Regionalbahnhof 的 S8 / S9，回來再走 T1 出境。", en: "Arrive at T3, move to T1, use the Regionalbahnhof S8 / S9 for the city stop, then return through T1 for the Lufthansa departure." },
       notes: [
-        { zh: "抵達後先看 Connecting Flights / Abflug 螢幕，確認 LH 0946 的登機門與航廈。", en: "After arrival, check the Connecting Flights / departure screens for the LH 0946 gate and terminal." },
-        { zh: "這段是長轉機，可以留一點吃飯與休息時間，但仍要提早回到登機區。", en: "This is a long layover, so there is room for food and a short rest, but return to the gate area early." },
-        { zh: "若登機證未一次拿齊，抵達後找 Lufthansa / transfer counter 或自助機補印。", en: "If boarding passes are not issued through, use a Lufthansa / transfer counter or kiosk after arrival." }
+        { zh: "CI 抵達後先看螢幕確認 LH 0946，再從 T3 接駁去 T1；目前 Skyline 停駛，先以機場接駁巴士為主。", en: "After CI arrives, confirm LH 0946 on the screens, then move from T3 to T1; use the airport shuttle bus while the Skyline service is unavailable." },
+        { zh: "進城這段可搭 S8 或 S9 去 Hauptwache，老城一圈再回來；如果不想走太滿，也可以直接縮成羅馬廣場和美因河。", en: "Take S8 or S9 into Hauptwache for the old-town loop, or keep it shorter with just Römerberg and the river if the layover feels too long already." },
+        { zh: "若要照 PPT 動線去法蘭克福動物園，最晚大約 13:30 回到 T1 比較穩，這樣還有時間整理、吃點東西，再接 16:20 的 Lufthansa。", en: "If you follow the zoo version of the route, try to be back at T1 around 13:30 so there is still time to reset, eat, and catch the 16:20 Lufthansa flight." },
+        { zh: "若登機證未一次拿齊，抵達後找 Lufthansa / transfer counter 或自助機補印。", en: "If boarding passes are not issued through, use a Lufthansa transfer counter or kiosk after arrival." }
       ],
       source: "https://www.frankfurt-airport.com/en/flights-and-transfer/transferring-at-fra.html"
     },
@@ -402,7 +403,7 @@ const tripData = {
     }
   ],
   itinerary: [
-    { date: "6/29-6/30", city: { zh: "Taipei → Frankfurt → Manchester", en: "Taipei → Frankfurt → Manchester" }, kind: "travel", theme: { zh: "長程飛行與轉機城市散步", en: "Long-haul departure and a layover city walk" }, title: { zh: "出發、法蘭克福轉機與抵達曼徹斯特", en: "Departure, Frankfurt stop, and arrival in Manchester" }, status: "confirmed", must: ["CI 0061｜TPE 22:20 → FRA 06:50(+1)", "法蘭克福轉機散步：羅馬廣場 → 美因河 → MainNizza 午餐 → 歐元符號", "LH 0946｜FRA 16:20 → MAN 17:10", "入住曼徹斯特"], optional: ["如果時間順，可以在河邊多待一下", "抵達後輕鬆吃晚餐", "補水、整理文件、調時差"], tickets: ["法蘭克福散步：景點免費；午餐依實際消費"], notes: ["先把長途飛行和轉機走順就好。法蘭克福如果還有精神，再出去走一小段，晚上到曼徹斯特就休息。"] },
+    { date: "6/29-6/30", city: { zh: "Taipei → Frankfurt → Manchester", en: "Taipei → Frankfurt → Manchester" }, kind: "travel", theme: { zh: "長程飛行、法蘭克福老城與動物園轉機線", en: "Long-haul flying, Frankfurt old town, and the zoo layover route" }, title: { zh: "出發、法蘭克福轉機散步，再接曼徹斯特", en: "Departure, a Frankfurt stop, and the final leg into Manchester" }, status: "confirmed", must: ["CI 0061｜TPE 22:20 → FRA 06:50(+1)", "T3 → T1｜接駁後搭 S8 / S9 進 Hauptwache", "羅馬廣場 → 鐵橋 → 法蘭克福大教堂", "LH 0946｜FRA 16:20 → MAN 17:10", "入住曼徹斯特"], optional: ["如果時間順，再把法蘭克福動物園一起走掉", "如果只想走短版，就留在羅馬廣場、美因河和午餐", "MainNizza 或老城附近找午餐", "抵達後輕鬆吃晚餐、補水、整理文件"], tickets: ["法蘭克福老城散步免費", "法蘭克福動物園：學生票 6 歐、Frankfurt Card 折後約 10 歐", "午餐依實際消費"], notes: ["這天的重點是把長途飛行和轉機走順。老城和動物園都是加分，不用每個點都硬走滿。"] },
     { date: "6/30-7/3", city: { zh: "Manchester", en: "Manchester" }, kind: "conference", theme: { zh: "會議主段與城市安排", en: "Conference core and city rhythm" }, title: { zh: "AIB 2026 主會議", en: "AIB 2026 conference" }, status: "confirmed", must: ["AIB Conference", "Presentation", "Networking"], optional: ["空檔回飯店整理簡報", "附近簡單晚餐"], tickets: ["景點門票：GBP 0；以會議活動為主"], notes: ["這幾天就以 AIB 為主。兩場發表都已確認，會議前後不要把行程塞太滿。"] },
     { date: "7/4", city: { zh: "Manchester → London", en: "Manchester → London" }, kind: "travel", theme: { zh: "從會議城市轉進倫敦", en: "From the conference city into London streets" }, title: { zh: "轉往倫敦", en: "Move to London" }, status: "book", must: ["Avanti West Coast", "Manchester → London", "約 2 小時 10 分"], optional: ["抵達後 Big Ben", "Buckingham Palace", "St James's Park"], tickets: ["火車票待訂", "地標散步：免費"], notes: ["這天先把曼徹斯特和倫敦接順就好。到倫敦後可以先走西敏一帶，不用急著排太多點。"] },
     { date: "7/5", city: { zh: "London", en: "London" }, kind: "free", theme: { zh: "精品街區和百貨", en: "Luxury streets and city polish" }, title: { zh: "倫敦 Day 2", en: "London Day 2" }, status: "pending", must: ["Harrods", "Bond Street"], optional: ["Chanel", "Dior", "Louis Vuitton", "YSL"], tickets: ["百貨與精品街散步：免費"], notes: ["這一天就走 Harrods 和 Bond Street。中間想喝咖啡、想停就停，不用把景點塞進來。"] },
@@ -414,6 +415,7 @@ const tripData = {
     { date: "7/11-7/12", city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" }, kind: "travel", theme: { zh: "回程接駁與長途返台", en: "Connection day and the long flight home" }, title: { zh: "回程返台", en: "Return to Taipei" }, status: "confirmed", must: ["Novotel Paris Charles-de-Gaulle Airport → CDG Terminal 2E", "Air France Business Standard｜CDG 12:50 → MAN 13:25", "BA 1371｜MAN 18:10 → LHR 19:15", "CI 0082｜LHR 21:10 → TPE 18:05(+1)"], optional: ["巴黎上午只排簡單移動"], tickets: ["AF 歐洲段：約 EUR 354.05 / NT$12,930"], notes: ["這一天以順利銜接航段為主。從機場飯店接進 2E 航廈後，就把體力留給巴黎到曼徹斯特、再接希斯洛返台的長路。"] }
   ],
   attractionCosts: [
+    { status: "confirmed", day: "6/30", attraction: "Frankfurt Card / Frankfurt Zoo", fee: "EUR 6-13", estimate: "約 NT$225-488 / GBP 5-11 / EUR 6-13 / US$7-14", note: { zh: "如果想跑到動物園，先看學生票能不能用；Frankfurt Card 也能折一些交通和門票。", en: "If you want the zoo stop, check whether the student ticket works; the Frankfurt Card can also help with transport and admission." }, source: "https://frankfurt.de/english/discover-and-experience/frankfurt-card" },
     { status: "confirmed", day: "7/4", attraction: "Big Ben / Buckingham Palace / St James's Park", fee: "Free", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "這三個點適合排成第一天的西敏散步。", en: "These three work well as a Westminster walk on the first London day." }, source: "https://www.visitlondon.com/" },
     { status: "confirmed", day: "7/5", attraction: "Harrods / Bond Street", fee: "Free entry", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "精品街與百貨入店免費，主要成本會落在購物本身。", en: "Department stores and shopping streets are free to enter; the cost depends on actual purchases." }, source: "https://www.harrods.com/" },
     { status: "confirmed", day: "7/6", attraction: "Covent Garden / Piccadilly Circus", fee: "Free", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "以街區散步與自由活動為主。", en: "This day is built around walking the area and keeping time flexible." }, source: "https://www.visitlondon.com/" },
@@ -423,8 +425,14 @@ const tripData = {
     { status: "confirmed", day: "7/9", attraction: "Champs-Elysees / Arc de Triomphe", fee: "Depends", estimate: "依實際安排 / Depends / Depends", note: { zh: "香榭麗舍大道散步免費，若上凱旋門再另外查票。", en: "Walking the Champs-Elysees is free; check separately if you want Arc entry." }, source: "https://www.paris-arc-de-triomphe.fr/en/" },
     { status: "pending", day: "7/10", attraction: "Seine river cruise", fee: "TBD", estimate: "待查 / TBD / TBD", note: { zh: "遊船票價依公司與時段而不同。", en: "Cruise pricing varies by operator and timeslot." }, source: "https://www.bateauxparisiens.com/en.html" }
   ],
-  mapRouteUrl: "https://www.google.com/maps/dir/Manchester+Airport/INNSiDE+Manchester/Manchester+Piccadilly/London+Euston/Big+Ben/Harrods/Covent+Garden/Piccadilly+Circus/London+St+Pancras+International/Gare+du+Nord/Pullman+Paris+Tour+Eiffel/Eiffel+Tower/Louvre+Museum/Place+Vendome+Paris/Galeries+Lafayette+Haussmann/Avenue+Montaigne+Paris/Arc+de+Triomphe/Sacre-Coeur+Paris/Novotel+Paris+Charles-de-Gaulle+Airport/Charles+de+Gaulle+Airport+Terminal+2E/Manchester+Airport",
+  mapRouteUrl: "https://www.google.com/maps/dir/Frankfurt+Airport+Regionalbahnhof/Frankfurt+Hauptwache/R%C3%B6merberg+Frankfurt/Eiserner+Steg+Frankfurt/Frankfurt+Cathedral/Frankfurt+Zoo/Frankfurt+Airport+Regionalbahnhof/Manchester+Airport/INNSiDE+Manchester/Manchester+Piccadilly/London+Euston/Big+Ben/Harrods/Covent+Garden/Piccadilly+Circus/London+St+Pancras+International/Gare+du+Nord/Pullman+Paris+Tour+Eiffel/Eiffel+Tower/Louvre+Museum/Place+Vendome+Paris/Galeries+Lafayette+Haussmann/Avenue+Montaigne+Paris/Arc+de+Triomphe/Sacre-Coeur+Paris/Novotel+Paris+Charles-de-Gaulle+Airport/Charles+de+Gaulle+Airport+Terminal+2E/Manchester+Airport",
   mapLocations: [
+    { status: "confirmed", city: "Frankfurt", title: { zh: "Frankfurt Airport Regionalbahnhof", en: "Frankfurt Airport Regionalbahnhof" }, query: "Frankfurt Airport Regionalbahnhof", note: { zh: "法蘭克福進城和回機場都會用到的 S-Bahn 站。", en: "The S-Bahn station for both the city stop and the airport return." } },
+    { status: "confirmed", city: "Frankfurt", title: { zh: "Hauptwache", en: "Hauptwache" }, query: "Frankfurt Hauptwache", note: { zh: "S8 / S9 進城後最順的下車點。", en: "The cleanest stop to start the short city walk from the airport." } },
+    { status: "confirmed", city: "Frankfurt", title: { zh: "Römerberg", en: "Römerberg" }, query: "Römerberg Frankfurt", note: { zh: "老城主廣場，可先走旅客服務中心、正義女神和舊市政廳。", en: "The old-town square, with the visitor centre, Justice Fountain, and the old town hall." } },
+    { status: "confirmed", city: "Frankfurt", title: { zh: "Eiserner Steg", en: "Eiserner Steg" }, query: "Eiserner Steg Frankfurt", note: { zh: "接到美因河最順，也很適合只走短版時停一下。", en: "An easy bridge stop for the river section, especially if the walk stays short." } },
+    { status: "confirmed", city: "Frankfurt", title: { zh: "Frankfurt Cathedral", en: "Frankfurt Cathedral" }, query: "Frankfurt Cathedral", note: { zh: "老城一圈走到這裡差不多就夠了。", en: "A good natural turn point if you want to keep the old-town loop compact." } },
+    { status: "confirmed", city: "Frankfurt", title: { zh: "Frankfurt Zoo", en: "Frankfurt Zoo" }, query: "Frankfurt Zoo", note: { zh: "如果想把長轉機走得更完整，動物園是可選加碼。", en: "An optional extra if you want to make fuller use of the long layover." } },
     { status: "confirmed", city: "Manchester", title: { zh: "Manchester Airport", en: "Manchester Airport" }, query: "Manchester Airport", note: { zh: "抵達與回程都會經過的城市門口。", en: "The city gateway for both arrival and departure." } },
     { status: "confirmed", city: "Manchester", title: { zh: "INNSiDE Manchester", en: "INNSiDE Manchester" }, query: "INNSiDE Manchester 1 First Street Manchester", note: { zh: "會議期間的住宿基地，靠近 First Street 與市中心。", en: "The conference stay base near First Street and the city centre." } },
     { status: "book", city: "Manchester", title: { zh: "Manchester Piccadilly", en: "Manchester Piccadilly" }, query: "Manchester Piccadilly Station", note: { zh: "7/4 前往 London Euston 的起點。", en: "The starting point for the 4 July train to London Euston." } },
@@ -448,6 +456,7 @@ const tripData = {
     { status: "confirmed", city: "Paris", title: { zh: "CDG Terminal 2E", en: "CDG Terminal 2E" }, query: "Charles de Gaulle Airport Terminal 2E", note: { zh: "7/11 Air France Business Standard 的出發點。", en: "The departure terminal for the 11 July Air France Business Standard flight." } },
   ],
   mapRoutes: [
+    { status: "confirmed", label: { zh: "6/30 法蘭克福轉機散步", en: "30 Jun Frankfurt layover route" }, note: { zh: "FRA Regionalbahnhof → Hauptwache → Römerberg → 鐵橋 → 法蘭克福大教堂 → Frankfurt Zoo → 機場。", en: "FRA Regionalbahnhof → Hauptwache → Römerberg → Eiserner Steg → Frankfurt Cathedral → Frankfurt Zoo → airport." }, url: "https://www.google.com/maps/dir/Frankfurt+Airport+Regionalbahnhof/Frankfurt+Hauptwache/R%C3%B6merberg+Frankfurt/Eiserner+Steg+Frankfurt/Frankfurt+Cathedral/Frankfurt+Zoo/Frankfurt+Airport+Regionalbahnhof" },
     { status: "confirmed", label: { zh: "6/30 抵達曼徹斯特", en: "30 Jun Manchester arrival" }, note: { zh: "曼徹斯特機場 → INNSiDE Manchester", en: "MAN Airport → INNSiDE Manchester" }, url: "https://www.google.com/maps/dir/Manchester+Airport/INNSiDE+Manchester+1+First+Street+Manchester" },
     { status: "book", label: { zh: "7/4 曼徹斯特 → 倫敦", en: "4 Jul Manchester → London" }, note: { zh: "Piccadilly → Euston，之後接 Big Ben、Buckingham Palace、St James's Park。", en: "Piccadilly → Euston, then continue to Big Ben, Buckingham Palace, and St James's Park." }, url: "https://www.google.com/maps/dir/Manchester+Piccadilly/London+Euston/Big+Ben+London/Buckingham+Palace/St+James's+Park+London" },
     { status: "pending", label: { zh: "7/5 倫敦購物日", en: "5 Jul London shopping day" }, note: { zh: "Harrods → Bond Street。", en: "Harrods → Bond Street." }, url: "https://www.google.com/maps/dir/Harrods+London/Bond+Street+London" },
@@ -891,7 +900,7 @@ const homeJourneyTimeline = [
   {
     date: "06/30",
     title: { zh: "Frankfurt", en: "Frankfurt" },
-    note: { zh: "短暫轉機散步，替歐洲段留下一個輕巧開場。", en: "A short layover walk that opens the Europe chapter gently." }
+    note: { zh: "先走老城和美因河；如果時間順，再把動物園一起看掉。", en: "Start with the old town and the river, then add the zoo only if the layover still feels easy." }
   },
   {
     date: "06/30–07/03",
@@ -1085,17 +1094,17 @@ const dailyGuides = [
     day: "Day 1",
     date: "6/29-6/30",
     city: { zh: "Taipei → Frankfurt → Manchester", en: "Taipei → Frankfurt → Manchester" },
-    theme: { zh: "長程飛行、轉機散步與抵達曼徹斯特", en: "Long-haul travel, a Frankfurt walk, and arrival in Manchester" },
-    intro: { zh: "第一天先把出發和轉機走順就好。法蘭克福如果還有體力，就出去走一小段；傍晚再接到曼徹斯特，晚上早點休息。", en: "The trip opens with the long-haul flight, and the Frankfurt layover becomes a small city walk before the final segment into Manchester." },
-    highlights: ["CI 0061", "羅馬廣場", "MainNizza", "LH 0946", "INNSiDE Manchester"],
+    theme: { zh: "長程飛行、法蘭克福老城與動物園轉機線", en: "Long-haul travel, the Frankfurt old town, and the zoo layover route" },
+    intro: { zh: "第一天先把飛行和轉機走順。法蘭克福這段可以照著老城線走一圈；如果體力普通，就留在羅馬廣場和美因河附近，不必硬跑滿。動物園是加碼，當天看時間再決定。", en: "The first day is about keeping the flight and transfer clean. Frankfurt can hold a proper old-town walk if energy is still there, while the zoo stays optional and only fits if the layover still feels easy." },
+    highlights: ["CI 0061", "S8 / S9", "Römerberg", "Frankfurt Zoo", "LH 0946", "INNSiDE Manchester"],
     route: [
-      { label: { zh: "上午｜抵達歐洲", en: "Morning" }, text: { zh: "清晨到法蘭克福後先看好下一段航班，再決定要不要出去走。", en: "Arrive in Frankfurt, check the onward flight, then use part of the layover for a short walk." } },
-      { label: { zh: "中午｜轉機散步", en: "Noon" }, text: { zh: "如果時間夠，就走羅馬廣場、美因河，再去 MainNizza 吃午餐。", en: "Walk from Romerberg toward the Main river and stop for lunch at MainNizza." } },
-      { label: { zh: "下午｜回機場", en: "Afternoon" }, text: { zh: "下午提早回機場，不要把轉機抓得太緊。", en: "Head back after the Euro sign stop and leave enough buffer before Lufthansa." } },
+      { label: { zh: "上午｜先把機場段接好", en: "Morning" }, text: { zh: "清晨到法蘭克福後先確認 LH 0946，再從 T3 轉去 T1，搭 S8 / S9 進 Hauptwache。", en: "After landing in Frankfurt, confirm LH 0946, transfer from T3 to T1, and use S8 or S9 into Hauptwache." } },
+      { label: { zh: "中午｜老城到美因河", en: "Noon" }, text: { zh: "先走羅馬廣場、正義女神、舊市政廳和老聖尼古拉堂，再接鐵橋和大教堂。午餐如果想坐一下，就留給 MainNizza。", en: "Start with Römerberg, the Justice Fountain, the old town hall, and St Nicholas Church, then continue to the Iron Bridge and the cathedral. MainNizza works well if you want a seated lunch." } },
+      { label: { zh: "下午｜回 T1 等 Lufthansa", en: "Afternoon" }, text: { zh: "如果有跑到動物園，最晚大約 13:30 回到 T1 比較安心。之後就休息、吃點東西，等 16:20 的 Lufthansa。", en: "If the zoo stays in the plan, being back at T1 around 13:30 keeps the afternoon comfortable before the 16:20 Lufthansa departure." } },
       { label: { zh: "夜晚｜今晚落腳", en: "Evening" }, text: { zh: "到曼徹斯特後先入住、吃點東西，第一晚不要再加行程。", en: "Arrive in Manchester, check in, eat something simple, and keep the evening light." } }
     ],
-    notes: ["法蘭克福這段不用貪多，走一小段就好。", "重要文件、登機證和離線票券先放在同一個地方。"],
-    tickets: ["法蘭克福散步景點免費，午餐依現場消費。"]
+    notes: ["法蘭克福這段不用硬跑滿。老城短版和動物園版都可以，當天看體力再決定。", "如果要照 PPT 路線跑到 Zoo，回程可走 U7 到 Konstablerwache，再轉 S8 / S9 回機場。", "重要文件、登機證和離線票券先放在同一個地方。T3 轉 T1 這段也先留一點彈性。"],
+    tickets: ["法蘭克福老城散步免費；動物園學生票 6 歐、Frankfurt Card 折後約 10 歐；午餐依現場消費。"]
   },
   {
     id: "day-2",
@@ -1289,10 +1298,10 @@ const dailyGuides = [
 const dayCardFrames = {
   "day-1": {
     location: { zh: "台北｜法蘭克福｜曼徹斯特", en: "Taipei | Frankfurt | Manchester" },
-    tags: [{ zh: "長途飛行", en: "Long-haul" }, { zh: "轉機", en: "Layover" }, { zh: "散步", en: "Walk" }, { zh: "輕鬆", en: "Light" }],
-    kicker: { zh: "出發、飛行與旅程開場", en: "Departure, flying, and the opening of the trip" },
+    tags: [{ zh: "長途飛行", en: "Long-haul" }, { zh: "轉機", en: "Layover" }, { zh: "老城", en: "Old town" }, { zh: "動物園可選", en: "Zoo optional" }],
+    kicker: { zh: "出發、轉機與法蘭克福老城", en: "Departure, the transfer, and a Frankfurt old-town stop" },
     title: { zh: "德英法旅程的出發日", en: "The departure day that opens the Germany-UK-France route" },
-    note: { zh: "今天的重點很簡單：順順出境、順順轉機、順順抵達，把體力留給後面的會議與城市旅行。", en: "The goal is simple: leave cleanly, connect cleanly, and arrive with enough energy left for the conference and the city chapters ahead." }
+    note: { zh: "今天的重點很簡單：飛行、轉機、進城、再回機場都走順。法蘭克福這段能走多少算多少，不用硬撐。", en: "The point of the day is simple: fly, transfer, step into the city a little, then get back to the airport without forcing the schedule." }
   },
   "day-2": {
     location: { zh: "曼徹斯特｜AIB 2026", en: "Manchester | AIB 2026" },
@@ -2777,9 +2786,9 @@ function renderAlert(alert) {
 function dayGuideMeta(day) {
   const metaMap = {
     "day-1": [
-      [{ zh: "移動方式", en: "Movement" }, { zh: "CI 0061 / 法蘭克福散步 / LH 0946", en: "CI 0061 / Frankfurt walk / LH 0946" }],
+      [{ zh: "移動方式", en: "Movement" }, { zh: "CI 0061 / T3→T1 / S8-S9 / LH 0946", en: "CI 0061 / T3→T1 / S8-S9 / LH 0946" }],
       [{ zh: "今晚落腳", en: "Tonight" }, "INNSiDE Manchester"],
-      [{ zh: "這天重心", en: "Focus" }, { zh: "順利落地、調時差、把文件放好", en: "Land smoothly, adjust to time, and keep the documents in order" }]
+      [{ zh: "這天重心", en: "Focus" }, { zh: "法蘭克福先走順，回機場不要抓太緊", en: "Keep Frankfurt easy and leave a comfortable return to the airport" }]
     ],
     "day-2": [
       [{ zh: "移動方式", en: "Movement" }, { zh: "步行 / 會場動線", en: "Walking / conference venue flow" }],
@@ -3680,7 +3689,7 @@ function mapEmbedUrl(query) {
 
 function displayCity(city) {
   if (state.lang !== "zh") return city;
-  const labels = { Manchester: "曼徹斯特", London: "倫敦" };
+  const labels = { Frankfurt: "法蘭克福", Manchester: "曼徹斯特", London: "倫敦", Paris: "巴黎" };
   return labels[city] || city;
 }
 
