@@ -160,6 +160,7 @@ const tripData = {
     { status: "confirmed", title: { zh: "倫敦住宿", en: "London accommodation" }, body: { zh: "7/4–7/7 住 Riu Plaza London The Westminster。這段先顧 Westminster、Covent Garden，還有 7/7 去 St Pancras 的路。", en: "For 4-7 July, stay at Riu Plaza London The Westminster. The key parts are Westminster, Covent Garden, and the move to St Pancras on 7 July." } },
     { status: "book", title: { zh: "曼徹斯特到倫敦", en: "Manchester to London" }, body: { zh: "7/4 搭 Avanti West Coast 最單純，直達約 2 小時 10 分。火車時間先抓好就行。", en: "On 4 July, Avanti West Coast is the simplest option at about 2h10 direct. Just keep the train timing clear." } },
     { status: "book", title: { zh: "倫敦到巴黎", en: "London to Paris" }, body: { zh: "7/7 從 St Pancras 搭 Eurostar。這段不要壓線，提早 75–90 分鐘到站比較安心。", en: "On 7 July, take Eurostar from St Pancras. Do not cut it too close; arriving 75-90 minutes early is safer." } },
+    { status: "alert", title: { zh: "巴黎退稅", en: "Paris tax refund" }, body: { zh: "如果在巴黎有買精品或高單價東西，店裡先拿 détaxe / tax free 表單。7/11 離開歐盟時，先在 CDG 驗證退稅，再去托運行李。", en: "If you buy luxury or higher-value items in Paris, ask for the détaxe / tax free form in the shop. On 11 July, validate the refund at CDG before checking your bags." } },
     { status: "confirmed", title: { zh: "eSIM / 漫遊", en: "eSIM / roaming" }, body: { zh: "歐洲 39 國 15 天 eSIM 已買。出發前先裝好，落地再開；原本門號留著收簡訊和驗證碼就好。", en: "The 39-country Europe eSIM for 15 days is already purchased. Install it before departure, turn it on after landing, and keep your main number for SMS and verification codes." } },
     { status: "reimburse", title: { zh: "報帳資料", en: "Reimbursement packet" }, body: { zh: "可報帳還是看國際機票、AIB 會議費、AIB 會員費和國科會日支費。倫敦、巴黎段另外算。", en: "Claims stay limited to international flights, the AIB conference fee, the AIB membership fee, and NSTC allowance. London and Paris stay separate." } },
     { status: "confirmed", title: { zh: "7/11 回程", en: "11 July return flights" }, body: { zh: "7/11 先從巴黎飛曼徹斯特，再接 BA 1371 和 CI 0082 回台北。這天不要再排別的。", en: "On 11 July, fly Paris to Manchester first, then connect to BA 1371 and CI 0082 back to Taipei. Keep the day for flights only." } }
@@ -189,6 +190,12 @@ const tripData = {
         title: { zh: "購物免稅額留一點餘裕", en: "Leave room in your customs allowance" },
         body: { zh: "從境外帶入英國的自用品與禮物有個人免稅額；若超過，需申報並可能繳稅。高單價購物與伴手禮建議留收據，也不要替別人攜帶商業用途物品。", en: "Goods and gifts brought into the UK have personal allowance limits. If you exceed them, you may need to declare and pay tax or duty. Keep receipts for higher-value purchases and do not carry commercial goods for someone else." },
         source: "https://www.gov.uk/duty-free-goods/arrivals-from-outside-the-eu"
+      },
+      {
+        status: "confirmed",
+        title: { zh: "巴黎退稅可以辦，但別拖到最後", en: "You can claim the Paris tax refund, just do not leave it too late" },
+        body: { zh: "如果同一天、同一家店的消費滿 100 歐元含稅，就可以請店裡開 détaxe / tax free 表單。7/11 離開歐盟時，先在 CDG 做退稅驗證，再去托運行李。", en: "If you spend at least 100 euros including tax in the same shop on the same day, ask for the détaxe / tax free form. When leaving the EU on 11 July, validate the refund at CDG before checking your bags." },
+        source: "https://www.douane.gouv.fr/fiche/la-detaxe-en-france-pour-les-touristes-pablo"
       }
     ],
     city: [
@@ -234,6 +241,11 @@ const tripData = {
         status: "alert",
         title: { zh: "手機與包包放內側", en: "Keep phone and bag inward" },
         body: { zh: "倫敦熱門景點、地鐵口與購物街人多，手機不要長時間拿在馬路側。包包拉鍊朝內，護照與備用卡分開放。", en: "Busy London sights, Tube entrances, and shopping streets can be crowded. Avoid holding your phone on the road side for long; keep zippers inward and separate your passport from backup cards." }
+      },
+      {
+        status: "alert",
+        title: { zh: "CDG 那天時間抓寬", en: "Keep extra time at CDG" },
+        body: { zh: "7/11 就算前一晚住在 Novotel CDG，也不要壓線。若還要辦退稅，建議 09:00 左右就進 2E 航廈區；不辦退稅也抓 09:30 左右比較穩。", en: "Even with the Novotel CDG overnight on 10 July, do not cut 11 July too close. If you still need a tax refund, aim to be inside the Terminal 2E area around 09:00; even without it, around 09:30 is safer." }
       },
       {
         status: "optional",
@@ -441,6 +453,8 @@ const tripData = {
     { status: "confirmed", city: "Frankfurt", title: { zh: "Frankfurt Zoo", en: "Frankfurt Zoo" }, query: "Frankfurt Zoo", note: { zh: "如果想把長轉機走得更完整，動物園是可選加碼。", en: "An optional extra if you want to make fuller use of the long layover." } },
     { status: "confirmed", city: "Manchester", title: { zh: "Manchester Airport", en: "Manchester Airport" }, query: "Manchester Airport", note: { zh: "抵達與回程都會經過的城市門口。", en: "The city gateway for both arrival and departure." } },
     { status: "confirmed", city: "Manchester", title: { zh: "INNSiDE Manchester", en: "INNSiDE Manchester" }, query: "INNSiDE Manchester 1 First Street Manchester", note: { zh: "會議期間的住宿基地，靠近 First Street 與市中心。", en: "The conference stay base near First Street and the city centre." } },
+    { status: "confirmed", city: "Manchester", title: { zh: "Alliance Manchester Business School", en: "Alliance Manchester Business School" }, query: "Alliance Manchester Business School Booth Street West Manchester", note: { zh: "7/1 Competitive 發表所在的 AMBS。從 INNSiDE 走路就能到。", en: "The AMBS venue for the 1 July Competitive session. It is walkable from INNSiDE." } },
+    { status: "confirmed", city: "Manchester", title: { zh: "University Place", en: "University Place" }, query: "University Place Oxford Road Manchester", note: { zh: "7/3 Interactive 發表所在的 UP。從 INNSiDE 直接步行即可。", en: "The UP venue for the 3 July Interactive session. It is also a direct walk from INNSiDE." } },
     { status: "book", city: "Manchester", title: { zh: "Manchester Piccadilly", en: "Manchester Piccadilly" }, query: "Manchester Piccadilly Station", note: { zh: "7/4 前往 London Euston 的起點。", en: "The starting point for the 4 July train to London Euston." } },
     { status: "book", city: "London", title: { zh: "London Euston", en: "London Euston" }, query: "London Euston Station", note: { zh: "從曼徹斯特抵達倫敦的主要車站。", en: "The main London arrival station from Manchester." } },
     { status: "confirmed", city: "London", title: { zh: "Big Ben / Westminster", en: "Big Ben / Westminster" }, query: "Big Ben London", note: { zh: "適合放在抵達倫敦後的第一段散步。", en: "A good first stop after arriving in London." } },
@@ -473,6 +487,8 @@ const tripData = {
   mapRoutes: [
     { status: "confirmed", label: { zh: "6/30 法蘭克福轉機散步", en: "30 Jun Frankfurt layover route" }, note: { zh: "FRA Regionalbahnhof → Hauptwache → Römerberg → 鐵橋 → 法蘭克福大教堂 → Frankfurt Zoo → 機場。", en: "FRA Regionalbahnhof → Hauptwache → Römerberg → Eiserner Steg → Frankfurt Cathedral → Frankfurt Zoo → airport." }, url: "https://www.google.com/maps/dir/Frankfurt+Airport+Regionalbahnhof/Frankfurt+Hauptwache/R%C3%B6merberg+Frankfurt/Eiserner+Steg+Frankfurt/Frankfurt+Cathedral/Frankfurt+Zoo/Frankfurt+Airport+Regionalbahnhof" },
     { status: "confirmed", label: { zh: "6/30 抵達曼徹斯特", en: "30 Jun Manchester arrival" }, note: { zh: "曼徹斯特機場 → INNSiDE Manchester", en: "MAN Airport → INNSiDE Manchester" }, url: "https://www.google.com/maps/dir/Manchester+Airport/INNSiDE+Manchester+1+First+Street+Manchester" },
+    { status: "confirmed", label: { zh: "7/1 INNSiDE → AMBS", en: "1 Jul INNSiDE → AMBS" }, note: { zh: "從 INNSiDE Manchester 走去 Alliance Manchester Business School，大約 12–15 分鐘。第一次走的話，抓 20 分鐘比較穩。", en: "Walk from INNSiDE Manchester to Alliance Manchester Business School in about 12-15 minutes. If it is your first time, give yourself closer to 20 minutes." }, url: "https://www.google.com/maps/dir/INNSiDE+Manchester+1+First+Street+Manchester/Alliance+Manchester+Business+School+Booth+Street+West+Manchester" },
+    { status: "confirmed", label: { zh: "7/3 INNSiDE → University Place", en: "3 Jul INNSiDE → University Place" }, note: { zh: "從 INNSiDE Manchester 走去 University Place，大約 15–18 分鐘。這場 09:30 開始，建議比前一天再早一點出門。", en: "Walk from INNSiDE Manchester to University Place in about 15-18 minutes. This session starts at 09:30, so leave a little earlier than on 1 July." }, url: "https://www.google.com/maps/dir/INNSiDE+Manchester+1+First+Street+Manchester/University+Place+Oxford+Road+Manchester" },
     { status: "book", label: { zh: "7/4 曼徹斯特 → 倫敦", en: "4 Jul Manchester → London" }, note: { zh: "Piccadilly → Euston，之後接 Big Ben、西敏寺外觀、國會大廈、西敏橋和 London Eye。", en: "Piccadilly → Euston, then continue to Big Ben, Westminster Abbey, Parliament, Westminster Bridge, and the London Eye." }, url: "https://www.google.com/maps/dir/Manchester+Piccadilly/London+Euston/Big+Ben+London/Westminster+Abbey/Houses+of+Parliament/Westminster+Bridge/London+Eye" },
     { status: "pending", label: { zh: "7/5 白金漢宮與 Harrods", en: "5 Jul Buckingham Palace and Harrods" }, note: { zh: "Buckingham Palace → St. James's Park → Covent Garden → Leicester Square → Piccadilly Circus → Harrods。", en: "Buckingham Palace → St. James's Park → Covent Garden → Leicester Square → Piccadilly Circus → Harrods." }, url: "https://www.google.com/maps/dir/Buckingham+Palace/St+James's+Park+London/Covent+Garden/Leicester+Square/Piccadilly+Circus/Harrods+London" },
     { status: "pending", label: { zh: "7/6 Bond Street 與 Soho", en: "6 Jul Bond Street and Soho" }, note: { zh: "Bond Street → Selfridges → Mayfair → Soho / Chinatown。", en: "Bond Street → Selfridges → Mayfair → Soho / Chinatown." }, url: "https://www.google.com/maps/dir/Bond+Street+London/Selfridges+London/Mayfair+London/Soho+London/Chinatown+London" },
@@ -498,7 +514,7 @@ const tripData = {
     { item: { zh: "巴黎住宿", en: "Paris accommodation" }, amount: money.parisHotel, amounts: { TWD: "NT$70,243", GBP: "約 GBP 1,639", EUR: "EUR 1,915.58", USD: "約 US$2,170" }, status: "self", proof: { zh: "Pullman 訂房確認、Accor 訂單與付款紀錄", en: "Pullman booking confirmation, Accor order, and payment proof" }, notes: { zh: `Pullman Paris Tour Eiffel｜7/7–7/10，共 3 晚，鐵塔景陽台房；平均每晚約 ${money.parisHotelPerNight}。`, en: `Pullman Paris Tour Eiffel · 7-10 Jul · 3 nights · balcony room with Eiffel Tower view; average per night about ${money.parisHotelPerNight}.` } },
     { item: { zh: "CDG 機場住宿", en: "CDG airport hotel" }, amount: { zh: "NT$7,034（原幣未公開）", en: "NT$7,034 (original currency not shown publicly)" }, amounts: { TWD: "NT$7,034", GBP: "約 GBP 164", EUR: "約 EUR 192", USD: "約 US$217" }, status: "self", proof: { zh: "Novotel 訂房畫面與刷卡紀錄", en: "Novotel booking screen and payment note" }, notes: { zh: "巴黎戴高樂機場候機樓諾富特酒店｜7/10–7/11，共 1 晚；作為法航 7/11 航段前一晚的機場過夜。", en: "Novotel Paris Charles-de-Gaulle Airport · 10-11 Jul · 1 night; the airport overnight before the 11 July Air France departure." } },
     { item: { zh: "歐洲 eSIM / 網卡", en: "Europe eSIM / data" }, amount: { zh: "NT$1,219", en: "NT$1,219" }, amounts: { TWD: "NT$1,219", GBP: "約 GBP 29", EUR: "約 EUR 33", USD: "約 US$38" }, status: "self", proof: { zh: "訂單截圖（公開頁不放個資）", en: "Order screenshot (personal details kept private)" }, notes: { zh: "歐洲 39 國 15 天 eSIM。出發前先裝，落地再開；原本門號留著收簡訊與驗證碼。", en: "39-country Europe eSIM for 15 days. Install before departure, activate after landing, and keep your main number for SMS and verification codes." } },
-    { item: { zh: "旅遊保險", en: "Travel insurance" }, amount: { zh: "NT$1,358", en: "NT$1,358" }, amounts: { TWD: "NT$1,358", GBP: "約 GBP 31", EUR: "約 EUR 40", USD: "約 US$42" }, status: "self", proof: { zh: "安達產險投保確認信與保費 PDF（公開頁不放保單號）", en: "Chubb confirmation email and premium PDF (policy number kept private)" }, notes: { zh: "安達產險旅綜保。保險期間從 2026/06/29 出發起到 2026/07/13；要找保單時，直接看確認信和保費 PDF。", en: "Chubb travel insurance, covering from departure on 29 Jun 2026 through 13 Jul 2026. When needed, go straight to the confirmation email and premium PDF." } },
+    { item: { zh: "旅遊保險", en: "Travel insurance" }, amount: { zh: "NT$1,385", en: "NT$1,385" }, amounts: { TWD: "NT$1,385", GBP: "約 GBP 32", EUR: "約 EUR 41", USD: "約 US$43" }, status: "self", proof: { zh: "安達產險投保確認信與保費 PDF（公開頁不放保單號）", en: "Chubb confirmation email and premium PDF (policy number kept private)" }, notes: { zh: "安達產險旅綜保。保險期間從 2026/06/29 出發起到 2026/07/13；要找保單時，直接看確認信和保費 PDF。", en: "Chubb travel insurance, covering from departure on 29 Jun 2026 through 13 Jul 2026. When needed, go straight to the confirmation email and premium PDF." } },
     { item: { zh: "倫敦 / 巴黎景點與遊船", en: "London / Paris attractions and cruise" }, amount: { zh: "依實際選擇", en: "Depends on selected stops" }, amounts: { TWD: "依實際選擇", GBP: "Depends", EUR: "Depends", USD: "Depends" }, status: "self", proof: { zh: "線上購票收據", en: "Online ticket receipts" }, notes: { zh: "羅浮宮、凱旋門等需要時再訂，鐵塔夜景、Place Vendôme、香榭麗舍和多數街區可直接散步。", en: "Book the Louvre or Arc only if needed; the Eiffel night view, Place Vendôme, the Champs-Elysees, and most of the streets can stay open." } }
   ],
   links: [
@@ -523,6 +539,7 @@ const tripData = {
     ["UK ETA", "https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta"],
     ["UK border control", "https://www.gov.uk/uk-border-control/at-border-control"],
     ["UK customs personal allowance", "https://www.gov.uk/duty-free-goods/arrivals-from-outside-the-eu"],
+    ["France tax refund (détaxe)", "https://www.douane.gouv.fr/fiche/la-detaxe-en-france-pour-les-touristes-pablo"],
     ["Bringing food into Great Britain", "https://www.gov.uk/guidance/personal-food-plant-and-animal-product-imports"],
     ["INNSiDE Manchester", "https://www.melia.com/en/hotels/united-kingdom/manchester/innside-manchester"],
     ["Riu Plaza London The Westminster", "https://www.google.com/maps/search/?api=1&query=Riu+Plaza+London+The+Westminster"],
@@ -829,9 +846,9 @@ const souvenirData = {
 
 const sectionNav = {
   home: [["overview", { zh: "總覽", en: "Overview" }], ["snapshot", { zh: "時間軸", en: "Timeline" }], ["highlights", { zh: "巴黎", en: "Paris" }], ["days", { zh: "每天", en: "Days" }], ["info", { zh: "資訊", en: "Info" }]],
-  conference: [["accepted", { zh: "會議狀態", en: "Status" }], ["papers", { zh: "論文", en: "Papers" }], ["alerts", { zh: "提醒", en: "Notes" }], ["checklist", { zh: "文件", en: "Documents" }]],
+  conference: [["accepted", { zh: "會議狀態", en: "Status" }], ["papers", { zh: "論文", en: "Papers" }], ["alerts", { zh: "提醒", en: "Notes" }], ["route", { zh: "路線", en: "Route" }], ["checklist", { zh: "文件", en: "Documents" }]],
   flights: [["overview", { zh: "航班總覽", en: "Overview" }], ["segments", { zh: "航段", en: "Segments" }], ["transfer", { zh: "轉機", en: "Transfers" }], ["notes", { zh: "票務備註", en: "Notes" }]],
-  transport: [["flights", { zh: "航班", en: "Flights" }], ["transfer", { zh: "轉機", en: "Transfers" }], ["train", { zh: "火車", en: "Train" }], ["local", { zh: "市內交通", en: "Local transit" }]],
+  transport: [["flights", { zh: "航班", en: "Flights" }], ["transfer", { zh: "轉機", en: "Transfers" }], ["train", { zh: "火車", en: "Train" }], ["airport", { zh: "機場", en: "Airport" }], ["local", { zh: "市內交通", en: "Local transit" }]],
   stay: [["overview", { zh: "住宿總覽", en: "Overview" }], ["manchester", { zh: "曼徹斯特", en: "Manchester" }], ["london", { zh: "倫敦候選", en: "London options" }], ["paris", { zh: "巴黎住宿", en: "Paris stay" }], ["cdg", { zh: "機場過夜", en: "Airport stay" }], ["next", { zh: "下一步", en: "Next steps" }]],
   itinerary: [["timeline", { zh: "時間軸", en: "Timeline" }], ["paris-must-do", { zh: "巴黎必去", en: "Paris must-do" }], ["tickets", { zh: "景點費用", en: "Admission" }], ["return", { zh: "回程提醒", en: "Return" }]],
   shopping: [["shopping-overview", { zh: "總覽", en: "Overview" }], ["tea", { zh: "茶與點心", en: "Tea" }], ["pantry", { zh: "果醬與 pantry", en: "Pantry" }], ["essentials", { zh: "超市與藥妝", en: "Essentials" }]],
@@ -2600,8 +2617,12 @@ function renderHomeInfoPanel() {
           <p>${state.lang !== "zh" ? `${conferenceSessionSentence("competitive", "en")} ${conferenceSessionSentence("interactive", "en")}` : `${conferenceSessionSentence("competitive", "zh")} ${conferenceSessionSentence("interactive", "zh")}`} </p>
         </section>
         <section class="info-ledger-block">
+          <span class="section-label">${state.lang !== "zh" ? "Venue route" : "會場路線"}</span>
+          <p>${state.lang !== "zh" ? "Both sessions are walkable from INNSiDE. On 1 July, keep 12-15 minutes for AMBS; on 3 July, keep 15-18 minutes for University Place and leave a bit earlier." : "兩場都能從 INNSiDE 直接走去。7/1 去 AMBS 抓 12–15 分鐘；7/3 去 University Place 抓 15–18 分鐘，這天再早一點出門。"} </p>
+        </section>
+        <section class="info-ledger-block">
           <span class="section-label">${state.lang !== "zh" ? "Transport notes" : "交通提醒"}</span>
-          <p>${state.lang !== "zh" ? "Frankfurt is the longer layover, Heathrow is the tighter one. Manchester to London goes by rail; London to Paris goes by Eurostar." : "法蘭克福是長轉機，希斯洛比較緊；曼徹斯特到倫敦搭火車，倫敦到巴黎再接 Eurostar。"} </p>
+          <p>${state.lang !== "zh" ? "Frankfurt is the longer layover, Heathrow is the tighter one. Manchester to London goes by rail, and London to Paris works best by Eurostar if you give St Pancras a little extra time." : "法蘭克福是長轉機，希斯洛比較緊；曼徹斯特到倫敦搭火車最單純，倫敦到巴黎就把 Eurostar 的到站時間抓寬一點。"} </p>
         </section>
         <section class="info-ledger-block">
           <span class="section-label">${state.lang !== "zh" ? "Packing and safety" : "行李與安全"}</span>
@@ -2614,6 +2635,10 @@ function renderHomeInfoPanel() {
         <section class="info-ledger-block">
           <span class="section-label">${state.lang !== "zh" ? "Phone and data" : "eSIM 與連線"}</span>
           <p>${state.lang !== "zh" ? "The Europe eSIM is already purchased. Install it before departure, switch it on after landing, and leave your main number active for SMS and banking codes." : "歐洲 eSIM 已經買了。先在台灣裝好，落地再開；原本門號留著收簡訊、銀行驗證碼和臨時聯絡就好。"} </p>
+        </section>
+        <section class="info-ledger-block">
+          <span class="section-label">${state.lang !== "zh" ? "CDG morning" : "CDG 早上怎麼抓"}</span>
+          <p>${state.lang !== "zh" ? "On 11 July, even with the Novotel CDG overnight, do not cut it too close. If you plan to validate a tax refund, aim for Terminal 2E around 09:00; otherwise around 09:30 is still more comfortable." : "7/11 就算前一晚住在 Novotel CDG，也不要壓線。這天如果要辦退稅，建議 09:00 左右就進 2E；不辦退稅也抓 09:30 左右比較穩。"} </p>
         </section>
       </div>
       <a class="text-link-button" href="./conference.html">${state.lang !== "zh" ? "Open the full conference page" : "查看完整會議頁"}</a>
@@ -2677,7 +2702,7 @@ function renderHomeVisaPanel() {
         </article>
         <article class="visa-ledger-entry">
           <h3>${state.lang !== "zh" ? "Customs, tax, and insurance" : "海關、退稅與保險"}</h3>
-          <p>${state.lang !== "zh" ? "Keep the bigger shopping receipts from London or Paris. The Chubb insurance confirmation and premium PDF should also stay offline with the claim contact details." : "如果後面在倫敦或巴黎有較大額購物，收據記得保留；安達產險的確認信、保費 PDF 和理賠聯絡資訊也一起離線存好。"} </p>
+          <p>${state.lang !== "zh" ? "Keep the bigger shopping receipts from Paris. If you are claiming tax back, ask for the détaxe form in the shop and do the CDG validation before you check your bags. The Chubb confirmation email and premium PDF should also stay offline with the claim contact details." : "如果巴黎有比較大筆的購物，收據先留好，也記得在店裡拿 détaxe / tax free 表單。7/11 到 CDG 先辦退稅驗證，再去托運行李；安達產險的確認信、保費 PDF 和理賠聯絡資訊也一起離線存好。"} </p>
         </article>
       </div>
       <a class="text-link-button" href="./first-time.html">${state.lang !== "zh" ? "Open the travel notes page" : "查看德英法提醒"}</a>
@@ -2954,6 +2979,39 @@ function renderConference() {
         ${dashboardData.conferenceTimeline.map((item) => `<article><strong>${escapeHtml(item.date)}</strong><p>${escapeHtml(t(item.title))} · ${escapeHtml(t(item.note))}</p></article>`).join("")}
       </div>
     </section>
+    <section class="section compact-section" id="route">
+      ${sectionHeading(
+        state.lang !== "zh" ? "From hotel to venue" : "從飯店到會場",
+        state.lang !== "zh" ? "Keep the walk simple on conference days." : "會議日就照最簡單的路走。",
+        state.lang !== "zh" ? "Both venues are walkable from INNSiDE. Leave a little extra time the first day, and a little more on the early-morning interactive day." : "兩場都可以直接從 INNSiDE 步行過去。第一次走抓寬一點；7/3 那場早上 09:30 開始，再多留一點時間。"
+      )}
+      <div class="summary-grid two">
+        <article class="summary-card">
+          ${statusChip("confirmed")}
+          <h3>${state.lang !== "zh" ? "1 Jul · Competitive" : "7/1 · Competitive"}</h3>
+          <strong>${state.lang !== "zh" ? "INNSiDE → Alliance Manchester Business School" : "INNSiDE → Alliance Manchester Business School"}</strong>
+          ${renderMetaRow([
+            { label: state.lang !== "zh" ? "Walk" : "步行", value: state.lang !== "zh" ? "about 12-15 min" : "約 12–15 分鐘" },
+            { label: state.lang !== "zh" ? "Session" : "場次", value: `${conferenceSessions.competitive.time} · ${conferenceSessions.competitive.room}` },
+            { label: state.lang !== "zh" ? "Leave" : "出門", value: state.lang !== "zh" ? "20 min early is safer" : "第一次走抓 20 分鐘較穩" }
+          ])}
+          <p>${state.lang !== "zh" ? "From First Street, keep heading toward Booth Street West and AMBS. It is a short walk, so there is no need to overcomplicate the route." : "從 First Street 往 Booth Street West 那一側走就好。這段不遠，不用另外繞車站或搭車。"} </p>
+          ${externalLink("https://www.google.com/maps/dir/INNSiDE+Manchester+1+First+Street+Manchester/Alliance+Manchester+Business+School+Booth+Street+West+Manchester", state.lang !== "zh" ? "Open the map route" : "開啟地圖路線", "text-link-button")}
+        </article>
+        <article class="summary-card">
+          ${statusChip("confirmed")}
+          <h3>${state.lang !== "zh" ? "3 Jul · Interactive" : "7/3 · Interactive"}</h3>
+          <strong>${state.lang !== "zh" ? "INNSiDE → University Place" : "INNSiDE → University Place"}</strong>
+          ${renderMetaRow([
+            { label: state.lang !== "zh" ? "Walk" : "步行", value: state.lang !== "zh" ? "about 15-18 min" : "約 15–18 分鐘" },
+            { label: state.lang !== "zh" ? "Session" : "場次", value: `${conferenceSessions.interactive.time} · ${conferenceSessions.interactive.room}` },
+            { label: state.lang !== "zh" ? "Leave" : "出門", value: state.lang !== "zh" ? "Leave a little earlier" : "這天再早一點出門" }
+          ])}
+          <p>${state.lang !== "zh" ? "This morning starts earlier, so keep breakfast and the walk straightforward. Heading through the Oxford Road side is the most direct way." : "這天比較早，早餐和出門動線都先抓簡單。沿 Oxford Road 那一帶走過去最直接。"} </p>
+          ${externalLink("https://www.google.com/maps/dir/INNSiDE+Manchester+1+First+Street+Manchester/University+Place+Oxford+Road+Manchester", state.lang !== "zh" ? "Open the map route" : "開啟地圖路線", "text-link-button")}
+        </article>
+      </div>
+    </section>
     <section class="section compact-section" id="checklist">
       ${sectionHeading(state.lang !== "zh" ? "Conference Documents" : "會議文件", state.lang !== "zh" ? "Files to keep ready" : "到曼徹斯特前先存好")}
       <div class="checklist-grid">
@@ -3102,6 +3160,49 @@ function renderTransport() {
             { label: state.lang !== "zh" ? "Use case" : "適合情況", value: state.lang !== "zh" ? "After Pullman luggage pickup" : "回 Pullman 拿行李之後" }
           ])}
           <p>${state.lang !== "zh" ? "On 10 July, finish the city first, go back to Pullman for the bags, then move straight to Novotel CDG. With luggage, a direct car is easiest." : "7/10 這天先走完市區，再回 Pullman 拿寄放行李，之後直接轉去 Novotel CDG。帶著行李時，直接叫車最省事。"} </p>
+        </article>
+      </div>
+    </section>
+    <section class="section compact-section" id="airport">
+      ${sectionHeading(
+        state.lang !== "zh" ? "Airport and tax refund" : "機場與退稅",
+        state.lang !== "zh" ? "Use this for the 11 July airport flow." : "7/11 這天就看這一段。",
+        state.lang !== "zh" ? "The key is simple: do not cut CDG too close, and handle the tax refund before checked baggage if you need it." : "重點很簡單：CDG 不要壓線；如果要辦退稅，就先辦退稅，再托運行李。"
+      )}
+      <div class="summary-grid two">
+        <article class="summary-card">
+          ${statusChip("confirmed")}
+          <h3>${state.lang !== "zh" ? "How to claim the Paris tax refund" : "巴黎退稅怎麼辦"}</h3>
+          <strong>${state.lang !== "zh" ? "Ask in the shop, then validate at CDG" : "店裡先拿表單，CDG 再驗證"}</strong>
+          ${renderMetaRow([
+            { label: state.lang !== "zh" ? "Threshold" : "門檻", value: state.lang !== "zh" ? "same day + same shop + at least EUR 100 incl. tax" : "同一天、同一家店，滿 100 歐元含稅" },
+            { label: state.lang !== "zh" ? "Form" : "表單", value: state.lang !== "zh" ? "détaxe / tax free" : "détaxe / tax free" },
+            { label: state.lang !== "zh" ? "Order" : "順序", value: state.lang !== "zh" ? "refund first, bags second" : "先退稅，再托運" }
+          ])}
+          <p>${state.lang !== "zh" ? "If Paris shopping is worth claiming back, ask for the détaxe form at the store and keep the receipts together. On 11 July, do the validation at CDG before you drop your checked bags." : "如果巴黎這段有買比較大筆的東西，當下就先請店裡開 détaxe / tax free 表單，收據也放一起。7/11 到 CDG 先做退稅驗證，再去托運行李。"} </p>
+          ${externalLink("https://www.douane.gouv.fr/fiche/la-detaxe-en-france-pour-les-touristes-pablo", state.lang !== "zh" ? "Official French customs guidance" : "法國海關官方退稅說明", "text-link-button")}
+        </article>
+        <article class="summary-card">
+          ${statusChip("alert")}
+          <h3>${state.lang !== "zh" ? "How much time to keep at CDG" : "CDG 這天要抓多久"}</h3>
+          <strong>${state.lang !== "zh" ? "Keep more time than the airline minimum" : "比航空公司最低時間再抓寬一點"}</strong>
+          ${renderMetaRow([
+            { label: state.lang !== "zh" ? "Flight" : "航班", value: "AF1068 · 12:50 · CDG T2E" },
+            { label: state.lang !== "zh" ? "If refund" : "要退稅", value: state.lang !== "zh" ? "be in T2E around 09:00" : "09:00 左右進 2E" },
+            { label: state.lang !== "zh" ? "No refund" : "不退稅", value: state.lang !== "zh" ? "around 09:30 still feels safer" : "09:30 左右也比較穩" }
+          ])}
+          <p>${state.lang !== "zh" ? "The e-ticket says latest check-in 11:50, but this is not the day to test that limit. Even with the Novotel airport stay, leave room for tax refund, bag drop, and any summer queue." : "電子機票上寫的最晚報到是 11:50，但這天不建議去試那個極限。就算前一晚住在 Novotel 機場飯店，也先把退稅、托運和暑假排隊時間都算進去。"} </p>
+        </article>
+        <article class="summary-card">
+          ${statusChip("confirmed")}
+          <h3>${state.lang !== "zh" ? "Novotel CDG to Terminal 2E" : "Novotel CDG 去 2E 怎麼走"}</h3>
+          <strong>${state.lang !== "zh" ? "The route is simple, but do not hurry it" : "這段不難，但也不用壓時間"}</strong>
+          ${renderMetaRow([
+            { label: state.lang !== "zh" ? "Base" : "出發點", value: "Novotel Paris Charles-de-Gaulle Airport" },
+            { label: state.lang !== "zh" ? "Direction" : "方式", value: state.lang !== "zh" ? "follow the airport connection / Roissypole flow" : "照機場接駁 / Roissypole 指標走" },
+            { label: state.lang !== "zh" ? "Buffer" : "緩衝", value: state.lang !== "zh" ? "keep 20-30 min door to terminal" : "抓 20–30 分鐘進航廈" }
+          ])}
+          <p>${state.lang !== "zh" ? "Because you are already sleeping at the airport, the hard part is done. Just keep the morning light, move into the terminal calmly, and leave room for queues." : "前一晚已經住到機場邊，最麻煩的長距離移動其實已經省掉了。早上就輕鬆進航廈，把時間留給排隊和手續。"} </p>
         </article>
       </div>
     </section>
@@ -3724,6 +3825,19 @@ function displayCity(city) {
   return labels[city] || city;
 }
 
+function mapCityNote(city) {
+  if (state.lang !== "zh") {
+    if (city === "Manchester") return "Keep this side practical: airport, hotel, the two conference venues, and the station south to London.";
+    if (city === "Frankfurt") return "Frankfurt is the short layover chapter: airport rail, old town, the river, and the airport return.";
+    if (city === "Paris") return "Paris is built around Pullman, the Right Bank, the Louvre, and the final airport handoff.";
+    return "London is for the city walk: Westminster first, then department stores, shopping streets, and the St Pancras handoff.";
+  }
+  if (city === "Manchester") return "曼徹斯特這一段就看機場、飯店、兩個會場，還有南下倫敦的車站。";
+  if (city === "Frankfurt") return "法蘭克福是短停章節，重點只有機場鐵路、老城、美因河和回機場。";
+  if (city === "Paris") return "巴黎就圍著 Pullman、右岸、羅浮宮和最後接去機場那段看。";
+  return "倫敦這邊先看 Westminster，再接百貨、精品街和 St Pancras。";
+}
+
 function renderMap() {
   const defaultLocation = tripData.mapLocations[0];
   const cityGroups = [...new Set(tripData.mapLocations.map((item) => item.city))];
@@ -3770,10 +3884,7 @@ function renderMap() {
         ${cityGroups.map((city) => `
           <article class="summary-card">
             <h3>${escapeHtml(displayCity(city))}</h3>
-            <p>${city === "Manchester"
-              ? (state.lang !== "zh" ? "Keep this side practical: airport, hotel, station, and conference-day movement." : "這一側保持實用：機場、飯店、車站與會議日移動。")
-              : (state.lang !== "zh" ? "London focuses on museums, major sights, and the main walking areas between them." : "倫敦就看幾個主要地標和街區，不用再拉太遠。")
-            }</p>
+            <p>${escapeHtml(mapCityNote(city))}</p>
           </article>
         `).join("")}
       </div>
@@ -3828,7 +3939,7 @@ function currencySwitcher() {
 
 function renderBudget() {
   const totals = {
-    TWD: { reimburse: "NT$156,039", self: "NT$170,383", personalSelf: "約 NT$19,263", hotelPerson: "NT$19,135", hotelPersonNight: "NT$3,827" },
+    TWD: { reimburse: "NT$156,039", self: "NT$170,410", personalSelf: "約 NT$19,263", hotelPerson: "NT$19,135", hotelPersonNight: "NT$3,827" },
     GBP: { reimburse: "GBP 3,671", self: "約 GBP 3,990", personalSelf: "GBP 453.45", hotelPerson: "GBP 450.45", hotelPersonNight: "GBP 90.09" },
     EUR: { reimburse: "EUR 4,293", self: "約 EUR 4,670", personalSelf: "約 EUR 531", hotelPerson: "EUR 527", hotelPersonNight: "EUR 105" },
     USD: { reimburse: "US$4,870", self: "約 US$5,290", personalSelf: "約 US$601", hotelPerson: "US$597", hotelPersonNight: "US$119" }
@@ -3961,6 +4072,8 @@ function renderReminders() {
           state.lang !== "zh" ? "The Chubb insurance confirmation email and premium PDF are saved offline." : "安達產險確認信和保費 PDF 都先離線存好。",
           state.lang !== "zh" ? "Manchester-London trains are checked before prices rise." : "曼徹斯特到倫敦火車票再查一次。",
           state.lang !== "zh" ? "Riu, Pullman, and Novotel confirmations are saved offline." : "Riu、Pullman 和 Novotel 的訂房確認都先離線存好。",
+          state.lang !== "zh" ? "Paris tax refund forms and receipts stay together; do the validation before baggage drop." : "巴黎退稅表單和收據先放一起，7/11 先辦退稅再托運。",
+          state.lang !== "zh" ? "Even from the Novotel CDG stay, keep 2E timing generous on 11 July." : "7/11 就算前一晚住在 Novotel CDG，也先把 2E 的時間抓寬。",
           state.lang !== "zh" ? "Return routing starts at MAN and includes MAN-LHR." : "回程從 MAN 出發，MAN-LHR 這段不能跳過。"
         ].map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
       </div>
