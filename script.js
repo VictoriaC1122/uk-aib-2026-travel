@@ -153,7 +153,7 @@ const tripData = {
     { status: "book", title: { zh: "曼徹斯特到倫敦", en: "Manchester to London" }, body: { zh: "7/4 可以搭 Avanti West Coast，直達約 2 小時 10 分。Advance 票早點看通常比較有空間。", en: "For 4 July, Avanti West Coast is the cleanest option at about 2h10 direct. Advance fares are best checked early." } },
     { status: "book", title: { zh: "倫敦到巴黎", en: "London to Paris" }, body: { zh: "7/7 可以搭 Eurostar，市中心直達市中心，車程大約 2 小時 20 分。", en: "For 7 July, Eurostar is the simplest city-centre to city-centre option at about 2h20." } },
     { status: "reimburse", title: { zh: "報帳資料", en: "Reimbursement packet" }, body: { zh: "這次可報帳還是以國際機票、AIB 會議費、AIB 會員費和國科會日支費為主；倫敦、巴黎段另外列自費。", en: "Claims remain limited to international flights, the AIB conference fee, the AIB membership fee, and NSTC allowance; London and Paris stay self-funded." } },
-    { status: "confirmed", title: { zh: "7/11 回程", en: "11 July return flights" }, body: { zh: "7/11 會先從巴黎飛曼徹斯特，再接 BA1371 和 CI82 回台北。這天不要再加別的安排。", en: "On 11 July, fly Paris to Manchester first, then connect to BA1371 and CI82 back to Taipei. Keep the day focused on the flights." } }
+    { status: "confirmed", title: { zh: "7/11 回程", en: "11 July return flights" }, body: { zh: "7/11 會先從巴黎飛曼徹斯特，再接 BA 1371 和 CI 0082 回台北。這天不要再加別的安排。", en: "On 11 July, fly Paris to Manchester first, then connect to BA 1371 and CI 0082 back to Taipei. Keep the day focused on the flights." } }
   ],
   firstTimeNotes: {
     essentials: [
@@ -252,10 +252,10 @@ const tripData = {
     {
       label: { zh: "去程", en: "Outbound" },
       date: "2026/06/29 - 06/30",
-      note: { zh: "法蘭克福長轉機後進曼徹斯特", en: "Long Frankfurt layover before Manchester" },
+      note: { zh: "華航主票前兩段：CI 0061 / LH 0946", en: "First two ticketed legs: CI 0061 / LH 0946" },
       legs: [
-        { from: "TPE", to: "FRA", flight: "CI 61", time: "22:20 → 06:50", duration: "14h 30m", detail: { zh: "台北桃園 → 法蘭克福", en: "Taipei Taoyuan → Frankfurt" } },
-        { from: "FRA", to: "MAN", flight: "LH 946", time: "16:20 → 17:10", duration: "1h 50m", detail: { zh: "法蘭克福 → 曼徹斯特", en: "Frankfurt → Manchester" } }
+        { from: "TPE", to: "FRA", flight: "CI 0061", time: "22:20 → 06:50", duration: "14h 30m", detail: { zh: "台北桃園 → 法蘭克福", en: "Taipei Taoyuan → Frankfurt" } },
+        { from: "FRA", to: "MAN", flight: "LH 0946", time: "16:20 → 17:10", duration: "1h 50m", detail: { zh: "法蘭克福 → 曼徹斯特", en: "Frankfurt → Manchester" } }
       ]
     },
     {
@@ -269,10 +269,10 @@ const tripData = {
     {
       label: { zh: "回程", en: "Return" },
       date: "2026/07/11 - 07/12",
-      note: { zh: "回程由曼徹斯特起飛", en: "Return starts from Manchester" },
+      note: { zh: "華航主票後兩段：BA 1371 / CI 0082", en: "Final two ticketed legs: BA 1371 / CI 0082" },
       legs: [
         { from: "MAN", to: "LHR", flight: "BA 1371", time: "18:10 → 19:15", duration: "1h 05m", detail: { zh: "曼徹斯特（多半 T3）→ 倫敦希斯洛 T5", en: "Manchester (likely T3) → London Heathrow T5" } },
-        { from: "LHR", to: "TPE", flight: "CI 82", time: "21:10 → 18:05", duration: "13h 55m", detail: { zh: "倫敦希斯洛（華航常見 T4）→ 台北桃園 T1", en: "London Heathrow (China Airlines usually T4) → Taipei Taoyuan T1" } }
+        { from: "LHR", to: "TPE", flight: "CI 0082", time: "21:10 → 18:05", duration: "13h 55m", detail: { zh: "倫敦希斯洛（華航常見 T4）→ 台北桃園 T1", en: "London Heathrow (China Airlines usually T4) → Taipei Taoyuan T1" } }
       ]
     }
   ],
@@ -280,11 +280,11 @@ const tripData = {
     {
       status: "confirmed",
       airport: { zh: "法蘭克福機場 FRA", en: "Frankfurt Airport FRA" },
-      route: "CI 61 → LH 946",
+      route: "CI 0061 → LH 0946",
       layover: { zh: "停留約 9 小時 30 分", en: "About 9h 30m layover" },
       terminals: { zh: "當天以機場螢幕與 Lufthansa 指示為準。", en: "Follow airport screens and Lufthansa guidance on the day." },
       notes: [
-        { zh: "抵達後先看 Connecting Flights / Abflug 螢幕，確認 LH 946 的登機門與航廈。", en: "After arrival, check the Connecting Flights / departure screens for the LH 946 gate and terminal." },
+        { zh: "抵達後先看 Connecting Flights / Abflug 螢幕，確認 LH 0946 的登機門與航廈。", en: "After arrival, check the Connecting Flights / departure screens for the LH 0946 gate and terminal." },
         { zh: "這段是長轉機，可以留一點吃飯與休息時間，但仍要提早回到登機區。", en: "This is a long layover, so there is room for food and a short rest, but return to the gate area early." },
         { zh: "若登機證未一次拿齊，抵達後找 Lufthansa / transfer counter 或自助機補印。", en: "If boarding passes are not issued through, use a Lufthansa / transfer counter or kiosk after arrival." }
       ],
@@ -293,7 +293,7 @@ const tripData = {
     {
       status: "alert",
       airport: { zh: "倫敦希斯洛機場 LHR", en: "London Heathrow LHR" },
-      route: "BA 1371 → CI 82",
+      route: "BA 1371 → CI 0082",
       layover: { zh: "停留 1 小時 55 分", en: "1h 55m layover" },
       terminals: { zh: "票面規劃：T5 → T3。希斯洛轉機旅客需再過安檢。", en: "Ticketed plan: T5 → T3. Heathrow flight connections require security screening." },
       notes: [
@@ -416,7 +416,7 @@ const tripData = {
     }
   ],
   itinerary: [
-    { date: "6/29-6/30", city: { zh: "Taipei → Frankfurt → Manchester", en: "Taipei → Frankfurt → Manchester" }, kind: "travel", theme: { zh: "長程飛行與轉機城市散步", en: "Long-haul departure and a layover city walk" }, title: { zh: "出發、法蘭克福轉機與抵達曼徹斯特", en: "Departure, Frankfurt stop, and arrival in Manchester" }, status: "confirmed", must: ["CI61｜TPE 22:20 → FRA 06:50(+1)", "法蘭克福轉機散步：羅馬廣場 → 美因河 → MainNizza 午餐 → 歐元符號", "LH946｜FRA 16:20 → MAN 17:10", "入住曼徹斯特"], optional: ["如果時間順，可以在河邊多待一下", "抵達後輕鬆吃晚餐", "補水、整理文件、調時差"], tickets: ["法蘭克福散步：景點免費；午餐依實際消費"], notes: ["先把長途飛行和轉機走順就好。法蘭克福如果還有精神，再出去走一小段，晚上到曼徹斯特就休息。"] },
+    { date: "6/29-6/30", city: { zh: "Taipei → Frankfurt → Manchester", en: "Taipei → Frankfurt → Manchester" }, kind: "travel", theme: { zh: "長程飛行與轉機城市散步", en: "Long-haul departure and a layover city walk" }, title: { zh: "出發、法蘭克福轉機與抵達曼徹斯特", en: "Departure, Frankfurt stop, and arrival in Manchester" }, status: "confirmed", must: ["CI 0061｜TPE 22:20 → FRA 06:50(+1)", "法蘭克福轉機散步：羅馬廣場 → 美因河 → MainNizza 午餐 → 歐元符號", "LH 0946｜FRA 16:20 → MAN 17:10", "入住曼徹斯特"], optional: ["如果時間順，可以在河邊多待一下", "抵達後輕鬆吃晚餐", "補水、整理文件、調時差"], tickets: ["法蘭克福散步：景點免費；午餐依實際消費"], notes: ["先把長途飛行和轉機走順就好。法蘭克福如果還有精神，再出去走一小段，晚上到曼徹斯特就休息。"] },
     { date: "6/30-7/3", city: { zh: "Manchester", en: "Manchester" }, kind: "conference", theme: { zh: "會議主段與城市安排", en: "Conference core and city rhythm" }, title: { zh: "AIB 2026 主會議", en: "AIB 2026 conference" }, status: "confirmed", must: ["AIB Conference", "Presentation", "Networking"], optional: ["空檔回飯店整理簡報", "附近簡單晚餐"], tickets: ["景點門票：GBP 0；以會議活動為主"], notes: ["這幾天就以 AIB 為主。兩場發表都已確認，會議前後不要把行程塞太滿。"] },
     { date: "7/4", city: { zh: "Manchester → London", en: "Manchester → London" }, kind: "travel", theme: { zh: "從會議城市轉進倫敦", en: "From the conference city into London streets" }, title: { zh: "轉往倫敦", en: "Move to London" }, status: "book", must: ["Avanti West Coast", "Manchester → London", "約 2 小時 10 分"], optional: ["抵達後 Big Ben", "Buckingham Palace", "St James's Park"], tickets: ["火車票待訂", "地標散步：免費"], notes: ["這天先把曼徹斯特和倫敦接順就好。到倫敦後可以先走西敏一帶，不用急著排太多點。"] },
     { date: "7/5", city: { zh: "London", en: "London" }, kind: "free", theme: { zh: "精品街區和百貨", en: "Luxury streets and city polish" }, title: { zh: "倫敦 Day 2", en: "London Day 2" }, status: "pending", must: ["Harrods", "Bond Street"], optional: ["Chanel", "Dior", "Louis Vuitton", "YSL"], tickets: ["百貨與精品街散步：免費"], notes: ["這一天就走 Harrods 和 Bond Street。中間想喝咖啡、想停就停，不用把景點塞進來。"] },
@@ -425,7 +425,7 @@ const tripData = {
     { date: "7/8", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "羅浮宮、右岸街景與百貨屋頂", en: "The Louvre, Right Bank streets, and the department-store rooftop" }, title: { zh: "巴黎 Day 2", en: "Paris Day 2" }, status: "confirmed", must: ["Louvre Museum", "Place Vendôme", "Galeries Lafayette 頂樓", "巴黎歌劇院周邊"], optional: ["右岸咖啡館小停留"], tickets: ["Louvre 票價待查", "老佛爺百貨頂樓免費"], notes: ["這天就順著右岸走。上午先看羅浮宮，之後再接 Place Vendôme、歌劇院一帶和老佛爺頂樓。"] },
     { date: "7/9", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "右岸大道和塞納河", en: "Luxury avenues and the grand Paris landmarks" }, title: { zh: "巴黎 Day 3", en: "Paris Day 3" }, status: "confirmed", must: ["Avenue Montaigne", "Champs-Elysees", "Arc de Triomphe", "塞納河夜景"], optional: ["精品購物", "晚餐後再看一次鐵塔"], tickets: ["街區散步與購物：依實際消費", "凱旋門票價待查"], notes: ["Avenue Montaigne、香榭麗舍和凱旋門可以排同一天。晚上再去塞納河邊，不用每個地方都待很久。"] },
     { date: "7/10", city: { zh: "Paris", en: "Paris" }, kind: "free", theme: { zh: "蒙馬特、最後採買與轉往機場", en: "Montmartre, final shopping, and the shift to the airport" }, title: { zh: "巴黎 Day 4", en: "Paris Day 4" }, status: "confirmed", must: ["Sacré-Cœur / Montmartre", "巴黎最後採購", "回 Pullman 拿寄放行李", "入住巴黎戴高樂機場候機樓諾富特酒店"], optional: ["沿途街角拍照"], tickets: ["聖心堂與蒙馬特散步免費"], notes: ["最後一天不要塞太滿。上午去聖心堂和蒙馬特，下午把採買和行李收好，晚上直接轉到機場邊。"] },
-    { date: "7/11-7/12", city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" }, kind: "travel", theme: { zh: "回程接駁與長途返台", en: "Connection day and the long flight home" }, title: { zh: "回程返台", en: "Return to Taipei" }, status: "confirmed", must: ["Novotel Paris Charles-de-Gaulle Airport → CDG Terminal 2E", "Air France Business Standard｜CDG 12:50 → MAN 13:25", "BA1371｜MAN 18:10 → LHR 19:15", "CI82｜LHR 21:10 → TPE 18:05(+1)"], optional: ["巴黎上午只排簡單移動"], tickets: ["AF 歐洲段：約 EUR 354.05 / NT$12,930"], notes: ["這一天以順利銜接航段為主。從機場飯店接進 2E 航廈後，就把體力留給巴黎到曼徹斯特、再接希斯洛返台的長路。"] }
+    { date: "7/11-7/12", city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" }, kind: "travel", theme: { zh: "回程接駁與長途返台", en: "Connection day and the long flight home" }, title: { zh: "回程返台", en: "Return to Taipei" }, status: "confirmed", must: ["Novotel Paris Charles-de-Gaulle Airport → CDG Terminal 2E", "Air France Business Standard｜CDG 12:50 → MAN 13:25", "BA 1371｜MAN 18:10 → LHR 19:15", "CI 0082｜LHR 21:10 → TPE 18:05(+1)"], optional: ["巴黎上午只排簡單移動"], tickets: ["AF 歐洲段：約 EUR 354.05 / NT$12,930"], notes: ["這一天以順利銜接航段為主。從機場飯店接進 2E 航廈後，就把體力留給巴黎到曼徹斯特、再接希斯洛返台的長路。"] }
   ],
   attractionCosts: [
     { status: "confirmed", day: "7/4", attraction: "Big Ben / Buckingham Palace / St James's Park", fee: "Free", estimate: "NT$0 / GBP 0 / US$0", note: { zh: "這三個點適合排成第一天的西敏散步。", en: "These three work well as a Westminster walk on the first London day." }, source: "https://www.visitlondon.com/" },
@@ -1024,7 +1024,7 @@ const dailyGuides = [
     city: { zh: "Taipei → Frankfurt → Manchester", en: "Taipei → Frankfurt → Manchester" },
     theme: { zh: "長程飛行、轉機散步與抵達曼徹斯特", en: "Long-haul travel, a Frankfurt walk, and arrival in Manchester" },
     intro: { zh: "第一天先把出發和轉機走順就好。法蘭克福如果還有體力，就出去走一小段；傍晚再接到曼徹斯特，晚上早點休息。", en: "The trip opens with the long-haul flight, and the Frankfurt layover becomes a small city walk before the final segment into Manchester." },
-    highlights: ["CI61", "羅馬廣場", "MainNizza", "LH946", "INNSiDE Manchester"],
+    highlights: ["CI 0061", "羅馬廣場", "MainNizza", "LH 0946", "INNSiDE Manchester"],
     route: [
       { label: { zh: "上午｜抵達歐洲", en: "Morning" }, text: { zh: "清晨到法蘭克福後先看好下一段航班，再決定要不要出去走。", en: "Arrive in Frankfurt, check the onward flight, then use part of the layover for a short walk." } },
       { label: { zh: "中午｜轉機散步", en: "Noon" }, text: { zh: "如果時間夠，就走羅馬廣場、美因河，再去 MainNizza 吃午餐。", en: "Walk from Romerberg toward the Main river and stop for lunch at MainNizza." } },
@@ -1211,12 +1211,12 @@ const dailyGuides = [
     city: { zh: "Paris → Manchester → Heathrow → Taipei", en: "Paris → Manchester → Heathrow → Taipei" },
     theme: { zh: "巴黎收束、歐洲段接駁與返台", en: "Closing Paris and connecting all the way home" },
     intro: { zh: "最後一天就專心把回程接好。從 CDG 出發後，巴黎、曼徹斯特、希斯洛一路接回台北，不要再另外加行程。", en: "The last day is about clean connections rather than sightseeing, starting from Novotel Paris Charles-de-Gaulle Airport and keeping each onward segment steady." },
-    highlights: ["AF1068", "CDG T2E", "BA1371", "CI82"],
+    highlights: ["AF 1068", "CDG T2E", "BA 1371", "CI 0082"],
     route: [
       { label: { zh: "上午｜從 CDG 出發", en: "Morning" }, text: { zh: "早上直接從機場住宿進航站，這樣會比較從容。", en: "Start directly from the airport stay into the terminal so the Air France leg can begin calmly." } },
       { label: { zh: "中午｜巴黎回曼徹斯特", en: "Noon" }, text: { zh: "法航這段是整個回程的起點，先把這段接好。", en: "The Air France business segment starts the homeward chain, so keep things smooth and steady." } },
       { label: { zh: "下午｜再接希斯洛", en: "Afternoon" }, text: { zh: "到曼徹斯特後，再接到希斯洛。", en: "After Manchester, move straight into the Heathrow connection." } },
-      { label: { zh: "夜晚｜回台北", en: "Evening" }, text: { zh: "晚上搭 CI82 回台北，這天就以順順回家為主。", en: "CI82 closes the journey and turns it fully toward home." } }
+      { label: { zh: "夜晚｜回台北", en: "Evening" }, text: { zh: "晚上搭 CI 0082 回台北，這天就以順順回家為主。", en: "CI 0082 closes the journey and turns it fully toward home." } }
     ],
     notes: ["7/11 上午不要再排巴黎景點。", "不要跳過 MAN-LHR 航段，希斯洛轉機要跟著 Flight Connections 走。"],
     tickets: ["AF 歐洲段：約 EUR 354.05 / NT$12,930。"]
@@ -2481,13 +2481,13 @@ function renderHomeFlightsPanel() {
       ${renderHomeSectionIntro(
         state.lang !== "zh" ? "Flights" : "機票",
         state.lang !== "zh" ? "Keep all the flights in one place." : "把整段機票先當成一條路線來看。",
-        state.lang !== "zh" ? "The long-haul flight, the Paris return segment, and the final trip home are easier to check together." : "去程、巴黎回曼徹斯特，以及最後回台灣的航段，放在同一頁最直覺。"
+        state.lang !== "zh" ? "The long-haul ticket, the Paris return segment, and the final trip home are easier to check together." : "先看華航主票四段，再看巴黎回曼徹斯特的法航加購段，會比較清楚。"
       )}
       <div class="route-ledger">
         <article class="route-ledger-entry">
           <span class="section-label">${state.lang !== "zh" ? "Outbound" : "去程"}</span>
           <h3>TPE → FRA → MAN</h3>
-          <p>${state.lang !== "zh" ? "CI61 departs Taipei at 22:20, reaches Frankfurt at 06:50 the next morning, then connects to LH946 at 16:20 for Manchester." : "CI61 22:20 從台北出發，隔天 06:50 抵達法蘭克福，再接 16:20 的 LH946 進曼徹斯特。"} </p>
+          <p>${state.lang !== "zh" ? "The first two ticketed legs are CI 0061 and LH 0946. Taipei departs at 22:20, reaches Frankfurt at 06:50 the next morning, and then connects onward to Manchester at 16:20." : "華航主票前兩段是 CI 0061 和 LH 0946。台北 22:20 出發，隔天 06:50 到法蘭克福，再接 16:20 進曼徹斯特。"} </p>
         </article>
         <article class="route-ledger-entry">
           <span class="section-label">${state.lang !== "zh" ? "Europe segment" : "歐洲段"}</span>
@@ -2497,7 +2497,7 @@ function renderHomeFlightsPanel() {
         <article class="route-ledger-entry">
           <span class="section-label">${state.lang !== "zh" ? "Homebound" : "回程"}</span>
           <h3>MAN → LHR → TPE</h3>
-          <p>${state.lang !== "zh" ? "BA1371 leaves Manchester at 18:10, reaches Heathrow at 19:15, and then CI82 continues home at 21:10." : "BA1371 18:10 從曼徹斯特起飛，19:15 抵達希斯洛，再接 21:10 的 CI82 回台北。"} </p>
+          <p>${state.lang !== "zh" ? "The last two ticketed legs are BA 1371 and CI 0082. Manchester leaves at 18:10, reaches Heathrow at 19:15, and then the China Airlines segment heads home at 21:10." : "華航主票後兩段是 BA 1371 和 CI 0082。18:10 從曼徹斯特起飛，19:15 抵達希斯洛，再接 21:10 的華航回台北。"} </p>
         </article>
       </div>
       <a class="text-link-button" href="./flights.html">${state.lang !== "zh" ? "Open the full flight page" : "查看完整機票頁"}</a>
@@ -2724,7 +2724,7 @@ function renderAlert(alert) {
 function dayGuideMeta(day) {
   const metaMap = {
     "day-1": [
-      [{ zh: "移動方式", en: "Movement" }, { zh: "CI61 / 法蘭克福散步 / LH946", en: "CI61 / Frankfurt walk / LH946" }],
+      [{ zh: "移動方式", en: "Movement" }, { zh: "CI 0061 / 法蘭克福散步 / LH 0946", en: "CI 0061 / Frankfurt walk / LH 0946" }],
       [{ zh: "今晚落腳", en: "Tonight" }, "INNSiDE Manchester"],
       [{ zh: "這天重心", en: "Focus" }, { zh: "順利落地、調時差、把文件放好", en: "Land smoothly, adjust to time, and keep the documents in order" }]
     ],
@@ -2779,7 +2779,7 @@ function dayGuideMeta(day) {
       [{ zh: "這天重心", en: "Focus" }, { zh: "蒙馬特、最後採買與機場轉場", en: "Montmartre, final shopping, and the airport handoff" }]
     ],
     "day-12": [
-      [{ zh: "移動方式", en: "Movement" }, { zh: "Novotel CDG / AF1068 / BA1371 / CI82", en: "Novotel CDG / AF1068 / BA1371 / CI82" }],
+      [{ zh: "移動方式", en: "Movement" }, { zh: "Novotel CDG / AF 1068 / BA 1371 / CI 0082", en: "Novotel CDG / AF 1068 / BA 1371 / CI 0082" }],
       [{ zh: "今晚落腳", en: "Tonight" }, { zh: "回程機上", en: "Overnight on the way home" }],
       [{ zh: "這天重心", en: "Focus" }, { zh: "把巴黎、曼徹斯特與希斯洛順順接起來", en: "Keep Paris, Manchester, and Heathrow flowing cleanly" }]
     ]
@@ -3040,11 +3040,11 @@ function renderFlights() {
   }, `
     ${renderQuickNav("flights")}
     <section class="section compact-section" id="overview">
-      ${sectionHeading(state.lang !== "zh" ? "Flight Overview" : "航班總覽", state.lang !== "zh" ? "The whole route in one view" : "整段航班先看一眼", state.lang !== "zh" ? "This page keeps the long-haul tickets and the Europe segment together so the route is easier to follow." : "把國際段和歐洲段放在一起看，路線會比較直覺。")}
+      ${sectionHeading(state.lang !== "zh" ? "Flight Overview" : "航班總覽", state.lang !== "zh" ? "The whole route in one view" : "先看主票四段，再看加購段", state.lang !== "zh" ? "This page keeps the long-haul tickets and the Europe segment together so the route is easier to follow." : "華航主票是四段：CI 0061、LH 0946、BA 1371、CI 0082。巴黎回曼徹斯特的 AF 1068 再另外放在一起看。")}
       <div class="summary-grid three desktop-flight-grid">
-        <article class="summary-card">${statusChip("confirmed")}<h3>${state.lang !== "zh" ? "Outbound" : "去程"}</h3><strong>TPE → FRA → MAN</strong><p>${state.lang !== "zh" ? "CI 61, then LH 946 after the Frankfurt layover." : "先搭 CI 61 到法蘭克福，再接 LH 946 進曼徹斯特。"}</p></article>
+        <article class="summary-card">${statusChip("confirmed")}<h3>${state.lang !== "zh" ? "Outbound" : "去程"}</h3><strong>TPE → FRA → MAN</strong><p>${state.lang !== "zh" ? "The first two ticketed legs are CI 0061 and LH 0946." : "主票前兩段是 CI 0061 和 LH 0946。"} </p></article>
         <article class="summary-card">${statusChip("self")}<h3>${state.lang !== "zh" ? "Europe segment" : "歐洲段"}</h3><strong>CDG → MAN</strong><p>${state.lang !== "zh" ? "Air France Business Standard on 11 July, then continue to the BA/CI chain." : "7/11 法航商務艙從巴黎回曼徹斯特，再接 BA 與華航返台。"}</p></article>
-        <article class="summary-card">${statusChip("confirmed")}<h3>${state.lang !== "zh" ? "Homebound" : "回程"}</h3><strong>MAN → LHR → TPE</strong><p>${state.lang !== "zh" ? "Return still starts from Manchester, even if the final nights are elsewhere." : "即使後面在倫敦、巴黎停留，回程還是從曼徹斯特開始。"}</p></article>
+        <article class="summary-card">${statusChip("confirmed")}<h3>${state.lang !== "zh" ? "Homebound" : "回程"}</h3><strong>MAN → LHR → TPE</strong><p>${state.lang !== "zh" ? "The final two ticketed legs are BA 1371 and CI 0082." : "主票後兩段是 BA 1371 和 CI 0082。"} </p></article>
       </div>
     </section>
     <section class="section compact-section" id="segments">
@@ -3093,7 +3093,7 @@ function renderFlights() {
         <article><h3>${state.lang !== "zh" ? "Paris to Manchester" : "巴黎回曼徹斯特"}</h3><p>${state.lang !== "zh" ? "AF1068 leaves CDG Terminal 2E at 12:50 and lands at Manchester Terminal 2 at 13:25. Latest check-in shown on the e-ticket is 11:50." : "AF1068 會在 12:50 從戴高樂 2E 起飛，13:25 抵達曼徹斯特 T2。電子機票上列的最晚報到時間是 11:50。"}</p></article>
         <article><h3>${state.lang !== "zh" ? "Air France Business at CDG" : "戴高樂法航商務艙權益"}</h3><p>${state.lang !== "zh" ? "The e-ticket shows Business + SkyPriority. In practice, this usually means priority check-in, bag drop, security / border shortcuts where available, lounge access on the day, and priority boarding." : "票面上有 Business 和 SkyPriority。實際到機場時，通常可用優先報到 / 托運、機場提供時的優先安檢或邊檢動線、當日可用的法航 Lounge，以及優先登機。"}</p></article>
         <article><h3>${state.lang !== "zh" ? "Baggage and privacy" : "行李與隱私"}</h3><p>${state.lang !== "zh" ? "The ticket confirms 2 checked bags up to 32 kg each. Booking reference, ticket number, FOID, and other personal identifiers are intentionally kept off the public site." : "電子機票確認這段可托運 2 件行李、每件 32kg。定位號、票號、FOID 和其他個人識別資訊則刻意不放在公開網站上。"}</p></article>
-        <article><h3>${state.lang !== "zh" ? "Return reminder" : "回程提醒"}</h3><p>${state.lang !== "zh" ? "Do not skip the MAN-LHR segment. The ticket chain still starts from Manchester." : "不要跳過 MAN-LHR 這一段，整張回程票還是從曼徹斯特開始。"}</p></article>
+        <article><h3>${state.lang !== "zh" ? "Return reminder" : "回程提醒"}</h3><p>${state.lang !== "zh" ? "Do not skip the MAN-LHR segment. The ticketed chain still runs BA 1371 → CI 0082, even if the previous night is in Paris." : "不要跳過 MAN-LHR 這一段。就算前一晚人在巴黎，主票回程還是 BA 1371 → CI 0082 這條線。"} </p></article>
       </div>
     </section>
   `);
