@@ -1551,7 +1551,7 @@ const STORAGE_KEYS = {
 
 const SUPPORTED_LANGUAGE_IDS = new Set(["zh", "en", "fr", "de"]);
 const HOME_TAB_IDS = new Set(homeSectionTabs.map((tab) => tab.id));
-const HOME_DEFAULT_TAB = homeSectionTabs[0]?.id || "overview";
+const HOME_DEFAULT_TAB = (homeSectionTabs[0] && homeSectionTabs[0].id) || "overview";
 
 const state = {
   lang: getStoredLang(),
@@ -1617,7 +1617,7 @@ function observeMostVisibleSection(sections, onVisible, options) {
     const visibleEntry = entries
       .filter((entry) => entry.isIntersecting)
       .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if (visibleEntry?.target?.id) onVisible(visibleEntry.target.id);
+    if (visibleEntry && visibleEntry.target && visibleEntry.target.id) onVisible(visibleEntry.target.id);
   }, options);
   sections.forEach((section) => observer.observe(section));
   return observer;
@@ -1644,7 +1644,8 @@ function isChecklistItemChecked(id) {
 
 function t(value) {
   if (typeof value === "string") return value;
-  return value?.[state.lang] || value?.en || value?.zh || "";
+  if (!value) return "";
+  return value[state.lang] || value.en || value.zh || "";
 }
 
 function currentDocumentLang() {
@@ -1666,7 +1667,7 @@ function storeCurrency(currency) {
 }
 
 function budgetAmount(row) {
-  return row.amounts?.[state.currency] || t(row.amount);
+  return (row.amounts && row.amounts[state.currency]) || t(row.amount);
 }
 
 function statusChip(status) {
@@ -1688,7 +1689,7 @@ function sectionHeading(eyebrow, title, body = "", options = {}) {
 }
 
 function renderList(items, className = "clean-list") {
-  if (!items?.length) return "";
+  if (!items || !items.length) return "";
   const classAttr = className ? ` class="${escapeHtml(className)}"` : "";
   return `<ul${classAttr}>${items.map((item) => `<li>${escapeHtml(t(item))}</li>`).join("")}</ul>`;
 }
@@ -1702,7 +1703,7 @@ function renderSummaryCard({ status, title, value, note, facts, image, imageAlt,
       <img class="summary-card-image" src="${escapeHtml(image)}" alt="${escapeHtml(t(imageAlt || title))}" loading="lazy" />
     </div>
   ` : "";
-  const galleryMarkup = photos?.length ? `
+  const galleryMarkup = photos && photos.length ? `
     <div class="summary-card-gallery${photos.length === 1 ? " single" : ""}">
       ${photos.map((photo) => `
         <figure class="summary-photo-tile">
@@ -1713,7 +1714,7 @@ function renderSummaryCard({ status, title, value, note, facts, image, imageAlt,
     </div>
   ` : "";
   return `
-    <article class="summary-card${image || photos?.length ? " with-media" : ""}">
+    <article class="summary-card${image || (photos && photos.length) ? " with-media" : ""}">
       ${imageMarkup}
       ${galleryMarkup}
       ${status ? statusChip(status) : ""}
@@ -1726,7 +1727,7 @@ function renderSummaryCard({ status, title, value, note, facts, image, imageAlt,
 }
 
 function renderMetaRow(items, className = "") {
-  const validItems = (items || []).filter((item) => item?.label && item?.value);
+  const validItems = (items || []).filter((item) => item && item.label && item.value);
   if (!validItems.length) return "";
   const classAttr = className ? ` ${escapeHtml(className)}` : "";
   return `
@@ -1852,7 +1853,7 @@ function renderPaperCard(paper) {
         ${statusChip("confirmed")}
       </div>
       <div class="paper-session-badge">${escapeHtml(t(paper.session))}</div>
-      ${paper.schedule?.length ? renderMetaRow(paper.schedule, "paper-meta-row") : ""}
+      ${paper.schedule && paper.schedule.length ? renderMetaRow(paper.schedule, "paper-meta-row") : ""}
       <p class="paper-coauthor"><strong>${state.lang !== "zh" ? "Coauthor" : "共同作者"}</strong> ${escapeHtml(t(paper.coauthor))}</p>
       <div class="paper-prep-block">
         <div class="paper-prep-title">${state.lang !== "zh" ? "Preparation checklist" : "準備清單"}</div>
@@ -1910,10 +1911,10 @@ function renderBudgetCards(rows) {
             ${statusChip(row.status)}
           </div>
           <div class="budget-mobile-amounts">
-            <div><span>GBP</span><strong>${escapeHtml(row.amounts?.GBP || "-")}</strong></div>
-            <div><span>TWD</span><strong>${escapeHtml(row.amounts?.TWD || "-")}</strong></div>
-            <div><span>EUR</span><strong>${escapeHtml(row.amounts?.EUR || "-")}</strong></div>
-            <div><span>USD</span><strong>${escapeHtml(row.amounts?.USD || "-")}</strong></div>
+            <div><span>GBP</span><strong>${escapeHtml((row.amounts && row.amounts.GBP) || "-")}</strong></div>
+            <div><span>TWD</span><strong>${escapeHtml((row.amounts && row.amounts.TWD) || "-")}</strong></div>
+            <div><span>EUR</span><strong>${escapeHtml((row.amounts && row.amounts.EUR) || "-")}</strong></div>
+            <div><span>USD</span><strong>${escapeHtml((row.amounts && row.amounts.USD) || "-")}</strong></div>
           </div>
           <p>${escapeHtml(t(row.notes))}</p>
         </article>
@@ -2227,7 +2228,7 @@ function applySecondaryLocaleText() {
 
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
-      if (!node.nodeValue?.trim()) return NodeFilter.FILTER_REJECT;
+      if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
       const parent = node.parentElement;
       if (!parent || ["SCRIPT", "STYLE"].includes(parent.tagName)) return NodeFilter.FILTER_REJECT;
       return NodeFilter.FILTER_ACCEPT;
@@ -2342,7 +2343,8 @@ function renderQuickNav(pageId) {
 }
 
 function getPublicLink(name) {
-  return tripData.links.find(([label]) => label === name)?.[1] || "#";
+  const matchedLink = tripData.links.find(([label]) => label === name);
+  return (matchedLink && matchedLink[1]) || "#";
 }
 
 function renderHomeSectionIntro(label, title, body) {
@@ -2465,7 +2467,7 @@ function renderDayHandbookCard(day) {
       <p class="day-kicker">${escapeHtml(t(frame.kicker || day.theme))}</p>
       <h2 class="day-title">${escapeHtml(t(frame.title || day.theme))}</h2>
       <p class="day-description">${escapeHtml(t(day.intro))}</p>
-      <div class="day-note">${escapeHtml(t(frame.note || day.notes?.[0] || ""))}</div>
+      <div class="day-note">${escapeHtml(t(frame.note || (day.notes && day.notes[0]) || ""))}</div>
       ${frame.image ? `
         <figure class="day-visual">
           <img src="${escapeHtml(frame.image)}" alt="${escapeHtml(t(frame.imageAlt || frame.title || day.city))}" loading="lazy" />
@@ -2496,11 +2498,11 @@ function renderDayHandbookCard(day) {
         </div>
         <div class="detail-row">
           <span class="detail-label">${state.lang !== "zh" ? "Note" : "貼心提醒"}</span>
-          <span class="detail-content">${escapeHtml(t(day.notes?.[0] || ""))}</span>
+          <span class="detail-content">${escapeHtml(t((day.notes && day.notes[0]) || ""))}</span>
         </div>
         <div class="detail-row">
           <span class="detail-label">${state.lang !== "zh" ? "Cost" : "花費參考"}</span>
-          <span class="detail-content">${escapeHtml(t(day.tickets?.[0] || ""))}</span>
+          <span class="detail-content">${escapeHtml(t((day.tickets && day.tickets[0]) || ""))}</span>
         </div>
       </div>
     </section>
@@ -3963,10 +3965,10 @@ function renderExpenseTable(rows, label) {
           ${rows.map((row) => `
             <tr>
               <td data-label="${escapeHtml(heads[0])}">${escapeHtml(t(row.item))}</td>
-              <td data-label="${escapeHtml(heads[1])}" class="budget-amount-cell">${escapeHtml(row.amounts?.TWD || "-")}</td>
-              <td data-label="${escapeHtml(heads[2])}" class="budget-amount-cell">${escapeHtml(row.amounts?.GBP || "-")}</td>
-              <td data-label="${escapeHtml(heads[3])}" class="budget-amount-cell">${escapeHtml(row.amounts?.EUR || "-")}</td>
-              <td data-label="${escapeHtml(heads[4])}" class="budget-amount-cell">${escapeHtml(row.amounts?.USD || "-")}</td>
+              <td data-label="${escapeHtml(heads[1])}" class="budget-amount-cell">${escapeHtml((row.amounts && row.amounts.TWD) || "-")}</td>
+              <td data-label="${escapeHtml(heads[2])}" class="budget-amount-cell">${escapeHtml((row.amounts && row.amounts.GBP) || "-")}</td>
+              <td data-label="${escapeHtml(heads[3])}" class="budget-amount-cell">${escapeHtml((row.amounts && row.amounts.EUR) || "-")}</td>
+              <td data-label="${escapeHtml(heads[4])}" class="budget-amount-cell">${escapeHtml((row.amounts && row.amounts.USD) || "-")}</td>
               <td data-label="${escapeHtml(heads[5])}">${statusChip(row.status)}</td>
               <td data-label="${escapeHtml(heads[6])}">${escapeHtml(t(row.proof))}</td>
               <td data-label="${escapeHtml(heads[7])}">${escapeHtml(t(row.notes))}</td>
@@ -4227,7 +4229,10 @@ function renderApp() {
   const heroSlot = document.querySelector("[data-page-hero]");
   if (heroSlot) heroSlot.innerHTML = renderHero(pageId);
   const content = document.getElementById("page-content");
-  if (content) content.innerHTML = renderers[pageId]?.() || renderHome();
+  if (content) {
+    const pageRenderer = renderers[pageId];
+    content.innerHTML = pageRenderer ? pageRenderer() : renderHome();
+  }
   wireMap();
   wireCurrencySwitcher();
   wireChecklistBoard();
@@ -4254,7 +4259,8 @@ function wireChecklistBoard() {
     bindOnce(input, "boundChecklist", "change", () => {
       const checked = input.checked;
       setChecklistItem(input.dataset.checklistId, checked);
-      input.closest(".checklist-item")?.classList.toggle("checked", checked);
+      const checklistItem = input.closest(".checklist-item");
+      if (checklistItem) checklistItem.classList.toggle("checked", checked);
     });
   });
 }
@@ -4300,7 +4306,8 @@ function wireHomeTabs() {
       history.replaceState(null, "", `#${nextId}`);
     }
     if (scrollIntoPanels && shouldAutoScrollPanels()) {
-      document.querySelector(".home-tab-panels")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      const homePanels = document.querySelector(".home-tab-panels");
+      if (homePanels) homePanels.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -4404,7 +4411,8 @@ function openHashTarget(hash) {
   if (!hash) return;
   const target = document.querySelector(hash);
   if (!target) return;
-  target.querySelector("details")?.setAttribute("open", "open");
+  const details = target.querySelector("details");
+  if (details) details.setAttribute("open", "open");
 }
 
 function wireHashDrivenSections() {
@@ -4440,7 +4448,7 @@ function wireDayGuideNav() {
 
   const hashId = hashValue(window.location.hash);
   if (hashId && document.getElementById(hashId)) setActive(hashId);
-  else if (sections[0]?.id) setActive(sections[0].id);
+  else if (sections[0] && sections[0].id) setActive(sections[0].id);
 
   const observer = observeMostVisibleSection(sections, setActive, {
     rootMargin: "-22% 0px -58% 0px",
@@ -4452,7 +4460,8 @@ function wireDayGuideNav() {
 
 window.addEventListener("scroll", () => {
   updateProgress();
-  document.getElementById("backToTop")?.classList.toggle("visible", window.scrollY > 500);
+  const backToTop = document.getElementById("backToTop");
+  if (backToTop) backToTop.classList.toggle("visible", window.scrollY > 500);
 }, { passive: true });
 
 document.addEventListener("click", (event) => {
@@ -4462,7 +4471,8 @@ document.addEventListener("click", (event) => {
   const target = document.querySelector(link.getAttribute("href"));
   if (!target) return;
   event.preventDefault();
-  target.querySelector("details")?.setAttribute("open", "open");
+  const details = target.querySelector("details");
+  if (details) details.setAttribute("open", "open");
   history.replaceState(null, "", link.getAttribute("href"));
   target.scrollIntoView({ behavior: "smooth", block: "start" });
 });
