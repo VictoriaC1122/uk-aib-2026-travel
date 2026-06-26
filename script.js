@@ -1565,7 +1565,7 @@ function readStoredValue(key, fallback, options = {}) {
     if (rawValue == null) return fallback;
     const parsedValue = parse(rawValue);
     return validate(parsedValue) ? parsedValue : fallback;
-  } catch {
+  } catch (_error) {
     return fallback;
   }
 }
@@ -1574,7 +1574,7 @@ function writeStoredValue(key, value, options = {}) {
   const { serialize = (currentValue) => String(currentValue) } = options;
   try {
     localStorage.setItem(key, serialize(value));
-  } catch {
+  } catch (_error) {
     // localStorage may be unavailable in private browsing.
   }
 }
