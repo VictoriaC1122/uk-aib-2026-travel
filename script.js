@@ -1543,27 +1543,99 @@ const checklistGroups = [
   }
 ];
 
+const STORAGE_KEYS = {
+  checklist: "aibChecklistState",
+  currency: "aibCurrency",
+  language: "aib-lang"
+};
+
+const SUPPORTED_LANGUAGE_IDS = new Set(["zh", "en", "fr", "de"]);
+const HOME_TAB_IDS = new Set(homeSectionTabs.map((tab) => tab.id));
+const HOME_DEFAULT_TAB = homeSectionTabs[0]?.id || "overview";
+
 const state = {
   lang: getStoredLang(),
   currency: getStoredCurrency()
 };
 
-function getChecklistStore() {
+function readStoredValue(key, fallback, options = {}) {
+  const { parse = (value) => value, validate = () => true } = options;
   try {
-    return JSON.parse(localStorage.getItem("aibChecklistState") || "{}");
+    const rawValue = localStorage.getItem(key);
+    if (rawValue == null) return fallback;
+    const parsedValue = parse(rawValue);
+    return validate(parsedValue) ? parsedValue : fallback;
   } catch {
-    return {};
+    return fallback;
   }
+}
+
+function writeStoredValue(key, value, options = {}) {
+  const { serialize = (currentValue) => String(currentValue) } = options;
+  try {
+    localStorage.setItem(key, serialize(value));
+  } catch {
+    // localStorage may be unavailable in private browsing.
+  }
+}
+
+function queryAll(selector, root = document) {
+  return [...root.querySelectorAll(selector)];
+}
+
+function bindOnce(element, boundKey, eventName, handler) {
+  if (element.dataset[boundKey]) return;
+  element.dataset[boundKey] = "true";
+  element.addEventListener(eventName, handler);
+}
+
+function disconnectObservers(observers) {
+  observers.forEach((observer) => observer.disconnect());
+  return [];
+}
+
+function hashValue(value = "") {
+  return value.replace(/^#/, "");
+}
+
+function getLinkTargetId(link, datasetKey) {
+  return link.dataset[datasetKey] || hashValue(link.getAttribute("href") || "");
+}
+
+function toggleActiveLinkSet(links, activeId, getTargetId) {
+  links.forEach((link) => {
+    const active = getTargetId(link) === activeId;
+    link.classList.toggle("active", active);
+    if (active) link.setAttribute("aria-current", "true");
+    else link.removeAttribute("aria-current");
+  });
+}
+
+function observeMostVisibleSection(sections, onVisible, options) {
+  if (!sections.length || typeof IntersectionObserver === "undefined") return null;
+  const observer = new IntersectionObserver((entries) => {
+    const visibleEntry = entries
+      .filter((entry) => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (visibleEntry?.target?.id) onVisible(visibleEntry.target.id);
+  }, options);
+  sections.forEach((section) => observer.observe(section));
+  return observer;
+}
+
+function getChecklistStore() {
+  return readStoredValue(STORAGE_KEYS.checklist, {}, {
+    parse: (value) => JSON.parse(value),
+    validate: (value) => value && typeof value === "object" && !Array.isArray(value)
+  });
 }
 
 function setChecklistItem(id, checked) {
   const store = getChecklistStore();
   store[id] = checked;
-  try {
-    localStorage.setItem("aibChecklistState", JSON.stringify(store));
-  } catch {
-    // localStorage may be unavailable in private browsing.
-  }
+  writeStoredValue(STORAGE_KEYS.checklist, store, {
+    serialize: (value) => JSON.stringify(value)
+  });
 }
 
 function isChecklistItemChecked(id) {
@@ -1585,20 +1657,12 @@ function currentDocumentLang() {
 }
 
 function getStoredCurrency() {
-  try {
-    return localStorage.getItem("aibCurrency") || "TWD";
-  } catch {
-    return "TWD";
-  }
+  return readStoredValue(STORAGE_KEYS.currency, "TWD");
 }
 
 function storeCurrency(currency) {
   state.currency = currency;
-  try {
-    localStorage.setItem("aibCurrency", currency);
-  } catch {
-    // localStorage may be unavailable in private browsing.
-  }
+  writeStoredValue(STORAGE_KEYS.currency, currency);
 }
 
 function budgetAmount(row) {
@@ -1756,13 +1820,18 @@ function renderAppTag(label) {
 function renderHomeTabs() {
   return `
     <div class="handbook-tabs-shell" aria-label="${state.lang !== "zh" ? "Handbook tabs" : "旅遊手冊分頁"}">
-      <nav class="handbook-tabs-track" aria-label="${state.lang !== "zh" ? "Handbook tabs" : "旅遊手冊分頁"}">
+      <nav class="handbook-tabs-track" role="tablist" aria-label="${state.lang !== "zh" ? "Handbook tabs" : "旅遊手冊分頁"}">
         ${homeSectionTabs.map((tab, index) => `
           <a
             href="#${tab.id}"
             class="handbook-tab-link${index === 0 ? " active" : ""}"
+            id="home-tab-${tab.id}"
+            role="tab"
             data-home-tab="${tab.id}"
+            aria-controls="${tab.id}"
+            aria-selected="${index === 0 ? "true" : "false"}"
             aria-label="${escapeHtml(t(tab.label))}"
+            tabindex="${index === 0 ? "0" : "-1"}"
           >
             <span>${escapeHtml(t(tab.label))}</span>
           </a>
@@ -1867,20 +1936,13 @@ function escapeHtml(value) {
 }
 
 function getStoredLang() {
-  try {
-    const lang = localStorage.getItem("aib-lang");
-    return ["zh", "en", "fr", "de"].includes(lang) ? lang : "zh";
-  } catch {
-    return "zh";
-  }
+  return readStoredValue(STORAGE_KEYS.language, "zh", {
+    validate: (value) => SUPPORTED_LANGUAGE_IDS.has(value)
+  });
 }
 
 function storeLang(lang) {
-  try {
-    localStorage.setItem("aib-lang", lang);
-  } catch {
-    // localStorage may be unavailable in private browsing.
-  }
+  writeStoredValue(STORAGE_KEYS.language, lang);
 }
 
 function renderChrome() {
@@ -2377,7 +2439,7 @@ function renderDaySelector() {
   return `
     <nav class="day-selector-bar" aria-label="${state.lang !== "zh" ? "Day selector" : "每日切換"}">
       ${dailyGuides.map((day) => `
-        <a class="day-selector-link" href="#${escapeHtml(day.id)}" data-day-target="${escapeHtml(day.id)}">
+        <a class="day-selector-link" href="#${escapeHtml(day.id)}" data-day-target="${escapeHtml(day.id)}" aria-label="${escapeHtml(`${day.day} · ${day.date}`)}">
           <span>${escapeHtml(day.day)}</span>
           <strong>${escapeHtml(day.date)}</strong>
         </a>
@@ -2724,10 +2786,10 @@ function renderHome() {
   return `
     ${renderQuickNav("home")}
     <div class="home-tab-panels">
-      <section class="home-tab-panel active" id="overview" data-home-panel="overview">
+      <section class="home-tab-panel active" id="overview" data-home-panel="overview" role="tabpanel" aria-labelledby="home-tab-overview" aria-hidden="false">
         ${renderHomeOverviewPanel()}
       </section>
-      <section class="home-tab-panel" id="itinerary" data-home-panel="itinerary" hidden>
+      <section class="home-tab-panel" id="itinerary" data-home-panel="itinerary" role="tabpanel" aria-labelledby="home-tab-itinerary" aria-hidden="true" hidden>
         <section class="home-tab-panel-block">
           ${renderHomeSectionIntro(
             state.lang !== "zh" ? "Itinerary" : "行程",
@@ -2740,25 +2802,25 @@ function renderHome() {
           </div>
         </section>
       </section>
-      <section class="home-tab-panel" id="hotels" data-home-panel="hotels" hidden>
+      <section class="home-tab-panel" id="hotels" data-home-panel="hotels" role="tabpanel" aria-labelledby="home-tab-hotels" aria-hidden="true" hidden>
         ${renderHomeHotelsPanel()}
       </section>
-      <section class="home-tab-panel" id="links" data-home-panel="links" hidden>
+      <section class="home-tab-panel" id="links" data-home-panel="links" role="tabpanel" aria-labelledby="home-tab-links" aria-hidden="true" hidden>
         ${renderHomeLinksPanel()}
       </section>
-      <section class="home-tab-panel" id="flights" data-home-panel="flights" hidden>
+      <section class="home-tab-panel" id="flights" data-home-panel="flights" role="tabpanel" aria-labelledby="home-tab-flights" aria-hidden="true" hidden>
         ${renderHomeFlightsPanel()}
       </section>
-      <section class="home-tab-panel" id="info" data-home-panel="info" hidden>
+      <section class="home-tab-panel" id="info" data-home-panel="info" role="tabpanel" aria-labelledby="home-tab-info" aria-hidden="true" hidden>
         ${renderHomeInfoPanel()}
       </section>
-      <section class="home-tab-panel" id="budget" data-home-panel="budget" hidden>
+      <section class="home-tab-panel" id="budget" data-home-panel="budget" role="tabpanel" aria-labelledby="home-tab-budget" aria-hidden="true" hidden>
         ${renderHomeBudgetPanel()}
       </section>
-      <section class="home-tab-panel" id="visa" data-home-panel="visa" hidden>
+      <section class="home-tab-panel" id="visa" data-home-panel="visa" role="tabpanel" aria-labelledby="home-tab-visa" aria-hidden="true" hidden>
         ${renderHomeVisaPanel()}
       </section>
-      <section class="home-tab-panel" id="en" data-home-panel="en" hidden>
+      <section class="home-tab-panel" id="en" data-home-panel="en" role="tabpanel" aria-labelledby="home-tab-en" aria-hidden="true" hidden>
         ${renderHomeEnglishPanel()}
       </section>
     </div>
@@ -4179,7 +4241,7 @@ function renderApp() {
 }
 
 function wireCurrencySwitcher() {
-  document.querySelectorAll("[data-currency]").forEach((button) => {
+  queryAll("[data-currency]").forEach((button) => {
     button.addEventListener("click", () => {
       storeCurrency(button.dataset.currency);
       renderApp();
@@ -4188,10 +4250,8 @@ function wireCurrencySwitcher() {
 }
 
 function wireChecklistBoard() {
-  document.querySelectorAll("[data-checklist-id]").forEach((input) => {
-    if (input.dataset.bound) return;
-    input.dataset.bound = "true";
-    input.addEventListener("change", () => {
+  queryAll("[data-checklist-id]").forEach((input) => {
+    bindOnce(input, "boundChecklist", "change", () => {
       const checked = input.checked;
       setChecklistItem(input.dataset.checklistId, checked);
       input.closest(".checklist-item")?.classList.toggle("checked", checked);
@@ -4207,23 +4267,22 @@ function wireHomeTabs() {
     }
     return;
   }
-  const tabs = [...document.querySelectorAll("[data-home-tab]")];
-  const panels = [...document.querySelectorAll("[data-home-panel]")];
-  const tabJumps = [...document.querySelectorAll("[data-home-tab-jump]")];
+  const tabs = queryAll("[data-home-tab]");
+  const panels = queryAll("[data-home-panel]");
+  const tabJumps = queryAll("[data-home-tab-jump]");
   if (!tabs.length || !panels.length) return;
-
-  const validIds = new Set(homeSectionTabs.map((tab) => tab.id));
-  const fallbackId = homeSectionTabs[0]?.id || "overview";
 
   const shouldAutoScrollPanels = () => window.matchMedia("(max-width: 820px)").matches;
 
   const setActive = (id, updateHash = true, scrollIntoPanels = true) => {
-    const nextId = validIds.has(id) ? id : fallbackId;
+    const nextId = HOME_TAB_IDS.has(id) ? id : HOME_DEFAULT_TAB;
     tabs.forEach((tab) => {
       const active = tab.dataset.homeTab === nextId;
       tab.classList.toggle("active", active);
+      tab.setAttribute("aria-selected", active ? "true" : "false");
+      tab.tabIndex = active ? 0 : -1;
       if (active) {
-        tab.setAttribute("aria-current", "true");
+        tab.setAttribute("aria-current", "page");
         if (shouldAutoScrollPanels()) {
           tab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
         }
@@ -4246,18 +4305,14 @@ function wireHomeTabs() {
   };
 
   tabs.forEach((tab) => {
-    if (tab.dataset.bound) return;
-    tab.dataset.bound = "true";
-    tab.addEventListener("click", (event) => {
+    bindOnce(tab, "boundHomeTab", "click", (event) => {
       event.preventDefault();
       setActive(tab.dataset.homeTab);
     });
   });
 
   tabJumps.forEach((link) => {
-    if (link.dataset.bound) return;
-    link.dataset.bound = "true";
-    link.addEventListener("click", (event) => {
+    bindOnce(link, "boundHomeTabJump", "click", (event) => {
       const target = link.dataset.homeTabJump;
       if (!target) return;
       event.preventDefault();
@@ -4266,8 +4321,8 @@ function wireHomeTabs() {
   });
 
   const syncFromHash = () => {
-    const hash = window.location.hash.replace(/^#/, "");
-    setActive(validIds.has(hash) ? hash : fallbackId, false, false);
+    const hash = hashValue(window.location.hash);
+    setActive(HOME_TAB_IDS.has(hash) ? hash : HOME_DEFAULT_TAB, false, false);
   };
 
   syncFromHash();
@@ -4279,31 +4334,22 @@ function wireHomeTabs() {
 }
 
 function wireDesktopAnchors() {
-  if (typeof IntersectionObserver === "undefined") return;
-  desktopAnchorObservers.forEach((observer) => observer.disconnect());
-  desktopAnchorObservers = [];
+  desktopAnchorObservers = disconnectObservers(desktopAnchorObservers);
   const groups = [
     { selector: "[data-desktop-anchor]", key: "desktopAnchor" },
     { selector: "[data-page-anchor]", key: "pageAnchor" }
   ];
 
   groups.forEach(({ selector, key }) => {
-    const links = [...document.querySelectorAll(selector)];
+    const links = queryAll(selector);
     if (!links.length) return;
 
-    const setActive = (id) => {
-      links.forEach((link) => {
-        const active = link.dataset[key] === id;
-        link.classList.toggle("active", active);
-        if (active) link.setAttribute("aria-current", "true");
-        else link.removeAttribute("aria-current");
-      });
-    };
+    const setActive = (id) => toggleActiveLinkSet(links, id, (link) => link.dataset[key]);
 
     links.forEach((link) => {
-      if (link.dataset.bound) return;
-      link.dataset.bound = "true";
-      link.addEventListener("click", () => setActive(link.dataset[key]));
+      bindOnce(link, `bound${key[0].toUpperCase()}${key.slice(1)}`, "click", () => {
+        setActive(link.dataset[key]);
+      });
     });
 
     const sections = links
@@ -4312,18 +4358,12 @@ function wireDesktopAnchors() {
 
     if (!sections.length) return;
 
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible?.target?.id) setActive(visible.target.id);
-    }, {
+    const observer = observeMostVisibleSection(sections, setActive, {
       rootMargin: "-18% 0px -58% 0px",
       threshold: [0.2, 0.45, 0.7]
     });
 
-    sections.forEach((section) => observer.observe(section));
-    desktopAnchorObservers.push(observer);
+    if (observer) desktopAnchorObservers.push(observer);
     setActive(sections[0].id);
   });
 }
@@ -4331,9 +4371,10 @@ function wireDesktopAnchors() {
 function wireMap() {
   const frame = document.getElementById("travelMapFrame");
   if (!frame) return;
-  document.querySelectorAll(".map-location-button").forEach((button) => {
-    button.addEventListener("click", () => {
-      document.querySelectorAll(".map-location-button").forEach((item) => {
+  const buttons = queryAll(".map-location-button");
+  buttons.forEach((button) => {
+    bindOnce(button, "boundMapButton", "click", () => {
+      buttons.forEach((item) => {
         item.classList.remove("active");
         item.setAttribute("aria-pressed", "false");
       });
@@ -4356,9 +4397,7 @@ function wireBackToTop() {
   if (!button) return;
   button.textContent = "↑";
   button.setAttribute("aria-label", state.lang !== "zh" ? "Back to top" : "回到上方");
-  if (button.dataset.bound) return;
-  button.dataset.bound = "true";
-  button.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  bindOnce(button, "boundBackToTop", "click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 }
 
 function openHashTarget(hash) {
@@ -4382,52 +4421,32 @@ function wireDayGuideNav() {
     dayGuideObserver.disconnect();
     dayGuideObserver = null;
   }
-  const links = [...document.querySelectorAll("[data-day-target], .day-guide-link")];
+  const links = queryAll("[data-day-target]");
   if (!links.length) return;
 
-  const setActive = (id) => {
-    links.forEach((link) => {
-      const targetId = link.dataset.dayTarget || link.getAttribute("href")?.replace(/^#/, "");
-      const active = targetId === id;
-      link.classList.toggle("active", active);
-      if (active) link.setAttribute("aria-current", "true");
-      else link.removeAttribute("aria-current");
-    });
-  };
+  const setActive = (id) => toggleActiveLinkSet(links, id, (link) => getLinkTargetId(link, "dayTarget"));
 
   links.forEach((link) => {
-    if (link.dataset.bound) return;
-    link.dataset.bound = "true";
-    link.addEventListener("click", () => {
-      const id = link.dataset.dayTarget || link.getAttribute("href")?.replace(/^#/, "");
+    bindOnce(link, "boundDayGuide", "click", () => {
+      const id = getLinkTargetId(link, "dayTarget");
       if (id) setActive(id);
     });
   });
 
   const sections = links
-    .map((link) => {
-      const targetId = link.dataset.dayTarget || link.getAttribute("href")?.replace(/^#/, "");
-      return targetId ? document.getElementById(targetId) : null;
-    })
+    .map((link) => getLinkTargetId(link, "dayTarget"))
+    .map((targetId) => targetId ? document.getElementById(targetId) : null)
     .filter(Boolean);
 
-  const hashId = window.location.hash.replace(/^#/, "");
+  const hashId = hashValue(window.location.hash);
   if (hashId && document.getElementById(hashId)) setActive(hashId);
   else if (sections[0]?.id) setActive(sections[0].id);
 
-  if (!sections.length || typeof IntersectionObserver === "undefined") return;
-
-  const observer = new IntersectionObserver((entries) => {
-    const visible = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if (visible?.target?.id) setActive(visible.target.id);
-  }, {
+  const observer = observeMostVisibleSection(sections, setActive, {
     rootMargin: "-22% 0px -58% 0px",
     threshold: [0.15, 0.35, 0.6]
   });
 
-  sections.forEach((section) => observer.observe(section));
   dayGuideObserver = observer;
 }
 
