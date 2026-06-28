@@ -1975,7 +1975,11 @@ function renderChrome() {
     })
     .join("");
 
-  document.querySelector("[data-site-header]").innerHTML = pageId === "home"
+  const headerSlot = document.querySelector("[data-site-header]");
+  const footerSlot = document.querySelector("[data-site-footer]");
+
+  if (headerSlot) {
+    headerSlot.innerHTML = pageId === "home"
     ? `
       <div class="topbar handbook-topbar home-toolbar">
         <a class="handbook-brand" href="./index.html" aria-label="${state.lang !== "zh" ? "Back to overview" : "回到總覽"}">
@@ -2023,8 +2027,10 @@ function renderChrome() {
         ${nav}
       </nav>
     `;
+  }
 
-  document.querySelector("[data-site-footer]").innerHTML = `
+  if (footerSlot) {
+    footerSlot.innerHTML = `
     <footer class="site-footer handbook-footer">
         <p>${state.lang !== "zh" ? "AIB 2026 Manchester · Germany · UK · France travel handbook" : "AIB 2026 Manchester · 德英法之旅手冊"}</p>
       <a href="./index.html">${state.lang !== "zh" ? "Back to overview" : "回到總覽"}</a>
@@ -2034,12 +2040,13 @@ function renderChrome() {
       : `<nav class="bottom-nav" aria-label="${state.lang !== "zh" ? "Primary mobile navigation" : "主要手機導覽"}">${bottomNav}</nav>`
     }
   `;
+  }
 
   document.querySelectorAll("[data-lang]").forEach((button) => {
     button.addEventListener("click", () => {
       state.lang = button.dataset.lang;
       storeLang(state.lang);
-      renderApp();
+      safeRenderApp();
     });
   });
 
@@ -4221,6 +4228,36 @@ const renderers = {
 let homeHashChangeHandler = null;
 let desktopAnchorObservers = [];
 let dayGuideObserver = null;
+const staticFallbackMarkup = {
+  header: null,
+  hero: null,
+  content: null,
+  footer: null
+};
+
+function captureStaticFallbackMarkup() {
+  const headerSlot = document.querySelector("[data-site-header]");
+  const heroSlot = document.querySelector("[data-page-hero]");
+  const contentSlot = document.getElementById("page-content");
+  const footerSlot = document.querySelector("[data-site-footer]");
+
+  if (staticFallbackMarkup.header === null && headerSlot) staticFallbackMarkup.header = headerSlot.innerHTML;
+  if (staticFallbackMarkup.hero === null && heroSlot) staticFallbackMarkup.hero = heroSlot.innerHTML;
+  if (staticFallbackMarkup.content === null && contentSlot) staticFallbackMarkup.content = contentSlot.innerHTML;
+  if (staticFallbackMarkup.footer === null && footerSlot) staticFallbackMarkup.footer = footerSlot.innerHTML;
+}
+
+function restoreStaticFallbackMarkup() {
+  const headerSlot = document.querySelector("[data-site-header]");
+  const heroSlot = document.querySelector("[data-page-hero]");
+  const contentSlot = document.getElementById("page-content");
+  const footerSlot = document.querySelector("[data-site-footer]");
+
+  if (headerSlot && staticFallbackMarkup.header !== null) headerSlot.innerHTML = staticFallbackMarkup.header;
+  if (heroSlot && staticFallbackMarkup.hero !== null) heroSlot.innerHTML = staticFallbackMarkup.hero;
+  if (contentSlot && staticFallbackMarkup.content !== null) contentSlot.innerHTML = staticFallbackMarkup.content;
+  if (footerSlot && staticFallbackMarkup.footer !== null) footerSlot.innerHTML = staticFallbackMarkup.footer;
+}
 
 function renderApp() {
   const pageId = document.body.dataset.page || "home";
@@ -4245,11 +4282,23 @@ function renderApp() {
   applySecondaryLocaleText();
 }
 
+function safeRenderApp() {
+  captureStaticFallbackMarkup();
+  try {
+    renderApp();
+    document.body.dataset.renderState = "ready";
+  } catch (error) {
+    restoreStaticFallbackMarkup();
+    document.body.dataset.renderState = "fallback";
+    console.error("Render failure:", error);
+  }
+}
+
 function wireCurrencySwitcher() {
   queryAll("[data-currency]").forEach((button) => {
     button.addEventListener("click", () => {
       storeCurrency(button.dataset.currency);
-      renderApp();
+      safeRenderApp();
     });
   });
 }
@@ -4477,4 +4526,4 @@ document.addEventListener("click", (event) => {
   target.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-renderApp();
+safeRenderApp();

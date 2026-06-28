@@ -21,17 +21,111 @@
     <link rel="icon" type="image/png" href="/uk-aib-2026-travel/assets/favicon.png" />
     <link rel="apple-touch-icon" href="/uk-aib-2026-travel/assets/apple-touch-icon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260627-fallback1" />
   </head>
   <body data-page="home">
     <div class="progress" id="progress"></div>
     <header class="hero" id="top">
-      <div data-site-header></div>
-      <div data-page-hero></div>
+      <div data-site-header>
+        <div class="topbar handbook-topbar home-toolbar">
+          <a class="handbook-brand" href="./index.html" aria-label="回到總覽">
+            <span>AIB 2026 Manchester</span>
+            <small>德英法之旅手冊</small>
+          </a>
+        </div>
+      </div>
+      <div data-page-hero>
+        <div class="editorial-hero mobile-dashboard-hero handbook-home-hero hero-content hero-home-shell">
+          <section class="hero-home-main">
+            <p class="eyebrow">學術會議旅程手冊</p>
+            <h1>AIB 2026 Manchester</h1>
+            <div class="hero-subtitle">德英法之旅手冊</div>
+            <div class="hero-dates">2026 / 06 / 29 - 2026 / 07 / 12</div>
+            <div class="destinations">法蘭克福 • 曼徹斯特 • 倫敦 • 巴黎</div>
+            <p class="hero-intro">先在法蘭克福轉一下，再進曼徹斯特跑 AIB。AIB 結束後再接倫敦和巴黎。</p>
+            <p class="hero-serif-note">會議這幾天先顧發表。其他城市留到後面。</p>
+            <div class="hero-actions editorial-hero-actions">
+              <a class="button primary hero-action-primary" href="#itinerary">打開每日行程</a>
+              <a class="button secondary hero-action-secondary" href="#overview">先讀旅程總覽</a>
+            </div>
+          </section>
+          <aside class="hero-overview-panel" aria-label="旅程狀態摘要">
+            <div class="hero-overview-head">
+              <span>先看這裡</span>
+              <strong>日期、城市、發表、狀態</strong>
+            </div>
+            <div class="hero-facts hero-overview-grid hero-overview-rows">
+              <article class="hero-fact">
+                <span>旅程日期</span>
+                <strong>2026/06/29 – 2026/07/12</strong>
+              </article>
+              <article class="hero-fact">
+                <span>主要城市</span>
+                <strong>法蘭克福 · 曼徹斯特 · 倫敦 · 巴黎</strong>
+              </article>
+              <article class="hero-fact">
+                <span>發表場次</span>
+                <strong>兩場都已確認</strong>
+              </article>
+              <article class="hero-fact">
+                <span>目前狀態</span>
+                <strong>主線已定，後面細節持續補齊</strong>
+              </article>
+            </div>
+            <p class="hero-summary-note">曼徹斯特、倫敦、Pullman 和 Novotel CDG 都定了。現在主要剩 Eurostar，還有巴黎最後一天怎麼去機場。</p>
+          </aside>
+        </div>
+      </div>
     </header>
-    <main id="page-content"></main>
+    <main id="page-content">
+      <div class="home-tab-panels">
+        <section class="home-tab-panel active" id="overview" aria-hidden="false">
+          <section class="home-tab-panel-block">
+            <div class="tab-panel-intro">
+              <span class="section-label">總覽</span>
+              <h2>AIB 2026 Manchester｜德英法之旅</h2>
+              <p>先看整條路線。真的要用哪一天，再打開那張卡。</p>
+            </div>
+            <div class="handbook-overview-layout compact">
+              <div class="handbook-overview-copy">
+                <p>先在法蘭克福轉一下，再進曼徹斯特跑 AIB。後面再接倫敦和巴黎。</p>
+                <p>曼徹斯特先顧會議。倫敦先住 Westminster。巴黎就圍著 Pullman、羅浮宮和右岸走。</p>
+                <div class="handbook-route-line" aria-label="旅程路線">
+                  <span>Frankfurt</span>
+                  <i aria-hidden="true"></i>
+                  <span>Manchester</span>
+                  <i aria-hidden="true"></i>
+                  <span>London</span>
+                  <i aria-hidden="true"></i>
+                  <span>Paris</span>
+                </div>
+              </div>
+              <div class="handbook-summary-panel">
+                <div class="handbook-summary-row">
+                  <span>旅程日期</span>
+                  <strong>2026/06/29 – 2026/07/12</strong>
+                </div>
+                <div class="handbook-summary-row">
+                  <span>主要城市</span>
+                  <strong>法蘭克福 · 曼徹斯特 · 倫敦 · 巴黎</strong>
+                </div>
+                <div class="handbook-summary-row">
+                  <span>會議日期</span>
+                  <strong>AIB 2026 Manchester · 6/30–7/3</strong>
+                </div>
+                <div class="handbook-summary-row">
+                  <span>路線順序</span>
+                  <strong>轉機 → 會議 → 倫敦 → 巴黎</strong>
+                </div>
+                <p class="handbook-summary-note">住宿現在已經接順了：曼徹斯特先顧 AIB，倫敦住 Westminster，巴黎住 Pullman，最後一晚轉去 Novotel CDG。</p>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </main>
     <div data-site-footer></div>
     <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">Top</button>
-    <script src="./script.js"></script>
+    <script src="./script.js?v=20260627-fallback1"></script>
   </body>
 </html>

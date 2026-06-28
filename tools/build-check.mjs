@@ -44,6 +44,8 @@ requiredAssets.forEach((relativePath) => {
 const htmlHrefPattern = /href="(\.\/[^"]+\.html(?:#[^"]*)?)"/g;
 const assetHrefPattern = /href="(\/uk-aib-2026-travel\/assets\/[^"]+)"/g;
 const dataPagePattern = /<body[^>]*data-page="([^"]+)"/;
+const stylesheetPattern = /<link rel="stylesheet" href="\.\/*styles\.css(?:\?[^"]*)?" \/>/;
+const scriptPattern = /<script src="\.\/*script\.js(?:\?[^"]*)?"><\/script>/;
 
 htmlPages.forEach((page) => {
   const fullPath = resolve(root, page);
@@ -51,8 +53,8 @@ htmlPages.forEach((page) => {
   if (!fileExists(page)) return;
 
   const html = readFileSync(fullPath, "utf8");
-  assert(html.includes('<link rel="stylesheet" href="./styles.css" />'), `${page} is missing ./styles.css`);
-  assert(html.includes('<script src="./script.js"></script>'), `${page} is missing ./script.js`);
+  assert(stylesheetPattern.test(html), `${page} is missing ./styles.css`);
+  assert(scriptPattern.test(html), `${page} is missing ./script.js`);
   assert(html.includes(basePath), `${page} is missing the GitHub Pages base path ${basePath}`);
   assert(dataPagePattern.test(html), `${page} is missing a body data-page attribute`);
 
