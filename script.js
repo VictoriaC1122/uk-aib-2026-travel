@@ -860,6 +860,37 @@ const sectionNav = {
   documents: [["checklist", { zh: "文件清單", en: "Documents" }], ["links", { zh: "官方連結", en: "Links" }]]
 };
 
+const conferenceSessions = {
+  competitive: {
+    label: { zh: "Competitive", en: "Competitive" },
+    session: "Session 3.4.11",
+    sessionNumber: "260411",
+    sessionTitle: "Strategic Intellectual Property in Cross-Border Activities",
+    track: "Track 4. Global Strategy and Organization",
+    dateLabel: { zh: "7/1", en: "1 Jul" },
+    dateKey: "2026/07/01",
+    time: "15:15-16:30",
+    room: "3.006B (AMBS)",
+    paperId: "ID# 568",
+    paperTitle: "Signal or Noise? Maturity-Adjusted Technical Disclosure and Multi-Stage Startup Funding Decisions",
+    coauthor: { zh: "Chao Ya Wan", en: "Chao Ya Wan" }
+  },
+  interactive: {
+    label: { zh: "Interactive", en: "Interactive" },
+    session: "Session 5.1.20",
+    sessionNumber: "260457",
+    sessionTitle: "Legitimacy, Status, and Institutional Alignment in Global Strategy",
+    track: "Track 4. Global Strategy and Organization",
+    dateLabel: { zh: "7/3", en: "3 Jul" },
+    dateKey: "2026/07/03",
+    time: "09:30-10:45",
+    room: "2217 (UP)",
+    paperId: "ID# 1477",
+    paperTitle: "Legitimacy-First Innovation: How Emerging Technology Firms Construct Mainstream Pathways Under Institutional Ambiguity",
+    coauthor: { zh: "Meng Hsien Yen", en: "Meng Hsien Yen" }
+  }
+};
+
 const dashboardData = {
   conferenceCards: [
     { status: "confirmed", title: { zh: "會議期間", en: "Conference period" }, value: "2026/06/29 - 2026/07/03", note: { zh: "Manchester", en: "Manchester" } },
@@ -956,37 +987,6 @@ const homeJourneyTimeline = [
     note: { zh: "從巴黎接回曼徹斯特與希斯洛，再一路返台。", en: "From Paris back through Manchester and Heathrow, then home." }
   }
 ];
-
-const conferenceSessions = {
-  competitive: {
-    label: { zh: "Competitive", en: "Competitive" },
-    session: "Session 3.4.11",
-    sessionNumber: "260411",
-    sessionTitle: "Strategic Intellectual Property in Cross-Border Activities",
-    track: "Track 4. Global Strategy and Organization",
-    dateLabel: { zh: "7/1", en: "1 Jul" },
-    dateKey: "2026/07/01",
-    time: "15:15-16:30",
-    room: "3.006B (AMBS)",
-    paperId: "ID# 568",
-    paperTitle: "Signal or Noise? Maturity-Adjusted Technical Disclosure and Multi-Stage Startup Funding Decisions",
-    coauthor: { zh: "Chao Ya Wan", en: "Chao Ya Wan" }
-  },
-  interactive: {
-    label: { zh: "Interactive", en: "Interactive" },
-    session: "Session 5.1.20",
-    sessionNumber: "260457",
-    sessionTitle: "Legitimacy, Status, and Institutional Alignment in Global Strategy",
-    track: "Track 4. Global Strategy and Organization",
-    dateLabel: { zh: "7/3", en: "3 Jul" },
-    dateKey: "2026/07/03",
-    time: "09:30-10:45",
-    room: "2217 (UP)",
-    paperId: "ID# 1477",
-    paperTitle: "Legitimacy-First Innovation: How Emerging Technology Firms Construct Mainstream Pathways Under Institutional Ambiguity",
-    coauthor: { zh: "Meng Hsien Yen", en: "Meng Hsien Yen" }
-  }
-};
 
 function sessionTitleWithNumber(session) {
   return `${session.sessionTitle} (Session# ${session.sessionNumber})`;
