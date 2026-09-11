@@ -21,10 +21,19 @@ const htmlPages = [
 
 const requiredAssets = [
   "styles.css",
+  "handbook-data.js",
   "script.js",
+  "robots.txt",
+  "sitemap.xml",
   "assets/favicon.svg",
   "assets/favicon.png",
-  "assets/apple-touch-icon.png"
+  "assets/apple-touch-icon.png",
+  "assets/frankfurt-roemerberg.jpg",
+  "assets/innside-manchester.jpg",
+  "assets/london-westminster.jpg",
+  "assets/paris-arc-de-triomphe.jpg",
+  "assets/paris-louvre.jpg",
+  "assets/paris-montmartre.jpg"
 ];
 
 const failures = [];
@@ -45,6 +54,7 @@ const htmlHrefPattern = /href="(\.\/[^"]+\.html(?:#[^"]*)?)"/g;
 const assetHrefPattern = /href="(\/uk-aib-2026-travel\/assets\/[^"]+)"/g;
 const dataPagePattern = /<body[^>]*data-page="([^"]+)"/;
 const stylesheetPattern = /<link rel="stylesheet" href="\.\/*styles\.css(?:\?[^"]*)?" \/>/;
+const dataScriptPattern = /<script src="\.\/*handbook-data\.js(?:\?[^"]*)?"><\/script>/;
 const scriptPattern = /<script src="\.\/*script\.js(?:\?[^"]*)?"><\/script>/;
 
 htmlPages.forEach((page) => {
@@ -54,9 +64,13 @@ htmlPages.forEach((page) => {
 
   const html = readFileSync(fullPath, "utf8");
   assert(stylesheetPattern.test(html), `${page} is missing ./styles.css`);
+  assert(dataScriptPattern.test(html), `${page} is missing ./handbook-data.js`);
   assert(scriptPattern.test(html), `${page} is missing ./script.js`);
   assert(html.includes(basePath), `${page} is missing the GitHub Pages base path ${basePath}`);
   assert(dataPagePattern.test(html), `${page} is missing a body data-page attribute`);
+  assert(html.includes('<meta name="robots"'), `${page} is missing robots metadata`);
+  assert(html.includes('<link rel="canonical"'), `${page} is missing a canonical URL`);
+  assert(html.includes('class="skip-link"'), `${page} is missing a skip link`);
 
   for (const match of html.matchAll(htmlHrefPattern)) {
     const href = match[1];
@@ -75,6 +89,10 @@ for (const match of script.matchAll(/"\.\/([^"]+\.html(?:#[^"]*)?)"/g)) {
   const target = match[1].split("#")[0];
   assert(fileExists(target), `script.js references a missing page: ./${match[1]}`);
 }
+
+const indexHtml = readFileSync(resolve(root, "index.html"), "utf8");
+assert(indexHtml.includes("data-home-tabs"), "index.html is missing the primary handbook tabs");
+assert(indexHtml.includes('type="application/ld+json"'), "index.html is missing structured data");
 
 if (failures.length) {
   console.error("Build validation failed:\n");

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://victoriac1122.github.io/uk-aib-2026-travel/sitemap.xml
